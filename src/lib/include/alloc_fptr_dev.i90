@@ -1,0 +1,10 @@
+         integer(I4P), intent(in), optional                  :: omp_dev
+         type(c_ptr)                                         :: cptr_dev
+         integer(kind=c_int)                                 :: omp_device
+
+         if (present(omp_dev)) then
+            omp_device = omp_dev
+         else
+            omp_device = omp_get_default_device()
+         endif
+

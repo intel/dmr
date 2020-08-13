@@ -1,0 +1,36 @@
+         integer(I4P), intent(out)                                     :: ierr
+         integer(I4P), intent(in), optional                            :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in), optional                            :: dst_off, src_off
+         integer(I8P)                                                  :: n_elements
+         integer(c_size_t)                                             :: total_dim, omp_dst_offset, omp_src_offset
+         type(c_ptr)                                                   :: cptr_dst, cptr_src
+         integer(c_int)                                                :: omp_dst_device, omp_src_device
+
+         n_elements = size(fptr_src)
+
+         if (present(dst_off)) then
+            omp_dst_offset = int(dst_off, c_size_t)
+         else
+            omp_dst_offset = int(0_I4P, c_size_t)
+         endif
+
+         if (present(src_off)) then
+            omp_src_offset = int(src_off, c_size_t)
+         else
+            omp_src_offset = int(0_I4P, c_size_t)
+         endif
+
+         if (present(omp_dst_dev)) then
+            omp_dst_device = int(omp_dst_dev, c_int)
+         else
+            omp_dst_device = omp_get_initial_device_c()
+         endif
+
+         if (present(omp_src_dev)) then
+            omp_src_device = int(omp_src_dev, c_int)
+         else
+            omp_src_device = omp_get_default_device_c()
+         endif
+
+         cptr_dst = c_loc(fptr_dst)
+         cptr_src = c_loc(fptr_src)
