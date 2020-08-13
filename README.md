@@ -38,10 +38,10 @@ FALCO is aimed to be a Fortran library for managing OpenMP allocation of memory 
 + [x] KISS and user-friendly:
   + [x] simple API;
   + [x] easy building and porting on heterogeneous architectures;
-+ [ ] comprehensive:
++ [x] comprehensive:
   + [x] pointers allocation;
   + [x] pointers deallocation;
-  + [x] pointers data transfer between host and device and viceversa;
+  + [x] pointers data transfer between host and device;
 + [ ] well documented:
   + [ ] clear documentation of OpenMP API implemented;
   + [ ] complete API reference;
