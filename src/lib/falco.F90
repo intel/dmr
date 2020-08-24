@@ -202,10 +202,10 @@ module falco
 
    contains
 
-   include 'include/falco_I.i90'
+   include "src/lib/include/falco_I.i90"
 
-   include 'include/falco_R.i90'
+   include "src/lib/include/falco_R.i90"
 
-   include 'include/falco_C.i90'
+   include "src/lib/include/falco_C.i90"
 
 endmodule falco

@@ -3,7 +3,7 @@
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I1P_1
 
@@ -11,7 +11,7 @@
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I1P_2
 
@@ -19,7 +19,7 @@
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I1P_3
 
@@ -27,7 +27,7 @@
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I1P_4
 
@@ -35,7 +35,7 @@
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I1P_5
 
@@ -43,7 +43,7 @@
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I1P_6
 
@@ -51,7 +51,7 @@
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I1P_7
 
@@ -59,7 +59,7 @@
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I2P_1
 
@@ -67,7 +67,7 @@
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I2P_2
 
@@ -75,7 +75,7 @@
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I2P_3
 
@@ -83,7 +83,7 @@
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I2P_4
 
@@ -91,7 +91,7 @@
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I2P_5
 
@@ -99,7 +99,7 @@
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I2P_6
 
@@ -107,7 +107,7 @@
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I2P_7
 
@@ -115,7 +115,7 @@
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I4P_1
 
@@ -123,7 +123,7 @@
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I4P_2
 
@@ -131,7 +131,7 @@
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I4P_3
 
@@ -139,7 +139,7 @@
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I4P_4
 
@@ -147,7 +147,7 @@
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I4P_5
 
@@ -155,7 +155,7 @@
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I4P_6
 
@@ -163,7 +163,7 @@
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I4P_7
 
@@ -171,7 +171,7 @@
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I8P_1
 
@@ -179,7 +179,7 @@
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I8P_2
 
@@ -187,7 +187,7 @@
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I8P_3
 
@@ -195,7 +195,7 @@
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I8P_4
 
@@ -203,7 +203,7 @@
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I8P_5
 
@@ -211,7 +211,7 @@
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I8P_6
 
@@ -219,7 +219,7 @@
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
-         include '../include/free_fptr_dev.i90'
+         include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_I8P_7
 
@@ -229,7 +229,7 @@
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:)
          integer(I8P), intent(in)                :: dimensions
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1_I1P), omp_device)
 
@@ -242,7 +242,7 @@
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
          integer(I8P), intent(in)                :: dimensions(2)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
@@ -255,7 +255,7 @@
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                :: dimensions(3)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
@@ -268,7 +268,7 @@
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(4)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
@@ -281,7 +281,7 @@
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(5)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
@@ -295,7 +295,7 @@
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(6)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
@@ -309,7 +309,7 @@
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(7)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
@@ -323,7 +323,7 @@
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:)
          integer(I8P), intent(in)                :: dimensions
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1_I2P), omp_device)
 
@@ -336,7 +336,7 @@
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
          integer(I8P), intent(in)                :: dimensions(2)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
@@ -349,7 +349,7 @@
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                :: dimensions(3)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
@@ -362,7 +362,7 @@
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(4)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
@@ -375,7 +375,7 @@
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(5)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
@@ -389,7 +389,7 @@
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(6)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
@@ -403,7 +403,7 @@
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(7)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
@@ -417,7 +417,7 @@
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:)
          integer(I8P), intent(in)                :: dimensions
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1_I4P), omp_device)
 
@@ -430,7 +430,7 @@
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
          integer(I8P), intent(in)                :: dimensions(2)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
@@ -443,7 +443,7 @@
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                :: dimensions(3)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
@@ -456,7 +456,7 @@
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(4)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
@@ -469,7 +469,7 @@
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(5)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
@@ -483,7 +483,7 @@
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(6)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
@@ -497,7 +497,7 @@
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(7)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
@@ -511,7 +511,7 @@
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:)
          integer(I8P), intent(in)                :: dimensions
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1_I8P), omp_device)
 
@@ -524,7 +524,7 @@
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
          integer(I8P), intent(in)                :: dimensions(2)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
@@ -537,7 +537,7 @@
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                :: dimensions(3)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
@@ -550,7 +550,7 @@
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(4)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
@@ -563,7 +563,7 @@
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(5)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
@@ -577,7 +577,7 @@
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(6)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
@@ -591,7 +591,7 @@
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(7)
 
-         include '../include/alloc_fptr_dev.i90'
+         include "src/lib/include/alloc_fptr_dev.i90"
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
@@ -607,7 +607,7 @@
          integer(I1P), contiguous, intent(out) :: fptr_dst(:)
          integer(I1P), contiguous, intent(in)  :: fptr_src(:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I1P), c_size_t)
 
@@ -622,7 +622,7 @@
          integer(I1P), contiguous, intent(out) :: fptr_dst(:,:)
          integer(I1P), contiguous, intent(in)  :: fptr_src(:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I1P), c_size_t)
 
@@ -637,7 +637,7 @@
          integer(I1P), contiguous, intent(out) :: fptr_dst(:,:,:)
          integer(I1P), contiguous, intent(in)  :: fptr_src(:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I1P), c_size_t)
 
@@ -652,7 +652,7 @@
          integer(I1P), contiguous, intent(out) :: fptr_dst(:,:,:,:)
          integer(I1P), contiguous, intent(in)  :: fptr_src(:,:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I1P), c_size_t)
 
@@ -667,7 +667,7 @@
          integer(I1P), contiguous, intent(out) :: fptr_dst(:,:,:,:,:)
          integer(I1P), contiguous, intent(in)  :: fptr_src(:,:,:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I1P), c_size_t)
 
@@ -682,7 +682,7 @@
          integer(I1P), contiguous, intent(out) :: fptr_dst(:,:,:,:,:,:)
          integer(I1P), contiguous, intent(in)  :: fptr_src(:,:,:,:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I1P), c_size_t)
 
@@ -697,7 +697,7 @@
          integer(I1P), contiguous, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
          integer(I1P), contiguous, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I1P), c_size_t)
 
@@ -712,7 +712,7 @@
          integer(I2P), contiguous, intent(out) :: fptr_dst(:)
          integer(I2P), contiguous, intent(in)  :: fptr_src(:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I2P), c_size_t)
 
@@ -727,7 +727,7 @@
          integer(I2P), contiguous, intent(out) :: fptr_dst(:,:)
          integer(I2P), contiguous, intent(in)  :: fptr_src(:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I2P), c_size_t)
 
@@ -742,7 +742,7 @@
          integer(I2P), contiguous, intent(out) :: fptr_dst(:,:,:)
          integer(I2P), contiguous, intent(in)  :: fptr_src(:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I2P), c_size_t)
 
@@ -757,7 +757,7 @@
          integer(I2P), contiguous, intent(out) :: fptr_dst(:,:,:,:)
          integer(I2P), contiguous, intent(in)  :: fptr_src(:,:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I2P), c_size_t)
 
@@ -772,7 +772,7 @@
          integer(I2P), contiguous, intent(out) :: fptr_dst(:,:,:,:,:)
          integer(I2P), contiguous, intent(in)  :: fptr_src(:,:,:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I2P), c_size_t)
 
@@ -787,7 +787,7 @@
          integer(I2P), contiguous, intent(out) :: fptr_dst(:,:,:,:,:,:)
          integer(I2P), contiguous, intent(in)  :: fptr_src(:,:,:,:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I2P), c_size_t)
 
@@ -802,7 +802,7 @@
          integer(I2P), contiguous, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
          integer(I2P), contiguous, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I2P), c_size_t)
 
@@ -817,7 +817,7 @@
          integer(I4P), contiguous, intent(out) :: fptr_dst(:)
          integer(I4P), contiguous, intent(in)  :: fptr_src(:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I4P), c_size_t)
 
@@ -832,7 +832,7 @@
          integer(I4P), contiguous, intent(out) :: fptr_dst(:,:)
          integer(I4P), contiguous, intent(in)  :: fptr_src(:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I4P), c_size_t)
 
@@ -847,7 +847,7 @@
          integer(I4P), contiguous, intent(out) :: fptr_dst(:,:,:)
          integer(I4P), contiguous, intent(in)  :: fptr_src(:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I4P), c_size_t)
 
@@ -862,7 +862,7 @@
          integer(I4P), contiguous, intent(out) :: fptr_dst(:,:,:,:)
          integer(I4P), contiguous, intent(in)  :: fptr_src(:,:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I4P), c_size_t)
 
@@ -877,7 +877,7 @@
          integer(I4P), contiguous, intent(out) :: fptr_dst(:,:,:,:,:)
          integer(I4P), contiguous, intent(in)  :: fptr_src(:,:,:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I4P), c_size_t)
 
@@ -892,7 +892,7 @@
          integer(I4P), contiguous, intent(out) :: fptr_dst(:,:,:,:,:,:)
          integer(I4P), contiguous, intent(in)  :: fptr_src(:,:,:,:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I4P), c_size_t)
 
@@ -907,7 +907,7 @@
          integer(I4P), contiguous, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
          integer(I4P), contiguous, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I4P), c_size_t)
 
@@ -922,7 +922,7 @@
          integer(I8P), contiguous, intent(out) :: fptr_dst(:)
          integer(I8P), contiguous, intent(in)  :: fptr_src(:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I8P), c_size_t)
 
@@ -937,7 +937,7 @@
          integer(I8P), contiguous, intent(out) :: fptr_dst(:,:)
          integer(I8P), contiguous, intent(in)  :: fptr_src(:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I8P), c_size_t)
 
@@ -952,7 +952,7 @@
          integer(I8P), contiguous, intent(out) :: fptr_dst(:,:,:)
          integer(I8P), contiguous, intent(in)  :: fptr_src(:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I8P), c_size_t)
 
@@ -967,7 +967,7 @@
          integer(I8P), contiguous, intent(out) :: fptr_dst(:,:,:,:)
          integer(I8P), contiguous, intent(in)  :: fptr_src(:,:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I8P), c_size_t)
 
@@ -982,7 +982,7 @@
          integer(I8P), contiguous, intent(out) :: fptr_dst(:,:,:,:,:)
          integer(I8P), contiguous, intent(in)  :: fptr_src(:,:,:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I8P), c_size_t)
 
@@ -997,7 +997,7 @@
          integer(I8P), contiguous, intent(out) :: fptr_dst(:,:,:,:,:,:)
          integer(I8P), contiguous, intent(in)  :: fptr_src(:,:,:,:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I8P), c_size_t)
 
@@ -1012,7 +1012,7 @@
          integer(I8P), contiguous, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
          integer(I8P), contiguous, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
 
-         include '../include/memcpy.i90'
+         include "src/lib/include/memcpy.i90"
 
          total_dim = int(n_elements * byte_size(1_I8P), c_size_t)
 
