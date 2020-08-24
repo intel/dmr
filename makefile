@@ -106,7 +106,7 @@ $(DOBJ)penf_stringify.o: src/third_party/PENF/src/lib/penf_stringify.F90 \
 	$(DOBJ)penf_b_size.o \
 	$(DOBJ)penf_global_parameters_variables.o
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS) $(R16P_DFLAGS)  $< -o $@
+	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)penf_b_size.o: src/third_party/PENF/src/lib/penf_b_size.F90 \
 	$(DOBJ)penf_global_parameters_variables.o
