@@ -5,6 +5,7 @@ MAKEFLAGS = -j 1
 DSRC = src
 
 DFLAGS = -D_CONSERVATIVE
+PENF_DFLAGS= -D_R16P
 
 ifdef gnu
    FC = gfortran
@@ -101,22 +102,22 @@ $(DOBJ)penf.o: src/third_party/PENF/src/lib/penf.F90 \
 	$(DOBJ)penf_b_size.o \
 	$(DOBJ)penf_stringify.o
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS)  $< -o $@
+	@$(FORT) $(FORTFLAGS) $(PENF_DFLAGS)  $< -o $@
 
 $(DOBJ)penf_stringify.o: src/third_party/PENF/src/lib/penf_stringify.F90 \
 	$(DOBJ)penf_b_size.o \
 	$(DOBJ)penf_global_parameters_variables.o
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS)  $< -o $@
+	@$(FORT) $(FORTFLAGS) $(PENF_DFLAGS)  $< -o $@
 
 $(DOBJ)penf_b_size.o: src/third_party/PENF/src/lib/penf_b_size.F90 \
 	$(DOBJ)penf_global_parameters_variables.o
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS)  $< -o $@
+	@$(FORT) $(FORTFLAGS) $(PENF_DFLAGS)  $< -o $@
 
 $(DOBJ)penf_global_parameters_variables.o: src/third_party/PENF/src/lib/penf_global_parameters_variables.F90
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS)  $< -o $@
+	@$(FORT) $(FORTFLAGS) $(PENF_DFLAGS)  $< -o $@
 
 $(DOBJ)test_falco.o: src/tests/test_falco.F90 \
 	$(DOBJ)penf.o \
