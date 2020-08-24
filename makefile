@@ -4,9 +4,6 @@ MAKEFLAGS = -j 1
 #main building variables
 DSRC = src
 
-DFLAGS = -D_CONSERVATIVE
-PENF_DFLAGS= -D_R16P
-
 ifdef gnu
    FC = gfortran
    FORT = $(FC)
@@ -31,6 +28,7 @@ ifdef intel
    FCFLAGS  = $(LDFLAGS) -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
    FORTFLAGS = -c -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
    EXEFLAGS = -fiopenmp -fopenmp-targets=spir64 -g -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
+   DFLAGS = -D_R16P
 endif
 
 ifdef ibm
@@ -102,22 +100,22 @@ $(DOBJ)penf.o: src/third_party/PENF/src/lib/penf.F90 \
 	$(DOBJ)penf_b_size.o \
 	$(DOBJ)penf_stringify.o
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS) $(PENF_DFLAGS)  $< -o $@
+	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)penf_stringify.o: src/third_party/PENF/src/lib/penf_stringify.F90 \
 	$(DOBJ)penf_b_size.o \
 	$(DOBJ)penf_global_parameters_variables.o
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS) $(PENF_DFLAGS)  $< -o $@
+	@$(FORT) $(FORTFLAGS) $(R16P_DFLAGS)  $< -o $@
 
 $(DOBJ)penf_b_size.o: src/third_party/PENF/src/lib/penf_b_size.F90 \
 	$(DOBJ)penf_global_parameters_variables.o
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS) $(PENF_DFLAGS)  $< -o $@
+	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)penf_global_parameters_variables.o: src/third_party/PENF/src/lib/penf_global_parameters_variables.F90
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS) $(PENF_DFLAGS)  $< -o $@
+	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)test_falco.o: src/tests/test_falco.F90 \
 	$(DOBJ)penf.o \
@@ -125,17 +123,17 @@ $(DOBJ)test_falco.o: src/tests/test_falco.F90 \
 	$(DOBJ)matmul_device_pointers.o \
 	$(DOBJ)falco.o
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS)  $< -o $@
+	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)init_device_pointers.o: src/tests/init_device_pointers.F90 \
 	$(DOBJ)penf.o
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS)  $< -o $@
+	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)matmul_device_pointers.o: src/tests/matmul_device_pointers.F90 \
 	$(DOBJ)penf.o
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS)  $< -o $@
+	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
 
 #phony auxiliary rules
 .PHONY : $(MKDIRS)

@@ -111,6 +111,7 @@
 
       endsubroutine omp_target_free_f_R8P_7
 
+#if defined _R16P
       subroutine omp_target_free_f_R16P_1(fptr_dev, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:)
@@ -166,6 +167,7 @@
          include "src/lib/include/free_fptr_dev.i90"
 
       endsubroutine omp_target_free_f_R16P_7
+#endif
 
       ! OpenMP Target Alloc Real Routines
       subroutine omp_target_alloc_f_R4P_1(fptr_dev, dimensions, omp_dev)
@@ -356,6 +358,7 @@
 
       endsubroutine omp_target_alloc_f_R8P_7
 
+#if defined _R16P
       subroutine omp_target_alloc_f_R16P_1(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R16P), pointer, intent(inout) :: fptr_dev(:)
@@ -449,6 +452,7 @@
                                                dimensions(5), dimensions(6), dimensions(7)])
 
       endsubroutine omp_target_alloc_f_R16P_7
+#endif
 
       ! OpenMP Target Memcpy Real Routines
       subroutine omp_target_memcpy_f_R4P_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
@@ -661,6 +665,7 @@
 
       endsubroutine omp_target_memcpy_f_R8P_7
 
+#if defined _R16P
       subroutine omp_target_memcpy_f_R16P_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
@@ -765,3 +770,4 @@
             omp_dst_device, omp_src_device), I4P)
 
       endsubroutine omp_target_memcpy_f_R16P_7
+#endif

@@ -56,6 +56,7 @@ program test_falco
                                          fptr_hos_R8P_3 (:,:,:),         fptr_hos_R8P_4 (:,:,:,:),     &
                                          fptr_hos_R8P_5 (:,:,:,:,:),     fptr_hos_R8P_6 (:,:,:,:,:,:), &
                                          fptr_hos_R8P_7 (:,:,:,:,:,:,:)
+#if defined _R16P
    real(R16P),    pointer, contiguous :: fptr_dev_R16P  (:),             fptr_dev_R16P_2(:,:),         &
                                          fptr_dev_R16P_3(:,:,:),         fptr_dev_R16P_4(:,:,:,:),     &
                                          fptr_dev_R16P_5(:,:,:,:,:),     fptr_dev_R16P_6(:,:,:,:,:,:), &
@@ -64,6 +65,7 @@ program test_falco
                                          fptr_hos_R16P_3(:,:,:),         fptr_hos_R16P_4(:,:,:,:),     &
                                          fptr_hos_R16P_5(:,:,:,:,:),     fptr_hos_R16P_6(:,:,:,:,:,:), &
                                          fptr_hos_R16P_7(:,:,:,:,:,:,:)
+#endif
    complex(R4P),  pointer, contiguous :: fptr_dev_C4P   (:),             fptr_dev_C4P_2 (:,:),         &
                                          fptr_dev_C4P_3 (:,:,:),         fptr_dev_C4P_4 (:,:,:,:),     &
                                          fptr_dev_C4P_5 (:,:,:,:,:),     fptr_dev_C4P_6 (:,:,:,:,:,:), &
@@ -80,6 +82,7 @@ program test_falco
                                          fptr_hos_C8P_3 (:,:,:),         fptr_hos_C8P_4 (:,:,:,:),     &
                                          fptr_hos_C8P_5 (:,:,:,:,:),     fptr_hos_C8P_6 (:,:,:,:,:,:), &
                                          fptr_hos_C8P_7 (:,:,:,:,:,:,:)
+#if defined _R16P
    complex(R16P), pointer, contiguous :: fptr_dev_C16P  (:),             fptr_dev_C16P_2(:,:),         &
                                          fptr_dev_C16P_3(:,:,:),         fptr_dev_C16P_4(:,:,:,:),     &
                                          fptr_dev_C16P_5(:,:,:,:,:),     fptr_dev_C16P_6(:,:,:,:,:,:), &
@@ -88,6 +91,7 @@ program test_falco
                                          fptr_hos_C16P_3(:,:,:),         fptr_hos_C16P_4(:,:,:,:),     &
                                          fptr_hos_C16P_5(:,:,:,:,:),     fptr_hos_C16P_6(:,:,:,:,:,:), &
                                          fptr_hos_C16P_7(:,:,:,:,:,:,:)
+#endif
 
    integer(I8P), parameter            :: i = 20_I8P
    integer(I8P), parameter            :: j = 10_I8P
@@ -215,6 +219,7 @@ program test_falco
    print *, 'F pointer deallocated from the device'
    deallocate(fptr_hos_R8P)
 
+#if defined _R16P
    call omp_target_alloc_f(fptr_dev_R16P, i, omp_default)
    print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_R16P)
    call init_R(fptr_dev_R16P, i)
@@ -229,6 +234,7 @@ program test_falco
    call omp_target_free_f(fptr_dev_R16P)
    print *, 'F pointer deallocated from the device'
    deallocate(fptr_hos_R16P)
+#endif
 
    print *, ''
    print *, 'Complex arrays'
@@ -263,6 +269,7 @@ program test_falco
    print *, 'F pointer deallocated from the device'
    deallocate(fptr_hos_C8P)
 
+#if defined _R16P
    call omp_target_alloc_f(fptr_dev_C16P, i, omp_default)
    print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_C16P)
    call init_C(fptr_dev_C16P, i)
@@ -277,6 +284,7 @@ program test_falco
    call omp_target_free_f(fptr_dev_C16P)
    print *, 'F pointer deallocated from the device'
    deallocate(fptr_hos_C16P)
+#endif
 
    print *, ''
    print *, '                     Testing rank two arrays                     '
@@ -376,6 +384,7 @@ program test_falco
    print *, 'F pointer deallocated from the device'
    deallocate(fptr_hos_R8P_2)
 
+#if defined _R16P
    call omp_target_alloc_f(fptr_dev_R16P_2, siz2, omp_default)
    print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_R16P_2)
    call init_R(fptr_dev_R16P_2, i)
@@ -390,6 +399,7 @@ program test_falco
    call omp_target_free_f(fptr_dev_R16P_2)
    print *, 'F pointer deallocated from the device'
    deallocate(fptr_hos_R16P_2)
+#endif
 
    print *, ''
    print *, 'Complex arrays'
@@ -424,6 +434,7 @@ program test_falco
    print *, 'F pointer deallocated from the device'
    deallocate(fptr_hos_C8P_2)
 
+#if defined _R16P
    call omp_target_alloc_f(fptr_dev_C16P_2, siz2, omp_default)
    print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_C16P_2)
    call init_C(fptr_dev_C16P_2, i)
@@ -438,5 +449,6 @@ program test_falco
    call omp_target_free_f(fptr_dev_C16P_2)
    print *, 'F pointer deallocated from the device'
    deallocate(fptr_hos_C16P_2)
+#endif
 
 endprogram test_falco

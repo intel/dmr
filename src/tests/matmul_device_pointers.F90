@@ -9,13 +9,19 @@ module matmul_device_pointers
    endinterface matmul_I
 
    interface matmul_R
-      module procedure matmul_R4P,   matmul_R8P,   matmul_R16P,   &
-                       matmul_R4P_2, matmul_R8P_2, matmul_R16P_2
+      module procedure &
+#if defined _R16P
+                       matmul_R16P, matmul_R16P_2, &
+#endif
+                       matmul_R4P,  matmul_R4P_2,  matmul_R8P,   matmul_R8P_2
    endinterface matmul_R
 
    interface matmul_C
-      module procedure matmul_C4P,   matmul_C8P,   matmul_C16P,   &
-                       matmul_C4P_2, matmul_C8P_2, matmul_C16P_2
+      module procedure &
+#if defined _R16P
+                       matmul_C16P, matmul_C16P_2, &
+#endif
+                       matmul_C4P,  matmul_C4P_2,  matmul_C8P,   matmul_C8P_2
    endinterface matmul_C
 
    public matmul_I, matmul_R, matmul_C
@@ -61,11 +67,13 @@ module matmul_device_pointers
          include 'include/matmul_rank_1.i90'
       endsubroutine matmul_R8P
 
+#if defined _R16P
       subroutine matmul_R16P(fptr_dev, i)
          real(R16P), intent(inout) :: fptr_dev(:)
          real(R16P)                :: k=2.0_R16P
          include 'include/matmul_rank_1.i90'
       endsubroutine matmul_R16P
+#endif
 
       subroutine matmul_C4P(fptr_dev, i)
          complex(R4P), intent(inout) :: fptr_dev(:)
@@ -79,11 +87,13 @@ module matmul_device_pointers
          include 'include/matmul_rank_1.i90'
       endsubroutine matmul_C8P
 
+#if defined _R16P
       subroutine matmul_C16P(fptr_dev, i)
          complex(R16P), intent(inout) :: fptr_dev(:)
          complex(R16P)                :: k=(2.0_R16P, 0.0_R16P)
          include 'include/matmul_rank_1.i90'
       endsubroutine matmul_C16P
+#endif
 
       ! Init rank two device pointers
       subroutine matmul_I1P_2(fptr_dev, i)
@@ -122,11 +132,13 @@ module matmul_device_pointers
          include 'include/matmul_rank_2.i90'
       endsubroutine matmul_R8P_2
 
+#if defined _R16P
       subroutine matmul_R16P_2(fptr_dev, i)
          real(R16P), intent(inout) :: fptr_dev(:,:)
          real(R16P)                :: k=2.0_R16P
          include 'include/matmul_rank_2.i90'
       endsubroutine matmul_R16P_2
+#endif
 
       subroutine matmul_C4P_2(fptr_dev, i)
          complex(R4P), intent(inout) :: fptr_dev(:,:)
@@ -140,9 +152,11 @@ module matmul_device_pointers
          include 'include/matmul_rank_2.i90'
       endsubroutine matmul_C8P_2
 
+#if defined _R16P
       subroutine matmul_C16P_2(fptr_dev, i)
          complex(R16P), intent(inout) :: fptr_dev(:,:)
          complex(R16P)                 :: k=(2.0_R16P, 0.0_R16P)
          include 'include/matmul_rank_2.i90'
       endsubroutine matmul_C16P_2
+#endif
 endmodule matmul_device_pointers

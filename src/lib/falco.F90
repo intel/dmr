@@ -96,7 +96,8 @@ module falco
    endinterface
 
    interface omp_target_free_f
-      module procedure omp_target_free_f_I1P_1,  omp_target_free_f_I1P_2,  omp_target_free_f_I1P_3,  &
+      module procedure &
+                       omp_target_free_f_I1P_1,  omp_target_free_f_I1P_2,  omp_target_free_f_I1P_3,  &
                        omp_target_free_f_I1P_4,  omp_target_free_f_I1P_5,  omp_target_free_f_I1P_6,  &
                        omp_target_free_f_I1P_7,  &
                        omp_target_free_f_I2P_1,  omp_target_free_f_I2P_2,  omp_target_free_f_I2P_3,  &
@@ -108,28 +109,33 @@ module falco
                        omp_target_free_f_I8P_1,  omp_target_free_f_I8P_2,  omp_target_free_f_I8P_3,  &
                        omp_target_free_f_I8P_4,  omp_target_free_f_I8P_5,  omp_target_free_f_I8P_6,  &
                        omp_target_free_f_I8P_7,  &
+#if defined _R16P
+                       omp_target_free_f_R16P_1, omp_target_free_f_R16P_2, omp_target_free_f_R16P_3, &
+                       omp_target_free_f_R16P_4, omp_target_free_f_R16P_5, omp_target_free_f_R16P_6, &
+                       omp_target_free_f_R16P_7, &
+#endif
                        omp_target_free_f_R4P_1,  omp_target_free_f_R4P_2,  omp_target_free_f_R4P_3,  &
                        omp_target_free_f_R4P_4,  omp_target_free_f_R4P_5,  omp_target_free_f_R4P_6,  &
                        omp_target_free_f_R4P_7,  &
                        omp_target_free_f_R8P_1,  omp_target_free_f_R8P_2,  omp_target_free_f_R8P_3,  &
                        omp_target_free_f_R8P_4,  omp_target_free_f_R8P_5,  omp_target_free_f_R8P_6,  &
                        omp_target_free_f_R8P_7,  &
-                       omp_target_free_f_R16P_1, omp_target_free_f_R16P_2, omp_target_free_f_R16P_3, &
-                       omp_target_free_f_R16P_4, omp_target_free_f_R16P_5, omp_target_free_f_R16P_6, &
-                       omp_target_free_f_R16P_7, &
+#if defined _R16P
+                       omp_target_free_f_C16P_1, omp_target_free_f_C16P_2, omp_target_free_f_C16P_3, &
+                       omp_target_free_f_C16P_4, omp_target_free_f_C16P_5, omp_target_free_f_C16P_6, &
+                       omp_target_free_f_C16P_7,  &
+#endif
                        omp_target_free_f_C4P_1,  omp_target_free_f_C4P_2,  omp_target_free_f_C4P_3,  &
                        omp_target_free_f_C4P_4,  omp_target_free_f_C4P_5,  omp_target_free_f_C4P_6,  &
                        omp_target_free_f_C4P_7,  &
                        omp_target_free_f_C8P_1,  omp_target_free_f_C8P_2,  omp_target_free_f_C8P_3,  &
                        omp_target_free_f_C8P_4,  omp_target_free_f_C8P_5,  omp_target_free_f_C8P_6,  &
-                       omp_target_free_f_C8P_7,  &
-                       omp_target_free_f_C16P_1, omp_target_free_f_C16P_2, omp_target_free_f_C16P_3, &
-                       omp_target_free_f_C16P_4, omp_target_free_f_C16P_5, omp_target_free_f_C16P_6, &
-                       omp_target_free_f_C16P_7
+                       omp_target_free_f_C8P_7
    endinterface omp_target_free_f
 
    interface omp_target_alloc_f
-      module procedure omp_target_alloc_f_I1P_1,  omp_target_alloc_f_I1P_2,  omp_target_alloc_f_I1P_3,  &
+      module procedure &
+                       omp_target_alloc_f_I1P_1,  omp_target_alloc_f_I1P_2,  omp_target_alloc_f_I1P_3,  &
                        omp_target_alloc_f_I1P_4,  omp_target_alloc_f_I1P_5,  omp_target_alloc_f_I1P_6,  &
                        omp_target_alloc_f_I1P_7,  &
                        omp_target_alloc_f_I2P_1,  omp_target_alloc_f_I2P_2,  omp_target_alloc_f_I2P_3,  &
@@ -141,28 +147,33 @@ module falco
                        omp_target_alloc_f_I8P_1,  omp_target_alloc_f_I8P_2,  omp_target_alloc_f_I8P_3,  &
                        omp_target_alloc_f_I8P_4,  omp_target_alloc_f_I8P_5,  omp_target_alloc_f_I8P_6,  &
                        omp_target_alloc_f_I8P_7,  &
+#if defined _R16P
+                       omp_target_alloc_f_R16P_1, omp_target_alloc_f_R16P_2, omp_target_alloc_f_R16P_3, &
+                       omp_target_alloc_f_R16P_4, omp_target_alloc_f_R16P_5, omp_target_alloc_f_R16P_6, &
+                       omp_target_alloc_f_R16P_7, &
+#endif
                        omp_target_alloc_f_R4P_1,  omp_target_alloc_f_R4P_2,  omp_target_alloc_f_R4P_3,  &
                        omp_target_alloc_f_R4P_4,  omp_target_alloc_f_R4P_5,  omp_target_alloc_f_R4P_6,  &
                        omp_target_alloc_f_R4P_7,  &
                        omp_target_alloc_f_R8P_1,  omp_target_alloc_f_R8P_2,  omp_target_alloc_f_R8P_3,  &
                        omp_target_alloc_f_R8P_4,  omp_target_alloc_f_R8P_5,  omp_target_alloc_f_R8P_6,  &
                        omp_target_alloc_f_R8P_7,  &
-                       omp_target_alloc_f_R16P_1, omp_target_alloc_f_R16P_2, omp_target_alloc_f_R16P_3, &
-                       omp_target_alloc_f_R16P_4, omp_target_alloc_f_R16P_5, omp_target_alloc_f_R16P_6, &
-                       omp_target_alloc_f_R16P_7, &
+#if defined _R16P
+                       omp_target_alloc_f_C16P_1, omp_target_alloc_f_C16P_2, omp_target_alloc_f_C16P_3, &
+                       omp_target_alloc_f_C16P_4, omp_target_alloc_f_C16P_5, omp_target_alloc_f_C16P_6, &
+                       omp_target_alloc_f_C16P_7,  &
+#endif
                        omp_target_alloc_f_C4P_1,  omp_target_alloc_f_C4P_2,  omp_target_alloc_f_C4P_3,  &
                        omp_target_alloc_f_C4P_4,  omp_target_alloc_f_C4P_5,  omp_target_alloc_f_C4P_6,  &
                        omp_target_alloc_f_C4P_7,  &
                        omp_target_alloc_f_C8P_1,  omp_target_alloc_f_C8P_2,  omp_target_alloc_f_C8P_3,  &
                        omp_target_alloc_f_C8P_4,  omp_target_alloc_f_C8P_5,  omp_target_alloc_f_C8P_6,  &
-                       omp_target_alloc_f_C8P_7,  &
-                       omp_target_alloc_f_C16P_1, omp_target_alloc_f_C16P_2, omp_target_alloc_f_C16P_3, &
-                       omp_target_alloc_f_C16P_4, omp_target_alloc_f_C16P_5, omp_target_alloc_f_C16P_6, &
-                       omp_target_alloc_f_C16P_7
+                       omp_target_alloc_f_C8P_7
    endinterface omp_target_alloc_f
 
    interface omp_target_memcpy_f
-      module procedure omp_target_memcpy_f_I1P_1,  omp_target_memcpy_f_I1P_2,  omp_target_memcpy_f_I1P_3,  &
+      module procedure &
+                       omp_target_memcpy_f_I1P_1,  omp_target_memcpy_f_I1P_2,  omp_target_memcpy_f_I1P_3,  &
                        omp_target_memcpy_f_I1P_4,  omp_target_memcpy_f_I1P_5,  omp_target_memcpy_f_I1P_6,  &
                        omp_target_memcpy_f_I1P_7,  &
                        omp_target_memcpy_f_I2P_1,  omp_target_memcpy_f_I2P_2,  omp_target_memcpy_f_I2P_3,  &
@@ -174,24 +185,28 @@ module falco
                        omp_target_memcpy_f_I8P_1,  omp_target_memcpy_f_I8P_2,  omp_target_memcpy_f_I8P_3,  &
                        omp_target_memcpy_f_I8P_4,  omp_target_memcpy_f_I8P_5,  omp_target_memcpy_f_I8P_6,  &
                        omp_target_memcpy_f_I8P_7,  &
+#if defined _R16P
+                       omp_target_memcpy_f_R16P_1, omp_target_memcpy_f_R16P_2, omp_target_memcpy_f_R16P_3, &
+                       omp_target_memcpy_f_R16P_4, omp_target_memcpy_f_R16P_5, omp_target_memcpy_f_R16P_6, &
+                       omp_target_memcpy_f_R16P_7, &
+#endif
                        omp_target_memcpy_f_R4P_1,  omp_target_memcpy_f_R4P_2,  omp_target_memcpy_f_R4P_3,  &
                        omp_target_memcpy_f_R4P_4,  omp_target_memcpy_f_R4P_5,  omp_target_memcpy_f_R4P_6,  &
                        omp_target_memcpy_f_R4P_7,  &
                        omp_target_memcpy_f_R8P_1,  omp_target_memcpy_f_R8P_2,  omp_target_memcpy_f_R8P_3,  &
                        omp_target_memcpy_f_R8P_4,  omp_target_memcpy_f_R8P_5,  omp_target_memcpy_f_R8P_6,  &
                        omp_target_memcpy_f_R8P_7,  &
-                       omp_target_memcpy_f_R16P_1, omp_target_memcpy_f_R16P_2, omp_target_memcpy_f_R16P_3, &
-                       omp_target_memcpy_f_R16P_4, omp_target_memcpy_f_R16P_5, omp_target_memcpy_f_R16P_6, &
-                       omp_target_memcpy_f_R16P_7, &
+#if defined _R16P
+                       omp_target_memcpy_f_C16P_1, omp_target_memcpy_f_C16P_2, omp_target_memcpy_f_C16P_3, &
+                       omp_target_memcpy_f_C16P_4, omp_target_memcpy_f_C16P_5, omp_target_memcpy_f_C16P_6, &
+                       omp_target_memcpy_f_C16P_7,  &
+#endif
                        omp_target_memcpy_f_C4P_1,  omp_target_memcpy_f_C4P_2,  omp_target_memcpy_f_C4P_3,  &
                        omp_target_memcpy_f_C4P_4,  omp_target_memcpy_f_C4P_5,  omp_target_memcpy_f_C4P_6,  &
                        omp_target_memcpy_f_C4P_7,  &
                        omp_target_memcpy_f_C8P_1,  omp_target_memcpy_f_C8P_2,  omp_target_memcpy_f_C8P_3,  &
                        omp_target_memcpy_f_C8P_4,  omp_target_memcpy_f_C8P_5,  omp_target_memcpy_f_C8P_6,  &
-                       omp_target_memcpy_f_C8P_7,  &
-                       omp_target_memcpy_f_C16P_1, omp_target_memcpy_f_C16P_2, omp_target_memcpy_f_C16P_3, &
-                       omp_target_memcpy_f_C16P_4, omp_target_memcpy_f_C16P_5, omp_target_memcpy_f_C16P_6, &
-                       omp_target_memcpy_f_C16P_7
+                       omp_target_memcpy_f_C8P_7
    endinterface omp_target_memcpy_f
 
    public omp_target_alloc_c, omp_target_free_c, omp_target_is_present_c, omp_target_memcpy_c, &
