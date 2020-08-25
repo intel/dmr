@@ -13,6 +13,7 @@
 	+ [What are OpenMP Device Memory Routines?](#what-are-omp-routines?)
 + [Main features](#main-features)
 + [Status](#status)
++ [FALCO for the Impatient](#FALCO-for-the-impatient)
 + [Copyrights](#copyrights)
 
 ## What is FALCO?
@@ -76,13 +77,13 @@ Go to [Top](#top)
 FALCO can be compiled using the provided makefile, compatible with GNU gfortran, IBM XLF and Intel ifort/ifx compilers.
 
 In order to compile the library, use the following command:
-```bash
-make *`compiler`*=1 debug=1
+```
+make compiler=1 debug=1
 ```
 
 To compile the testing suite together with the library, use the following command:
-```bash
-make *`compiler`*=1 debug=1 TEST=yes
+```
+make compiler=1 debug=1 TEST=yes
 ```
 
 Where *compiler* can be one of the following: **gnu**, **ibm**, **intel**.
