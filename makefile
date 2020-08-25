@@ -32,13 +32,18 @@ ifdef intel
 endif
 
 ifdef ibm
-	FC = xlf2008_r
-	CC = xlc
-	LDFLAGS = -qsmp=omp -qoffload -c
-	ifdef debug
-	   LDFLAGS = -g -qtbtable=full -qcheck -qsigtrap -qsmp=omp -qoffload -c
-	endif
-	FCFLAGS = $(LDFLAGS)
+   FC = xlf2008_r
+   FORT = xlf2008_r
+   CC = xlc
+   LDFLAGS = -qsmp=omp -qoffload -c
+   ifdef debug
+      LDFLAGS = -g -qtbtable=full -qcheck -qsmp=omp -qoffload -c
+   endif
+   FCFLAGS = $(LDFLAGS) -qsigtrap -qmaxmem=-1 -qmoddir=$(DMOD) -I$(DMOD)
+   FORTFLAGS = -g -qtbtable=full -qcheck -qsigtrap -qsmp=omp -qoffload -qmaxmem=-1 -qtgtarch=sm_70 -qcuda -c -qmoddir=$(DMOD) -I$(DMOD)
+   EXEFLAGS = -g -qtbtable=full -qcheck -qsigtrap -qsmp=omp -qoffload -qmaxmem=-1 -qtgtarch=sm_70 -qcuda -qmoddir=$(DMOD) -I$(DMOD)
+   DFLAGS =
+   OBJECTS = exe/obj/falco.o exe/obj/falco_c_functions.o exe/obj/init_device_pointers.o exe/obj/matmul_device_pointers.o exe/obj/penf_b_size.o exe/obj/penf_global_parameters_variables.o exe/obj/penf.o exe/obj/penf_stringify.o exe/obj/test_falco.o
 endif
 
 TEST = no
@@ -79,7 +84,7 @@ TESTS: $(DEXE)TEST_ALL
 $(DEXE)TEST_ALL: $(MKDIRS) $(DOBJ)test_falco.o
 	@rm -f $(filter-out $(DOBJ)test_falco.o,$(EXESOBJ))
 	@echo $(LITEXT)
-	@$(FC) $(FCFLAGS) $(DOBJ)*.o $(LIBS) -o $@
+	#@$(FC) $(FCFLAGS) $(DOBJ)*.o $(LIBS) -o $@
 	@$(FC) $(EXEFLAGS) $(DOBJ)*.o $(LIBS) -o $@
 EXES := $(EXES) TEST_ALL
 
@@ -119,21 +124,21 @@ $(DOBJ)penf_global_parameters_variables.o: src/third_party/PENF/src/lib/penf_glo
 
 $(DOBJ)test_falco.o: src/tests/test_falco.F90 \
 	$(DOBJ)penf.o \
+	$(DOBJ)falco.o \
 	$(DOBJ)init_device_pointers.o \
-	$(DOBJ)matmul_device_pointers.o \
-	$(DOBJ)falco.o
+	$(DOBJ)matmul_device_pointers.o
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)init_device_pointers.o: src/tests/init_device_pointers.F90 \
 	$(DOBJ)penf.o
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)matmul_device_pointers.o: src/tests/matmul_device_pointers.F90 \
 	$(DOBJ)penf.o
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 #phony auxiliary rules
 .PHONY : $(MKDIRS)
