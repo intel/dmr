@@ -69,6 +69,26 @@ FALCO provides Fortran interfaces to the following OpenMP C device memory routin
 + [x] omp_target_associate_pointer
 + [x] omp_target_disassociate_pointer
 
+Go to [Top](#top)
+
+## FALCO for the Impatient
+
+FALCO can be compiled using the provided makefile, compatible with GNU gfortran, IBM XLF and Intel ifort/ifx compilers.
+
+In order to compile the library, use the following command:
+```bash
+make *`compiler`*=1 debug=1
+```
+
+To compile the testing suite together with the library, use the following command:
+```bash
+make *`compiler`*=1 debug=1 TEST=yes
+```
+
+Where *compiler* can be one of the following: **gnu**, **ibm**, **intel**.
+
+Go to [Top](#top)
+
 ## Copyrights
 
 &copy; 2020 Giacomo Rossi, Intel Corporation
