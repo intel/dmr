@@ -1,3 +1,15 @@
+/* ========================================================================= *
+ * Copyright (C) 2020 Intel Corporation                                      *
+ * This file is part of the FALCO library.                                   *
+ *                                                                           *
+ * For information on the license, see the LICENSE file.                     *
+ * Further information: https://github.com/giacrossi/FALCO/                  *
+ * SPDX-License-Identifier: BSD-3-Clause                                     *
+ *                                                                           *
+ * ========================================================================= *
+ * Giacomo Rossi (Intel Corporation)                                         *
+ * ========================================================================= */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <omp.h>

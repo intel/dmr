@@ -1,18 +1,14 @@
 !* ========================================================================== *
-!*
-!* FALCO - FortrAn Library for C OpenMP offload functions mapping
-!*
-!* SAMPLE SOURCE CODE - SUBJECT TO THE TERMS OF SAMPLE CODE LICENSE AGREEMENT,
-!* http://software.intel.com/en-us/articles/
-!*        intel-sample-source-code-license-agreement/
-!*
-!* Copyright 2020 Giacomo Rossi, Intel Corporation
-!*
-!* THIS FILE IS PROVIDED "AS IS" WITH NO WARRANTIES, EXPRESS OR IMPLIED,
-!* INCLUDING BUT NOT LIMITED TO ANY IMPLIED WARRANTY OF MERCHANTABILITY,
-!* FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT OF INTELLECTUAL
-!* PROPERTY RIGHTS.
-!*
+!*                                                                            *
+!* Copyright (C) 2020 Intel Corporation                                       *
+!* This file is part of the FALCO library.                                    *
+!*                                                                            *
+!* For information on the license, see the LICENSE file.                      *
+!* Further information: https://github.com/giacrossi/FALCO/                   *
+!* SPDX-License-Identifier: BSD-3-Clause                                      *
+!*                                                                            *
+!* ========================================================================== *
+!* Giacomo Rossi (Intel Corporation)                                          *
 !* ========================================================================== *
 
 module falco
