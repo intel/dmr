@@ -15,11 +15,11 @@
          integer(I8P)                :: ii, jj
 
          !$omp target device(omp_get_default_device()) is_device_ptr(fptr_dev)
-         !$omp distribute parallel do private (ii)
+         !$omp teams distribute parallel do private (ii)
          do jj=1, i
             do ii=1, i
                fptr_dev(ii, jj) = fptr_dev(ii, jj) * k
             enddo
          enddo
-         !$omp end distribute parallel do
+         !$omp end teams distribute parallel do
          !$omp end target

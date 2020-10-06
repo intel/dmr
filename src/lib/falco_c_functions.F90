@@ -61,13 +61,13 @@ module falco_c_functions
       endfunction omp_target_memcpy_c
 
       function omp_target_memcpy_rect_c(dst, src, elem_byte_dim, dims, volume, &
-            dst_off, src_off, dst_dims, src_dims, dst_dev_id, src_dev_id) bind(c, name='omp_target_memcopy_rect_c')
+            dst_offs, src_offs, dst_dims, src_dims, dst_dev_id, src_dev_id) bind(c, name='omp_target_memcopy_rect_c')
          use iso_c_binding, only : c_int, c_ptr, c_size_t
          integer(c_int)                :: omp_target_memcpy_rect_c
          type(c_ptr),            value :: dst, src
          integer(kind=c_size_t), value :: elem_byte_dim
          integer(kind=c_int),    value :: dims
-         integer(kind=c_size_t), value :: volume, dst_off, src_off, dst_dims, src_dims
+         integer(kind=c_size_t)        :: volume(*), dst_offs(*), src_offs(*), dst_dims(*), src_dims(*)
          integer(kind=c_int),    value :: dst_dev_id, src_dev_id
       endfunction omp_target_memcpy_rect_c
 

@@ -106,9 +106,10 @@ program test_falco
                                          fptr_hos_C16P_7(:,:,:,:,:,:,:)
 #endif
 
-   integer(I8P), parameter            :: i = 20000_I8P
+   integer(I8P), parameter            :: i = 20_I8P
    integer(I8P), parameter            :: j = 10_I8P
    integer(I8P)                       :: siz2(2)=i, siz3(3)=i, siz4(4)=i, siz5(5)=i, siz6(6)=i, siz7(7)=i
+   integer(I8P)                       :: dims(2), k
    integer(I4P)                       :: ierr
    integer(I4P)                       :: omp_initial, omp_default
    type(c_ptr)                        :: cptr_dev, cptr_hos
@@ -116,6 +117,9 @@ program test_falco
 
    omp_default = omp_get_default_device()
    omp_initial = omp_get_initial_device_c()
+
+   dims(1) = 2_I8P
+   dims(2) = 4_I8P
 
    print *, '*****************************************************************'
    print *, '                   Start FALCO library testing                   '
@@ -499,6 +503,33 @@ program test_falco
    call omp_target_memcpy_f(fptr_hos_I1P_2, fptr_dev_I1P_2, ierr, 0_I4P, 0_I4P, &
                             omp_initial, omp_default)
    print *, 'Host pointer has values: ', fptr_hos_I1P_2(1,1), fptr_hos_I1P_2(i,i)
+   call omp_target_free_f(fptr_dev_I1P_2, omp_default)
+   print *, 'Device pointer deallocation completed'
+   deallocate(fptr_hos_I1P_2)
+
+   print *, ''
+   print *, '                     I1P Device to Host RECT                     '
+   print *, ''
+   call omp_target_alloc_f(fptr_dev_I1P_2, siz2, omp_default)
+   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I1P_2)
+   call init_I(fptr_dev_I1P_2, i)
+   print *, 'F pointer initialization completed'
+   call matmul_I(fptr_dev_I1P_2, i)
+   print *, 'F pointer multiplication completed'
+   allocate(fptr_hos_I1P_2(i,i)); fptr_hos_I1P_2 = 0_I1P
+   call omp_target_memcpy_f(fptr_hos_I1P_2, fptr_dev_I1P_2, ierr, 0_I4P, 0_I4P, &
+                            omp_initial, omp_default)
+   print *, 'Device pointer has values:'
+   do k=1,i
+      print *, fptr_hos_I1P_2(k,:)
+   enddo
+   fptr_hos_I1P_2 = 0_I1P
+   call omp_target_memcpy_rect_f(fptr_hos_I1P_2, fptr_dev_I1P_2, dims, ierr, [1_I4P, 1_I4P], &
+                            [6_I4P, 6_I4P], omp_initial, omp_default)
+   print *, 'Host pointer has values:'
+   do k=1,i
+      print *, fptr_hos_I1P_2(k,:)
+   enddo
    call omp_target_free_f(fptr_dev_I1P_2, omp_default)
    print *, 'Device pointer deallocation completed'
    deallocate(fptr_hos_I1P_2)
