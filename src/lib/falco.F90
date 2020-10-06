@@ -64,13 +64,13 @@ module falco
       endfunction omp_target_memcpy_c
 
       function omp_target_memcpy_rect_c(dst, src, elem_byte_dim, dims, volume, &
-            dst_off, src_off, dst_dims, src_dims, dst_dev_id, src_dev_id) bind(c, name='omp_target_memcopy_rect_c')
+            dst_offs, src_offs, dst_dims, src_dims, dst_dev_id, src_dev_id) bind(c, name='omp_target_memcopy_rect_c')
          use iso_c_binding, only : c_int, c_ptr, c_size_t
          integer(c_int)                :: omp_target_memcpy_rect_c
          type(c_ptr),            value :: dst, src
          integer(kind=c_size_t), value :: elem_byte_dim
          integer(kind=c_int),    value :: dims
-         integer(kind=c_size_t), value :: volume, dst_off, src_off, dst_dims, src_dims
+         integer(kind=c_size_t)        :: volume(*), dst_offs(*), src_offs(*), dst_dims(*), src_dims(*)
          integer(kind=c_int),    value :: dst_dev_id, src_dev_id
       endfunction omp_target_memcpy_rect_c
 
@@ -205,10 +205,48 @@ module falco
                        omp_target_memcpy_f_C8P_7
    endinterface omp_target_memcpy_f
 
+   interface omp_target_memcpy_rect_f
+      module procedure &
+                       omp_target_memcpy_rect_f_I1P_2,  omp_target_memcpy_rect_f_I1P_3,  &
+                       omp_target_memcpy_rect_f_I1P_4,  omp_target_memcpy_rect_f_I1P_5,  omp_target_memcpy_rect_f_I1P_6,  &
+                       omp_target_memcpy_rect_f_I1P_7,  &
+                       omp_target_memcpy_rect_f_I2P_2,  omp_target_memcpy_rect_f_I2P_3,  &
+                       omp_target_memcpy_rect_f_I2P_4,  omp_target_memcpy_rect_f_I2P_5,  omp_target_memcpy_rect_f_I2P_6,  &
+                       omp_target_memcpy_rect_f_I2P_7,  &
+                       omp_target_memcpy_rect_f_I4P_2,  omp_target_memcpy_rect_f_I4P_3,  &
+                       omp_target_memcpy_rect_f_I4P_4,  omp_target_memcpy_rect_f_I4P_5,  omp_target_memcpy_rect_f_I4P_6,  &
+                       omp_target_memcpy_rect_f_I4P_7,  &
+                       omp_target_memcpy_rect_f_I8P_2,  omp_target_memcpy_rect_f_I8P_3,  &
+                       omp_target_memcpy_rect_f_I8P_4,  omp_target_memcpy_rect_f_I8P_5,  omp_target_memcpy_rect_f_I8P_6,  &
+                       omp_target_memcpy_rect_f_I8P_7,  &
+#if defined _R16P
+                       omp_target_memcpy_rect_f_R16P_2, omp_target_memcpy_rect_f_R16P_3, &
+                       omp_target_memcpy_rect_f_R16P_4, omp_target_memcpy_rect_f_R16P_5, omp_target_memcpy_rect_f_R16P_6, &
+                       omp_target_memcpy_rect_f_R16P_7, &
+#endif
+                       omp_target_memcpy_rect_f_R4P_2,  omp_target_memcpy_rect_f_R4P_3,  &
+                       omp_target_memcpy_rect_f_R4P_4,  omp_target_memcpy_rect_f_R4P_5,  omp_target_memcpy_rect_f_R4P_6,  &
+                       omp_target_memcpy_rect_f_R4P_7,  &
+                       omp_target_memcpy_rect_f_R8P_2,  omp_target_memcpy_rect_f_R8P_3,  &
+                       omp_target_memcpy_rect_f_R8P_4,  omp_target_memcpy_rect_f_R8P_5,  omp_target_memcpy_rect_f_R8P_6,  &
+                       omp_target_memcpy_rect_f_R8P_7,  &
+#if defined _R16P
+                       omp_target_memcpy_rect_f_C16P_2, omp_target_memcpy_rect_f_C16P_3, &
+                       omp_target_memcpy_rect_f_C16P_4, omp_target_memcpy_rect_f_C16P_5, omp_target_memcpy_rect_f_C16P_6, &
+                       omp_target_memcpy_rect_f_C16P_7,  &
+#endif
+                       omp_target_memcpy_rect_f_C4P_2,  omp_target_memcpy_rect_f_C4P_3,  &
+                       omp_target_memcpy_rect_f_C4P_4,  omp_target_memcpy_rect_f_C4P_5,  omp_target_memcpy_rect_f_C4P_6,  &
+                       omp_target_memcpy_rect_f_C4P_7,  &
+                       omp_target_memcpy_rect_f_C8P_2,  omp_target_memcpy_rect_f_C8P_3,  &
+                       omp_target_memcpy_rect_f_C8P_4,  omp_target_memcpy_rect_f_C8P_5,  omp_target_memcpy_rect_f_C8P_6,  &
+                       omp_target_memcpy_rect_f_C8P_7
+   endinterface omp_target_memcpy_rect_f
+
    public omp_target_alloc_c, omp_target_free_c, omp_target_is_present_c, omp_target_memcpy_c, &
           omp_target_memcpy_rect_c, omp_target_associate_ptr_c, omp_target_disassociate_ptr_c, &
           omp_get_default_device_c, omp_get_initial_device_c, &
-          omp_target_alloc_f, omp_target_free_f, omp_target_memcpy_f
+          omp_target_alloc_f, omp_target_free_f, omp_target_memcpy_f, omp_target_memcpy_rect_f
 
    private
 
@@ -1237,6 +1275,415 @@ module falco
 
       endsubroutine omp_target_memcpy_f_I8P_7
 
+     ! OpenMP Target Memcpy Rect Integer Routines
+      subroutine omp_target_memcpy_rect_f_I1P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:)
+         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:)
+         integer(I4P), parameter                       :: fptr_dims = 2_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I1P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I1P_2
+
+      subroutine omp_target_memcpy_rect_f_I1P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
+         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 3_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I1P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I1P_3
+
+      subroutine omp_target_memcpy_rect_f_I1P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
+         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 4_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I1P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I1P_4
+
+      subroutine omp_target_memcpy_rect_f_I1P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
+         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 5_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I1P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I1P_5
+
+      subroutine omp_target_memcpy_rect_f_I1P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
+         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 6_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I1P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I1P_6
+
+      subroutine omp_target_memcpy_rect_f_I1P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
+         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 7_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I1P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I1P_7
+
+      subroutine omp_target_memcpy_rect_f_I2P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:)
+         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:)
+         integer(I4P), parameter                       :: fptr_dims = 2_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I2P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I2P_2
+
+      subroutine omp_target_memcpy_rect_f_I2P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
+         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 3_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I2P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I2P_3
+
+      subroutine omp_target_memcpy_rect_f_I2P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
+         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 4_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I2P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I2P_4
+
+      subroutine omp_target_memcpy_rect_f_I2P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
+         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 5_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I2P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I2P_5
+
+      subroutine omp_target_memcpy_rect_f_I2P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
+         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 6_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I2P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I2P_6
+
+      subroutine omp_target_memcpy_rect_f_I2P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
+         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 7_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I2P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I2P_7
+
+      subroutine omp_target_memcpy_rect_f_I4P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:)
+         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:)
+         integer(I4P), parameter                       :: fptr_dims = 2_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I4P_2
+
+      subroutine omp_target_memcpy_rect_f_I4P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
+         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 3_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I4P_3
+
+      subroutine omp_target_memcpy_rect_f_I4P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
+         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 4_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I4P_4
+
+      subroutine omp_target_memcpy_rect_f_I4P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
+         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 5_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I4P_5
+
+      subroutine omp_target_memcpy_rect_f_I4P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
+         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 6_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I4P_6
+
+      subroutine omp_target_memcpy_rect_f_I4P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
+         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 7_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I4P_7
+
+      subroutine omp_target_memcpy_rect_f_I8P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:)
+         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:)
+         integer(I4P), parameter                       :: fptr_dims = 2_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I8P_2
+
+      subroutine omp_target_memcpy_rect_f_I8P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
+         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 3_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I8P_3
+
+      subroutine omp_target_memcpy_rect_f_I8P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
+         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 4_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I8P_4
+
+      subroutine omp_target_memcpy_rect_f_I8P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
+         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 5_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I8P_5
+
+      subroutine omp_target_memcpy_rect_f_I8P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
+         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 6_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I8P_6
+
+      subroutine omp_target_memcpy_rect_f_I8P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
+         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 7_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_I8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_I8P_7
+
       ! OpenMP Target Free Real Routines
       subroutine omp_target_free_f_R4P_1(fptr_dev, omp_dev)
          implicit none
@@ -2011,6 +2458,315 @@ module falco
       endsubroutine omp_target_memcpy_f_R16P_7
 #endif
 
+     ! OpenMP Target Memcpy Rect Real Routines
+      subroutine omp_target_memcpy_rect_f_R4P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:)
+         real(R4P),    contiguous, target, intent(in)  :: fptr_src(:,:)
+         integer(I4P), parameter                       :: fptr_dims = 2_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R4P_2
+
+      subroutine omp_target_memcpy_rect_f_R4P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:,:)
+         real(R4P),    contiguous, target, intent(in)  :: fptr_src(:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 3_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R4P_3
+
+      subroutine omp_target_memcpy_rect_f_R4P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
+         real(R4P),    contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 4_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R4P_4
+
+      subroutine omp_target_memcpy_rect_f_R4P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
+         real(R4P),    contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 5_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R4P_5
+
+      subroutine omp_target_memcpy_rect_f_R4P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
+         real(R4P),    contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 6_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R4P_6
+
+      subroutine omp_target_memcpy_rect_f_R4P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
+         real(R4P),    contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 7_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R4P_7
+
+      subroutine omp_target_memcpy_rect_f_R8P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:)
+         real(R8P),    contiguous, target, intent(in)  :: fptr_src(:,:)
+         integer(I4P), parameter                       :: fptr_dims = 2_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R8P_2
+
+      subroutine omp_target_memcpy_rect_f_R8P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:,:)
+         real(R8P),    contiguous, target, intent(in)  :: fptr_src(:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 3_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R8P_3
+
+      subroutine omp_target_memcpy_rect_f_R8P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
+         real(R8P),    contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 4_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R8P_4
+
+      subroutine omp_target_memcpy_rect_f_R8P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
+         real(R8P),    contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 5_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R8P_5
+
+      subroutine omp_target_memcpy_rect_f_R8P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
+         real(R8P),    contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 6_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R8P_6
+
+      subroutine omp_target_memcpy_rect_f_R8P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
+         real(R8P),    contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 7_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R8P_7
+
+#if defined _R16P
+      subroutine omp_target_memcpy_rect_f_R16P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:)
+         real(R16P),   contiguous, target, intent(in)  :: fptr_src(:,:)
+         integer(I4P), parameter                       :: fptr_dims = 2_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R16P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R16P_2
+
+      subroutine omp_target_memcpy_rect_f_R16P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:,:)
+         real(R16P),   contiguous, target, intent(in)  :: fptr_src(:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 3_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R16P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R16P_3
+
+      subroutine omp_target_memcpy_rect_f_R16P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
+         real(R16P),   contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 4_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R16P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R16P_4
+
+      subroutine omp_target_memcpy_rect_f_R16P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
+         real(R16P),   contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 5_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R16P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R16P_5
+
+      subroutine omp_target_memcpy_rect_f_R16P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
+         real(R16P),   contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 6_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R16P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R16P_6
+
+      subroutine omp_target_memcpy_rect_f_R16P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
+         real(R16P),   contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 7_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(byte_size(1_R16P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_R16P_7
+#endif
+
       ! OpenMP Target Free Complex Routines
       subroutine omp_target_free_f_C4P_1(fptr_dev, omp_dev)
          implicit none
@@ -2783,6 +3539,315 @@ module falco
             omp_dst_device, omp_src_device), I4P)
 
       endsubroutine omp_target_memcpy_f_C16P_7
+#endif
+
+     ! OpenMP Target Memcpy Rect Complex Routines
+      subroutine omp_target_memcpy_rect_f_C4P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:)
+         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:)
+         integer(I4P), parameter                       :: fptr_dims = 2_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C4P_2
+
+      subroutine omp_target_memcpy_rect_f_C4P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
+         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 3_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C4P_3
+
+      subroutine omp_target_memcpy_rect_f_C4P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
+         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 4_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C4P_4
+
+      subroutine omp_target_memcpy_rect_f_C4P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
+         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 5_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C4P_5
+
+      subroutine omp_target_memcpy_rect_f_C4P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
+         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 6_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C4P_6
+
+      subroutine omp_target_memcpy_rect_f_C4P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
+         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 7_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C4P_7
+
+      subroutine omp_target_memcpy_rect_f_C8P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:)
+         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:)
+         integer(I4P), parameter                       :: fptr_dims = 2_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C8P_2
+
+      subroutine omp_target_memcpy_rect_f_C8P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
+         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 3_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C8P_3
+
+      subroutine omp_target_memcpy_rect_f_C8P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
+         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 4_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C8P_4
+
+      subroutine omp_target_memcpy_rect_f_C8P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
+         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 5_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C8P_5
+
+      subroutine omp_target_memcpy_rect_f_C8P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
+         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 6_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C8P_6
+
+      subroutine omp_target_memcpy_rect_f_C8P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
+         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
+         integer(I4P), parameter                       :: fptr_dims = 7_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R8P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C8P_7
+
+#if defined _R16P
+      subroutine omp_target_memcpy_rect_f_C16P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:)
+         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:)
+         integer(I4P),  parameter                       :: fptr_dims = 2_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R16P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C16P_2
+
+      subroutine omp_target_memcpy_rect_f_C16P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
+         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
+         integer(I4P),  parameter                       :: fptr_dims = 3_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R16P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C16P_3
+
+      subroutine omp_target_memcpy_rect_f_C16P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
+         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
+         integer(I4P),  parameter                       :: fptr_dims = 4_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R16P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C16P_4
+
+      subroutine omp_target_memcpy_rect_f_C16P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
+         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
+         integer(I4P),  parameter                       :: fptr_dims = 5_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R16P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C16P_5
+
+      subroutine omp_target_memcpy_rect_f_C16P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
+         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
+         integer(I4P),  parameter                       :: fptr_dims = 6_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R16P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C16P_6
+
+      subroutine omp_target_memcpy_rect_f_C16P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
+         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
+         integer(I4P),  parameter                       :: fptr_dims = 7_I4P
+
+         include "src/lib/include/memcpy_rect.i90"
+
+         elem_dim = int(2_I8P * byte_size(1_R16P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
+            omp_src_device), I4P)
+
+      endsubroutine omp_target_memcpy_rect_f_C16P_7
 #endif
 
 endmodule falco
