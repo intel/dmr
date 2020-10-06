@@ -58,7 +58,7 @@ FALCO provides the following Fortran routines:
 + [x] pointer allocation on device (omp_target_alloc --> omp_target_alloc_f)
 + [x] pointer deallocation from device (omp_target_free --> omp_target_free_f)
 + [x] data synchronization between host and device (omp_target_memcpy --> omp_target_memcpy_f)
-  +[ ] rectangular data transfer (omp_target_memcpy_rect --> omp_target_memcpy_rect_f)
++ [x] rectangular data transfer (omp_target_memcpy_rect --> omp_target_memcpy_rect_f)
 
 FALCO provides Fortran interfaces to the following OpenMP C device memory routines:
 
