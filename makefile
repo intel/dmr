@@ -12,9 +12,9 @@ ifdef gnu
    ifdef debug
       LDFLAGS = -fopenmp -foffload=nvptx-none -g -Wall -ftracer -c
    endif
-   FCFLAGS = $(LDFLAGS) -J$(DMOD) $(DMOD)
-   FORTFLAGS = -g -c -Wall -J$(DMOD) $(DMOD)
-   EXEFLAGS = -fopenmp -foffload=nvptx-none -g -Wall -ftracer -J$(DMOD) $(DMOD)
+   FCFLAGS = $(LDFLAGS) -J$(DMOD)
+   FORTFLAGS = -g -c -Wall -J$(DMOD)
+   EXEFLAGS = -fopenmp -foffload=nvptx-none -g -Wall -ftracer -J$(DMOD)
 endif
 
 ifdef intel
