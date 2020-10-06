@@ -1,0 +1,61 @@
+!* ========================================================================== *
+!*                                                                            *
+!* Copyright (C) 2020 Intel Corporation                                       *
+!* This file is part of the FALCO library.                                    *
+!*                                                                            *
+!* For information on the license, see the LICENSE file.                      *
+!* Further information: https://github.com/giacrossi/FALCO/                   *
+!* SPDX-License-Identifier: BSD-3-Clause                                      *
+!*                                                                            *
+!* ========================================================================== *
+!* Giacomo Rossi (Intel Corporation)                                          *
+!* ========================================================================== *
+
+         integer(I8P), intent(in)           :: cpy_dims(fptr_dims)
+         integer(I4P), intent(out)          :: ierr
+         integer(I4P), intent(in), optional :: dst_offs(fptr_dims), src_offs(fptr_dims)
+         integer(I4P), intent(in), optional :: omp_dst_dev, omp_src_dev
+         integer(kind=c_size_t)             :: elem_dim, omp_dst_offsets(fptr_dims), omp_src_offsets(fptr_dims)
+         type(c_ptr)                        :: cptr_dst, cptr_src
+         integer(kind=c_int)                :: fptr_rank, omp_dst_device, omp_src_device
+         integer(kind=c_size_t)             :: volume_dims(fptr_dims), cptr_dst_dims(fptr_dims), cptr_src_dims(fptr_dims)
+         integer(I4P)                       :: i
+
+         fptr_rank = int(rank(fptr_dst), c_int)
+
+	      do i=fptr_dims, 1, -1
+            volume_dims(i)   = int(cpy_dims(fptr_dims-i+1), c_size_t)
+            cptr_dst_dims(i) = int(size(fptr_dst,fptr_dims-i+1), c_size_t)
+            cptr_src_dims(i) = int(size(fptr_src,fptr_dims-i+1), c_size_t)
+         enddo
+
+         if (present(dst_offs)) then
+	         do i=1, fptr_dims
+               omp_dst_offsets(i) = int(dst_offs(i), c_size_t)
+            enddo
+         else
+            omp_dst_offsets = int(0_I4P, c_size_t)
+         endif
+
+         if (present(src_offs)) then
+	         do i=1, fptr_dims
+               omp_src_offsets(i) = int(src_offs(i), c_size_t)
+            enddo
+         else
+            omp_src_offsets = int(0_I4P, c_size_t)
+         endif
+
+         if (present(omp_dst_dev)) then
+            omp_dst_device = int(omp_dst_dev, c_int)
+         else
+            omp_dst_device = omp_get_initial_device_c()
+         endif
+
+         if (present(omp_src_dev)) then
+            omp_src_device = int(omp_src_dev, c_int)
+         else
+            omp_src_device = omp_get_default_device_c()
+         endif
+
+         cptr_dst = c_loc(fptr_dst)
+         cptr_src = c_loc(fptr_src)
