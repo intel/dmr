@@ -177,7 +177,7 @@ program test_falco
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
    print *, 'Host pointer has values: ', fptr_hos_I2P(1), fptr_hos_I2P(i)
-   call omp_target_free_f(fptr_dev_I2P)
+   call omp_target_free_f(fptr_dev_I2P, omp_default)
    print *, 'Device pointer deallocation completed'
    deallocate(fptr_hos_I2P)
 
@@ -212,7 +212,7 @@ program test_falco
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
    print *, 'Host pointer has values: ', fptr_hos_I4P(1), fptr_hos_I4P(i)
-   call omp_target_free_f(fptr_dev_I4P)
+   call omp_target_free_f(fptr_dev_I4P, omp_default)
    print *, 'Device pointer deallocation completed'
    deallocate(fptr_hos_I4P)
 
@@ -247,7 +247,7 @@ program test_falco
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
    print *, 'Host pointer has values: ', fptr_hos_I8P(1), fptr_hos_I8P(i)
-   call omp_target_free_f(fptr_dev_I8P)
+   call omp_target_free_f(fptr_dev_I8P, omp_default)
    print *, 'Device pointer deallocation completed'
    deallocate(fptr_hos_I8P)
 
@@ -319,7 +319,7 @@ program test_falco
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
    print *, 'Host pointer has values: ', fptr_hos_R8P(1), fptr_hos_R8P(i)
-   call omp_target_free_f(fptr_dev_R8P)
+   call omp_target_free_f(fptr_dev_R8P, omp_default)
    print *, 'Device pointer deallocation completed'
    deallocate(fptr_hos_R8P)
 
@@ -355,7 +355,7 @@ program test_falco
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
    print *, 'Host pointer has values: ', fptr_hos_R16P(1), fptr_hos_R16P(i)
-   call omp_target_free_f(fptr_dev_R16P)
+   call omp_target_free_f(fptr_dev_R16P, omp_default)
    print *, 'Device pointer deallocation completed'
    deallocate(fptr_hos_R16P)
 
@@ -428,7 +428,7 @@ program test_falco
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
    print *, 'Host pointer has values: ', fptr_hos_C8P(1), fptr_hos_C8P(i)
-   call omp_target_free_f(fptr_dev_C8P)
+   call omp_target_free_f(fptr_dev_C8P, omp_default)
    print *, 'Device pointer deallocation completed'
    deallocate(fptr_hos_C8P)
 
@@ -464,7 +464,7 @@ program test_falco
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
    print *, 'Host pointer has values: ', fptr_hos_C16P(1), fptr_hos_C16P(i)
-   call omp_target_free_f(fptr_dev_C16P)
+   call omp_target_free_f(fptr_dev_C16P, omp_default)
    print *, 'Device pointer deallocation completed'
    deallocate(fptr_hos_C16P)
 
@@ -565,7 +565,7 @@ program test_falco
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
    print *, 'Host pointer has values: ', fptr_hos_I2P_2(1,1), fptr_hos_I2P_2(i,i)
-   call omp_target_free_f(fptr_dev_I2P_2)
+   call omp_target_free_f(fptr_dev_I2P_2, omp_default)
    print *, 'Device pointer deallocation completed'
    deallocate(fptr_hos_I2P_2)
 
@@ -600,7 +600,7 @@ program test_falco
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
    print *, 'Host pointer has values: ', fptr_hos_I4P_2(1,1), fptr_hos_I4P_2(i,i)
-   call omp_target_free_f(fptr_dev_I4P_2)
+   call omp_target_free_f(fptr_dev_I4P_2, omp_default)
    print *, 'Device pointer deallocation completed'
    deallocate(fptr_hos_I4P_2)
 
@@ -635,7 +635,7 @@ program test_falco
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
    print *, 'Host pointer has values: ', fptr_hos_I8P_2(1,1), fptr_hos_I8P_2(i,i)
-   call omp_target_free_f(fptr_dev_I8P_2)
+   call omp_target_free_f(fptr_dev_I8P_2, omp_default)
    print *, 'Device pointer deallocation completed'
    deallocate(fptr_hos_I8P_2)
 
@@ -707,7 +707,7 @@ program test_falco
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
    print *, 'Host pointer has values: ', fptr_hos_R8P_2(1,1), fptr_hos_R8P_2(i,i)
-   call omp_target_free_f(fptr_dev_R8P_2)
+   call omp_target_free_f(fptr_dev_R8P_2, omp_default)
    print *, 'Device pointer deallocation completed'
    deallocate(fptr_hos_R8P_2)
 
@@ -743,7 +743,7 @@ program test_falco
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
    print *, 'Host pointer has values: ', fptr_hos_R16P_2(1,1), fptr_hos_R16P_2(i,i)
-   call omp_target_free_f(fptr_dev_R16P_2)
+   call omp_target_free_f(fptr_dev_R16P_2, omp_default)
    print *, 'Device pointer deallocation completed'
    deallocate(fptr_hos_R16P_2)
 
@@ -816,7 +816,7 @@ program test_falco
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
    print *, 'Host pointer has values: ', fptr_hos_C8P_2(1,1), fptr_hos_C8P_2(i,i)
-   call omp_target_free_f(fptr_dev_C8P_2)
+   call omp_target_free_f(fptr_dev_C8P_2, omp_default)
    print *, 'Device pointer deallocation completed'
    deallocate(fptr_hos_C8P_2)
 
@@ -852,7 +852,7 @@ program test_falco
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
    print *, 'Host pointer has values: ', fptr_hos_C16P_2(1,1), fptr_hos_C16P_2(i,i)
-   call omp_target_free_f(fptr_dev_C16P_2)
+   call omp_target_free_f(fptr_dev_C16P_2, omp_default)
    print *, 'Device pointer deallocation completed'
    deallocate(fptr_hos_C16P_2)
 
