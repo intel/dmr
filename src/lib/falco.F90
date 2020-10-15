@@ -487,7 +487,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1_I1P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
       endsubroutine omp_target_alloc_f_I1P_1
 
@@ -500,7 +500,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
       endsubroutine omp_target_alloc_f_I1P_2
 
@@ -513,7 +513,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
       endsubroutine omp_target_alloc_f_I1P_3
 
@@ -526,7 +526,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
       endsubroutine omp_target_alloc_f_I1P_4
 
@@ -539,7 +539,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
       endsubroutine omp_target_alloc_f_I1P_5
@@ -553,7 +553,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
       endsubroutine omp_target_alloc_f_I1P_6
@@ -567,7 +567,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
       endsubroutine omp_target_alloc_f_I1P_7
@@ -581,7 +581,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1_I2P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
       endsubroutine omp_target_alloc_f_I2P_1
 
@@ -594,7 +594,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
       endsubroutine omp_target_alloc_f_I2P_2
 
@@ -607,7 +607,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
       endsubroutine omp_target_alloc_f_I2P_3
 
@@ -620,7 +620,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
       endsubroutine omp_target_alloc_f_I2P_4
 
@@ -633,7 +633,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
       endsubroutine omp_target_alloc_f_I2P_5
@@ -647,7 +647,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
       endsubroutine omp_target_alloc_f_I2P_6
@@ -661,7 +661,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
       endsubroutine omp_target_alloc_f_I2P_7
@@ -675,7 +675,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1_I4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
       endsubroutine omp_target_alloc_f_I4P_1
 
@@ -688,7 +688,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
       endsubroutine omp_target_alloc_f_I4P_2
 
@@ -701,7 +701,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
       endsubroutine omp_target_alloc_f_I4P_3
 
@@ -714,7 +714,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
       endsubroutine omp_target_alloc_f_I4P_4
 
@@ -727,7 +727,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
       endsubroutine omp_target_alloc_f_I4P_5
@@ -741,7 +741,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
       endsubroutine omp_target_alloc_f_I4P_6
@@ -755,7 +755,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
       endsubroutine omp_target_alloc_f_I4P_7
@@ -769,7 +769,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1_I8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
       endsubroutine omp_target_alloc_f_I8P_1
 
@@ -782,7 +782,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
       endsubroutine omp_target_alloc_f_I8P_2
 
@@ -795,7 +795,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
       endsubroutine omp_target_alloc_f_I8P_3
 
@@ -808,7 +808,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
       endsubroutine omp_target_alloc_f_I8P_4
 
@@ -821,7 +821,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
       endsubroutine omp_target_alloc_f_I8P_5
@@ -835,7 +835,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
       endsubroutine omp_target_alloc_f_I8P_6
@@ -849,7 +849,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
       endsubroutine omp_target_alloc_f_I8P_7
@@ -1865,7 +1865,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1._R4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
       endsubroutine omp_target_alloc_f_R4P_1
 
@@ -1878,7 +1878,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
       endsubroutine omp_target_alloc_f_R4P_2
 
@@ -1891,7 +1891,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
       endsubroutine omp_target_alloc_f_R4P_3
 
@@ -1904,7 +1904,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
       endsubroutine omp_target_alloc_f_R4P_4
 
@@ -1917,7 +1917,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
       endsubroutine omp_target_alloc_f_R4P_5
@@ -1931,7 +1931,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
       endsubroutine omp_target_alloc_f_R4P_6
@@ -1945,7 +1945,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
       endsubroutine omp_target_alloc_f_R4P_7
@@ -1959,7 +1959,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1._R8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
       endsubroutine omp_target_alloc_f_R8P_1
 
@@ -1972,7 +1972,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
       endsubroutine omp_target_alloc_f_R8P_2
 
@@ -1985,7 +1985,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
       endsubroutine omp_target_alloc_f_R8P_3
 
@@ -1998,7 +1998,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
       endsubroutine omp_target_alloc_f_R8P_4
 
@@ -2011,7 +2011,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
       endsubroutine omp_target_alloc_f_R8P_5
@@ -2025,7 +2025,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
       endsubroutine omp_target_alloc_f_R8P_6
@@ -2039,7 +2039,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
       endsubroutine omp_target_alloc_f_R8P_7
@@ -2054,7 +2054,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1._R16P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
       endsubroutine omp_target_alloc_f_R16P_1
 
@@ -2067,7 +2067,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
       endsubroutine omp_target_alloc_f_R16P_2
 
@@ -2080,7 +2080,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
       endsubroutine omp_target_alloc_f_R16P_3
 
@@ -2093,7 +2093,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
       endsubroutine omp_target_alloc_f_R16P_4
 
@@ -2106,7 +2106,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
       endsubroutine omp_target_alloc_f_R16P_5
@@ -2120,7 +2120,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
       endsubroutine omp_target_alloc_f_R16P_6
@@ -2134,7 +2134,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
       endsubroutine omp_target_alloc_f_R16P_7
@@ -2948,7 +2948,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * dimensions, c_size_t) * byte_size(1._R4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
       endsubroutine omp_target_alloc_f_C4P_1
 
@@ -2961,7 +2961,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
       endsubroutine omp_target_alloc_f_C4P_2
 
@@ -2974,7 +2974,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
       endsubroutine omp_target_alloc_f_C4P_3
 
@@ -2987,7 +2987,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
       endsubroutine omp_target_alloc_f_C4P_4
 
@@ -3000,7 +3000,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
       endsubroutine omp_target_alloc_f_C4P_5
@@ -3014,7 +3014,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
       endsubroutine omp_target_alloc_f_C4P_6
@@ -3028,7 +3028,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
       endsubroutine omp_target_alloc_f_C4P_7
@@ -3042,7 +3042,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * dimensions, c_size_t) * byte_size(1._R8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
       endsubroutine omp_target_alloc_f_C8P_1
 
@@ -3055,7 +3055,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
       endsubroutine omp_target_alloc_f_C8P_2
 
@@ -3068,7 +3068,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
       endsubroutine omp_target_alloc_f_C8P_3
 
@@ -3081,7 +3081,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
       endsubroutine omp_target_alloc_f_C8P_4
 
@@ -3094,7 +3094,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
       endsubroutine omp_target_alloc_f_C8P_5
@@ -3108,7 +3108,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
       endsubroutine omp_target_alloc_f_C8P_6
@@ -3122,7 +3122,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
       endsubroutine omp_target_alloc_f_C8P_7
@@ -3137,7 +3137,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * dimensions, c_size_t) * byte_size(1._R16P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
       endsubroutine omp_target_alloc_f_C16P_1
 
@@ -3150,7 +3150,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
       endsubroutine omp_target_alloc_f_C16P_2
 
@@ -3163,7 +3163,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
       endsubroutine omp_target_alloc_f_C16P_3
 
@@ -3176,7 +3176,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
       endsubroutine omp_target_alloc_f_C16P_4
 
@@ -3189,7 +3189,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
       endsubroutine omp_target_alloc_f_C16P_5
@@ -3203,7 +3203,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
       endsubroutine omp_target_alloc_f_C16P_6
@@ -3217,7 +3217,7 @@ module falco
 
          cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
-         call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+         if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
       endsubroutine omp_target_alloc_f_C16P_7
