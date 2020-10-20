@@ -14,6 +14,7 @@
 program test_falco
    use omp_lib
    use falco
+   use falco_c_functions
    use penf
    use init_device_pointers
    use matmul_device_pointers

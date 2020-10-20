@@ -89,10 +89,16 @@ $(DEXE)TEST_ALL: $(MKDIRS) $(DOBJ)test_falco.o
 EXES := $(EXES) TEST_ALL
 
 #compiling rules
-$(DOBJ)falco_c_functions.o: src/lib/falco_c_functions_c.c \
+$(DOBJ)falco_c_functions_c.o: src/lib/falco_c_functions_c.c \
 	$(DOBJ)penf.o
 	@echo $(COTEXT)
 	@$(CC) $(LDFLAGS) $(CFLAGS)  $< -o $@
+
+$(DOBJ)falco_c_functions.o: src/lib/falco_c_functions.F90 \
+	$(DOBJ)penf.o \
+	$(DOBJ)falco_c_functions_c.o
+	@echo $(COTEXT)
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)falco.o: src/lib/falco.F90 \
 	$(DOBJ)penf.o \
