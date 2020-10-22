@@ -1,0 +1,20 @@
+!* ========================================================================== *
+!*                                                                            *
+!* Copyright (C) 2020 Intel Corporation                                       *
+!* This file is part of the FALCO library.                                    *
+!*                                                                            *
+!* For information on the license, see the LICENSE file.                      *
+!* Further information: https://github.com/giacrossi/FALCO/                   *
+!* SPDX-License-Identifier: BSD-3-Clause                                      *
+!*                                                                            *
+!* ========================================================================== *
+!* Giacomo Rossi (Intel Corporation)                                          *
+!* ========================================================================== *
+
+         integer(I4P),         intent(in) :: omp_dev
+         type(c_ptr)                      :: cptr_dev
+         integer(kind=c_int)              :: omp_device
+
+         omp_device = int(omp_dev, c_int)
+
+         cptr_dev = c_loc(fptr_dev)
