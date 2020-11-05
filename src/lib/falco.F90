@@ -59,6 +59,44 @@ module falco
                        omp_target_is_present_f_C8P_7
    endinterface omp_target_is_present_f
 
+   interface omp_get_mapped_ptr_f
+      module procedure &
+                       omp_get_mapped_ptr_f_I1P_1,  omp_get_mapped_ptr_f_I1P_2,  omp_get_mapped_ptr_f_I1P_3,  &
+                       omp_get_mapped_ptr_f_I1P_4,  omp_get_mapped_ptr_f_I1P_5,  omp_get_mapped_ptr_f_I1P_6,  &
+                       omp_get_mapped_ptr_f_I1P_7,  &
+                       omp_get_mapped_ptr_f_I2P_1,  omp_get_mapped_ptr_f_I2P_2,  omp_get_mapped_ptr_f_I2P_3,  &
+                       omp_get_mapped_ptr_f_I2P_4,  omp_get_mapped_ptr_f_I2P_5,  omp_get_mapped_ptr_f_I2P_6,  &
+                       omp_get_mapped_ptr_f_I2P_7,  &
+                       omp_get_mapped_ptr_f_I4P_1,  omp_get_mapped_ptr_f_I4P_2,  omp_get_mapped_ptr_f_I4P_3,  &
+                       omp_get_mapped_ptr_f_I4P_4,  omp_get_mapped_ptr_f_I4P_5,  omp_get_mapped_ptr_f_I4P_6,  &
+                       omp_get_mapped_ptr_f_I4P_7,  &
+                       omp_get_mapped_ptr_f_I8P_1,  omp_get_mapped_ptr_f_I8P_2,  omp_get_mapped_ptr_f_I8P_3,  &
+                       omp_get_mapped_ptr_f_I8P_4,  omp_get_mapped_ptr_f_I8P_5,  omp_get_mapped_ptr_f_I8P_6,  &
+                       omp_get_mapped_ptr_f_I8P_7,  &
+#if defined _R16P
+                       omp_get_mapped_ptr_f_R16P_1, omp_get_mapped_ptr_f_R16P_2, omp_get_mapped_ptr_f_R16P_3, &
+                       omp_get_mapped_ptr_f_R16P_4, omp_get_mapped_ptr_f_R16P_5, omp_get_mapped_ptr_f_R16P_6, &
+                       omp_get_mapped_ptr_f_R16P_7, &
+#endif
+                       omp_get_mapped_ptr_f_R4P_1,  omp_get_mapped_ptr_f_R4P_2,  omp_get_mapped_ptr_f_R4P_3,  &
+                       omp_get_mapped_ptr_f_R4P_4,  omp_get_mapped_ptr_f_R4P_5,  omp_get_mapped_ptr_f_R4P_6,  &
+                       omp_get_mapped_ptr_f_R4P_7,  &
+                       omp_get_mapped_ptr_f_R8P_1,  omp_get_mapped_ptr_f_R8P_2,  omp_get_mapped_ptr_f_R8P_3,  &
+                       omp_get_mapped_ptr_f_R8P_4,  omp_get_mapped_ptr_f_R8P_5,  omp_get_mapped_ptr_f_R8P_6,  &
+                       omp_get_mapped_ptr_f_R8P_7,  &
+#if defined _R16P
+                       omp_get_mapped_ptr_f_C16P_1, omp_get_mapped_ptr_f_C16P_2, omp_get_mapped_ptr_f_C16P_3, &
+                       omp_get_mapped_ptr_f_C16P_4, omp_get_mapped_ptr_f_C16P_5, omp_get_mapped_ptr_f_C16P_6, &
+                       omp_get_mapped_ptr_f_C16P_7,  &
+#endif
+                       omp_get_mapped_ptr_f_C4P_1,  omp_get_mapped_ptr_f_C4P_2,  omp_get_mapped_ptr_f_C4P_3,  &
+                       omp_get_mapped_ptr_f_C4P_4,  omp_get_mapped_ptr_f_C4P_5,  omp_get_mapped_ptr_f_C4P_6,  &
+                       omp_get_mapped_ptr_f_C4P_7,  &
+                       omp_get_mapped_ptr_f_C8P_1,  omp_get_mapped_ptr_f_C8P_2,  omp_get_mapped_ptr_f_C8P_3,  &
+                       omp_get_mapped_ptr_f_C8P_4,  omp_get_mapped_ptr_f_C8P_5,  omp_get_mapped_ptr_f_C8P_6,  &
+                       omp_get_mapped_ptr_f_C8P_7
+   endinterface omp_get_mapped_ptr_f
+
    interface omp_target_free_f
       module procedure &
                        omp_target_free_f_I1P_1,  omp_target_free_f_I1P_2,  omp_target_free_f_I1P_3,  &
@@ -211,7 +249,8 @@ module falco
                        omp_target_memcpy_rect_f_C8P_7
    endinterface omp_target_memcpy_rect_f
 
-   public omp_target_is_present_f, omp_target_alloc_f, omp_target_free_f, omp_target_memcpy_f, omp_target_memcpy_rect_f
+   public omp_target_is_present_f, omp_target_alloc_f, omp_target_free_f, omp_target_memcpy_f, omp_target_memcpy_rect_f, &
+          omp_get_mapped_ptr_f
 
    private
 
@@ -637,6 +676,427 @@ module falco
          endif
 
       endfunction omp_target_is_present_f_I8P_7
+
+      ! OpenMP Get Mapped Pointer Integer Routines
+      function omp_get_mapped_ptr_f_I1P_1(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I1P_1
+         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I1P_1 = .true.
+         else
+            omp_get_mapped_ptr_f_I1P_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I1P_1
+
+      function omp_get_mapped_ptr_f_I1P_2(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I1P_2
+         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I1P_2 = .true.
+         else
+            omp_get_mapped_ptr_f_I1P_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I1P_2
+
+      function omp_get_mapped_ptr_f_I1P_3(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I1P_3
+         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I1P_3 = .true.
+         else
+            omp_get_mapped_ptr_f_I1P_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I1P_3
+
+      function omp_get_mapped_ptr_f_I1P_4(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I1P_4
+         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I1P_4 = .true.
+         else
+            omp_get_mapped_ptr_f_I1P_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I1P_4
+
+      function omp_get_mapped_ptr_f_I1P_5(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I1P_5
+         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I1P_5 = .true.
+         else
+            omp_get_mapped_ptr_f_I1P_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I1P_5
+
+      function omp_get_mapped_ptr_f_I1P_6(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I1P_6
+         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I1P_6 = .true.
+         else
+            omp_get_mapped_ptr_f_I1P_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I1P_6
+
+      function omp_get_mapped_ptr_f_I1P_7(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I1P_7
+         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I1P_7 = .true.
+         else
+            omp_get_mapped_ptr_f_I1P_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I1P_7
+
+      function omp_get_mapped_ptr_f_I2P_1(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I2P_1
+         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I2P_1 = .true.
+         else
+            omp_get_mapped_ptr_f_I2P_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I2P_1
+
+      function omp_get_mapped_ptr_f_I2P_2(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I2P_2
+         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I2P_2 = .true.
+         else
+            omp_get_mapped_ptr_f_I2P_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I2P_2
+
+      function omp_get_mapped_ptr_f_I2P_3(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I2P_3
+         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I2P_3 = .true.
+         else
+            omp_get_mapped_ptr_f_I2P_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I2P_3
+
+      function omp_get_mapped_ptr_f_I2P_4(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I2P_4
+         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I2P_4 = .true.
+         else
+            omp_get_mapped_ptr_f_I2P_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I2P_4
+
+      function omp_get_mapped_ptr_f_I2P_5(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I2P_5
+         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I2P_5 = .true.
+         else
+            omp_get_mapped_ptr_f_I2P_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I2P_5
+
+      function omp_get_mapped_ptr_f_I2P_6(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I2P_6
+         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I2P_6 = .true.
+         else
+            omp_get_mapped_ptr_f_I2P_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I2P_6
+
+      function omp_get_mapped_ptr_f_I2P_7(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I2P_7
+         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I2P_7 = .true.
+         else
+            omp_get_mapped_ptr_f_I2P_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I2P_7
+
+      function omp_get_mapped_ptr_f_I4P_1(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I4P_1
+         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I4P_1 = .true.
+         else
+            omp_get_mapped_ptr_f_I4P_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I4P_1
+
+      function omp_get_mapped_ptr_f_I4P_2(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I4P_2
+         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I4P_2 = .true.
+         else
+            omp_get_mapped_ptr_f_I4P_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I4P_2
+
+      function omp_get_mapped_ptr_f_I4P_3(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I4P_3
+         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I4P_3 = .true.
+         else
+            omp_get_mapped_ptr_f_I4P_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I4P_3
+
+      function omp_get_mapped_ptr_f_I4P_4(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I4P_4
+         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I4P_4 = .true.
+         else
+            omp_get_mapped_ptr_f_I4P_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I4P_4
+
+      function omp_get_mapped_ptr_f_I4P_5(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I4P_5
+         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I4P_5 = .true.
+         else
+            omp_get_mapped_ptr_f_I4P_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I4P_5
+
+      function omp_get_mapped_ptr_f_I4P_6(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I4P_6
+         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I4P_6 = .true.
+         else
+            omp_get_mapped_ptr_f_I4P_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I4P_6
+
+      function omp_get_mapped_ptr_f_I4P_7(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I4P_7
+         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I4P_7 = .true.
+         else
+            omp_get_mapped_ptr_f_I4P_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I4P_7
+
+      function omp_get_mapped_ptr_f_I8P_1(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I8P_1
+         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I8P_1 = .true.
+         else
+            omp_get_mapped_ptr_f_I8P_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I8P_1
+
+      function omp_get_mapped_ptr_f_I8P_2(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I8P_2
+         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I8P_2 = .true.
+         else
+            omp_get_mapped_ptr_f_I8P_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I8P_2
+
+      function omp_get_mapped_ptr_f_I8P_3(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I8P_3
+         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I8P_3 = .true.
+         else
+            omp_get_mapped_ptr_f_I8P_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I8P_3
+
+      function omp_get_mapped_ptr_f_I8P_4(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I8P_4
+         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I8P_4 = .true.
+         else
+            omp_get_mapped_ptr_f_I8P_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I8P_4
+
+      function omp_get_mapped_ptr_f_I8P_5(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I8P_5
+         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I8P_5 = .true.
+         else
+            omp_get_mapped_ptr_f_I8P_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I8P_5
+
+      function omp_get_mapped_ptr_f_I8P_6(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I8P_6
+         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I8P_6 = .true.
+         else
+            omp_get_mapped_ptr_f_I8P_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I8P_6
+
+      function omp_get_mapped_ptr_f_I8P_7(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_I8P_7
+         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_I8P_7 = .true.
+         else
+            omp_get_mapped_ptr_f_I8P_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_I8P_7
 
       ! OpenMP Target Free Integer Routines
       subroutine omp_target_free_f_I1P_1(fptr_dev, omp_dev)
@@ -2388,6 +2848,324 @@ module falco
       endfunction omp_target_is_present_f_R16P_7
 #endif
 
+      ! OpenMP Get Mapped Pointer Real Routines
+      function omp_get_mapped_ptr_f_R4P_1(fptr_dev, omp_dev)
+         implicit none
+         logical                                       :: omp_get_mapped_ptr_f_R4P_1
+         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R4P_1 = .true.
+         else
+            omp_get_mapped_ptr_f_R4P_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R4P_1
+
+      function omp_get_mapped_ptr_f_R4P_2(fptr_dev, omp_dev)
+         implicit none
+         logical                                       :: omp_get_mapped_ptr_f_R4P_2
+         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R4P_2 = .true.
+         else
+            omp_get_mapped_ptr_f_R4P_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R4P_2
+
+      function omp_get_mapped_ptr_f_R4P_3(fptr_dev, omp_dev)
+         implicit none
+         logical                                       :: omp_get_mapped_ptr_f_R4P_3
+         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R4P_3 = .true.
+         else
+            omp_get_mapped_ptr_f_R4P_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R4P_3
+
+      function omp_get_mapped_ptr_f_R4P_4(fptr_dev, omp_dev)
+         implicit none
+         logical                                       :: omp_get_mapped_ptr_f_R4P_4
+         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R4P_4 = .true.
+         else
+            omp_get_mapped_ptr_f_R4P_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R4P_4
+
+      function omp_get_mapped_ptr_f_R4P_5(fptr_dev, omp_dev)
+         implicit none
+         logical                                       :: omp_get_mapped_ptr_f_R4P_5
+         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R4P_5 = .true.
+         else
+            omp_get_mapped_ptr_f_R4P_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R4P_5
+
+      function omp_get_mapped_ptr_f_R4P_6(fptr_dev, omp_dev)
+         implicit none
+         logical                                       :: omp_get_mapped_ptr_f_R4P_6
+         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R4P_6 = .true.
+         else
+            omp_get_mapped_ptr_f_R4P_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R4P_6
+
+      function omp_get_mapped_ptr_f_R4P_7(fptr_dev, omp_dev)
+         implicit none
+         logical                                       :: omp_get_mapped_ptr_f_R4P_7
+         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R4P_7 = .true.
+         else
+            omp_get_mapped_ptr_f_R4P_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R4P_7
+
+      function omp_get_mapped_ptr_f_R8P_1(fptr_dev, omp_dev)
+         implicit none
+         logical                                       :: omp_get_mapped_ptr_f_R8P_1
+         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R8P_1 = .true.
+         else
+            omp_get_mapped_ptr_f_R8P_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R8P_1
+
+      function omp_get_mapped_ptr_f_R8P_2(fptr_dev, omp_dev)
+         implicit none
+         logical                                       :: omp_get_mapped_ptr_f_R8P_2
+         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R8P_2 = .true.
+         else
+            omp_get_mapped_ptr_f_R8P_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R8P_2
+
+      function omp_get_mapped_ptr_f_R8P_3(fptr_dev, omp_dev)
+         implicit none
+         logical                                       :: omp_get_mapped_ptr_f_R8P_3
+         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R8P_3 = .true.
+         else
+            omp_get_mapped_ptr_f_R8P_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R8P_3
+
+      function omp_get_mapped_ptr_f_R8P_4(fptr_dev, omp_dev)
+         implicit none
+         logical                                       :: omp_get_mapped_ptr_f_R8P_4
+         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R8P_4 = .true.
+         else
+            omp_get_mapped_ptr_f_R8P_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R8P_4
+
+      function omp_get_mapped_ptr_f_R8P_5(fptr_dev, omp_dev)
+         implicit none
+         logical                                       :: omp_get_mapped_ptr_f_R8P_5
+         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R8P_5 = .true.
+         else
+            omp_get_mapped_ptr_f_R8P_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R8P_5
+
+      function omp_get_mapped_ptr_f_R8P_6(fptr_dev, omp_dev)
+         implicit none
+         logical                                       :: omp_get_mapped_ptr_f_R8P_6
+         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R8P_6 = .true.
+         else
+            omp_get_mapped_ptr_f_R8P_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R8P_6
+
+      function omp_get_mapped_ptr_f_R8P_7(fptr_dev, omp_dev)
+         implicit none
+         logical                                       :: omp_get_mapped_ptr_f_R8P_7
+         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R8P_7 = .true.
+         else
+            omp_get_mapped_ptr_f_R8P_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R8P_7
+
+#if defined _R16P
+      function omp_get_mapped_ptr_f_R16P_1(fptr_dev, omp_dev)
+         implicit none
+         logical                                        :: omp_get_mapped_ptr_f_R16P_1
+         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R16P_1 = .true.
+         else
+            omp_get_mapped_ptr_f_R16P_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R16P_1
+
+      function omp_get_mapped_ptr_f_R16P_2(fptr_dev, omp_dev)
+         implicit none
+         logical                                        :: omp_get_mapped_ptr_f_R16P_2
+         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R16P_2 = .true.
+         else
+            omp_get_mapped_ptr_f_R16P_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R16P_2
+
+      function omp_get_mapped_ptr_f_R16P_3(fptr_dev, omp_dev)
+         implicit none
+         logical                                        :: omp_get_mapped_ptr_f_R16P_3
+         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R16P_3 = .true.
+         else
+            omp_get_mapped_ptr_f_R16P_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R16P_3
+
+      function omp_get_mapped_ptr_f_R16P_4(fptr_dev, omp_dev)
+         implicit none
+         logical                                        :: omp_get_mapped_ptr_f_R16P_4
+         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R16P_4 = .true.
+         else
+            omp_get_mapped_ptr_f_R16P_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R16P_4
+
+      function omp_get_mapped_ptr_f_R16P_5(fptr_dev, omp_dev)
+         implicit none
+         logical                                        :: omp_get_mapped_ptr_f_R16P_5
+         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R16P_5 = .true.
+         else
+            omp_get_mapped_ptr_f_R16P_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R16P_5
+
+      function omp_get_mapped_ptr_f_R16P_6(fptr_dev, omp_dev)
+         implicit none
+         logical                                        :: omp_get_mapped_ptr_f_R16P_6
+         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R16P_6 = .true.
+         else
+            omp_get_mapped_ptr_f_R16P_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R16P_6
+
+      function omp_get_mapped_ptr_f_R16P_7(fptr_dev, omp_dev)
+         implicit none
+         logical                                        :: omp_get_mapped_ptr_f_R16P_7
+         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_R16P_7 = .true.
+         else
+            omp_get_mapped_ptr_f_R16P_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_R16P_7
+#endif
+
       ! OpenMP Target Free Real Routines
       subroutine omp_target_free_f_R4P_1(fptr_dev, omp_dev)
          implicit none
@@ -3787,6 +4565,324 @@ module falco
          endif
 
       endfunction omp_target_is_present_f_C16P_7
+#endif
+
+      ! OpenMP Get Mapped Pointer Complex Routines
+      function omp_get_mapped_ptr_f_C4P_1(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_C4P_1
+         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C4P_1 = .true.
+         else
+            omp_get_mapped_ptr_f_C4P_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C4P_1
+
+      function omp_get_mapped_ptr_f_C4P_2(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_C4P_2
+         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C4P_2 = .true.
+         else
+            omp_get_mapped_ptr_f_C4P_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C4P_2
+
+      function omp_get_mapped_ptr_f_C4P_3(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_C4P_3
+         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C4P_3 = .true.
+         else
+            omp_get_mapped_ptr_f_C4P_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C4P_3
+
+      function omp_get_mapped_ptr_f_C4P_4(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_C4P_4
+         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C4P_4 = .true.
+         else
+            omp_get_mapped_ptr_f_C4P_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C4P_4
+
+      function omp_get_mapped_ptr_f_C4P_5(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_C4P_5
+         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C4P_5 = .true.
+         else
+            omp_get_mapped_ptr_f_C4P_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C4P_5
+
+      function omp_get_mapped_ptr_f_C4P_6(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_C4P_6
+         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C4P_6 = .true.
+         else
+            omp_get_mapped_ptr_f_C4P_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C4P_6
+
+      function omp_get_mapped_ptr_f_C4P_7(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_C4P_7
+         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C4P_7 = .true.
+         else
+            omp_get_mapped_ptr_f_C4P_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C4P_7
+
+      function omp_get_mapped_ptr_f_C8P_1(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_C8P_1
+         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C8P_1 = .true.
+         else
+            omp_get_mapped_ptr_f_C8P_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C8P_1
+
+      function omp_get_mapped_ptr_f_C8P_2(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_C8P_2
+         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C8P_2 = .true.
+         else
+            omp_get_mapped_ptr_f_C8P_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C8P_2
+
+      function omp_get_mapped_ptr_f_C8P_3(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_C8P_3
+         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C8P_3 = .true.
+         else
+            omp_get_mapped_ptr_f_C8P_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C8P_3
+
+      function omp_get_mapped_ptr_f_C8P_4(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_C8P_4
+         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C8P_4 = .true.
+         else
+            omp_get_mapped_ptr_f_C8P_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C8P_4
+
+      function omp_get_mapped_ptr_f_C8P_5(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_C8P_5
+         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C8P_5 = .true.
+         else
+            omp_get_mapped_ptr_f_C8P_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C8P_5
+
+      function omp_get_mapped_ptr_f_C8P_6(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_C8P_6
+         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C8P_6 = .true.
+         else
+            omp_get_mapped_ptr_f_C8P_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C8P_6
+
+      function omp_get_mapped_ptr_f_C8P_7(fptr_dev, omp_dev)
+         implicit none
+         logical                                          :: omp_get_mapped_ptr_f_C8P_7
+         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C8P_7 = .true.
+         else
+            omp_get_mapped_ptr_f_C8P_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C8P_7
+
+#if defined _R16P
+      function omp_get_mapped_ptr_f_C16P_1(fptr_dev, omp_dev)
+         implicit none
+         logical                                           :: omp_get_mapped_ptr_f_C16P_1
+         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C16P_1 = .true.
+         else
+            omp_get_mapped_ptr_f_C16P_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C16P_1
+
+      function omp_get_mapped_ptr_f_C16P_2(fptr_dev, omp_dev)
+         implicit none
+         logical                                           :: omp_get_mapped_ptr_f_C16P_2
+         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C16P_2 = .true.
+         else
+            omp_get_mapped_ptr_f_C16P_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C16P_2
+
+      function omp_get_mapped_ptr_f_C16P_3(fptr_dev, omp_dev)
+         implicit none
+         logical                                           :: omp_get_mapped_ptr_f_C16P_3
+         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C16P_3 = .true.
+         else
+            omp_get_mapped_ptr_f_C16P_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C16P_3
+
+      function omp_get_mapped_ptr_f_C16P_4(fptr_dev, omp_dev)
+         implicit none
+         logical                                           :: omp_get_mapped_ptr_f_C16P_4
+         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C16P_4 = .true.
+         else
+            omp_get_mapped_ptr_f_C16P_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C16P_4
+
+      function omp_get_mapped_ptr_f_C16P_5(fptr_dev, omp_dev)
+         implicit none
+         logical                                           :: omp_get_mapped_ptr_f_C16P_5
+         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C16P_5 = .true.
+         else
+            omp_get_mapped_ptr_f_C16P_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C16P_5
+
+      function omp_get_mapped_ptr_f_C16P_6(fptr_dev, omp_dev)
+         implicit none
+         logical                                           :: omp_get_mapped_ptr_f_C16P_6
+         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C16P_6 = .true.
+         else
+            omp_get_mapped_ptr_f_C16P_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C16P_6
+
+      function omp_get_mapped_ptr_f_C16P_7(fptr_dev, omp_dev)
+         implicit none
+         logical                                           :: omp_get_mapped_ptr_f_C16P_7
+         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_C16P_7 = .true.
+         else
+            omp_get_mapped_ptr_f_C16P_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_C16P_7
 #endif
 
       ! OpenMP Target Free Complex Routines
