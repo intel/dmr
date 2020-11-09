@@ -28,7 +28,7 @@ ifdef intel
    FCFLAGS  = $(LDFLAGS) -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
    FORTFLAGS = -c -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
    EXEFLAGS = -fiopenmp -fopenmp-targets=spir64 -g -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
-   DFLAGS = -D_R16P
+   DFLAGS = #-D_real128
 endif
 
 ifdef ibm
@@ -81,10 +81,8 @@ FALCO: $(MKDIRS) $(DOBJ)falco.o
 #tests
 TESTS: $(DEXE)TEST_ALL
 
-#$(DEXE)TEST_ALL: $(MKDIRS) $(DOBJ)test_falco.o
-#	@rm -f $(filter-out $(DOBJ)test_falco.o,$(EXESOBJ))
-$(DEXE)TEST_ALL: $(MKDIRS) $(DOBJ)test_omp_get.o
-	@rm -f $(filter-out $(DOBJ)test_omp_get.o,$(EXESOBJ))
+$(DEXE)TEST_ALL: $(MKDIRS) $(DOBJ)test_falco.o
+	@rm -f $(filter-out $(DOBJ)test_falco.o,$(EXESOBJ))
 	@echo $(LITEXT)
 	#@$(FC) $(FCFLAGS) $(DOBJ)*.o $(LIBS) -o $@
 	@$(FC) $(EXEFLAGS) $(DOBJ)*.o $(LIBS) -o $@
@@ -130,29 +128,23 @@ $(DOBJ)penf_global_parameters_variables.o: src/third_party/PENF/src/lib/penf_glo
 	@echo $(COTEXT)
 	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
 
-#$(DOBJ)test_falco.o: src/tests/test_falco.F90 \
-#	$(DOBJ)penf.o \
-#	$(DOBJ)falco.o \
-#	$(DOBJ)init_device_pointers.o \
-#	$(DOBJ)matmul_device_pointers.o
-#	@echo $(COTEXT)
-#	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
-
-$(DOBJ)test_omp_get.o: src/tests/test_omp_get.F90 \
+$(DOBJ)test_falco.o: src/tests/test_falco.F90 \
 	$(DOBJ)penf.o \
-	$(DOBJ)falco.o
+	$(DOBJ)falco.o \
+	$(DOBJ)init_device_pointers.o \
+	$(DOBJ)matmul_device_pointers.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
-#$(DOBJ)init_device_pointers.o: src/tests/init_device_pointers.F90 \
-#	$(DOBJ)penf.o
-#	@echo $(COTEXT)
-#	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
-#
-#$(DOBJ)matmul_device_pointers.o: src/tests/matmul_device_pointers.F90 \
-#	$(DOBJ)penf.o
-#	@echo $(COTEXT)
-#	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
+$(DOBJ)init_device_pointers.o: src/tests/init_device_pointers.F90 \
+	$(DOBJ)penf.o
+	@echo $(COTEXT)
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
+
+$(DOBJ)matmul_device_pointers.o: src/tests/matmul_device_pointers.F90 \
+	$(DOBJ)penf.o
+	@echo $(COTEXT)
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 #phony auxiliary rules
 .PHONY : $(MKDIRS)
