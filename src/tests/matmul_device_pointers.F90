@@ -13,11 +13,7 @@
 
 module matmul_device_pointers
    use omp_lib
-   use PENF, only : I1P, I2P, I4P, I8P, &
-#if defined _real128
-                    R16P, &
-#endif
-                    R4P, R8P
+   use falco_environment
 
    implicit none
 
