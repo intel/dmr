@@ -12,30 +12,34 @@
 !* ========================================================================== *
 
 module matmul_device_pointers
-   use PENF
    use omp_lib
+   use PENF, only : I1P, I2P, I4P, I8P, &
+#if defined _real128
+                    R16P, &
+#endif
+                    R4P, R8P
 
    implicit none
 
    interface matmul_I
-      module procedure matmul_I1P,   matmul_I2P,   matmul_I4P,   matmul_I8P,   &
-                       matmul_I1P_2, matmul_I2P_2, matmul_I4P_2, matmul_I8P_2
+      module procedure matmul_int8,   matmul_int16,   matmul_int32,   matmul_int64,   &
+                       matmul_int8_2, matmul_int16_2, matmul_int32_2, matmul_int64_2
    endinterface matmul_I
 
    interface matmul_R
       module procedure &
-#if defined _R16P
-                       matmul_R16P, matmul_R16P_2, &
+#if defined _real128
+                       matmul_real128, matmul_real128_2, &
 #endif
-                       matmul_R4P,  matmul_R4P_2,  matmul_R8P,   matmul_R8P_2
+                       matmul_real32,  matmul_real32_2,  matmul_real64,   matmul_real64_2
    endinterface matmul_R
 
    interface matmul_C
       module procedure &
-#if defined _R16P
-                       matmul_C16P, matmul_C16P_2, &
+#if defined _real128
+                       matmul_cmplx128, matmul_C16P_2, &
 #endif
-                       matmul_C4P,  matmul_C4P_2,  matmul_C8P,   matmul_C8P_2
+                       matmul_cmplx32,  matmul_C4P_2,  matmul_cmplx64,   matmul_C8P_2
    endinterface matmul_C
 
    public matmul_I, matmul_R, matmul_C
@@ -45,132 +49,132 @@ module matmul_device_pointers
    contains
 
       ! Init rank one device pointers
-      subroutine matmul_I1P(fptr_dev, i)
+      subroutine matmul_int8(fptr_dev, i)
          integer(I1P), intent(inout) :: fptr_dev(:)
          integer(I1P)                :: k=2_I1P
          include "src/tests/include/matmul_rank_1.i90"
-      endsubroutine matmul_I1P
+      endsubroutine matmul_int8
 
-      subroutine matmul_I2P(fptr_dev, i)
+      subroutine matmul_int16(fptr_dev, i)
          integer(I2P), intent(inout) :: fptr_dev(:)
          integer(I2P)                :: k=2_I2P
          include "src/tests/include/matmul_rank_1.i90"
-      endsubroutine matmul_I2P
+      endsubroutine matmul_int16
 
-      subroutine matmul_I4P(fptr_dev, i)
+      subroutine matmul_int32(fptr_dev, i)
          integer(I4P), intent(inout) :: fptr_dev(:)
          integer(I4P)                :: k=2_I4P
          include "src/tests/include/matmul_rank_1.i90"
-      endsubroutine matmul_I4P
+      endsubroutine matmul_int32
 
-      subroutine matmul_I8P(fptr_dev, i)
+      subroutine matmul_int64(fptr_dev, i)
          integer(I8P), intent(inout) :: fptr_dev(:)
          integer(I8P)                :: k=2_I8P
          include "src/tests/include/matmul_rank_1.i90"
-      endsubroutine matmul_I8P
+      endsubroutine matmul_int64
 
-      subroutine matmul_R4P(fptr_dev, i)
+      subroutine matmul_real32(fptr_dev, i)
          real(R4P), intent(inout) :: fptr_dev(:)
          real(R4P)                :: k=2.0_R4P
          include "src/tests/include/matmul_rank_1.i90"
-      endsubroutine matmul_R4P
+      endsubroutine matmul_real32
 
-      subroutine matmul_R8P(fptr_dev, i)
+      subroutine matmul_real64(fptr_dev, i)
          real(R8P), intent(inout) :: fptr_dev(:)
          real(R8P)                :: k=2.0_R8P
          include "src/tests/include/matmul_rank_1.i90"
-      endsubroutine matmul_R8P
+      endsubroutine matmul_real64
 
-#if defined _R16P
-      subroutine matmul_R16P(fptr_dev, i)
+#if defined _real128
+      subroutine matmul_real128(fptr_dev, i)
          real(R16P), intent(inout) :: fptr_dev(:)
          real(R16P)                :: k=2.0_R16P
          include "src/tests/include/matmul_rank_1.i90"
-      endsubroutine matmul_R16P
+      endsubroutine matmul_real128
 #endif
 
-      subroutine matmul_C4P(fptr_dev, i)
+      subroutine matmul_cmplx32(fptr_dev, i)
          complex(R4P), intent(inout) :: fptr_dev(:)
          complex(R4P)                :: k=(2.0_R4P, 0.0_R4P)
          include "src/tests/include/matmul_rank_1.i90"
-      endsubroutine matmul_C4P
+      endsubroutine matmul_cmplx32
 
-      subroutine matmul_C8P(fptr_dev, i)
+      subroutine matmul_cmplx64(fptr_dev, i)
          complex(R8P), intent(inout) :: fptr_dev(:)
          complex(R8P)                :: k=(2.0_R8P, 0.0_R8P)
          include "src/tests/include/matmul_rank_1.i90"
-      endsubroutine matmul_C8P
+      endsubroutine matmul_cmplx64
 
-#if defined _R16P
-      subroutine matmul_C16P(fptr_dev, i)
+#if defined _real128
+      subroutine matmul_cmplx128(fptr_dev, i)
          complex(R16P), intent(inout) :: fptr_dev(:)
          complex(R16P)                :: k=(2.0_R16P, 0.0_R16P)
          include "src/tests/include/matmul_rank_1.i90"
-      endsubroutine matmul_C16P
+      endsubroutine matmul_cmplx128
 #endif
 
       ! Init rank two device pointers
-      subroutine matmul_I1P_2(fptr_dev, i)
+      subroutine matmul_int8_2(fptr_dev, i)
          integer(I1P), intent(inout) :: fptr_dev(:,:)
          integer(I1P)                :: k=2_I1P
          include "src/tests/include/matmul_rank_2.i90"
-      endsubroutine matmul_I1P_2
+      endsubroutine matmul_int8_2
 
-      subroutine matmul_I2P_2(fptr_dev, i)
+      subroutine matmul_int16_2(fptr_dev, i)
          integer(I2P), intent(inout) :: fptr_dev(:,:)
          integer(I2P)                :: k=2_I2P
          include "src/tests/include/matmul_rank_2.i90"
-      endsubroutine matmul_I2P_2
+      endsubroutine matmul_int16_2
 
-      subroutine matmul_I4P_2(fptr_dev, i)
+      subroutine matmul_int32_2(fptr_dev, i)
          integer(I4P), intent(inout) :: fptr_dev(:,:)
          integer(I4P)                :: k=2_I4P
          include "src/tests/include/matmul_rank_2.i90"
-      endsubroutine matmul_I4P_2
+      endsubroutine matmul_int32_2
 
-      subroutine matmul_I8P_2(fptr_dev, i)
+      subroutine matmul_int64_2(fptr_dev, i)
          integer(I8P), intent(inout) :: fptr_dev(:,:)
          integer(I8P)                :: k=2_I8P
          include "src/tests/include/matmul_rank_2.i90"
-      endsubroutine matmul_I8P_2
+      endsubroutine matmul_int64_2
 
-      subroutine matmul_R4P_2(fptr_dev, i)
+      subroutine matmul_real32_2(fptr_dev, i)
          real(R4P), intent(inout) :: fptr_dev(:,:)
          real(R4P)                :: k=2.0_R4P
          include "src/tests/include/matmul_rank_2.i90"
-      endsubroutine matmul_R4P_2
+      endsubroutine matmul_real32_2
 
-      subroutine matmul_R8P_2(fptr_dev, i)
+      subroutine matmul_real64_2(fptr_dev, i)
          real(R8P), intent(inout) :: fptr_dev(:,:)
          real(R8P)                :: k=2.0_R8P
          include "src/tests/include/matmul_rank_2.i90"
-      endsubroutine matmul_R8P_2
+      endsubroutine matmul_real64_2
 
-#if defined _R16P
-      subroutine matmul_R16P_2(fptr_dev, i)
+#if defined _real128
+      subroutine matmul_real128_2(fptr_dev, i)
          real(R16P), intent(inout) :: fptr_dev(:,:)
          real(R16P)                :: k=2.0_R16P
          include "src/tests/include/matmul_rank_2.i90"
-      endsubroutine matmul_R16P_2
+      endsubroutine matmul_real128_2
 #endif
 
-      subroutine matmul_C4P_2(fptr_dev, i)
+      subroutine matmul_cmplx32_2(fptr_dev, i)
          complex(R4P), intent(inout) :: fptr_dev(:,:)
          complex(R4P)                :: k=(2.0_R4P, 0.0_R4P)
          include "src/tests/include/matmul_rank_2.i90"
-      endsubroutine matmul_C4P_2
+      endsubroutine matmul_cmplx32_2
 
-      subroutine matmul_C8P_2(fptr_dev, i)
+      subroutine matmul_cmplx64_2(fptr_dev, i)
          complex(R8P), intent(inout) :: fptr_dev(:,:)
          complex(R8P)                :: k=(2.0_R8P, 0.0_R8P)
          include "src/tests/include/matmul_rank_2.i90"
-      endsubroutine matmul_C8P_2
+      endsubroutine matmul_cmplx64_2
 
-#if defined _R16P
-      subroutine matmul_C16P_2(fptr_dev, i)
+#if defined _real128
+      subroutine matmul_cmplx128_2(fptr_dev, i)
          complex(R16P), intent(inout) :: fptr_dev(:,:)
          complex(R16P)                 :: k=(2.0_R16P, 0.0_R16P)
          include "src/tests/include/matmul_rank_2.i90"
-      endsubroutine matmul_C16P_2
+      endsubroutine matmul_cmplx128_2
 #endif
 endmodule matmul_device_pointers

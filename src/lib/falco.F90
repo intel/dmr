@@ -23,848 +23,1308 @@ module falco
 
    interface omp_target_is_present_f
       module procedure &
-                       omp_target_is_present_f_I1P_1,  omp_target_is_present_f_I1P_2,  omp_target_is_present_f_I1P_3,  &
-                       omp_target_is_present_f_I1P_4,  omp_target_is_present_f_I1P_5,  omp_target_is_present_f_I1P_6,  &
-                       omp_target_is_present_f_I1P_7,  &
-                       omp_target_is_present_f_I2P_1,  omp_target_is_present_f_I2P_2,  omp_target_is_present_f_I2P_3,  &
-                       omp_target_is_present_f_I2P_4,  omp_target_is_present_f_I2P_5,  omp_target_is_present_f_I2P_6,  &
-                       omp_target_is_present_f_I2P_7,  &
-                       omp_target_is_present_f_I4P_1,  omp_target_is_present_f_I4P_2,  omp_target_is_present_f_I4P_3,  &
-                       omp_target_is_present_f_I4P_4,  omp_target_is_present_f_I4P_5,  omp_target_is_present_f_I4P_6,  &
-                       omp_target_is_present_f_I4P_7,  &
-                       omp_target_is_present_f_I8P_1,  omp_target_is_present_f_I8P_2,  omp_target_is_present_f_I8P_3,  &
-                       omp_target_is_present_f_I8P_4,  omp_target_is_present_f_I8P_5,  omp_target_is_present_f_I8P_6,  &
-                       omp_target_is_present_f_I8P_7,  &
-#if defined _R16P
-                       omp_target_is_present_f_R16P_1, omp_target_is_present_f_R16P_2, omp_target_is_present_f_R16P_3, &
-                       omp_target_is_present_f_R16P_4, omp_target_is_present_f_R16P_5, omp_target_is_present_f_R16P_6, &
-                       omp_target_is_present_f_R16P_7, &
+                       omp_target_is_present_f_int8_1,     omp_target_is_present_f_int8_2,     omp_target_is_present_f_int8_3,  &
+                       omp_target_is_present_f_int8_4,     omp_target_is_present_f_int8_5,     omp_target_is_present_f_int8_6,  &
+                       omp_target_is_present_f_int8_7,     &
+                       omp_target_is_present_f_int16_1,    omp_target_is_present_f_int16_2,    omp_target_is_present_f_int16_3,  &
+                       omp_target_is_present_f_int16_4,    omp_target_is_present_f_int16_5,    omp_target_is_present_f_int16_6,  &
+                       omp_target_is_present_f_int16_7,    &
+                       omp_target_is_present_f_int32_1,    omp_target_is_present_f_int32_2,    omp_target_is_present_f_int32_3,  &
+                       omp_target_is_present_f_int32_4,    omp_target_is_present_f_int32_5,    omp_target_is_present_f_int32_6,  &
+                       omp_target_is_present_f_int32_7,    &
+                       omp_target_is_present_f_int64_1,    omp_target_is_present_f_int64_2,    omp_target_is_present_f_int64_3,  &
+                       omp_target_is_present_f_int64_4,    omp_target_is_present_f_int64_5,    omp_target_is_present_f_int64_6,  &
+                       omp_target_is_present_f_int64_7,    &
+#if defined _real128
+                       omp_target_is_present_f_real128_1,  omp_target_is_present_f_real128_2,  omp_target_is_present_f_real128_3, &
+                       omp_target_is_present_f_real128_4,  omp_target_is_present_f_real128_5,  omp_target_is_present_f_real128_6, &
+                       omp_target_is_present_f_real128_7,  &
 #endif
-                       omp_target_is_present_f_R4P_1,  omp_target_is_present_f_R4P_2,  omp_target_is_present_f_R4P_3,  &
-                       omp_target_is_present_f_R4P_4,  omp_target_is_present_f_R4P_5,  omp_target_is_present_f_R4P_6,  &
-                       omp_target_is_present_f_R4P_7,  &
-                       omp_target_is_present_f_R8P_1,  omp_target_is_present_f_R8P_2,  omp_target_is_present_f_R8P_3,  &
-                       omp_target_is_present_f_R8P_4,  omp_target_is_present_f_R8P_5,  omp_target_is_present_f_R8P_6,  &
-                       omp_target_is_present_f_R8P_7,  &
-#if defined _R16P
-                       omp_target_is_present_f_C16P_1, omp_target_is_present_f_C16P_2, omp_target_is_present_f_C16P_3, &
-                       omp_target_is_present_f_C16P_4, omp_target_is_present_f_C16P_5, omp_target_is_present_f_C16P_6, &
-                       omp_target_is_present_f_C16P_7,  &
+                       omp_target_is_present_f_real32_1,   omp_target_is_present_f_real32_2,   omp_target_is_present_f_real32_3,  &
+                       omp_target_is_present_f_real32_4,   omp_target_is_present_f_real32_5,   omp_target_is_present_f_real32_6,  &
+                       omp_target_is_present_f_real32_7,   &
+                       omp_target_is_present_f_real64_1,   omp_target_is_present_f_real64_2,   omp_target_is_present_f_real64_3,  &
+                       omp_target_is_present_f_real64_4,   omp_target_is_present_f_real64_5,   omp_target_is_present_f_real64_6,  &
+                       omp_target_is_present_f_real64_7,   &
+#if defined _real128
+                       omp_target_is_present_f_cmplx128_1, omp_target_is_present_f_cmplx128_2, omp_target_is_present_f_cmplx128_3, &
+                       omp_target_is_present_f_cmplx128_4, omp_target_is_present_f_cmplx128_5, omp_target_is_present_f_cmplx128_6, &
+                       omp_target_is_present_f_cmplx128_7,  &
 #endif
-                       omp_target_is_present_f_C4P_1,  omp_target_is_present_f_C4P_2,  omp_target_is_present_f_C4P_3,  &
-                       omp_target_is_present_f_C4P_4,  omp_target_is_present_f_C4P_5,  omp_target_is_present_f_C4P_6,  &
-                       omp_target_is_present_f_C4P_7,  &
-                       omp_target_is_present_f_C8P_1,  omp_target_is_present_f_C8P_2,  omp_target_is_present_f_C8P_3,  &
-                       omp_target_is_present_f_C8P_4,  omp_target_is_present_f_C8P_5,  omp_target_is_present_f_C8P_6,  &
-                       omp_target_is_present_f_C8P_7
+                       omp_target_is_present_f_cmplx32_1,  omp_target_is_present_f_cmplx32_2,  omp_target_is_present_f_cmplx32_3,  &
+                       omp_target_is_present_f_cmplx32_4,  omp_target_is_present_f_cmplx32_5,  omp_target_is_present_f_cmplx32_6,  &
+                       omp_target_is_present_f_cmplx32_7,  &
+                       omp_target_is_present_f_cmplx64_1,  omp_target_is_present_f_cmplx64_2,  omp_target_is_present_f_cmplx64_3,  &
+                       omp_target_is_present_f_cmplx64_4,  omp_target_is_present_f_cmplx64_5,  omp_target_is_present_f_cmplx64_6,  &
+                       omp_target_is_present_f_cmplx64_7
    endinterface omp_target_is_present_f
+
+   interface omp_get_mapped_ptr_f
+      module procedure &
+                       omp_get_mapped_ptr_f_int8_1,     omp_get_mapped_ptr_f_int8_2,     omp_get_mapped_ptr_f_int8_3,  &
+                       omp_get_mapped_ptr_f_int8_4,     omp_get_mapped_ptr_f_int8_5,     omp_get_mapped_ptr_f_int8_6,  &
+                       omp_get_mapped_ptr_f_int8_7,     &
+                       omp_get_mapped_ptr_f_int16_1,    omp_get_mapped_ptr_f_int16_2,    omp_get_mapped_ptr_f_int16_3,  &
+                       omp_get_mapped_ptr_f_int16_4,    omp_get_mapped_ptr_f_int16_5,    omp_get_mapped_ptr_f_int16_6,  &
+                       omp_get_mapped_ptr_f_int16_7,    &
+                       omp_get_mapped_ptr_f_int32_1,    omp_get_mapped_ptr_f_int32_2,    omp_get_mapped_ptr_f_int32_3,  &
+                       omp_get_mapped_ptr_f_int32_4,    omp_get_mapped_ptr_f_int32_5,    omp_get_mapped_ptr_f_int32_6,  &
+                       omp_get_mapped_ptr_f_int32_7,    &
+                       omp_get_mapped_ptr_f_int64_1,    omp_get_mapped_ptr_f_int64_2,    omp_get_mapped_ptr_f_int64_3,  &
+                       omp_get_mapped_ptr_f_int64_4,    omp_get_mapped_ptr_f_int64_5,    omp_get_mapped_ptr_f_int64_6,  &
+                       omp_get_mapped_ptr_f_int64_7,    &
+#if defined _real128
+                       omp_get_mapped_ptr_f_real128_1,  omp_get_mapped_ptr_f_real128_2,  omp_get_mapped_ptr_f_real128_3, &
+                       omp_get_mapped_ptr_f_real128_4,  omp_get_mapped_ptr_f_real128_5,  omp_get_mapped_ptr_f_real128_6, &
+                       omp_get_mapped_ptr_f_real128_7,  &
+#endif
+                       omp_get_mapped_ptr_f_real32_1,   omp_get_mapped_ptr_f_real32_2,   omp_get_mapped_ptr_f_real32_3,  &
+                       omp_get_mapped_ptr_f_real32_4,   omp_get_mapped_ptr_f_real32_5,   omp_get_mapped_ptr_f_real32_6,  &
+                       omp_get_mapped_ptr_f_real32_7,   &
+                       omp_get_mapped_ptr_f_real64_1,   omp_get_mapped_ptr_f_real64_2,   omp_get_mapped_ptr_f_real64_3,  &
+                       omp_get_mapped_ptr_f_real64_4,   omp_get_mapped_ptr_f_real64_5,   omp_get_mapped_ptr_f_real64_6,  &
+                       omp_get_mapped_ptr_f_real64_7,   &
+#if defined _real128
+                       omp_get_mapped_ptr_f_cmplx128_1, omp_get_mapped_ptr_f_cmplx128_2, omp_get_mapped_ptr_f_cmplx128_3, &
+                       omp_get_mapped_ptr_f_cmplx128_4, omp_get_mapped_ptr_f_cmplx128_5, omp_get_mapped_ptr_f_cmplx128_6, &
+                       omp_get_mapped_ptr_f_cmplx128_7,  &
+#endif
+                       omp_get_mapped_ptr_f_cmplx32_1,  omp_get_mapped_ptr_f_cmplx32_2,  omp_get_mapped_ptr_f_cmplx32_3,  &
+                       omp_get_mapped_ptr_f_cmplx32_4,  omp_get_mapped_ptr_f_cmplx32_5,  omp_get_mapped_ptr_f_cmplx32_6,  &
+                       omp_get_mapped_ptr_f_cmplx32_7,  &
+                       omp_get_mapped_ptr_f_cmplx64_1,  omp_get_mapped_ptr_f_cmplx64_2,  omp_get_mapped_ptr_f_cmplx64_3,  &
+                       omp_get_mapped_ptr_f_cmplx64_4,  omp_get_mapped_ptr_f_cmplx64_5,  omp_get_mapped_ptr_f_cmplx64_6,  &
+                       omp_get_mapped_ptr_f_cmplx64_7
+   endinterface omp_get_mapped_ptr_f
 
    interface omp_target_free_f
       module procedure &
-                       omp_target_free_f_I1P_1,  omp_target_free_f_I1P_2,  omp_target_free_f_I1P_3,  &
-                       omp_target_free_f_I1P_4,  omp_target_free_f_I1P_5,  omp_target_free_f_I1P_6,  &
-                       omp_target_free_f_I1P_7,  &
-                       omp_target_free_f_I2P_1,  omp_target_free_f_I2P_2,  omp_target_free_f_I2P_3,  &
-                       omp_target_free_f_I2P_4,  omp_target_free_f_I2P_5,  omp_target_free_f_I2P_6,  &
-                       omp_target_free_f_I2P_7,  &
-                       omp_target_free_f_I4P_1,  omp_target_free_f_I4P_2,  omp_target_free_f_I4P_3,  &
-                       omp_target_free_f_I4P_4,  omp_target_free_f_I4P_5,  omp_target_free_f_I4P_6,  &
-                       omp_target_free_f_I4P_7,  &
-                       omp_target_free_f_I8P_1,  omp_target_free_f_I8P_2,  omp_target_free_f_I8P_3,  &
-                       omp_target_free_f_I8P_4,  omp_target_free_f_I8P_5,  omp_target_free_f_I8P_6,  &
-                       omp_target_free_f_I8P_7,  &
-#if defined _R16P
-                       omp_target_free_f_R16P_1, omp_target_free_f_R16P_2, omp_target_free_f_R16P_3, &
-                       omp_target_free_f_R16P_4, omp_target_free_f_R16P_5, omp_target_free_f_R16P_6, &
-                       omp_target_free_f_R16P_7, &
+                       omp_target_free_f_int8_1,     omp_target_free_f_int8_2,     omp_target_free_f_int8_3,  &
+                       omp_target_free_f_int8_4,     omp_target_free_f_int8_5,     omp_target_free_f_int8_6,  &
+                       omp_target_free_f_int8_7,     &
+                       omp_target_free_f_int16_1,    omp_target_free_f_int16_2,    omp_target_free_f_int16_3,  &
+                       omp_target_free_f_int16_4,    omp_target_free_f_int16_5,    omp_target_free_f_int16_6,  &
+                       omp_target_free_f_int16_7,    &
+                       omp_target_free_f_int32_1,    omp_target_free_f_int32_2,    omp_target_free_f_int32_3,  &
+                       omp_target_free_f_int32_4,    omp_target_free_f_int32_5,    omp_target_free_f_int32_6,  &
+                       omp_target_free_f_int32_7,    &
+                       omp_target_free_f_int64_1,    omp_target_free_f_int64_2,    omp_target_free_f_int64_3,  &
+                       omp_target_free_f_int64_4,    omp_target_free_f_int64_5,    omp_target_free_f_int64_6,  &
+                       omp_target_free_f_int64_7,    &
+#if defined _real128
+                       omp_target_free_f_real128_1,  omp_target_free_f_real128_2,  omp_target_free_f_real128_3, &
+                       omp_target_free_f_real128_4,  omp_target_free_f_real128_5,  omp_target_free_f_real128_6, &
+                       omp_target_free_f_real128_7,  &
 #endif
-                       omp_target_free_f_R4P_1,  omp_target_free_f_R4P_2,  omp_target_free_f_R4P_3,  &
-                       omp_target_free_f_R4P_4,  omp_target_free_f_R4P_5,  omp_target_free_f_R4P_6,  &
-                       omp_target_free_f_R4P_7,  &
-                       omp_target_free_f_R8P_1,  omp_target_free_f_R8P_2,  omp_target_free_f_R8P_3,  &
-                       omp_target_free_f_R8P_4,  omp_target_free_f_R8P_5,  omp_target_free_f_R8P_6,  &
-                       omp_target_free_f_R8P_7,  &
-#if defined _R16P
-                       omp_target_free_f_C16P_1, omp_target_free_f_C16P_2, omp_target_free_f_C16P_3, &
-                       omp_target_free_f_C16P_4, omp_target_free_f_C16P_5, omp_target_free_f_C16P_6, &
-                       omp_target_free_f_C16P_7,  &
+                       omp_target_free_f_real32_1,   omp_target_free_f_real32_2,   omp_target_free_f_real32_3,  &
+                       omp_target_free_f_real32_4,   omp_target_free_f_real32_5,   omp_target_free_f_real32_6,  &
+                       omp_target_free_f_real32_7,   &
+                       omp_target_free_f_real64_1,   omp_target_free_f_real64_2,   omp_target_free_f_real64_3,  &
+                       omp_target_free_f_real64_4,   omp_target_free_f_real64_5,   omp_target_free_f_real64_6,  &
+                       omp_target_free_f_real64_7,   &
+#if defined _real128
+                       omp_target_free_f_cmplx128_1, omp_target_free_f_cmplx128_2, omp_target_free_f_cmplx128_3, &
+                       omp_target_free_f_cmplx128_4, omp_target_free_f_cmplx128_5, omp_target_free_f_cmplx128_6, &
+                       omp_target_free_f_cmplx128_7,  &
 #endif
-                       omp_target_free_f_C4P_1,  omp_target_free_f_C4P_2,  omp_target_free_f_C4P_3,  &
-                       omp_target_free_f_C4P_4,  omp_target_free_f_C4P_5,  omp_target_free_f_C4P_6,  &
-                       omp_target_free_f_C4P_7,  &
-                       omp_target_free_f_C8P_1,  omp_target_free_f_C8P_2,  omp_target_free_f_C8P_3,  &
-                       omp_target_free_f_C8P_4,  omp_target_free_f_C8P_5,  omp_target_free_f_C8P_6,  &
-                       omp_target_free_f_C8P_7
+                       omp_target_free_f_cmplx32_1,  omp_target_free_f_cmplx32_2,  omp_target_free_f_cmplx32_3,  &
+                       omp_target_free_f_cmplx32_4,  omp_target_free_f_cmplx32_5,  omp_target_free_f_cmplx32_6,  &
+                       omp_target_free_f_cmplx32_7,  &
+                       omp_target_free_f_cmplx64_1,  omp_target_free_f_cmplx64_2,  omp_target_free_f_cmplx64_3,  &
+                       omp_target_free_f_cmplx64_4,  omp_target_free_f_cmplx64_5,  omp_target_free_f_cmplx64_6,  &
+                       omp_target_free_f_cmplx64_7
    endinterface omp_target_free_f
 
    interface omp_target_alloc_f
       module procedure &
-                       omp_target_alloc_f_I1P_1,  omp_target_alloc_f_I1P_2,  omp_target_alloc_f_I1P_3,  &
-                       omp_target_alloc_f_I1P_4,  omp_target_alloc_f_I1P_5,  omp_target_alloc_f_I1P_6,  &
-                       omp_target_alloc_f_I1P_7,  &
-                       omp_target_alloc_f_I2P_1,  omp_target_alloc_f_I2P_2,  omp_target_alloc_f_I2P_3,  &
-                       omp_target_alloc_f_I2P_4,  omp_target_alloc_f_I2P_5,  omp_target_alloc_f_I2P_6,  &
-                       omp_target_alloc_f_I2P_7,  &
-                       omp_target_alloc_f_I4P_1,  omp_target_alloc_f_I4P_2,  omp_target_alloc_f_I4P_3,  &
-                       omp_target_alloc_f_I4P_4,  omp_target_alloc_f_I4P_5,  omp_target_alloc_f_I4P_6,  &
-                       omp_target_alloc_f_I4P_7,  &
-                       omp_target_alloc_f_I8P_1,  omp_target_alloc_f_I8P_2,  omp_target_alloc_f_I8P_3,  &
-                       omp_target_alloc_f_I8P_4,  omp_target_alloc_f_I8P_5,  omp_target_alloc_f_I8P_6,  &
-                       omp_target_alloc_f_I8P_7,  &
-#if defined _R16P
-                       omp_target_alloc_f_R16P_1, omp_target_alloc_f_R16P_2, omp_target_alloc_f_R16P_3, &
-                       omp_target_alloc_f_R16P_4, omp_target_alloc_f_R16P_5, omp_target_alloc_f_R16P_6, &
-                       omp_target_alloc_f_R16P_7, &
+                       omp_target_alloc_f_int8_1,     omp_target_alloc_f_int8_2,     omp_target_alloc_f_int8_3,  &
+                       omp_target_alloc_f_int8_4,     omp_target_alloc_f_int8_5,     omp_target_alloc_f_int8_6,  &
+                       omp_target_alloc_f_int8_7,     &
+                       omp_target_alloc_f_int16_1,    omp_target_alloc_f_int16_2,    omp_target_alloc_f_int16_3,  &
+                       omp_target_alloc_f_int16_4,    omp_target_alloc_f_int16_5,    omp_target_alloc_f_int16_6,  &
+                       omp_target_alloc_f_int16_7,    &
+                       omp_target_alloc_f_int32_1,    omp_target_alloc_f_int32_2,    omp_target_alloc_f_int32_3,  &
+                       omp_target_alloc_f_int32_4,    omp_target_alloc_f_int32_5,    omp_target_alloc_f_int32_6,  &
+                       omp_target_alloc_f_int32_7,    &
+                       omp_target_alloc_f_int64_1,    omp_target_alloc_f_int64_2,    omp_target_alloc_f_int64_3,  &
+                       omp_target_alloc_f_int64_4,    omp_target_alloc_f_int64_5,    omp_target_alloc_f_int64_6,  &
+                       omp_target_alloc_f_int64_7,    &
+#if defined _real128
+                       omp_target_alloc_f_real128_1,  omp_target_alloc_f_real128_2,  omp_target_alloc_f_real128_3, &
+                       omp_target_alloc_f_real128_4,  omp_target_alloc_f_real128_5,  omp_target_alloc_f_real128_6, &
+                       omp_target_alloc_f_real128_7,  &
 #endif
-                       omp_target_alloc_f_R4P_1,  omp_target_alloc_f_R4P_2,  omp_target_alloc_f_R4P_3,  &
-                       omp_target_alloc_f_R4P_4,  omp_target_alloc_f_R4P_5,  omp_target_alloc_f_R4P_6,  &
-                       omp_target_alloc_f_R4P_7,  &
-                       omp_target_alloc_f_R8P_1,  omp_target_alloc_f_R8P_2,  omp_target_alloc_f_R8P_3,  &
-                       omp_target_alloc_f_R8P_4,  omp_target_alloc_f_R8P_5,  omp_target_alloc_f_R8P_6,  &
-                       omp_target_alloc_f_R8P_7,  &
-#if defined _R16P
-                       omp_target_alloc_f_C16P_1, omp_target_alloc_f_C16P_2, omp_target_alloc_f_C16P_3, &
-                       omp_target_alloc_f_C16P_4, omp_target_alloc_f_C16P_5, omp_target_alloc_f_C16P_6, &
-                       omp_target_alloc_f_C16P_7,  &
+                       omp_target_alloc_f_real32_1,   omp_target_alloc_f_real32_2,   omp_target_alloc_f_real32_3,  &
+                       omp_target_alloc_f_real32_4,   omp_target_alloc_f_real32_5,   omp_target_alloc_f_real32_6,  &
+                       omp_target_alloc_f_real32_7,   &
+                       omp_target_alloc_f_real64_1,   omp_target_alloc_f_real64_2,   omp_target_alloc_f_real64_3,  &
+                       omp_target_alloc_f_real64_4,   omp_target_alloc_f_real64_5,   omp_target_alloc_f_real64_6,  &
+                       omp_target_alloc_f_real64_7,   &
+#if defined _real128
+                       omp_target_alloc_f_cmplx128_1, omp_target_alloc_f_cmplx128_2, omp_target_alloc_f_cmplx128_3, &
+                       omp_target_alloc_f_cmplx128_4, omp_target_alloc_f_cmplx128_5, omp_target_alloc_f_cmplx128_6, &
+                       omp_target_alloc_f_cmplx128_7,  &
 #endif
-                       omp_target_alloc_f_C4P_1,  omp_target_alloc_f_C4P_2,  omp_target_alloc_f_C4P_3,  &
-                       omp_target_alloc_f_C4P_4,  omp_target_alloc_f_C4P_5,  omp_target_alloc_f_C4P_6,  &
-                       omp_target_alloc_f_C4P_7,  &
-                       omp_target_alloc_f_C8P_1,  omp_target_alloc_f_C8P_2,  omp_target_alloc_f_C8P_3,  &
-                       omp_target_alloc_f_C8P_4,  omp_target_alloc_f_C8P_5,  omp_target_alloc_f_C8P_6,  &
-                       omp_target_alloc_f_C8P_7
+                       omp_target_alloc_f_cmplx32_1,  omp_target_alloc_f_cmplx32_2,  omp_target_alloc_f_cmplx32_3,  &
+                       omp_target_alloc_f_cmplx32_4,  omp_target_alloc_f_cmplx32_5,  omp_target_alloc_f_cmplx32_6,  &
+                       omp_target_alloc_f_cmplx32_7,  &
+                       omp_target_alloc_f_cmplx64_1,  omp_target_alloc_f_cmplx64_2,  omp_target_alloc_f_cmplx64_3,  &
+                       omp_target_alloc_f_cmplx64_4,  omp_target_alloc_f_cmplx64_5,  omp_target_alloc_f_cmplx64_6,  &
+                       omp_target_alloc_f_cmplx64_7
    endinterface omp_target_alloc_f
 
    interface omp_target_memcpy_f
       module procedure &
-                       omp_target_memcpy_f_I1P_1,  omp_target_memcpy_f_I1P_2,  omp_target_memcpy_f_I1P_3,  &
-                       omp_target_memcpy_f_I1P_4,  omp_target_memcpy_f_I1P_5,  omp_target_memcpy_f_I1P_6,  &
-                       omp_target_memcpy_f_I1P_7,  &
-                       omp_target_memcpy_f_I2P_1,  omp_target_memcpy_f_I2P_2,  omp_target_memcpy_f_I2P_3,  &
-                       omp_target_memcpy_f_I2P_4,  omp_target_memcpy_f_I2P_5,  omp_target_memcpy_f_I2P_6,  &
-                       omp_target_memcpy_f_I2P_7,  &
-                       omp_target_memcpy_f_I4P_1,  omp_target_memcpy_f_I4P_2,  omp_target_memcpy_f_I4P_3,  &
-                       omp_target_memcpy_f_I4P_4,  omp_target_memcpy_f_I4P_5,  omp_target_memcpy_f_I4P_6,  &
-                       omp_target_memcpy_f_I4P_7,  &
-                       omp_target_memcpy_f_I8P_1,  omp_target_memcpy_f_I8P_2,  omp_target_memcpy_f_I8P_3,  &
-                       omp_target_memcpy_f_I8P_4,  omp_target_memcpy_f_I8P_5,  omp_target_memcpy_f_I8P_6,  &
-                       omp_target_memcpy_f_I8P_7,  &
-#if defined _R16P
-                       omp_target_memcpy_f_R16P_1, omp_target_memcpy_f_R16P_2, omp_target_memcpy_f_R16P_3, &
-                       omp_target_memcpy_f_R16P_4, omp_target_memcpy_f_R16P_5, omp_target_memcpy_f_R16P_6, &
-                       omp_target_memcpy_f_R16P_7, &
+                       omp_target_memcpy_f_int8_1,     omp_target_memcpy_f_int8_2,     omp_target_memcpy_f_int8_3,  &
+                       omp_target_memcpy_f_int8_4,     omp_target_memcpy_f_int8_5,     omp_target_memcpy_f_int8_6,  &
+                       omp_target_memcpy_f_int8_7,     &
+                       omp_target_memcpy_f_int16_1,    omp_target_memcpy_f_int16_2,    omp_target_memcpy_f_int16_3,  &
+                       omp_target_memcpy_f_int16_4,    omp_target_memcpy_f_int16_5,    omp_target_memcpy_f_int16_6,  &
+                       omp_target_memcpy_f_int16_7,    &
+                       omp_target_memcpy_f_int32_1,    omp_target_memcpy_f_int32_2,    omp_target_memcpy_f_int32_3,  &
+                       omp_target_memcpy_f_int32_4,    omp_target_memcpy_f_int32_5,    omp_target_memcpy_f_int32_6,  &
+                       omp_target_memcpy_f_int32_7,    &
+                       omp_target_memcpy_f_int64_1,    omp_target_memcpy_f_int64_2,    omp_target_memcpy_f_int64_3,  &
+                       omp_target_memcpy_f_int64_4,    omp_target_memcpy_f_int64_5,    omp_target_memcpy_f_int64_6,  &
+                       omp_target_memcpy_f_int64_7,    &
+#if defined _real128
+                       omp_target_memcpy_f_real128_1,  omp_target_memcpy_f_real128_2,  omp_target_memcpy_f_real128_3, &
+                       omp_target_memcpy_f_real128_4,  omp_target_memcpy_f_real128_5,  omp_target_memcpy_f_real128_6, &
+                       omp_target_memcpy_f_real128_7,  &
 #endif
-                       omp_target_memcpy_f_R4P_1,  omp_target_memcpy_f_R4P_2,  omp_target_memcpy_f_R4P_3,  &
-                       omp_target_memcpy_f_R4P_4,  omp_target_memcpy_f_R4P_5,  omp_target_memcpy_f_R4P_6,  &
-                       omp_target_memcpy_f_R4P_7,  &
-                       omp_target_memcpy_f_R8P_1,  omp_target_memcpy_f_R8P_2,  omp_target_memcpy_f_R8P_3,  &
-                       omp_target_memcpy_f_R8P_4,  omp_target_memcpy_f_R8P_5,  omp_target_memcpy_f_R8P_6,  &
-                       omp_target_memcpy_f_R8P_7,  &
-#if defined _R16P
-                       omp_target_memcpy_f_C16P_1, omp_target_memcpy_f_C16P_2, omp_target_memcpy_f_C16P_3, &
-                       omp_target_memcpy_f_C16P_4, omp_target_memcpy_f_C16P_5, omp_target_memcpy_f_C16P_6, &
-                       omp_target_memcpy_f_C16P_7,  &
+                       omp_target_memcpy_f_real32_1,   omp_target_memcpy_f_real32_2,   omp_target_memcpy_f_real32_3,  &
+                       omp_target_memcpy_f_real32_4,   omp_target_memcpy_f_real32_5,   omp_target_memcpy_f_real32_6,  &
+                       omp_target_memcpy_f_real32_7,   &
+                       omp_target_memcpy_f_real64_1,   omp_target_memcpy_f_real64_2,   omp_target_memcpy_f_real64_3,  &
+                       omp_target_memcpy_f_real64_4,   omp_target_memcpy_f_real64_5,   omp_target_memcpy_f_real64_6,  &
+                       omp_target_memcpy_f_real64_7,   &
+#if defined _real128
+                       omp_target_memcpy_f_cmplx128_1, omp_target_memcpy_f_cmplx128_2, omp_target_memcpy_f_cmplx128_3, &
+                       omp_target_memcpy_f_cmplx128_4, omp_target_memcpy_f_cmplx128_5, omp_target_memcpy_f_cmplx128_6, &
+                       omp_target_memcpy_f_cmplx128_7,  &
 #endif
-                       omp_target_memcpy_f_C4P_1,  omp_target_memcpy_f_C4P_2,  omp_target_memcpy_f_C4P_3,  &
-                       omp_target_memcpy_f_C4P_4,  omp_target_memcpy_f_C4P_5,  omp_target_memcpy_f_C4P_6,  &
-                       omp_target_memcpy_f_C4P_7,  &
-                       omp_target_memcpy_f_C8P_1,  omp_target_memcpy_f_C8P_2,  omp_target_memcpy_f_C8P_3,  &
-                       omp_target_memcpy_f_C8P_4,  omp_target_memcpy_f_C8P_5,  omp_target_memcpy_f_C8P_6,  &
-                       omp_target_memcpy_f_C8P_7
+                       omp_target_memcpy_f_cmplx32_1,  omp_target_memcpy_f_cmplx32_2,  omp_target_memcpy_f_cmplx32_3,  &
+                       omp_target_memcpy_f_cmplx32_4,  omp_target_memcpy_f_cmplx32_5,  omp_target_memcpy_f_cmplx32_6,  &
+                       omp_target_memcpy_f_cmplx32_7,  &
+                       omp_target_memcpy_f_cmplx64_1,  omp_target_memcpy_f_cmplx64_2,  omp_target_memcpy_f_cmplx64_3,  &
+                       omp_target_memcpy_f_cmplx64_4,  omp_target_memcpy_f_cmplx64_5,  omp_target_memcpy_f_cmplx64_6,  &
+                       omp_target_memcpy_f_cmplx64_7
    endinterface omp_target_memcpy_f
 
    interface omp_target_memcpy_rect_f
       module procedure &
-                       omp_target_memcpy_rect_f_I1P_2,  omp_target_memcpy_rect_f_I1P_3,  &
-                       omp_target_memcpy_rect_f_I1P_4,  omp_target_memcpy_rect_f_I1P_5,  omp_target_memcpy_rect_f_I1P_6,  &
-                       omp_target_memcpy_rect_f_I1P_7,  &
-                       omp_target_memcpy_rect_f_I2P_2,  omp_target_memcpy_rect_f_I2P_3,  &
-                       omp_target_memcpy_rect_f_I2P_4,  omp_target_memcpy_rect_f_I2P_5,  omp_target_memcpy_rect_f_I2P_6,  &
-                       omp_target_memcpy_rect_f_I2P_7,  &
-                       omp_target_memcpy_rect_f_I4P_2,  omp_target_memcpy_rect_f_I4P_3,  &
-                       omp_target_memcpy_rect_f_I4P_4,  omp_target_memcpy_rect_f_I4P_5,  omp_target_memcpy_rect_f_I4P_6,  &
-                       omp_target_memcpy_rect_f_I4P_7,  &
-                       omp_target_memcpy_rect_f_I8P_2,  omp_target_memcpy_rect_f_I8P_3,  &
-                       omp_target_memcpy_rect_f_I8P_4,  omp_target_memcpy_rect_f_I8P_5,  omp_target_memcpy_rect_f_I8P_6,  &
-                       omp_target_memcpy_rect_f_I8P_7,  &
-#if defined _R16P
-                       omp_target_memcpy_rect_f_R16P_2, omp_target_memcpy_rect_f_R16P_3, &
-                       omp_target_memcpy_rect_f_R16P_4, omp_target_memcpy_rect_f_R16P_5, omp_target_memcpy_rect_f_R16P_6, &
-                       omp_target_memcpy_rect_f_R16P_7, &
+                       omp_target_memcpy_rect_f_int8_2,  omp_target_memcpy_rect_f_int8_3,  &
+                       omp_target_memcpy_rect_f_int8_4,  omp_target_memcpy_rect_f_int8_5,  omp_target_memcpy_rect_f_int8_6,  &
+                       omp_target_memcpy_rect_f_int8_7,  &
+                       omp_target_memcpy_rect_f_int16_2,  omp_target_memcpy_rect_f_int16_3,  &
+                       omp_target_memcpy_rect_f_int16_4,  omp_target_memcpy_rect_f_int16_5,  omp_target_memcpy_rect_f_int16_6,  &
+                       omp_target_memcpy_rect_f_int16_7,  &
+                       omp_target_memcpy_rect_f_int32_2,  omp_target_memcpy_rect_f_int32_3,  &
+                       omp_target_memcpy_rect_f_int32_4,  omp_target_memcpy_rect_f_int32_5,  omp_target_memcpy_rect_f_int32_6,  &
+                       omp_target_memcpy_rect_f_int32_7,  &
+                       omp_target_memcpy_rect_f_int64_2,  omp_target_memcpy_rect_f_int64_3,  &
+                       omp_target_memcpy_rect_f_int64_4,  omp_target_memcpy_rect_f_int64_5,  omp_target_memcpy_rect_f_int64_6,  &
+                       omp_target_memcpy_rect_f_int64_7,  &
+#if defined _real128
+                       omp_target_memcpy_rect_f_real128_2, omp_target_memcpy_rect_f_real128_3, &
+                       omp_target_memcpy_rect_f_real128_4, omp_target_memcpy_rect_f_real128_5, omp_target_memcpy_rect_f_real128_6, &
+                       omp_target_memcpy_rect_f_real128_7, &
 #endif
-                       omp_target_memcpy_rect_f_R4P_2,  omp_target_memcpy_rect_f_R4P_3,  &
-                       omp_target_memcpy_rect_f_R4P_4,  omp_target_memcpy_rect_f_R4P_5,  omp_target_memcpy_rect_f_R4P_6,  &
-                       omp_target_memcpy_rect_f_R4P_7,  &
-                       omp_target_memcpy_rect_f_R8P_2,  omp_target_memcpy_rect_f_R8P_3,  &
-                       omp_target_memcpy_rect_f_R8P_4,  omp_target_memcpy_rect_f_R8P_5,  omp_target_memcpy_rect_f_R8P_6,  &
-                       omp_target_memcpy_rect_f_R8P_7,  &
-#if defined _R16P
-                       omp_target_memcpy_rect_f_C16P_2, omp_target_memcpy_rect_f_C16P_3, &
-                       omp_target_memcpy_rect_f_C16P_4, omp_target_memcpy_rect_f_C16P_5, omp_target_memcpy_rect_f_C16P_6, &
-                       omp_target_memcpy_rect_f_C16P_7,  &
+                       omp_target_memcpy_rect_f_real32_2,  omp_target_memcpy_rect_f_real32_3,  &
+                       omp_target_memcpy_rect_f_real32_4,  omp_target_memcpy_rect_f_real32_5,  omp_target_memcpy_rect_f_real32_6,  &
+                       omp_target_memcpy_rect_f_real32_7,  &
+                       omp_target_memcpy_rect_f_real64_2,  omp_target_memcpy_rect_f_real64_3,  &
+                       omp_target_memcpy_rect_f_real64_4,  omp_target_memcpy_rect_f_real64_5,  omp_target_memcpy_rect_f_real64_6,  &
+                       omp_target_memcpy_rect_f_real64_7,  &
+#if defined _real128
+                       omp_target_memcpy_rect_f_cmplx128_2, omp_target_memcpy_rect_f_cmplx128_3, &
+                       omp_target_memcpy_rect_f_cmplx128_4, omp_target_memcpy_rect_f_cmplx128_5, omp_target_memcpy_rect_f_cmplx128_6, &
+                       omp_target_memcpy_rect_f_cmplx128_7,  &
 #endif
-                       omp_target_memcpy_rect_f_C4P_2,  omp_target_memcpy_rect_f_C4P_3,  &
-                       omp_target_memcpy_rect_f_C4P_4,  omp_target_memcpy_rect_f_C4P_5,  omp_target_memcpy_rect_f_C4P_6,  &
-                       omp_target_memcpy_rect_f_C4P_7,  &
-                       omp_target_memcpy_rect_f_C8P_2,  omp_target_memcpy_rect_f_C8P_3,  &
-                       omp_target_memcpy_rect_f_C8P_4,  omp_target_memcpy_rect_f_C8P_5,  omp_target_memcpy_rect_f_C8P_6,  &
-                       omp_target_memcpy_rect_f_C8P_7
+                       omp_target_memcpy_rect_f_cmplx32_2,  omp_target_memcpy_rect_f_cmplx32_3,  &
+                       omp_target_memcpy_rect_f_cmplx32_4,  omp_target_memcpy_rect_f_cmplx32_5,  omp_target_memcpy_rect_f_cmplx32_6,  &
+                       omp_target_memcpy_rect_f_cmplx32_7,  &
+                       omp_target_memcpy_rect_f_cmplx64_2,  omp_target_memcpy_rect_f_cmplx64_3,  &
+                       omp_target_memcpy_rect_f_cmplx64_4,  omp_target_memcpy_rect_f_cmplx64_5,  omp_target_memcpy_rect_f_cmplx64_6,  &
+                       omp_target_memcpy_rect_f_cmplx64_7
    endinterface omp_target_memcpy_rect_f
 
-   public omp_target_is_present_f, omp_target_alloc_f, omp_target_free_f, omp_target_memcpy_f, omp_target_memcpy_rect_f
+   public omp_target_is_present_f, omp_target_alloc_f, omp_target_free_f, omp_target_memcpy_f, omp_target_memcpy_rect_f, &
+          omp_get_mapped_ptr_f
 
    private
 
    contains
 
       ! OpenMP Target Is Present Integer Routines
-      function omp_target_is_present_f_I1P_1(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int8_1(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I1P_1
+         logical                          :: omp_target_is_present_f_int8_1
          integer(I1P), target, intent(in) :: fptr_dev(:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I1P_1 = .true.
+            omp_target_is_present_f_int8_1 = .true.
          else
-            omp_target_is_present_f_I1P_1 = .false.
+            omp_target_is_present_f_int8_1 = .false.
          endif
 
-       endfunction omp_target_is_present_f_I1P_1
+       endfunction omp_target_is_present_f_int8_1
 
-      function omp_target_is_present_f_I1P_2(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int8_2(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I1P_2
+         logical                          :: omp_target_is_present_f_int8_2
          integer(I1P), target, intent(in) :: fptr_dev(:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I1P_2 = .true.
+            omp_target_is_present_f_int8_2 = .true.
          else
-            omp_target_is_present_f_I1P_2 = .false.
+            omp_target_is_present_f_int8_2 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I1P_2
+      endfunction omp_target_is_present_f_int8_2
 
-      function omp_target_is_present_f_I1P_3(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int8_3(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I1P_3
+         logical                          :: omp_target_is_present_f_int8_3
          integer(I1P), target, intent(in) :: fptr_dev(:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I1P_3 = .true.
+            omp_target_is_present_f_int8_3 = .true.
          else
-            omp_target_is_present_f_I1P_3 = .false.
+            omp_target_is_present_f_int8_3 = .false.
          endif
 
-       endfunction omp_target_is_present_f_I1P_3
+       endfunction omp_target_is_present_f_int8_3
 
-      function omp_target_is_present_f_I1P_4(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int8_4(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I1P_4
+         logical                          :: omp_target_is_present_f_int8_4
          integer(I1P), target, intent(in) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I1P_4 = .true.
+            omp_target_is_present_f_int8_4 = .true.
          else
-            omp_target_is_present_f_I1P_4 = .false.
+            omp_target_is_present_f_int8_4 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I1P_4
+      endfunction omp_target_is_present_f_int8_4
 
-      function omp_target_is_present_f_I1P_5(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int8_5(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I1P_5
+         logical                          :: omp_target_is_present_f_int8_5
          integer(I1P), target, intent(in) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I1P_5 = .true.
+            omp_target_is_present_f_int8_5 = .true.
          else
-            omp_target_is_present_f_I1P_5 = .false.
+            omp_target_is_present_f_int8_5 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I1P_5
+      endfunction omp_target_is_present_f_int8_5
 
-      function omp_target_is_present_f_I1P_6(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int8_6(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I1P_6
+         logical                          :: omp_target_is_present_f_int8_6
          integer(I1P), target, intent(in) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I1P_6 = .true.
+            omp_target_is_present_f_int8_6 = .true.
          else
-            omp_target_is_present_f_I1P_6 = .false.
+            omp_target_is_present_f_int8_6 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I1P_6
+      endfunction omp_target_is_present_f_int8_6
 
-      function omp_target_is_present_f_I1P_7(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int8_7(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I1P_7
+         logical                          :: omp_target_is_present_f_int8_7
          integer(I1P), target, intent(in) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I1P_7 = .true.
+            omp_target_is_present_f_int8_7 = .true.
          else
-            omp_target_is_present_f_I1P_7 = .false.
+            omp_target_is_present_f_int8_7 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I1P_7
+      endfunction omp_target_is_present_f_int8_7
 
-      function omp_target_is_present_f_I2P_1(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int16_1(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I2P_1
+         logical                          :: omp_target_is_present_f_int16_1
          integer(I2P), target, intent(in) :: fptr_dev(:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I2P_1 = .true.
+            omp_target_is_present_f_int16_1 = .true.
          else
-            omp_target_is_present_f_I2P_1 = .false.
+            omp_target_is_present_f_int16_1 = .false.
          endif
 
-       endfunction omp_target_is_present_f_I2P_1
+       endfunction omp_target_is_present_f_int16_1
 
-      function omp_target_is_present_f_I2P_2(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int16_2(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I2P_2
+         logical                          :: omp_target_is_present_f_int16_2
          integer(I2P), target, intent(in) :: fptr_dev(:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I2P_2 = .true.
+            omp_target_is_present_f_int16_2 = .true.
          else
-            omp_target_is_present_f_I2P_2 = .false.
+            omp_target_is_present_f_int16_2 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I2P_2
+      endfunction omp_target_is_present_f_int16_2
 
-      function omp_target_is_present_f_I2P_3(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int16_3(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I2P_3
+         logical                          :: omp_target_is_present_f_int16_3
          integer(I2P), target, intent(in) :: fptr_dev(:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I2P_3 = .true.
+            omp_target_is_present_f_int16_3 = .true.
          else
-            omp_target_is_present_f_I2P_3 = .false.
+            omp_target_is_present_f_int16_3 = .false.
          endif
 
-       endfunction omp_target_is_present_f_I2P_3
+       endfunction omp_target_is_present_f_int16_3
 
-      function omp_target_is_present_f_I2P_4(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int16_4(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I2P_4
+         logical                          :: omp_target_is_present_f_int16_4
          integer(I2P), target, intent(in) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I2P_4 = .true.
+            omp_target_is_present_f_int16_4 = .true.
          else
-            omp_target_is_present_f_I2P_4 = .false.
+            omp_target_is_present_f_int16_4 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I2P_4
+      endfunction omp_target_is_present_f_int16_4
 
-      function omp_target_is_present_f_I2P_5(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int16_5(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I2P_5
+         logical                          :: omp_target_is_present_f_int16_5
          integer(I2P), target, intent(in) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I2P_5 = .true.
+            omp_target_is_present_f_int16_5 = .true.
          else
-            omp_target_is_present_f_I2P_5 = .false.
+            omp_target_is_present_f_int16_5 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I2P_5
+      endfunction omp_target_is_present_f_int16_5
 
-      function omp_target_is_present_f_I2P_6(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int16_6(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I2P_6
+         logical                          :: omp_target_is_present_f_int16_6
          integer(I2P), target, intent(in) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I2P_6 = .true.
+            omp_target_is_present_f_int16_6 = .true.
          else
-            omp_target_is_present_f_I2P_6 = .false.
+            omp_target_is_present_f_int16_6 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I2P_6
+      endfunction omp_target_is_present_f_int16_6
 
-      function omp_target_is_present_f_I2P_7(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int16_7(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I2P_7
+         logical                          :: omp_target_is_present_f_int16_7
          integer(I2P), target, intent(in) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I2P_7 = .true.
+            omp_target_is_present_f_int16_7 = .true.
          else
-            omp_target_is_present_f_I2P_7 = .false.
+            omp_target_is_present_f_int16_7 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I2P_7
+      endfunction omp_target_is_present_f_int16_7
 
-      function omp_target_is_present_f_I4P_1(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int32_1(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I4P_1
+         logical                          :: omp_target_is_present_f_int32_1
          integer(I4P), target, intent(in) :: fptr_dev(:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I4P_1 = .true.
+            omp_target_is_present_f_int32_1 = .true.
          else
-            omp_target_is_present_f_I4P_1 = .false.
+            omp_target_is_present_f_int32_1 = .false.
          endif
 
-       endfunction omp_target_is_present_f_I4P_1
+       endfunction omp_target_is_present_f_int32_1
 
-      function omp_target_is_present_f_I4P_2(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int32_2(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I4P_2
+         logical                          :: omp_target_is_present_f_int32_2
          integer(I4P), target, intent(in) :: fptr_dev(:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I4P_2 = .true.
+            omp_target_is_present_f_int32_2 = .true.
          else
-            omp_target_is_present_f_I4P_2 = .false.
+            omp_target_is_present_f_int32_2 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I4P_2
+      endfunction omp_target_is_present_f_int32_2
 
-      function omp_target_is_present_f_I4P_3(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int32_3(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I4P_3
+         logical                          :: omp_target_is_present_f_int32_3
          integer(I4P), target, intent(in) :: fptr_dev(:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I4P_3 = .true.
+            omp_target_is_present_f_int32_3 = .true.
          else
-            omp_target_is_present_f_I4P_3 = .false.
+            omp_target_is_present_f_int32_3 = .false.
          endif
 
-       endfunction omp_target_is_present_f_I4P_3
+       endfunction omp_target_is_present_f_int32_3
 
-      function omp_target_is_present_f_I4P_4(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int32_4(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I4P_4
+         logical                          :: omp_target_is_present_f_int32_4
          integer(I4P), target, intent(in) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I4P_4 = .true.
+            omp_target_is_present_f_int32_4 = .true.
          else
-            omp_target_is_present_f_I4P_4 = .false.
+            omp_target_is_present_f_int32_4 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I4P_4
+      endfunction omp_target_is_present_f_int32_4
 
-      function omp_target_is_present_f_I4P_5(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int32_5(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I4P_5
+         logical                          :: omp_target_is_present_f_int32_5
          integer(I4P), target, intent(in) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I4P_5 = .true.
+            omp_target_is_present_f_int32_5 = .true.
          else
-            omp_target_is_present_f_I4P_5 = .false.
+            omp_target_is_present_f_int32_5 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I4P_5
+      endfunction omp_target_is_present_f_int32_5
 
-      function omp_target_is_present_f_I4P_6(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int32_6(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I4P_6
+         logical                          :: omp_target_is_present_f_int32_6
          integer(I4P), target, intent(in) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I4P_6 = .true.
+            omp_target_is_present_f_int32_6 = .true.
          else
-            omp_target_is_present_f_I4P_6 = .false.
+            omp_target_is_present_f_int32_6 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I4P_6
+      endfunction omp_target_is_present_f_int32_6
 
-      function omp_target_is_present_f_I4P_7(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int32_7(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I4P_7
+         logical                          :: omp_target_is_present_f_int32_7
          integer(I4P), target, intent(in) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_I4P_7 = .true.
+            omp_target_is_present_f_int32_7 = .true.
          else
-            omp_target_is_present_f_I4P_7 = .false.
+            omp_target_is_present_f_int32_7 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I4P_7
+      endfunction omp_target_is_present_f_int32_7
 
-      function omp_target_is_present_f_I8P_1(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int64_1(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I8P_1
+         logical                          :: omp_target_is_present_f_int64_1
          integer(I8P), target, intent(in) :: fptr_dev(:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I8P) /= 0_I8P) then
-            omp_target_is_present_f_I8P_1 = .true.
+            omp_target_is_present_f_int64_1 = .true.
          else
-            omp_target_is_present_f_I8P_1 = .false.
+            omp_target_is_present_f_int64_1 = .false.
          endif
 
-       endfunction omp_target_is_present_f_I8P_1
+       endfunction omp_target_is_present_f_int64_1
 
-      function omp_target_is_present_f_I8P_2(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int64_2(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I8P_2
+         logical                          :: omp_target_is_present_f_int64_2
          integer(I8P), target, intent(in) :: fptr_dev(:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I8P) /= 0_I8P) then
-            omp_target_is_present_f_I8P_2 = .true.
+            omp_target_is_present_f_int64_2 = .true.
          else
-            omp_target_is_present_f_I8P_2 = .false.
+            omp_target_is_present_f_int64_2 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I8P_2
+      endfunction omp_target_is_present_f_int64_2
 
-      function omp_target_is_present_f_I8P_3(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int64_3(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I8P_3
+         logical                          :: omp_target_is_present_f_int64_3
          integer(I8P), target, intent(in) :: fptr_dev(:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I8P) /= 0_I8P) then
-            omp_target_is_present_f_I8P_3 = .true.
+            omp_target_is_present_f_int64_3 = .true.
          else
-            omp_target_is_present_f_I8P_3 = .false.
+            omp_target_is_present_f_int64_3 = .false.
          endif
 
-       endfunction omp_target_is_present_f_I8P_3
+       endfunction omp_target_is_present_f_int64_3
 
-      function omp_target_is_present_f_I8P_4(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int64_4(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I8P_4
+         logical                          :: omp_target_is_present_f_int64_4
          integer(I8P), target, intent(in) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I8P) /= 0_I8P) then
-            omp_target_is_present_f_I8P_4 = .true.
+            omp_target_is_present_f_int64_4 = .true.
          else
-            omp_target_is_present_f_I8P_4 = .false.
+            omp_target_is_present_f_int64_4 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I8P_4
+      endfunction omp_target_is_present_f_int64_4
 
-      function omp_target_is_present_f_I8P_5(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int64_5(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I8P_5
+         logical                          :: omp_target_is_present_f_int64_5
          integer(I8P), target, intent(in) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I8P) /= 0_I8P) then
-            omp_target_is_present_f_I8P_5 = .true.
+            omp_target_is_present_f_int64_5 = .true.
          else
-            omp_target_is_present_f_I8P_5 = .false.
+            omp_target_is_present_f_int64_5 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I8P_5
+      endfunction omp_target_is_present_f_int64_5
 
-      function omp_target_is_present_f_I8P_6(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int64_6(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I8P_6
+         logical                          :: omp_target_is_present_f_int64_6
          integer(I8P), target, intent(in) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I8P) /= 0_I8P) then
-            omp_target_is_present_f_I8P_6 = .true.
+            omp_target_is_present_f_int64_6 = .true.
          else
-            omp_target_is_present_f_I8P_6 = .false.
+            omp_target_is_present_f_int64_6 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I8P_6
+      endfunction omp_target_is_present_f_int64_6
 
-      function omp_target_is_present_f_I8P_7(fptr_dev, omp_dev)
+      function omp_target_is_present_f_int64_7(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_I8P_7
+         logical                          :: omp_target_is_present_f_int64_7
          integer(I8P), target, intent(in) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I8P) /= 0_I8P) then
-            omp_target_is_present_f_I8P_7 = .true.
+            omp_target_is_present_f_int64_7 = .true.
          else
-            omp_target_is_present_f_I8P_7 = .false.
+            omp_target_is_present_f_int64_7 = .false.
          endif
 
-      endfunction omp_target_is_present_f_I8P_7
+      endfunction omp_target_is_present_f_int64_7
+
+      ! OpenMP Get Mapped Pointer Integer Routines
+      function omp_get_mapped_ptr_f_int8_1(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int8_1
+         integer(I1P), intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int8_1 = .true.
+         else
+            omp_get_mapped_ptr_f_int8_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int8_1
+
+      function omp_get_mapped_ptr_f_int8_2(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int8_2
+         integer(I1P), intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int8_2 = .true.
+         else
+            omp_get_mapped_ptr_f_int8_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int8_2
+
+      function omp_get_mapped_ptr_f_int8_3(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int8_3
+         integer(I1P), intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int8_3 = .true.
+         else
+            omp_get_mapped_ptr_f_int8_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int8_3
+
+      function omp_get_mapped_ptr_f_int8_4(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int8_4
+         integer(I1P), intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int8_4 = .true.
+         else
+            omp_get_mapped_ptr_f_int8_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int8_4
+
+      function omp_get_mapped_ptr_f_int8_5(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int8_5
+         integer(I1P), intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int8_5 = .true.
+         else
+            omp_get_mapped_ptr_f_int8_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int8_5
+
+      function omp_get_mapped_ptr_f_int8_6(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int8_6
+         integer(I1P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int8_6 = .true.
+         else
+            omp_get_mapped_ptr_f_int8_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int8_6
+
+      function omp_get_mapped_ptr_f_int8_7(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int8_7
+         integer(I1P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int8_7 = .true.
+         else
+            omp_get_mapped_ptr_f_int8_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int8_7
+
+      function omp_get_mapped_ptr_f_int16_1(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int16_1
+         integer(I2P), intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int16_1 = .true.
+         else
+            omp_get_mapped_ptr_f_int16_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int16_1
+
+      function omp_get_mapped_ptr_f_int16_2(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int16_2
+         integer(I2P), intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int16_2 = .true.
+         else
+            omp_get_mapped_ptr_f_int16_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int16_2
+
+      function omp_get_mapped_ptr_f_int16_3(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int16_3
+         integer(I2P), intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int16_3 = .true.
+         else
+            omp_get_mapped_ptr_f_int16_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int16_3
+
+      function omp_get_mapped_ptr_f_int16_4(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int16_4
+         integer(I2P), intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int16_4 = .true.
+         else
+            omp_get_mapped_ptr_f_int16_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int16_4
+
+      function omp_get_mapped_ptr_f_int16_5(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int16_5
+         integer(I2P), intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int16_5 = .true.
+         else
+            omp_get_mapped_ptr_f_int16_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int16_5
+
+      function omp_get_mapped_ptr_f_int16_6(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int16_6
+         integer(I2P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int16_6 = .true.
+         else
+            omp_get_mapped_ptr_f_int16_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int16_6
+
+      function omp_get_mapped_ptr_f_int16_7(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int16_7
+         integer(I2P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int16_7 = .true.
+         else
+            omp_get_mapped_ptr_f_int16_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int16_7
+
+      function omp_get_mapped_ptr_f_int32_1(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int32_1
+         integer(I4P), intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int32_1 = .true.
+         else
+            omp_get_mapped_ptr_f_int32_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int32_1
+
+      function omp_get_mapped_ptr_f_int32_2(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int32_2
+         integer(I4P), intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int32_2 = .true.
+         else
+            omp_get_mapped_ptr_f_int32_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int32_2
+
+      function omp_get_mapped_ptr_f_int32_3(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int32_3
+         integer(I4P), intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int32_3 = .true.
+         else
+            omp_get_mapped_ptr_f_int32_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int32_3
+
+      function omp_get_mapped_ptr_f_int32_4(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int32_4
+         integer(I4P), intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int32_4 = .true.
+         else
+            omp_get_mapped_ptr_f_int32_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int32_4
+
+      function omp_get_mapped_ptr_f_int32_5(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int32_5
+         integer(I4P), intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int32_5 = .true.
+         else
+            omp_get_mapped_ptr_f_int32_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int32_5
+
+      function omp_get_mapped_ptr_f_int32_6(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int32_6
+         integer(I4P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int32_6 = .true.
+         else
+            omp_get_mapped_ptr_f_int32_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int32_6
+
+      function omp_get_mapped_ptr_f_int32_7(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int32_7
+         integer(I4P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int32_7 = .true.
+         else
+            omp_get_mapped_ptr_f_int32_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int32_7
+
+      function omp_get_mapped_ptr_f_int64_1(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int64_1
+         integer(I8P), intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int64_1 = .true.
+         else
+            omp_get_mapped_ptr_f_int64_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int64_1
+
+      function omp_get_mapped_ptr_f_int64_2(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int64_2
+         integer(I8P), intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int64_2 = .true.
+         else
+            omp_get_mapped_ptr_f_int64_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int64_2
+
+      function omp_get_mapped_ptr_f_int64_3(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int64_3
+         integer(I8P), intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int64_3 = .true.
+         else
+            omp_get_mapped_ptr_f_int64_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int64_3
+
+      function omp_get_mapped_ptr_f_int64_4(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int64_4
+         integer(I8P), intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int64_4 = .true.
+         else
+            omp_get_mapped_ptr_f_int64_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int64_4
+
+      function omp_get_mapped_ptr_f_int64_5(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int64_5
+         integer(I8P), intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int64_5 = .true.
+         else
+            omp_get_mapped_ptr_f_int64_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int64_5
+
+      function omp_get_mapped_ptr_f_int64_6(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int64_6
+         integer(I8P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int64_6 = .true.
+         else
+            omp_get_mapped_ptr_f_int64_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int64_6
+
+      function omp_get_mapped_ptr_f_int64_7(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_int64_7
+         integer(I8P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_int64_7 = .true.
+         else
+            omp_get_mapped_ptr_f_int64_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_int64_7
 
       ! OpenMP Target Free Integer Routines
-      subroutine omp_target_free_f_I1P_1(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int8_1(fptr_dev, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I1P_1
+      endsubroutine omp_target_free_f_int8_1
 
-      subroutine omp_target_free_f_I1P_2(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int8_2(fptr_dev, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I1P_2
+      endsubroutine omp_target_free_f_int8_2
 
-      subroutine omp_target_free_f_I1P_3(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int8_3(fptr_dev, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I1P_3
+      endsubroutine omp_target_free_f_int8_3
 
-      subroutine omp_target_free_f_I1P_4(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int8_4(fptr_dev, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I1P_4
+      endsubroutine omp_target_free_f_int8_4
 
-      subroutine omp_target_free_f_I1P_5(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int8_5(fptr_dev, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I1P_5
+      endsubroutine omp_target_free_f_int8_5
 
-      subroutine omp_target_free_f_I1P_6(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int8_6(fptr_dev, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I1P_6
+      endsubroutine omp_target_free_f_int8_6
 
-      subroutine omp_target_free_f_I1P_7(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int8_7(fptr_dev, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I1P_7
+      endsubroutine omp_target_free_f_int8_7
 
-      subroutine omp_target_free_f_I2P_1(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int16_1(fptr_dev, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I2P_1
+      endsubroutine omp_target_free_f_int16_1
 
-      subroutine omp_target_free_f_I2P_2(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int16_2(fptr_dev, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I2P_2
+      endsubroutine omp_target_free_f_int16_2
 
-      subroutine omp_target_free_f_I2P_3(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int16_3(fptr_dev, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I2P_3
+      endsubroutine omp_target_free_f_int16_3
 
-      subroutine omp_target_free_f_I2P_4(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int16_4(fptr_dev, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I2P_4
+      endsubroutine omp_target_free_f_int16_4
 
-      subroutine omp_target_free_f_I2P_5(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int16_5(fptr_dev, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I2P_5
+      endsubroutine omp_target_free_f_int16_5
 
-      subroutine omp_target_free_f_I2P_6(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int16_6(fptr_dev, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I2P_6
+      endsubroutine omp_target_free_f_int16_6
 
-      subroutine omp_target_free_f_I2P_7(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int16_7(fptr_dev, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I2P_7
+      endsubroutine omp_target_free_f_int16_7
 
-      subroutine omp_target_free_f_I4P_1(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int32_1(fptr_dev, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I4P_1
+      endsubroutine omp_target_free_f_int32_1
 
-      subroutine omp_target_free_f_I4P_2(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int32_2(fptr_dev, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I4P_2
+      endsubroutine omp_target_free_f_int32_2
 
-      subroutine omp_target_free_f_I4P_3(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int32_3(fptr_dev, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I4P_3
+      endsubroutine omp_target_free_f_int32_3
 
-      subroutine omp_target_free_f_I4P_4(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int32_4(fptr_dev, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I4P_4
+      endsubroutine omp_target_free_f_int32_4
 
-      subroutine omp_target_free_f_I4P_5(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int32_5(fptr_dev, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I4P_5
+      endsubroutine omp_target_free_f_int32_5
 
-      subroutine omp_target_free_f_I4P_6(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int32_6(fptr_dev, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I4P_6
+      endsubroutine omp_target_free_f_int32_6
 
-      subroutine omp_target_free_f_I4P_7(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int32_7(fptr_dev, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I4P_7
+      endsubroutine omp_target_free_f_int32_7
 
-      subroutine omp_target_free_f_I8P_1(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int64_1(fptr_dev, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I8P_1
+      endsubroutine omp_target_free_f_int64_1
 
-      subroutine omp_target_free_f_I8P_2(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int64_2(fptr_dev, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I8P_2
+      endsubroutine omp_target_free_f_int64_2
 
-      subroutine omp_target_free_f_I8P_3(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int64_3(fptr_dev, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I8P_3
+      endsubroutine omp_target_free_f_int64_3
 
-      subroutine omp_target_free_f_I8P_4(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int64_4(fptr_dev, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I8P_4
+      endsubroutine omp_target_free_f_int64_4
 
-      subroutine omp_target_free_f_I8P_5(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int64_5(fptr_dev, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I8P_5
+      endsubroutine omp_target_free_f_int64_5
 
-      subroutine omp_target_free_f_I8P_6(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int64_6(fptr_dev, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I8P_6
+      endsubroutine omp_target_free_f_int64_6
 
-      subroutine omp_target_free_f_I8P_7(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_int64_7(fptr_dev, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_I8P_7
+      endsubroutine omp_target_free_f_int64_7
 
       ! OpenMP Target Alloc Integer Routines
-      subroutine omp_target_alloc_f_I1P_1(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int8_1(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:)
          integer(I8P), intent(in)                :: dimensions
@@ -875,9 +1335,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
-      endsubroutine omp_target_alloc_f_I1P_1
+      endsubroutine omp_target_alloc_f_int8_1
 
-      subroutine omp_target_alloc_f_I1P_2(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int8_2(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
          integer(I8P), intent(in)                :: dimensions(2)
@@ -888,9 +1348,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
-      endsubroutine omp_target_alloc_f_I1P_2
+      endsubroutine omp_target_alloc_f_int8_2
 
-      subroutine omp_target_alloc_f_I1P_3(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int8_3(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                :: dimensions(3)
@@ -901,9 +1361,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
-      endsubroutine omp_target_alloc_f_I1P_3
+      endsubroutine omp_target_alloc_f_int8_3
 
-      subroutine omp_target_alloc_f_I1P_4(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int8_4(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(4)
@@ -914,9 +1374,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
-      endsubroutine omp_target_alloc_f_I1P_4
+      endsubroutine omp_target_alloc_f_int8_4
 
-      subroutine omp_target_alloc_f_I1P_5(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int8_5(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(5)
@@ -928,9 +1388,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
-      endsubroutine omp_target_alloc_f_I1P_5
+      endsubroutine omp_target_alloc_f_int8_5
 
-      subroutine omp_target_alloc_f_I1P_6(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int8_6(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(6)
@@ -942,9 +1402,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
-      endsubroutine omp_target_alloc_f_I1P_6
+      endsubroutine omp_target_alloc_f_int8_6
 
-      subroutine omp_target_alloc_f_I1P_7(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int8_7(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(7)
@@ -956,9 +1416,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
-      endsubroutine omp_target_alloc_f_I1P_7
+      endsubroutine omp_target_alloc_f_int8_7
 
-      subroutine omp_target_alloc_f_I2P_1(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int16_1(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:)
          integer(I8P), intent(in)                :: dimensions
@@ -969,9 +1429,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
-      endsubroutine omp_target_alloc_f_I2P_1
+      endsubroutine omp_target_alloc_f_int16_1
 
-      subroutine omp_target_alloc_f_I2P_2(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int16_2(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
          integer(I8P), intent(in)                :: dimensions(2)
@@ -982,9 +1442,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
-      endsubroutine omp_target_alloc_f_I2P_2
+      endsubroutine omp_target_alloc_f_int16_2
 
-      subroutine omp_target_alloc_f_I2P_3(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int16_3(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                :: dimensions(3)
@@ -995,9 +1455,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
-      endsubroutine omp_target_alloc_f_I2P_3
+      endsubroutine omp_target_alloc_f_int16_3
 
-      subroutine omp_target_alloc_f_I2P_4(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int16_4(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(4)
@@ -1008,9 +1468,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
-      endsubroutine omp_target_alloc_f_I2P_4
+      endsubroutine omp_target_alloc_f_int16_4
 
-      subroutine omp_target_alloc_f_I2P_5(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int16_5(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(5)
@@ -1022,9 +1482,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
-      endsubroutine omp_target_alloc_f_I2P_5
+      endsubroutine omp_target_alloc_f_int16_5
 
-      subroutine omp_target_alloc_f_I2P_6(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int16_6(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(6)
@@ -1036,9 +1496,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
-      endsubroutine omp_target_alloc_f_I2P_6
+      endsubroutine omp_target_alloc_f_int16_6
 
-      subroutine omp_target_alloc_f_I2P_7(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int16_7(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(7)
@@ -1050,9 +1510,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
-      endsubroutine omp_target_alloc_f_I2P_7
+      endsubroutine omp_target_alloc_f_int16_7
 
-      subroutine omp_target_alloc_f_I4P_1(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int32_1(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:)
          integer(I8P), intent(in)                :: dimensions
@@ -1063,9 +1523,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
-      endsubroutine omp_target_alloc_f_I4P_1
+      endsubroutine omp_target_alloc_f_int32_1
 
-      subroutine omp_target_alloc_f_I4P_2(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int32_2(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
          integer(I8P), intent(in)                :: dimensions(2)
@@ -1076,9 +1536,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
-      endsubroutine omp_target_alloc_f_I4P_2
+      endsubroutine omp_target_alloc_f_int32_2
 
-      subroutine omp_target_alloc_f_I4P_3(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int32_3(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                :: dimensions(3)
@@ -1089,9 +1549,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
-      endsubroutine omp_target_alloc_f_I4P_3
+      endsubroutine omp_target_alloc_f_int32_3
 
-      subroutine omp_target_alloc_f_I4P_4(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int32_4(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(4)
@@ -1102,9 +1562,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
-      endsubroutine omp_target_alloc_f_I4P_4
+      endsubroutine omp_target_alloc_f_int32_4
 
-      subroutine omp_target_alloc_f_I4P_5(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int32_5(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(5)
@@ -1116,9 +1576,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
-      endsubroutine omp_target_alloc_f_I4P_5
+      endsubroutine omp_target_alloc_f_int32_5
 
-      subroutine omp_target_alloc_f_I4P_6(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int32_6(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(6)
@@ -1130,9 +1590,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
-      endsubroutine omp_target_alloc_f_I4P_6
+      endsubroutine omp_target_alloc_f_int32_6
 
-      subroutine omp_target_alloc_f_I4P_7(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int32_7(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(7)
@@ -1144,9 +1604,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
-      endsubroutine omp_target_alloc_f_I4P_7
+      endsubroutine omp_target_alloc_f_int32_7
 
-      subroutine omp_target_alloc_f_I8P_1(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int64_1(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:)
          integer(I8P), intent(in)                :: dimensions
@@ -1157,9 +1617,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
-      endsubroutine omp_target_alloc_f_I8P_1
+      endsubroutine omp_target_alloc_f_int64_1
 
-      subroutine omp_target_alloc_f_I8P_2(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int64_2(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
          integer(I8P), intent(in)                :: dimensions(2)
@@ -1170,9 +1630,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
-      endsubroutine omp_target_alloc_f_I8P_2
+      endsubroutine omp_target_alloc_f_int64_2
 
-      subroutine omp_target_alloc_f_I8P_3(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int64_3(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                :: dimensions(3)
@@ -1183,9 +1643,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
-      endsubroutine omp_target_alloc_f_I8P_3
+      endsubroutine omp_target_alloc_f_int64_3
 
-      subroutine omp_target_alloc_f_I8P_4(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int64_4(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(4)
@@ -1196,9 +1656,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
-      endsubroutine omp_target_alloc_f_I8P_4
+      endsubroutine omp_target_alloc_f_int64_4
 
-      subroutine omp_target_alloc_f_I8P_5(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int64_5(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(5)
@@ -1210,9 +1670,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
-      endsubroutine omp_target_alloc_f_I8P_5
+      endsubroutine omp_target_alloc_f_int64_5
 
-      subroutine omp_target_alloc_f_I8P_6(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int64_6(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(6)
@@ -1224,9 +1684,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
-      endsubroutine omp_target_alloc_f_I8P_6
+      endsubroutine omp_target_alloc_f_int64_6
 
-      subroutine omp_target_alloc_f_I8P_7(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_int64_7(fptr_dev, dimensions, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                :: dimensions(7)
@@ -1238,10 +1698,10 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
-      endsubroutine omp_target_alloc_f_I8P_7
+      endsubroutine omp_target_alloc_f_int64_7
 
       ! OpenMP Target Memcpy Integer Routines
-      subroutine omp_target_memcpy_f_I1P_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int8_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(:)
@@ -1254,9 +1714,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I1P_1
+      endsubroutine omp_target_memcpy_f_int8_1
 
-      subroutine omp_target_memcpy_f_I1P_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int8_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -1269,9 +1729,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I1P_2
+      endsubroutine omp_target_memcpy_f_int8_2
 
-      subroutine omp_target_memcpy_f_I1P_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int8_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -1284,9 +1744,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I1P_3
+      endsubroutine omp_target_memcpy_f_int8_3
 
-      subroutine omp_target_memcpy_f_I1P_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int8_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -1299,9 +1759,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I1P_4
+      endsubroutine omp_target_memcpy_f_int8_4
 
-      subroutine omp_target_memcpy_f_I1P_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int8_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -1314,9 +1774,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I1P_5
+      endsubroutine omp_target_memcpy_f_int8_5
 
-      subroutine omp_target_memcpy_f_I1P_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int8_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -1329,9 +1789,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I1P_6
+      endsubroutine omp_target_memcpy_f_int8_6
 
-      subroutine omp_target_memcpy_f_I1P_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int8_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -1344,9 +1804,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I1P_7
+      endsubroutine omp_target_memcpy_f_int8_7
 
-      subroutine omp_target_memcpy_f_I2P_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int16_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(:)
@@ -1359,9 +1819,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I2P_1
+      endsubroutine omp_target_memcpy_f_int16_1
 
-      subroutine omp_target_memcpy_f_I2P_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int16_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -1374,9 +1834,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I2P_2
+      endsubroutine omp_target_memcpy_f_int16_2
 
-      subroutine omp_target_memcpy_f_I2P_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int16_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -1389,9 +1849,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I2P_3
+      endsubroutine omp_target_memcpy_f_int16_3
 
-      subroutine omp_target_memcpy_f_I2P_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int16_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -1404,9 +1864,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I2P_4
+      endsubroutine omp_target_memcpy_f_int16_4
 
-      subroutine omp_target_memcpy_f_I2P_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int16_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -1419,9 +1879,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I2P_5
+      endsubroutine omp_target_memcpy_f_int16_5
 
-      subroutine omp_target_memcpy_f_I2P_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int16_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -1434,9 +1894,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I2P_6
+      endsubroutine omp_target_memcpy_f_int16_6
 
-      subroutine omp_target_memcpy_f_I2P_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int16_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -1449,9 +1909,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I2P_7
+      endsubroutine omp_target_memcpy_f_int16_7
 
-      subroutine omp_target_memcpy_f_I4P_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int32_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(:)
@@ -1464,9 +1924,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I4P_1
+      endsubroutine omp_target_memcpy_f_int32_1
 
-      subroutine omp_target_memcpy_f_I4P_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int32_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -1479,9 +1939,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I4P_2
+      endsubroutine omp_target_memcpy_f_int32_2
 
-      subroutine omp_target_memcpy_f_I4P_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int32_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -1494,9 +1954,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I4P_3
+      endsubroutine omp_target_memcpy_f_int32_3
 
-      subroutine omp_target_memcpy_f_I4P_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int32_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -1509,9 +1969,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I4P_4
+      endsubroutine omp_target_memcpy_f_int32_4
 
-      subroutine omp_target_memcpy_f_I4P_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int32_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -1524,9 +1984,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I4P_5
+      endsubroutine omp_target_memcpy_f_int32_5
 
-      subroutine omp_target_memcpy_f_I4P_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int32_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -1539,9 +1999,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I4P_6
+      endsubroutine omp_target_memcpy_f_int32_6
 
-      subroutine omp_target_memcpy_f_I4P_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int32_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -1554,9 +2014,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I4P_7
+      endsubroutine omp_target_memcpy_f_int32_7
 
-      subroutine omp_target_memcpy_f_I8P_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int64_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(:)
@@ -1569,9 +2029,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I8P_1
+      endsubroutine omp_target_memcpy_f_int64_1
 
-      subroutine omp_target_memcpy_f_I8P_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int64_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -1584,9 +2044,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I8P_2
+      endsubroutine omp_target_memcpy_f_int64_2
 
-      subroutine omp_target_memcpy_f_I8P_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int64_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -1599,9 +2059,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I8P_3
+      endsubroutine omp_target_memcpy_f_int64_3
 
-      subroutine omp_target_memcpy_f_I8P_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int64_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -1614,9 +2074,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I8P_4
+      endsubroutine omp_target_memcpy_f_int64_4
 
-      subroutine omp_target_memcpy_f_I8P_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int64_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -1629,9 +2089,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I8P_5
+      endsubroutine omp_target_memcpy_f_int64_5
 
-      subroutine omp_target_memcpy_f_I8P_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int64_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -1644,9 +2104,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I8P_6
+      endsubroutine omp_target_memcpy_f_int64_6
 
-      subroutine omp_target_memcpy_f_I8P_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_int64_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -1659,10 +2119,10 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_I8P_7
+      endsubroutine omp_target_memcpy_f_int64_7
 
      ! OpenMP Target Memcpy Rect Integer Routines
-      subroutine omp_target_memcpy_rect_f_I1P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int8_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -1677,9 +2137,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I1P_2
+      endsubroutine omp_target_memcpy_rect_f_int8_2
 
-      subroutine omp_target_memcpy_rect_f_I1P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int8_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -1694,9 +2154,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I1P_3
+      endsubroutine omp_target_memcpy_rect_f_int8_3
 
-      subroutine omp_target_memcpy_rect_f_I1P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int8_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -1711,9 +2171,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I1P_4
+      endsubroutine omp_target_memcpy_rect_f_int8_4
 
-      subroutine omp_target_memcpy_rect_f_I1P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int8_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -1728,9 +2188,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I1P_5
+      endsubroutine omp_target_memcpy_rect_f_int8_5
 
-      subroutine omp_target_memcpy_rect_f_I1P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int8_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -1745,9 +2205,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I1P_6
+      endsubroutine omp_target_memcpy_rect_f_int8_6
 
-      subroutine omp_target_memcpy_rect_f_I1P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int8_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -1762,9 +2222,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I1P_7
+      endsubroutine omp_target_memcpy_rect_f_int8_7
 
-      subroutine omp_target_memcpy_rect_f_I2P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int16_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -1779,9 +2239,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I2P_2
+      endsubroutine omp_target_memcpy_rect_f_int16_2
 
-      subroutine omp_target_memcpy_rect_f_I2P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int16_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -1796,9 +2256,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I2P_3
+      endsubroutine omp_target_memcpy_rect_f_int16_3
 
-      subroutine omp_target_memcpy_rect_f_I2P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int16_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -1813,9 +2273,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I2P_4
+      endsubroutine omp_target_memcpy_rect_f_int16_4
 
-      subroutine omp_target_memcpy_rect_f_I2P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int16_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -1830,9 +2290,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I2P_5
+      endsubroutine omp_target_memcpy_rect_f_int16_5
 
-      subroutine omp_target_memcpy_rect_f_I2P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int16_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -1847,9 +2307,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I2P_6
+      endsubroutine omp_target_memcpy_rect_f_int16_6
 
-      subroutine omp_target_memcpy_rect_f_I2P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int16_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -1864,9 +2324,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I2P_7
+      endsubroutine omp_target_memcpy_rect_f_int16_7
 
-      subroutine omp_target_memcpy_rect_f_I4P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int32_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -1881,9 +2341,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I4P_2
+      endsubroutine omp_target_memcpy_rect_f_int32_2
 
-      subroutine omp_target_memcpy_rect_f_I4P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int32_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -1898,9 +2358,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I4P_3
+      endsubroutine omp_target_memcpy_rect_f_int32_3
 
-      subroutine omp_target_memcpy_rect_f_I4P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int32_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -1915,9 +2375,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I4P_4
+      endsubroutine omp_target_memcpy_rect_f_int32_4
 
-      subroutine omp_target_memcpy_rect_f_I4P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int32_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -1932,9 +2392,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I4P_5
+      endsubroutine omp_target_memcpy_rect_f_int32_5
 
-      subroutine omp_target_memcpy_rect_f_I4P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int32_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -1949,9 +2409,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I4P_6
+      endsubroutine omp_target_memcpy_rect_f_int32_6
 
-      subroutine omp_target_memcpy_rect_f_I4P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int32_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -1966,9 +2426,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I4P_7
+      endsubroutine omp_target_memcpy_rect_f_int32_7
 
-      subroutine omp_target_memcpy_rect_f_I8P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int64_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -1983,9 +2443,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I8P_2
+      endsubroutine omp_target_memcpy_rect_f_int64_2
 
-      subroutine omp_target_memcpy_rect_f_I8P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int64_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -2000,9 +2460,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I8P_3
+      endsubroutine omp_target_memcpy_rect_f_int64_3
 
-      subroutine omp_target_memcpy_rect_f_I8P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int64_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -2017,9 +2477,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I8P_4
+      endsubroutine omp_target_memcpy_rect_f_int64_4
 
-      subroutine omp_target_memcpy_rect_f_I8P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int64_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -2034,9 +2494,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I8P_5
+      endsubroutine omp_target_memcpy_rect_f_int64_5
 
-      subroutine omp_target_memcpy_rect_f_I8P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int64_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -2051,9 +2511,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I8P_6
+      endsubroutine omp_target_memcpy_rect_f_int64_6
 
-      subroutine omp_target_memcpy_rect_f_I8P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_int64_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -2068,499 +2528,817 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_I8P_7
+      endsubroutine omp_target_memcpy_rect_f_int64_7
 
       ! OpenMP Target Is Present Real Routines
-      function omp_target_is_present_f_R4P_1(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real32_1(fptr_dev, omp_dev)
          implicit none
-         logical                       :: omp_target_is_present_f_R4P_1
+         logical                       :: omp_target_is_present_f_real32_1
          real(R4P), target, intent(in) :: fptr_dev(:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R4P_1 = .true.
+            omp_target_is_present_f_real32_1 = .true.
          else
-            omp_target_is_present_f_R4P_1 = .false.
+            omp_target_is_present_f_real32_1 = .false.
          endif
 
-       endfunction omp_target_is_present_f_R4P_1
+       endfunction omp_target_is_present_f_real32_1
 
-      function omp_target_is_present_f_R4P_2(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real32_2(fptr_dev, omp_dev)
          implicit none
-         logical                       :: omp_target_is_present_f_R4P_2
+         logical                       :: omp_target_is_present_f_real32_2
          real(R4P), target, intent(in) :: fptr_dev(:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R4P_2 = .true.
+            omp_target_is_present_f_real32_2 = .true.
          else
-            omp_target_is_present_f_R4P_2 = .false.
+            omp_target_is_present_f_real32_2 = .false.
          endif
 
-      endfunction omp_target_is_present_f_R4P_2
+      endfunction omp_target_is_present_f_real32_2
 
-      function omp_target_is_present_f_R4P_3(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real32_3(fptr_dev, omp_dev)
          implicit none
-         logical                       :: omp_target_is_present_f_R4P_3
+         logical                       :: omp_target_is_present_f_real32_3
          real(R4P), target, intent(in) :: fptr_dev(:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R4P_3 = .true.
+            omp_target_is_present_f_real32_3 = .true.
          else
-            omp_target_is_present_f_R4P_3 = .false.
+            omp_target_is_present_f_real32_3 = .false.
          endif
 
-       endfunction omp_target_is_present_f_R4P_3
+       endfunction omp_target_is_present_f_real32_3
 
-      function omp_target_is_present_f_R4P_4(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real32_4(fptr_dev, omp_dev)
          implicit none
-         logical                       :: omp_target_is_present_f_R4P_4
+         logical                       :: omp_target_is_present_f_real32_4
          real(R4P), target, intent(in) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R4P_4 = .true.
+            omp_target_is_present_f_real32_4 = .true.
          else
-            omp_target_is_present_f_R4P_4 = .false.
+            omp_target_is_present_f_real32_4 = .false.
          endif
 
-      endfunction omp_target_is_present_f_R4P_4
+      endfunction omp_target_is_present_f_real32_4
 
-      function omp_target_is_present_f_R4P_5(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real32_5(fptr_dev, omp_dev)
          implicit none
-         logical                       :: omp_target_is_present_f_R4P_5
+         logical                       :: omp_target_is_present_f_real32_5
          real(R4P), target, intent(in) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R4P_5 = .true.
+            omp_target_is_present_f_real32_5 = .true.
          else
-            omp_target_is_present_f_R4P_5 = .false.
+            omp_target_is_present_f_real32_5 = .false.
          endif
 
-      endfunction omp_target_is_present_f_R4P_5
+      endfunction omp_target_is_present_f_real32_5
 
-      function omp_target_is_present_f_R4P_6(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real32_6(fptr_dev, omp_dev)
          implicit none
-         logical                       :: omp_target_is_present_f_R4P_6
+         logical                       :: omp_target_is_present_f_real32_6
          real(R4P), target, intent(in) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R4P_6 = .true.
+            omp_target_is_present_f_real32_6 = .true.
          else
-            omp_target_is_present_f_R4P_6 = .false.
+            omp_target_is_present_f_real32_6 = .false.
          endif
 
-      endfunction omp_target_is_present_f_R4P_6
+      endfunction omp_target_is_present_f_real32_6
 
-      function omp_target_is_present_f_R4P_7(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real32_7(fptr_dev, omp_dev)
          implicit none
-         logical                       :: omp_target_is_present_f_R4P_7
+         logical                       :: omp_target_is_present_f_real32_7
          real(R4P), target, intent(in) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R4P_7 = .true.
+            omp_target_is_present_f_real32_7 = .true.
          else
-            omp_target_is_present_f_R4P_7 = .false.
+            omp_target_is_present_f_real32_7 = .false.
          endif
 
-      endfunction omp_target_is_present_f_R4P_7
+      endfunction omp_target_is_present_f_real32_7
 
-      function omp_target_is_present_f_R8P_1(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real64_1(fptr_dev, omp_dev)
          implicit none
-         logical                       :: omp_target_is_present_f_R8P_1
+         logical                       :: omp_target_is_present_f_real64_1
          real(R8P), target, intent(in) :: fptr_dev(:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R8P_1 = .true.
+            omp_target_is_present_f_real64_1 = .true.
          else
-            omp_target_is_present_f_R8P_1 = .false.
+            omp_target_is_present_f_real64_1 = .false.
          endif
 
-       endfunction omp_target_is_present_f_R8P_1
+       endfunction omp_target_is_present_f_real64_1
 
-      function omp_target_is_present_f_R8P_2(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real64_2(fptr_dev, omp_dev)
          implicit none
-         logical                       :: omp_target_is_present_f_R8P_2
+         logical                       :: omp_target_is_present_f_real64_2
          real(R8P), target, intent(in) :: fptr_dev(:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R8P_2 = .true.
+            omp_target_is_present_f_real64_2 = .true.
          else
-            omp_target_is_present_f_R8P_2 = .false.
+            omp_target_is_present_f_real64_2 = .false.
          endif
 
-      endfunction omp_target_is_present_f_R8P_2
+      endfunction omp_target_is_present_f_real64_2
 
-      function omp_target_is_present_f_R8P_3(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real64_3(fptr_dev, omp_dev)
          implicit none
-         logical                       :: omp_target_is_present_f_R8P_3
+         logical                       :: omp_target_is_present_f_real64_3
          real(R8P), target, intent(in) :: fptr_dev(:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R8P_3 = .true.
+            omp_target_is_present_f_real64_3 = .true.
          else
-            omp_target_is_present_f_R8P_3 = .false.
+            omp_target_is_present_f_real64_3 = .false.
          endif
 
-       endfunction omp_target_is_present_f_R8P_3
+       endfunction omp_target_is_present_f_real64_3
 
-      function omp_target_is_present_f_R8P_4(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real64_4(fptr_dev, omp_dev)
          implicit none
-         logical                       :: omp_target_is_present_f_R8P_4
+         logical                       :: omp_target_is_present_f_real64_4
          real(R8P), target, intent(in) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R8P_4 = .true.
+            omp_target_is_present_f_real64_4 = .true.
          else
-            omp_target_is_present_f_R8P_4 = .false.
+            omp_target_is_present_f_real64_4 = .false.
          endif
 
-      endfunction omp_target_is_present_f_R8P_4
+      endfunction omp_target_is_present_f_real64_4
 
-      function omp_target_is_present_f_R8P_5(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real64_5(fptr_dev, omp_dev)
          implicit none
-         logical                       :: omp_target_is_present_f_R8P_5
+         logical                       :: omp_target_is_present_f_real64_5
          real(R8P), target, intent(in) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R8P_5 = .true.
+            omp_target_is_present_f_real64_5 = .true.
          else
-            omp_target_is_present_f_R8P_5 = .false.
+            omp_target_is_present_f_real64_5 = .false.
          endif
 
-      endfunction omp_target_is_present_f_R8P_5
+      endfunction omp_target_is_present_f_real64_5
 
-      function omp_target_is_present_f_R8P_6(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real64_6(fptr_dev, omp_dev)
          implicit none
-         logical                       :: omp_target_is_present_f_R8P_6
+         logical                       :: omp_target_is_present_f_real64_6
          real(R8P), target, intent(in) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R8P_6 = .true.
+            omp_target_is_present_f_real64_6 = .true.
          else
-            omp_target_is_present_f_R8P_6 = .false.
+            omp_target_is_present_f_real64_6 = .false.
          endif
 
-      endfunction omp_target_is_present_f_R8P_6
+      endfunction omp_target_is_present_f_real64_6
 
-      function omp_target_is_present_f_R8P_7(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real64_7(fptr_dev, omp_dev)
          implicit none
-         logical                       :: omp_target_is_present_f_R8P_7
+         logical                       :: omp_target_is_present_f_real64_7
          real(R8P), target, intent(in) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R8P_7 = .true.
+            omp_target_is_present_f_real64_7 = .true.
          else
-            omp_target_is_present_f_R8P_7 = .false.
+            omp_target_is_present_f_real64_7 = .false.
          endif
 
-      endfunction omp_target_is_present_f_R8P_7
+      endfunction omp_target_is_present_f_real64_7
 
-#if defined _R16P
-      function omp_target_is_present_f_R16P_1(fptr_dev, omp_dev)
+#if defined _real128
+      function omp_target_is_present_f_real128_1(fptr_dev, omp_dev)
          implicit none
-         logical                        :: omp_target_is_present_f_R16P_1
+         logical                        :: omp_target_is_present_f_real128_1
          real(R16P), target, intent(in) :: fptr_dev(:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R16P_1 = .true.
+            omp_target_is_present_f_real128_1 = .true.
          else
-            omp_target_is_present_f_R16P_1 = .false.
+            omp_target_is_present_f_real128_1 = .false.
          endif
 
-       endfunction omp_target_is_present_f_R16P_1
+       endfunction omp_target_is_present_f_real128_1
 
-      function omp_target_is_present_f_R16P_2(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real128_2(fptr_dev, omp_dev)
          implicit none
-         logical                        :: omp_target_is_present_f_R16P_2
+         logical                        :: omp_target_is_present_f_real128_2
          real(R16P), target, intent(in) :: fptr_dev(:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R16P_2 = .true.
+            omp_target_is_present_f_real128_2 = .true.
          else
-            omp_target_is_present_f_R16P_2 = .false.
+            omp_target_is_present_f_real128_2 = .false.
          endif
 
-      endfunction omp_target_is_present_f_R16P_2
+      endfunction omp_target_is_present_f_real128_2
 
-      function omp_target_is_present_f_R16P_3(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real128_3(fptr_dev, omp_dev)
          implicit none
-         logical                        :: omp_target_is_present_f_R16P_3
+         logical                        :: omp_target_is_present_f_real128_3
          real(R16P), target, intent(in) :: fptr_dev(:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R16P_3 = .true.
+            omp_target_is_present_f_real128_3 = .true.
          else
-            omp_target_is_present_f_R16P_3 = .false.
+            omp_target_is_present_f_real128_3 = .false.
          endif
 
-       endfunction omp_target_is_present_f_R16P_3
+       endfunction omp_target_is_present_f_real128_3
 
-      function omp_target_is_present_f_R16P_4(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real128_4(fptr_dev, omp_dev)
          implicit none
-         logical                        :: omp_target_is_present_f_R16P_4
+         logical                        :: omp_target_is_present_f_real128_4
          real(R16P), target, intent(in) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R16P_4 = .true.
+            omp_target_is_present_f_real128_4 = .true.
          else
-            omp_target_is_present_f_R16P_4 = .false.
+            omp_target_is_present_f_real128_4 = .false.
          endif
 
-      endfunction omp_target_is_present_f_R16P_4
+      endfunction omp_target_is_present_f_real128_4
 
-      function omp_target_is_present_f_R16P_5(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real128_5(fptr_dev, omp_dev)
          implicit none
-         logical                        :: omp_target_is_present_f_R16P_5
+         logical                        :: omp_target_is_present_f_real128_5
          real(R16P), target, intent(in) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R16P_5 = .true.
+            omp_target_is_present_f_real128_5 = .true.
          else
-            omp_target_is_present_f_R16P_5 = .false.
+            omp_target_is_present_f_real128_5 = .false.
          endif
 
-      endfunction omp_target_is_present_f_R16P_5
+      endfunction omp_target_is_present_f_real128_5
 
-      function omp_target_is_present_f_R16P_6(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real128_6(fptr_dev, omp_dev)
          implicit none
-         logical                        :: omp_target_is_present_f_R16P_6
+         logical                        :: omp_target_is_present_f_real128_6
          real(R16P), target, intent(in) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R16P_6 = .true.
+            omp_target_is_present_f_real128_6 = .true.
          else
-            omp_target_is_present_f_R16P_6 = .false.
+            omp_target_is_present_f_real128_6 = .false.
          endif
 
-      endfunction omp_target_is_present_f_R16P_6
+      endfunction omp_target_is_present_f_real128_6
 
-      function omp_target_is_present_f_R16P_7(fptr_dev, omp_dev)
+      function omp_target_is_present_f_real128_7(fptr_dev, omp_dev)
          implicit none
-         logical                        :: omp_target_is_present_f_R16P_7
+         logical                        :: omp_target_is_present_f_real128_7
          real(R16P), target, intent(in) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_R16P_7 = .true.
+            omp_target_is_present_f_real128_7 = .true.
          else
-            omp_target_is_present_f_R16P_7 = .false.
+            omp_target_is_present_f_real128_7 = .false.
          endif
 
-      endfunction omp_target_is_present_f_R16P_7
+      endfunction omp_target_is_present_f_real128_7
+#endif
+
+      ! OpenMP Get Mapped Pointer Real Routines
+      function omp_get_mapped_ptr_f_real32_1(fptr_dev, omp_dev)
+         implicit none
+         logical                  :: omp_get_mapped_ptr_f_real32_1
+         real(R4P), intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real32_1 = .true.
+         else
+            omp_get_mapped_ptr_f_real32_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real32_1
+
+      function omp_get_mapped_ptr_f_real32_2(fptr_dev, omp_dev)
+         implicit none
+         logical                  :: omp_get_mapped_ptr_f_real32_2
+         real(R4P), intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real32_2 = .true.
+         else
+            omp_get_mapped_ptr_f_real32_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real32_2
+
+      function omp_get_mapped_ptr_f_real32_3(fptr_dev, omp_dev)
+         implicit none
+         logical                  :: omp_get_mapped_ptr_f_real32_3
+         real(R4P), intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real32_3 = .true.
+         else
+            omp_get_mapped_ptr_f_real32_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real32_3
+
+      function omp_get_mapped_ptr_f_real32_4(fptr_dev, omp_dev)
+         implicit none
+         logical                  :: omp_get_mapped_ptr_f_real32_4
+         real(R4P), intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real32_4 = .true.
+         else
+            omp_get_mapped_ptr_f_real32_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real32_4
+
+      function omp_get_mapped_ptr_f_real32_5(fptr_dev, omp_dev)
+         implicit none
+         logical                  :: omp_get_mapped_ptr_f_real32_5
+         real(R4P), intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real32_5 = .true.
+         else
+            omp_get_mapped_ptr_f_real32_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real32_5
+
+      function omp_get_mapped_ptr_f_real32_6(fptr_dev, omp_dev)
+         implicit none
+         logical                  :: omp_get_mapped_ptr_f_real32_6
+         real(R4P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real32_6 = .true.
+         else
+            omp_get_mapped_ptr_f_real32_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real32_6
+
+      function omp_get_mapped_ptr_f_real32_7(fptr_dev, omp_dev)
+         implicit none
+         logical                  :: omp_get_mapped_ptr_f_real32_7
+         real(R4P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real32_7 = .true.
+         else
+            omp_get_mapped_ptr_f_real32_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real32_7
+
+      function omp_get_mapped_ptr_f_real64_1(fptr_dev, omp_dev)
+         implicit none
+         logical                  :: omp_get_mapped_ptr_f_real64_1
+         real(R8P), intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real64_1 = .true.
+         else
+            omp_get_mapped_ptr_f_real64_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real64_1
+
+      function omp_get_mapped_ptr_f_real64_2(fptr_dev, omp_dev)
+         implicit none
+         logical                  :: omp_get_mapped_ptr_f_real64_2
+         real(R8P), intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real64_2 = .true.
+         else
+            omp_get_mapped_ptr_f_real64_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real64_2
+
+      function omp_get_mapped_ptr_f_real64_3(fptr_dev, omp_dev)
+         implicit none
+         logical                  :: omp_get_mapped_ptr_f_real64_3
+         real(R8P), intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real64_3 = .true.
+         else
+            omp_get_mapped_ptr_f_real64_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real64_3
+
+      function omp_get_mapped_ptr_f_real64_4(fptr_dev, omp_dev)
+         implicit none
+         logical                  :: omp_get_mapped_ptr_f_real64_4
+         real(R8P), intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real64_4 = .true.
+         else
+            omp_get_mapped_ptr_f_real64_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real64_4
+
+      function omp_get_mapped_ptr_f_real64_5(fptr_dev, omp_dev)
+         implicit none
+         logical                  :: omp_get_mapped_ptr_f_real64_5
+         real(R8P), intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real64_5 = .true.
+         else
+            omp_get_mapped_ptr_f_real64_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real64_5
+
+      function omp_get_mapped_ptr_f_real64_6(fptr_dev, omp_dev)
+         implicit none
+         logical                  :: omp_get_mapped_ptr_f_real64_6
+         real(R8P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real64_6 = .true.
+         else
+            omp_get_mapped_ptr_f_real64_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real64_6
+
+      function omp_get_mapped_ptr_f_real64_7(fptr_dev, omp_dev)
+         implicit none
+         logical                  :: omp_get_mapped_ptr_f_real64_7
+         real(R8P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real64_7 = .true.
+         else
+            omp_get_mapped_ptr_f_real64_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real64_7
+
+#if defined _real128
+      function omp_get_mapped_ptr_f_real128_1(fptr_dev, omp_dev)
+         implicit none
+         logical                   :: omp_get_mapped_ptr_f_real128_1
+         real(R16P), intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real128_1 = .true.
+         else
+            omp_get_mapped_ptr_f_real128_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real128_1
+
+      function omp_get_mapped_ptr_f_real128_2(fptr_dev, omp_dev)
+         implicit none
+         logical                   :: omp_get_mapped_ptr_f_real128_2
+         real(R16P), intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real128_2 = .true.
+         else
+            omp_get_mapped_ptr_f_real128_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real128_2
+
+      function omp_get_mapped_ptr_f_real128_3(fptr_dev, omp_dev)
+         implicit none
+         logical                   :: omp_get_mapped_ptr_f_real128_3
+         real(R16P), intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real128_3 = .true.
+         else
+            omp_get_mapped_ptr_f_real128_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real128_3
+
+      function omp_get_mapped_ptr_f_real128_4(fptr_dev, omp_dev)
+         implicit none
+         logical                   :: omp_get_mapped_ptr_f_real128_4
+         real(R16P), intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real128_4 = .true.
+         else
+            omp_get_mapped_ptr_f_real128_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real128_4
+
+      function omp_get_mapped_ptr_f_real128_5(fptr_dev, omp_dev)
+         implicit none
+         logical                   :: omp_get_mapped_ptr_f_real128_5
+         real(R16P), intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real128_5 = .true.
+         else
+            omp_get_mapped_ptr_f_real128_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real128_5
+
+      function omp_get_mapped_ptr_f_real128_6(fptr_dev, omp_dev)
+         implicit none
+         logical                   :: omp_get_mapped_ptr_f_real128_6
+         real(R16P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real128_6 = .true.
+         else
+            omp_get_mapped_ptr_f_real128_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real128_6
+
+      function omp_get_mapped_ptr_f_real128_7(fptr_dev, omp_dev)
+         implicit none
+         logical                   :: omp_get_mapped_ptr_f_real128_7
+         real(R16P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_real128_7 = .true.
+         else
+            omp_get_mapped_ptr_f_real128_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_real128_7
 #endif
 
       ! OpenMP Target Free Real Routines
-      subroutine omp_target_free_f_R4P_1(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real32_1(fptr_dev, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R4P_1
+      endsubroutine omp_target_free_f_real32_1
 
-      subroutine omp_target_free_f_R4P_2(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real32_2(fptr_dev, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R4P_2
+      endsubroutine omp_target_free_f_real32_2
 
-      subroutine omp_target_free_f_R4P_3(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real32_3(fptr_dev, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R4P_3
+      endsubroutine omp_target_free_f_real32_3
 
-      subroutine omp_target_free_f_R4P_4(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real32_4(fptr_dev, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R4P_4
+      endsubroutine omp_target_free_f_real32_4
 
-      subroutine omp_target_free_f_R4P_5(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real32_5(fptr_dev, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R4P_5
+      endsubroutine omp_target_free_f_real32_5
 
-      subroutine omp_target_free_f_R4P_6(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real32_6(fptr_dev, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R4P_6
+      endsubroutine omp_target_free_f_real32_6
 
-      subroutine omp_target_free_f_R4P_7(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real32_7(fptr_dev, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R4P_7
+      endsubroutine omp_target_free_f_real32_7
 
-      subroutine omp_target_free_f_R8P_1(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real64_1(fptr_dev, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R8P_1
+      endsubroutine omp_target_free_f_real64_1
 
-      subroutine omp_target_free_f_R8P_2(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real64_2(fptr_dev, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R8P_2
+      endsubroutine omp_target_free_f_real64_2
 
-      subroutine omp_target_free_f_R8P_3(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real64_3(fptr_dev, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R8P_3
+      endsubroutine omp_target_free_f_real64_3
 
-      subroutine omp_target_free_f_R8P_4(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real64_4(fptr_dev, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R8P_4
+      endsubroutine omp_target_free_f_real64_4
 
-      subroutine omp_target_free_f_R8P_5(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real64_5(fptr_dev, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R8P_5
+      endsubroutine omp_target_free_f_real64_5
 
-      subroutine omp_target_free_f_R8P_6(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real64_6(fptr_dev, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R8P_6
+      endsubroutine omp_target_free_f_real64_6
 
-      subroutine omp_target_free_f_R8P_7(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real64_7(fptr_dev, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R8P_7
+      endsubroutine omp_target_free_f_real64_7
 
-#if defined _R16P
-      subroutine omp_target_free_f_R16P_1(fptr_dev, omp_dev)
+#if defined _real128
+      subroutine omp_target_free_f_real128_1(fptr_dev, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R16P_1
+      endsubroutine omp_target_free_f_real128_1
 
-      subroutine omp_target_free_f_R16P_2(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real128_2(fptr_dev, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R16P_2
+      endsubroutine omp_target_free_f_real128_2
 
-      subroutine omp_target_free_f_R16P_3(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real128_3(fptr_dev, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R16P_3
+      endsubroutine omp_target_free_f_real128_3
 
-      subroutine omp_target_free_f_R16P_4(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real128_4(fptr_dev, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R16P_4
+      endsubroutine omp_target_free_f_real128_4
 
-      subroutine omp_target_free_f_R16P_5(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real128_5(fptr_dev, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R16P_5
+      endsubroutine omp_target_free_f_real128_5
 
-      subroutine omp_target_free_f_R16P_6(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real128_6(fptr_dev, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R16P_6
+      endsubroutine omp_target_free_f_real128_6
 
-      subroutine omp_target_free_f_R16P_7(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_real128_7(fptr_dev, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_R16P_7
+      endsubroutine omp_target_free_f_real128_7
 #endif
 
       ! OpenMP Target Alloc Real Routines
-      subroutine omp_target_alloc_f_R4P_1(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real32_1(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R4P), pointer, intent(inout) :: fptr_dev(:)
          integer(I8P), intent(in)          :: dimensions
@@ -2571,9 +3349,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
-      endsubroutine omp_target_alloc_f_R4P_1
+      endsubroutine omp_target_alloc_f_real32_1
 
-      subroutine omp_target_alloc_f_R4P_2(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real32_2(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R4P), pointer, intent(inout) :: fptr_dev(:,:)
          integer(I8P), intent(in)          :: dimensions(2)
@@ -2584,9 +3362,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
-      endsubroutine omp_target_alloc_f_R4P_2
+      endsubroutine omp_target_alloc_f_real32_2
 
-      subroutine omp_target_alloc_f_R4P_3(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real32_3(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R4P), pointer, intent(inout) :: fptr_dev(:,:,:)
          integer(I8P), intent(in)          :: dimensions(3)
@@ -2597,9 +3375,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
-      endsubroutine omp_target_alloc_f_R4P_3
+      endsubroutine omp_target_alloc_f_real32_3
 
-      subroutine omp_target_alloc_f_R4P_4(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real32_4(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R4P), pointer, intent(inout) :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)          :: dimensions(4)
@@ -2610,9 +3388,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
-      endsubroutine omp_target_alloc_f_R4P_4
+      endsubroutine omp_target_alloc_f_real32_4
 
-      subroutine omp_target_alloc_f_R4P_5(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real32_5(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R4P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)          :: dimensions(5)
@@ -2624,9 +3402,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
-      endsubroutine omp_target_alloc_f_R4P_5
+      endsubroutine omp_target_alloc_f_real32_5
 
-      subroutine omp_target_alloc_f_R4P_6(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real32_6(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R4P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)          :: dimensions(6)
@@ -2638,9 +3416,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
-      endsubroutine omp_target_alloc_f_R4P_6
+      endsubroutine omp_target_alloc_f_real32_6
 
-      subroutine omp_target_alloc_f_R4P_7(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real32_7(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R4P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)          :: dimensions(7)
@@ -2652,9 +3430,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
-      endsubroutine omp_target_alloc_f_R4P_7
+      endsubroutine omp_target_alloc_f_real32_7
 
-      subroutine omp_target_alloc_f_R8P_1(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real64_1(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R8P), pointer, intent(inout) :: fptr_dev(:)
          integer(I8P), intent(in)          :: dimensions
@@ -2665,9 +3443,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
-      endsubroutine omp_target_alloc_f_R8P_1
+      endsubroutine omp_target_alloc_f_real64_1
 
-      subroutine omp_target_alloc_f_R8P_2(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real64_2(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R8P), pointer, intent(inout) :: fptr_dev(:,:)
          integer(I8P), intent(in)          :: dimensions(2)
@@ -2678,9 +3456,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
-      endsubroutine omp_target_alloc_f_R8P_2
+      endsubroutine omp_target_alloc_f_real64_2
 
-      subroutine omp_target_alloc_f_R8P_3(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real64_3(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R8P), pointer, intent(inout) :: fptr_dev(:,:,:)
          integer(I8P), intent(in)          :: dimensions(3)
@@ -2691,9 +3469,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
-      endsubroutine omp_target_alloc_f_R8P_3
+      endsubroutine omp_target_alloc_f_real64_3
 
-      subroutine omp_target_alloc_f_R8P_4(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real64_4(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R8P), pointer, intent(inout) :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)          :: dimensions(4)
@@ -2704,9 +3482,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
-      endsubroutine omp_target_alloc_f_R8P_4
+      endsubroutine omp_target_alloc_f_real64_4
 
-      subroutine omp_target_alloc_f_R8P_5(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real64_5(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R8P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)          :: dimensions(5)
@@ -2718,9 +3496,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
-      endsubroutine omp_target_alloc_f_R8P_5
+      endsubroutine omp_target_alloc_f_real64_5
 
-      subroutine omp_target_alloc_f_R8P_6(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real64_6(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R8P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)          :: dimensions(6)
@@ -2732,9 +3510,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
-      endsubroutine omp_target_alloc_f_R8P_6
+      endsubroutine omp_target_alloc_f_real64_6
 
-      subroutine omp_target_alloc_f_R8P_7(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real64_7(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R8P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)          :: dimensions(7)
@@ -2746,10 +3524,10 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
-      endsubroutine omp_target_alloc_f_R8P_7
+      endsubroutine omp_target_alloc_f_real64_7
 
-#if defined _R16P
-      subroutine omp_target_alloc_f_R16P_1(fptr_dev, dimensions, omp_dev)
+#if defined _real128
+      subroutine omp_target_alloc_f_real128_1(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R16P), pointer, intent(inout) :: fptr_dev(:)
          integer(I8P), intent(in)           :: dimensions
@@ -2760,9 +3538,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
-      endsubroutine omp_target_alloc_f_R16P_1
+      endsubroutine omp_target_alloc_f_real128_1
 
-      subroutine omp_target_alloc_f_R16P_2(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real128_2(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R16P), pointer, intent(inout) :: fptr_dev(:,:)
          integer(I8P), intent(in)           :: dimensions(2)
@@ -2773,9 +3551,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
-      endsubroutine omp_target_alloc_f_R16P_2
+      endsubroutine omp_target_alloc_f_real128_2
 
-      subroutine omp_target_alloc_f_R16P_3(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real128_3(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R16P), pointer, intent(inout) :: fptr_dev(:,:,:)
          integer(I8P), intent(in)           :: dimensions(3)
@@ -2786,9 +3564,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
-      endsubroutine omp_target_alloc_f_R16P_3
+      endsubroutine omp_target_alloc_f_real128_3
 
-      subroutine omp_target_alloc_f_R16P_4(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real128_4(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R16P), pointer, intent(inout) :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)           :: dimensions(4)
@@ -2799,9 +3577,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
-      endsubroutine omp_target_alloc_f_R16P_4
+      endsubroutine omp_target_alloc_f_real128_4
 
-      subroutine omp_target_alloc_f_R16P_5(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real128_5(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R16P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)           :: dimensions(5)
@@ -2813,9 +3591,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
-      endsubroutine omp_target_alloc_f_R16P_5
+      endsubroutine omp_target_alloc_f_real128_5
 
-      subroutine omp_target_alloc_f_R16P_6(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real128_6(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R16P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)           :: dimensions(6)
@@ -2827,9 +3605,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
-      endsubroutine omp_target_alloc_f_R16P_6
+      endsubroutine omp_target_alloc_f_real128_6
 
-      subroutine omp_target_alloc_f_R16P_7(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_real128_7(fptr_dev, dimensions, omp_dev)
          implicit none
          real(R16P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)           :: dimensions(7)
@@ -2841,11 +3619,11 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
-      endsubroutine omp_target_alloc_f_R16P_7
+      endsubroutine omp_target_alloc_f_real128_7
 #endif
 
       ! OpenMP Target Memcpy Real Routines
-      subroutine omp_target_memcpy_f_R4P_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real32_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R4P), contiguous, target, intent(out) :: fptr_dst(:)
@@ -2858,9 +3636,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R4P_1
+      endsubroutine omp_target_memcpy_f_real32_1
 
-      subroutine omp_target_memcpy_f_R4P_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real32_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R4P), contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -2873,9 +3651,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R4P_2
+      endsubroutine omp_target_memcpy_f_real32_2
 
-      subroutine omp_target_memcpy_f_R4P_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real32_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -2888,9 +3666,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R4P_3
+      endsubroutine omp_target_memcpy_f_real32_3
 
-      subroutine omp_target_memcpy_f_R4P_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real32_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -2903,9 +3681,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R4P_4
+      endsubroutine omp_target_memcpy_f_real32_4
 
-      subroutine omp_target_memcpy_f_R4P_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real32_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -2918,9 +3696,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R4P_5
+      endsubroutine omp_target_memcpy_f_real32_5
 
-      subroutine omp_target_memcpy_f_R4P_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real32_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -2933,9 +3711,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R4P_6
+      endsubroutine omp_target_memcpy_f_real32_6
 
-      subroutine omp_target_memcpy_f_R4P_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real32_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -2948,9 +3726,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R4P_7
+      endsubroutine omp_target_memcpy_f_real32_7
 
-      subroutine omp_target_memcpy_f_R8P_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real64_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R8P), contiguous, target, intent(out) :: fptr_dst(:)
@@ -2963,9 +3741,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R8P_1
+      endsubroutine omp_target_memcpy_f_real64_1
 
-      subroutine omp_target_memcpy_f_R8P_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real64_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R8P), contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -2978,9 +3756,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R8P_2
+      endsubroutine omp_target_memcpy_f_real64_2
 
-      subroutine omp_target_memcpy_f_R8P_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real64_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -2993,9 +3771,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R8P_3
+      endsubroutine omp_target_memcpy_f_real64_3
 
-      subroutine omp_target_memcpy_f_R8P_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real64_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -3008,9 +3786,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R8P_4
+      endsubroutine omp_target_memcpy_f_real64_4
 
-      subroutine omp_target_memcpy_f_R8P_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real64_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -3023,9 +3801,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R8P_5
+      endsubroutine omp_target_memcpy_f_real64_5
 
-      subroutine omp_target_memcpy_f_R8P_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real64_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -3038,9 +3816,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R8P_6
+      endsubroutine omp_target_memcpy_f_real64_6
 
-      subroutine omp_target_memcpy_f_R8P_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real64_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -3053,10 +3831,10 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R8P_7
+      endsubroutine omp_target_memcpy_f_real64_7
 
-#if defined _R16P
-      subroutine omp_target_memcpy_f_R16P_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+#if defined _real128
+      subroutine omp_target_memcpy_f_real128_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R16P), contiguous, target, intent(out) :: fptr_dst(:)
@@ -3069,9 +3847,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R16P_1
+      endsubroutine omp_target_memcpy_f_real128_1
 
-      subroutine omp_target_memcpy_f_R16P_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real128_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R16P), contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -3084,9 +3862,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R16P_2
+      endsubroutine omp_target_memcpy_f_real128_2
 
-      subroutine omp_target_memcpy_f_R16P_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real128_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -3099,9 +3877,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R16P_3
+      endsubroutine omp_target_memcpy_f_real128_3
 
-      subroutine omp_target_memcpy_f_R16P_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real128_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -3114,9 +3892,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R16P_4
+      endsubroutine omp_target_memcpy_f_real128_4
 
-      subroutine omp_target_memcpy_f_R16P_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real128_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -3129,9 +3907,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R16P_5
+      endsubroutine omp_target_memcpy_f_real128_5
 
-      subroutine omp_target_memcpy_f_R16P_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real128_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -3144,9 +3922,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R16P_6
+      endsubroutine omp_target_memcpy_f_real128_6
 
-      subroutine omp_target_memcpy_f_R16P_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_real128_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -3159,11 +3937,11 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_R16P_7
+      endsubroutine omp_target_memcpy_f_real128_7
 #endif
 
      ! OpenMP Target Memcpy Rect Real Routines
-      subroutine omp_target_memcpy_rect_f_R4P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_real32_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -3178,9 +3956,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R4P_2
+      endsubroutine omp_target_memcpy_rect_f_real32_2
 
-      subroutine omp_target_memcpy_rect_f_R4P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_real32_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -3195,9 +3973,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R4P_3
+      endsubroutine omp_target_memcpy_rect_f_real32_3
 
-      subroutine omp_target_memcpy_rect_f_R4P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_real32_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -3212,9 +3990,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R4P_4
+      endsubroutine omp_target_memcpy_rect_f_real32_4
 
-      subroutine omp_target_memcpy_rect_f_R4P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_real32_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -3229,9 +4007,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R4P_5
+      endsubroutine omp_target_memcpy_rect_f_real32_5
 
-      subroutine omp_target_memcpy_rect_f_R4P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_real32_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -3246,9 +4024,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R4P_6
+      endsubroutine omp_target_memcpy_rect_f_real32_6
 
-      subroutine omp_target_memcpy_rect_f_R4P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_real32_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -3263,9 +4041,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R4P_7
+      endsubroutine omp_target_memcpy_rect_f_real32_7
 
-      subroutine omp_target_memcpy_rect_f_R8P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_real64_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -3280,9 +4058,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R8P_2
+      endsubroutine omp_target_memcpy_rect_f_real64_2
 
-      subroutine omp_target_memcpy_rect_f_R8P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_real64_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -3297,9 +4075,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R8P_3
+      endsubroutine omp_target_memcpy_rect_f_real64_3
 
-      subroutine omp_target_memcpy_rect_f_R8P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_real64_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -3314,9 +4092,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R8P_4
+      endsubroutine omp_target_memcpy_rect_f_real64_4
 
-      subroutine omp_target_memcpy_rect_f_R8P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_real64_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -3331,9 +4109,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R8P_5
+      endsubroutine omp_target_memcpy_rect_f_real64_5
 
-      subroutine omp_target_memcpy_rect_f_R8P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_real64_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -3348,9 +4126,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R8P_6
+      endsubroutine omp_target_memcpy_rect_f_real64_6
 
-      subroutine omp_target_memcpy_rect_f_R8P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_real64_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -3365,10 +4143,10 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R8P_7
+      endsubroutine omp_target_memcpy_rect_f_real64_7
 
-#if defined _R16P
-      subroutine omp_target_memcpy_rect_f_R16P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+#if defined _real128
+      subroutine omp_target_memcpy_rect_f_real128_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -3383,9 +4161,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R16P_2
+      endsubroutine omp_target_memcpy_rect_f_real128_2
 
-      subroutine omp_target_memcpy_rect_f_R16P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_real128_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -3400,9 +4178,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R16P_3
+      endsubroutine omp_target_memcpy_rect_f_real128_3
 
-      subroutine omp_target_memcpy_rect_f_R16P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_real128_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -3417,9 +4195,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R16P_4
+      endsubroutine omp_target_memcpy_rect_f_real128_4
 
-      subroutine omp_target_memcpy_rect_f_R16P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_real128_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -3434,9 +4212,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R16P_5
+      endsubroutine omp_target_memcpy_rect_f_real128_5
 
-      subroutine omp_target_memcpy_rect_f_R16P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_real128_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -3451,9 +4229,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R16P_6
+      endsubroutine omp_target_memcpy_rect_f_real128_6
 
-      subroutine omp_target_memcpy_rect_f_R16P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_real128_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -3468,500 +4246,818 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_R16P_7
+      endsubroutine omp_target_memcpy_rect_f_real128_7
 #endif
 
       ! OpenMP Target Is Present Complex Routines
-      function omp_target_is_present_f_C4P_1(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx32_1(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_C4P_1
+         logical                          :: omp_target_is_present_f_cmplx32_1
          complex(R4P), target, intent(in) :: fptr_dev(:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C4P_1 = .true.
+            omp_target_is_present_f_cmplx32_1 = .true.
          else
-            omp_target_is_present_f_C4P_1 = .false.
+            omp_target_is_present_f_cmplx32_1 = .false.
          endif
 
-       endfunction omp_target_is_present_f_C4P_1
+       endfunction omp_target_is_present_f_cmplx32_1
 
-      function omp_target_is_present_f_C4P_2(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx32_2(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_C4P_2
+         logical                          :: omp_target_is_present_f_cmplx32_2
          complex(R4P), target, intent(in) :: fptr_dev(:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C4P_2 = .true.
+            omp_target_is_present_f_cmplx32_2 = .true.
          else
-            omp_target_is_present_f_C4P_2 = .false.
+            omp_target_is_present_f_cmplx32_2 = .false.
          endif
 
-      endfunction omp_target_is_present_f_C4P_2
+      endfunction omp_target_is_present_f_cmplx32_2
 
-      function omp_target_is_present_f_C4P_3(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx32_3(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_C4P_3
+         logical                          :: omp_target_is_present_f_cmplx32_3
          complex(R4P), target, intent(in) :: fptr_dev(:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C4P_3 = .true.
+            omp_target_is_present_f_cmplx32_3 = .true.
          else
-            omp_target_is_present_f_C4P_3 = .false.
+            omp_target_is_present_f_cmplx32_3 = .false.
          endif
 
-       endfunction omp_target_is_present_f_C4P_3
+       endfunction omp_target_is_present_f_cmplx32_3
 
-      function omp_target_is_present_f_C4P_4(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx32_4(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_C4P_4
+         logical                          :: omp_target_is_present_f_cmplx32_4
          complex(R4P), target, intent(in) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C4P_4 = .true.
+            omp_target_is_present_f_cmplx32_4 = .true.
          else
-            omp_target_is_present_f_C4P_4 = .false.
+            omp_target_is_present_f_cmplx32_4 = .false.
          endif
 
-      endfunction omp_target_is_present_f_C4P_4
+      endfunction omp_target_is_present_f_cmplx32_4
 
-      function omp_target_is_present_f_C4P_5(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx32_5(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_C4P_5
+         logical                          :: omp_target_is_present_f_cmplx32_5
          complex(R4P), target, intent(in) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C4P_5 = .true.
+            omp_target_is_present_f_cmplx32_5 = .true.
          else
-            omp_target_is_present_f_C4P_5 = .false.
+            omp_target_is_present_f_cmplx32_5 = .false.
          endif
 
-      endfunction omp_target_is_present_f_C4P_5
+      endfunction omp_target_is_present_f_cmplx32_5
 
-      function omp_target_is_present_f_C4P_6(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx32_6(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_C4P_6
+         logical                          :: omp_target_is_present_f_cmplx32_6
          complex(R4P), target, intent(in) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C4P_6 = .true.
+            omp_target_is_present_f_cmplx32_6 = .true.
          else
-            omp_target_is_present_f_C4P_6 = .false.
+            omp_target_is_present_f_cmplx32_6 = .false.
          endif
 
-      endfunction omp_target_is_present_f_C4P_6
+      endfunction omp_target_is_present_f_cmplx32_6
 
-      function omp_target_is_present_f_C4P_7(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx32_7(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_C4P_7
+         logical                          :: omp_target_is_present_f_cmplx32_7
          complex(R4P), target, intent(in) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C4P_7 = .true.
+            omp_target_is_present_f_cmplx32_7 = .true.
          else
-            omp_target_is_present_f_C4P_7 = .false.
+            omp_target_is_present_f_cmplx32_7 = .false.
          endif
 
-      endfunction omp_target_is_present_f_C4P_7
+      endfunction omp_target_is_present_f_cmplx32_7
 
-      function omp_target_is_present_f_C8P_1(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx64_1(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_C8P_1
+         logical                          :: omp_target_is_present_f_cmplx64_1
          complex(R8P), target, intent(in) :: fptr_dev(:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C8P_1 = .true.
+            omp_target_is_present_f_cmplx64_1 = .true.
          else
-            omp_target_is_present_f_C8P_1 = .false.
+            omp_target_is_present_f_cmplx64_1 = .false.
          endif
 
-       endfunction omp_target_is_present_f_C8P_1
+       endfunction omp_target_is_present_f_cmplx64_1
 
-      function omp_target_is_present_f_C8P_2(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx64_2(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_C8P_2
+         logical                          :: omp_target_is_present_f_cmplx64_2
          complex(R8P), target, intent(in) :: fptr_dev(:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C8P_2 = .true.
+            omp_target_is_present_f_cmplx64_2 = .true.
          else
-            omp_target_is_present_f_C8P_2 = .false.
+            omp_target_is_present_f_cmplx64_2 = .false.
          endif
 
-      endfunction omp_target_is_present_f_C8P_2
+      endfunction omp_target_is_present_f_cmplx64_2
 
-      function omp_target_is_present_f_C8P_3(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx64_3(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_C8P_3
+         logical                          :: omp_target_is_present_f_cmplx64_3
          complex(R8P), target, intent(in) :: fptr_dev(:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C8P_3 = .true.
+            omp_target_is_present_f_cmplx64_3 = .true.
          else
-            omp_target_is_present_f_C8P_3 = .false.
+            omp_target_is_present_f_cmplx64_3 = .false.
          endif
 
-       endfunction omp_target_is_present_f_C8P_3
+       endfunction omp_target_is_present_f_cmplx64_3
 
-      function omp_target_is_present_f_C8P_4(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx64_4(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_C8P_4
+         logical                          :: omp_target_is_present_f_cmplx64_4
          complex(R8P), target, intent(in) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C8P_4 = .true.
+            omp_target_is_present_f_cmplx64_4 = .true.
          else
-            omp_target_is_present_f_C8P_4 = .false.
+            omp_target_is_present_f_cmplx64_4 = .false.
          endif
 
-      endfunction omp_target_is_present_f_C8P_4
+      endfunction omp_target_is_present_f_cmplx64_4
 
-      function omp_target_is_present_f_C8P_5(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx64_5(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_C8P_5
+         logical                          :: omp_target_is_present_f_cmplx64_5
          complex(R8P), target, intent(in) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C8P_5 = .true.
+            omp_target_is_present_f_cmplx64_5 = .true.
          else
-            omp_target_is_present_f_C8P_5 = .false.
+            omp_target_is_present_f_cmplx64_5 = .false.
          endif
 
-      endfunction omp_target_is_present_f_C8P_5
+      endfunction omp_target_is_present_f_cmplx64_5
 
-      function omp_target_is_present_f_C8P_6(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx64_6(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_C8P_6
+         logical                          :: omp_target_is_present_f_cmplx64_6
          complex(R8P), target, intent(in) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C8P_6 = .true.
+            omp_target_is_present_f_cmplx64_6 = .true.
          else
-            omp_target_is_present_f_C8P_6 = .false.
+            omp_target_is_present_f_cmplx64_6 = .false.
          endif
 
-      endfunction omp_target_is_present_f_C8P_6
+      endfunction omp_target_is_present_f_cmplx64_6
 
-      function omp_target_is_present_f_C8P_7(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx64_7(fptr_dev, omp_dev)
          implicit none
-         logical                          :: omp_target_is_present_f_C8P_7
+         logical                          :: omp_target_is_present_f_cmplx64_7
          complex(R8P), target, intent(in) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C8P_7 = .true.
+            omp_target_is_present_f_cmplx64_7 = .true.
          else
-            omp_target_is_present_f_C8P_7 = .false.
+            omp_target_is_present_f_cmplx64_7 = .false.
          endif
 
-      endfunction omp_target_is_present_f_C8P_7
+      endfunction omp_target_is_present_f_cmplx64_7
 
-#if defined _R16P
-      function omp_target_is_present_f_C16P_1(fptr_dev, omp_dev)
+#if defined _real128
+      function omp_target_is_present_f_cmplx128_1(fptr_dev, omp_dev)
          implicit none
-         logical                           :: omp_target_is_present_f_C16P_1
+         logical                           :: omp_target_is_present_f_cmplx128_1
          complex(R16P), target, intent(in) :: fptr_dev(:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C16P_1 = .true.
+            omp_target_is_present_f_cmplx128_1 = .true.
          else
-            omp_target_is_present_f_C16P_1 = .false.
+            omp_target_is_present_f_cmplx128_1 = .false.
          endif
 
-       endfunction omp_target_is_present_f_C16P_1
+       endfunction omp_target_is_present_f_cmplx128_1
 
-      function omp_target_is_present_f_C16P_2(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx128_2(fptr_dev, omp_dev)
          implicit none
-         logical                           :: omp_target_is_present_f_C16P_2
+         logical                           :: omp_target_is_present_f_cmplx128_2
          complex(R16P), target, intent(in) :: fptr_dev(:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C16P_2 = .true.
+            omp_target_is_present_f_cmplx128_2 = .true.
          else
-            omp_target_is_present_f_C16P_2 = .false.
+            omp_target_is_present_f_cmplx128_2 = .false.
          endif
 
-      endfunction omp_target_is_present_f_C16P_2
+      endfunction omp_target_is_present_f_cmplx128_2
 
-      function omp_target_is_present_f_C16P_3(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx128_3(fptr_dev, omp_dev)
          implicit none
-         logical                           :: omp_target_is_present_f_C16P_3
+         logical                           :: omp_target_is_present_f_cmplx128_3
          complex(R16P), target, intent(in) :: fptr_dev(:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C16P_3 = .true.
+            omp_target_is_present_f_cmplx128_3 = .true.
          else
-            omp_target_is_present_f_C16P_3 = .false.
+            omp_target_is_present_f_cmplx128_3 = .false.
          endif
 
-       endfunction omp_target_is_present_f_C16P_3
+       endfunction omp_target_is_present_f_cmplx128_3
 
-      function omp_target_is_present_f_C16P_4(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx128_4(fptr_dev, omp_dev)
          implicit none
-         logical                           :: omp_target_is_present_f_C16P_4
+         logical                           :: omp_target_is_present_f_cmplx128_4
          complex(R16P), target, intent(in) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C16P_4 = .true.
+            omp_target_is_present_f_cmplx128_4 = .true.
          else
-            omp_target_is_present_f_C16P_4 = .false.
+            omp_target_is_present_f_cmplx128_4 = .false.
          endif
 
-      endfunction omp_target_is_present_f_C16P_4
+      endfunction omp_target_is_present_f_cmplx128_4
 
-      function omp_target_is_present_f_C16P_5(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx128_5(fptr_dev, omp_dev)
          implicit none
-         logical                           :: omp_target_is_present_f_C16P_5
+         logical                           :: omp_target_is_present_f_cmplx128_5
          complex(R16P), target, intent(in) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C16P_5 = .true.
+            omp_target_is_present_f_cmplx128_5 = .true.
          else
-            omp_target_is_present_f_C16P_5 = .false.
+            omp_target_is_present_f_cmplx128_5 = .false.
          endif
 
-      endfunction omp_target_is_present_f_C16P_5
+      endfunction omp_target_is_present_f_cmplx128_5
 
-      function omp_target_is_present_f_C16P_6(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx128_6(fptr_dev, omp_dev)
          implicit none
-         logical                           :: omp_target_is_present_f_C16P_6
+         logical                           :: omp_target_is_present_f_cmplx128_6
          complex(R16P), target, intent(in) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C16P_6 = .true.
+            omp_target_is_present_f_cmplx128_6 = .true.
          else
-            omp_target_is_present_f_C16P_6 = .false.
+            omp_target_is_present_f_cmplx128_6 = .false.
          endif
 
-      endfunction omp_target_is_present_f_C16P_6
+      endfunction omp_target_is_present_f_cmplx128_6
 
-      function omp_target_is_present_f_C16P_7(fptr_dev, omp_dev)
+      function omp_target_is_present_f_cmplx128_7(fptr_dev, omp_dev)
          implicit none
-         logical                           :: omp_target_is_present_f_C16P_7
+         logical                           :: omp_target_is_present_f_cmplx128_7
          complex(R16P), target, intent(in) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/is_present.i90"
 
          if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
-            omp_target_is_present_f_C16P_7 = .true.
+            omp_target_is_present_f_cmplx128_7 = .true.
          else
-            omp_target_is_present_f_C16P_7 = .false.
+            omp_target_is_present_f_cmplx128_7 = .false.
          endif
 
-      endfunction omp_target_is_present_f_C16P_7
+      endfunction omp_target_is_present_f_cmplx128_7
+#endif
+
+      ! OpenMP Get Mapped Pointer Complex Routines
+      function omp_get_mapped_ptr_f_cmplx32_1(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_cmplx32_1
+         complex(R4P), intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx32_1 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx32_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx32_1
+
+      function omp_get_mapped_ptr_f_cmplx32_2(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_cmplx32_2
+         complex(R4P), intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx32_2 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx32_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx32_2
+
+      function omp_get_mapped_ptr_f_cmplx32_3(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_cmplx32_3
+         complex(R4P), intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx32_3 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx32_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx32_3
+
+      function omp_get_mapped_ptr_f_cmplx32_4(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_cmplx32_4
+         complex(R4P), intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx32_4 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx32_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx32_4
+
+      function omp_get_mapped_ptr_f_cmplx32_5(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_cmplx32_5
+         complex(R4P), intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx32_5 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx32_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx32_5
+
+      function omp_get_mapped_ptr_f_cmplx32_6(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_cmplx32_6
+         complex(R4P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx32_6 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx32_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx32_6
+
+      function omp_get_mapped_ptr_f_cmplx32_7(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_cmplx32_7
+         complex(R4P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx32_7 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx32_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx32_7
+
+      function omp_get_mapped_ptr_f_cmplx64_1(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_cmplx64_1
+         complex(R8P), intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx64_1 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx64_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx64_1
+
+      function omp_get_mapped_ptr_f_cmplx64_2(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_cmplx64_2
+         complex(R8P), intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx64_2 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx64_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx64_2
+
+      function omp_get_mapped_ptr_f_cmplx64_3(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_cmplx64_3
+         complex(R8P), intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx64_3 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx64_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx64_3
+
+      function omp_get_mapped_ptr_f_cmplx64_4(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_cmplx64_4
+         complex(R8P), intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx64_4 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx64_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx64_4
+
+      function omp_get_mapped_ptr_f_cmplx64_5(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_cmplx64_5
+         complex(R8P), intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx64_5 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx64_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx64_5
+
+      function omp_get_mapped_ptr_f_cmplx64_6(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_cmplx64_6
+         complex(R8P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx64_6 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx64_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx64_6
+
+      function omp_get_mapped_ptr_f_cmplx64_7(fptr_dev, omp_dev)
+         implicit none
+         logical                     :: omp_get_mapped_ptr_f_cmplx64_7
+         complex(R8P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx64_7 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx64_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx64_7
+
+#if defined _real128
+      function omp_get_mapped_ptr_f_cmplx128_1(fptr_dev, omp_dev)
+         implicit none
+         logical                      :: omp_get_mapped_ptr_f_cmplx128_1
+         complex(R16P), intent(inout) :: fptr_dev(:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx128_1 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx128_1 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx128_1
+
+      function omp_get_mapped_ptr_f_cmplx128_2(fptr_dev, omp_dev)
+         implicit none
+         logical                      :: omp_get_mapped_ptr_f_cmplx128_2
+         complex(R16P), intent(inout) :: fptr_dev(:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx128_2 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx128_2 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx128_2
+
+      function omp_get_mapped_ptr_f_cmplx128_3(fptr_dev, omp_dev)
+         implicit none
+         logical                      :: omp_get_mapped_ptr_f_cmplx128_3
+         complex(R16P), intent(inout) :: fptr_dev(:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx128_3 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx128_3 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx128_3
+
+      function omp_get_mapped_ptr_f_cmplx128_4(fptr_dev, omp_dev)
+         implicit none
+         logical                      :: omp_get_mapped_ptr_f_cmplx128_4
+         complex(R16P), intent(inout) :: fptr_dev(:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx128_4 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx128_4 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx128_4
+
+      function omp_get_mapped_ptr_f_cmplx128_5(fptr_dev, omp_dev)
+         implicit none
+         logical                      :: omp_get_mapped_ptr_f_cmplx128_5
+         complex(R16P), intent(inout) :: fptr_dev(:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx128_5 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx128_5 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx128_5
+
+      function omp_get_mapped_ptr_f_cmplx128_6(fptr_dev, omp_dev)
+         implicit none
+         logical                      :: omp_get_mapped_ptr_f_cmplx128_6
+         complex(R16P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx128_6 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx128_6 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx128_6
+
+      function omp_get_mapped_ptr_f_cmplx128_7(fptr_dev, omp_dev)
+         implicit none
+         logical                      :: omp_get_mapped_ptr_f_cmplx128_7
+         complex(R16P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+
+         include "src/lib/include/get_mapped_ptr.i90"
+
+         if (c_associated(cptr_dev)) then
+            omp_get_mapped_ptr_f_cmplx128_7 = .true.
+         else
+            omp_get_mapped_ptr_f_cmplx128_7 = .false.
+         endif
+
+      endfunction omp_get_mapped_ptr_f_cmplx128_7
 #endif
 
       ! OpenMP Target Free Complex Routines
-      subroutine omp_target_free_f_C4P_1(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx32_1(fptr_dev, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C4P_1
+      endsubroutine omp_target_free_f_cmplx32_1
 
-      subroutine omp_target_free_f_C4P_2(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx32_2(fptr_dev, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C4P_2
+      endsubroutine omp_target_free_f_cmplx32_2
 
-      subroutine omp_target_free_f_C4P_3(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx32_3(fptr_dev, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C4P_3
+      endsubroutine omp_target_free_f_cmplx32_3
 
-      subroutine omp_target_free_f_C4P_4(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx32_4(fptr_dev, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C4P_4
+      endsubroutine omp_target_free_f_cmplx32_4
 
-      subroutine omp_target_free_f_C4P_5(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx32_5(fptr_dev, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C4P_5
+      endsubroutine omp_target_free_f_cmplx32_5
 
-      subroutine omp_target_free_f_C4P_6(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx32_6(fptr_dev, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C4P_6
+      endsubroutine omp_target_free_f_cmplx32_6
 
-      subroutine omp_target_free_f_C4P_7(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx32_7(fptr_dev, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C4P_7
+      endsubroutine omp_target_free_f_cmplx32_7
 
-      subroutine omp_target_free_f_C8P_1(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx64_1(fptr_dev, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C8P_1
+      endsubroutine omp_target_free_f_cmplx64_1
 
-      subroutine omp_target_free_f_C8P_2(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx64_2(fptr_dev, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C8P_2
+      endsubroutine omp_target_free_f_cmplx64_2
 
-      subroutine omp_target_free_f_C8P_3(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx64_3(fptr_dev, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C8P_3
+      endsubroutine omp_target_free_f_cmplx64_3
 
-      subroutine omp_target_free_f_C8P_4(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx64_4(fptr_dev, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C8P_4
+      endsubroutine omp_target_free_f_cmplx64_4
 
-      subroutine omp_target_free_f_C8P_5(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx64_5(fptr_dev, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C8P_5
+      endsubroutine omp_target_free_f_cmplx64_5
 
-      subroutine omp_target_free_f_C8P_6(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx64_6(fptr_dev, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C8P_6
+      endsubroutine omp_target_free_f_cmplx64_6
 
-      subroutine omp_target_free_f_C8P_7(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx64_7(fptr_dev, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C8P_7
+      endsubroutine omp_target_free_f_cmplx64_7
 
-#if defined _R16P
-      subroutine omp_target_free_f_C16P_1(fptr_dev, omp_dev)
+#if defined _real128
+      subroutine omp_target_free_f_cmplx128_1(fptr_dev, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C16P_1
+      endsubroutine omp_target_free_f_cmplx128_1
 
-      subroutine omp_target_free_f_C16P_2(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx128_2(fptr_dev, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C16P_2
+      endsubroutine omp_target_free_f_cmplx128_2
 
-      subroutine omp_target_free_f_C16P_3(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx128_3(fptr_dev, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C16P_3
+      endsubroutine omp_target_free_f_cmplx128_3
 
-      subroutine omp_target_free_f_C16P_4(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx128_4(fptr_dev, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C16P_4
+      endsubroutine omp_target_free_f_cmplx128_4
 
-      subroutine omp_target_free_f_C16P_5(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx128_5(fptr_dev, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C16P_5
+      endsubroutine omp_target_free_f_cmplx128_5
 
-      subroutine omp_target_free_f_C16P_6(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx128_6(fptr_dev, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C16P_6
+      endsubroutine omp_target_free_f_cmplx128_6
 
-      subroutine omp_target_free_f_C16P_7(fptr_dev, omp_dev)
+      subroutine omp_target_free_f_cmplx128_7(fptr_dev, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/free_fptr_dev.i90"
 
-      endsubroutine omp_target_free_f_C16P_7
+      endsubroutine omp_target_free_f_cmplx128_7
 #endif
 
       ! OpenMP Target Alloc Complex Routines
-      subroutine omp_target_alloc_f_C4P_1(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx32_1(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R4P), pointer, intent(inout) :: fptr_dev(:)
          integer(I8P), intent(in)             :: dimensions
@@ -3972,9 +5068,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
-      endsubroutine omp_target_alloc_f_C4P_1
+      endsubroutine omp_target_alloc_f_cmplx32_1
 
-      subroutine omp_target_alloc_f_C4P_2(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx32_2(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R4P), pointer, intent(inout) :: fptr_dev(:,:)
          integer(I8P), intent(in)          :: dimensions(2)
@@ -3985,9 +5081,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
-      endsubroutine omp_target_alloc_f_C4P_2
+      endsubroutine omp_target_alloc_f_cmplx32_2
 
-      subroutine omp_target_alloc_f_C4P_3(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx32_3(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R4P), pointer, intent(inout) :: fptr_dev(:,:,:)
          integer(I8P), intent(in)          :: dimensions(3)
@@ -3998,9 +5094,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
-      endsubroutine omp_target_alloc_f_C4P_3
+      endsubroutine omp_target_alloc_f_cmplx32_3
 
-      subroutine omp_target_alloc_f_C4P_4(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx32_4(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R4P), pointer, intent(inout) :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)          :: dimensions(4)
@@ -4011,9 +5107,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
-      endsubroutine omp_target_alloc_f_C4P_4
+      endsubroutine omp_target_alloc_f_cmplx32_4
 
-      subroutine omp_target_alloc_f_C4P_5(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx32_5(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R4P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)          :: dimensions(5)
@@ -4025,9 +5121,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
-      endsubroutine omp_target_alloc_f_C4P_5
+      endsubroutine omp_target_alloc_f_cmplx32_5
 
-      subroutine omp_target_alloc_f_C4P_6(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx32_6(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R4P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)          :: dimensions(6)
@@ -4039,9 +5135,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
-      endsubroutine omp_target_alloc_f_C4P_6
+      endsubroutine omp_target_alloc_f_cmplx32_6
 
-      subroutine omp_target_alloc_f_C4P_7(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx32_7(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R4P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)          :: dimensions(7)
@@ -4053,9 +5149,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
-      endsubroutine omp_target_alloc_f_C4P_7
+      endsubroutine omp_target_alloc_f_cmplx32_7
 
-      subroutine omp_target_alloc_f_C8P_1(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx64_1(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R8P), pointer, intent(inout) :: fptr_dev(:)
          integer(I8P), intent(in)             :: dimensions
@@ -4066,9 +5162,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
-      endsubroutine omp_target_alloc_f_C8P_1
+      endsubroutine omp_target_alloc_f_cmplx64_1
 
-      subroutine omp_target_alloc_f_C8P_2(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx64_2(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R8P), pointer, intent(inout) :: fptr_dev(:,:)
          integer(I8P), intent(in)             :: dimensions(2)
@@ -4079,9 +5175,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
-      endsubroutine omp_target_alloc_f_C8P_2
+      endsubroutine omp_target_alloc_f_cmplx64_2
 
-      subroutine omp_target_alloc_f_C8P_3(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx64_3(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R8P), pointer, intent(inout) :: fptr_dev(:,:,:)
          integer(I8P), intent(in)             :: dimensions(3)
@@ -4092,9 +5188,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
-      endsubroutine omp_target_alloc_f_C8P_3
+      endsubroutine omp_target_alloc_f_cmplx64_3
 
-      subroutine omp_target_alloc_f_C8P_4(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx64_4(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R8P), pointer, intent(inout) :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)             :: dimensions(4)
@@ -4105,9 +5201,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
-      endsubroutine omp_target_alloc_f_C8P_4
+      endsubroutine omp_target_alloc_f_cmplx64_4
 
-      subroutine omp_target_alloc_f_C8P_5(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx64_5(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R8P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)             :: dimensions(5)
@@ -4119,9 +5215,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
-      endsubroutine omp_target_alloc_f_C8P_5
+      endsubroutine omp_target_alloc_f_cmplx64_5
 
-      subroutine omp_target_alloc_f_C8P_6(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx64_6(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R8P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)             :: dimensions(6)
@@ -4133,9 +5229,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
-      endsubroutine omp_target_alloc_f_C8P_6
+      endsubroutine omp_target_alloc_f_cmplx64_6
 
-      subroutine omp_target_alloc_f_C8P_7(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx64_7(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R8P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)             :: dimensions(7)
@@ -4147,10 +5243,10 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
-      endsubroutine omp_target_alloc_f_C8P_7
+      endsubroutine omp_target_alloc_f_cmplx64_7
 
-#if defined _R16P
-      subroutine omp_target_alloc_f_C16P_1(fptr_dev, dimensions, omp_dev)
+#if defined _real128
+      subroutine omp_target_alloc_f_cmplx128_1(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R16P), pointer, intent(inout) :: fptr_dev(:)
          integer(I8P), intent(in)              :: dimensions
@@ -4161,9 +5257,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
-      endsubroutine omp_target_alloc_f_C16P_1
+      endsubroutine omp_target_alloc_f_cmplx128_1
 
-      subroutine omp_target_alloc_f_C16P_2(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx128_2(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R16P), pointer, intent(inout) :: fptr_dev(:,:)
          integer(I8P), intent(in)              :: dimensions(2)
@@ -4174,9 +5270,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
-      endsubroutine omp_target_alloc_f_C16P_2
+      endsubroutine omp_target_alloc_f_cmplx128_2
 
-      subroutine omp_target_alloc_f_C16P_3(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx128_3(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R16P), pointer, intent(inout) :: fptr_dev(:,:,:)
          integer(I8P), intent(in)              :: dimensions(3)
@@ -4187,9 +5283,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
-      endsubroutine omp_target_alloc_f_C16P_3
+      endsubroutine omp_target_alloc_f_cmplx128_3
 
-      subroutine omp_target_alloc_f_C16P_4(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx128_4(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R16P), pointer, intent(inout) :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)              :: dimensions(4)
@@ -4200,9 +5296,9 @@ module falco
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
-      endsubroutine omp_target_alloc_f_C16P_4
+      endsubroutine omp_target_alloc_f_cmplx128_4
 
-      subroutine omp_target_alloc_f_C16P_5(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx128_5(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R16P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)              :: dimensions(5)
@@ -4214,9 +5310,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
 
-      endsubroutine omp_target_alloc_f_C16P_5
+      endsubroutine omp_target_alloc_f_cmplx128_5
 
-      subroutine omp_target_alloc_f_C16P_6(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx128_6(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R16P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)              :: dimensions(6)
@@ -4228,9 +5324,9 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
 
-      endsubroutine omp_target_alloc_f_C16P_6
+      endsubroutine omp_target_alloc_f_cmplx128_6
 
-      subroutine omp_target_alloc_f_C16P_7(fptr_dev, dimensions, omp_dev)
+      subroutine omp_target_alloc_f_cmplx128_7(fptr_dev, dimensions, omp_dev)
          implicit none
          complex(R16P), pointer, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)              :: dimensions(7)
@@ -4242,11 +5338,11 @@ module falco
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
 
-      endsubroutine omp_target_alloc_f_C16P_7
+      endsubroutine omp_target_alloc_f_cmplx128_7
 #endif
 
       ! OpenMP Target Memcpy Complex Routines
-      subroutine omp_target_memcpy_f_C4P_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx32_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(:)
@@ -4259,9 +5355,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C4P_1
+      endsubroutine omp_target_memcpy_f_cmplx32_1
 
-      subroutine omp_target_memcpy_f_C4P_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx32_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -4274,9 +5370,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C4P_2
+      endsubroutine omp_target_memcpy_f_cmplx32_2
 
-      subroutine omp_target_memcpy_f_C4P_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx32_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -4289,9 +5385,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C4P_3
+      endsubroutine omp_target_memcpy_f_cmplx32_3
 
-      subroutine omp_target_memcpy_f_C4P_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx32_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -4304,9 +5400,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C4P_4
+      endsubroutine omp_target_memcpy_f_cmplx32_4
 
-      subroutine omp_target_memcpy_f_C4P_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx32_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -4319,9 +5415,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C4P_5
+      endsubroutine omp_target_memcpy_f_cmplx32_5
 
-      subroutine omp_target_memcpy_f_C4P_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx32_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -4334,9 +5430,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C4P_6
+      endsubroutine omp_target_memcpy_f_cmplx32_6
 
-      subroutine omp_target_memcpy_f_C4P_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx32_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -4349,9 +5445,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C4P_7
+      endsubroutine omp_target_memcpy_f_cmplx32_7
 
-      subroutine omp_target_memcpy_f_C8P_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx64_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(:)
@@ -4364,9 +5460,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C8P_1
+      endsubroutine omp_target_memcpy_f_cmplx64_1
 
-      subroutine omp_target_memcpy_f_C8P_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx64_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -4379,9 +5475,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C8P_2
+      endsubroutine omp_target_memcpy_f_cmplx64_2
 
-      subroutine omp_target_memcpy_f_C8P_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx64_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -4394,9 +5490,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C8P_3
+      endsubroutine omp_target_memcpy_f_cmplx64_3
 
-      subroutine omp_target_memcpy_f_C8P_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx64_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -4409,9 +5505,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C8P_4
+      endsubroutine omp_target_memcpy_f_cmplx64_4
 
-      subroutine omp_target_memcpy_f_C8P_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx64_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -4424,9 +5520,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C8P_5
+      endsubroutine omp_target_memcpy_f_cmplx64_5
 
-      subroutine omp_target_memcpy_f_C8P_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx64_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -4439,9 +5535,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C8P_6
+      endsubroutine omp_target_memcpy_f_cmplx64_6
 
-      subroutine omp_target_memcpy_f_C8P_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx64_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -4454,10 +5550,10 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C8P_7
+      endsubroutine omp_target_memcpy_f_cmplx64_7
 
-#if defined _R16P
-      subroutine omp_target_memcpy_f_C16P_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+#if defined _real128
+      subroutine omp_target_memcpy_f_cmplx128_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(:)
@@ -4470,9 +5566,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C16P_1
+      endsubroutine omp_target_memcpy_f_cmplx128_1
 
-      subroutine omp_target_memcpy_f_C16P_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx128_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -4485,9 +5581,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C16P_2
+      endsubroutine omp_target_memcpy_f_cmplx128_2
 
-      subroutine omp_target_memcpy_f_C16P_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx128_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -4500,9 +5596,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C16P_3
+      endsubroutine omp_target_memcpy_f_cmplx128_3
 
-      subroutine omp_target_memcpy_f_C16P_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx128_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -4515,9 +5611,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C16P_4
+      endsubroutine omp_target_memcpy_f_cmplx128_4
 
-      subroutine omp_target_memcpy_f_C16P_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx128_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -4530,9 +5626,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C16P_5
+      endsubroutine omp_target_memcpy_f_cmplx128_5
 
-      subroutine omp_target_memcpy_f_C16P_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx128_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -4545,9 +5641,9 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C16P_6
+      endsubroutine omp_target_memcpy_f_cmplx128_6
 
-      subroutine omp_target_memcpy_f_C16P_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      subroutine omp_target_memcpy_f_cmplx128_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -4560,11 +5656,11 @@ module falco
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_f_C16P_7
+      endsubroutine omp_target_memcpy_f_cmplx128_7
 #endif
 
      ! OpenMP Target Memcpy Rect Complex Routines
-      subroutine omp_target_memcpy_rect_f_C4P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_cmplx32_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -4579,9 +5675,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C4P_2
+      endsubroutine omp_target_memcpy_rect_f_cmplx32_2
 
-      subroutine omp_target_memcpy_rect_f_C4P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_cmplx32_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -4596,9 +5692,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C4P_3
+      endsubroutine omp_target_memcpy_rect_f_cmplx32_3
 
-      subroutine omp_target_memcpy_rect_f_C4P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_cmplx32_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -4613,9 +5709,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C4P_4
+      endsubroutine omp_target_memcpy_rect_f_cmplx32_4
 
-      subroutine omp_target_memcpy_rect_f_C4P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_cmplx32_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -4630,9 +5726,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C4P_5
+      endsubroutine omp_target_memcpy_rect_f_cmplx32_5
 
-      subroutine omp_target_memcpy_rect_f_C4P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_cmplx32_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -4647,9 +5743,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C4P_6
+      endsubroutine omp_target_memcpy_rect_f_cmplx32_6
 
-      subroutine omp_target_memcpy_rect_f_C4P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_cmplx32_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -4664,9 +5760,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C4P_7
+      endsubroutine omp_target_memcpy_rect_f_cmplx32_7
 
-      subroutine omp_target_memcpy_rect_f_C8P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_cmplx64_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -4681,9 +5777,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C8P_2
+      endsubroutine omp_target_memcpy_rect_f_cmplx64_2
 
-      subroutine omp_target_memcpy_rect_f_C8P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_cmplx64_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -4698,9 +5794,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C8P_3
+      endsubroutine omp_target_memcpy_rect_f_cmplx64_3
 
-      subroutine omp_target_memcpy_rect_f_C8P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_cmplx64_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -4715,9 +5811,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C8P_4
+      endsubroutine omp_target_memcpy_rect_f_cmplx64_4
 
-      subroutine omp_target_memcpy_rect_f_C8P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_cmplx64_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -4732,9 +5828,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C8P_5
+      endsubroutine omp_target_memcpy_rect_f_cmplx64_5
 
-      subroutine omp_target_memcpy_rect_f_C8P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_cmplx64_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -4749,9 +5845,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C8P_6
+      endsubroutine omp_target_memcpy_rect_f_cmplx64_6
 
-      subroutine omp_target_memcpy_rect_f_C8P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_cmplx64_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -4766,10 +5862,10 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C8P_7
+      endsubroutine omp_target_memcpy_rect_f_cmplx64_7
 
-#if defined _R16P
-      subroutine omp_target_memcpy_rect_f_C16P_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+#if defined _real128
+      subroutine omp_target_memcpy_rect_f_cmplx128_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:)
@@ -4784,9 +5880,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C16P_2
+      endsubroutine omp_target_memcpy_rect_f_cmplx128_2
 
-      subroutine omp_target_memcpy_rect_f_C16P_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_cmplx128_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
@@ -4801,9 +5897,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C16P_3
+      endsubroutine omp_target_memcpy_rect_f_cmplx128_3
 
-      subroutine omp_target_memcpy_rect_f_C16P_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_cmplx128_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
@@ -4818,9 +5914,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C16P_4
+      endsubroutine omp_target_memcpy_rect_f_cmplx128_4
 
-      subroutine omp_target_memcpy_rect_f_C16P_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_cmplx128_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
@@ -4835,9 +5931,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C16P_5
+      endsubroutine omp_target_memcpy_rect_f_cmplx128_5
 
-      subroutine omp_target_memcpy_rect_f_C16P_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_cmplx128_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
@@ -4852,9 +5948,9 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C16P_6
+      endsubroutine omp_target_memcpy_rect_f_cmplx128_6
 
-      subroutine omp_target_memcpy_rect_f_C16P_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      subroutine omp_target_memcpy_rect_f_cmplx128_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
@@ -4869,7 +5965,7 @@ module falco
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
             omp_src_device), I4P)
 
-      endsubroutine omp_target_memcpy_rect_f_C16P_7
+      endsubroutine omp_target_memcpy_rect_f_cmplx128_7
 #endif
 
 endmodule falco

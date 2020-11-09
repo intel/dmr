@@ -13,114 +13,118 @@
 
 program test_falco
    use omp_lib
+   use, intrinsic :: iso_fortran_env, only : int8, int16, int32, int64, &
+#if defined _real128
+                                             real128, &
+#endif
+                                             real32, real64
    use falco
    use falco_c_functions
-   use penf
    use init_device_pointers
    use matmul_device_pointers
    use, intrinsic :: iso_c_binding
 
    implicit none
 
-   integer(I1P),  pointer, contiguous :: fptr_dev_I1P   (:),             fptr_dev_I1P_2 (:,:),         &
-                                         fptr_dev_I1P_3 (:,:,:),         fptr_dev_I1P_4 (:,:,:,:),     &
-                                         fptr_dev_I1P_5 (:,:,:,:,:),     fptr_dev_I1P_6 (:,:,:,:,:,:), &
-                                         fptr_dev_I1P_7 (:,:,:,:,:,:,:)
-   integer(I1P),  target, allocatable :: fptr_hos_I1P   (:),             fptr_hos_I1P_2 (:,:),         &
-                                         fptr_hos_I1P_3 (:,:,:),         fptr_hos_I1P_4 (:,:,:,:),     &
-                                         fptr_hos_I1P_5 (:,:,:,:,:),     fptr_hos_I1P_6 (:,:,:,:,:,:), &
-                                         fptr_hos_I1P_7 (:,:,:,:,:,:,:)
-   integer(I2P),  pointer, contiguous :: fptr_dev_I2P   (:),             fptr_dev_I2P_2 (:,:),         &
-                                         fptr_dev_I2P_3 (:,:,:),         fptr_dev_I2P_4 (:,:,:,:),     &
-                                         fptr_dev_I2P_5 (:,:,:,:,:),     fptr_dev_I2P_6 (:,:,:,:,:,:), &
-                                         fptr_dev_I2P_7 (:,:,:,:,:,:,:)
-   integer(I2P),  target, allocatable :: fptr_hos_I2P   (:),             fptr_hos_I2P_2 (:,:),         &
-                                         fptr_hos_I2P_3 (:,:,:),         fptr_hos_I2P_4 (:,:,:,:),     &
-                                         fptr_hos_I2P_5 (:,:,:,:,:),     fptr_hos_I2P_6 (:,:,:,:,:,:), &
-                                         fptr_hos_I2P_7 (:,:,:,:,:,:,:)
-   integer(I4P),  pointer, contiguous :: fptr_dev_I4P   (:),             fptr_dev_I4P_2 (:,:),         &
-                                         fptr_dev_I4P_3 (:,:,:),         fptr_dev_I4P_4 (:,:,:,:),     &
-                                         fptr_dev_I4P_5 (:,:,:,:,:),     fptr_dev_I4P_6 (:,:,:,:,:,:), &
-                                         fptr_dev_I4P_7 (:,:,:,:,:,:,:)
-   integer(I4P),  target, allocatable :: fptr_hos_I4P   (:),             fptr_hos_I4P_2 (:,:),         &
-                                         fptr_hos_I4P_3 (:,:,:),         fptr_hos_I4P_4 (:,:,:,:),     &
-                                         fptr_hos_I4P_5 (:,:,:,:,:),     fptr_hos_I4P_6 (:,:,:,:,:,:), &
-                                         fptr_hos_I4P_7 (:,:,:,:,:,:,:)
-   integer(I8P),  pointer, contiguous :: fptr_dev_I8P   (:),             fptr_dev_I8P_2 (:,:),         &
-                                         fptr_dev_I8P_3 (:,:,:),         fptr_dev_I8P_4 (:,:,:,:),     &
-                                         fptr_dev_I8P_5 (:,:,:,:,:),     fptr_dev_I8P_6 (:,:,:,:,:,:), &
-                                         fptr_dev_I8P_7 (:,:,:,:,:,:,:)
-   integer(I8P),  target, allocatable :: fptr_hos_I8P   (:),             fptr_hos_I8P_2 (:,:),         &
-                                         fptr_hos_I8P_3 (:,:,:),         fptr_hos_I8P_4 (:,:,:,:),     &
-                                         fptr_hos_I8P_5 (:,:,:,:,:),     fptr_hos_I8P_6 (:,:,:,:,:,:), &
-                                         fptr_hos_I8P_7 (:,:,:,:,:,:,:)
-   real(R4P),     pointer, contiguous :: fptr_dev_R4P   (:),             fptr_dev_R4P_2 (:,:),         &
-                                         fptr_dev_R4P_3 (:,:,:),         fptr_dev_R4P_4 (:,:,:,:),     &
-                                         fptr_dev_R4P_5 (:,:,:,:,:),     fptr_dev_R4P_6 (:,:,:,:,:,:), &
-                                         fptr_dev_R4P_7 (:,:,:,:,:,:,:)
-   real(R4P),     target, allocatable :: fptr_hos_R4P   (:),             fptr_hos_R4P_2 (:,:),         &
-                                         fptr_hos_R4P_3 (:,:,:),         fptr_hos_R4P_4 (:,:,:,:),     &
-                                         fptr_hos_R4P_5 (:,:,:,:,:),     fptr_hos_R4P_6 (:,:,:,:,:,:), &
-                                         fptr_hos_R4P_7 (:,:,:,:,:,:,:)
-   real(R8P),     pointer, contiguous :: fptr_dev_R8P   (:),             fptr_dev_R8P_2 (:,:),         &
-                                         fptr_dev_R8P_3 (:,:,:),         fptr_dev_R8P_4 (:,:,:,:),     &
-                                         fptr_dev_R8P_5 (:,:,:,:,:),     fptr_dev_R8P_6 (:,:,:,:,:,:), &
-                                         fptr_dev_R8P_7 (:,:,:,:,:,:,:)
-   real(R8P),     target, allocatable :: fptr_hos_R8P   (:),             fptr_hos_R8P_2 (:,:),         &
-                                         fptr_hos_R8P_3 (:,:,:),         fptr_hos_R8P_4 (:,:,:,:),     &
-                                         fptr_hos_R8P_5 (:,:,:,:,:),     fptr_hos_R8P_6 (:,:,:,:,:,:), &
-                                         fptr_hos_R8P_7 (:,:,:,:,:,:,:)
+   integer(kind=int8),    pointer, contiguous :: fptr_dev_int8   (:),                fptr_dev_int8_2 (:,:),         &
+                                                 fptr_dev_int8_3 (:,:,:),            fptr_dev_int8_4 (:,:,:,:),     &
+                                                 fptr_dev_int8_5 (:,:,:,:,:),        fptr_dev_int8_6 (:,:,:,:,:,:), &
+                                                 fptr_dev_int8_7 (:,:,:,:,:,:,:)
+   integer(kind=int8),    target, allocatable :: fptr_hos_int8   (:),                fptr_hos_int8_2 (:,:),         &
+                                                 fptr_hos_int8_3 (:,:,:),            fptr_hos_int8_4 (:,:,:,:),     &
+                                                 fptr_hos_int8_5 (:,:,:,:,:),        fptr_hos_int8_6 (:,:,:,:,:,:), &
+                                                 fptr_hos_int8_7 (:,:,:,:,:,:,:)
+   integer(kind=int16),   pointer, contiguous :: fptr_dev_int16   (:),               fptr_dev_int16_2 (:,:),         &
+                                                 fptr_dev_int16_3 (:,:,:),           fptr_dev_int16_4 (:,:,:,:),     &
+                                                 fptr_dev_int16_5 (:,:,:,:,:),       fptr_dev_int16_6 (:,:,:,:,:,:), &
+                                                 fptr_dev_int16_7 (:,:,:,:,:,:,:)
+   integer(kind=int16),   target, allocatable :: fptr_hos_int16   (:),               fptr_hos_int16_2 (:,:),         &
+                                                 fptr_hos_int16_3 (:,:,:),           fptr_hos_int16_4 (:,:,:,:),     &
+                                                 fptr_hos_int16_5 (:,:,:,:,:),       fptr_hos_int16_6 (:,:,:,:,:,:), &
+                                                 fptr_hos_int16_7 (:,:,:,:,:,:,:)
+   integer(kind=int32),   pointer, contiguous :: fptr_dev_int32   (:),               fptr_dev_int32_2 (:,:),         &
+                                                 fptr_dev_int32_3 (:,:,:),           fptr_dev_int32_4 (:,:,:,:),     &
+                                                 fptr_dev_int32_5 (:,:,:,:,:),       fptr_dev_int32_6 (:,:,:,:,:,:), &
+                                                 fptr_dev_int32_7 (:,:,:,:,:,:,:)
+   integer(kind=int32),   target, allocatable :: fptr_hos_int32   (:),               fptr_hos_int32_2 (:,:),         &
+                                                 fptr_hos_int32_3 (:,:,:),           fptr_hos_int32_4 (:,:,:,:),     &
+                                                 fptr_hos_int32_5 (:,:,:,:,:),       fptr_hos_int32_6 (:,:,:,:,:,:), &
+                                                 fptr_hos_int32_7 (:,:,:,:,:,:,:)
+   integer(kind=int64),   pointer, contiguous :: fptr_dev_int64   (:),               fptr_dev_int64_2 (:,:),         &
+                                                 fptr_dev_int64_3 (:,:,:),           fptr_dev_int64_4 (:,:,:,:),     &
+                                                 fptr_dev_int64_5 (:,:,:,:,:),       fptr_dev_int64_6 (:,:,:,:,:,:), &
+                                                 fptr_dev_int64_7 (:,:,:,:,:,:,:)
+   integer(kind=int64),   target, allocatable :: fptr_hos_int64   (:),               fptr_hos_int64_2 (:,:),         &
+                                                 fptr_hos_int64_3 (:,:,:),           fptr_hos_int64_4 (:,:,:,:),     &
+                                                 fptr_hos_int64_5 (:,:,:,:,:),       fptr_hos_int64_6 (:,:,:,:,:,:), &
+                                                 fptr_hos_int64_7 (:,:,:,:,:,:,:)
+   real(kind=real32),     pointer, contiguous :: fptr_dev_real32   (:),              fptr_dev_real32_2 (:,:),         &
+                                                 fptr_dev_real32_3 (:,:,:),          fptr_dev_real32_4 (:,:,:,:),     &
+                                                 fptr_dev_real32_5 (:,:,:,:,:),      fptr_dev_real32_6 (:,:,:,:,:,:), &
+                                                 fptr_dev_real32_7 (:,:,:,:,:,:,:)
+   real(kind=real32),     target, allocatable :: fptr_hos_real32   (:),              fptr_hos_real32_2 (:,:),         &
+                                                 fptr_hos_real32_3 (:,:,:),          fptr_hos_real32_4 (:,:,:,:),     &
+                                                 fptr_hos_real32_5 (:,:,:,:,:),      fptr_hos_real32_6 (:,:,:,:,:,:), &
+                                                 fptr_hos_real32_7 (:,:,:,:,:,:,:)
+   real(kind=real64),     pointer, contiguous :: fptr_dev_real64   (:),              fptr_dev_real64_2 (:,:),         &
+                                                 fptr_dev_real64_3 (:,:,:),          fptr_dev_real64_4 (:,:,:,:),     &
+                                                 fptr_dev_real64_5 (:,:,:,:,:),      fptr_dev_real64_6 (:,:,:,:,:,:), &
+                                                 fptr_dev_real64_7 (:,:,:,:,:,:,:)
+   real(kind=real64),     target, allocatable :: fptr_hos_real64   (:),              fptr_hos_real64_2 (:,:),         &
+                                                 fptr_hos_real64_3 (:,:,:),          fptr_hos_real64_4 (:,:,:,:),     &
+                                                 fptr_hos_real64_5 (:,:,:,:,:),      fptr_hos_real64_6 (:,:,:,:,:,:), &
+                                                 fptr_hos_real64_7 (:,:,:,:,:,:,:)
 #if defined _R16P
-   real(R16P),    pointer, contiguous :: fptr_dev_R16P  (:),             fptr_dev_R16P_2(:,:),         &
-                                         fptr_dev_R16P_3(:,:,:),         fptr_dev_R16P_4(:,:,:,:),     &
-                                         fptr_dev_R16P_5(:,:,:,:,:),     fptr_dev_R16P_6(:,:,:,:,:,:), &
-                                         fptr_dev_R16P_7(:,:,:,:,:,:,:)
-   real(R16P),    target, allocatable :: fptr_hos_R16P  (:),             fptr_hos_R16P_2(:,:),         &
-                                         fptr_hos_R16P_3(:,:,:),         fptr_hos_R16P_4(:,:,:,:),     &
-                                         fptr_hos_R16P_5(:,:,:,:,:),     fptr_hos_R16P_6(:,:,:,:,:,:), &
-                                         fptr_hos_R16P_7(:,:,:,:,:,:,:)
+   real(kind=real128),    pointer, contiguous :: fptr_dev_real128  (:),              fptr_dev_real128_2(:,:),         &
+                                                 fptr_dev_real128_3(:,:,:),          fptr_dev_real128_4(:,:,:,:),     &
+                                                 fptr_dev_real128_5(:,:,:,:,:),      fptr_dev_real128_6(:,:,:,:,:,:), &
+                                                 fptr_dev_real128_7(:,:,:,:,:,:,:)
+   real(kind=real128),    target, allocatable :: fptr_hos_real128  (:),              fptr_hos_real128_2(:,:),         &
+                                                 fptr_hos_real128_3(:,:,:),          fptr_hos_real128_4(:,:,:,:),     &
+                                                 fptr_hos_real128_5(:,:,:,:,:),      fptr_hos_real128_6(:,:,:,:,:,:), &
+                                                 fptr_hos_real128_7(:,:,:,:,:,:,:)
 #endif
-   complex(R4P),  pointer, contiguous :: fptr_dev_C4P   (:),             fptr_dev_C4P_2 (:,:),         &
-                                         fptr_dev_C4P_3 (:,:,:),         fptr_dev_C4P_4 (:,:,:,:),     &
-                                         fptr_dev_C4P_5 (:,:,:,:,:),     fptr_dev_C4P_6 (:,:,:,:,:,:), &
-                                         fptr_dev_C4P_7 (:,:,:,:,:,:,:)
-   complex(R4P),  target, allocatable :: fptr_hos_C4P   (:),             fptr_hos_C4P_2 (:,:),         &
-                                         fptr_hos_C4P_3 (:,:,:),         fptr_hos_C4P_4 (:,:,:,:),     &
-                                         fptr_hos_C4P_5 (:,:,:,:,:),     fptr_hos_C4P_6 (:,:,:,:,:,:), &
-                                         fptr_hos_C4P_7 (:,:,:,:,:,:,:)
-   complex(R8P),  pointer, contiguous :: fptr_dev_C8P   (:),             fptr_dev_C8P_2 (:,:),         &
-                                         fptr_dev_C8P_3 (:,:,:),         fptr_dev_C8P_4 (:,:,:,:),     &
-                                         fptr_dev_C8P_5 (:,:,:,:,:),     fptr_dev_C8P_6 (:,:,:,:,:,:), &
-                                         fptr_dev_C8P_7 (:,:,:,:,:,:,:)
-   complex(R8P),  target, allocatable :: fptr_hos_C8P   (:),             fptr_hos_C8P_2 (:,:),         &
-                                         fptr_hos_C8P_3 (:,:,:),         fptr_hos_C8P_4 (:,:,:,:),     &
-                                         fptr_hos_C8P_5 (:,:,:,:,:),     fptr_hos_C8P_6 (:,:,:,:,:,:), &
-                                         fptr_hos_C8P_7 (:,:,:,:,:,:,:)
+   complex(kind=real32),  pointer, contiguous :: fptr_dev_cmplx32   (:),             fptr_dev_cmplx32_2 (:,:),         &
+                                                 fptr_dev_cmplx32_3 (:,:,:),         fptr_dev_cmplx32_4 (:,:,:,:),     &
+                                                 fptr_dev_cmplx32_5 (:,:,:,:,:),     fptr_dev_cmplx32_6 (:,:,:,:,:,:), &
+                                                 fptr_dev_cmplx32_7 (:,:,:,:,:,:,:)
+   complex(kind=real32),  target, allocatable :: fptr_hos_cmplx32   (:),             fptr_hos_cmplx32_2 (:,:),         &
+                                                 fptr_hos_cmplx32_3 (:,:,:),         fptr_hos_cmplx32_4 (:,:,:,:),     &
+                                                 fptr_hos_cmplx32_5 (:,:,:,:,:),     fptr_hos_cmplx32_6 (:,:,:,:,:,:), &
+                                                 fptr_hos_cmplx32_7 (:,:,:,:,:,:,:)
+   complex(kind=real64),  pointer, contiguous :: fptr_dev_cmplx64   (:),             fptr_dev_cmplx64_2 (:,:),         &
+                                                 fptr_dev_cmplx64_3 (:,:,:),         fptr_dev_cmplx64_4 (:,:,:,:),     &
+                                                 fptr_dev_cmplx64_5 (:,:,:,:,:),     fptr_dev_cmplx64_6 (:,:,:,:,:,:), &
+                                                 fptr_dev_cmplx64_7 (:,:,:,:,:,:,:)
+   complex(kind=real64),  target, allocatable :: fptr_hos_cmplx64   (:),             fptr_hos_cmplx64_2 (:,:),         &
+                                                 fptr_hos_cmplx64_3 (:,:,:),         fptr_hos_cmplx64_4 (:,:,:,:),     &
+                                                 fptr_hos_cmplx64_5 (:,:,:,:,:),     fptr_hos_cmplx64_6 (:,:,:,:,:,:), &
+                                                 fptr_hos_cmplx64_7 (:,:,:,:,:,:,:)
 #if defined _R16P
-   complex(R16P), pointer, contiguous :: fptr_dev_C16P  (:),             fptr_dev_C16P_2(:,:),         &
-                                         fptr_dev_C16P_3(:,:,:),         fptr_dev_C16P_4(:,:,:,:),     &
-                                         fptr_dev_C16P_5(:,:,:,:,:),     fptr_dev_C16P_6(:,:,:,:,:,:), &
-                                         fptr_dev_C16P_7(:,:,:,:,:,:,:)
-   complex(R16P), target, allocatable :: fptr_hos_C16P  (:),             fptr_hos_C16P_2(:,:),         &
-                                         fptr_hos_C16P_3(:,:,:),         fptr_hos_C16P_4(:,:,:,:),     &
-                                         fptr_hos_C16P_5(:,:,:,:,:),     fptr_hos_C16P_6(:,:,:,:,:,:), &
-                                         fptr_hos_C16P_7(:,:,:,:,:,:,:)
+   complex(kind=real128), pointer, contiguous :: fptr_dev_cmplx128  (:),             fptr_dev_cmplx128_2(:,:),         &
+                                                 fptr_dev_cmplx128_3(:,:,:),         fptr_dev_cmplx128_4(:,:,:,:),     &
+                                                 fptr_dev_cmplx128_5(:,:,:,:,:),     fptr_dev_cmplx128_6(:,:,:,:,:,:), &
+                                                 fptr_dev_cmplx128_7(:,:,:,:,:,:,:)
+   complex(kind=real128), target, allocatable :: fptr_hos_cmplx128  (:),             fptr_hos_cmplx128_2(:,:),         &
+                                                 fptr_hos_cmplx128_3(:,:,:),         fptr_hos_cmplx128_4(:,:,:,:),     &
+                                                 fptr_hos_cmplx128_5(:,:,:,:,:),     fptr_hos_cmplx128_6(:,:,:,:,:,:), &
+                                                 fptr_hos_cmplx128_7(:,:,:,:,:,:,:)
 #endif
 
-   integer(I8P), parameter            :: i = 20_I8P
-   integer(I8P), parameter            :: j = 10_I8P
-   integer(I8P)                       :: siz2(2)=i, siz3(3)=i, siz4(4)=i, siz5(5)=i, siz6(6)=i, siz7(7)=i
-   integer(I8P)                       :: dims(2), k
-   integer(I4P)                       :: ierr
-   integer(I4P)                       :: omp_initial, omp_default
-   type(c_ptr)                        :: cptr_dev, cptr_hos
-   integer(kind=c_int)                :: errr
+   integer(kind=int64), parameter :: i = 20_int64
+   integer(kind=int64), parameter :: j = 10_int64
+   integer(kind=int64)            :: siz2(2)=i, siz3(3)=i, siz4(4)=i, siz5(5)=i, siz6(6)=i, siz7(7)=i
+   integer(kind=int64)            :: dims(2), k
+   integer(kind=int32)            :: ierr
+   integer(kind=int32)            :: omp_initial, omp_default
+   type(c_ptr)                    :: cptr_dev, cptr_hos
+   integer(kind=c_int)            :: errr
 
    omp_default = omp_get_default_device()
    omp_initial = omp_get_initial_device_c()
 
-   dims(1) = 2_I8P
-   dims(2) = 4_I8P
+   dims(1) = 2_int64
+   dims(2) = 4_int64
 
    print *, '*****************************************************************'
    print *, '                   Start FALCO library testing                   '
@@ -132,250 +136,250 @@ program test_falco
    print *, ''
    print *, '                       I1P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_I1P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I1P)
-   call init_I(fptr_dev_I1P, i)
+   call omp_target_alloc_f(fptr_dev_int8, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int8)
+   call init_I(fptr_dev_int8, i)
    print *, 'Device pointer initialization completed'
-   call matmul_I(fptr_dev_I1P, i)
+   call matmul_I(fptr_dev_int8, i)
    print *, 'Device pointer multiplication completed'
-   allocate(fptr_hos_I1P(i)); fptr_hos_I1P = 0_I1P
-   call omp_target_memcpy_f(fptr_hos_I1P, fptr_dev_I1P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_int8(i)); fptr_hos_int8 = 0_int8
+   call omp_target_memcpy_f(fptr_hos_int8, fptr_dev_int8, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_I1P(1), fptr_hos_I1P(i)
-   call omp_target_free_f(fptr_dev_I1P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_int8(1), fptr_hos_int8(i)
+   call omp_target_free_f(fptr_dev_int8, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_I1P)
+   deallocate(fptr_hos_int8)
 
    print *, ''
    print *, '                       I1P Host to Device                        '
    print *, ''
-   allocate(fptr_hos_I1P(i)); fptr_hos_I1P = 5_I1P
-   call omp_target_alloc_f(fptr_dev_I1P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I1P)
-   call omp_target_memcpy_f(fptr_dev_I1P, fptr_hos_I1P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_int8(i)); fptr_hos_int8 = 5_int8
+   call omp_target_alloc_f(fptr_dev_int8, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int8)
+   call omp_target_memcpy_f(fptr_dev_int8, fptr_hos_int8, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_I1P = 0_I1P
-   call omp_target_memcpy_f(fptr_hos_I1P, fptr_dev_I1P, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_int8 = 0_int8
+   call omp_target_memcpy_f(fptr_hos_int8, fptr_dev_int8, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_I1P(1), fptr_hos_I1P(i)
-   call omp_target_free_f(fptr_dev_I1P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_int8(1), fptr_hos_int8(i)
+   call omp_target_free_f(fptr_dev_int8, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_I1P)
+   deallocate(fptr_hos_int8)
 
    print *, ''
    print *, '                       I2P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_I2P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I2P)
-   call init_I(fptr_dev_I2P, i)
+   call omp_target_alloc_f(fptr_dev_int16, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int16)
+   call init_I(fptr_dev_int16, i)
    print *, 'Device pointer initialization completed'
-   call matmul_I(fptr_dev_I2P, i)
+   call matmul_I(fptr_dev_int16, i)
    print *, 'Device pointer multiplication completed'
-   allocate(fptr_hos_I2P(i)); fptr_hos_I2P = 0_I2P
-   call omp_target_memcpy_f(fptr_hos_I2P, fptr_dev_I2P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_int16(i)); fptr_hos_int16 = 0_int16
+   call omp_target_memcpy_f(fptr_hos_int16, fptr_dev_int16, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_I2P(1), fptr_hos_I2P(i)
-   call omp_target_free_f(fptr_dev_I2P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_int16(1), fptr_hos_int16(i)
+   call omp_target_free_f(fptr_dev_int16, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_I2P)
+   deallocate(fptr_hos_int16)
 
    print *, ''
    print *, '                       I2P Host to Device                        '
    print *, ''
-   allocate(fptr_hos_I2P(i)); fptr_hos_I2P = 5_I2P
-   call omp_target_alloc_f(fptr_dev_I2P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I2P)
-   call omp_target_memcpy_f(fptr_dev_I2P, fptr_hos_I2P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_int16(i)); fptr_hos_int16 = 5_int16
+   call omp_target_alloc_f(fptr_dev_int16, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int16)
+   call omp_target_memcpy_f(fptr_dev_int16, fptr_hos_int16, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_I2P = 0_I2P
-   call omp_target_memcpy_f(fptr_hos_I2P, fptr_dev_I2P, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_int16 = 0_int16
+   call omp_target_memcpy_f(fptr_hos_int16, fptr_dev_int16, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_I2P(1), fptr_hos_I2P(i)
-   call omp_target_free_f(fptr_dev_I2P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_int16(1), fptr_hos_int16(i)
+   call omp_target_free_f(fptr_dev_int16, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_I2P)
+   deallocate(fptr_hos_int16)
 
    print *, ''
    print *, '                       I4P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_I4P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I4P)
-   call init_I(fptr_dev_I4P, i)
+   call omp_target_alloc_f(fptr_dev_int32, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int32)
+   call init_I(fptr_dev_int32, i)
    print *, 'Device pointer initialization completed'
-   call matmul_I(fptr_dev_I4P, i)
+   call matmul_I(fptr_dev_int32, i)
    print *, 'Device pointer multiplication completed'
-   allocate(fptr_hos_I4P(i)); fptr_hos_I4P = 0_I4P
-   call omp_target_memcpy_f(fptr_hos_I4P, fptr_dev_I4P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_int32(i)); fptr_hos_int32 = 0_int32
+   call omp_target_memcpy_f(fptr_hos_int32, fptr_dev_int32, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_I4P(1), fptr_hos_I4P(i)
-   call omp_target_free_f(fptr_dev_I4P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_int32(1), fptr_hos_int32(i)
+   call omp_target_free_f(fptr_dev_int32, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_I4P)
+   deallocate(fptr_hos_int32)
 
    print *, ''
    print *, '                       I4P Host to Device                        '
    print *, ''
-   allocate(fptr_hos_I4P(i)); fptr_hos_I4P = 5_I4P
-   call omp_target_alloc_f(fptr_dev_I4P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I4P)
-   call omp_target_memcpy_f(fptr_dev_I4P, fptr_hos_I4P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_int32(i)); fptr_hos_int32 = 5_int32
+   call omp_target_alloc_f(fptr_dev_int32, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int32)
+   call omp_target_memcpy_f(fptr_dev_int32, fptr_hos_int32, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_I4P = 0_I4P
-   call omp_target_memcpy_f(fptr_hos_I4P, fptr_dev_I4P, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_int32 = 0_int32
+   call omp_target_memcpy_f(fptr_hos_int32, fptr_dev_int32, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_I4P(1), fptr_hos_I4P(i)
-   call omp_target_free_f(fptr_dev_I4P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_int32(1), fptr_hos_int32(i)
+   call omp_target_free_f(fptr_dev_int32, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_I4P)
+   deallocate(fptr_hos_int32)
 
    print *, ''
    print *, '                       I8P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_I8P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I8P)
-   call init_I(fptr_dev_I8P, i)
+   call omp_target_alloc_f(fptr_dev_int64, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int64)
+   call init_I(fptr_dev_int64, i)
    print *, 'Device pointer initialization completed'
-   call matmul_I(fptr_dev_I8P, i)
+   call matmul_I(fptr_dev_int64, i)
    print *, 'Device pointer multiplication completed'
-   allocate(fptr_hos_I8P(i)); fptr_hos_I8P = 0_I8P
-   call omp_target_memcpy_f(fptr_hos_I8P, fptr_dev_I8P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_int64(i)); fptr_hos_int64 = 0_int64
+   call omp_target_memcpy_f(fptr_hos_int64, fptr_dev_int64, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_I8P(1), fptr_hos_I8P(i)
-   call omp_target_free_f(fptr_dev_I8P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_int64(1), fptr_hos_int64(i)
+   call omp_target_free_f(fptr_dev_int64, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_I8P)
+   deallocate(fptr_hos_int64)
 
    print *, ''
    print *, '                       I8P Host to Device                        '
    print *, ''
-   allocate(fptr_hos_I8P(i)); fptr_hos_I8P = 5_I8P
-   call omp_target_alloc_f(fptr_dev_I8P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I8P)
-   call omp_target_memcpy_f(fptr_dev_I8P, fptr_hos_I8P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_int64(i)); fptr_hos_int64 = 5_int64
+   call omp_target_alloc_f(fptr_dev_int64, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int64)
+   call omp_target_memcpy_f(fptr_dev_int64, fptr_hos_int64, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_I8P = 0_I8P
-   call omp_target_memcpy_f(fptr_hos_I8P, fptr_dev_I8P, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_int64 = 0_int64
+   call omp_target_memcpy_f(fptr_hos_int64, fptr_dev_int64, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_I8P(1), fptr_hos_I8P(i)
-   call omp_target_free_f(fptr_dev_I8P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_int64(1), fptr_hos_int64(i)
+   call omp_target_free_f(fptr_dev_int64, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_I8P)
+   deallocate(fptr_hos_int64)
 
    print *, ''
    print *, '- - - - - - - - - - - - - -Real arrays- - - - - - - - - - - - - -'
    print *, ''
    print *, '                       R4P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_R4P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_R4P)
-   call init_R(fptr_dev_R4P, i)
+   call omp_target_alloc_f(fptr_dev_real32, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real32)
+   call init_R(fptr_dev_real32, i)
    print *, 'Device pointer initialization completed'
-   call matmul_R(fptr_dev_R4P, i)
+   call matmul_R(fptr_dev_real32, i)
    print *, 'Device pointer multiplication completed'
-   allocate(fptr_hos_R4P(i)); fptr_hos_R4P = 0_R4P
-   call omp_target_memcpy_f(fptr_hos_R4P, fptr_dev_R4P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_real32(i)); fptr_hos_real32 = 0_real32
+   call omp_target_memcpy_f(fptr_hos_real32, fptr_dev_real32, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_R4P(1), fptr_hos_R4P(i)
-   call omp_target_free_f(fptr_dev_R4P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_real32(1), fptr_hos_real32(i)
+   call omp_target_free_f(fptr_dev_real32, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_R4P)
+   deallocate(fptr_hos_real32)
 
    print *, ''
    print *, '                       R4P Host to Device                        '
    print *, ''
-   allocate(fptr_hos_R4P(i)); fptr_hos_R4P = 5.0_R4P
-   call omp_target_alloc_f(fptr_dev_R4P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_R4P)
-   call omp_target_memcpy_f(fptr_dev_R4P, fptr_hos_R4P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_real32(i)); fptr_hos_real32 = 5.0_real32
+   call omp_target_alloc_f(fptr_dev_real32, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real32)
+   call omp_target_memcpy_f(fptr_dev_real32, fptr_hos_real32, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_R4P = 0.0_R4P
-   call omp_target_memcpy_f(fptr_hos_R4P, fptr_dev_R4P, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_real32 = 0.0_real32
+   call omp_target_memcpy_f(fptr_hos_real32, fptr_dev_real32, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_R4P(1), fptr_hos_R4P(i)
-   call omp_target_free_f(fptr_dev_R4P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_real32(1), fptr_hos_real32(i)
+   call omp_target_free_f(fptr_dev_real32, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_R4P)
+   deallocate(fptr_hos_real32)
 
    print *, ''
    print *, '                       R8P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_R8P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_R8P)
-   call init_R(fptr_dev_R8P, i)
+   call omp_target_alloc_f(fptr_dev_real64, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real64)
+   call init_R(fptr_dev_real64, i)
    print *, 'Device pointer initialization completed'
-   call matmul_R(fptr_dev_R8P, i)
+   call matmul_R(fptr_dev_real64, i)
    print *, 'Device pointer multiplication completed'
-   allocate(fptr_hos_R8P(i)); fptr_hos_R8P = 0.0_R8P
-   call omp_target_memcpy_f(fptr_hos_R8P, fptr_dev_R8P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_real64(i)); fptr_hos_real64 = 0.0_real64
+   call omp_target_memcpy_f(fptr_hos_real64, fptr_dev_real64, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_R8P(1), fptr_hos_R8P(i)
-   call omp_target_free_f(fptr_dev_R8P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_real64(1), fptr_hos_real64(i)
+   call omp_target_free_f(fptr_dev_real64, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_R8P)
+   deallocate(fptr_hos_real64)
 
    print *, ''
    print *, '                       R8P Host to Device                        '
    print *, ''
-   allocate(fptr_hos_R8P(i)); fptr_hos_R8P = 5.0_R8P
-   call omp_target_alloc_f(fptr_dev_R8P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_R8P)
-   call omp_target_memcpy_f(fptr_dev_R8P, fptr_hos_R8P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_real64(i)); fptr_hos_real64 = 5.0_real64
+   call omp_target_alloc_f(fptr_dev_real64, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real64)
+   call omp_target_memcpy_f(fptr_dev_real64, fptr_hos_real64, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_R8P = 0.0_R8P
-   call omp_target_memcpy_f(fptr_hos_R8P, fptr_dev_R8P, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_real64 = 0.0_real64
+   call omp_target_memcpy_f(fptr_hos_real64, fptr_dev_real64, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_R8P(1), fptr_hos_R8P(i)
-   call omp_target_free_f(fptr_dev_R8P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_real64(1), fptr_hos_real64(i)
+   call omp_target_free_f(fptr_dev_real64, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_R8P)
+   deallocate(fptr_hos_real64)
 
-#if defined _R16P
+#if defined _real128
    print *, ''
    print *, '                       R16P Device to Host                       '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_R16P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_R16P)
-   call init_R(fptr_dev_R16P, i)
+   call omp_target_alloc_f(fptr_dev_real128, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real128)
+   call init_R(fptr_dev_real128, i)
    print *, 'Device pointer initialization completed'
-   call matmul_R(fptr_dev_R16P, i)
+   call matmul_R(fptr_dev_real128, i)
    print *, 'Device pointer multiplication completed'
-   allocate(fptr_hos_R16P(i)); fptr_hos_R16P = 0.0_R16P
-   call omp_target_memcpy_f(fptr_hos_R16P, fptr_dev_R16P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_real128(i)); fptr_hos_real128 = 0.0_real128
+   call omp_target_memcpy_f(fptr_hos_real128, fptr_dev_real128, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_R16P(1), fptr_hos_R16P(i)
-   call omp_target_free_f(fptr_dev_R16P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_real128(1), fptr_hos_real128(i)
+   call omp_target_free_f(fptr_dev_real128, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_R16P)
+   deallocate(fptr_hos_real128)
 
    print *, ''
    print *, '                       R16P Host to Device                       '
    print *, ''
-   allocate(fptr_hos_R16P(i)); fptr_hos_R16P = 5.0_R16P
-   call omp_target_alloc_f(fptr_dev_R16P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_R16P)
-   call omp_target_memcpy_f(fptr_dev_R16P, fptr_hos_R16P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_real128(i)); fptr_hos_real128 = 5.0_real128
+   call omp_target_alloc_f(fptr_dev_real128, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real128)
+   call omp_target_memcpy_f(fptr_dev_real128, fptr_hos_real128, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_R16P = 0.0_R16P
-   call omp_target_memcpy_f(fptr_hos_R16P, fptr_dev_R16P, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_real128 = 0.0_real128
+   call omp_target_memcpy_f(fptr_hos_real128, fptr_dev_real128, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_R16P(1), fptr_hos_R16P(i)
-   call omp_target_free_f(fptr_dev_R16P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_real128(1), fptr_hos_real128(i)
+   call omp_target_free_f(fptr_dev_real128, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_R16P)
+   deallocate(fptr_hos_real128)
 #endif
 
    print *, ''
@@ -383,108 +387,108 @@ program test_falco
    print *, ''
    print *, '                       C4P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_C4P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_C4P)
-   call init_C(fptr_dev_C4P, i)
+   call omp_target_alloc_f(fptr_dev_cmplx32, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx32)
+   call init_C(fptr_dev_cmplx32, i)
    print *, 'Device pointer initialization completed'
-   call matmul_C(fptr_dev_C4P, i)
+   call matmul_C(fptr_dev_cmplx32, i)
    print *, 'Device pointer multiplication completed'
-   allocate(fptr_hos_C4P(i)); fptr_hos_C4P = (0.0_R4P, 0.0_R4P)
-   call omp_target_memcpy_f(fptr_hos_C4P, fptr_dev_C4P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_cmplx32(i)); fptr_hos_cmplx32 = (0.0_real32, 0.0_real32)
+   call omp_target_memcpy_f(fptr_hos_cmplx32, fptr_dev_cmplx32, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_C4P(1), fptr_hos_C4P(i)
-   call omp_target_free_f(fptr_dev_C4P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_cmplx32(1), fptr_hos_cmplx32(i)
+   call omp_target_free_f(fptr_dev_cmplx32, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_C4P)
+   deallocate(fptr_hos_cmplx32)
 
    print *, ''
    print *, '                       C4P Host to Device                        '
    print *, ''
-   allocate(fptr_hos_C4P(i)); fptr_hos_C4P = (5.0_R4P, 5.0_R4P)
-   call omp_target_alloc_f(fptr_dev_C4P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_C4P)
-   call omp_target_memcpy_f(fptr_dev_C4P, fptr_hos_C4P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_cmplx32(i)); fptr_hos_cmplx32 = (5.0_real32, 5.0_real32)
+   call omp_target_alloc_f(fptr_dev_cmplx32, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx32)
+   call omp_target_memcpy_f(fptr_dev_cmplx32, fptr_hos_cmplx32, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_C4P = (0.0_R4P, 0.0_R4P)
-   call omp_target_memcpy_f(fptr_hos_C4P, fptr_dev_C4P, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_cmplx32 = (0.0_real32, 0.0_real32)
+   call omp_target_memcpy_f(fptr_hos_cmplx32, fptr_dev_cmplx32, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_C4P(1), fptr_hos_C4P(i)
-   call omp_target_free_f(fptr_dev_C4P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_cmplx32(1), fptr_hos_cmplx32(i)
+   call omp_target_free_f(fptr_dev_cmplx32, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_C4P)
+   deallocate(fptr_hos_cmplx32)
 
    print *, ''
    print *, '                       C8P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_C8P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_C8P)
-   call init_C(fptr_dev_C8P, i)
+   call omp_target_alloc_f(fptr_dev_cmplx64, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx64)
+   call init_C(fptr_dev_cmplx64, i)
    print *, 'Device pointer initialization completed'
-   call matmul_C(fptr_dev_C8P, i)
+   call matmul_C(fptr_dev_cmplx64, i)
    print *, 'Device pointer multiplication completed'
-   allocate(fptr_hos_C8P(i)); fptr_hos_C8P = (0.0_R8P, 0.0_R8P)
-   call omp_target_memcpy_f(fptr_hos_C8P, fptr_dev_C8P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_cmplx64(i)); fptr_hos_cmplx64 = (0.0_real64, 0.0_real64)
+   call omp_target_memcpy_f(fptr_hos_cmplx64, fptr_dev_cmplx64, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_C8P(1), fptr_hos_C8P(i)
-   call omp_target_free_f(fptr_dev_C8P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_cmplx64(1), fptr_hos_cmplx64(i)
+   call omp_target_free_f(fptr_dev_cmplx64, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_C8P)
+   deallocate(fptr_hos_cmplx64)
 
    print *, ''
    print *, '                       C8P Host to Device                        '
    print *, ''
-   allocate(fptr_hos_C8P(i)); fptr_hos_C8P = (5.0_R8P, 5.0_R8P)
-   call omp_target_alloc_f(fptr_dev_C8P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_C8P)
-   call omp_target_memcpy_f(fptr_dev_C8P, fptr_hos_C8P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_cmplx64(i)); fptr_hos_cmplx64 = (5.0_real64, 5.0_real64)
+   call omp_target_alloc_f(fptr_dev_cmplx64, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx64)
+   call omp_target_memcpy_f(fptr_dev_cmplx64, fptr_hos_cmplx64, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_C8P = (0.0_R8P, 0.0_R8P)
-   call omp_target_memcpy_f(fptr_hos_C8P, fptr_dev_C8P, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_cmplx64 = (0.0_real64, 0.0_real64)
+   call omp_target_memcpy_f(fptr_hos_cmplx64, fptr_dev_cmplx64, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_C8P(1), fptr_hos_C8P(i)
-   call omp_target_free_f(fptr_dev_C8P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_cmplx64(1), fptr_hos_cmplx64(i)
+   call omp_target_free_f(fptr_dev_cmplx64, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_C8P)
+   deallocate(fptr_hos_cmplx64)
 
-#if defined _R16P
+#if defined _real128
    print *, ''
    print *, '                       C16P Device to Host                       '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_C16P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_C16P)
-   call init_C(fptr_dev_C16P, i)
+   call omp_target_alloc_f(fptr_dev_cmplx128, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx128)
+   call init_C(fptr_dev_cmplx128, i)
    print *, 'Device pointer initialization completed'
-   call matmul_C(fptr_dev_C16P, i)
+   call matmul_C(fptr_dev_cmplx128, i)
    print *, 'Device pointer multiplication completed'
-   allocate(fptr_hos_C16P(i)); fptr_hos_C16P = (0.0_R16P, 0.0_R16P)
-   call omp_target_memcpy_f(fptr_hos_C16P, fptr_dev_C16P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_cmplx128(i)); fptr_hos_cmplx128 = (0.0_real128, 0.0_real128)
+   call omp_target_memcpy_f(fptr_hos_cmplx128, fptr_dev_cmplx128, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_C16P(1), fptr_hos_C16P(i)
-   call omp_target_free_f(fptr_dev_C16P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_cmplx128(1), fptr_hos_cmplx128(i)
+   call omp_target_free_f(fptr_dev_cmplx128, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_C16P)
+   deallocate(fptr_hos_cmplx128)
 
    print *, ''
    print *, '                       C16P Host to Device                       '
    print *, ''
-   allocate(fptr_hos_C16P(i)); fptr_hos_C16P = (5.0_R16P, 5.0_R16P)
-   call omp_target_alloc_f(fptr_dev_C16P, i, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_C16P)
-   call omp_target_memcpy_f(fptr_dev_C16P, fptr_hos_C16P, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_cmplx128(i)); fptr_hos_cmplx128 = (5.0_real128, 5.0_real128)
+   call omp_target_alloc_f(fptr_dev_cmplx128, i, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx128)
+   call omp_target_memcpy_f(fptr_dev_cmplx128, fptr_hos_cmplx128, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_C16P = (0.0_R16P, 0.0_R16P)
-   call omp_target_memcpy_f(fptr_hos_C16P, fptr_dev_C16P, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_cmplx128 = (0.0_real128, 0.0_real128)
+   call omp_target_memcpy_f(fptr_hos_cmplx128, fptr_dev_cmplx128, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_C16P(1), fptr_hos_C16P(i)
-   call omp_target_free_f(fptr_dev_C16P, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_cmplx128(1), fptr_hos_cmplx128(i)
+   call omp_target_free_f(fptr_dev_cmplx128, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_C16P)
+   deallocate(fptr_hos_cmplx128)
 #endif
 
    print *, ''
@@ -494,276 +498,276 @@ program test_falco
    print *, ''
    print *, '                       I1P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_I1P_2, siz2, omp_default)
-   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I1P_2)
-   call init_I(fptr_dev_I1P_2, i)
+   call omp_target_alloc_f(fptr_dev_int8_2, siz2, omp_default)
+   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int8_2)
+   call init_I(fptr_dev_int8_2, i)
    print *, 'F pointer initialization completed'
-   call matmul_I(fptr_dev_I1P_2, i)
+   call matmul_I(fptr_dev_int8_2, i)
    print *, 'F pointer multiplication completed'
-   allocate(fptr_hos_I1P_2(i,i)); fptr_hos_I1P_2 = 0_I1P
-   call omp_target_memcpy_f(fptr_hos_I1P_2, fptr_dev_I1P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_int8_2(i,i)); fptr_hos_int8_2 = 0_int8
+   call omp_target_memcpy_f(fptr_hos_int8_2, fptr_dev_int8_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_I1P_2(1,1), fptr_hos_I1P_2(i,i)
-   call omp_target_free_f(fptr_dev_I1P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_int8_2(1,1), fptr_hos_int8_2(i,i)
+   call omp_target_free_f(fptr_dev_int8_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_I1P_2)
+   deallocate(fptr_hos_int8_2)
 
    print *, ''
    print *, '                     I1P Device to Host RECT                     '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_I1P_2, siz2, omp_default)
-   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I1P_2)
-   call init_I(fptr_dev_I1P_2, i)
+   call omp_target_alloc_f(fptr_dev_int8_2, siz2, omp_default)
+   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int8_2)
+   call init_I(fptr_dev_int8_2, i)
    print *, 'F pointer initialization completed'
-   call matmul_I(fptr_dev_I1P_2, i)
+   call matmul_I(fptr_dev_int8_2, i)
    print *, 'F pointer multiplication completed'
-   allocate(fptr_hos_I1P_2(i,i)); fptr_hos_I1P_2 = 0_I1P
-   call omp_target_memcpy_f(fptr_hos_I1P_2, fptr_dev_I1P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_int8_2(i,i)); fptr_hos_int8_2 = 0_int8
+   call omp_target_memcpy_f(fptr_hos_int8_2, fptr_dev_int8_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device pointer has values:'
    do k=1,i
-      print *, fptr_hos_I1P_2(k,:)
+      print *, fptr_hos_int8_2(k,:)
    enddo
-   fptr_hos_I1P_2 = 0_I1P
-   call omp_target_memcpy_rect_f(fptr_hos_I1P_2, fptr_dev_I1P_2, dims, ierr, [1_I4P, 1_I4P], &
-                            [6_I4P, 6_I4P], omp_initial, omp_default)
+   fptr_hos_int8_2 = 0_int8
+   call omp_target_memcpy_rect_f(fptr_hos_int8_2, fptr_dev_int8_2, dims, ierr, [1_int32, 1_int32], &
+                            [6_int32, 6_int32], omp_initial, omp_default)
    print *, 'Host pointer has values:'
    do k=1,i
-      print *, fptr_hos_I1P_2(k,:)
+      print *, fptr_hos_int8_2(k,:)
    enddo
-   call omp_target_free_f(fptr_dev_I1P_2, omp_default)
+   call omp_target_free_f(fptr_dev_int8_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_I1P_2)
+   deallocate(fptr_hos_int8_2)
 
    print *, ''
    print *, '                       I1P Host to Device                        '
    print *, ''
-   allocate(fptr_hos_I1P_2(i,i)); fptr_hos_I1P_2 = 5_I1P
-   call omp_target_alloc_f(fptr_dev_I1P_2, siz2, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I1P_2)
-   call omp_target_memcpy_f(fptr_dev_I1P_2, fptr_hos_I1P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_int8_2(i,i)); fptr_hos_int8_2 = 5_int8
+   call omp_target_alloc_f(fptr_dev_int8_2, siz2, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int8_2)
+   call omp_target_memcpy_f(fptr_dev_int8_2, fptr_hos_int8_2, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_I1P_2 = 0_I1P
-   call omp_target_memcpy_f(fptr_hos_I1P_2, fptr_dev_I1P_2, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_int8_2 = 0_int8
+   call omp_target_memcpy_f(fptr_hos_int8_2, fptr_dev_int8_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_I1P_2(1,1), fptr_hos_I1P_2(i,i)
-   call omp_target_free_f(fptr_dev_I1P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_int8_2(1,1), fptr_hos_int8_2(i,i)
+   call omp_target_free_f(fptr_dev_int8_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_I1P_2)
+   deallocate(fptr_hos_int8_2)
 
    print *, ''
    print *, '                       I2P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_I2P_2, siz2, omp_default)
-   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I2P_2)
-   call init_I(fptr_dev_I2P_2, i)
+   call omp_target_alloc_f(fptr_dev_int16_2, siz2, omp_default)
+   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int16_2)
+   call init_I(fptr_dev_int16_2, i)
    print *, 'F pointer initialization completed'
-   call matmul_I(fptr_dev_I2P_2, i)
+   call matmul_I(fptr_dev_int16_2, i)
    print *, 'F pointer multiplication completed'
-   allocate(fptr_hos_I2P_2(i,i)); fptr_hos_I2P_2 = 0_I1P
-   call omp_target_memcpy_f(fptr_hos_I2P_2, fptr_dev_I2P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_int16_2(i,i)); fptr_hos_int16_2 = 0_int8
+   call omp_target_memcpy_f(fptr_hos_int16_2, fptr_dev_int16_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_I2P_2(1,1), fptr_hos_I2P_2(i,i)
-   call omp_target_free_f(fptr_dev_I2P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_int16_2(1,1), fptr_hos_int16_2(i,i)
+   call omp_target_free_f(fptr_dev_int16_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_I2P_2)
+   deallocate(fptr_hos_int16_2)
 
    print *, ''
    print *, '                       I2P Host to Device                        '
    print *, ''
-   allocate(fptr_hos_I2P_2(i,i)); fptr_hos_I2P_2 = 5_I2P
-   call omp_target_alloc_f(fptr_dev_I2P_2, siz2, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I2P_2)
-   call omp_target_memcpy_f(fptr_dev_I2P_2, fptr_hos_I2P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_int16_2(i,i)); fptr_hos_int16_2 = 5_int16
+   call omp_target_alloc_f(fptr_dev_int16_2, siz2, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int16_2)
+   call omp_target_memcpy_f(fptr_dev_int16_2, fptr_hos_int16_2, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_I2P_2 = 0_I2P
-   call omp_target_memcpy_f(fptr_hos_I2P_2, fptr_dev_I2P_2, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_int16_2 = 0_int16
+   call omp_target_memcpy_f(fptr_hos_int16_2, fptr_dev_int16_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_I2P_2(1,1), fptr_hos_I2P_2(i,i)
-   call omp_target_free_f(fptr_dev_I2P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_int16_2(1,1), fptr_hos_int16_2(i,i)
+   call omp_target_free_f(fptr_dev_int16_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_I2P_2)
+   deallocate(fptr_hos_int16_2)
 
    print *, ''
    print *, '                       I4P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_I4P_2, siz2, omp_default)
-   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I4P_2)
-   call init_I(fptr_dev_I4P_2, i)
+   call omp_target_alloc_f(fptr_dev_int32_2, siz2, omp_default)
+   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int32_2)
+   call init_I(fptr_dev_int32_2, i)
    print *, 'F pointer initialization completed'
-   call matmul_I(fptr_dev_I4P_2, i)
+   call matmul_I(fptr_dev_int32_2, i)
    print *, 'F pointer multiplication completed'
-   allocate(fptr_hos_I4P_2(i,i)); fptr_hos_I4P_2 = 0_I1P
-   call omp_target_memcpy_f(fptr_hos_I4P_2, fptr_dev_I4P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_int32_2(i,i)); fptr_hos_int32_2 = 0_int8
+   call omp_target_memcpy_f(fptr_hos_int32_2, fptr_dev_int32_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_I4P_2(1,1), fptr_hos_I4P_2(i,i)
-   call omp_target_free_f(fptr_dev_I4P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_int32_2(1,1), fptr_hos_int32_2(i,i)
+   call omp_target_free_f(fptr_dev_int32_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_I4P_2)
+   deallocate(fptr_hos_int32_2)
 
    print *, ''
    print *, '                       I4P Host to Device                        '
    print *, ''
-   allocate(fptr_hos_I4P_2(i,i)); fptr_hos_I4P_2 = 5_I4P
-   call omp_target_alloc_f(fptr_dev_I4P_2, siz2, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I4P_2)
-   call omp_target_memcpy_f(fptr_dev_I4P_2, fptr_hos_I4P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_int32_2(i,i)); fptr_hos_int32_2 = 5_int32
+   call omp_target_alloc_f(fptr_dev_int32_2, siz2, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int32_2)
+   call omp_target_memcpy_f(fptr_dev_int32_2, fptr_hos_int32_2, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_I4P_2 = 0_I4P
-   call omp_target_memcpy_f(fptr_hos_I4P_2, fptr_dev_I4P_2, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_int32_2 = 0_int32
+   call omp_target_memcpy_f(fptr_hos_int32_2, fptr_dev_int32_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_I4P_2(1,1), fptr_hos_I4P_2(i,i)
-   call omp_target_free_f(fptr_dev_I4P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_int32_2(1,1), fptr_hos_int32_2(i,i)
+   call omp_target_free_f(fptr_dev_int32_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_I4P_2)
+   deallocate(fptr_hos_int32_2)
 
    print *, ''
    print *, '                       I8P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_I8P_2, siz2, omp_default)
-   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I8P_2)
-   call init_I(fptr_dev_I8P_2, i)
+   call omp_target_alloc_f(fptr_dev_int64_2, siz2, omp_default)
+   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int64_2)
+   call init_I(fptr_dev_int64_2, i)
    print *, 'F pointer initialization completed'
-   call matmul_I(fptr_dev_I8P_2, i)
+   call matmul_I(fptr_dev_int64_2, i)
    print *, 'F pointer multiplication completed'
-   allocate(fptr_hos_I8P_2(i,i)); fptr_hos_I8P_2 = 0_I1P
-   call omp_target_memcpy_f(fptr_hos_I8P_2, fptr_dev_I8P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_int64_2(i,i)); fptr_hos_int64_2 = 0_int8
+   call omp_target_memcpy_f(fptr_hos_int64_2, fptr_dev_int64_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_I8P_2(1,1), fptr_hos_I8P_2(i,i)
-   call omp_target_free_f(fptr_dev_I8P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_int64_2(1,1), fptr_hos_int64_2(i,i)
+   call omp_target_free_f(fptr_dev_int64_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_I8P_2)
+   deallocate(fptr_hos_int64_2)
 
    print *, ''
    print *, '                       I8P Host to Device                        '
    print *, ''
-   allocate(fptr_hos_I8P_2(i,i)); fptr_hos_I8P_2 = 5_I8P
-   call omp_target_alloc_f(fptr_dev_I8P_2, siz2, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_I8P_2)
-   call omp_target_memcpy_f(fptr_dev_I8P_2, fptr_hos_I8P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_int64_2(i,i)); fptr_hos_int64_2 = 5_int64
+   call omp_target_alloc_f(fptr_dev_int64_2, siz2, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int64_2)
+   call omp_target_memcpy_f(fptr_dev_int64_2, fptr_hos_int64_2, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_I8P_2 = 0_I8P
-   call omp_target_memcpy_f(fptr_hos_I8P_2, fptr_dev_I8P_2, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_int64_2 = 0_int64
+   call omp_target_memcpy_f(fptr_hos_int64_2, fptr_dev_int64_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_I8P_2(1,1), fptr_hos_I8P_2(i,i)
-   call omp_target_free_f(fptr_dev_I8P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_int64_2(1,1), fptr_hos_int64_2(i,i)
+   call omp_target_free_f(fptr_dev_int64_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_I8P_2)
+   deallocate(fptr_hos_int64_2)
 
    print *, ''
    print *, '- - - - - - - - - - - - - -Real arrays- - - - - - - - - - - - - -'
    print *, ''
    print *, '                       R4P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_R4P_2, siz2, omp_default)
-   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_R4P_2)
-   call init_R(fptr_dev_R4P_2, i)
+   call omp_target_alloc_f(fptr_dev_real32_2, siz2, omp_default)
+   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real32_2)
+   call init_R(fptr_dev_real32_2, i)
    print *, 'F pointer initialization completed'
-   call matmul_R(fptr_dev_R4P_2, i)
+   call matmul_R(fptr_dev_real32_2, i)
    print *, 'F pointer multiplication completed'
-   allocate(fptr_hos_R4P_2(i,i)); fptr_hos_R4P_2 = 0_I1P
-   call omp_target_memcpy_f(fptr_hos_R4P_2, fptr_dev_R4P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_real32_2(i,i)); fptr_hos_real32_2 = 0_int8
+   call omp_target_memcpy_f(fptr_hos_real32_2, fptr_dev_real32_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_R4P_2(1,1), fptr_hos_R4P_2(i,i)
-   call omp_target_free_f(fptr_dev_R4P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_real32_2(1,1), fptr_hos_real32_2(i,i)
+   call omp_target_free_f(fptr_dev_real32_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_R4P_2)
+   deallocate(fptr_hos_real32_2)
 
    print *, ''
    print *, '                       R4P Host to Device                        '
    print *, ''
-   allocate(fptr_hos_R4P_2(i,i)); fptr_hos_R4P_2 = 5.0_R4P
-   call omp_target_alloc_f(fptr_dev_R4P_2, siz2, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_R4P_2)
-   call omp_target_memcpy_f(fptr_dev_R4P_2, fptr_hos_R4P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_real32_2(i,i)); fptr_hos_real32_2 = 5.0_real32
+   call omp_target_alloc_f(fptr_dev_real32_2, siz2, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real32_2)
+   call omp_target_memcpy_f(fptr_dev_real32_2, fptr_hos_real32_2, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_R4P_2 = 0.0_R4P
-   call omp_target_memcpy_f(fptr_hos_R4P_2, fptr_dev_R4P_2, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_real32_2 = 0.0_real32
+   call omp_target_memcpy_f(fptr_hos_real32_2, fptr_dev_real32_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_R4P_2(1,1), fptr_hos_R4P_2(i,i)
-   call omp_target_free_f(fptr_dev_R4P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_real32_2(1,1), fptr_hos_real32_2(i,i)
+   call omp_target_free_f(fptr_dev_real32_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_R4P_2)
+   deallocate(fptr_hos_real32_2)
 
    print *, ''
    print *, '                       R8P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_R8P_2, siz2, omp_default)
-   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_R8P_2)
-   call init_R(fptr_dev_R8P_2, i)
+   call omp_target_alloc_f(fptr_dev_real64_2, siz2, omp_default)
+   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real64_2)
+   call init_R(fptr_dev_real64_2, i)
    print *, 'F pointer initialization completed'
-   call matmul_R(fptr_dev_R8P_2, i)
+   call matmul_R(fptr_dev_real64_2, i)
    print *, 'F pointer multiplication completed'
-   allocate(fptr_hos_R8P_2(i,i)); fptr_hos_R8P_2 = 0_I1P
-   call omp_target_memcpy_f(fptr_hos_R8P_2, fptr_dev_R8P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_real64_2(i,i)); fptr_hos_real64_2 = 0_int8
+   call omp_target_memcpy_f(fptr_hos_real64_2, fptr_dev_real64_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_R8P_2(1,1), fptr_hos_R8P_2(i,i)
-   call omp_target_free_f(fptr_dev_R8P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_real64_2(1,1), fptr_hos_real64_2(i,i)
+   call omp_target_free_f(fptr_dev_real64_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_R8P_2)
+   deallocate(fptr_hos_real64_2)
 
    print *, ''
    print *, '                       R8P Host to Device                        '
    print *, ''
-   allocate(fptr_hos_R8P_2(i,i)); fptr_hos_R8P_2 = 5.0_R8P
-   call omp_target_alloc_f(fptr_dev_R8P_2, siz2, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_R8P_2)
-   call omp_target_memcpy_f(fptr_dev_R8P_2, fptr_hos_R8P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_real64_2(i,i)); fptr_hos_real64_2 = 5.0_real64
+   call omp_target_alloc_f(fptr_dev_real64_2, siz2, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real64_2)
+   call omp_target_memcpy_f(fptr_dev_real64_2, fptr_hos_real64_2, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_R8P_2 = 0.0_R8P
-   call omp_target_memcpy_f(fptr_hos_R8P_2, fptr_dev_R8P_2, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_real64_2 = 0.0_real64
+   call omp_target_memcpy_f(fptr_hos_real64_2, fptr_dev_real64_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_R8P_2(1,1), fptr_hos_R8P_2(i,i)
-   call omp_target_free_f(fptr_dev_R8P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_real64_2(1,1), fptr_hos_real64_2(i,i)
+   call omp_target_free_f(fptr_dev_real64_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_R8P_2)
+   deallocate(fptr_hos_real64_2)
 
-#if defined _R16P
+#if defined _real128
    print *, ''
    print *, '                       R16P Device to Host                       '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_R16P_2, siz2, omp_default)
-   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_R16P_2)
-   call init_R(fptr_dev_R16P_2, i)
+   call omp_target_alloc_f(fptr_dev_real128_2, siz2, omp_default)
+   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real128_2)
+   call init_R(fptr_dev_real128_2, i)
    print *, 'F pointer initialization completed'
-   call matmul_R(fptr_dev_R16P_2, i)
+   call matmul_R(fptr_dev_real128_2, i)
    print *, 'F pointer multiplication completed'
-   allocate(fptr_hos_R16P_2(i,i)); fptr_hos_R16P_2 = 0_I1P
-   call omp_target_memcpy_f(fptr_hos_R16P_2, fptr_dev_R16P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_real128_2(i,i)); fptr_hos_real128_2 = 0_int8
+   call omp_target_memcpy_f(fptr_hos_real128_2, fptr_dev_real128_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_R16P_2(1,1), fptr_hos_R16P_2(i,i)
-   call omp_target_free_f(fptr_dev_R16P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_real128_2(1,1), fptr_hos_real128_2(i,i)
+   call omp_target_free_f(fptr_dev_real128_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_R16P_2)
+   deallocate(fptr_hos_real128_2)
 
    print *, ''
    print *, '                       R16P Host to Device                       '
    print *, ''
-   allocate(fptr_hos_R16P_2(i,i)); fptr_hos_R16P_2 = 5.0_R16P
-   call omp_target_alloc_f(fptr_dev_R16P_2, siz2, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_R16P_2)
-   call omp_target_memcpy_f(fptr_dev_R16P_2, fptr_hos_R16P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_real128_2(i,i)); fptr_hos_real128_2 = 5.0_real128
+   call omp_target_alloc_f(fptr_dev_real128_2, siz2, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real128_2)
+   call omp_target_memcpy_f(fptr_dev_real128_2, fptr_hos_real128_2, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_R16P_2 = 0.0_R16P
-   call omp_target_memcpy_f(fptr_hos_R16P_2, fptr_dev_R16P_2, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_real128_2 = 0.0_real128
+   call omp_target_memcpy_f(fptr_hos_real128_2, fptr_dev_real128_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_R16P_2(1,1), fptr_hos_R16P_2(i,i)
-   call omp_target_free_f(fptr_dev_R16P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_real128_2(1,1), fptr_hos_real128_2(i,i)
+   call omp_target_free_f(fptr_dev_real128_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_R16P_2)
+   deallocate(fptr_hos_real128_2)
 #endif
 
    print *, ''
@@ -771,108 +775,108 @@ program test_falco
    print *, ''
    print *, '                       C4P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_C4P_2, siz2, omp_default)
-   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_C4P_2)
-   call init_C(fptr_dev_C4P_2, i)
+   call omp_target_alloc_f(fptr_dev_cmplx32_2, siz2, omp_default)
+   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx32_2)
+   call init_C(fptr_dev_cmplx32_2, i)
    print *, 'F pointer initialization completed'
-   call matmul_C(fptr_dev_C4P_2, i)
+   call matmul_C(fptr_dev_cmplx32_2, i)
    print *, 'F pointer multiplication completed'
-   allocate(fptr_hos_C4P_2(i,i)); fptr_hos_C4P_2 = 0_I1P
-   call omp_target_memcpy_f(fptr_hos_C4P_2, fptr_dev_C4P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_cmplx32_2(i,i)); fptr_hos_cmplx32_2 = 0_int8
+   call omp_target_memcpy_f(fptr_hos_cmplx32_2, fptr_dev_cmplx32_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_C4P_2(1,1), fptr_hos_C4P_2(i,i)
-   call omp_target_free_f(fptr_dev_C4P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_cmplx32_2(1,1), fptr_hos_cmplx32_2(i,i)
+   call omp_target_free_f(fptr_dev_cmplx32_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_C4P_2)
+   deallocate(fptr_hos_cmplx32_2)
 
    print *, ''
    print *, '                       C4P Host to Device                        '
    print *, ''
-   allocate(fptr_hos_C4P_2(i,i)); fptr_hos_C4P_2 = (5.0_R4P, 5.0_R4P)
-   call omp_target_alloc_f(fptr_dev_C4P_2, siz2, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_C4P_2)
-   call omp_target_memcpy_f(fptr_dev_C4P_2, fptr_hos_C4P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_cmplx32_2(i,i)); fptr_hos_cmplx32_2 = (5.0_real32, 5.0_real32)
+   call omp_target_alloc_f(fptr_dev_cmplx32_2, siz2, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx32_2)
+   call omp_target_memcpy_f(fptr_dev_cmplx32_2, fptr_hos_cmplx32_2, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_C4P_2 = (0.0_R4P, 0.0_R4P)
-   call omp_target_memcpy_f(fptr_hos_C4P_2, fptr_dev_C4P_2, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_cmplx32_2 = (0.0_real32, 0.0_real32)
+   call omp_target_memcpy_f(fptr_hos_cmplx32_2, fptr_dev_cmplx32_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_C4P_2(1,1), fptr_hos_C4P_2(i,i)
-   call omp_target_free_f(fptr_dev_C4P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_cmplx32_2(1,1), fptr_hos_cmplx32_2(i,i)
+   call omp_target_free_f(fptr_dev_cmplx32_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_C4P_2)
+   deallocate(fptr_hos_cmplx32_2)
 
    print *, ''
    print *, '                       C8P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_C8P_2, siz2, omp_default)
-   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_C8P_2)
-   call init_C(fptr_dev_C8P_2, i)
+   call omp_target_alloc_f(fptr_dev_cmplx64_2, siz2, omp_default)
+   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx64_2)
+   call init_C(fptr_dev_cmplx64_2, i)
    print *, 'F pointer initialization completed'
-   call matmul_C(fptr_dev_C8P_2, i)
+   call matmul_C(fptr_dev_cmplx64_2, i)
    print *, 'F pointer multiplication completed'
-   allocate(fptr_hos_C8P_2(i,i)); fptr_hos_C8P_2 = 0_I1P
-   call omp_target_memcpy_f(fptr_hos_C8P_2, fptr_dev_C8P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_cmplx64_2(i,i)); fptr_hos_cmplx64_2 = 0_int8
+   call omp_target_memcpy_f(fptr_hos_cmplx64_2, fptr_dev_cmplx64_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_C8P_2(1,1), fptr_hos_C8P_2(i,i)
-   call omp_target_free_f(fptr_dev_C8P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_cmplx64_2(1,1), fptr_hos_cmplx64_2(i,i)
+   call omp_target_free_f(fptr_dev_cmplx64_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_C8P_2)
+   deallocate(fptr_hos_cmplx64_2)
 
    print *, ''
    print *, '                       C8P Host to Device                        '
    print *, ''
-   allocate(fptr_hos_C8P_2(i,i)); fptr_hos_C8P_2 = (5.0_R8P, 5.0_R8P)
-   call omp_target_alloc_f(fptr_dev_C8P_2, siz2, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_C8P_2)
-   call omp_target_memcpy_f(fptr_dev_C8P_2, fptr_hos_C8P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_cmplx64_2(i,i)); fptr_hos_cmplx64_2 = (5.0_real64, 5.0_real64)
+   call omp_target_alloc_f(fptr_dev_cmplx64_2, siz2, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx64_2)
+   call omp_target_memcpy_f(fptr_dev_cmplx64_2, fptr_hos_cmplx64_2, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_C8P_2 = (0.0_R8P, 0.0_R8P)
-   call omp_target_memcpy_f(fptr_hos_C8P_2, fptr_dev_C8P_2, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_cmplx64_2 = (0.0_real64, 0.0_real64)
+   call omp_target_memcpy_f(fptr_hos_cmplx64_2, fptr_dev_cmplx64_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_C8P_2(1,1), fptr_hos_C8P_2(i,i)
-   call omp_target_free_f(fptr_dev_C8P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_cmplx64_2(1,1), fptr_hos_cmplx64_2(i,i)
+   call omp_target_free_f(fptr_dev_cmplx64_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_C8P_2)
+   deallocate(fptr_hos_cmplx64_2)
 
-#if defined _R16P
+#if defined _real128
    print *, ''
    print *, '                       C16P Device to Host                       '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_C16P_2, siz2, omp_default)
-   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_C16P_2)
-   call init_C(fptr_dev_C16P_2, i)
+   call omp_target_alloc_f(fptr_dev_cmplx128_2, siz2, omp_default)
+   print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx128_2)
+   call init_C(fptr_dev_cmplx128_2, i)
    print *, 'F pointer initialization completed'
-   call matmul_C(fptr_dev_C16P_2, i)
+   call matmul_C(fptr_dev_cmplx128_2, i)
    print *, 'F pointer multiplication completed'
-   allocate(fptr_hos_C16P_2(i,i)); fptr_hos_C16P_2 = 0_I1P
-   call omp_target_memcpy_f(fptr_hos_C16P_2, fptr_dev_C16P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_cmplx128_2(i,i)); fptr_hos_cmplx128_2 = 0_int8
+   call omp_target_memcpy_f(fptr_hos_cmplx128_2, fptr_dev_cmplx128_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
    print *, 'Device to host copy completed'
-   print *, 'Host pointer has values: ', fptr_hos_C16P_2(1,1), fptr_hos_C16P_2(i,i)
-   call omp_target_free_f(fptr_dev_C16P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_cmplx128_2(1,1), fptr_hos_cmplx128_2(i,i)
+   call omp_target_free_f(fptr_dev_cmplx128_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_C16P_2)
+   deallocate(fptr_hos_cmplx128_2)
 
    print *, ''
    print *, '                       C16P Host to Device                       '
    print *, ''
-   allocate(fptr_hos_C16P_2(i,i)); fptr_hos_C16P_2 = (5.0_R16P, 5.0_R16P)
-   call omp_target_alloc_f(fptr_dev_C16P_2, siz2, omp_default)
-   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_C16P_2)
-   call omp_target_memcpy_f(fptr_dev_C16P_2, fptr_hos_C16P_2, ierr, 0_I4P, 0_I4P, &
+   allocate(fptr_hos_cmplx128_2(i,i)); fptr_hos_cmplx128_2 = (5.0_real128, 5.0_real128)
+   call omp_target_alloc_f(fptr_dev_cmplx128_2, siz2, omp_default)
+   print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx128_2)
+   call omp_target_memcpy_f(fptr_dev_cmplx128_2, fptr_hos_cmplx128_2, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
    print *, 'Host to device copy completed'
-   fptr_hos_C16P_2 = (0.0_R16P, 0.0_R16P)
-   call omp_target_memcpy_f(fptr_hos_C16P_2, fptr_dev_C16P_2, ierr, 0_I4P, 0_I4P, &
+   fptr_hos_cmplx128_2 = (0.0_real128, 0.0_real128)
+   call omp_target_memcpy_f(fptr_hos_cmplx128_2, fptr_dev_cmplx128_2, ierr, 0_int32, 0_int32, &
                             omp_initial, omp_default)
-   print *, 'Host pointer has values: ', fptr_hos_C16P_2(1,1), fptr_hos_C16P_2(i,i)
-   call omp_target_free_f(fptr_dev_C16P_2, omp_default)
+   print *, 'Host pointer has values: ', fptr_hos_cmplx128_2(1,1), fptr_hos_cmplx128_2(i,i)
+   call omp_target_free_f(fptr_dev_cmplx128_2, omp_default)
    print *, 'Device pointer deallocation completed'
-   deallocate(fptr_hos_C16P_2)
+   deallocate(fptr_hos_cmplx128_2)
 #endif
 
 endprogram test_falco
