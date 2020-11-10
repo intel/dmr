@@ -42,7 +42,8 @@ int omp_target_is_present_c(void *ptr, int dev_id)
 
 void *omp_get_mapped_ptr_c(void *ptr, int dev_id)
 {
-    return omp_get_mapped_ptr(ptr, dev_id);
+    void * dev_ptr = omp_get_mapped_ptr(ptr, dev_id);
+    return dev_ptr;
 }
 
 int omp_target_memcopy_c(void *dst, void *src, size_t length, size_t dst_off, size_t src_off,
