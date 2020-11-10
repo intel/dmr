@@ -680,8 +680,8 @@ module falco
       ! OpenMP Get Mapped Pointer Integer Routines
       function omp_get_mapped_ptr_f_int8_1(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int8_1
-         integer(I1P), intent(inout) :: fptr_dev(:)
+         logical                             :: omp_get_mapped_ptr_f_int8_1
+         integer(I1P), target, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -695,8 +695,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int8_2(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int8_2
-         integer(I1P), intent(inout) :: fptr_dev(:,:)
+         logical                             :: omp_get_mapped_ptr_f_int8_2
+         integer(I1P), target, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -710,8 +710,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int8_3(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int8_3
-         integer(I1P), intent(inout) :: fptr_dev(:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int8_3
+         integer(I1P), target, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -725,8 +725,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int8_4(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int8_4
-         integer(I1P), intent(inout) :: fptr_dev(:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int8_4
+         integer(I1P), target, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -740,8 +740,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int8_5(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int8_5
-         integer(I1P), intent(inout) :: fptr_dev(:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int8_5
+         integer(I1P), target, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -755,8 +755,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int8_6(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int8_6
-         integer(I1P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int8_6
+         integer(I1P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -770,8 +770,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int8_7(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int8_7
-         integer(I1P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int8_7
+         integer(I1P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -785,8 +785,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int16_1(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int16_1
-         integer(I2P), intent(inout) :: fptr_dev(:)
+         logical                             :: omp_get_mapped_ptr_f_int16_1
+         integer(I2P), target, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -800,8 +800,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int16_2(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int16_2
-         integer(I2P), intent(inout) :: fptr_dev(:,:)
+         logical                             :: omp_get_mapped_ptr_f_int16_2
+         integer(I2P), target, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -815,8 +815,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int16_3(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int16_3
-         integer(I2P), intent(inout) :: fptr_dev(:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int16_3
+         integer(I2P), target, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -830,8 +830,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int16_4(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int16_4
-         integer(I2P), intent(inout) :: fptr_dev(:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int16_4
+         integer(I2P), target, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -845,8 +845,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int16_5(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int16_5
-         integer(I2P), intent(inout) :: fptr_dev(:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int16_5
+         integer(I2P), target, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -860,8 +860,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int16_6(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int16_6
-         integer(I2P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int16_6
+         integer(I2P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -875,8 +875,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int16_7(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int16_7
-         integer(I2P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int16_7
+         integer(I2P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -890,8 +890,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int32_1(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int32_1
-         integer(I4P), intent(inout) :: fptr_dev(:)
+         logical                             :: omp_get_mapped_ptr_f_int32_1
+         integer(I4P), target, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -905,8 +905,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int32_2(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int32_2
-         integer(I4P), intent(inout) :: fptr_dev(:,:)
+         logical                             :: omp_get_mapped_ptr_f_int32_2
+         integer(I4P), target, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -920,8 +920,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int32_3(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int32_3
-         integer(I4P), intent(inout) :: fptr_dev(:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int32_3
+         integer(I4P), target, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -935,8 +935,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int32_4(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int32_4
-         integer(I4P), intent(inout) :: fptr_dev(:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int32_4
+         integer(I4P), target, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -950,8 +950,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int32_5(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int32_5
-         integer(I4P), intent(inout) :: fptr_dev(:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int32_5
+         integer(I4P), target, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -965,8 +965,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int32_6(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int32_6
-         integer(I4P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int32_6
+         integer(I4P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -980,8 +980,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int32_7(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int32_7
-         integer(I4P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int32_7
+         integer(I4P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -995,8 +995,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int64_1(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int64_1
-         integer(I8P), intent(inout) :: fptr_dev(:)
+         logical                             :: omp_get_mapped_ptr_f_int64_1
+         integer(I8P), target, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -1010,8 +1010,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int64_2(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int64_2
-         integer(I8P), intent(inout) :: fptr_dev(:,:)
+         logical                             :: omp_get_mapped_ptr_f_int64_2
+         integer(I8P), target, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -1025,8 +1025,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int64_3(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int64_3
-         integer(I8P), intent(inout) :: fptr_dev(:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int64_3
+         integer(I8P), target, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -1040,8 +1040,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int64_4(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int64_4
-         integer(I8P), intent(inout) :: fptr_dev(:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int64_4
+         integer(I8P), target, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -1055,8 +1055,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int64_5(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int64_5
-         integer(I8P), intent(inout) :: fptr_dev(:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int64_5
+         integer(I8P), target, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -1070,8 +1070,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int64_6(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int64_6
-         integer(I8P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int64_6
+         integer(I8P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -1085,8 +1085,8 @@ module falco
 
       function omp_get_mapped_ptr_f_int64_7(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_int64_7
-         integer(I8P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_int64_7
+         integer(I8P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -2851,8 +2851,8 @@ module falco
       ! OpenMP Get Mapped Pointer Real Routines
       function omp_get_mapped_ptr_f_real32_1(fptr_dev, omp_dev)
          implicit none
-         logical                  :: omp_get_mapped_ptr_f_real32_1
-         real(R4P), intent(inout) :: fptr_dev(:)
+         logical                          :: omp_get_mapped_ptr_f_real32_1
+         real(R4P), target, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -2866,8 +2866,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real32_2(fptr_dev, omp_dev)
          implicit none
-         logical                  :: omp_get_mapped_ptr_f_real32_2
-         real(R4P), intent(inout) :: fptr_dev(:,:)
+         logical                          :: omp_get_mapped_ptr_f_real32_2
+         real(R4P), target, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -2881,8 +2881,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real32_3(fptr_dev, omp_dev)
          implicit none
-         logical                  :: omp_get_mapped_ptr_f_real32_3
-         real(R4P), intent(inout) :: fptr_dev(:,:,:)
+         logical                          :: omp_get_mapped_ptr_f_real32_3
+         real(R4P), target, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -2896,8 +2896,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real32_4(fptr_dev, omp_dev)
          implicit none
-         logical                  :: omp_get_mapped_ptr_f_real32_4
-         real(R4P), intent(inout) :: fptr_dev(:,:,:,:)
+         logical                          :: omp_get_mapped_ptr_f_real32_4
+         real(R4P), target, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -2911,8 +2911,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real32_5(fptr_dev, omp_dev)
          implicit none
-         logical                  :: omp_get_mapped_ptr_f_real32_5
-         real(R4P), intent(inout) :: fptr_dev(:,:,:,:,:)
+         logical                          :: omp_get_mapped_ptr_f_real32_5
+         real(R4P), target, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -2926,8 +2926,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real32_6(fptr_dev, omp_dev)
          implicit none
-         logical                  :: omp_get_mapped_ptr_f_real32_6
-         real(R4P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         logical                          :: omp_get_mapped_ptr_f_real32_6
+         real(R4P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -2941,8 +2941,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real32_7(fptr_dev, omp_dev)
          implicit none
-         logical                  :: omp_get_mapped_ptr_f_real32_7
-         real(R4P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         logical                          :: omp_get_mapped_ptr_f_real32_7
+         real(R4P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -2956,8 +2956,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real64_1(fptr_dev, omp_dev)
          implicit none
-         logical                  :: omp_get_mapped_ptr_f_real64_1
-         real(R8P), intent(inout) :: fptr_dev(:)
+         logical                          :: omp_get_mapped_ptr_f_real64_1
+         real(R8P), target, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -2971,8 +2971,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real64_2(fptr_dev, omp_dev)
          implicit none
-         logical                  :: omp_get_mapped_ptr_f_real64_2
-         real(R8P), intent(inout) :: fptr_dev(:,:)
+         logical                          :: omp_get_mapped_ptr_f_real64_2
+         real(R8P), target, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -2986,8 +2986,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real64_3(fptr_dev, omp_dev)
          implicit none
-         logical                  :: omp_get_mapped_ptr_f_real64_3
-         real(R8P), intent(inout) :: fptr_dev(:,:,:)
+         logical                          :: omp_get_mapped_ptr_f_real64_3
+         real(R8P), target, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -3001,8 +3001,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real64_4(fptr_dev, omp_dev)
          implicit none
-         logical                  :: omp_get_mapped_ptr_f_real64_4
-         real(R8P), intent(inout) :: fptr_dev(:,:,:,:)
+         logical                          :: omp_get_mapped_ptr_f_real64_4
+         real(R8P), target, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -3016,8 +3016,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real64_5(fptr_dev, omp_dev)
          implicit none
-         logical                  :: omp_get_mapped_ptr_f_real64_5
-         real(R8P), intent(inout) :: fptr_dev(:,:,:,:,:)
+         logical                          :: omp_get_mapped_ptr_f_real64_5
+         real(R8P), target, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -3031,8 +3031,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real64_6(fptr_dev, omp_dev)
          implicit none
-         logical                  :: omp_get_mapped_ptr_f_real64_6
-         real(R8P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         logical                          :: omp_get_mapped_ptr_f_real64_6
+         real(R8P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -3046,8 +3046,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real64_7(fptr_dev, omp_dev)
          implicit none
-         logical                  :: omp_get_mapped_ptr_f_real64_7
-         real(R8P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         logical                          :: omp_get_mapped_ptr_f_real64_7
+         real(R8P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -3062,8 +3062,8 @@ module falco
 #if defined _real128
       function omp_get_mapped_ptr_f_real128_1(fptr_dev, omp_dev)
          implicit none
-         logical                   :: omp_get_mapped_ptr_f_real128_1
-         real(R16P), intent(inout) :: fptr_dev(:)
+         logical                           :: omp_get_mapped_ptr_f_real128_1
+         real(R16P), target, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -3077,8 +3077,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real128_2(fptr_dev, omp_dev)
          implicit none
-         logical                   :: omp_get_mapped_ptr_f_real128_2
-         real(R16P), intent(inout) :: fptr_dev(:,:)
+         logical                           :: omp_get_mapped_ptr_f_real128_2
+         real(R16P), target, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -3092,8 +3092,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real128_3(fptr_dev, omp_dev)
          implicit none
-         logical                   :: omp_get_mapped_ptr_f_real128_3
-         real(R16P), intent(inout) :: fptr_dev(:,:,:)
+         logical                           :: omp_get_mapped_ptr_f_real128_3
+         real(R16P), target, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -3107,8 +3107,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real128_4(fptr_dev, omp_dev)
          implicit none
-         logical                   :: omp_get_mapped_ptr_f_real128_4
-         real(R16P), intent(inout) :: fptr_dev(:,:,:,:)
+         logical                           :: omp_get_mapped_ptr_f_real128_4
+         real(R16P), target, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -3122,8 +3122,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real128_5(fptr_dev, omp_dev)
          implicit none
-         logical                   :: omp_get_mapped_ptr_f_real128_5
-         real(R16P), intent(inout) :: fptr_dev(:,:,:,:,:)
+         logical                           :: omp_get_mapped_ptr_f_real128_5
+         real(R16P), target, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -3137,8 +3137,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real128_6(fptr_dev, omp_dev)
          implicit none
-         logical                   :: omp_get_mapped_ptr_f_real128_6
-         real(R16P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         logical                           :: omp_get_mapped_ptr_f_real128_6
+         real(R16P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -3152,8 +3152,8 @@ module falco
 
       function omp_get_mapped_ptr_f_real128_7(fptr_dev, omp_dev)
          implicit none
-         logical                   :: omp_get_mapped_ptr_f_real128_7
-         real(R16P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         logical                           :: omp_get_mapped_ptr_f_real128_7
+         real(R16P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4570,8 +4570,8 @@ module falco
       ! OpenMP Get Mapped Pointer Complex Routines
       function omp_get_mapped_ptr_f_cmplx32_1(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_cmplx32_1
-         complex(R4P), intent(inout) :: fptr_dev(:)
+         logical                             :: omp_get_mapped_ptr_f_cmplx32_1
+         complex(R4P), target, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4585,8 +4585,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx32_2(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_cmplx32_2
-         complex(R4P), intent(inout) :: fptr_dev(:,:)
+         logical                             :: omp_get_mapped_ptr_f_cmplx32_2
+         complex(R4P), target, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4600,8 +4600,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx32_3(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_cmplx32_3
-         complex(R4P), intent(inout) :: fptr_dev(:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_cmplx32_3
+         complex(R4P), target, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4615,8 +4615,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx32_4(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_cmplx32_4
-         complex(R4P), intent(inout) :: fptr_dev(:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_cmplx32_4
+         complex(R4P), target, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4630,8 +4630,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx32_5(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_cmplx32_5
-         complex(R4P), intent(inout) :: fptr_dev(:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_cmplx32_5
+         complex(R4P), target, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4645,8 +4645,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx32_6(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_cmplx32_6
-         complex(R4P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_cmplx32_6
+         complex(R4P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4660,8 +4660,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx32_7(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_cmplx32_7
-         complex(R4P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_cmplx32_7
+         complex(R4P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4675,8 +4675,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx64_1(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_cmplx64_1
-         complex(R8P), intent(inout) :: fptr_dev(:)
+         logical                             :: omp_get_mapped_ptr_f_cmplx64_1
+         complex(R8P), target, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4690,8 +4690,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx64_2(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_cmplx64_2
-         complex(R8P), intent(inout) :: fptr_dev(:,:)
+         logical                             :: omp_get_mapped_ptr_f_cmplx64_2
+         complex(R8P), target, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4705,8 +4705,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx64_3(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_cmplx64_3
-         complex(R8P), intent(inout) :: fptr_dev(:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_cmplx64_3
+         complex(R8P), target, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4720,8 +4720,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx64_4(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_cmplx64_4
-         complex(R8P), intent(inout) :: fptr_dev(:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_cmplx64_4
+         complex(R8P), target, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4735,8 +4735,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx64_5(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_cmplx64_5
-         complex(R8P), intent(inout) :: fptr_dev(:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_cmplx64_5
+         complex(R8P), target, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4750,8 +4750,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx64_6(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_cmplx64_6
-         complex(R8P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_cmplx64_6
+         complex(R8P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4765,8 +4765,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx64_7(fptr_dev, omp_dev)
          implicit none
-         logical                     :: omp_get_mapped_ptr_f_cmplx64_7
-         complex(R8P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         logical                             :: omp_get_mapped_ptr_f_cmplx64_7
+         complex(R8P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4781,8 +4781,8 @@ module falco
 #if defined _real128
       function omp_get_mapped_ptr_f_cmplx128_1(fptr_dev, omp_dev)
          implicit none
-         logical                      :: omp_get_mapped_ptr_f_cmplx128_1
-         complex(R16P), intent(inout) :: fptr_dev(:)
+         logical                              :: omp_get_mapped_ptr_f_cmplx128_1
+         complex(R16P), target, intent(inout) :: fptr_dev(:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4796,8 +4796,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx128_2(fptr_dev, omp_dev)
          implicit none
-         logical                      :: omp_get_mapped_ptr_f_cmplx128_2
-         complex(R16P), intent(inout) :: fptr_dev(:,:)
+         logical                              :: omp_get_mapped_ptr_f_cmplx128_2
+         complex(R16P), target, intent(inout) :: fptr_dev(:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4811,8 +4811,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx128_3(fptr_dev, omp_dev)
          implicit none
-         logical                      :: omp_get_mapped_ptr_f_cmplx128_3
-         complex(R16P), intent(inout) :: fptr_dev(:,:,:)
+         logical                              :: omp_get_mapped_ptr_f_cmplx128_3
+         complex(R16P), target, intent(inout) :: fptr_dev(:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4826,8 +4826,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx128_4(fptr_dev, omp_dev)
          implicit none
-         logical                      :: omp_get_mapped_ptr_f_cmplx128_4
-         complex(R16P), intent(inout) :: fptr_dev(:,:,:,:)
+         logical                              :: omp_get_mapped_ptr_f_cmplx128_4
+         complex(R16P), target, intent(inout) :: fptr_dev(:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4841,8 +4841,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx128_5(fptr_dev, omp_dev)
          implicit none
-         logical                      :: omp_get_mapped_ptr_f_cmplx128_5
-         complex(R16P), intent(inout) :: fptr_dev(:,:,:,:,:)
+         logical                              :: omp_get_mapped_ptr_f_cmplx128_5
+         complex(R16P), target, intent(inout) :: fptr_dev(:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4856,8 +4856,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx128_6(fptr_dev, omp_dev)
          implicit none
-         logical                      :: omp_get_mapped_ptr_f_cmplx128_6
-         complex(R16P), intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         logical                              :: omp_get_mapped_ptr_f_cmplx128_6
+         complex(R16P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
@@ -4871,8 +4871,8 @@ module falco
 
       function omp_get_mapped_ptr_f_cmplx128_7(fptr_dev, omp_dev)
          implicit none
-         logical                      :: omp_get_mapped_ptr_f_cmplx128_7
-         complex(R16P), intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         logical                              :: omp_get_mapped_ptr_f_cmplx128_7
+         complex(R16P), target, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
 
          include "src/lib/include/get_mapped_ptr.i90"
 
