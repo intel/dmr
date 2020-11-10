@@ -43,7 +43,7 @@ ifdef ibm
    FORTFLAGS = -g -qtbtable=full -qcheck -qsigtrap -qsmp=omp -qoffload -qmaxmem=-1 -qtgtarch=sm_70 -qcuda -c -qmoddir=$(DMOD) -I$(DMOD)
    EXEFLAGS = -g -qtbtable=full -qcheck -qsigtrap -qsmp=omp -qoffload -qmaxmem=-1 -qtgtarch=sm_70 -qcuda -qmoddir=$(DMOD) -I$(DMOD)
    DFLAGS =
-   OBJECTS = exe/obj/falco.o exe/obj/falco_c_functions.o exe/obj/init_device_pointers.o exe/obj/matmul_device_pointers.o exe/obj/penf_b_size.o exe/obj/penf_global_parameters_variables.o exe/obj/penf.o exe/obj/penf_stringify.o exe/obj/test_falco.o
+   OBJECTS = exe/obj/dmr.o exe/obj/dmr_c_functions.o exe/obj/init_device_pointers.o exe/obj/matmul_device_pointers.o exe/obj/penf_b_size.o exe/obj/penf_global_parameters_variables.o exe/obj/penf.o exe/obj/penf_stringify.o exe/obj/test_dmr.o
 endif
 
 TEST = no
@@ -56,7 +56,7 @@ else
   DOBJ = lib/obj/
   DMOD = lib/mod/
   DEXE = lib/
-  RULE = FALCO
+  RULE = DMR
 endif
 LIBS    =
 VPATH   = $(DSRC) $(DOBJ) $(DMOD)
@@ -64,7 +64,7 @@ MKDIRS  = $(DOBJ) $(DMOD) $(DEXE)
 LCEXES  = $(shell echo $(EXES) | tr '[:upper:]' '[:lower:]')
 EXESPO  = $(addsuffix .o,$(LCEXES))
 EXESOBJ = $(addprefix $(DOBJ),$(EXESPO))
-MAKELIB = ar -rcs $(DEXE)libfalco.a $(DOBJ)*.o ; ranlib $(DEXE)libfalco.a
+MAKELIB = ar -rcs $(DEXE)libdmr.a $(DOBJ)*.o ; ranlib $(DEXE)libdmr.a
 
 #auxiliary variables
 COTEXT = "Compile $(<F)"
@@ -74,55 +74,55 @@ firstrule: $(RULE)
 
 #building rules
 #the library
-FALCO: $(MKDIRS) $(DOBJ)falco.o
+DMR: $(MKDIRS) $(DOBJ)dmr.o
 	@echo $(LITEXT)
 	@$(MAKELIB)
 
 #tests
 TESTS: $(DEXE)TEST_ALL
 
-$(DEXE)TEST_ALL: $(MKDIRS) $(DOBJ)test_falco.o
-	@rm -f $(filter-out $(DOBJ)test_falco.o,$(EXESOBJ))
+$(DEXE)TEST_ALL: $(MKDIRS) $(DOBJ)test_dmr.o
+	@rm -f $(filter-out $(DOBJ)test_dmr.o,$(EXESOBJ))
 	@echo $(LITEXT)
 	#@$(FC) $(FCFLAGS) $(DOBJ)*.o $(LIBS) -o $@
 	@$(FC) $(EXEFLAGS) $(DOBJ)*.o $(LIBS) -o $@
 EXES := $(EXES) TEST_ALL
 
 #compiling rules
-$(DOBJ)falco_c_functions_c.o: src/lib/falco_c_functions_c.c
+$(DOBJ)dmr_c_functions_c.o: src/lib/dmr_c_functions_c.c
 	@echo $(COTEXT)
 	@$(CC) $(LDFLAGS) $(CFLAGS)  $< -o $@
 
-$(DOBJ)falco_c_functions.o: src/lib/falco_c_functions.F90 \
-	$(DOBJ)falco_c_functions_c.o
+$(DOBJ)dmr_c_functions.o: src/lib/dmr_c_functions.F90 \
+	$(DOBJ)dmr_c_functions_c.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
-$(DOBJ)falco.o: src/lib/falco.F90 \
-	$(DOBJ)falco_environment.o \
-	$(DOBJ)falco_c_functions.o
+$(DOBJ)dmr.o: src/lib/dmr.F90 \
+	$(DOBJ)dmr_environment.o \
+	$(DOBJ)dmr_c_functions.o
 	@echo $(COTEXT)
 	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
 
-$(DOBJ)falco_environment.o: src/lib/falco_environment.F90
+$(DOBJ)dmr_environment.o: src/lib/dmr_environment.F90
 	@echo $(COTEXT)
 	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
 
-$(DOBJ)test_falco.o: src/tests/test_falco.F90 \
-	$(DOBJ)falco_environment.o \
-	$(DOBJ)falco.o \
+$(DOBJ)test_dmr.o: src/tests/test_dmr.F90 \
+	$(DOBJ)dmr_environment.o \
+	$(DOBJ)dmr.o \
 	$(DOBJ)init_device_pointers.o \
 	$(DOBJ)matmul_device_pointers.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)init_device_pointers.o: src/tests/init_device_pointers.F90 \
-	$(DOBJ)falco_environment.o
+	$(DOBJ)dmr_environment.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)matmul_device_pointers.o: src/tests/matmul_device_pointers.F90 \
-	$(DOBJ)falco_environment.o
+	$(DOBJ)dmr_environment.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 

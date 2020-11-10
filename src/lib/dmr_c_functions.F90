@@ -1,17 +1,17 @@
 !* ========================================================================== *
 !*                                                                            *
 !* Copyright (C) 2020 Intel Corporation                                       *
-!* This file is part of the FALCO library.                                    *
+!* This file is part of the DMR library.                                      *
 !*                                                                            *
 !* For information on the license, see the LICENSE file.                      *
-!* Further information: https://github.com/giacrossi/FALCO/                   *
+!* Further information: https://github.com/giacrossi/dmr/                     *
 !* SPDX-License-Identifier: BSD-3-Clause                                      *
 !*                                                                            *
 !* ========================================================================== *
 !* Giacomo Rossi (Intel Corporation)                                          *
 !* ========================================================================== *
 
-module falco_c_functions
+module dmr_c_functions
    implicit none
 
    save
@@ -98,4 +98,4 @@ module falco_c_functions
           omp_target_memcpy_c, &
           omp_target_memcpy_rect_c, omp_target_associate_ptr_c, omp_target_disassociate_ptr_c
 
-endmodule falco_c_functions
+endmodule dmr_c_functions

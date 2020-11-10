@@ -1,25 +1,25 @@
 !* ========================================================================== *
 !*                                                                            *
 !* Copyright (C) 2020 Intel Corporation                                       *
-!* This file is part of the FALCO library.                                    *
+!* This file is part of the DMR library.                                      *
 !*                                                                            *
 !* For information on the license, see the LICENSE file.                      *
-!* Further information: https://github.com/giacrossi/FALCO/                   *
+!* Further information: https://github.com/giacrossi/dmr/                     *
 !* SPDX-License-Identifier: BSD-3-Clause                                      *
 !*                                                                            *
 !* ========================================================================== *
 !* Giacomo Rossi (Intel Corporation)                                          *
 !* ========================================================================== *
 
-program test_falco
+program test_dmr
    use omp_lib
    use, intrinsic :: iso_fortran_env, only : int8, int16, int32, int64, &
 #if defined _real128
                                              real128, &
 #endif
                                              real32, real64
-   use falco
-   use falco_c_functions
+   use dmr
+   use dmr_c_functions
    use init_device_pointers
    use matmul_device_pointers
    use, intrinsic :: iso_c_binding
@@ -74,7 +74,7 @@ program test_falco
                                                  fptr_hos_real64_3 (:,:,:),          fptr_hos_real64_4 (:,:,:,:),     &
                                                  fptr_hos_real64_5 (:,:,:,:,:),      fptr_hos_real64_6 (:,:,:,:,:,:), &
                                                  fptr_hos_real64_7 (:,:,:,:,:,:,:)
-#if defined _R16P
+#if defined _real128
    real(kind=real128),    pointer, contiguous :: fptr_dev_real128  (:),              fptr_dev_real128_2(:,:),         &
                                                  fptr_dev_real128_3(:,:,:),          fptr_dev_real128_4(:,:,:,:),     &
                                                  fptr_dev_real128_5(:,:,:,:,:),      fptr_dev_real128_6(:,:,:,:,:,:), &
@@ -100,7 +100,7 @@ program test_falco
                                                  fptr_hos_cmplx64_3 (:,:,:),         fptr_hos_cmplx64_4 (:,:,:,:),     &
                                                  fptr_hos_cmplx64_5 (:,:,:,:,:),     fptr_hos_cmplx64_6 (:,:,:,:,:,:), &
                                                  fptr_hos_cmplx64_7 (:,:,:,:,:,:,:)
-#if defined _R16P
+#if defined _real128
    complex(kind=real128), pointer, contiguous :: fptr_dev_cmplx128  (:),             fptr_dev_cmplx128_2(:,:),         &
                                                  fptr_dev_cmplx128_3(:,:,:),         fptr_dev_cmplx128_4(:,:,:,:),     &
                                                  fptr_dev_cmplx128_5(:,:,:,:,:),     fptr_dev_cmplx128_6(:,:,:,:,:,:), &
@@ -127,7 +127,7 @@ program test_falco
    dims(2) = 4_int64
 
    print *, '*****************************************************************'
-   print *, '                   Start FALCO library testing                   '
+   print *, '                    Start DMR library testing                    '
    print *, '*****************************************************************'
    print *, ''
    print *, ' +++++++++++++++++++ Testing rank one arrays +++++++++++++++++++ '
@@ -879,4 +879,4 @@ program test_falco
    deallocate(fptr_hos_cmplx128_2)
 #endif
 
-endprogram test_falco
+endprogram test_dmr

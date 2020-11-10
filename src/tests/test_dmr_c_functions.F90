@@ -1,20 +1,20 @@
 !* ========================================================================== *
 !*                                                                            *
 !* Copyright (C) 2020 Intel Corporation                                       *
-!* This file is part of the FALCO library.                                    *
+!* This file is part of the DMR library.                                      *
 !*                                                                            *
 !* For information on the license, see the LICENSE file.                      *
-!* Further information: https://github.com/giacrossi/FALCO/                   *
+!* Further information: https://github.com/giacrossi/dmr/                     *
 !* SPDX-License-Identifier: BSD-3-Clause                                      *
 !*                                                                            *
 !* ========================================================================== *
 !* Giacomo Rossi (Intel Corporation)                                          *
 !* ========================================================================== *
 
-program falco_test_c_functions
+program dmr_test_c_functions
    use iso_c_binding
-   use penf
-   use falco_c_functions
+   use dmr_environment
+   use dmr_c_functions
    use omp_lib
    implicit none
 
@@ -40,4 +40,4 @@ program falco_test_c_functions
 !!$omp distribute parallel do private (l, m, n)
 !      endsubroutine init_device_data
 
-endprogram falco_test_c_functions
+endprogram dmr_test_c_functions

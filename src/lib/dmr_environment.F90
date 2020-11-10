@@ -1,17 +1,17 @@
 !* ========================================================================== *
 !*                                                                            *
 !* Copyright (C) 2020 Intel Corporation                                       *
-!* This file is part of the FALCO library.                                    *
+!* This file is part of the DMR library.                                      *
 !*                                                                            *
 !* For information on the license, see the LICENSE file.                      *
-!* Further information: https://github.com/giacrossi/FALCO/                   *
+!* Further information: https://github.com/giacrossi/dmr/                     *
 !* SPDX-License-Identifier: BSD-3-Clause                                      *
 !*                                                                            *
 !* ========================================================================== *
 !* Giacomo Rossi (Intel Corporation)                                          *
 !* ========================================================================== *
 
-module falco_environment
+module dmr_environment
 
    implicit none
 
@@ -98,4 +98,4 @@ module falco_environment
       endfunction byte_size_real128
 #endif
 
-endmodule falco_environment
+endmodule dmr_environment

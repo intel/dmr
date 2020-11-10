@@ -1,10 +1,10 @@
 !* ========================================================================== *
 !*                                                                            *
 !* Copyright (C) 2020 Intel Corporation                                       *
-!* This file is part of the FALCO library.                                    *
+!* This file is part of the DMR library.                                      *
 !*                                                                            *
 !* For information on the license, see the LICENSE file.                      *
-!* Further information: https://github.com/giacrossi/FALCO/                   *
+!* Further information: https://github.com/giacrossi/dmr/                     *
 !* SPDX-License-Identifier: BSD-3-Clause                                      *
 !*                                                                            *
 !* ========================================================================== *
@@ -13,7 +13,7 @@
 
 module matmul_device_pointers
    use omp_lib
-   use falco_environment
+   use dmr_environment
 
    implicit none
 
@@ -33,9 +33,9 @@ module matmul_device_pointers
    interface matmul_C
       module procedure &
 #if defined _real128
-                       matmul_cmplx128, matmul_C16P_2, &
+                       matmul_cmplx128, matmul_cmplx128_2, &
 #endif
-                       matmul_cmplx32,  matmul_C4P_2,  matmul_cmplx64,   matmul_C8P_2
+                       matmul_cmplx32,  matmul_cmplx32_2,  matmul_cmplx64,   matmul_cmplx64_2
    endinterface matmul_C
 
    public matmul_I, matmul_R, matmul_C
