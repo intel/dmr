@@ -55,8 +55,10 @@ Go to [Top](#top)
 
 FALCO provides the following Fortran routines:
 
++ [x] pointer presence check on device (omp_target_is_present --> omp_target_is_present_f)
 + [x] pointer allocation on device (omp_target_alloc --> omp_target_alloc_f)
 + [x] pointer deallocation from device (omp_target_free --> omp_target_free_f)
++ [x] pointer already mapped on the device (omp_get_mapped_ptr --> omp_get_mapped_ptr_f)
 + [x] data synchronization between host and device (omp_target_memcpy --> omp_target_memcpy_f)
 + [x] rectangular data transfer (omp_target_memcpy_rect --> omp_target_memcpy_rect_f)
 
@@ -65,6 +67,7 @@ FALCO provides Fortran interfaces to the following OpenMP C device memory routin
 + [x] omp_target_alloc
 + [x] omp_target_free
 + [x] omp_target_is_present
++ [x] omp_get_mapped_ptr
 + [x] omp_target_memcpy
 + [x] omp_target_memcpy_rect
 + [x] omp_target_associate_pointer
@@ -95,9 +98,5 @@ Go to [Top](#top)
 &copy; 2020 Giacomo Rossi, Intel Corporation
 
 Anyone is interest to use, to develop or to contribute to FALCO is welcome, feel free to select the license that best matches your soul!
-
-### External library
-
-FALCO uses one external library (PENF - placed into the *third_party* subdirectory of the root project source). This library maybe is distributed under different licensing system with respect the FALCO one, please refer to its own license.
 
 Go to [Top](#top)
