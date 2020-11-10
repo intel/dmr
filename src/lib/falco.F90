@@ -1331,7 +1331,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * sizeof(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1_I1P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
@@ -1344,7 +1344,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
@@ -1357,7 +1357,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
@@ -1370,7 +1370,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
@@ -1383,7 +1383,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
@@ -1397,7 +1397,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
@@ -1411,7 +1411,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
@@ -1425,7 +1425,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * sizeof(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1_I2P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
@@ -1438,7 +1438,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
@@ -1451,7 +1451,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
@@ -1464,7 +1464,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
@@ -1477,7 +1477,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
@@ -1491,7 +1491,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
@@ -1505,7 +1505,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
@@ -1519,7 +1519,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * sizeof(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1_I4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
@@ -1532,7 +1532,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
@@ -1545,7 +1545,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
@@ -1558,7 +1558,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
@@ -1571,7 +1571,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
@@ -1585,7 +1585,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
@@ -1599,7 +1599,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
@@ -1613,7 +1613,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * sizeof(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1_I8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
@@ -1626,7 +1626,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
@@ -1639,7 +1639,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
@@ -1652,7 +1652,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
@@ -1665,7 +1665,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
@@ -1679,7 +1679,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
@@ -1693,7 +1693,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
@@ -1709,7 +1709,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I1P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I1P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1724,7 +1724,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I1P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I1P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1739,7 +1739,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I1P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I1P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1754,7 +1754,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I1P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I1P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1769,7 +1769,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I1P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I1P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1784,7 +1784,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I1P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I1P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1799,7 +1799,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I1P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I1P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1814,7 +1814,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I2P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I2P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1829,7 +1829,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I2P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I2P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1844,7 +1844,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I2P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I2P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1859,7 +1859,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I2P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I2P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1874,7 +1874,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I2P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I2P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1889,7 +1889,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I2P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I2P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1904,7 +1904,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I2P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I2P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1919,7 +1919,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I4P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1934,7 +1934,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I4P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1949,7 +1949,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I4P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1964,7 +1964,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I4P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1979,7 +1979,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I4P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -1994,7 +1994,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I4P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -2009,7 +2009,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I4P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -2024,7 +2024,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I8P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -2039,7 +2039,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I8P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -2054,7 +2054,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I8P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -2069,7 +2069,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I8P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -2084,7 +2084,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I8P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -2099,7 +2099,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I8P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -2114,7 +2114,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1_I8P), c_size_t)
+         total_dim = int(n_elements * byte_size(1_I8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -2131,7 +2131,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I1P), c_size_t)
+         elem_dim = int(byte_size(1_I1P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
@@ -2148,7 +2148,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I1P), c_size_t)
+         elem_dim = int(byte_size(1_I1P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2165,7 +2165,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I1P), c_size_t)
+         elem_dim = int(byte_size(1_I1P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2182,7 +2182,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I1P), c_size_t)
+         elem_dim = int(byte_size(1_I1P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2199,7 +2199,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I1P), c_size_t)
+         elem_dim = int(byte_size(1_I1P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2216,7 +2216,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I1P), c_size_t)
+         elem_dim = int(byte_size(1_I1P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2233,7 +2233,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I2P), c_size_t)
+         elem_dim = int(byte_size(1_I2P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
@@ -2250,7 +2250,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I2P), c_size_t)
+         elem_dim = int(byte_size(1_I2P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2267,7 +2267,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I2P), c_size_t)
+         elem_dim = int(byte_size(1_I2P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2284,7 +2284,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I2P), c_size_t)
+         elem_dim = int(byte_size(1_I2P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2301,7 +2301,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I2P), c_size_t)
+         elem_dim = int(byte_size(1_I2P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2318,7 +2318,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I2P), c_size_t)
+         elem_dim = int(byte_size(1_I2P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2335,7 +2335,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I4P), c_size_t)
+         elem_dim = int(byte_size(1_I4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
@@ -2352,7 +2352,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I4P), c_size_t)
+         elem_dim = int(byte_size(1_I4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2369,7 +2369,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I4P), c_size_t)
+         elem_dim = int(byte_size(1_I4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2386,7 +2386,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I4P), c_size_t)
+         elem_dim = int(byte_size(1_I4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2403,7 +2403,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I4P), c_size_t)
+         elem_dim = int(byte_size(1_I4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2420,7 +2420,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I4P), c_size_t)
+         elem_dim = int(byte_size(1_I4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2437,7 +2437,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I8P), c_size_t)
+         elem_dim = int(byte_size(1_I8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
@@ -2454,7 +2454,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I8P), c_size_t)
+         elem_dim = int(byte_size(1_I8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2471,7 +2471,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I8P), c_size_t)
+         elem_dim = int(byte_size(1_I8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2488,7 +2488,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I8P), c_size_t)
+         elem_dim = int(byte_size(1_I8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2505,7 +2505,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I8P), c_size_t)
+         elem_dim = int(byte_size(1_I8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -2522,7 +2522,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1_I8P), c_size_t)
+         elem_dim = int(byte_size(1_I8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -3345,7 +3345,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * sizeof(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1._R4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
@@ -3358,7 +3358,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
@@ -3371,7 +3371,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
@@ -3384,7 +3384,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
@@ -3397,7 +3397,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
@@ -3411,7 +3411,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
@@ -3425,7 +3425,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
@@ -3439,7 +3439,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * sizeof(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1._R8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
@@ -3452,7 +3452,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
@@ -3465,7 +3465,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
@@ -3478,7 +3478,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
@@ -3491,7 +3491,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
@@ -3505,7 +3505,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
@@ -3519,7 +3519,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
@@ -3534,7 +3534,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * sizeof(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1._R16P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
@@ -3547,7 +3547,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
@@ -3560,7 +3560,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
@@ -3573,7 +3573,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
@@ -3586,7 +3586,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
@@ -3600,7 +3600,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
@@ -3614,7 +3614,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * sizeof(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
@@ -3631,7 +3631,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R4P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3646,7 +3646,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R4P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3661,7 +3661,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R4P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3676,7 +3676,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R4P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3691,7 +3691,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R4P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3706,7 +3706,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R4P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3721,7 +3721,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R4P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3736,7 +3736,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R8P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3751,7 +3751,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R8P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3766,7 +3766,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R8P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3781,7 +3781,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R8P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3796,7 +3796,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R8P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3811,7 +3811,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R8P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3826,7 +3826,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R8P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3842,7 +3842,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R16P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3857,7 +3857,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R16P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3872,7 +3872,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R16P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3887,7 +3887,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R16P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3902,7 +3902,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R16P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3917,7 +3917,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R16P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3932,7 +3932,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(n_elements * sizeof(1._R16P), c_size_t)
+         total_dim = int(n_elements * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -3950,7 +3950,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R4P), c_size_t)
+         elem_dim = int(byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
@@ -3967,7 +3967,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R4P), c_size_t)
+         elem_dim = int(byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -3984,7 +3984,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R4P), c_size_t)
+         elem_dim = int(byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -4001,7 +4001,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R4P), c_size_t)
+         elem_dim = int(byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -4018,7 +4018,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R4P), c_size_t)
+         elem_dim = int(byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -4035,7 +4035,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R4P), c_size_t)
+         elem_dim = int(byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -4052,7 +4052,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R8P), c_size_t)
+         elem_dim = int(byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
@@ -4069,7 +4069,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R8P), c_size_t)
+         elem_dim = int(byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -4086,7 +4086,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R8P), c_size_t)
+         elem_dim = int(byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -4103,7 +4103,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R8P), c_size_t)
+         elem_dim = int(byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -4120,7 +4120,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R8P), c_size_t)
+         elem_dim = int(byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -4137,7 +4137,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R8P), c_size_t)
+         elem_dim = int(byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -4155,7 +4155,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R16P), c_size_t)
+         elem_dim = int(byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
@@ -4172,7 +4172,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R16P), c_size_t)
+         elem_dim = int(byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -4189,7 +4189,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R16P), c_size_t)
+         elem_dim = int(byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -4206,7 +4206,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R16P), c_size_t)
+         elem_dim = int(byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -4223,7 +4223,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R16P), c_size_t)
+         elem_dim = int(byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -4240,7 +4240,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(sizeof(1._R16P), c_size_t)
+         elem_dim = int(byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -5064,7 +5064,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * dimensions, c_size_t) * sizeof(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * dimensions, c_size_t) * byte_size(1._R4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
@@ -5077,7 +5077,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
@@ -5090,7 +5090,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
@@ -5103,7 +5103,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
@@ -5116,7 +5116,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
@@ -5130,7 +5130,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
@@ -5144,7 +5144,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
@@ -5158,7 +5158,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * dimensions, c_size_t) * sizeof(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * dimensions, c_size_t) * byte_size(1._R8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
@@ -5171,7 +5171,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
@@ -5184,7 +5184,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
@@ -5197,7 +5197,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
@@ -5210,7 +5210,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
@@ -5224,7 +5224,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
@@ -5238,7 +5238,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
@@ -5253,7 +5253,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * dimensions, c_size_t) * sizeof(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * dimensions, c_size_t) * byte_size(1._R16P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 
@@ -5266,7 +5266,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
 
@@ -5279,7 +5279,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
 
@@ -5292,7 +5292,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
 
@@ -5305,7 +5305,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5)])
@@ -5319,7 +5319,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6)])
@@ -5333,7 +5333,7 @@ module falco
 
          include "src/lib/include/alloc_fptr_dev.i90"
 
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * sizeof(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
 
          if (c_associated(cptr_dev)) call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                dimensions(5), dimensions(6), dimensions(7)])
@@ -5350,7 +5350,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R4P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5365,7 +5365,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R4P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5380,7 +5380,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R4P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5395,7 +5395,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R4P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5410,7 +5410,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R4P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5425,7 +5425,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R4P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5440,7 +5440,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R4P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5455,7 +5455,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R8P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5470,7 +5470,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R8P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5485,7 +5485,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R8P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5500,7 +5500,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R8P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5515,7 +5515,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R8P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5530,7 +5530,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R8P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5545,7 +5545,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R8P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5561,7 +5561,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R16P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5576,7 +5576,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R16P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5591,7 +5591,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R16P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5606,7 +5606,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R16P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5621,7 +5621,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R16P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5636,7 +5636,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R16P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5651,7 +5651,7 @@ module falco
 
          include "src/lib/include/memcpy.i90"
 
-         total_dim = int(2_I8P * n_elements * sizeof(1._R16P), c_size_t)
+         total_dim = int(2_I8P * n_elements * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
@@ -5669,7 +5669,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R4P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
@@ -5686,7 +5686,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R4P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -5703,7 +5703,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R4P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -5720,7 +5720,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R4P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -5737,7 +5737,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R4P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -5754,7 +5754,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R4P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R4P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -5771,7 +5771,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R8P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
@@ -5788,7 +5788,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R8P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -5805,7 +5805,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R8P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -5822,7 +5822,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R8P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -5839,7 +5839,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R8P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -5856,7 +5856,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R8P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R8P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -5874,7 +5874,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R16P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
@@ -5891,7 +5891,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R16P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -5908,7 +5908,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R16P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -5925,7 +5925,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R16P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -5942,7 +5942,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R16P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
@@ -5959,7 +5959,7 @@ module falco
 
          include "src/lib/include/memcpy_rect.i90"
 
-         elem_dim = int(2_I8P * sizeof(1._R16P), c_size_t)
+         elem_dim = int(2_I8P * byte_size(1._R16P), c_size_t)
 
          ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
             omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,     &
