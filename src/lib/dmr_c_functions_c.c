@@ -40,11 +40,13 @@ int omp_target_is_present_c(void *ptr, int dev_id)
     return omp_target_is_present(ptr, dev_id);
 }
 
+#if defined _OpenMP_TR9
 void *omp_get_mapped_ptr_c(void *ptr, int dev_id)
 {
     void * dev_ptr = omp_get_mapped_ptr(ptr, dev_id);
     return dev_ptr;
 }
+#endif
 
 int omp_target_memcopy_c(void *dst, void *src, size_t length, size_t dst_off, size_t src_off,
                          int dst_dev_id, int src_dev_id)

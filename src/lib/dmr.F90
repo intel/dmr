@@ -59,6 +59,7 @@ module dmr
                        omp_target_is_present_f_cmplx64_7
    endinterface omp_target_is_present_f
 
+#if defined _OpenMP_TR9
    interface omp_get_mapped_ptr_f
       module procedure &
                        omp_get_mapped_ptr_f_int8_1,     omp_get_mapped_ptr_f_int8_2,     omp_get_mapped_ptr_f_int8_3,  &
@@ -96,6 +97,7 @@ module dmr
                        omp_get_mapped_ptr_f_cmplx64_4,  omp_get_mapped_ptr_f_cmplx64_5,  omp_get_mapped_ptr_f_cmplx64_6,  &
                        omp_get_mapped_ptr_f_cmplx64_7
    endinterface omp_get_mapped_ptr_f
+#endif
 
    interface omp_target_free_f
       module procedure &
@@ -249,8 +251,11 @@ module dmr
                        omp_target_memcpy_rect_f_cmplx64_7
    endinterface omp_target_memcpy_rect_f
 
-   public omp_target_is_present_f, omp_target_alloc_f, omp_target_free_f, omp_target_memcpy_f, omp_target_memcpy_rect_f, &
-          omp_get_mapped_ptr_f
+   public &
+#if defined _OpenMP_TR9
+          omp_get_mapped_ptr_f, &
+#endif
+          omp_target_is_present_f, omp_target_alloc_f, omp_target_free_f, omp_target_memcpy_f, omp_target_memcpy_rect_f
 
    private
 
@@ -677,6 +682,7 @@ module dmr
 
       endfunction omp_target_is_present_f_int64_7
 
+#if defined _OpenMP_TR9
       ! OpenMP Get Mapped Pointer Integer Routines
       function omp_get_mapped_ptr_f_int8_1(fptr_dev, omp_dev)
          implicit none
@@ -1097,6 +1103,7 @@ module dmr
          endif
 
       endfunction omp_get_mapped_ptr_f_int64_7
+#endif
 
       ! OpenMP Target Free Integer Routines
       subroutine omp_target_free_f_int8_1(fptr_dev, omp_dev)
@@ -2848,6 +2855,7 @@ module dmr
       endfunction omp_target_is_present_f_real128_7
 #endif
 
+#if defined _OpenMP_TR9
       ! OpenMP Get Mapped Pointer Real Routines
       function omp_get_mapped_ptr_f_real32_1(fptr_dev, omp_dev)
          implicit none
@@ -3164,6 +3172,7 @@ module dmr
          endif
 
       endfunction omp_get_mapped_ptr_f_real128_7
+#endif
 #endif
 
       ! OpenMP Target Free Real Routines
@@ -4567,6 +4576,7 @@ module dmr
       endfunction omp_target_is_present_f_cmplx128_7
 #endif
 
+#if defined _OpenMP_TR9
       ! OpenMP Get Mapped Pointer Complex Routines
       function omp_get_mapped_ptr_f_cmplx32_1(fptr_dev, omp_dev)
          implicit none
@@ -4883,6 +4893,7 @@ module dmr
          endif
 
       endfunction omp_get_mapped_ptr_f_cmplx128_7
+#endif
 #endif
 
       ! OpenMP Target Free Complex Routines
