@@ -28,7 +28,7 @@ ifdef intel
    FCFLAGS  = $(LDFLAGS) -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
    FORTFLAGS = -c -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
    EXEFLAGS = -fiopenmp -fopenmp-targets=spir64 -g -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
-   DFLAGS = #-D_real128
+   DFLAGS = -D_real128
 endif
 
 ifdef ibm
@@ -89,47 +89,27 @@ $(DEXE)TEST_ALL: $(MKDIRS) $(DOBJ)test_falco.o
 EXES := $(EXES) TEST_ALL
 
 #compiling rules
-$(DOBJ)falco_c_functions_c.o: src/lib/falco_c_functions_c.c \
-	$(DOBJ)penf.o
+$(DOBJ)falco_c_functions_c.o: src/lib/falco_c_functions_c.c
 	@echo $(COTEXT)
 	@$(CC) $(LDFLAGS) $(CFLAGS)  $< -o $@
 
 $(DOBJ)falco_c_functions.o: src/lib/falco_c_functions.F90 \
-	$(DOBJ)penf.o \
 	$(DOBJ)falco_c_functions_c.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)falco.o: src/lib/falco.F90 \
-	$(DOBJ)penf.o \
+	$(DOBJ)falco_environment.o \
 	$(DOBJ)falco_c_functions.o
 	@echo $(COTEXT)
 	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
 
-$(DOBJ)penf.o: src/third_party/PENF/src/lib/penf.F90 \
-	$(DOBJ)penf_global_parameters_variables.o \
-	$(DOBJ)penf_b_size.o \
-	$(DOBJ)penf_stringify.o
-	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
-
-$(DOBJ)penf_stringify.o: src/third_party/PENF/src/lib/penf_stringify.F90 \
-	$(DOBJ)penf_b_size.o \
-	$(DOBJ)penf_global_parameters_variables.o
-	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
-
-$(DOBJ)penf_b_size.o: src/third_party/PENF/src/lib/penf_b_size.F90 \
-	$(DOBJ)penf_global_parameters_variables.o
-	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
-
-$(DOBJ)penf_global_parameters_variables.o: src/third_party/PENF/src/lib/penf_global_parameters_variables.F90
+$(DOBJ)falco_environment.o: src/lib/falco_environment.F90
 	@echo $(COTEXT)
 	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)test_falco.o: src/tests/test_falco.F90 \
-	$(DOBJ)penf.o \
+	$(DOBJ)falco_environment.o \
 	$(DOBJ)falco.o \
 	$(DOBJ)init_device_pointers.o \
 	$(DOBJ)matmul_device_pointers.o
@@ -137,12 +117,12 @@ $(DOBJ)test_falco.o: src/tests/test_falco.F90 \
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)init_device_pointers.o: src/tests/init_device_pointers.F90 \
-	$(DOBJ)penf.o
+	$(DOBJ)falco_environment.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)matmul_device_pointers.o: src/tests/matmul_device_pointers.F90 \
-	$(DOBJ)penf.o
+	$(DOBJ)falco_environment.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 

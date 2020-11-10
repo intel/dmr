@@ -13,8 +13,8 @@
 
 module falco
    use, intrinsic :: iso_c_binding
-   use penf
    use omp_lib
+   use falco_environment
    use falco_c_functions
 
    implicit none
