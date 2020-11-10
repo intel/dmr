@@ -58,7 +58,7 @@ DMR provides the following Fortran routines:
 + [x] pointer presence check on device (omp_target_is_present --> omp_target_is_present_f)
 + [x] pointer allocation on device (omp_target_alloc --> omp_target_alloc_f)
 + [x] pointer deallocation from device (omp_target_free --> omp_target_free_f)
-+ [x] pointer already mapped on the device (omp_get_mapped_ptr --> omp_get_mapped_ptr_f)
++ [x] pointer already mapped on the device (omp_get_mapped_ptr --> omp_get_mapped_ptr_f)<sup>2</sup>
 + [x] data synchronization between host and device (omp_target_memcpy --> omp_target_memcpy_f)
 + [x] rectangular data transfer (omp_target_memcpy_rect --> omp_target_memcpy_rect_f)
 
@@ -67,11 +67,13 @@ DMR provides Fortran interfaces to the following OpenMP C device memory routines
 + [x] omp_target_alloc
 + [x] omp_target_free
 + [x] omp_target_is_present
-+ [x] omp_get_mapped_ptr
++ [x] omp_get_mapped_ptr<sup>2</sup>
 + [x] omp_target_memcpy
 + [x] omp_target_memcpy_rect
 + [x] omp_target_associate_pointer
 + [x] omp_target_disassociate_pointer
+
+[2] _OpenMP API version 5.1 Public Comment Draft_, OpenMP Architecture Review Board, 2020, https://www.openmp.org/wp-content/uploads/openmp-TR9.pdf
 
 Go to [Top](#top)
 
