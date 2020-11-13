@@ -11,8 +11,6 @@
 !* Giacomo Rossi (Intel Corporation)                                          *
 !* ========================================================================== *
 
-         integer(I4P), intent(in)                  :: omp_dev
-         type(c_ptr)                               :: cptr_dev
-         integer(kind=c_int)                       :: omp_device
-
-         omp_device = int(omp_dev, c_int)
+         integer(I4P), intent(in)                         :: omp_dev
+         type(c_ptr)                                      :: cptr_dev
+         integer(kind=c_int)                              :: omp_device

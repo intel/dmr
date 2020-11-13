@@ -11,10 +11,10 @@
 !* Giacomo Rossi (Intel Corporation)                                          *
 !* ========================================================================== *
 
-         integer(I4P),         intent(in) :: omp_dev
-         type(c_ptr)                      :: cptr_dev
-         integer(kind=c_int)              :: omp_device
-
-         omp_device = int(omp_dev, c_int)
-
-         cptr_dev = c_loc(fptr_dev)
+         integer(I4P), intent(out)                           :: ierr
+         integer(I4P), intent(in)                            :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                            :: dst_off, src_off
+         integer(I8P)                                        :: n_elements
+         integer(c_size_t)                                   :: total_dim, omp_dst_offset, omp_src_offset
+         type(c_ptr)                                         :: cptr_dst, cptr_src
+         integer(c_int)                                      :: omp_dst_device, omp_src_device
