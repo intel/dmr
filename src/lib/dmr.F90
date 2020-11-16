@@ -249,6 +249,7 @@ module dmr
    endinterface omp_get_mapped_ptr_f
 #endif
 
+! OpenMP Target Is Present Routines
    interface
       ! OpenMP Target Is Present Integer Routines
       module function omp_target_is_present_f_int8_1(fptr_dev, omp_dev)
@@ -748,6 +749,7 @@ module dmr
 #endif
    endinterface
 
+! OpenMP Target Alloc Routines
    interface
       ! OpenMP Target Alloc Integer Routines
       module subroutine omp_target_alloc_f_int8_1(fptr_dev, dimensions, omp_dev)
@@ -1246,7 +1248,10 @@ module dmr
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx128_7
 #endif
+   endinterface
 
+! OpenMP Target Free Routines
+   interface
       ! OpenMP Target Free Integer Routines
       module subroutine omp_target_free_f_int8_1(fptr_dev, omp_dev)
          implicit none
@@ -1673,7 +1678,10 @@ module dmr
          include "src/lib/include/dmr_target_free.i90"
       endsubroutine omp_target_free_f_cmplx128_7
 #endif
+   endinterface
 
+! OpenMP Target Memcpy Routines
+   interface
       ! OpenMP Target Memcpy Integer Routines
       module subroutine omp_target_memcpy_f_int8_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
@@ -2240,7 +2248,10 @@ module dmr
          include "src/lib/include/dmr_target_memcpy.i90"
       endsubroutine omp_target_memcpy_f_cmplx128_7
 #endif
+   end interface
 
+! OpenMP Target Memcpy Rect Routines
+   interface
      ! OpenMP Target Memcpy Rect Integer Routines
       module subroutine omp_target_memcpy_rect_f_int8_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
@@ -2787,8 +2798,11 @@ module dmr
          include "src/lib/include/dmr_target_memcpy_rect.i90"
       endsubroutine omp_target_memcpy_rect_f_cmplx128_7
 #endif
+   endinterface
 
 #if defined _OpenMP_TR9
+! OpenMP Get Mapped Pointer Routines
+   interface
       ! OpenMP Get Mapped Pointer Integer Routines
       function omp_get_mapped_ptr_f_int8_1(fptr_dev, omp_dev)
          implicit none
@@ -3285,7 +3299,7 @@ module dmr
          include "src/lib/include/dmr_get_mapped_ptr.i90"
       endfunction omp_get_mapped_ptr_f_cmplx128_7
 #endif
-#endif
    endinterface
+#endif
 
 endmodule dmr
