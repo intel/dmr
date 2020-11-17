@@ -25,11 +25,10 @@ ifdef intel
    ifdef debug
       LDFLAGS = -fiopenmp -fopenmp-targets=spir64 -g -c
    endif
-   FCFLAGS  = $(LDFLAGS) -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
+   FCFLAGS  = $(LDFLAGS) -traceback -module $(DMOD)
    FORTFLAGS = -c -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
    EXEFLAGS = -fiopenmp -fopenmp-targets=spir64 -g -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
    DFLAGS = -D_real128 -D_OpenMP_TR9
-   DFLAGS =
 endif
 
 ifdef ibm
@@ -92,7 +91,7 @@ EXES := $(EXES) TEST_ALL
 #compiling rules
 $(DOBJ)dmr_c_functions_c.o: src/lib/dmr_c_functions_c.c
 	@echo $(COTEXT)
-	@$(CC) $(LDFLAGS) $(CFLAGS)  $< -o $@
+	@$(CC) $(LDFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_c_functions.o: src/lib/dmr_c_functions.F90 \
 	$(DOBJ)dmr_c_functions_c.o
