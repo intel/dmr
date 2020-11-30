@@ -209,43 +209,43 @@ module dmr
                        omp_target_memcpy_rect_f_cmplx64_7
    endinterface omp_target_memcpy_rect_f
 
-   interface dmr_correctly_mapped
+   interface omp_correctly_mapped
       module procedure &
-                       dmr_correctly_mapped_int8_1,     dmr_correctly_mapped_int8_2,     dmr_correctly_mapped_int8_3,     &
-                       dmr_correctly_mapped_int8_4,     dmr_correctly_mapped_int8_5,     dmr_correctly_mapped_int8_6,     &
-                       dmr_correctly_mapped_int8_7,     &
-                       dmr_correctly_mapped_int16_1,    dmr_correctly_mapped_int16_2,    dmr_correctly_mapped_int16_3,    &
-                       dmr_correctly_mapped_int16_4,    dmr_correctly_mapped_int16_5,    dmr_correctly_mapped_int16_6,    &
-                       dmr_correctly_mapped_int16_7,    &
-                       dmr_correctly_mapped_int32_1,    dmr_correctly_mapped_int32_2,    dmr_correctly_mapped_int32_3,    &
-                       dmr_correctly_mapped_int32_4,    dmr_correctly_mapped_int32_5,    dmr_correctly_mapped_int32_6,    &
-                       dmr_correctly_mapped_int32_7,    &
-                       dmr_correctly_mapped_int64_1,    dmr_correctly_mapped_int64_2,    dmr_correctly_mapped_int64_3,    &
-                       dmr_correctly_mapped_int64_4,    dmr_correctly_mapped_int64_5,    dmr_correctly_mapped_int64_6,    &
-                       dmr_correctly_mapped_int64_7,    &
+                       omp_correctly_mapped_int8_1,     omp_correctly_mapped_int8_2,     omp_correctly_mapped_int8_3,     &
+                       omp_correctly_mapped_int8_4,     omp_correctly_mapped_int8_5,     omp_correctly_mapped_int8_6,     &
+                       omp_correctly_mapped_int8_7,     &
+                       omp_correctly_mapped_int16_1,    omp_correctly_mapped_int16_2,    omp_correctly_mapped_int16_3,    &
+                       omp_correctly_mapped_int16_4,    omp_correctly_mapped_int16_5,    omp_correctly_mapped_int16_6,    &
+                       omp_correctly_mapped_int16_7,    &
+                       omp_correctly_mapped_int32_1,    omp_correctly_mapped_int32_2,    omp_correctly_mapped_int32_3,    &
+                       omp_correctly_mapped_int32_4,    omp_correctly_mapped_int32_5,    omp_correctly_mapped_int32_6,    &
+                       omp_correctly_mapped_int32_7,    &
+                       omp_correctly_mapped_int64_1,    omp_correctly_mapped_int64_2,    omp_correctly_mapped_int64_3,    &
+                       omp_correctly_mapped_int64_4,    omp_correctly_mapped_int64_5,    omp_correctly_mapped_int64_6,    &
+                       omp_correctly_mapped_int64_7,    &
 #if defined _real128
-                       dmr_correctly_mapped_real128_1,  dmr_correctly_mapped_real128_2,  dmr_correctly_mapped_real128_3,  &
-                       dmr_correctly_mapped_real128_4,  dmr_correctly_mapped_real128_5,  dmr_correctly_mapped_real128_6,  &
-                       dmr_correctly_mapped_real128_7,  &
+                       omp_correctly_mapped_real128_1,  omp_correctly_mapped_real128_2,  omp_correctly_mapped_real128_3,  &
+                       omp_correctly_mapped_real128_4,  omp_correctly_mapped_real128_5,  omp_correctly_mapped_real128_6,  &
+                       omp_correctly_mapped_real128_7,  &
 #endif
-                       dmr_correctly_mapped_real32_1,   dmr_correctly_mapped_real32_2,   dmr_correctly_mapped_real32_3,   &
-                       dmr_correctly_mapped_real32_4,   dmr_correctly_mapped_real32_5,   dmr_correctly_mapped_real32_6,   &
-                       dmr_correctly_mapped_real32_7,   &
-                       dmr_correctly_mapped_real64_1,   dmr_correctly_mapped_real64_2,   dmr_correctly_mapped_real64_3,   &
-                       dmr_correctly_mapped_real64_4,   dmr_correctly_mapped_real64_5,   dmr_correctly_mapped_real64_6,   &
-                       dmr_correctly_mapped_real64_7,   &
+                       omp_correctly_mapped_real32_1,   omp_correctly_mapped_real32_2,   omp_correctly_mapped_real32_3,   &
+                       omp_correctly_mapped_real32_4,   omp_correctly_mapped_real32_5,   omp_correctly_mapped_real32_6,   &
+                       omp_correctly_mapped_real32_7,   &
+                       omp_correctly_mapped_real64_1,   omp_correctly_mapped_real64_2,   omp_correctly_mapped_real64_3,   &
+                       omp_correctly_mapped_real64_4,   omp_correctly_mapped_real64_5,   omp_correctly_mapped_real64_6,   &
+                       omp_correctly_mapped_real64_7,   &
 #if defined _real128
-                       dmr_correctly_mapped_cmplx128_1, dmr_correctly_mapped_cmplx128_2, dmr_correctly_mapped_cmplx128_3, &
-                       dmr_correctly_mapped_cmplx128_4, dmr_correctly_mapped_cmplx128_5, dmr_correctly_mapped_cmplx128_6, &
-                       dmr_correctly_mapped_cmplx128_7,  &
+                       omp_correctly_mapped_cmplx128_1, omp_correctly_mapped_cmplx128_2, omp_correctly_mapped_cmplx128_3, &
+                       omp_correctly_mapped_cmplx128_4, omp_correctly_mapped_cmplx128_5, omp_correctly_mapped_cmplx128_6, &
+                       omp_correctly_mapped_cmplx128_7,  &
 #endif
-                       dmr_correctly_mapped_cmplx32_1,  dmr_correctly_mapped_cmplx32_2,  dmr_correctly_mapped_cmplx32_3,  &
-                       dmr_correctly_mapped_cmplx32_4,  dmr_correctly_mapped_cmplx32_5,  dmr_correctly_mapped_cmplx32_6,  &
-                       dmr_correctly_mapped_cmplx32_7,  &
-                       dmr_correctly_mapped_cmplx64_1,  dmr_correctly_mapped_cmplx64_2,  dmr_correctly_mapped_cmplx64_3,  &
-                       dmr_correctly_mapped_cmplx64_4,  dmr_correctly_mapped_cmplx64_5,  dmr_correctly_mapped_cmplx64_6,  &
-                       dmr_correctly_mapped_cmplx64_7
-   endinterface dmr_correctly_mapped
+                       omp_correctly_mapped_cmplx32_1,  omp_correctly_mapped_cmplx32_2,  omp_correctly_mapped_cmplx32_3,  &
+                       omp_correctly_mapped_cmplx32_4,  omp_correctly_mapped_cmplx32_5,  omp_correctly_mapped_cmplx32_6,  &
+                       omp_correctly_mapped_cmplx32_7,  &
+                       omp_correctly_mapped_cmplx64_1,  omp_correctly_mapped_cmplx64_2,  omp_correctly_mapped_cmplx64_3,  &
+                       omp_correctly_mapped_cmplx64_4,  omp_correctly_mapped_cmplx64_5,  omp_correctly_mapped_cmplx64_6,  &
+                       omp_correctly_mapped_cmplx64_7
+   endinterface omp_correctly_mapped
 
 #if defined _OpenMP_TR9
    interface omp_get_mapped_ptr_f
@@ -2841,500 +2841,500 @@ module dmr
 ! DMR Correctly Mapped Routines
    interface
      ! DMR Correctly Mapped Integer Routines
-      module function dmr_correctly_mapped_int8_1(array, omp_dev)
+      module function omp_correctly_mapped_int8_1(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int8_1
+         logical                   :: omp_correctly_mapped_int8_1
          integer(I1P), intent(in)  :: array(:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-       endfunction dmr_correctly_mapped_int8_1
+       endfunction omp_correctly_mapped_int8_1
 
-      module function dmr_correctly_mapped_int8_2(array, omp_dev)
+      module function omp_correctly_mapped_int8_2(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int8_2
+         logical                   :: omp_correctly_mapped_int8_2
          integer(I1P), intent(in)  :: array(:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int8_2
+      endfunction omp_correctly_mapped_int8_2
 
-      module function dmr_correctly_mapped_int8_3(array, omp_dev)
+      module function omp_correctly_mapped_int8_3(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int8_3
+         logical                   :: omp_correctly_mapped_int8_3
          integer(I1P), intent(in)  :: array(:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int8_3
+      endfunction omp_correctly_mapped_int8_3
 
-      module function dmr_correctly_mapped_int8_4(array, omp_dev)
+      module function omp_correctly_mapped_int8_4(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int8_4
+         logical                   :: omp_correctly_mapped_int8_4
          integer(I1P), intent(in)  :: array(:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int8_4
+      endfunction omp_correctly_mapped_int8_4
 
-      module function dmr_correctly_mapped_int8_5(array, omp_dev)
+      module function omp_correctly_mapped_int8_5(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int8_5
+         logical                   :: omp_correctly_mapped_int8_5
          integer(I1P), intent(in)  :: array(:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int8_5
+      endfunction omp_correctly_mapped_int8_5
 
-      module function dmr_correctly_mapped_int8_6(array, omp_dev)
+      module function omp_correctly_mapped_int8_6(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int8_6
+         logical                   :: omp_correctly_mapped_int8_6
          integer(I1P), intent(in)  :: array(:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int8_6
+      endfunction omp_correctly_mapped_int8_6
 
-      module function dmr_correctly_mapped_int8_7(array, omp_dev)
+      module function omp_correctly_mapped_int8_7(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int8_7
+         logical                   :: omp_correctly_mapped_int8_7
          integer(I1P), intent(in)  :: array(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int8_7
+      endfunction omp_correctly_mapped_int8_7
 
-      module function dmr_correctly_mapped_int16_1(array, omp_dev)
+      module function omp_correctly_mapped_int16_1(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int16_1
+         logical                   :: omp_correctly_mapped_int16_1
          integer(I2P), intent(in)  :: array(:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int16_1
+      endfunction omp_correctly_mapped_int16_1
 
-      module function dmr_correctly_mapped_int16_2(array, omp_dev)
+      module function omp_correctly_mapped_int16_2(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int16_2
+         logical                   :: omp_correctly_mapped_int16_2
          integer(I2P), intent(in)  :: array(:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int16_2
+      endfunction omp_correctly_mapped_int16_2
 
-      module function dmr_correctly_mapped_int16_3(array, omp_dev)
+      module function omp_correctly_mapped_int16_3(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int16_3
+         logical                   :: omp_correctly_mapped_int16_3
          integer(I2P), intent(in)  :: array(:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int16_3
+      endfunction omp_correctly_mapped_int16_3
 
-      module function dmr_correctly_mapped_int16_4(array, omp_dev)
+      module function omp_correctly_mapped_int16_4(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int16_4
+         logical                   :: omp_correctly_mapped_int16_4
          integer(I2P), intent(in)  :: array(:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int16_4
+      endfunction omp_correctly_mapped_int16_4
 
-      module function dmr_correctly_mapped_int16_5(array, omp_dev)
+      module function omp_correctly_mapped_int16_5(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int16_5
+         logical                   :: omp_correctly_mapped_int16_5
          integer(I2P), intent(in)  :: array(:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int16_5
+      endfunction omp_correctly_mapped_int16_5
 
-      module function dmr_correctly_mapped_int16_6(array, omp_dev)
+      module function omp_correctly_mapped_int16_6(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int16_6
+         logical                   :: omp_correctly_mapped_int16_6
          integer(I2P), intent(in)  :: array(:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int16_6
+      endfunction omp_correctly_mapped_int16_6
 
-      module function dmr_correctly_mapped_int16_7(array, omp_dev)
+      module function omp_correctly_mapped_int16_7(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int16_7
+         logical                   :: omp_correctly_mapped_int16_7
          integer(I2P), intent(in)  :: array(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int16_7
+      endfunction omp_correctly_mapped_int16_7
 
-      module function dmr_correctly_mapped_int32_1(array, omp_dev)
+      module function omp_correctly_mapped_int32_1(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int32_1
+         logical                   :: omp_correctly_mapped_int32_1
          integer(I4P), intent(in)  :: array(:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int32_1
+      endfunction omp_correctly_mapped_int32_1
 
-      module function dmr_correctly_mapped_int32_2(array, omp_dev)
+      module function omp_correctly_mapped_int32_2(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int32_2
+         logical                   :: omp_correctly_mapped_int32_2
          integer(I4P), intent(in)  :: array(:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int32_2
+      endfunction omp_correctly_mapped_int32_2
 
-      module function dmr_correctly_mapped_int32_3(array, omp_dev)
+      module function omp_correctly_mapped_int32_3(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int32_3
+         logical                   :: omp_correctly_mapped_int32_3
          integer(I4P), intent(in)  :: array(:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int32_3
+      endfunction omp_correctly_mapped_int32_3
 
-      module function dmr_correctly_mapped_int32_4(array, omp_dev)
+      module function omp_correctly_mapped_int32_4(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int32_4
+         logical                   :: omp_correctly_mapped_int32_4
          integer(I4P), intent(in)  :: array(:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int32_4
+      endfunction omp_correctly_mapped_int32_4
 
-      module function dmr_correctly_mapped_int32_5(array, omp_dev)
+      module function omp_correctly_mapped_int32_5(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int32_5
+         logical                   :: omp_correctly_mapped_int32_5
          integer(I4P), intent(in)  :: array(:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int32_5
+      endfunction omp_correctly_mapped_int32_5
 
-      module function dmr_correctly_mapped_int32_6(array, omp_dev)
+      module function omp_correctly_mapped_int32_6(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int32_6
+         logical                   :: omp_correctly_mapped_int32_6
          integer(I4P), intent(in)  :: array(:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int32_6
+      endfunction omp_correctly_mapped_int32_6
 
-      module function dmr_correctly_mapped_int32_7(array, omp_dev)
+      module function omp_correctly_mapped_int32_7(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int32_7
+         logical                   :: omp_correctly_mapped_int32_7
          integer(I4P), intent(in)  :: array(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int32_7
+      endfunction omp_correctly_mapped_int32_7
 
-      module function dmr_correctly_mapped_int64_1(array, omp_dev)
+      module function omp_correctly_mapped_int64_1(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int64_1
+         logical                   :: omp_correctly_mapped_int64_1
          integer(I8P), intent(in)  :: array(:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int64_1
+      endfunction omp_correctly_mapped_int64_1
 
-      module function dmr_correctly_mapped_int64_2(array, omp_dev)
+      module function omp_correctly_mapped_int64_2(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int64_2
+         logical                   :: omp_correctly_mapped_int64_2
          integer(I8P), intent(in)  :: array(:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int64_2
+      endfunction omp_correctly_mapped_int64_2
 
-      module function dmr_correctly_mapped_int64_3(array, omp_dev)
+      module function omp_correctly_mapped_int64_3(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int64_3
+         logical                   :: omp_correctly_mapped_int64_3
          integer(I8P), intent(in)  :: array(:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int64_3
+      endfunction omp_correctly_mapped_int64_3
 
-      module function dmr_correctly_mapped_int64_4(array, omp_dev)
+      module function omp_correctly_mapped_int64_4(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int64_4
+         logical                   :: omp_correctly_mapped_int64_4
          integer(I8P), intent(in)  :: array(:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int64_4
+      endfunction omp_correctly_mapped_int64_4
 
-      module function dmr_correctly_mapped_int64_5(array, omp_dev)
+      module function omp_correctly_mapped_int64_5(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int64_5
+         logical                   :: omp_correctly_mapped_int64_5
          integer(I8P), intent(in)  :: array(:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int64_5
+      endfunction omp_correctly_mapped_int64_5
 
-      module function dmr_correctly_mapped_int64_6(array, omp_dev)
+      module function omp_correctly_mapped_int64_6(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int64_6
+         logical                   :: omp_correctly_mapped_int64_6
          integer(I8P), intent(in)  :: array(:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int64_6
+      endfunction omp_correctly_mapped_int64_6
 
-      module function dmr_correctly_mapped_int64_7(array, omp_dev)
+      module function omp_correctly_mapped_int64_7(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_int64_7
+         logical                   :: omp_correctly_mapped_int64_7
          integer(I8P), intent(in)  :: array(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_int64_7
+      endfunction omp_correctly_mapped_int64_7
 
       ! OpenMP Check Mapped Real Routines
-      module function dmr_correctly_mapped_real32_1(array, omp_dev)
+      module function omp_correctly_mapped_real32_1(array, omp_dev)
          implicit none
-         logical                :: dmr_correctly_mapped_real32_1
+         logical                :: omp_correctly_mapped_real32_1
          real(R4P), intent(in)  :: array(:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real32_1
+      endfunction omp_correctly_mapped_real32_1
 
-      module function dmr_correctly_mapped_real32_2(array, omp_dev)
+      module function omp_correctly_mapped_real32_2(array, omp_dev)
          implicit none
-         logical                :: dmr_correctly_mapped_real32_2
+         logical                :: omp_correctly_mapped_real32_2
          real(R4P), intent(in)  :: array(:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real32_2
+      endfunction omp_correctly_mapped_real32_2
 
-      module function dmr_correctly_mapped_real32_3(array, omp_dev)
+      module function omp_correctly_mapped_real32_3(array, omp_dev)
          implicit none
-         logical                :: dmr_correctly_mapped_real32_3
+         logical                :: omp_correctly_mapped_real32_3
          real(R4P), intent(in)  :: array(:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real32_3
+      endfunction omp_correctly_mapped_real32_3
 
-      module function dmr_correctly_mapped_real32_4(array, omp_dev)
+      module function omp_correctly_mapped_real32_4(array, omp_dev)
          implicit none
-         logical                :: dmr_correctly_mapped_real32_4
+         logical                :: omp_correctly_mapped_real32_4
          real(R4P), intent(in)  :: array(:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real32_4
+      endfunction omp_correctly_mapped_real32_4
 
-      module function dmr_correctly_mapped_real32_5(array, omp_dev)
+      module function omp_correctly_mapped_real32_5(array, omp_dev)
          implicit none
-         logical                :: dmr_correctly_mapped_real32_5
+         logical                :: omp_correctly_mapped_real32_5
          real(R4P), intent(in)  :: array(:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real32_5
+      endfunction omp_correctly_mapped_real32_5
 
-      module function dmr_correctly_mapped_real32_6(array, omp_dev)
+      module function omp_correctly_mapped_real32_6(array, omp_dev)
          implicit none
-         logical                :: dmr_correctly_mapped_real32_6
+         logical                :: omp_correctly_mapped_real32_6
          real(R4P), intent(in)  :: array(:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real32_6
+      endfunction omp_correctly_mapped_real32_6
 
-      module function dmr_correctly_mapped_real32_7(array, omp_dev)
+      module function omp_correctly_mapped_real32_7(array, omp_dev)
          implicit none
-         logical                :: dmr_correctly_mapped_real32_7
+         logical                :: omp_correctly_mapped_real32_7
          real(R4P), intent(in)  :: array(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real32_7
+      endfunction omp_correctly_mapped_real32_7
 
-      module function dmr_correctly_mapped_real64_1(array, omp_dev)
+      module function omp_correctly_mapped_real64_1(array, omp_dev)
          implicit none
-         logical                :: dmr_correctly_mapped_real64_1
+         logical                :: omp_correctly_mapped_real64_1
          real(R8P), intent(in)  :: array(:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real64_1
+      endfunction omp_correctly_mapped_real64_1
 
-      module function dmr_correctly_mapped_real64_2(array, omp_dev)
+      module function omp_correctly_mapped_real64_2(array, omp_dev)
          implicit none
-         logical                :: dmr_correctly_mapped_real64_2
+         logical                :: omp_correctly_mapped_real64_2
          real(R8P), intent(in)  :: array(:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real64_2
+      endfunction omp_correctly_mapped_real64_2
 
-      module function dmr_correctly_mapped_real64_3(array, omp_dev)
+      module function omp_correctly_mapped_real64_3(array, omp_dev)
          implicit none
-         logical                :: dmr_correctly_mapped_real64_3
+         logical                :: omp_correctly_mapped_real64_3
          real(R8P), intent(in)  :: array(:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real64_3
+      endfunction omp_correctly_mapped_real64_3
 
-      module function dmr_correctly_mapped_real64_4(array, omp_dev)
+      module function omp_correctly_mapped_real64_4(array, omp_dev)
          implicit none
-         logical                :: dmr_correctly_mapped_real64_4
+         logical                :: omp_correctly_mapped_real64_4
          real(R8P), intent(in)  :: array(:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real64_4
+      endfunction omp_correctly_mapped_real64_4
 
-      module function dmr_correctly_mapped_real64_5(array, omp_dev)
+      module function omp_correctly_mapped_real64_5(array, omp_dev)
          implicit none
-         logical                :: dmr_correctly_mapped_real64_5
+         logical                :: omp_correctly_mapped_real64_5
          real(R8P), intent(in)  :: array(:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real64_5
+      endfunction omp_correctly_mapped_real64_5
 
-      module function dmr_correctly_mapped_real64_6(array, omp_dev)
+      module function omp_correctly_mapped_real64_6(array, omp_dev)
          implicit none
-         logical                :: dmr_correctly_mapped_real64_6
+         logical                :: omp_correctly_mapped_real64_6
          real(R8P), intent(in)  :: array(:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real64_6
+      endfunction omp_correctly_mapped_real64_6
 
-      module function dmr_correctly_mapped_real64_7(array, omp_dev)
+      module function omp_correctly_mapped_real64_7(array, omp_dev)
          implicit none
-         logical                :: dmr_correctly_mapped_real64_7
+         logical                :: omp_correctly_mapped_real64_7
          real(R8P), intent(in)  :: array(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real64_7
+      endfunction omp_correctly_mapped_real64_7
 
 #if defined _real128
-      module function dmr_correctly_mapped_real128_1(array, omp_dev)
+      module function omp_correctly_mapped_real128_1(array, omp_dev)
          implicit none
-         logical                 :: dmr_correctly_mapped_real128_1
+         logical                 :: omp_correctly_mapped_real128_1
          real(R16P), intent(in)  :: array(:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real128_1
+      endfunction omp_correctly_mapped_real128_1
 
-      module function dmr_correctly_mapped_real128_2(array, omp_dev)
+      module function omp_correctly_mapped_real128_2(array, omp_dev)
          implicit none
-         logical                 :: dmr_correctly_mapped_real128_2
+         logical                 :: omp_correctly_mapped_real128_2
          real(R16P), intent(in)  :: array(:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real128_2
+      endfunction omp_correctly_mapped_real128_2
 
-      module function dmr_correctly_mapped_real128_3(array, omp_dev)
+      module function omp_correctly_mapped_real128_3(array, omp_dev)
          implicit none
-         logical                 :: dmr_correctly_mapped_real128_3
+         logical                 :: omp_correctly_mapped_real128_3
          real(R16P), intent(in)  :: array(:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real128_3
+      endfunction omp_correctly_mapped_real128_3
 
-      module function dmr_correctly_mapped_real128_4(array, omp_dev)
+      module function omp_correctly_mapped_real128_4(array, omp_dev)
          implicit none
-         logical                 :: dmr_correctly_mapped_real128_4
+         logical                 :: omp_correctly_mapped_real128_4
          real(R16P), intent(in)  :: array(:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real128_4
+      endfunction omp_correctly_mapped_real128_4
 
-      module function dmr_correctly_mapped_real128_5(array, omp_dev)
+      module function omp_correctly_mapped_real128_5(array, omp_dev)
          implicit none
-         logical                 :: dmr_correctly_mapped_real128_5
+         logical                 :: omp_correctly_mapped_real128_5
          real(R16P), intent(in)  :: array(:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real128_5
+      endfunction omp_correctly_mapped_real128_5
 
-      module function dmr_correctly_mapped_real128_6(array, omp_dev)
+      module function omp_correctly_mapped_real128_6(array, omp_dev)
          implicit none
-         logical                 :: dmr_correctly_mapped_real128_6
+         logical                 :: omp_correctly_mapped_real128_6
          real(R16P), intent(in)  :: array(:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real128_6
+      endfunction omp_correctly_mapped_real128_6
 
-      module function dmr_correctly_mapped_real128_7(array, omp_dev)
+      module function omp_correctly_mapped_real128_7(array, omp_dev)
          implicit none
-         logical                 :: dmr_correctly_mapped_real128_7
+         logical                 :: omp_correctly_mapped_real128_7
          real(R16P), intent(in)  :: array(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_real128_7
+      endfunction omp_correctly_mapped_real128_7
 #endif
 
       ! OpenMP Check Mapped Complex Routines
-      module function dmr_correctly_mapped_cmplx32_1(array, omp_dev)
+      module function omp_correctly_mapped_cmplx32_1(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_cmplx32_1
+         logical                   :: omp_correctly_mapped_cmplx32_1
          complex(R4P), intent(in)  :: array(:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx32_1
+      endfunction omp_correctly_mapped_cmplx32_1
 
-      module function dmr_correctly_mapped_cmplx32_2(array, omp_dev)
+      module function omp_correctly_mapped_cmplx32_2(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_cmplx32_2
+         logical                   :: omp_correctly_mapped_cmplx32_2
          complex(R4P), intent(in)  :: array(:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx32_2
+      endfunction omp_correctly_mapped_cmplx32_2
 
-      module function dmr_correctly_mapped_cmplx32_3(array, omp_dev)
+      module function omp_correctly_mapped_cmplx32_3(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_cmplx32_3
+         logical                   :: omp_correctly_mapped_cmplx32_3
          complex(R4P), intent(in)  :: array(:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx32_3
+      endfunction omp_correctly_mapped_cmplx32_3
 
-      module function dmr_correctly_mapped_cmplx32_4(array, omp_dev)
+      module function omp_correctly_mapped_cmplx32_4(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_cmplx32_4
+         logical                   :: omp_correctly_mapped_cmplx32_4
          complex(R4P), intent(in)  :: array(:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx32_4
+      endfunction omp_correctly_mapped_cmplx32_4
 
-      module function dmr_correctly_mapped_cmplx32_5(array, omp_dev)
+      module function omp_correctly_mapped_cmplx32_5(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_cmplx32_5
+         logical                   :: omp_correctly_mapped_cmplx32_5
          complex(R4P), intent(in)  :: array(:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx32_5
+      endfunction omp_correctly_mapped_cmplx32_5
 
-      module function dmr_correctly_mapped_cmplx32_6(array, omp_dev)
+      module function omp_correctly_mapped_cmplx32_6(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_cmplx32_6
+         logical                   :: omp_correctly_mapped_cmplx32_6
          complex(R4P), intent(in)  :: array(:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx32_6
+      endfunction omp_correctly_mapped_cmplx32_6
 
-      module function dmr_correctly_mapped_cmplx32_7(array, omp_dev)
+      module function omp_correctly_mapped_cmplx32_7(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_cmplx32_7
+         logical                   :: omp_correctly_mapped_cmplx32_7
          complex(R4P), intent(in)  :: array(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx32_7
+      endfunction omp_correctly_mapped_cmplx32_7
 
-      module function dmr_correctly_mapped_cmplx64_1(array, omp_dev)
+      module function omp_correctly_mapped_cmplx64_1(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_cmplx64_1
+         logical                   :: omp_correctly_mapped_cmplx64_1
          complex(R8P), intent(in)  :: array(:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx64_1
+      endfunction omp_correctly_mapped_cmplx64_1
 
-      module function dmr_correctly_mapped_cmplx64_2(array, omp_dev)
+      module function omp_correctly_mapped_cmplx64_2(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_cmplx64_2
+         logical                   :: omp_correctly_mapped_cmplx64_2
          complex(R8P), intent(in)  :: array(:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx64_2
+      endfunction omp_correctly_mapped_cmplx64_2
 
-      module function dmr_correctly_mapped_cmplx64_3(array, omp_dev)
+      module function omp_correctly_mapped_cmplx64_3(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_cmplx64_3
+         logical                   :: omp_correctly_mapped_cmplx64_3
          complex(R8P), intent(in)  :: array(:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx64_3
+      endfunction omp_correctly_mapped_cmplx64_3
 
-      module function dmr_correctly_mapped_cmplx64_4(array, omp_dev)
+      module function omp_correctly_mapped_cmplx64_4(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_cmplx64_4
+         logical                   :: omp_correctly_mapped_cmplx64_4
          complex(R8P), intent(in)  :: array(:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx64_4
+      endfunction omp_correctly_mapped_cmplx64_4
 
-      module function dmr_correctly_mapped_cmplx64_5(array, omp_dev)
+      module function omp_correctly_mapped_cmplx64_5(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_cmplx64_5
+         logical                   :: omp_correctly_mapped_cmplx64_5
          complex(R8P), intent(in)  :: array(:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx64_5
+      endfunction omp_correctly_mapped_cmplx64_5
 
-      module function dmr_correctly_mapped_cmplx64_6(array, omp_dev)
+      module function omp_correctly_mapped_cmplx64_6(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_cmplx64_6
+         logical                   :: omp_correctly_mapped_cmplx64_6
          complex(R8P), intent(in)  :: array(:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx64_6
+      endfunction omp_correctly_mapped_cmplx64_6
 
-      module function dmr_correctly_mapped_cmplx64_7(array, omp_dev)
+      module function omp_correctly_mapped_cmplx64_7(array, omp_dev)
          implicit none
-         logical                   :: dmr_correctly_mapped_cmplx64_7
+         logical                   :: omp_correctly_mapped_cmplx64_7
          complex(R8P), intent(in)  :: array(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx64_7
+      endfunction omp_correctly_mapped_cmplx64_7
 
 #if defined _real128
-      module function dmr_correctly_mapped_cmplx128_1(array, omp_dev)
+      module function omp_correctly_mapped_cmplx128_1(array, omp_dev)
          implicit none
-         logical                    :: dmr_correctly_mapped_cmplx128_1
+         logical                    :: omp_correctly_mapped_cmplx128_1
          complex(R16P), intent(in)  :: array(:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx128_1
+      endfunction omp_correctly_mapped_cmplx128_1
 
-      module function dmr_correctly_mapped_cmplx128_2(array, omp_dev)
+      module function omp_correctly_mapped_cmplx128_2(array, omp_dev)
          implicit none
-         logical                    :: dmr_correctly_mapped_cmplx128_2
+         logical                    :: omp_correctly_mapped_cmplx128_2
          complex(R16P), intent(in)  :: array(:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx128_2
+      endfunction omp_correctly_mapped_cmplx128_2
 
-      module function dmr_correctly_mapped_cmplx128_3(array, omp_dev)
+      module function omp_correctly_mapped_cmplx128_3(array, omp_dev)
          implicit none
-         logical                    :: dmr_correctly_mapped_cmplx128_3
+         logical                    :: omp_correctly_mapped_cmplx128_3
          complex(R16P), intent(in)  :: array(:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx128_3
+      endfunction omp_correctly_mapped_cmplx128_3
 
-      module function dmr_correctly_mapped_cmplx128_4(array, omp_dev)
+      module function omp_correctly_mapped_cmplx128_4(array, omp_dev)
          implicit none
-         logical                    :: dmr_correctly_mapped_cmplx128_4
+         logical                    :: omp_correctly_mapped_cmplx128_4
          complex(R16P), intent(in)  :: array(:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx128_4
+      endfunction omp_correctly_mapped_cmplx128_4
 
-      module function dmr_correctly_mapped_cmplx128_5(array, omp_dev)
+      module function omp_correctly_mapped_cmplx128_5(array, omp_dev)
          implicit none
-         logical                    :: dmr_correctly_mapped_cmplx128_5
+         logical                    :: omp_correctly_mapped_cmplx128_5
          complex(R16P), intent(in)  :: array(:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx128_5
+      endfunction omp_correctly_mapped_cmplx128_5
 
-      module function dmr_correctly_mapped_cmplx128_6(array, omp_dev)
+      module function omp_correctly_mapped_cmplx128_6(array, omp_dev)
          implicit none
-         logical                    :: dmr_correctly_mapped_cmplx128_6
+         logical                    :: omp_correctly_mapped_cmplx128_6
          complex(R16P), intent(in)  :: array(:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx128_6
+      endfunction omp_correctly_mapped_cmplx128_6
 
-      module function dmr_correctly_mapped_cmplx128_7(array, omp_dev)
+      module function omp_correctly_mapped_cmplx128_7(array, omp_dev)
          implicit none
-         logical                    :: dmr_correctly_mapped_cmplx128_7
+         logical                    :: omp_correctly_mapped_cmplx128_7
          complex(R16P), intent(in)  :: array(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
-      endfunction dmr_correctly_mapped_cmplx128_7
+      endfunction omp_correctly_mapped_cmplx128_7
 #endif
    endinterface
 
