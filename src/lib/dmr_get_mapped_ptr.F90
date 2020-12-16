@@ -33,10 +33,6 @@ submodule (dmr) dmr_get_mapped_ptr
 
          cptr_dev = omp_get_mapped_ptr_c(c_loc(fptr_dev), omp_device)
 
-         omp_device = int(omp_dev, c_int)
-
-         cptr_dev = omp_get_mapped_ptr_c(c_loc(fptr_dev), omp_device)
-
          if (c_associated(cptr_dev)) then
             omp_get_mapped_ptr_f_int8_1 = .true.
          else
