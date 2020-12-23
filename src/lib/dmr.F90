@@ -135,40 +135,40 @@ module dmr
 
    interface omp_target_memcpy_f
       module procedure &
-                       omp_target_memcpy_f_int8_1,     omp_target_memcpy_f_int8_2,     omp_target_memcpy_f_int8_3,  &
-                       omp_target_memcpy_f_int8_4,     omp_target_memcpy_f_int8_5,     omp_target_memcpy_f_int8_6,  &
-                       omp_target_memcpy_f_int8_7,     &
-                       omp_target_memcpy_f_int16_1,    omp_target_memcpy_f_int16_2,    omp_target_memcpy_f_int16_3,  &
-                       omp_target_memcpy_f_int16_4,    omp_target_memcpy_f_int16_5,    omp_target_memcpy_f_int16_6,  &
-                       omp_target_memcpy_f_int16_7,    &
-                       omp_target_memcpy_f_int32_1,    omp_target_memcpy_f_int32_2,    omp_target_memcpy_f_int32_3,  &
-                       omp_target_memcpy_f_int32_4,    omp_target_memcpy_f_int32_5,    omp_target_memcpy_f_int32_6,  &
-                       omp_target_memcpy_f_int32_7,    &
-                       omp_target_memcpy_f_int64_1,    omp_target_memcpy_f_int64_2,    omp_target_memcpy_f_int64_3,  &
-                       omp_target_memcpy_f_int64_4,    omp_target_memcpy_f_int64_5,    omp_target_memcpy_f_int64_6,  &
-                       omp_target_memcpy_f_int64_7,    &
+                       omp_target_memcpy_f_int8,       omp_target_memcpy_f_int8_1,     omp_target_memcpy_f_int8_2,  &
+                       omp_target_memcpy_f_int8_3,     omp_target_memcpy_f_int8_4,     omp_target_memcpy_f_int8_5,  &
+                       omp_target_memcpy_f_int8_6,     omp_target_memcpy_f_int8_7,     &
+                       omp_target_memcpy_f_int16,      omp_target_memcpy_f_int16_1,    omp_target_memcpy_f_int16_2, &
+                       omp_target_memcpy_f_int16_3,    omp_target_memcpy_f_int16_4,    omp_target_memcpy_f_int16_5, &
+                       omp_target_memcpy_f_int16_6,    omp_target_memcpy_f_int16_7,    &
+                       omp_target_memcpy_f_int32,      omp_target_memcpy_f_int32_1,    omp_target_memcpy_f_int32_2, &
+                       omp_target_memcpy_f_int32_3,    omp_target_memcpy_f_int32_4,    omp_target_memcpy_f_int32_5, &
+                       omp_target_memcpy_f_int32_6,    omp_target_memcpy_f_int32_7,    &
+                       omp_target_memcpy_f_int64,      omp_target_memcpy_f_int64_1,    omp_target_memcpy_f_int64_2, &
+                       omp_target_memcpy_f_int64_3,    omp_target_memcpy_f_int64_4,    omp_target_memcpy_f_int64_5, &
+                       omp_target_memcpy_f_int64_6,    omp_target_memcpy_f_int64_7,    &
 #if defined _real128
-                       omp_target_memcpy_f_real128_1,  omp_target_memcpy_f_real128_2,  omp_target_memcpy_f_real128_3, &
-                       omp_target_memcpy_f_real128_4,  omp_target_memcpy_f_real128_5,  omp_target_memcpy_f_real128_6, &
-                       omp_target_memcpy_f_real128_7,  &
+                       omp_target_memcpy_f_real128,    omp_target_memcpy_f_real128_1,  omp_target_memcpy_f_real128_2, &
+                       omp_target_memcpy_f_real128_3,  omp_target_memcpy_f_real128_4,  omp_target_memcpy_f_real128_5, &
+                       omp_target_memcpy_f_real128_6,  omp_target_memcpy_f_real128_7,  &
 #endif
-                       omp_target_memcpy_f_real32_1,   omp_target_memcpy_f_real32_2,   omp_target_memcpy_f_real32_3,  &
-                       omp_target_memcpy_f_real32_4,   omp_target_memcpy_f_real32_5,   omp_target_memcpy_f_real32_6,  &
-                       omp_target_memcpy_f_real32_7,   &
-                       omp_target_memcpy_f_real64_1,   omp_target_memcpy_f_real64_2,   omp_target_memcpy_f_real64_3,  &
-                       omp_target_memcpy_f_real64_4,   omp_target_memcpy_f_real64_5,   omp_target_memcpy_f_real64_6,  &
-                       omp_target_memcpy_f_real64_7,   &
+                       omp_target_memcpy_f_real32,     omp_target_memcpy_f_real32_1,   omp_target_memcpy_f_real32_2, &
+                       omp_target_memcpy_f_real32_3,   omp_target_memcpy_f_real32_4,   omp_target_memcpy_f_real32_5, &
+                       omp_target_memcpy_f_real32_6,   omp_target_memcpy_f_real32_7,   &
+                       omp_target_memcpy_f_real64,     omp_target_memcpy_f_real64_1,   omp_target_memcpy_f_real64_2, &
+                       omp_target_memcpy_f_real64_3,   omp_target_memcpy_f_real64_4,   omp_target_memcpy_f_real64_5, &
+                       omp_target_memcpy_f_real64_6,   omp_target_memcpy_f_real64_7,   &
 #if defined _real128
-                       omp_target_memcpy_f_cmplx128_1, omp_target_memcpy_f_cmplx128_2, omp_target_memcpy_f_cmplx128_3, &
-                       omp_target_memcpy_f_cmplx128_4, omp_target_memcpy_f_cmplx128_5, omp_target_memcpy_f_cmplx128_6, &
-                       omp_target_memcpy_f_cmplx128_7,  &
+                       omp_target_memcpy_f_cmplx128,   omp_target_memcpy_f_cmplx128_1, omp_target_memcpy_f_cmplx128_2, &
+                       omp_target_memcpy_f_cmplx128_3, omp_target_memcpy_f_cmplx128_4, omp_target_memcpy_f_cmplx128_5, &
+                       omp_target_memcpy_f_cmplx128_6, omp_target_memcpy_f_cmplx128_7, &
 #endif
-                       omp_target_memcpy_f_cmplx32_1,  omp_target_memcpy_f_cmplx32_2,  omp_target_memcpy_f_cmplx32_3,  &
-                       omp_target_memcpy_f_cmplx32_4,  omp_target_memcpy_f_cmplx32_5,  omp_target_memcpy_f_cmplx32_6,  &
-                       omp_target_memcpy_f_cmplx32_7,  &
-                       omp_target_memcpy_f_cmplx64_1,  omp_target_memcpy_f_cmplx64_2,  omp_target_memcpy_f_cmplx64_3,  &
-                       omp_target_memcpy_f_cmplx64_4,  omp_target_memcpy_f_cmplx64_5,  omp_target_memcpy_f_cmplx64_6,  &
-                       omp_target_memcpy_f_cmplx64_7
+                       omp_target_memcpy_f_cmplx32,    omp_target_memcpy_f_cmplx32_1,  omp_target_memcpy_f_cmplx32_2, &
+                       omp_target_memcpy_f_cmplx32_3,  omp_target_memcpy_f_cmplx32_4,  omp_target_memcpy_f_cmplx32_5, &
+                       omp_target_memcpy_f_cmplx32_6,  omp_target_memcpy_f_cmplx32_7,  &
+                       omp_target_memcpy_f_cmplx64,    omp_target_memcpy_f_cmplx64_1,  omp_target_memcpy_f_cmplx64_2, &
+                       omp_target_memcpy_f_cmplx64_3,  omp_target_memcpy_f_cmplx64_4,  omp_target_memcpy_f_cmplx64_5, &
+                       omp_target_memcpy_f_cmplx64_6,  omp_target_memcpy_f_cmplx64_7
    endinterface omp_target_memcpy_f
 
    interface omp_target_memcpy_rect_f
@@ -1721,6 +1721,13 @@ module dmr
 ! OpenMP Target Memcpy Routines
    interface
       ! OpenMP Target Memcpy Integer Routines
+      module subroutine omp_target_memcpy_f_int8(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I1P), intent(out) :: sc_dst
+         integer(I1P), intent(in)  :: sc_src
+         integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_int8
+
       module subroutine omp_target_memcpy_f_int8_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
@@ -1776,6 +1783,13 @@ module dmr
          integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_target_memcpy.i90"
       endsubroutine omp_target_memcpy_f_int8_7
+
+      module subroutine omp_target_memcpy_f_int16(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I2P), intent(out) :: sc_dst
+         integer(I2P), intent(in)  :: sc_src
+         integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_int16
 
       module subroutine omp_target_memcpy_f_int16_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
@@ -1833,6 +1847,13 @@ module dmr
          include "src/lib/include/dmr_target_memcpy.i90"
       endsubroutine omp_target_memcpy_f_int16_7
 
+      module subroutine omp_target_memcpy_f_int32(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I4P), intent(out) :: sc_dst
+         integer(I4P), intent(in)  :: sc_src
+         integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_int32
+
       module subroutine omp_target_memcpy_f_int32_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
@@ -1888,6 +1909,13 @@ module dmr
          integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_target_memcpy.i90"
       endsubroutine omp_target_memcpy_f_int32_7
+
+      module subroutine omp_target_memcpy_f_int64(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I8P), intent(out) :: sc_dst
+         integer(I8P), intent(in)  :: sc_src
+         integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_int64
 
       module subroutine omp_target_memcpy_f_int64_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
@@ -1946,6 +1974,13 @@ module dmr
       endsubroutine omp_target_memcpy_f_int64_7
 
       ! OpenMP Target Memcpy Real Routines
+      module subroutine omp_target_memcpy_f_real32(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R4P),    intent(out) :: sc_dst
+         real(R4P),    intent(in)  :: sc_src
+         integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_real32
+
       module subroutine omp_target_memcpy_f_real32_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
@@ -2001,6 +2036,13 @@ module dmr
          real(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_target_memcpy.i90"
       endsubroutine omp_target_memcpy_f_real32_7
+
+      module subroutine omp_target_memcpy_f_real64(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R8P),    intent(out) :: sc_dst
+         real(R8P),    intent(in)  :: sc_src
+         integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_real64
 
       module subroutine omp_target_memcpy_f_real64_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
@@ -2059,6 +2101,13 @@ module dmr
       endsubroutine omp_target_memcpy_f_real64_7
 
 #if defined _real128
+      module subroutine omp_target_memcpy_f_real128(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R16P),   intent(out) :: sc_dst
+         real(R16P),   intent(in)  :: sc_src
+         integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_real128
+
       module subroutine omp_target_memcpy_f_real128_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
@@ -2117,6 +2166,13 @@ module dmr
 #endif
 
       ! OpenMP Target Memcpy Complex Routines
+      module subroutine omp_target_memcpy_f_cmplx32(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R4P), intent(out) :: sc_dst
+         complex(R4P), intent(in)  :: sc_src
+         integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_cmplx32
+
       module subroutine omp_target_memcpy_f_cmplx32_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
@@ -2172,6 +2228,13 @@ module dmr
          complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_target_memcpy.i90"
       endsubroutine omp_target_memcpy_f_cmplx32_7
+
+      module subroutine omp_target_memcpy_f_cmplx64(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R8P), intent(out) :: sc_dst
+         complex(R8P), intent(in)  :: sc_src
+         integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_cmplx64
 
       module subroutine omp_target_memcpy_f_cmplx64_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
@@ -2230,6 +2293,13 @@ module dmr
       endsubroutine omp_target_memcpy_f_cmplx64_7
 
 #if defined _real128
+      module subroutine omp_target_memcpy_f_cmplx128(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R16P), intent(out) :: sc_dst
+         complex(R16P), intent(in)  :: sc_src
+         integer(I4P),  intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_cmplx128
+
       module subroutine omp_target_memcpy_f_cmplx128_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
