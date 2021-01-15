@@ -247,6 +247,44 @@ module dmr
                        omp_correctly_mapped_cmplx64_7
    endinterface omp_correctly_mapped
 
+   interface omp_target_init
+      module procedure &
+                       omp_target_init_int8_1,     omp_target_init_int8_2,     omp_target_init_int8_3,     &
+                       omp_target_init_int8_4,     omp_target_init_int8_5,     omp_target_init_int8_6,     &
+                       omp_target_init_int8_7,     &
+                       omp_target_init_int16_1,    omp_target_init_int16_2,    omp_target_init_int16_3,    &
+                       omp_target_init_int16_4,    omp_target_init_int16_5,    omp_target_init_int16_6,    &
+                       omp_target_init_int16_7,    &
+                       omp_target_init_int32_1,    omp_target_init_int32_2,    omp_target_init_int32_3,    &
+                       omp_target_init_int32_4,    omp_target_init_int32_5,    omp_target_init_int32_6,    &
+                       omp_target_init_int32_7,    &
+                       omp_target_init_int64_1,    omp_target_init_int64_2,    omp_target_init_int64_3,    &
+                       omp_target_init_int64_4,    omp_target_init_int64_5,    omp_target_init_int64_6,    &
+                       omp_target_init_int64_7,    &
+#if defined _real128
+                       omp_target_init_real128_1,  omp_target_init_real128_2,  omp_target_init_real128_3,  &
+                       omp_target_init_real128_4,  omp_target_init_real128_5,  omp_target_init_real128_6,  &
+                       omp_target_init_real128_7,  &
+#endif
+                       omp_target_init_real32_1,   omp_target_init_real32_2,   omp_target_init_real32_3,   &
+                       omp_target_init_real32_4,   omp_target_init_real32_5,   omp_target_init_real32_6,   &
+                       omp_target_init_real32_7,   &
+                       omp_target_init_real64_1,   omp_target_init_real64_2,   omp_target_init_real64_3,   &
+                       omp_target_init_real64_4,   omp_target_init_real64_5,   omp_target_init_real64_6,   &
+                       omp_target_init_real64_7,   &
+#if defined _real128
+                       omp_target_init_cmplx128_1, omp_target_init_cmplx128_2, omp_target_init_cmplx128_3, &
+                       omp_target_init_cmplx128_4, omp_target_init_cmplx128_5, omp_target_init_cmplx128_6, &
+                       omp_target_init_cmplx128_7,  &
+#endif
+                       omp_target_init_cmplx32_1,  omp_target_init_cmplx32_2,  omp_target_init_cmplx32_3,  &
+                       omp_target_init_cmplx32_4,  omp_target_init_cmplx32_5,  omp_target_init_cmplx32_6,  &
+                       omp_target_init_cmplx32_7,  &
+                       omp_target_init_cmplx64_1,  omp_target_init_cmplx64_2,  omp_target_init_cmplx64_3,  &
+                       omp_target_init_cmplx64_4,  omp_target_init_cmplx64_5,  omp_target_init_cmplx64_6,  &
+                       omp_target_init_cmplx64_7
+   endinterface omp_target_init
+
 #if defined _OpenMP_TR9
    interface omp_get_mapped_ptr_f
       module procedure &
@@ -3107,7 +3145,7 @@ module dmr
          include "src/lib/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int64_7
 
-      ! OpenMP Check Mapped Real Routines
+      ! DMR Correctly Mapped Real Routines
       module function omp_correctly_mapped_real32_1(array, omp_dev)
          implicit none
          logical                :: omp_correctly_mapped_real32_1
@@ -3257,7 +3295,7 @@ module dmr
       endfunction omp_correctly_mapped_real128_7
 #endif
 
-      ! OpenMP Check Mapped Complex Routines
+      ! DMR Correctly Mapped Complex Routines
       module function omp_correctly_mapped_cmplx32_1(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_cmplx32_1
@@ -3405,6 +3443,646 @@ module dmr
          complex(R16P), intent(in)  :: array(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx128_7
+#endif
+   endinterface
+
+! DMR Init Routines
+   interface
+     ! DMR Init Integer Routines
+      module subroutine omp_target_init_int8_1(array, val, omp_dev)
+         implicit none
+         integer(I1P), intent(inout) :: array(:)
+         integer(I1P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds, ubounds
+         integer(I8P)                :: i
+      endsubroutine omp_target_init_int8_1
+
+      module subroutine omp_target_init_int8_2(array, val, omp_dev)
+         implicit none
+         integer(I1P), intent(inout) :: array(:,:)
+         integer(I1P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(2), ubounds(2)
+         integer(I8P)                :: i, j
+      endsubroutine omp_target_init_int8_2
+
+      module subroutine omp_target_init_int8_3(array, val, omp_dev)
+         implicit none
+         integer(I1P), intent(inout) :: array(:,:,:)
+         integer(I1P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(3), ubounds(3)
+         integer(I8P)                :: i, j, k
+      endsubroutine omp_target_init_int8_3
+
+      module subroutine omp_target_init_int8_4(array, val, omp_dev)
+         implicit none
+         integer(I1P), intent(inout) :: array(:,:,:,:)
+         integer(I1P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(4), ubounds(4)
+         integer(I8P)                :: i, j, k, l
+      endsubroutine omp_target_init_int8_4
+
+      module subroutine omp_target_init_int8_5(array, val, omp_dev)
+         implicit none
+         integer(I1P), intent(inout) :: array(:,:,:,:,:)
+         integer(I1P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(5), ubounds(5)
+         integer(I8P)                :: i, j, k, l, m
+      endsubroutine omp_target_init_int8_5
+
+      module subroutine omp_target_init_int8_6(array, val, omp_dev)
+         implicit none
+         integer(I1P), intent(inout) :: array(:,:,:,:,:,:)
+         integer(I1P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(6), ubounds(6)
+         integer(I8P)                :: i, j, k, l, m, n
+      endsubroutine omp_target_init_int8_6
+
+      module subroutine omp_target_init_int8_7(array, val, omp_dev)
+         implicit none
+         integer(I1P), intent(inout) :: array(:,:,:,:,:,:,:)
+         integer(I1P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(7), ubounds(7)
+         integer(I8P)                :: i, j, k, l, m, n, o
+      endsubroutine omp_target_init_int8_7
+
+      module subroutine omp_target_init_int16_1(array, val, omp_dev)
+         implicit none
+         integer(I2P), intent(inout) :: array(:)
+         integer(I2P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds, ubounds
+         integer(I8P)                :: i
+      endsubroutine omp_target_init_int16_1
+
+      module subroutine omp_target_init_int16_2(array, val, omp_dev)
+         implicit none
+         integer(I2P), intent(inout) :: array(:,:)
+         integer(I2P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(2), ubounds(2)
+         integer(I8P)                :: i, j
+      endsubroutine omp_target_init_int16_2
+
+      module subroutine omp_target_init_int16_3(array, val, omp_dev)
+         implicit none
+         integer(I2P), intent(inout) :: array(:,:,:)
+         integer(I2P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(3), ubounds(3)
+         integer(I8P)                :: i, j, k
+      endsubroutine omp_target_init_int16_3
+
+      module subroutine omp_target_init_int16_4(array, val, omp_dev)
+         implicit none
+         integer(I2P), intent(inout) :: array(:,:,:,:)
+         integer(I2P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(4), ubounds(4)
+         integer(I8P)                :: i, j, k, l
+      endsubroutine omp_target_init_int16_4
+
+      module subroutine omp_target_init_int16_5(array, val, omp_dev)
+         implicit none
+         integer(I2P), intent(inout) :: array(:,:,:,:,:)
+         integer(I2P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(5), ubounds(5)
+         integer(I8P)                :: i, j, k, l, m
+      endsubroutine omp_target_init_int16_5
+
+      module subroutine omp_target_init_int16_6(array, val, omp_dev)
+         implicit none
+         integer(I2P), intent(inout) :: array(:,:,:,:,:,:)
+         integer(I2P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(6), ubounds(6)
+         integer(I8P)                :: i, j, k, l, m, n
+      endsubroutine omp_target_init_int16_6
+
+      module subroutine omp_target_init_int16_7(array, val, omp_dev)
+         implicit none
+         integer(I2P), intent(inout) :: array(:,:,:,:,:,:,:)
+         integer(I2P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(7), ubounds(7)
+         integer(I8P)                :: i, j, k, l, m, n, o
+      endsubroutine omp_target_init_int16_7
+
+      module subroutine omp_target_init_int32_1(array, val, omp_dev)
+         implicit none
+         integer(I4P), intent(inout) :: array(:)
+         integer(I4P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds, ubounds
+         integer(I8P)                :: i
+      endsubroutine omp_target_init_int32_1
+
+      module subroutine omp_target_init_int32_2(array, val, omp_dev)
+         implicit none
+         integer(I4P), intent(inout) :: array(:,:)
+         integer(I4P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(2), ubounds(2)
+         integer(I8P)                :: i, j
+      endsubroutine omp_target_init_int32_2
+
+      module subroutine omp_target_init_int32_3(array, val, omp_dev)
+         implicit none
+         integer(I4P), intent(inout) :: array(:,:,:)
+         integer(I4P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(3), ubounds(3)
+         integer(I8P)                :: i, j, k
+      endsubroutine omp_target_init_int32_3
+
+      module subroutine omp_target_init_int32_4(array, val, omp_dev)
+         implicit none
+         integer(I4P), intent(inout) :: array(:,:,:,:)
+         integer(I4P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(4), ubounds(4)
+         integer(I8P)                :: i, j, k, l
+      endsubroutine omp_target_init_int32_4
+
+      module subroutine omp_target_init_int32_5(array, val, omp_dev)
+         implicit none
+         integer(I4P), intent(inout) :: array(:,:,:,:,:)
+         integer(I4P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(5), ubounds(5)
+         integer(I8P)                :: i, j, k, l, m
+      endsubroutine omp_target_init_int32_5
+
+      module subroutine omp_target_init_int32_6(array, val, omp_dev)
+         implicit none
+         integer(I4P), intent(inout) :: array(:,:,:,:,:,:)
+         integer(I4P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(6), ubounds(6)
+         integer(I8P)                :: i, j, k, l, m, n
+      endsubroutine omp_target_init_int32_6
+
+      module subroutine omp_target_init_int32_7(array, val, omp_dev)
+         implicit none
+         integer(I4P), intent(inout) :: array(:,:,:,:,:,:,:)
+         integer(I4P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(7), ubounds(7)
+         integer(I8P)                :: i, j, k, l, m, n, o
+      endsubroutine omp_target_init_int32_7
+
+      module subroutine omp_target_init_int64_1(array, val, omp_dev)
+         implicit none
+         integer(I8P), intent(inout) :: array(:)
+         integer(I8P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds, ubounds
+         integer(I8P)                :: i
+      endsubroutine omp_target_init_int64_1
+
+      module subroutine omp_target_init_int64_2(array, val, omp_dev)
+         implicit none
+         integer(I8P), intent(inout) :: array(:,:)
+         integer(I8P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(2), ubounds(2)
+         integer(I8P)                :: i, j
+      endsubroutine omp_target_init_int64_2
+
+      module subroutine omp_target_init_int64_3(array, val, omp_dev)
+         implicit none
+         integer(I8P), intent(inout) :: array(:,:,:)
+         integer(I8P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(3), ubounds(3)
+         integer(I8P)                :: i, j, k
+      endsubroutine omp_target_init_int64_3
+
+      module subroutine omp_target_init_int64_4(array, val, omp_dev)
+         implicit none
+         integer(I8P), intent(inout) :: array(:,:,:,:)
+         integer(I8P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(4), ubounds(4)
+         integer(I8P)                :: i, j, k, l
+      endsubroutine omp_target_init_int64_4
+
+      module subroutine omp_target_init_int64_5(array, val, omp_dev)
+         implicit none
+         integer(I8P), intent(inout) :: array(:,:,:,:,:)
+         integer(I8P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(5), ubounds(5)
+         integer(I8P)                :: i, j, k, l, m
+      endsubroutine omp_target_init_int64_5
+
+      module subroutine omp_target_init_int64_6(array, val, omp_dev)
+         implicit none
+         integer(I8P), intent(inout) :: array(:,:,:,:,:,:)
+         integer(I8P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(6), ubounds(6)
+         integer(I8P)                :: i, j, k, l, m, n
+      endsubroutine omp_target_init_int64_6
+
+      module subroutine omp_target_init_int64_7(array, val, omp_dev)
+         implicit none
+         integer(I8P), intent(inout) :: array(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(7), ubounds(7)
+         integer(I8P)                :: i, j, k, l, m, n, o
+      endsubroutine omp_target_init_int64_7
+
+      ! DMR Init Real Routines
+      module subroutine omp_target_init_real32_1(array, val, omp_dev)
+         implicit none
+         real(R4P),    intent(inout) :: array(:)
+         real(R4P),    intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds, ubounds
+         integer(I8P)                :: i
+      endsubroutine omp_target_init_real32_1
+
+      module subroutine omp_target_init_real32_2(array, val, omp_dev)
+         implicit none
+         real(R4P),    intent(inout) :: array(:,:)
+         real(R4P),    intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(2), ubounds(2)
+         integer(I8P)                :: i, j
+      endsubroutine omp_target_init_real32_2
+
+      module subroutine omp_target_init_real32_3(array, val, omp_dev)
+         implicit none
+         real(R4P),    intent(inout) :: array(:,:,:)
+         real(R4P),    intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(3), ubounds(3)
+         integer(I8P)                :: i, j, k
+      endsubroutine omp_target_init_real32_3
+
+      module subroutine omp_target_init_real32_4(array, val, omp_dev)
+         implicit none
+         real(R4P),    intent(inout) :: array(:,:,:,:)
+         real(R4P),    intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(4), ubounds(4)
+         integer(I8P)                :: i, j, k, l
+      endsubroutine omp_target_init_real32_4
+
+      module subroutine omp_target_init_real32_5(array, val, omp_dev)
+         implicit none
+         real(R4P),    intent(inout) :: array(:,:,:,:,:)
+         real(R4P),    intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(5), ubounds(5)
+         integer(I8P)                :: i, j, k, l, m
+      endsubroutine omp_target_init_real32_5
+
+      module subroutine omp_target_init_real32_6(array, val, omp_dev)
+         implicit none
+         real(R4P),    intent(inout) :: array(:,:,:,:,:,:)
+         real(R4P),    intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(6), ubounds(6)
+         integer(I8P)                :: i, j, k, l, m, n
+      endsubroutine omp_target_init_real32_6
+
+      module subroutine omp_target_init_real32_7(array, val, omp_dev)
+         implicit none
+         real(R4P),    intent(inout) :: array(:,:,:,:,:,:,:)
+         real(R4P),    intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(7), ubounds(7)
+         integer(I8P)                :: i, j, k, l, m, n, o
+      endsubroutine omp_target_init_real32_7
+
+      module subroutine omp_target_init_real64_1(array, val, omp_dev)
+         implicit none
+         real(R8P),    intent(inout) :: array(:)
+         real(R8P),    intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds, ubounds
+         integer(I8P)                :: i
+      endsubroutine omp_target_init_real64_1
+
+      module subroutine omp_target_init_real64_2(array, val, omp_dev)
+         implicit none
+         real(R8P),    intent(inout) :: array(:,:)
+         real(R8P),    intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(2), ubounds(2)
+         integer(I8P)                :: i, j
+      endsubroutine omp_target_init_real64_2
+
+      module subroutine omp_target_init_real64_3(array, val, omp_dev)
+         implicit none
+         real(R8P),    intent(inout) :: array(:,:,:)
+         real(R8P),    intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(3), ubounds(3)
+         integer(I8P)                :: i, j, k
+      endsubroutine omp_target_init_real64_3
+
+      module subroutine omp_target_init_real64_4(array, val, omp_dev)
+         implicit none
+         real(R8P),    intent(inout) :: array(:,:,:,:)
+         real(R8P),    intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(4), ubounds(4)
+         integer(I8P)                :: i, j, k, l
+      endsubroutine omp_target_init_real64_4
+
+      module subroutine omp_target_init_real64_5(array, val, omp_dev)
+         implicit none
+         real(R8P),    intent(inout) :: array(:,:,:,:,:)
+         real(R8P),    intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(5), ubounds(5)
+         integer(I8P)                :: i, j, k, l, m
+      endsubroutine omp_target_init_real64_5
+
+      module subroutine omp_target_init_real64_6(array, val, omp_dev)
+         implicit none
+         real(R8P),    intent(inout) :: array(:,:,:,:,:,:)
+         real(R8P),    intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(6), ubounds(6)
+         integer(I8P)                :: i, j, k, l, m, n
+      endsubroutine omp_target_init_real64_6
+
+      module subroutine omp_target_init_real64_7(array, val, omp_dev)
+         implicit none
+         real(R8P),    intent(inout) :: array(:,:,:,:,:,:,:)
+         real(R8P),    intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(7), ubounds(7)
+         integer(I8P)                :: i, j, k, l, m, n, o
+      endsubroutine omp_target_init_real64_7
+
+#if defined _real128
+      module subroutine omp_target_init_real128_1(array, val, omp_dev)
+         implicit none
+         real(R16P),   intent(inout) :: array(:)
+         real(R16P),   intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds, ubounds
+         integer(I8P)                :: i
+      endsubroutine omp_target_init_real128_1
+
+      module subroutine omp_target_init_real128_2(array, val, omp_dev)
+         implicit none
+         real(R16P),   intent(inout) :: array(:,:)
+         real(R16P),   intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(2), ubounds(2)
+         integer(I8P)                :: i, j
+      endsubroutine omp_target_init_real128_2
+
+      module subroutine omp_target_init_real128_3(array, val, omp_dev)
+         implicit none
+         real(R16P),   intent(inout) :: array(:,:,:)
+         real(R16P),   intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(3), ubounds(3)
+         integer(I8P)                :: i, j, k
+      endsubroutine omp_target_init_real128_3
+
+      module subroutine omp_target_init_real128_4(array, val, omp_dev)
+         implicit none
+         real(R16P),   intent(inout) :: array(:,:,:,:)
+         real(R16P),   intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(4), ubounds(4)
+         integer(I8P)                :: i, j, k, l
+      endsubroutine omp_target_init_real128_4
+
+      module subroutine omp_target_init_real128_5(array, val, omp_dev)
+         implicit none
+         real(R16P),   intent(inout) :: array(:,:,:,:,:)
+         real(R16P),   intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(5), ubounds(5)
+         integer(I8P)                :: i, j, k, l, m
+      endsubroutine omp_target_init_real128_5
+
+      module subroutine omp_target_init_real128_6(array, val, omp_dev)
+         implicit none
+         real(R16P),   intent(inout) :: array(:,:,:,:,:,:)
+         real(R16P),   intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(6), ubounds(6)
+         integer(I8P)                :: i, j, k, l, m, n
+      endsubroutine omp_target_init_real128_6
+
+      module subroutine omp_target_init_real128_7(array, val, omp_dev)
+         implicit none
+         real(R16P),   intent(inout) :: array(:,:,:,:,:,:,:)
+         real(R16P),   intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(7), ubounds(7)
+         integer(I8P)                :: i, j, k, l, m, n, o
+      endsubroutine omp_target_init_real128_7
+#endif
+
+      ! DMR Init Complex Routines
+      module subroutine omp_target_init_cmplx32_1(array, val, omp_dev)
+         implicit none
+         complex(R4P), intent(inout) :: array(:)
+         complex(R4P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds, ubounds
+         integer(I8P)                :: i
+      endsubroutine omp_target_init_cmplx32_1
+
+      module subroutine omp_target_init_cmplx32_2(array, val, omp_dev)
+         implicit none
+         complex(R4P), intent(inout) :: array(:,:)
+         complex(R4P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(2), ubounds(2)
+         integer(I8P)                :: i, j
+      endsubroutine omp_target_init_cmplx32_2
+
+      module subroutine omp_target_init_cmplx32_3(array, val, omp_dev)
+         implicit none
+         complex(R4P), intent(inout) :: array(:,:,:)
+         complex(R4P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(3), ubounds(3)
+         integer(I8P)                :: i, j, k
+      endsubroutine omp_target_init_cmplx32_3
+
+      module subroutine omp_target_init_cmplx32_4(array, val, omp_dev)
+         implicit none
+         complex(R4P), intent(inout) :: array(:,:,:,:)
+         complex(R4P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(4), ubounds(4)
+         integer(I8P)                :: i, j, k, l
+      endsubroutine omp_target_init_cmplx32_4
+
+      module subroutine omp_target_init_cmplx32_5(array, val, omp_dev)
+         implicit none
+         complex(R4P), intent(inout) :: array(:,:,:,:,:)
+         complex(R4P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(5), ubounds(5)
+         integer(I8P)                :: i, j, k, l, m
+      endsubroutine omp_target_init_cmplx32_5
+
+      module subroutine omp_target_init_cmplx32_6(array, val, omp_dev)
+         implicit none
+         complex(R4P), intent(inout) :: array(:,:,:,:,:,:)
+         complex(R4P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(6), ubounds(6)
+         integer(I8P)                :: i, j, k, l, m, n
+      endsubroutine omp_target_init_cmplx32_6
+
+      module subroutine omp_target_init_cmplx32_7(array, val, omp_dev)
+         implicit none
+         complex(R4P), intent(inout) :: array(:,:,:,:,:,:,:)
+         complex(R4P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(7), ubounds(7)
+         integer(I8P)                :: i, j, k, l, m, n, o
+      endsubroutine omp_target_init_cmplx32_7
+
+      module subroutine omp_target_init_cmplx64_1(array, val, omp_dev)
+         implicit none
+         complex(R8P), intent(inout) :: array(:)
+         complex(R8P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds, ubounds
+         integer(I8P)                :: i
+      endsubroutine omp_target_init_cmplx64_1
+
+      module subroutine omp_target_init_cmplx64_2(array, val, omp_dev)
+         implicit none
+         complex(R8P), intent(inout) :: array(:,:)
+         complex(R8P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(2), ubounds(2)
+         integer(I8P)                :: i, j
+      endsubroutine omp_target_init_cmplx64_2
+
+      module subroutine omp_target_init_cmplx64_3(array, val, omp_dev)
+         implicit none
+         complex(R8P), intent(inout) :: array(:,:,:)
+         complex(R8P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(3), ubounds(3)
+         integer(I8P)                :: i, j, k
+      endsubroutine omp_target_init_cmplx64_3
+
+      module subroutine omp_target_init_cmplx64_4(array, val, omp_dev)
+         implicit none
+         complex(R8P), intent(inout) :: array(:,:,:,:)
+         complex(R8P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(4), ubounds(4)
+         integer(I8P)                :: i, j, k, l
+      endsubroutine omp_target_init_cmplx64_4
+
+      module subroutine omp_target_init_cmplx64_5(array, val, omp_dev)
+         implicit none
+         complex(R8P), intent(inout) :: array(:,:,:,:,:)
+         complex(R8P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(5), ubounds(5)
+         integer(I8P)                :: i, j, k, l, m
+      endsubroutine omp_target_init_cmplx64_5
+
+      module subroutine omp_target_init_cmplx64_6(array, val, omp_dev)
+         implicit none
+         complex(R8P), intent(inout) :: array(:,:,:,:,:,:)
+         complex(R8P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(6), ubounds(6)
+         integer(I8P)                :: i, j, k, l, m, n
+      endsubroutine omp_target_init_cmplx64_6
+
+      module subroutine omp_target_init_cmplx64_7(array, val, omp_dev)
+         implicit none
+         complex(R8P), intent(inout) :: array(:,:,:,:,:,:,:)
+         complex(R8P), intent(in)    :: val
+         integer(I4P), intent(in)    :: omp_dev
+         integer(I8P)                :: lbounds(7), ubounds(7)
+         integer(I8P)                :: i, j, k, l, m, n, o
+      endsubroutine omp_target_init_cmplx64_7
+
+#if defined _real128
+      module subroutine omp_target_init_cmplx128_1(array, val, omp_dev)
+         implicit none
+         complex(R16P), intent(inout) :: array(:)
+         complex(R16P), intent(in)    :: val
+         integer(I4P),  intent(in)    :: omp_dev
+         integer(I8P)                 :: lbounds, ubounds
+         integer(I8P)                 :: i
+      endsubroutine omp_target_init_cmplx128_1
+
+      module subroutine omp_target_init_cmplx128_2(array, val, omp_dev)
+         implicit none
+         complex(R16P), intent(inout) :: array(:,:)
+         complex(R16P), intent(in)    :: val
+         integer(I4P),  intent(in)    :: omp_dev
+         integer(I8P)                 :: lbounds(2), ubounds(2)
+         integer(I8P)                 :: i, j
+      endsubroutine omp_target_init_cmplx128_2
+
+      module subroutine omp_target_init_cmplx128_3(array, val, omp_dev)
+         implicit none
+         complex(R16P), intent(inout) :: array(:,:,:)
+         complex(R16P), intent(in)    :: val
+         integer(I4P),  intent(in)    :: omp_dev
+         integer(I8P)                 :: lbounds(3), ubounds(3)
+         integer(I8P)                 :: i, j, k
+      endsubroutine omp_target_init_cmplx128_3
+
+      module subroutine omp_target_init_cmplx128_4(array, val, omp_dev)
+         implicit none
+         complex(R16P), intent(inout) :: array(:,:,:,:)
+         complex(R16P), intent(in)    :: val
+         integer(I4P),  intent(in)    :: omp_dev
+         integer(I8P)                 :: lbounds(4), ubounds(4)
+         integer(I8P)                 :: i, j, k, l
+      endsubroutine omp_target_init_cmplx128_4
+
+      module subroutine omp_target_init_cmplx128_5(array, val, omp_dev)
+         implicit none
+         complex(R16P), intent(inout) :: array(:,:,:,:,:)
+         complex(R16P), intent(in)    :: val
+         integer(I4P),  intent(in)    :: omp_dev
+         integer(I8P)                 :: lbounds(5), ubounds(5)
+         integer(I8P)                 :: i, j, k, l, m
+      endsubroutine omp_target_init_cmplx128_5
+
+      module subroutine omp_target_init_cmplx128_6(array, val, omp_dev)
+         implicit none
+         complex(R16P), intent(inout) :: array(:,:,:,:,:,:)
+         complex(R16P), intent(in)    :: val
+         integer(I4P),  intent(in)    :: omp_dev
+         integer(I8P)                 :: lbounds(6), ubounds(6)
+         integer(I8P)                 :: i, j, k, l, m, n
+      endsubroutine omp_target_init_cmplx128_6
+
+      module subroutine omp_target_init_cmplx128_7(array, val, omp_dev)
+         implicit none
+         complex(R16P), intent(inout) :: array(:,:,:,:,:,:,:)
+         complex(R16P), intent(in)    :: val
+         integer(I4P),  intent(in)    :: omp_dev
+         integer(I8P)                 :: lbounds(7), ubounds(7)
+         integer(I8P)                 :: i, j, k, l, m, n, o
+      endsubroutine omp_target_init_cmplx128_7
 #endif
    endinterface
 

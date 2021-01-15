@@ -153,6 +153,12 @@ $(DOBJ)dmr_correctly_mapped.o: src/lib/dmr_correctly_mapped.F90 \
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
+$(DOBJ)dmr_target_init.o: src/lib/dmr_target_init.F90 \
+	$(DOBJ)dmr_environment.o \
+	$(DOBJ)dmr.o
+	@echo $(COTEXT)
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
+
 $(DOBJ)dmr_environment.o: src/lib/dmr_environment.F90
 	@echo $(COTEXT)
 	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
@@ -167,6 +173,7 @@ $(DOBJ)test_dmr.o: src/tests/test_dmr.F90 \
 	$(DOBJ)dmr_target_memcpy_rect.o \
 	$(DOBJ)dmr_get_mapped_ptr.o \
 	$(DOBJ)dmr_correctly_mapped.o \
+	$(DOBJ)dmr_target_init.o \
 	$(DOBJ)init_device_pointers.o \
 	$(DOBJ)matmul_device_pointers.o
 	@echo $(COTEXT)
