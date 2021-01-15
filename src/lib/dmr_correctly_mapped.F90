@@ -21,7 +21,7 @@ submodule (dmr) dmr_correctly_mapped
 
    contains
 
-      ! OpenMP Check Mapped Integer Routines
+      ! DMR Check Mapped Integer Routines
       module function omp_correctly_mapped_int8_1(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int8_1
@@ -610,7 +610,7 @@ submodule (dmr) dmr_correctly_mapped
 !$omp end target
       endfunction omp_correctly_mapped_int64_7
 
-      ! OpenMP Check Mapped Real Routines
+      ! DMR Check Mapped Real Routines
       module function omp_correctly_mapped_real32_1(array, omp_dev)
          implicit none
          logical                :: omp_correctly_mapped_real32_1
@@ -1054,7 +1054,7 @@ submodule (dmr) dmr_correctly_mapped
       endfunction omp_correctly_mapped_real128_7
 #endif
 
-      ! OpenMP Check Mapped Complex Routines
+      ! DMR Check Mapped Complex Routines
       module function omp_correctly_mapped_cmplx32_1(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_cmplx32_1
