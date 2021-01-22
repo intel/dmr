@@ -30,7 +30,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array,1)
          ubounds = ubound(array,1)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do
          do i=lbounds, ubounds
             array(i) = val
@@ -49,7 +49,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(2)
          do j=lbounds(2), ubounds(2)
             do i=lbounds(1), ubounds(1)
@@ -70,7 +70,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(3)
          do k=lbounds(3), ubounds(3)
             do j=lbounds(2), ubounds(2)
@@ -93,7 +93,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(4)
          do l=lbounds(4), ubounds(4)
             do k=lbounds(3), ubounds(3)
@@ -118,7 +118,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(5)
          do m=lbounds(5), ubounds(5)
             do l=lbounds(4), ubounds(4)
@@ -145,7 +145,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(6)
          do n=lbounds(6), ubounds(6)
             do m=lbounds(5), ubounds(5)
@@ -174,7 +174,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(7)
          do o=lbounds(7), ubounds(7)
             do n=lbounds(6), ubounds(6)
@@ -205,7 +205,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array,1)
          ubounds = ubound(array,1)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do
          do i=lbounds, ubounds
             array(i) = val
@@ -224,7 +224,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(2)
          do j=lbounds(2), ubounds(2)
             do i=lbounds(1), ubounds(1)
@@ -245,7 +245,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(3)
          do k=lbounds(3), ubounds(3)
             do j=lbounds(2), ubounds(2)
@@ -268,7 +268,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(4)
          do l=lbounds(4), ubounds(4)
             do k=lbounds(3), ubounds(3)
@@ -293,7 +293,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(5)
          do m=lbounds(5), ubounds(5)
             do l=lbounds(4), ubounds(4)
@@ -320,7 +320,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(6)
          do n=lbounds(6), ubounds(6)
             do m=lbounds(5), ubounds(5)
@@ -349,7 +349,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(7)
          do o=lbounds(7), ubounds(7)
             do n=lbounds(6), ubounds(6)
@@ -380,7 +380,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array,1)
          ubounds = ubound(array,1)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do
          do i=lbounds, ubounds
             array(i) = val
@@ -399,7 +399,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(2)
          do j=lbounds(2), ubounds(2)
             do i=lbounds(1), ubounds(1)
@@ -420,7 +420,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(3)
          do k=lbounds(3), ubounds(3)
             do j=lbounds(2), ubounds(2)
@@ -443,7 +443,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(4)
          do l=lbounds(4), ubounds(4)
             do k=lbounds(3), ubounds(3)
@@ -468,7 +468,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(5)
          do m=lbounds(5), ubounds(5)
             do l=lbounds(4), ubounds(4)
@@ -495,7 +495,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(6)
          do n=lbounds(6), ubounds(6)
             do m=lbounds(5), ubounds(5)
@@ -524,7 +524,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(7)
          do o=lbounds(7), ubounds(7)
             do n=lbounds(6), ubounds(6)
@@ -555,7 +555,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array,1)
          ubounds = ubound(array,1)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do
          do i=lbounds, ubounds
             array(i) = val
@@ -574,7 +574,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(2)
          do j=lbounds(2), ubounds(2)
             do i=lbounds(1), ubounds(1)
@@ -595,7 +595,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(3)
          do k=lbounds(3), ubounds(3)
             do j=lbounds(2), ubounds(2)
@@ -618,7 +618,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(4)
          do l=lbounds(4), ubounds(4)
             do k=lbounds(3), ubounds(3)
@@ -643,7 +643,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(5)
          do m=lbounds(5), ubounds(5)
             do l=lbounds(4), ubounds(4)
@@ -670,7 +670,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(6)
          do n=lbounds(6), ubounds(6)
             do m=lbounds(5), ubounds(5)
@@ -699,7 +699,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(7)
          do o=lbounds(7), ubounds(7)
             do n=lbounds(6), ubounds(6)
@@ -731,7 +731,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array,1)
          ubounds = ubound(array,1)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do
          do i=lbounds, ubounds
             array(i) = val
@@ -750,7 +750,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(2)
          do j=lbounds(2), ubounds(2)
             do i=lbounds(1), ubounds(1)
@@ -771,7 +771,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(3)
          do k=lbounds(3), ubounds(3)
             do j=lbounds(2), ubounds(2)
@@ -794,7 +794,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(4)
          do l=lbounds(4), ubounds(4)
             do k=lbounds(3), ubounds(3)
@@ -819,7 +819,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(5)
          do m=lbounds(5), ubounds(5)
             do l=lbounds(4), ubounds(4)
@@ -846,7 +846,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(6)
          do n=lbounds(6), ubounds(6)
             do m=lbounds(5), ubounds(5)
@@ -875,7 +875,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(7)
          do o=lbounds(7), ubounds(7)
             do n=lbounds(6), ubounds(6)
@@ -906,7 +906,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array,1)
          ubounds = ubound(array,1)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do
          do i=lbounds, ubounds
             array(i) = val
@@ -925,7 +925,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(2)
          do j=lbounds(2), ubounds(2)
             do i=lbounds(1), ubounds(1)
@@ -946,7 +946,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(3)
          do k=lbounds(3), ubounds(3)
             do j=lbounds(2), ubounds(2)
@@ -969,7 +969,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(4)
          do l=lbounds(4), ubounds(4)
             do k=lbounds(3), ubounds(3)
@@ -994,7 +994,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(5)
          do m=lbounds(5), ubounds(5)
             do l=lbounds(4), ubounds(4)
@@ -1021,7 +1021,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(6)
          do n=lbounds(6), ubounds(6)
             do m=lbounds(5), ubounds(5)
@@ -1050,7 +1050,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(7)
          do o=lbounds(7), ubounds(7)
             do n=lbounds(6), ubounds(6)
@@ -1082,7 +1082,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array,1)
          ubounds = ubound(array,1)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do
          do i=lbounds, ubounds
             array(i) = val
@@ -1101,7 +1101,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(2)
          do j=lbounds(2), ubounds(2)
             do i=lbounds(1), ubounds(1)
@@ -1122,7 +1122,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(3)
          do k=lbounds(3), ubounds(3)
             do j=lbounds(2), ubounds(2)
@@ -1145,7 +1145,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(4)
          do l=lbounds(4), ubounds(4)
             do k=lbounds(3), ubounds(3)
@@ -1170,7 +1170,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(5)
          do m=lbounds(5), ubounds(5)
             do l=lbounds(4), ubounds(4)
@@ -1197,7 +1197,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(6)
          do n=lbounds(6), ubounds(6)
             do m=lbounds(5), ubounds(5)
@@ -1226,7 +1226,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(7)
          do o=lbounds(7), ubounds(7)
             do n=lbounds(6), ubounds(6)
@@ -1259,7 +1259,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array,1)
          ubounds = ubound(array,1)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do
          do i=lbounds, ubounds
             array(i) = val
@@ -1278,7 +1278,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(2)
          do j=lbounds(2), ubounds(2)
             do i=lbounds(1), ubounds(1)
@@ -1299,7 +1299,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(3)
          do k=lbounds(3), ubounds(3)
             do j=lbounds(2), ubounds(2)
@@ -1322,7 +1322,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(4)
          do l=lbounds(4), ubounds(4)
             do k=lbounds(3), ubounds(3)
@@ -1347,7 +1347,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(5)
          do m=lbounds(5), ubounds(5)
             do l=lbounds(4), ubounds(4)
@@ -1374,7 +1374,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(6)
          do n=lbounds(6), ubounds(6)
             do m=lbounds(5), ubounds(5)
@@ -1403,7 +1403,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(7)
          do o=lbounds(7), ubounds(7)
             do n=lbounds(6), ubounds(6)
@@ -1434,7 +1434,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array,1)
          ubounds = ubound(array,1)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do
          do i=lbounds, ubounds
             array(i) = val
@@ -1453,7 +1453,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(2)
          do j=lbounds(2), ubounds(2)
             do i=lbounds(1), ubounds(1)
@@ -1474,7 +1474,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(3)
          do k=lbounds(3), ubounds(3)
             do j=lbounds(2), ubounds(2)
@@ -1497,7 +1497,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(4)
          do l=lbounds(4), ubounds(4)
             do k=lbounds(3), ubounds(3)
@@ -1522,7 +1522,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(5)
          do m=lbounds(5), ubounds(5)
             do l=lbounds(4), ubounds(4)
@@ -1549,7 +1549,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(6)
          do n=lbounds(6), ubounds(6)
             do m=lbounds(5), ubounds(5)
@@ -1578,7 +1578,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(7)
          do o=lbounds(7), ubounds(7)
             do n=lbounds(6), ubounds(6)
@@ -1610,7 +1610,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array,1)
          ubounds = ubound(array,1)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do
          do i=lbounds, ubounds
             array(i) = val
@@ -1629,7 +1629,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(2)
          do j=lbounds(2), ubounds(2)
             do i=lbounds(1), ubounds(1)
@@ -1650,7 +1650,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(3)
          do k=lbounds(3), ubounds(3)
             do j=lbounds(2), ubounds(2)
@@ -1673,7 +1673,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(4)
          do l=lbounds(4), ubounds(4)
             do k=lbounds(3), ubounds(3)
@@ -1698,7 +1698,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(5)
          do m=lbounds(5), ubounds(5)
             do l=lbounds(4), ubounds(4)
@@ -1725,7 +1725,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(6)
          do n=lbounds(6), ubounds(6)
             do m=lbounds(5), ubounds(5)
@@ -1754,7 +1754,7 @@ submodule (dmr) dmr_target_init
 
          lbounds = lbound(array)
          ubounds = ubound(array)
-         !$omp target device(omp_dev) has_device_addr(array)
+         !$omp target device(omp_dev) is_device_ptr(array)
          !$omp teams distribute parallel do collapse(7)
          do o=lbounds(7), ubounds(7)
             do n=lbounds(6), ubounds(6)

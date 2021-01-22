@@ -28,11 +28,11 @@ submodule (dmr) dmr_target_memcpy
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
 
          if (omp_src_dev==omp_get_initial_device()) then
-            !$omp target map(tofrom:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
+            !$omp target map(to:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
             sc_dst = sc_src
             !$omp end target
          else
-            !$omp target map(tofrom:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
+            !$omp target map(from:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
             sc_dst = sc_src
             !$omp end target
          endif
@@ -206,11 +206,11 @@ submodule (dmr) dmr_target_memcpy
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
 
          if (omp_src_dev==omp_get_initial_device()) then
-            !$omp target map(tofrom:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
+            !$omp target map(to:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
             sc_dst = sc_src
             !$omp end target
          else
-            !$omp target map(tofrom:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
+            !$omp target map(from:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
             sc_dst = sc_src
             !$omp end target
          endif
@@ -384,11 +384,11 @@ submodule (dmr) dmr_target_memcpy
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
 
          if (omp_src_dev==omp_get_initial_device()) then
-            !$omp target map(tofrom:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
+            !$omp target map(to:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
             sc_dst = sc_src
             !$omp end target
          else
-            !$omp target map(tofrom:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
+            !$omp target map(from:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
             sc_dst = sc_src
             !$omp end target
          endif
@@ -562,11 +562,11 @@ submodule (dmr) dmr_target_memcpy
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
 
          if (omp_src_dev==omp_get_initial_device()) then
-            !$omp target map(tofrom:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
+            !$omp target map(to:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
             sc_dst = sc_src
             !$omp end target
          else
-            !$omp target map(tofrom:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
+            !$omp target map(from:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
             sc_dst = sc_src
             !$omp end target
          endif
@@ -741,11 +741,11 @@ submodule (dmr) dmr_target_memcpy
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
 
          if (omp_src_dev==omp_get_initial_device()) then
-            !$omp target map(tofrom:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
+            !$omp target map(to:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
             sc_dst = sc_src
             !$omp end target
          else
-            !$omp target map(tofrom:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
+            !$omp target map(from:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
             sc_dst = sc_src
             !$omp end target
          endif
@@ -919,11 +919,11 @@ submodule (dmr) dmr_target_memcpy
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
 
          if (omp_src_dev==omp_get_initial_device()) then
-            !$omp target map(tofrom:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
+            !$omp target map(to:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
             sc_dst = sc_src
             !$omp end target
          else
-            !$omp target map(tofrom:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
+            !$omp target map(from:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
             sc_dst = sc_src
             !$omp end target
          endif
@@ -1098,11 +1098,11 @@ submodule (dmr) dmr_target_memcpy
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
 
          if (omp_src_dev==omp_get_initial_device()) then
-            !$omp target map(tofrom:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
+            !$omp target map(to:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
             sc_dst = sc_src
             !$omp end target
          else
-            !$omp target map(tofrom:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
+            !$omp target map(from:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
             sc_dst = sc_src
             !$omp end target
          endif
@@ -1278,11 +1278,11 @@ submodule (dmr) dmr_target_memcpy
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
 
          if (omp_src_dev==omp_get_initial_device()) then
-            !$omp target map(tofrom:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
+            !$omp target map(to:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
             sc_dst = sc_src
             !$omp end target
          else
-            !$omp target map(tofrom:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
+            !$omp target map(from:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
             sc_dst = sc_src
             !$omp end target
          endif
@@ -1456,11 +1456,11 @@ submodule (dmr) dmr_target_memcpy
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
 
          if (omp_src_dev==omp_get_initial_device()) then
-            !$omp target map(tofrom:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
+            !$omp target map(to:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
             sc_dst = sc_src
             !$omp end target
          else
-            !$omp target map(tofrom:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
+            !$omp target map(from:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
             sc_dst = sc_src
             !$omp end target
          endif
@@ -1635,11 +1635,11 @@ submodule (dmr) dmr_target_memcpy
          integer(I4P),  intent(in)  :: omp_dst_dev, omp_src_dev
 
          if (omp_src_dev==omp_get_initial_device()) then
-            !$omp target map(tofrom:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
+            !$omp target map(to:sc_src) is_device_ptr(sc_dst) device(omp_dst_dev)
             sc_dst = sc_src
             !$omp end target
          else
-            !$omp target map(tofrom:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
+            !$omp target map(from:sc_dst) is_device_ptr(sc_src) device(omp_src_dev)
             sc_dst = sc_src
             !$omp end target
          endif

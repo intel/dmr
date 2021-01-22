@@ -136,7 +136,7 @@ program test_dmr
    print *, ''
    print *, '                       I1P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_int8, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_int8, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int8)
    call init_I(fptr_dev_int8, i)
    print *, 'Device pointer initialization completed'
@@ -155,7 +155,7 @@ program test_dmr
    print *, '                       I1P Host to Device                        '
    print *, ''
    allocate(fptr_hos_int8(i)); fptr_hos_int8 = 5_int8
-   call omp_target_alloc_f(fptr_dev_int8, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_int8, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int8)
    call omp_target_memcpy_f(fptr_dev_int8, fptr_hos_int8, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
@@ -171,7 +171,7 @@ program test_dmr
    print *, ''
    print *, '                       I2P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_int16, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_int16, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int16)
    call init_I(fptr_dev_int16, i)
    print *, 'Device pointer initialization completed'
@@ -190,7 +190,7 @@ program test_dmr
    print *, '                       I2P Host to Device                        '
    print *, ''
    allocate(fptr_hos_int16(i)); fptr_hos_int16 = 5_int16
-   call omp_target_alloc_f(fptr_dev_int16, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_int16, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int16)
    call omp_target_memcpy_f(fptr_dev_int16, fptr_hos_int16, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
@@ -206,7 +206,7 @@ program test_dmr
    print *, ''
    print *, '                       I4P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_int32, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_int32, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int32)
    call init_I(fptr_dev_int32, i)
    print *, 'Device pointer initialization completed'
@@ -225,7 +225,7 @@ program test_dmr
    print *, '                       I4P Host to Device                        '
    print *, ''
    allocate(fptr_hos_int32(i)); fptr_hos_int32 = 5_int32
-   call omp_target_alloc_f(fptr_dev_int32, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_int32, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int32)
    call omp_target_memcpy_f(fptr_dev_int32, fptr_hos_int32, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
@@ -241,7 +241,7 @@ program test_dmr
    print *, ''
    print *, '                       I8P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_int64, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_int64, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int64)
    call init_I(fptr_dev_int64, i)
    print *, 'Device pointer initialization completed'
@@ -260,7 +260,7 @@ program test_dmr
    print *, '                       I8P Host to Device                        '
    print *, ''
    allocate(fptr_hos_int64(i)); fptr_hos_int64 = 5_int64
-   call omp_target_alloc_f(fptr_dev_int64, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_int64, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int64)
    call omp_target_memcpy_f(fptr_dev_int64, fptr_hos_int64, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
@@ -278,7 +278,7 @@ program test_dmr
    print *, ''
    print *, '                       R4P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_real32, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_real32, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real32)
    call init_R(fptr_dev_real32, i)
    print *, 'Device pointer initialization completed'
@@ -297,7 +297,7 @@ program test_dmr
    print *, '                       R4P Host to Device                        '
    print *, ''
    allocate(fptr_hos_real32(i)); fptr_hos_real32 = 5.0_real32
-   call omp_target_alloc_f(fptr_dev_real32, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_real32, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real32)
    call omp_target_memcpy_f(fptr_dev_real32, fptr_hos_real32, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
@@ -313,7 +313,7 @@ program test_dmr
    print *, ''
    print *, '                       R8P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_real64, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_real64, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real64)
    call init_R(fptr_dev_real64, i)
    print *, 'Device pointer initialization completed'
@@ -332,7 +332,7 @@ program test_dmr
    print *, '                       R8P Host to Device                        '
    print *, ''
    allocate(fptr_hos_real64(i)); fptr_hos_real64 = 5.0_real64
-   call omp_target_alloc_f(fptr_dev_real64, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_real64, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real64)
    call omp_target_memcpy_f(fptr_dev_real64, fptr_hos_real64, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
@@ -349,7 +349,7 @@ program test_dmr
    print *, ''
    print *, '                       R16P Device to Host                       '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_real128, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_real128, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real128)
    call init_R(fptr_dev_real128, i)
    print *, 'Device pointer initialization completed'
@@ -368,7 +368,7 @@ program test_dmr
    print *, '                       R16P Host to Device                       '
    print *, ''
    allocate(fptr_hos_real128(i)); fptr_hos_real128 = 5.0_real128
-   call omp_target_alloc_f(fptr_dev_real128, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_real128, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_real128)
    call omp_target_memcpy_f(fptr_dev_real128, fptr_hos_real128, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
@@ -387,7 +387,7 @@ program test_dmr
    print *, ''
    print *, '                       C4P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_cmplx32, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_cmplx32, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx32)
    call init_C(fptr_dev_cmplx32, i)
    print *, 'Device pointer initialization completed'
@@ -406,7 +406,7 @@ program test_dmr
    print *, '                       C4P Host to Device                        '
    print *, ''
    allocate(fptr_hos_cmplx32(i)); fptr_hos_cmplx32 = (5.0_real32, 5.0_real32)
-   call omp_target_alloc_f(fptr_dev_cmplx32, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_cmplx32, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx32)
    call omp_target_memcpy_f(fptr_dev_cmplx32, fptr_hos_cmplx32, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
@@ -422,7 +422,7 @@ program test_dmr
    print *, ''
    print *, '                       C8P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_cmplx64, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_cmplx64, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx64)
    call init_C(fptr_dev_cmplx64, i)
    print *, 'Device pointer initialization completed'
@@ -441,7 +441,7 @@ program test_dmr
    print *, '                       C8P Host to Device                        '
    print *, ''
    allocate(fptr_hos_cmplx64(i)); fptr_hos_cmplx64 = (5.0_real64, 5.0_real64)
-   call omp_target_alloc_f(fptr_dev_cmplx64, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_cmplx64, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx64)
    call omp_target_memcpy_f(fptr_dev_cmplx64, fptr_hos_cmplx64, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
@@ -458,7 +458,7 @@ program test_dmr
    print *, ''
    print *, '                       C16P Device to Host                       '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_cmplx128, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_cmplx128, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx128)
    call init_C(fptr_dev_cmplx128, i)
    print *, 'Device pointer initialization completed'
@@ -477,7 +477,7 @@ program test_dmr
    print *, '                       C16P Host to Device                       '
    print *, ''
    allocate(fptr_hos_cmplx128(i)); fptr_hos_cmplx128 = (5.0_real128, 5.0_real128)
-   call omp_target_alloc_f(fptr_dev_cmplx128, i, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_cmplx128, dimensions=[i], omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_cmplx128)
    call omp_target_memcpy_f(fptr_dev_cmplx128, fptr_hos_cmplx128, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
@@ -498,7 +498,7 @@ program test_dmr
    print *, ''
    print *, '                       I1P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_int8_2, siz2, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_int8_2, dimensions=siz2, omp_dev=omp_default)
    print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int8_2)
    call init_I(fptr_dev_int8_2, i)
    print *, 'F pointer initialization completed'
@@ -515,7 +515,7 @@ program test_dmr
    print *, ''
    print *, '                     I1P Device to Host RECT                     '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_int8_2, siz2, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_int8_2, dimensions=siz2, omp_dev=omp_default)
    print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int8_2)
    call init_I(fptr_dev_int8_2, i)
    print *, 'F pointer initialization completed'
@@ -543,7 +543,7 @@ program test_dmr
    print *, '                       I1P Host to Device                        '
    print *, ''
    allocate(fptr_hos_int8_2(i,i)); fptr_hos_int8_2 = 5_int8
-   call omp_target_alloc_f(fptr_dev_int8_2, siz2, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_int8_2, dimensions=siz2, omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int8_2)
    call omp_target_memcpy_f(fptr_dev_int8_2, fptr_hos_int8_2, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
@@ -559,7 +559,7 @@ program test_dmr
    print *, ''
    print *, '                       I2P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_int16_2, siz2, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_int16_2, dimensions=siz2, omp_dev=omp_default)
    print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int16_2)
    call init_I(fptr_dev_int16_2, i)
    print *, 'F pointer initialization completed'
@@ -578,7 +578,7 @@ program test_dmr
    print *, '                       I2P Host to Device                        '
    print *, ''
    allocate(fptr_hos_int16_2(i,i)); fptr_hos_int16_2 = 5_int16
-   call omp_target_alloc_f(fptr_dev_int16_2, siz2, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_int16_2, dimensions=siz2, omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int16_2)
    call omp_target_memcpy_f(fptr_dev_int16_2, fptr_hos_int16_2, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
@@ -594,7 +594,7 @@ program test_dmr
    print *, ''
    print *, '                       I4P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_int32_2, siz2, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_int32_2, dimensions=siz2, omp_dev=omp_default)
    print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int32_2)
    call init_I(fptr_dev_int32_2, i)
    print *, 'F pointer initialization completed'
@@ -613,7 +613,7 @@ program test_dmr
    print *, '                       I4P Host to Device                        '
    print *, ''
    allocate(fptr_hos_int32_2(i,i)); fptr_hos_int32_2 = 5_int32
-   call omp_target_alloc_f(fptr_dev_int32_2, siz2, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_int32_2, dimensions=siz2, omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int32_2)
    call omp_target_memcpy_f(fptr_dev_int32_2, fptr_hos_int32_2, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
@@ -629,7 +629,7 @@ program test_dmr
    print *, ''
    print *, '                       I8P Device to Host                        '
    print *, ''
-   call omp_target_alloc_f(fptr_dev_int64_2, siz2, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_int64_2, dimensions=siz2, omp_dev=omp_default)
    print *, 'Is the pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int64_2)
    call init_I(fptr_dev_int64_2, i)
    print *, 'F pointer initialization completed'
@@ -648,7 +648,7 @@ program test_dmr
    print *, '                       I8P Host to Device                        '
    print *, ''
    allocate(fptr_hos_int64_2(i,i)); fptr_hos_int64_2 = 5_int64
-   call omp_target_alloc_f(fptr_dev_int64_2, siz2, omp_default)
+   call omp_target_alloc_f(fptr_dev=fptr_dev_int64_2, dimensions=siz2, omp_dev=omp_default)
    print *, 'Is the device pointer associated after omp_target_alloc_f? ', associated(fptr_dev_int64_2)
    call omp_target_memcpy_f(fptr_dev_int64_2, fptr_hos_int64_2, ierr, 0_int32, 0_int32, &
                             omp_default, omp_initial)
