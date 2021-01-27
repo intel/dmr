@@ -28,7 +28,7 @@ ifdef intel
    FCFLAGS  = $(LDFLAGS) -traceback -module $(DMOD) -what
    FORTFLAGS = -c -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
    EXEFLAGS = -fiopenmp -fopenmp-targets=spir64 -g -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
-   DFLAGS = -D_real128 -D_OpenMP_TR9 -D_F2018
+   DFLAGS = -D_real128 -D_OpenMP_TR9 -D_F2008
 endif
 
 ifdef ibm
@@ -123,9 +123,16 @@ $(DOBJ)dmr_target_alloc.o: src/lib/dmr_target_alloc.F90 \
 	$(DOBJ)dmr_c_functions.o \
 	$(DOBJ)dmr.o
 	@echo $(COTEXT)
-	@$(FORT) $(FCFLAGS) $(DFLAGS)  $< -o $@
+	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_target_memcpy.o: src/lib/dmr_target_memcpy.F90 \
+	$(DOBJ)dmr_environment.o \
+	$(DOBJ)dmr_c_functions.o \
+	$(DOBJ)dmr.o
+	@echo $(COTEXT)
+	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
+
+$(DOBJ)dmr_target_memcpy_scalar.o: src/lib/dmr_target_memcpy_scalar.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr_c_functions.o \
 	$(DOBJ)dmr.o
@@ -137,7 +144,7 @@ $(DOBJ)dmr_target_memcpy_rect.o: src/lib/dmr_target_memcpy_rect.F90 \
 	$(DOBJ)dmr_c_functions.o \
 	$(DOBJ)dmr.o
 	@echo $(COTEXT)
-	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
+	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_get_mapped_ptr.o: src/lib/dmr_get_mapped_ptr.F90 \
 	$(DOBJ)dmr_environment.o \
@@ -173,6 +180,7 @@ $(DOBJ)test_dmr.o: src/tests/test_dmr.F90 \
 	$(DOBJ)dmr_correctly_mapped.o \
 	$(DOBJ)dmr_target_memcpy_rect.o \
 	$(DOBJ)dmr_target_memcpy.o \
+	$(DOBJ)dmr_target_memcpy_scalar.o \
 	$(DOBJ)dmr_target_init.o \
 	$(DOBJ)init_device_pointers.o \
 	$(DOBJ)matmul_device_pointers.o

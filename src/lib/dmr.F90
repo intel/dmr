@@ -21,8 +21,8 @@ module dmr
 
    interface omp_target_is_present_f
       module procedure &
-                       omp_target_is_present_f_int8,     omp_target_is_present_f_int16,   omp_target_is_present_f_int32, &
-                       omp_target_is_present_f_int64,    &
+                       omp_target_is_present_f_int8,     omp_target_is_present_f_int16,   &
+                       omp_target_is_present_f_int32,    omp_target_is_present_f_int64,   &
 #if defined _real128
                        omp_target_is_present_f_real128,  &
 #endif
@@ -49,6 +49,7 @@ module dmr
 
    interface omp_target_alloc_f
       module procedure &
+#if defined _F2008
                        omp_target_alloc_f_int8,     omp_target_alloc_f_int16,  omp_target_alloc_f_int32, &
                        omp_target_alloc_f_int64,    &
 #if defined _real128
@@ -59,82 +60,82 @@ module dmr
                        omp_target_alloc_f_cmplx128, &
 #endif
                        omp_target_alloc_f_cmplx32,  omp_target_alloc_f_cmplx64
+#else
+                       omp_target_alloc_f_int8_1,     omp_target_alloc_f_int8_2,     omp_target_alloc_f_int8_3,     &
+                       omp_target_alloc_f_int8_4,     omp_target_alloc_f_int8_5,     omp_target_alloc_f_int8_6,     &
+                       omp_target_alloc_f_int8_7,     &
+                       omp_target_alloc_f_int16_1,    omp_target_alloc_f_int16_2,    omp_target_alloc_f_int16_3,    &
+                       omp_target_alloc_f_int16_4,    omp_target_alloc_f_int16_5,    omp_target_alloc_f_int16_6,    &
+                       omp_target_alloc_f_int16_7,    &
+                       omp_target_alloc_f_int32_1,    omp_target_alloc_f_int32_2,    omp_target_alloc_f_int32_3,    &
+                       omp_target_alloc_f_int32_4,    omp_target_alloc_f_int32_5,    omp_target_alloc_f_int32_6,    &
+                       omp_target_alloc_f_int32_7,    &
+                       omp_target_alloc_f_int64_1,    omp_target_alloc_f_int64_2,    omp_target_alloc_f_int64_3,    &
+                       omp_target_alloc_f_int64_4,    omp_target_alloc_f_int64_5,    omp_target_alloc_f_int64_6,    &
+                       omp_target_alloc_f_int64_7,    &
+#if defined _real128
+                       omp_target_alloc_f_real128_1,  omp_target_alloc_f_real128_2,  omp_target_alloc_f_real128_3,  &
+                       omp_target_alloc_f_real128_4,  omp_target_alloc_f_real128_5,  omp_target_alloc_f_real128_6,  &
+                       omp_target_alloc_f_real128_7,  &
+#endif
+                       omp_target_alloc_f_real32_1,   omp_target_alloc_f_real32_2,   omp_target_alloc_f_real32_3,   &
+                       omp_target_alloc_f_real32_4,   omp_target_alloc_f_real32_5,   omp_target_alloc_f_real32_6,   &
+                       omp_target_alloc_f_real32_7,   &
+                       omp_target_alloc_f_real64_1,   omp_target_alloc_f_real64_2,   omp_target_alloc_f_real64_3,   &
+                       omp_target_alloc_f_real64_4,   omp_target_alloc_f_real64_5,   omp_target_alloc_f_real64_6,   &
+                       omp_target_alloc_f_real64_7,   &
+#if defined _real128
+                       omp_target_alloc_f_cmplx128_1, omp_target_alloc_f_cmplx128_2, omp_target_alloc_f_cmplx128_3, &
+                       omp_target_alloc_f_cmplx128_4, omp_target_alloc_f_cmplx128_5, omp_target_alloc_f_cmplx128_6, &
+                       omp_target_alloc_f_cmplx128_7,  &
+#endif
+                       omp_target_alloc_f_cmplx32_1,  omp_target_alloc_f_cmplx32_2,  omp_target_alloc_f_cmplx32_3,  &
+                       omp_target_alloc_f_cmplx32_4,  omp_target_alloc_f_cmplx32_5,  omp_target_alloc_f_cmplx32_6,  &
+                       omp_target_alloc_f_cmplx32_7,  &
+                       omp_target_alloc_f_cmplx64_1,  omp_target_alloc_f_cmplx64_2,  omp_target_alloc_f_cmplx64_3,  &
+                       omp_target_alloc_f_cmplx64_4,  omp_target_alloc_f_cmplx64_5,  omp_target_alloc_f_cmplx64_6,  &
+                       omp_target_alloc_f_cmplx64_7
+#endif
    endinterface omp_target_alloc_f
 
    interface omp_target_memcpy_f
       module procedure &
-                       omp_target_memcpy_f_int8,       omp_target_memcpy_f_int8_1,     omp_target_memcpy_f_int8_2,  &
-                       omp_target_memcpy_f_int8_3,     omp_target_memcpy_f_int8_4,     omp_target_memcpy_f_int8_5,  &
-                       omp_target_memcpy_f_int8_6,     omp_target_memcpy_f_int8_7,     &
-                       omp_target_memcpy_f_int16,      omp_target_memcpy_f_int16_1,    omp_target_memcpy_f_int16_2, &
-                       omp_target_memcpy_f_int16_3,    omp_target_memcpy_f_int16_4,    omp_target_memcpy_f_int16_5, &
-                       omp_target_memcpy_f_int16_6,    omp_target_memcpy_f_int16_7,    &
-                       omp_target_memcpy_f_int32,      omp_target_memcpy_f_int32_1,    omp_target_memcpy_f_int32_2, &
-                       omp_target_memcpy_f_int32_3,    omp_target_memcpy_f_int32_4,    omp_target_memcpy_f_int32_5, &
-                       omp_target_memcpy_f_int32_6,    omp_target_memcpy_f_int32_7,    &
-                       omp_target_memcpy_f_int64,      omp_target_memcpy_f_int64_1,    omp_target_memcpy_f_int64_2, &
-                       omp_target_memcpy_f_int64_3,    omp_target_memcpy_f_int64_4,    omp_target_memcpy_f_int64_5, &
-                       omp_target_memcpy_f_int64_6,    omp_target_memcpy_f_int64_7,    &
+#if defined _F2008
+                       omp_target_memcpy_f_int8_scalar,     omp_target_memcpy_f_int16_scalar,   &
+                       omp_target_memcpy_f_int32_scalar,    omp_target_memcpy_f_int64_scalar,   &
 #if defined _real128
-                       omp_target_memcpy_f_real128,    omp_target_memcpy_f_real128_1,  omp_target_memcpy_f_real128_2, &
-                       omp_target_memcpy_f_real128_3,  omp_target_memcpy_f_real128_4,  omp_target_memcpy_f_real128_5, &
-                       omp_target_memcpy_f_real128_6,  omp_target_memcpy_f_real128_7,  &
+                       omp_target_memcpy_f_real128_scalar,                                      &
 #endif
-                       omp_target_memcpy_f_real32,     omp_target_memcpy_f_real32_1,   omp_target_memcpy_f_real32_2, &
-                       omp_target_memcpy_f_real32_3,   omp_target_memcpy_f_real32_4,   omp_target_memcpy_f_real32_5, &
-                       omp_target_memcpy_f_real32_6,   omp_target_memcpy_f_real32_7,   &
-                       omp_target_memcpy_f_real64,     omp_target_memcpy_f_real64_1,   omp_target_memcpy_f_real64_2, &
-                       omp_target_memcpy_f_real64_3,   omp_target_memcpy_f_real64_4,   omp_target_memcpy_f_real64_5, &
-                       omp_target_memcpy_f_real64_6,   omp_target_memcpy_f_real64_7,   &
+                       omp_target_memcpy_f_real32_scalar,   omp_target_memcpy_f_real64_scalar,  &
 #if defined _real128
-                       omp_target_memcpy_f_cmplx128,   omp_target_memcpy_f_cmplx128_1, omp_target_memcpy_f_cmplx128_2, &
-                       omp_target_memcpy_f_cmplx128_3, omp_target_memcpy_f_cmplx128_4, omp_target_memcpy_f_cmplx128_5, &
-                       omp_target_memcpy_f_cmplx128_6, omp_target_memcpy_f_cmplx128_7, &
+                       omp_target_memcpy_f_cmplx128_scalar,                                     &
 #endif
-                       omp_target_memcpy_f_cmplx32,    omp_target_memcpy_f_cmplx32_1,  omp_target_memcpy_f_cmplx32_2, &
-                       omp_target_memcpy_f_cmplx32_3,  omp_target_memcpy_f_cmplx32_4,  omp_target_memcpy_f_cmplx32_5, &
-                       omp_target_memcpy_f_cmplx32_6,  omp_target_memcpy_f_cmplx32_7,  &
-                       omp_target_memcpy_f_cmplx64,    omp_target_memcpy_f_cmplx64_1,  omp_target_memcpy_f_cmplx64_2, &
-                       omp_target_memcpy_f_cmplx64_3,  omp_target_memcpy_f_cmplx64_4,  omp_target_memcpy_f_cmplx64_5, &
-                       omp_target_memcpy_f_cmplx64_6,  omp_target_memcpy_f_cmplx64_7
+                       omp_target_memcpy_f_cmplx32_scalar,  omp_target_memcpy_f_cmplx64_scalar, &
+#endif
+                       omp_target_memcpy_f_int8,            omp_target_memcpy_f_int16,          &
+                       omp_target_memcpy_f_int32,           omp_target_memcpy_f_int64,          &
+#if defined _real128
+                       omp_target_memcpy_f_real128,                                             &
+#endif
+                       omp_target_memcpy_f_real32,          omp_target_memcpy_f_real64,         &
+#if defined _real128
+                       omp_target_memcpy_f_cmplx128,                                            &
+#endif
+                       omp_target_memcpy_f_cmplx32,         omp_target_memcpy_f_cmplx64
    endinterface omp_target_memcpy_f
 
    interface omp_target_memcpy_rect_f
       module procedure &
-                       omp_target_memcpy_rect_f_int8_2,  omp_target_memcpy_rect_f_int8_3,  &
-                       omp_target_memcpy_rect_f_int8_4,  omp_target_memcpy_rect_f_int8_5,  omp_target_memcpy_rect_f_int8_6,  &
-                       omp_target_memcpy_rect_f_int8_7,  &
-                       omp_target_memcpy_rect_f_int16_2,  omp_target_memcpy_rect_f_int16_3,  &
-                       omp_target_memcpy_rect_f_int16_4,  omp_target_memcpy_rect_f_int16_5,  omp_target_memcpy_rect_f_int16_6,  &
-                       omp_target_memcpy_rect_f_int16_7,  &
-                       omp_target_memcpy_rect_f_int32_2,  omp_target_memcpy_rect_f_int32_3,  &
-                       omp_target_memcpy_rect_f_int32_4,  omp_target_memcpy_rect_f_int32_5,  omp_target_memcpy_rect_f_int32_6,  &
-                       omp_target_memcpy_rect_f_int32_7,  &
-                       omp_target_memcpy_rect_f_int64_2,  omp_target_memcpy_rect_f_int64_3,  &
-                       omp_target_memcpy_rect_f_int64_4,  omp_target_memcpy_rect_f_int64_5,  omp_target_memcpy_rect_f_int64_6,  &
-                       omp_target_memcpy_rect_f_int64_7,  &
+                       omp_target_memcpy_rect_f_int8,     omp_target_memcpy_rect_f_int16,    &
+                       omp_target_memcpy_rect_f_int32,    omp_target_memcpy_rect_f_int64,    &
 #if defined _real128
-                       omp_target_memcpy_rect_f_real128_2, omp_target_memcpy_rect_f_real128_3, &
-                       omp_target_memcpy_rect_f_real128_4, omp_target_memcpy_rect_f_real128_5, omp_target_memcpy_rect_f_real128_6, &
-                       omp_target_memcpy_rect_f_real128_7, &
+                       omp_target_memcpy_rect_f_real128,  &
 #endif
-                       omp_target_memcpy_rect_f_real32_2,  omp_target_memcpy_rect_f_real32_3,  &
-                       omp_target_memcpy_rect_f_real32_4,  omp_target_memcpy_rect_f_real32_5,  omp_target_memcpy_rect_f_real32_6,  &
-                       omp_target_memcpy_rect_f_real32_7,  &
-                       omp_target_memcpy_rect_f_real64_2,  omp_target_memcpy_rect_f_real64_3,  &
-                       omp_target_memcpy_rect_f_real64_4,  omp_target_memcpy_rect_f_real64_5,  omp_target_memcpy_rect_f_real64_6,  &
-                       omp_target_memcpy_rect_f_real64_7,  &
+                       omp_target_memcpy_rect_f_real32,   omp_target_memcpy_rect_f_real64,   &
 #if defined _real128
-                       omp_target_memcpy_rect_f_cmplx128_2, omp_target_memcpy_rect_f_cmplx128_3, &
-                       omp_target_memcpy_rect_f_cmplx128_4, omp_target_memcpy_rect_f_cmplx128_5, omp_target_memcpy_rect_f_cmplx128_6, &
-                       omp_target_memcpy_rect_f_cmplx128_7,  &
+                       omp_target_memcpy_rect_f_cmplx128, &
 #endif
-                       omp_target_memcpy_rect_f_cmplx32_2,  omp_target_memcpy_rect_f_cmplx32_3,  &
-                       omp_target_memcpy_rect_f_cmplx32_4,  omp_target_memcpy_rect_f_cmplx32_5,  omp_target_memcpy_rect_f_cmplx32_6,  &
-                       omp_target_memcpy_rect_f_cmplx32_7,  &
-                       omp_target_memcpy_rect_f_cmplx64_2,  omp_target_memcpy_rect_f_cmplx64_3,  &
-                       omp_target_memcpy_rect_f_cmplx64_4,  omp_target_memcpy_rect_f_cmplx64_5,  omp_target_memcpy_rect_f_cmplx64_6,  &
-                       omp_target_memcpy_rect_f_cmplx64_7
+                       omp_target_memcpy_rect_f_cmplx32,  omp_target_memcpy_rect_f_cmplx64
    endinterface omp_target_memcpy_rect_f
 
    interface omp_correctly_mapped
@@ -331,6 +332,7 @@ module dmr
 
 ! OpenMP Target Alloc Routines
    interface
+#if defined _F2008
       ! OpenMP Target Alloc Integer Routines
       module subroutine omp_target_alloc_f_int8(fptr_dev, dimensions, omp_dev)
          implicit none
@@ -427,6 +429,505 @@ module dmr
          integer(kind=c_int)                               :: omp_device
       endsubroutine omp_target_alloc_f_cmplx128
 #endif
+#else
+      ! OpenMP Target Alloc Integer Routines
+      module subroutine omp_target_alloc_f_int8_1(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+         integer(I8P), intent(in)                         :: dimensions
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int8_1
+
+      module subroutine omp_target_alloc_f_int8_2(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                         :: dimensions(2)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int8_2
+
+      module subroutine omp_target_alloc_f_int8_3(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(3)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int8_3
+
+      module subroutine omp_target_alloc_f_int8_4(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(4)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int8_4
+
+      module subroutine omp_target_alloc_f_int8_5(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(5)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int8_5
+
+      module subroutine omp_target_alloc_f_int8_6(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(6)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int8_6
+
+      module subroutine omp_target_alloc_f_int8_7(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(7)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int8_7
+
+      module subroutine omp_target_alloc_f_int16_1(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+         integer(I8P), intent(in)                         :: dimensions
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int16_1
+
+      module subroutine omp_target_alloc_f_int16_2(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                         :: dimensions(2)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int16_2
+
+      module subroutine omp_target_alloc_f_int16_3(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(3)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int16_3
+
+      module subroutine omp_target_alloc_f_int16_4(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(4)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int16_4
+
+      module subroutine omp_target_alloc_f_int16_5(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(5)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int16_5
+
+      module subroutine omp_target_alloc_f_int16_6(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(6)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int16_6
+
+      module subroutine omp_target_alloc_f_int16_7(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(7)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int16_7
+
+      module subroutine omp_target_alloc_f_int32_1(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+         integer(I8P), intent(in)                         :: dimensions
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int32_1
+
+      module subroutine omp_target_alloc_f_int32_2(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                         :: dimensions(2)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int32_2
+
+      module subroutine omp_target_alloc_f_int32_3(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(3)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int32_3
+
+      module subroutine omp_target_alloc_f_int32_4(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(4)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int32_4
+
+      module subroutine omp_target_alloc_f_int32_5(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(5)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int32_5
+
+      module subroutine omp_target_alloc_f_int32_6(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(6)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int32_6
+
+      module subroutine omp_target_alloc_f_int32_7(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(7)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int32_7
+
+      module subroutine omp_target_alloc_f_int64_1(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+         integer(I8P), intent(in)                         :: dimensions
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int64_1
+
+      module subroutine omp_target_alloc_f_int64_2(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                         :: dimensions(2)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int64_2
+
+      module subroutine omp_target_alloc_f_int64_3(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(3)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int64_3
+
+      module subroutine omp_target_alloc_f_int64_4(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(4)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int64_4
+
+      module subroutine omp_target_alloc_f_int64_5(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(5)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int64_5
+
+      module subroutine omp_target_alloc_f_int64_6(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(6)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int64_6
+
+      module subroutine omp_target_alloc_f_int64_7(fptr_dev, dimensions, omp_dev)
+         implicit none
+         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(7)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int64_7
+
+      ! OpenMP Target Alloc Real Routines
+      module subroutine omp_target_alloc_f_real32_1(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+         integer(I8P), intent(in)                      :: dimensions
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real32_1
+
+      module subroutine omp_target_alloc_f_real32_2(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                      :: dimensions(2)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real32_2
+
+      module subroutine omp_target_alloc_f_real32_3(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                      :: dimensions(3)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real32_3
+
+      module subroutine omp_target_alloc_f_real32_4(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                      :: dimensions(4)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real32_4
+
+      module subroutine omp_target_alloc_f_real32_5(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                      :: dimensions(5)
+         include "src/lib/include/dmr_target_alloc.i90"
+
+      endsubroutine omp_target_alloc_f_real32_5
+
+      module subroutine omp_target_alloc_f_real32_6(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                      :: dimensions(6)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real32_6
+
+      module subroutine omp_target_alloc_f_real32_7(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                      :: dimensions(7)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real32_7
+
+      module subroutine omp_target_alloc_f_real64_1(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+         integer(I8P), intent(in)                      :: dimensions
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real64_1
+
+      module subroutine omp_target_alloc_f_real64_2(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                      :: dimensions(2)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real64_2
+
+      module subroutine omp_target_alloc_f_real64_3(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                      :: dimensions(3)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real64_3
+
+      module subroutine omp_target_alloc_f_real64_4(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                      :: dimensions(4)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real64_4
+
+      module subroutine omp_target_alloc_f_real64_5(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                      :: dimensions(5)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real64_5
+
+      module subroutine omp_target_alloc_f_real64_6(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                      :: dimensions(6)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real64_6
+
+      module subroutine omp_target_alloc_f_real64_7(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                      :: dimensions(7)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real64_7
+
+#if defined _real128
+      module subroutine omp_target_alloc_f_real128_1(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+         integer(I8P), intent(in)                       :: dimensions
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real128_1
+
+      module subroutine omp_target_alloc_f_real128_2(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                       :: dimensions(2)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real128_2
+
+      module subroutine omp_target_alloc_f_real128_3(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(3)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real128_3
+
+      module subroutine omp_target_alloc_f_real128_4(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(4)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real128_4
+
+      module subroutine omp_target_alloc_f_real128_5(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(5)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real128_5
+
+      module subroutine omp_target_alloc_f_real128_6(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(6)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real128_6
+
+      module subroutine omp_target_alloc_f_real128_7(fptr_dev, dimensions, omp_dev)
+         implicit none
+         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(7)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_real128_7
+#endif
+
+      ! OpenMP Target Alloc Complex Routines
+      module subroutine omp_target_alloc_f_cmplx32_1(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+         integer(I8P), intent(in)                         :: dimensions
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx32_1
+
+      module subroutine omp_target_alloc_f_cmplx32_2(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                         :: dimensions(2)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx32_2
+
+      module subroutine omp_target_alloc_f_cmplx32_3(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(3)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx32_3
+
+      module subroutine omp_target_alloc_f_cmplx32_4(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(4)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx32_4
+
+      module subroutine omp_target_alloc_f_cmplx32_5(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(5)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx32_5
+
+      module subroutine omp_target_alloc_f_cmplx32_6(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(6)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx32_6
+
+      module subroutine omp_target_alloc_f_cmplx32_7(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(7)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx32_7
+
+      module subroutine omp_target_alloc_f_cmplx64_1(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+         integer(I8P), intent(in)                         :: dimensions
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx64_1
+
+      module subroutine omp_target_alloc_f_cmplx64_2(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                         :: dimensions(2)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx64_2
+
+      module subroutine omp_target_alloc_f_cmplx64_3(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(3)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx64_3
+
+      module subroutine omp_target_alloc_f_cmplx64_4(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(4)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx64_4
+
+      module subroutine omp_target_alloc_f_cmplx64_5(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(5)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx64_5
+
+      module subroutine omp_target_alloc_f_cmplx64_6(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(6)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx64_6
+
+      module subroutine omp_target_alloc_f_cmplx64_7(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                         :: dimensions(7)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx64_7
+
+#if defined _real128
+      module subroutine omp_target_alloc_f_cmplx128_1(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:)
+         integer(I8P), intent(in)                          :: dimensions
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx128_1
+
+      module subroutine omp_target_alloc_f_cmplx128_2(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                          :: dimensions(2)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx128_2
+
+      module subroutine omp_target_alloc_f_cmplx128_3(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                          :: dimensions(3)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx128_3
+
+      module subroutine omp_target_alloc_f_cmplx128_4(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                          :: dimensions(4)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx128_4
+
+      module subroutine omp_target_alloc_f_cmplx128_5(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                          :: dimensions(5)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx128_5
+
+      module subroutine omp_target_alloc_f_cmplx128_6(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                          :: dimensions(6)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx128_6
+
+      module subroutine omp_target_alloc_f_cmplx128_7(fptr_dev, dimensions, omp_dev)
+         implicit none
+         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                          :: dimensions(7)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_cmplx128_7
+#endif
+#endif
    endinterface
 
 ! OpenMP Target Free Routines
@@ -522,1190 +1023,402 @@ module dmr
 ! OpenMP Target Memcpy Routines
    interface
       ! OpenMP Target Memcpy Integer Routines
-      module subroutine omp_target_memcpy_f_int8(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+#if defined _F2008
+      module subroutine omp_target_memcpy_f_int8_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
          implicit none
          integer(I1P), intent(out) :: sc_dst
          integer(I1P), intent(in)  :: sc_src
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_int8_scalar
+#endif
+
+      module subroutine omp_target_memcpy_f_int8(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I1P), contiguous, target, intent(out) :: fptr_dst(..)
+         integer(I1P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                      :: dst_off, src_off
+         integer(I8P)                                  :: n_elements
+         integer(c_size_t)                             :: total_dim, omp_dst_offset, omp_src_offset
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(c_int)                                :: omp_dst_device, omp_src_device
       endsubroutine omp_target_memcpy_f_int8
 
-      module subroutine omp_target_memcpy_f_int8_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:)
-         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int8_1
-
-      module subroutine omp_target_memcpy_f_int8_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:)
-         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int8_2
-
-      module subroutine omp_target_memcpy_f_int8_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int8_3
-
-      module subroutine omp_target_memcpy_f_int8_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int8_4
-
-      module subroutine omp_target_memcpy_f_int8_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int8_5
-
-      module subroutine omp_target_memcpy_f_int8_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int8_6
-
-      module subroutine omp_target_memcpy_f_int8_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int8_7
-
-      module subroutine omp_target_memcpy_f_int16(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+      module subroutine omp_target_memcpy_f_int16_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
          implicit none
          integer(I2P), intent(out) :: sc_dst
          integer(I2P), intent(in)  :: sc_src
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_int16_scalar
+
+      module subroutine omp_target_memcpy_f_int16(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I2P), contiguous, target, intent(out) :: fptr_dst(..)
+         integer(I2P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                      :: dst_off, src_off
+         integer(I8P)                                  :: n_elements
+         integer(c_size_t)                             :: total_dim, omp_dst_offset, omp_src_offset
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(c_int)                                :: omp_dst_device, omp_src_device
       endsubroutine omp_target_memcpy_f_int16
 
-      module subroutine omp_target_memcpy_f_int16_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:)
-         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int16_1
-
-      module subroutine omp_target_memcpy_f_int16_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:)
-         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int16_2
-
-      module subroutine omp_target_memcpy_f_int16_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int16_3
-
-      module subroutine omp_target_memcpy_f_int16_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int16_4
-
-      module subroutine omp_target_memcpy_f_int16_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int16_5
-
-      module subroutine omp_target_memcpy_f_int16_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int16_6
-
-      module subroutine omp_target_memcpy_f_int16_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int16_7
-
-      module subroutine omp_target_memcpy_f_int32(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+      module subroutine omp_target_memcpy_f_int32_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
          implicit none
          integer(I4P), intent(out) :: sc_dst
          integer(I4P), intent(in)  :: sc_src
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_int32_scalar
+
+      module subroutine omp_target_memcpy_f_int32(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I4P), contiguous, target, intent(out) :: fptr_dst(..)
+         integer(I4P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                      :: dst_off, src_off
+         integer(I8P)                                  :: n_elements
+         integer(c_size_t)                             :: total_dim, omp_dst_offset, omp_src_offset
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(c_int)                                :: omp_dst_device, omp_src_device
       endsubroutine omp_target_memcpy_f_int32
 
-      module subroutine omp_target_memcpy_f_int32_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:)
-         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int32_1
-
-      module subroutine omp_target_memcpy_f_int32_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:)
-         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int32_2
-
-      module subroutine omp_target_memcpy_f_int32_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int32_3
-
-      module subroutine omp_target_memcpy_f_int32_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int32_4
-
-      module subroutine omp_target_memcpy_f_int32_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int32_5
-
-      module subroutine omp_target_memcpy_f_int32_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int32_6
-
-      module subroutine omp_target_memcpy_f_int32_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int32_7
-
-      module subroutine omp_target_memcpy_f_int64(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+      module subroutine omp_target_memcpy_f_int64_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
          implicit none
          integer(I8P), intent(out) :: sc_dst
          integer(I8P), intent(in)  :: sc_src
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_int64_scalar
+
+      module subroutine omp_target_memcpy_f_int64(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         integer(I8P), contiguous, target, intent(out) :: fptr_dst(..)
+         integer(I8P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                      :: dst_off, src_off
+         integer(I8P)                                  :: n_elements
+         integer(c_size_t)                             :: total_dim, omp_dst_offset, omp_src_offset
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(c_int)                                :: omp_dst_device, omp_src_device
       endsubroutine omp_target_memcpy_f_int64
 
-      module subroutine omp_target_memcpy_f_int64_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:)
-         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int64_1
-
-      module subroutine omp_target_memcpy_f_int64_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:)
-         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int64_2
-
-      module subroutine omp_target_memcpy_f_int64_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int64_3
-
-      module subroutine omp_target_memcpy_f_int64_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int64_4
-
-      module subroutine omp_target_memcpy_f_int64_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int64_5
-
-      module subroutine omp_target_memcpy_f_int64_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int64_6
-
-      module subroutine omp_target_memcpy_f_int64_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_int64_7
-
       ! OpenMP Target Memcpy Real Routines
-      module subroutine omp_target_memcpy_f_real32(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+      module subroutine omp_target_memcpy_f_real32_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
          implicit none
          real(R4P),    intent(out) :: sc_dst
          real(R4P),    intent(in)  :: sc_src
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_real32_scalar
+
+      module subroutine omp_target_memcpy_f_real32(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R4P), contiguous, target, intent(out) :: fptr_dst(..)
+         real(R4P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(out)                  :: ierr
+         integer(I4P), intent(in)                   :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                   :: dst_off, src_off
+         integer(I8P)                               :: n_elements
+         integer(c_size_t)                          :: total_dim, omp_dst_offset, omp_src_offset
+         type(c_ptr)                                :: cptr_dst, cptr_src
+         integer(c_int)                             :: omp_dst_device, omp_src_device
       endsubroutine omp_target_memcpy_f_real32
 
-      module subroutine omp_target_memcpy_f_real32_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R4P), contiguous, target, intent(out) :: fptr_dst(:)
-         real(R4P), contiguous, target, intent(in)  :: fptr_src(:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real32_1
-
-      module subroutine omp_target_memcpy_f_real32_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R4P), contiguous, target, intent(out) :: fptr_dst(:,:)
-         real(R4P), contiguous, target, intent(in)  :: fptr_src(:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real32_2
-
-      module subroutine omp_target_memcpy_f_real32_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         real(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real32_3
-
-      module subroutine omp_target_memcpy_f_real32_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         real(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real32_4
-
-      module subroutine omp_target_memcpy_f_real32_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         real(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real32_5
-
-      module subroutine omp_target_memcpy_f_real32_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         real(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real32_6
-
-      module subroutine omp_target_memcpy_f_real32_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         real(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real32_7
-
-      module subroutine omp_target_memcpy_f_real64(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+      module subroutine omp_target_memcpy_f_real64_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
          implicit none
          real(R8P),    intent(out) :: sc_dst
          real(R8P),    intent(in)  :: sc_src
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_real64_scalar
+
+      module subroutine omp_target_memcpy_f_real64(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R8P), contiguous, target, intent(out) :: fptr_dst(..)
+         real(R8P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(out)                  :: ierr
+         integer(I4P), intent(in)                   :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                   :: dst_off, src_off
+         integer(I8P)                               :: n_elements
+         integer(c_size_t)                          :: total_dim, omp_dst_offset, omp_src_offset
+         type(c_ptr)                                :: cptr_dst, cptr_src
+         integer(c_int)                             :: omp_dst_device, omp_src_device
       endsubroutine omp_target_memcpy_f_real64
 
-      module subroutine omp_target_memcpy_f_real64_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R8P), contiguous, target, intent(out) :: fptr_dst(:)
-         real(R8P), contiguous, target, intent(in)  :: fptr_src(:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real64_1
-
-      module subroutine omp_target_memcpy_f_real64_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R8P), contiguous, target, intent(out) :: fptr_dst(:,:)
-         real(R8P), contiguous, target, intent(in)  :: fptr_src(:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real64_2
-
-      module subroutine omp_target_memcpy_f_real64_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         real(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real64_3
-
-      module subroutine omp_target_memcpy_f_real64_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         real(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real64_4
-
-      module subroutine omp_target_memcpy_f_real64_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         real(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real64_5
-
-      module subroutine omp_target_memcpy_f_real64_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         real(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real64_6
-
-      module subroutine omp_target_memcpy_f_real64_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         real(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real64_7
-
 #if defined _real128
-      module subroutine omp_target_memcpy_f_real128(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+      module subroutine omp_target_memcpy_f_real128_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
          implicit none
          real(R16P),   intent(out) :: sc_dst
          real(R16P),   intent(in)  :: sc_src
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_real128_scalar
+
+      module subroutine omp_target_memcpy_f_real128(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         real(R16P), contiguous, target, intent(out) :: fptr_dst(..)
+         real(R16P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(out)                   :: ierr
+         integer(I4P), intent(in)                    :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                    :: dst_off, src_off
+         integer(I8P)                                :: n_elements
+         integer(c_size_t)                           :: total_dim, omp_dst_offset, omp_src_offset
+         type(c_ptr)                                 :: cptr_dst, cptr_src
+         integer(c_int)                              :: omp_dst_device, omp_src_device
       endsubroutine omp_target_memcpy_f_real128
-
-      module subroutine omp_target_memcpy_f_real128_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R16P), contiguous, target, intent(out) :: fptr_dst(:)
-         real(R16P), contiguous, target, intent(in)  :: fptr_src(:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real128_1
-
-      module subroutine omp_target_memcpy_f_real128_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R16P), contiguous, target, intent(out) :: fptr_dst(:,:)
-         real(R16P), contiguous, target, intent(in)  :: fptr_src(:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real128_2
-
-      module subroutine omp_target_memcpy_f_real128_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         real(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real128_3
-
-      module subroutine omp_target_memcpy_f_real128_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         real(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real128_4
-
-      module subroutine omp_target_memcpy_f_real128_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         real(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real128_5
-
-      module subroutine omp_target_memcpy_f_real128_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         real(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real128_6
-
-      module subroutine omp_target_memcpy_f_real128_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         real(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_real128_7
 #endif
 
       ! OpenMP Target Memcpy Complex Routines
-      module subroutine omp_target_memcpy_f_cmplx32(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
-         implicit none
+      module subroutine omp_target_memcpy_f_cmplx32_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+        implicit none
          complex(R4P), intent(out) :: sc_dst
          complex(R4P), intent(in)  :: sc_src
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_cmplx32_scalar
+
+      module subroutine omp_target_memcpy_f_cmplx32(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R4P), contiguous, target, intent(out) :: fptr_dst(..)
+         complex(R4P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                      :: dst_off, src_off
+         integer(I8P)                                  :: n_elements
+         integer(c_size_t)                             :: total_dim, omp_dst_offset, omp_src_offset
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(c_int)                                :: omp_dst_device, omp_src_device
       endsubroutine omp_target_memcpy_f_cmplx32
 
-      module subroutine omp_target_memcpy_f_cmplx32_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:)
-         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx32_1
-
-      module subroutine omp_target_memcpy_f_cmplx32_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:)
-         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx32_2
-
-      module subroutine omp_target_memcpy_f_cmplx32_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx32_3
-
-      module subroutine omp_target_memcpy_f_cmplx32_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx32_4
-
-      module subroutine omp_target_memcpy_f_cmplx32_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx32_5
-
-      module subroutine omp_target_memcpy_f_cmplx32_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx32_6
-
-      module subroutine omp_target_memcpy_f_cmplx32_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx32_7
-
-      module subroutine omp_target_memcpy_f_cmplx64(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+      module subroutine omp_target_memcpy_f_cmplx64_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
          implicit none
          complex(R8P), intent(out) :: sc_dst
          complex(R8P), intent(in)  :: sc_src
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_cmplx64_scalar
+
+      module subroutine omp_target_memcpy_f_cmplx64(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R8P), contiguous, target, intent(out) :: fptr_dst(..)
+         complex(R8P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                      :: dst_off, src_off
+         integer(I8P)                                  :: n_elements
+         integer(c_size_t)                             :: total_dim, omp_dst_offset, omp_src_offset
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(c_int)                                :: omp_dst_device, omp_src_device
       endsubroutine omp_target_memcpy_f_cmplx64
 
-      module subroutine omp_target_memcpy_f_cmplx64_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:)
-         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx64_1
-
-      module subroutine omp_target_memcpy_f_cmplx64_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:)
-         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx64_2
-
-      module subroutine omp_target_memcpy_f_cmplx64_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx64_3
-
-      module subroutine omp_target_memcpy_f_cmplx64_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx64_4
-
-      module subroutine omp_target_memcpy_f_cmplx64_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx64_5
-
-      module subroutine omp_target_memcpy_f_cmplx64_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx64_6
-
-      module subroutine omp_target_memcpy_f_cmplx64_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx64_7
-
 #if defined _real128
-      module subroutine omp_target_memcpy_f_cmplx128(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+      module subroutine omp_target_memcpy_f_cmplx128_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
          implicit none
          complex(R16P), intent(out) :: sc_dst
          complex(R16P), intent(in)  :: sc_src
          integer(I4P),  intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_cmplx128_scalar
+
+      module subroutine omp_target_memcpy_f_cmplx128(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         complex(R16P), contiguous, target, intent(out) :: fptr_dst(..)
+         complex(R16P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(out)                      :: ierr
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: dst_off, src_off
+         integer(I8P)                                   :: n_elements
+         integer(c_size_t)                              :: total_dim, omp_dst_offset, omp_src_offset
+         type(c_ptr)                                    :: cptr_dst, cptr_src
+         integer(c_int)                                 :: omp_dst_device, omp_src_device
       endsubroutine omp_target_memcpy_f_cmplx128
-
-      module subroutine omp_target_memcpy_f_cmplx128_1(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:)
-         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx128_1
-
-      module subroutine omp_target_memcpy_f_cmplx128_2(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:)
-         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx128_2
-
-      module subroutine omp_target_memcpy_f_cmplx128_3(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx128_3
-
-      module subroutine omp_target_memcpy_f_cmplx128_4(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx128_4
-
-      module subroutine omp_target_memcpy_f_cmplx128_5(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx128_5
-
-      module subroutine omp_target_memcpy_f_cmplx128_6(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx128_6
-
-      module subroutine omp_target_memcpy_f_cmplx128_7(fptr_dst, fptr_src, ierr, dst_off, src_off, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_memcpy.i90"
-      endsubroutine omp_target_memcpy_f_cmplx128_7
 #endif
    end interface
 
 ! OpenMP Target Memcpy Rect Routines
    interface
      ! OpenMP Target Memcpy Rect Integer Routines
-      module subroutine omp_target_memcpy_rect_f_int8_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      module subroutine omp_target_memcpy_rect_f_int8(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:)
-         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:)
-         integer(I4P), parameter                       :: fptr_dims = 2_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_int8_2
+         integer(I1P), contiguous, target, intent(out) :: fptr_dst(..)
+         integer(I1P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                      :: cpy_dims(:)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(kind=c_size_t)                        :: elem_dim
+         integer(kind=c_size_t), allocatable           :: omp_dst_offsets(:), omp_src_offsets(:)
+         integer(kind=c_size_t), allocatable           :: volume_dims(:), cptr_dst_dims(:), cptr_src_dims(:)
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(kind=c_int)                           :: fptr_rank, omp_dst_device, omp_src_device
+         integer(I4P)                                  :: fptr_dims, i
+      endsubroutine omp_target_memcpy_rect_f_int8
 
-      module subroutine omp_target_memcpy_rect_f_int8_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      module subroutine omp_target_memcpy_rect_f_int16(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 3_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int8_3
+         integer(I2P), contiguous, target, intent(out) :: fptr_dst(..)
+         integer(I2P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                      :: cpy_dims(:)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(kind=c_size_t)                        :: elem_dim
+         integer(kind=c_size_t), allocatable           :: omp_dst_offsets(:), omp_src_offsets(:)
+         integer(kind=c_size_t), allocatable           :: volume_dims(:), cptr_dst_dims(:), cptr_src_dims(:)
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(kind=c_int)                           :: fptr_rank, omp_dst_device, omp_src_device
+         integer(I4P)                                  :: fptr_dims, i
+      end subroutine omp_target_memcpy_rect_f_int16
 
-      module subroutine omp_target_memcpy_rect_f_int8_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      module subroutine omp_target_memcpy_rect_f_int32(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 4_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int8_4
+         integer(I4P), contiguous, target, intent(out) :: fptr_dst(..)
+         integer(I4P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                      :: cpy_dims(:)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(kind=c_size_t)                        :: elem_dim
+         integer(kind=c_size_t), allocatable           :: omp_dst_offsets(:), omp_src_offsets(:)
+         integer(kind=c_size_t), allocatable           :: volume_dims(:), cptr_dst_dims(:), cptr_src_dims(:)
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(kind=c_int)                           :: fptr_rank, omp_dst_device, omp_src_device
+         integer(I4P)                                  :: fptr_dims, i
+      end subroutine omp_target_memcpy_rect_f_int32
 
-      module subroutine omp_target_memcpy_rect_f_int8_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      module subroutine omp_target_memcpy_rect_f_int64(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 5_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int8_5
-
-      module subroutine omp_target_memcpy_rect_f_int8_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 6_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int8_6
-
-      module subroutine omp_target_memcpy_rect_f_int8_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I1P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         integer(I1P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 7_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int8_7
-
-      module subroutine omp_target_memcpy_rect_f_int16_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:)
-         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:)
-         integer(I4P), parameter                       :: fptr_dims = 2_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int16_2
-
-      module subroutine omp_target_memcpy_rect_f_int16_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 3_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int16_3
-
-      module subroutine omp_target_memcpy_rect_f_int16_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 4_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int16_4
-
-      module subroutine omp_target_memcpy_rect_f_int16_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 5_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int16_5
-
-      module subroutine omp_target_memcpy_rect_f_int16_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 6_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int16_6
-
-      module subroutine omp_target_memcpy_rect_f_int16_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I2P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         integer(I2P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 7_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int16_7
-
-      module subroutine omp_target_memcpy_rect_f_int32_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:)
-         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:)
-         integer(I4P), parameter                       :: fptr_dims = 2_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int32_2
-
-      module subroutine omp_target_memcpy_rect_f_int32_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 3_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int32_3
-
-      module subroutine omp_target_memcpy_rect_f_int32_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 4_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int32_4
-
-      module subroutine omp_target_memcpy_rect_f_int32_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 5_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int32_5
-
-      module subroutine omp_target_memcpy_rect_f_int32_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 6_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int32_6
-
-      module subroutine omp_target_memcpy_rect_f_int32_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         integer(I4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 7_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int32_7
-
-      module subroutine omp_target_memcpy_rect_f_int64_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:)
-         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:)
-         integer(I4P), parameter                       :: fptr_dims = 2_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int64_2
-
-      module subroutine omp_target_memcpy_rect_f_int64_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 3_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int64_3
-
-      module subroutine omp_target_memcpy_rect_f_int64_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 4_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int64_4
-
-      module subroutine omp_target_memcpy_rect_f_int64_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 5_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int64_5
-
-      module subroutine omp_target_memcpy_rect_f_int64_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 6_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int64_6
-
-      module subroutine omp_target_memcpy_rect_f_int64_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         integer(I8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         integer(I8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 7_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_int64_7
+         integer(I8P), contiguous, target, intent(out) :: fptr_dst(..)
+         integer(I8P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                      :: cpy_dims(:)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(kind=c_size_t)                        :: elem_dim
+         integer(kind=c_size_t), allocatable           :: omp_dst_offsets(:), omp_src_offsets(:)
+         integer(kind=c_size_t), allocatable           :: volume_dims(:), cptr_dst_dims(:), cptr_src_dims(:)
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(kind=c_int)                           :: fptr_rank, omp_dst_device, omp_src_device
+         integer(I4P)                                  :: fptr_dims, i
+      end subroutine omp_target_memcpy_rect_f_int64
 
      ! OpenMP Target Memcpy Rect Real Routines
-      module subroutine omp_target_memcpy_rect_f_real32_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      module subroutine omp_target_memcpy_rect_f_real32(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:)
-         real(R4P),    contiguous, target, intent(in)  :: fptr_src(:,:)
-         integer(I4P), parameter                       :: fptr_dims = 2_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_real32_2
+         real(R4P),    contiguous, target, intent(out) :: fptr_dst(..)
+         real(R4P),    contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                      :: cpy_dims(:)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(kind=c_size_t)                        :: elem_dim
+         integer(kind=c_size_t), allocatable           :: omp_dst_offsets(:), omp_src_offsets(:)
+         integer(kind=c_size_t), allocatable           :: volume_dims(:), cptr_dst_dims(:), cptr_src_dims(:)
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(kind=c_int)                           :: fptr_rank, omp_dst_device, omp_src_device
+         integer(I4P)                                  :: fptr_dims, i
+      end subroutine omp_target_memcpy_rect_f_real32
 
-      module subroutine omp_target_memcpy_rect_f_real32_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      module subroutine omp_target_memcpy_rect_f_real64(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         real(R4P),    contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 3_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_real32_3
-
-      module subroutine omp_target_memcpy_rect_f_real32_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         real(R4P),    contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 4_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_real32_4
-
-      module subroutine omp_target_memcpy_rect_f_real32_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         real(R4P),    contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 5_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_real32_5
-
-      module subroutine omp_target_memcpy_rect_f_real32_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         real(R4P),    contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 6_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_real32_6
-
-      module subroutine omp_target_memcpy_rect_f_real32_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R4P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         real(R4P),    contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 7_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_real32_7
-
-      module subroutine omp_target_memcpy_rect_f_real64_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:)
-         real(R8P),    contiguous, target, intent(in)  :: fptr_src(:,:)
-         integer(I4P), parameter                       :: fptr_dims = 2_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_real64_2
-
-      module subroutine omp_target_memcpy_rect_f_real64_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         real(R8P),    contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 3_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_real64_3
-
-      module subroutine omp_target_memcpy_rect_f_real64_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         real(R8P),    contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 4_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_real64_4
-
-      module subroutine omp_target_memcpy_rect_f_real64_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         real(R8P),    contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 5_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_real64_5
-
-      module subroutine omp_target_memcpy_rect_f_real64_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         real(R8P),    contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 6_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_real64_6
-
-      module subroutine omp_target_memcpy_rect_f_real64_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R8P),    contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         real(R8P),    contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 7_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_real64_7
+         real(R8P),    contiguous, target, intent(out) :: fptr_dst(..)
+         real(R8P),    contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                      :: cpy_dims(:)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(kind=c_size_t)                        :: elem_dim
+         integer(kind=c_size_t), allocatable           :: omp_dst_offsets(:), omp_src_offsets(:)
+         integer(kind=c_size_t), allocatable           :: volume_dims(:), cptr_dst_dims(:), cptr_src_dims(:)
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(kind=c_int)                           :: fptr_rank, omp_dst_device, omp_src_device
+         integer(I4P)                                  :: fptr_dims, i
+      end subroutine omp_target_memcpy_rect_f_real64
 
 #if defined _real128
-      module subroutine omp_target_memcpy_rect_f_real128_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      module subroutine omp_target_memcpy_rect_f_real128(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:)
-         real(R16P),   contiguous, target, intent(in)  :: fptr_src(:,:)
-         integer(I4P), parameter                       :: fptr_dims = 2_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_real128_2
-
-      module subroutine omp_target_memcpy_rect_f_real128_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         real(R16P),   contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 3_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_real128_3
-
-      module subroutine omp_target_memcpy_rect_f_real128_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         real(R16P),   contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 4_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      end subroutine omp_target_memcpy_rect_f_real128_4
-
-      module subroutine omp_target_memcpy_rect_f_real128_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         real(R16P),   contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 5_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_real128_5
-
-      module subroutine omp_target_memcpy_rect_f_real128_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         real(R16P),   contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 6_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_real128_6
-
-      module subroutine omp_target_memcpy_rect_f_real128_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         real(R16P),   contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         real(R16P),   contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 7_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_real128_7
+         real(R16P),   contiguous, target, intent(out) :: fptr_dst(..)
+         real(R16P),   contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                      :: cpy_dims(:)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(kind=c_size_t)                        :: elem_dim
+         integer(kind=c_size_t), allocatable           :: omp_dst_offsets(:), omp_src_offsets(:)
+         integer(kind=c_size_t), allocatable           :: volume_dims(:), cptr_dst_dims(:), cptr_src_dims(:)
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(kind=c_int)                           :: fptr_rank, omp_dst_device, omp_src_device
+         integer(I4P)                                  :: fptr_dims, i
+      end subroutine omp_target_memcpy_rect_f_real128
 #endif
 
      ! OpenMP Target Memcpy Rect Complex Routines
-      module subroutine omp_target_memcpy_rect_f_cmplx32_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      module subroutine omp_target_memcpy_rect_f_cmplx32(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:)
-         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:)
-         integer(I4P), parameter                       :: fptr_dims = 2_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx32_2
+         complex(R4P), contiguous, target, intent(out) :: fptr_dst(..)
+         complex(R4P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                      :: cpy_dims(:)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(kind=c_size_t)                        :: elem_dim
+         integer(kind=c_size_t), allocatable           :: omp_dst_offsets(:), omp_src_offsets(:)
+         integer(kind=c_size_t), allocatable           :: volume_dims(:), cptr_dst_dims(:), cptr_src_dims(:)
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(kind=c_int)                           :: fptr_rank, omp_dst_device, omp_src_device
+         integer(I4P)                                  :: fptr_dims, i
+      endsubroutine omp_target_memcpy_rect_f_cmplx32
 
-      module subroutine omp_target_memcpy_rect_f_cmplx32_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      module subroutine omp_target_memcpy_rect_f_cmplx64(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 3_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx32_3
-
-      module subroutine omp_target_memcpy_rect_f_cmplx32_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 4_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx32_4
-
-      module subroutine omp_target_memcpy_rect_f_cmplx32_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 5_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx32_5
-
-      module subroutine omp_target_memcpy_rect_f_cmplx32_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 6_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx32_6
-
-      module subroutine omp_target_memcpy_rect_f_cmplx32_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R4P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         complex(R4P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 7_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx32_7
-
-      module subroutine omp_target_memcpy_rect_f_cmplx64_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:)
-         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:)
-         integer(I4P), parameter                       :: fptr_dims = 2_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx64_2
-
-      module subroutine omp_target_memcpy_rect_f_cmplx64_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 3_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx64_3
-
-      module subroutine omp_target_memcpy_rect_f_cmplx64_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 4_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx64_4
-
-      module subroutine omp_target_memcpy_rect_f_cmplx64_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 5_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx64_5
-
-      module subroutine omp_target_memcpy_rect_f_cmplx64_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 6_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx64_6
-
-      module subroutine omp_target_memcpy_rect_f_cmplx64_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R8P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         complex(R8P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         integer(I4P), parameter                       :: fptr_dims = 7_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx64_7
+         complex(R8P), contiguous, target, intent(out) :: fptr_dst(..)
+         complex(R8P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                      :: cpy_dims(:)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(kind=c_size_t)                        :: elem_dim
+         integer(kind=c_size_t), allocatable           :: omp_dst_offsets(:), omp_src_offsets(:)
+         integer(kind=c_size_t), allocatable           :: volume_dims(:), cptr_dst_dims(:), cptr_src_dims(:)
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(kind=c_int)                           :: fptr_rank, omp_dst_device, omp_src_device
+         integer(I4P)                                  :: fptr_dims, i
+      endsubroutine omp_target_memcpy_rect_f_cmplx64
 
 #if defined _real128
-      module subroutine omp_target_memcpy_rect_f_cmplx128_2(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      module subroutine omp_target_memcpy_rect_f_cmplx128(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:)
-         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:)
-         integer(I4P),  parameter                       :: fptr_dims = 2_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx128_2
-
-      module subroutine omp_target_memcpy_rect_f_cmplx128_3(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:)
-         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:)
-         integer(I4P),  parameter                       :: fptr_dims = 3_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx128_3
-
-      module subroutine omp_target_memcpy_rect_f_cmplx128_4(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:)
-         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:)
-         integer(I4P),  parameter                       :: fptr_dims = 4_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx128_4
-
-      module subroutine omp_target_memcpy_rect_f_cmplx128_5(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:)
-         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:)
-         integer(I4P),  parameter                       :: fptr_dims = 5_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx128_5
-
-      module subroutine omp_target_memcpy_rect_f_cmplx128_6(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:)
-         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:)
-         integer(I4P),  parameter                       :: fptr_dims = 6_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx128_6
-
-      module subroutine omp_target_memcpy_rect_f_cmplx128_7(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
-            omp_dst_dev, omp_src_dev)
-         implicit none
-         complex(R16P), contiguous, target, intent(out) :: fptr_dst(:,:,:,:,:,:,:)
-         complex(R16P), contiguous, target, intent(in)  :: fptr_src(:,:,:,:,:,:,:)
-         integer(I4P),  parameter                       :: fptr_dims = 7_I4P
-         include "src/lib/include/dmr_target_memcpy_rect.i90"
-      endsubroutine omp_target_memcpy_rect_f_cmplx128_7
+         complex(R16P), contiguous, target, intent(out) :: fptr_dst(..)
+         complex(R16P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                       :: cpy_dims(:)
+         integer(I4P), intent(out)                      :: ierr
+         integer(I4P), intent(in)                       :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(kind=c_size_t)                         :: elem_dim
+         integer(kind=c_size_t), allocatable            :: omp_dst_offsets(:), omp_src_offsets(:)
+         integer(kind=c_size_t), allocatable            :: volume_dims(:), cptr_dst_dims(:), cptr_src_dims(:)
+         type(c_ptr)                                    :: cptr_dst, cptr_src
+         integer(kind=c_int)                            :: fptr_rank, omp_dst_device, omp_src_device
+         integer(I4P)                                   :: fptr_dims, i
+      endsubroutine omp_target_memcpy_rect_f_cmplx128
 #endif
    endinterface
 
