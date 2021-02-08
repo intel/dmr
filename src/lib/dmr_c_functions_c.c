@@ -40,7 +40,7 @@ int omp_target_is_present_c(void *ptr, int dev_id)
     return omp_target_is_present(ptr, dev_id);
 }
 
-#if defined _OpenMP_TR9
+#if defined _OpenMP_5_1
 void *omp_get_mapped_ptr_c(void *ptr, int dev_id)
 {
     void * dev_ptr = omp_get_mapped_ptr(ptr, dev_id);

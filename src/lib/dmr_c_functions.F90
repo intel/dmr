@@ -50,7 +50,7 @@ module dmr_c_functions
          integer(kind=c_int), value, intent(in) :: dev_id
       endfunction omp_target_is_present_c
 
-#if defined _OpenMP_TR9
+#if defined _OpenMP_5_1
       function omp_get_mapped_ptr_c(ptr, dev_id) bind(c, name='omp_get_mapped_ptr_c')
          use iso_c_binding, only : c_int, c_ptr
          type(c_ptr)                            :: omp_get_mapped_ptr_c
@@ -97,7 +97,7 @@ module dmr_c_functions
    endinterface
 
    public omp_target_alloc_c, omp_target_free_c, omp_target_is_present_c, omp_target_memcpy_c, &
-#if defined _OpenMP_TR9
+#if defined _OpenMP_5_1
           omp_get_mapped_ptr_c, &
 #endif
           omp_target_memcpy_rect_c, omp_target_associate_ptr_c, omp_target_disassociate_ptr_c
