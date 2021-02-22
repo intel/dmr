@@ -14,7 +14,11 @@
          integer(I8P), intent(in)    :: i
          integer(I8P)                :: ii
 
+#if defined _OpenMP_5_1
+         !$omp target device(omp_get_default_device()) has_device_addr(fptr_dev)
+#else
          !$omp target device(omp_get_default_device()) is_device_ptr(fptr_dev)
+#endif
          !$omp teams distribute parallel do private (ii)
          do ii=1, i
             fptr_dev(ii) = const
