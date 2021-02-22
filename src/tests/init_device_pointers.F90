@@ -38,7 +38,7 @@ module init_device_pointers
                        init_cmplx32,  init_cmplx32_2,  init_cmplx64,   init_cmplx64_2
    endinterface init_C
 
-   public init_I, init_R, init_C
+   public init_I!, init_R, init_C
 
    private
 
@@ -48,64 +48,64 @@ module init_device_pointers
       subroutine init_int8(fptr_dev, i)
          integer(I1P), intent(inout) :: fptr_dev(:)
          integer(I1P), parameter     :: const = 1_I1P
-         include "src/tests/include/init_rank_1.i90"
+#include "src/tests/include/init_rank_1.i90"
       endsubroutine init_int8
 
       subroutine init_int16(fptr_dev, i)
          integer(I2P), intent(inout) :: fptr_dev(:)
          integer(I2P), parameter     :: const = 1_I2P
-         include "src/tests/include/init_rank_1.i90"
+#include "src/tests/include/init_rank_1.i90"
       endsubroutine init_int16
 
       subroutine init_int32(fptr_dev, i)
          integer(I4P), intent(inout) :: fptr_dev(:)
          integer(I4P), parameter     :: const = 1_I4P
-         include "src/tests/include/init_rank_1.i90"
+#include "src/tests/include/init_rank_1.i90"
       endsubroutine init_int32
 
       subroutine init_int64(fptr_dev, i)
          integer(I8P), intent(inout) :: fptr_dev(:)
          integer(I8P), parameter     :: const = 1_I8P
-         include "src/tests/include/init_rank_1.i90"
+#include "src/tests/include/init_rank_1.i90"
       endsubroutine init_int64
 
       subroutine init_real32(fptr_dev, i)
          real(R4P), intent(inout) :: fptr_dev(:)
          real(R4P), parameter     :: const = 1.0_R4P
-         include "src/tests/include/init_rank_1.i90"
+#include "src/tests/include/init_rank_1.i90"
       endsubroutine init_real32
 
       subroutine init_real64(fptr_dev, i)
          real(R8P), intent(inout) :: fptr_dev(:)
          real(R8P), parameter     :: const = 1.0_R8P
-         include "src/tests/include/init_rank_1.i90"
+#include "src/tests/include/init_rank_1.i90"
       endsubroutine init_real64
 
 #if defined _real128
       subroutine init_real128(fptr_dev, i)
          real(R16P), intent(inout) :: fptr_dev(:)
          real(R16P), parameter     :: const = 1.0_R16P
-         include "src/tests/include/init_rank_1.i90"
+#include "src/tests/include/init_rank_1.i90"
       endsubroutine init_real128
 #endif
 
       subroutine init_cmplx32(fptr_dev, i)
          complex(R4P), intent(inout) :: fptr_dev(:)
          complex(R4P), parameter     :: const = (1.0_R4P, 0.0_R4P)
-         include "src/tests/include/init_rank_1.i90"
+#include "src/tests/include/init_rank_1.i90"
       endsubroutine init_cmplx32
 
       subroutine init_cmplx64(fptr_dev, i)
          complex(R8P), intent(inout) :: fptr_dev(:)
          complex(R8P), parameter     :: const = (1.0_R8P, 0.0_R8P)
-         include "src/tests/include/init_rank_1.i90"
+#include "src/tests/include/init_rank_1.i90"
       endsubroutine init_cmplx64
 
 #if defined _real128
       subroutine init_cmplx128(fptr_dev, i)
          complex(R16P), intent(inout) :: fptr_dev(:)
          complex(R16P), parameter     :: const = (1.0_R16P, 0.0_R16P)
-         include "src/tests/include/init_rank_1.i90"
+#include "src/tests/include/init_rank_1.i90"
       endsubroutine init_cmplx128
 #endif
 
@@ -113,64 +113,64 @@ module init_device_pointers
       subroutine init_int8_2(fptr_dev, i)
          integer(I1P), intent(inout) :: fptr_dev(:,:)
          integer(I1P), parameter     :: const = 1_I1P
-         include "src/tests/include/init_rank_2.i90"
+#include "src/tests/include/init_rank_2.i90"
       endsubroutine init_int8_2
 
       subroutine init_int16_2(fptr_dev, i)
          integer(I2P), intent(inout) :: fptr_dev(:,:)
          integer(I2P), parameter     :: const = 1_I2P
-         include "src/tests/include/init_rank_2.i90"
+#include "src/tests/include/init_rank_2.i90"
       endsubroutine init_int16_2
 
       subroutine init_int32_2(fptr_dev, i)
          integer(I4P), intent(inout) :: fptr_dev(:,:)
          integer(I4P), parameter     :: const = 1_I4P
-         include "src/tests/include/init_rank_2.i90"
+#include "src/tests/include/init_rank_2.i90"
       endsubroutine init_int32_2
 
       subroutine init_int64_2(fptr_dev, i)
          integer(I8P), intent(inout) :: fptr_dev(:,:)
          integer(I8P), parameter     :: const = 1_I8P
-         include "src/tests/include/init_rank_2.i90"
+#include "src/tests/include/init_rank_2.i90"
       endsubroutine init_int64_2
 
       subroutine init_real32_2(fptr_dev, i)
          real(R4P), intent(inout) :: fptr_dev(:,:)
          real(R4P), parameter     :: const = 1.0_R4P
-         include "src/tests/include/init_rank_2.i90"
+#include "src/tests/include/init_rank_2.i90"
       endsubroutine init_real32_2
 
       subroutine init_real64_2(fptr_dev, i)
          real(R8P), intent(inout) :: fptr_dev(:,:)
          real(R8P), parameter     :: const = 1.0_R8P
-         include "src/tests/include/init_rank_2.i90"
+#include "src/tests/include/init_rank_2.i90"
       endsubroutine init_real64_2
 
 #if defined _real128
       subroutine init_real128_2(fptr_dev, i)
          real(R16P), intent(inout) :: fptr_dev(:,:)
          real(R16P), parameter     :: const = 1.0_R16P
-         include "src/tests/include/init_rank_2.i90"
+#include "src/tests/include/init_rank_2.i90"
       endsubroutine init_real128_2
 #endif
 
       subroutine init_cmplx32_2(fptr_dev, i)
          complex(R4P), intent(inout) :: fptr_dev(:,:)
          complex(R4P), parameter     :: const = (1.0_R4P, 0.0_R4P)
-         include "src/tests/include/init_rank_2.i90"
+#include "src/tests/include/init_rank_2.i90"
       endsubroutine init_cmplx32_2
 
       subroutine init_cmplx64_2(fptr_dev, i)
          complex(R8P), intent(inout) :: fptr_dev(:,:)
          complex(R8P), parameter     :: const = (1.0_R8P, 0.0_R8P)
-         include "src/tests/include/init_rank_2.i90"
+#include "src/tests/include/init_rank_2.i90"
       endsubroutine init_cmplx64_2
 
 #if defined _real128
       subroutine init_cmplx128_2(fptr_dev, i)
          complex(R16P), intent(inout) :: fptr_dev(:,:)
          complex(R16P), parameter     :: const = (1.0_R16P, 0.0_R16P)
-         include "src/tests/include/init_rank_2.i90"
+#include "src/tests/include/init_rank_2.i90"
       endsubroutine init_cmplx128_2
 #endif
 endmodule init_device_pointers
