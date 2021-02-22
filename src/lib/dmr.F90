@@ -100,7 +100,7 @@ module dmr
 
    interface omp_target_memcpy_f
       module procedure &
-#if defined _F2008
+#if defined _OpenMP_5_1
                        omp_target_memcpy_f_int8_scalar,     omp_target_memcpy_f_int16_scalar,   &
                        omp_target_memcpy_f_int32_scalar,    omp_target_memcpy_f_int64_scalar,   &
 #if defined _real128
@@ -1060,7 +1060,7 @@ module dmr
 ! OpenMP Target Memcpy Routines
    interface
       ! OpenMP Target Memcpy Integer Routines
-#if defined _F2008
+#if defined _OpenMP_5_1
       module subroutine omp_target_memcpy_f_int8_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
          implicit none
          integer(I1P), intent(out) :: sc_dst
