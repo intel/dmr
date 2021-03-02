@@ -38,7 +38,7 @@ module init_device_pointers
                        init_cmplx32,  init_cmplx32_2,  init_cmplx64,   init_cmplx64_2
    endinterface init_C
 
-   public init_I!, init_R, init_C
+   public init_I, init_R, init_C
 
    private
 
