@@ -166,9 +166,25 @@ $(DOBJ)dmr_target_init.o: src/lib/dmr_target_init.F90 \
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
+$(DOBJ)dmr_device_memcpy.o: src/lib/dmr_device_memcpy.F90 \
+	$(DOBJ)dmr_environment.o \
+	$(DOBJ)dmr.o
+	@echo $(COTEXT)
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
+
 $(DOBJ)dmr_environment.o: src/lib/dmr_environment.F90
 	@echo $(COTEXT)
 	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
+
+$(DOBJ)init_device_pointers.o: src/tests/init_device_pointers.F90 \
+	$(DOBJ)dmr_environment.o
+	@echo $(COTEXT)
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
+
+$(DOBJ)matmul_device_pointers.o: src/tests/matmul_device_pointers.F90 \
+	$(DOBJ)dmr_environment.o
+	@echo $(COTEXT)
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)test_dmr.o: src/tests/test_dmr.F90 \
 	$(DOBJ)dmr_environment.o \
@@ -181,19 +197,10 @@ $(DOBJ)test_dmr.o: src/tests/test_dmr.F90 \
 	$(DOBJ)dmr_target_memcpy_rect.o \
 	$(DOBJ)dmr_target_memcpy.o \
 	$(DOBJ)dmr_target_memcpy_scalar.o \
-	$(DOBJ)dmr_target_init.o \
+ 	$(DOBJ)dmr_target_init.o \
+	$(DOBJ)dmr_device_memcpy.o \
 	$(DOBJ)init_device_pointers.o \
 	$(DOBJ)matmul_device_pointers.o
-	@echo $(COTEXT)
-	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
-
-$(DOBJ)init_device_pointers.o: src/tests/init_device_pointers.F90 \
-	$(DOBJ)dmr_environment.o
-	@echo $(COTEXT)
-	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
-
-$(DOBJ)matmul_device_pointers.o: src/tests/matmul_device_pointers.F90 \
-	$(DOBJ)dmr_environment.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
