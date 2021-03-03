@@ -433,598 +433,848 @@ module dmr
 
 ! OpenMP Target Alloc Routines
    interface
-#if defined _F2008
       ! OpenMP Target Alloc Integer Routines
-      module subroutine omp_target_alloc_f_int8(fptr_dev, dimensions, omp_dev)
+#if defined _F2008
+      module subroutine omp_target_alloc_f_int8(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
          integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(..)
          integer(I8P), intent(in)                         :: dimensions(:)
          integer(I4P), intent(in)                         :: omp_dev
+         integer(I8P), intent(in), optional               :: bounds(:)
          type(c_ptr)                                      :: cptr_dev
          integer(kind=c_int)                              :: omp_device
+         integer(I1P), pointer                            :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
+                                                             fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
+                                                             fptr7(:,:,:,:,:,:,:)
       endsubroutine omp_target_alloc_f_int8
 
-      module subroutine omp_target_alloc_f_int16(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_int16(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
          integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(..)
          integer(I8P), intent(in)                         :: dimensions(:)
          integer(I4P), intent(in)                         :: omp_dev
+         integer(I8P), intent(in), optional               :: bounds(:)
          type(c_ptr)                                      :: cptr_dev
          integer(kind=c_int)                              :: omp_device
+         integer(I2P), pointer                            :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
+                                                             fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
+                                                             fptr7(:,:,:,:,:,:,:)
       endsubroutine omp_target_alloc_f_int16
 
-      module subroutine omp_target_alloc_f_int32(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_int32(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
          integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(..)
          integer(I8P), intent(in)                         :: dimensions(:)
          integer(I4P), intent(in)                         :: omp_dev
+         integer(I8P), intent(in), optional               :: bounds(:)
          type(c_ptr)                                      :: cptr_dev
          integer(kind=c_int)                              :: omp_device
+         integer(I4P), pointer                            :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
+                                                             fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
+                                                             fptr7(:,:,:,:,:,:,:)
       endsubroutine omp_target_alloc_f_int32
 
-      module subroutine omp_target_alloc_f_int64(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_int64(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
          integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(..)
          integer(I8P), intent(in)                         :: dimensions(:)
          integer(I4P), intent(in)                         :: omp_dev
+         integer(I8P), intent(in), optional               :: bounds(:)
          type(c_ptr)                                      :: cptr_dev
          integer(kind=c_int)                              :: omp_device
+         integer(I8P), pointer                            :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
+                                                             fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
+                                                             fptr7(:,:,:,:,:,:,:)
       endsubroutine omp_target_alloc_f_int64
+#else
+      module subroutine omp_target_alloc_f_int8_1(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I1P), pointer, contiguous, intent(out) :: fptr_dev(:)
+         integer(I8P), intent(in)                       :: dimensions
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(2)
+         integer(I1P), pointer, contiguous              :: fptr(:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int8_1
+
+      module subroutine omp_target_alloc_f_int8_2(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I1P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                       :: dimensions(2)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(4)
+         integer(I1P), pointer, contiguous              :: fptr(:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int8_2
+
+      module subroutine omp_target_alloc_f_int8_3(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I1P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(3)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(6)
+         integer(I1P), pointer, contiguous              :: fptr(:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int8_3
+
+      module subroutine omp_target_alloc_f_int8_4(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I1P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(4)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(8)
+         integer(I1P), pointer, contiguous              :: fptr(:,:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int8_4
+
+      module subroutine omp_target_alloc_f_int8_5(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I1P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(5)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(10)
+         integer(I1P), pointer, contiguous              :: fptr(:,:,:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int8_5
+
+      module subroutine omp_target_alloc_f_int8_6(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I1P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(6)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(12)
+         integer(I1P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int8_6
+
+      module subroutine omp_target_alloc_f_int8_7(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I1P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(7)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(14)
+         integer(I1P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int8_7
+
+      module subroutine omp_target_alloc_f_int16_1(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I2P), pointer, contiguous, intent(out) :: fptr_dev(:)
+         integer(I8P), intent(in)                       :: dimensions
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(2)
+         integer(I2P), pointer, contiguous              :: fptr(:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int16_1
+
+      module subroutine omp_target_alloc_f_int16_2(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I2P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                       :: dimensions(2)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(4)
+         integer(I2P), pointer, contiguous              :: fptr(:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int16_2
+
+      module subroutine omp_target_alloc_f_int16_3(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I2P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(3)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(6)
+         integer(I2P), pointer, contiguous              :: fptr(:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int16_3
+
+      module subroutine omp_target_alloc_f_int16_4(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I2P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(4)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(8)
+         integer(I2P), pointer, contiguous              :: fptr(:,:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int16_4
+
+      module subroutine omp_target_alloc_f_int16_5(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I2P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(5)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(10)
+         integer(I2P), pointer, contiguous              :: fptr(:,:,:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int16_5
+
+      module subroutine omp_target_alloc_f_int16_6(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I2P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(6)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(12)
+         integer(I2P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int16_6
+
+      module subroutine omp_target_alloc_f_int16_7(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I2P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(7)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(14)
+         integer(I2P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int16_7
+
+      module subroutine omp_target_alloc_f_int32_1(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I4P), pointer, contiguous, intent(out) :: fptr_dev(:)
+         integer(I8P), intent(in)                       :: dimensions
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(2)
+         integer(I4P), pointer, contiguous              :: fptr(:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int32_1
+
+      module subroutine omp_target_alloc_f_int32_2(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I4P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                       :: dimensions(2)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(4)
+         integer(I4P), pointer, contiguous              :: fptr(:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int32_2
+
+      module subroutine omp_target_alloc_f_int32_3(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(3)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(6)
+         integer(I4P), pointer, contiguous              :: fptr(:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int32_3
+
+      module subroutine omp_target_alloc_f_int32_4(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(4)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(8)
+         integer(I4P), pointer, contiguous              :: fptr(:,:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int32_4
+
+      module subroutine omp_target_alloc_f_int32_5(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(5)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(10)
+         integer(I4P), pointer, contiguous              :: fptr(:,:,:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int32_5
+
+      module subroutine omp_target_alloc_f_int32_6(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(6)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(12)
+         integer(I4P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int32_6
+
+      module subroutine omp_target_alloc_f_int32_7(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(7)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(14)
+         integer(I4P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int32_7
+
+      module subroutine omp_target_alloc_f_int64_1(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I8P), pointer, contiguous, intent(out) :: fptr_dev(:)
+         integer(I8P), intent(in)                       :: dimensions
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(2)
+         integer(I8P), pointer, contiguous              :: fptr(:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int64_1
+
+      module subroutine omp_target_alloc_f_int64_2(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I8P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                       :: dimensions(2)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(4)
+         integer(I8P), pointer, contiguous              :: fptr(:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int64_2
+
+      module subroutine omp_target_alloc_f_int64_3(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(3)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(6)
+         integer(I8P), pointer, contiguous              :: fptr(:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int64_3
+
+      module subroutine omp_target_alloc_f_int64_4(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(4)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(8)
+         integer(I8P), pointer, contiguous              :: fptr(:,:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int64_4
+
+      module subroutine omp_target_alloc_f_int64_5(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(5)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(10)
+         integer(I8P), pointer, contiguous              :: fptr(:,:,:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int64_5
+
+      module subroutine omp_target_alloc_f_int64_6(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(6)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(12)
+         integer(I8P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int64_6
+
+      module subroutine omp_target_alloc_f_int64_7(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         integer(I8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(7)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(14)
+         integer(I8P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
+         include "src/lib/include/dmr_target_alloc.i90"
+      endsubroutine omp_target_alloc_f_int64_7
+#endif
 
       ! OpenMP Target Alloc Real Routines
-      module subroutine omp_target_alloc_f_real32(fptr_dev, dimensions, omp_dev)
+#if defined _F2008
+      module subroutine omp_target_alloc_f_real32(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
          real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(..)
          integer(I8P), intent(in)                      :: dimensions(:)
          integer(I4P), intent(in)                      :: omp_dev
+         integer(I8P), intent(in), optional            :: bounds(:)
          type(c_ptr)                                   :: cptr_dev
          integer(kind=c_int)                           :: omp_device
+         integer(I1P), pointer                         :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
+                                                          fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
+                                                          fptr7(:,:,:,:,:,:,:)
       endsubroutine omp_target_alloc_f_real32
 
-      module subroutine omp_target_alloc_f_real64(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real64(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
          real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(..)
          integer(I8P), intent(in)                      :: dimensions(:)
          integer(I4P), intent(in)                      :: omp_dev
+         integer(I8P), intent(in), optional            :: bounds(:)
          type(c_ptr)                                   :: cptr_dev
          integer(kind=c_int)                           :: omp_device
+         integer(I1P), pointer                         :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
+                                                          fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
+                                                          fptr7(:,:,:,:,:,:,:)
       endsubroutine omp_target_alloc_f_real64
 
 #if defined _real128
-      module subroutine omp_target_alloc_f_real128(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real128(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
          real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(..)
          integer(I8P), intent(in)                       :: dimensions(:)
          integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(:)
          type(c_ptr)                                    :: cptr_dev
          integer(kind=c_int)                            :: omp_device
+         integer(I1P), pointer                          :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
+                                                           fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
+                                                           fptr7(:,:,:,:,:,:,:)
       endsubroutine omp_target_alloc_f_real128
 #endif
-
-      ! OpenMP Target Alloc Complex Routines
-      module subroutine omp_target_alloc_f_cmplx32(fptr_dev, dimensions, omp_dev)
-         implicit none
-         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(..)
-         integer(I8P), intent(in)                         :: dimensions(:)
-         integer(I4P), intent(in)                         :: omp_dev
-         type(c_ptr)                                      :: cptr_dev
-         integer(kind=c_int)                              :: omp_device
-      endsubroutine omp_target_alloc_f_cmplx32
-
-      module subroutine omp_target_alloc_f_cmplx64(fptr_dev, dimensions, omp_dev)
-         implicit none
-         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(..)
-         integer(I8P), intent(in)                         :: dimensions(:)
-         integer(I4P), intent(in)                         :: omp_dev
-         type(c_ptr)                                      :: cptr_dev
-         integer(kind=c_int)                              :: omp_device
-      endsubroutine omp_target_alloc_f_cmplx64
-
-#if defined _real128
-      module subroutine omp_target_alloc_f_cmplx128(fptr_dev, dimensions, omp_dev)
-         implicit none
-         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(..)
-         integer(I8P), intent(in)                          :: dimensions(:)
-         integer(I4P), intent(in)                          :: omp_dev
-         type(c_ptr)                                       :: cptr_dev
-         integer(kind=c_int)                               :: omp_device
-      endsubroutine omp_target_alloc_f_cmplx128
-#endif
 #else
-      ! OpenMP Target Alloc Integer Routines
-      module subroutine omp_target_alloc_f_int8_1(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real32_1(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:)
-         integer(I8P), intent(in)                         :: dimensions
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int8_1
-
-      module subroutine omp_target_alloc_f_int8_2(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
-         integer(I8P), intent(in)                         :: dimensions(2)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int8_2
-
-      module subroutine omp_target_alloc_f_int8_3(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(3)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int8_3
-
-      module subroutine omp_target_alloc_f_int8_4(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(4)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int8_4
-
-      module subroutine omp_target_alloc_f_int8_5(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(5)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int8_5
-
-      module subroutine omp_target_alloc_f_int8_6(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(6)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int8_6
-
-      module subroutine omp_target_alloc_f_int8_7(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(7)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int8_7
-
-      module subroutine omp_target_alloc_f_int16_1(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:)
-         integer(I8P), intent(in)                         :: dimensions
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int16_1
-
-      module subroutine omp_target_alloc_f_int16_2(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
-         integer(I8P), intent(in)                         :: dimensions(2)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int16_2
-
-      module subroutine omp_target_alloc_f_int16_3(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(3)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int16_3
-
-      module subroutine omp_target_alloc_f_int16_4(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(4)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int16_4
-
-      module subroutine omp_target_alloc_f_int16_5(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(5)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int16_5
-
-      module subroutine omp_target_alloc_f_int16_6(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(6)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int16_6
-
-      module subroutine omp_target_alloc_f_int16_7(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(7)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int16_7
-
-      module subroutine omp_target_alloc_f_int32_1(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:)
-         integer(I8P), intent(in)                         :: dimensions
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int32_1
-
-      module subroutine omp_target_alloc_f_int32_2(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
-         integer(I8P), intent(in)                         :: dimensions(2)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int32_2
-
-      module subroutine omp_target_alloc_f_int32_3(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(3)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int32_3
-
-      module subroutine omp_target_alloc_f_int32_4(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(4)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int32_4
-
-      module subroutine omp_target_alloc_f_int32_5(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(5)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int32_5
-
-      module subroutine omp_target_alloc_f_int32_6(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(6)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int32_6
-
-      module subroutine omp_target_alloc_f_int32_7(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(7)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int32_7
-
-      module subroutine omp_target_alloc_f_int64_1(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:)
-         integer(I8P), intent(in)                         :: dimensions
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int64_1
-
-      module subroutine omp_target_alloc_f_int64_2(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
-         integer(I8P), intent(in)                         :: dimensions(2)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int64_2
-
-      module subroutine omp_target_alloc_f_int64_3(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(3)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int64_3
-
-      module subroutine omp_target_alloc_f_int64_4(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(4)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int64_4
-
-      module subroutine omp_target_alloc_f_int64_5(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(5)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int64_5
-
-      module subroutine omp_target_alloc_f_int64_6(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(6)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int64_6
-
-      module subroutine omp_target_alloc_f_int64_7(fptr_dev, dimensions, omp_dev)
-         implicit none
-         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(7)
-         include "src/lib/include/dmr_target_alloc.i90"
-      endsubroutine omp_target_alloc_f_int64_7
-
-      ! OpenMP Target Alloc Real Routines
-      module subroutine omp_target_alloc_f_real32_1(fptr_dev, dimensions, omp_dev)
-         implicit none
-         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:)
-         integer(I8P), intent(in)                      :: dimensions
+         real(R4P), pointer, contiguous, intent(out) :: fptr_dev(:)
+         integer(I8P), intent(in)                    :: dimensions
+         integer(I4P), intent(in)                    :: omp_dev
+         integer(I8P), intent(in), optional          :: bounds(2)
+         real(R4P), pointer, contiguous              :: fptr(:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real32_1
 
-      module subroutine omp_target_alloc_f_real32_2(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real32_2(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
-         integer(I8P), intent(in)                      :: dimensions(2)
+         real(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                    :: dimensions(2)
+         integer(I4P), intent(in)                    :: omp_dev
+         integer(I8P), intent(in), optional          :: bounds(4)
+         real(R4P), pointer, contiguous              :: fptr(:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real32_2
 
-      module subroutine omp_target_alloc_f_real32_3(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real32_3(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
-         integer(I8P), intent(in)                      :: dimensions(3)
+         real(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                    :: dimensions(3)
+         integer(I4P), intent(in)                    :: omp_dev
+         integer(I8P), intent(in), optional          :: bounds(6)
+         real(R4P), pointer, contiguous              :: fptr(:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real32_3
 
-      module subroutine omp_target_alloc_f_real32_4(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real32_4(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
-         integer(I8P), intent(in)                      :: dimensions(4)
+         real(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                    :: dimensions(4)
+         integer(I4P), intent(in)                    :: omp_dev
+         integer(I8P), intent(in), optional          :: bounds(8)
+         real(R4P), pointer, contiguous              :: fptr(:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real32_4
 
-      module subroutine omp_target_alloc_f_real32_5(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real32_5(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
-         integer(I8P), intent(in)                      :: dimensions(5)
+         real(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                    :: dimensions(5)
+         integer(I4P), intent(in)                    :: omp_dev
+         integer(I8P), intent(in), optional          :: bounds(10)
+         real(R4P), pointer, contiguous              :: fptr(:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
-
       endsubroutine omp_target_alloc_f_real32_5
 
-      module subroutine omp_target_alloc_f_real32_6(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real32_6(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
-         integer(I8P), intent(in)                      :: dimensions(6)
+         real(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                    :: dimensions(6)
+         integer(I4P), intent(in)                    :: omp_dev
+         integer(I8P), intent(in), optional          :: bounds(12)
+         real(R4P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real32_6
 
-      module subroutine omp_target_alloc_f_real32_7(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real32_7(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
-         integer(I8P), intent(in)                      :: dimensions(7)
+         real(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                    :: dimensions(7)
+         integer(I4P), intent(in)                    :: omp_dev
+         integer(I8P), intent(in), optional          :: bounds(14)
+         real(R4P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real32_7
 
-      module subroutine omp_target_alloc_f_real64_1(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real64_1(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:)
-         integer(I8P), intent(in)                      :: dimensions
+         real(R8P), pointer, contiguous, intent(out) :: fptr_dev(:)
+         integer(I8P), intent(in)                    :: dimensions
+         integer(I4P), intent(in)                    :: omp_dev
+         integer(I8P), intent(in), optional          :: bounds(2)
+         real(R8P), pointer, contiguous              :: fptr(:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real64_1
 
-      module subroutine omp_target_alloc_f_real64_2(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real64_2(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
-         integer(I8P), intent(in)                      :: dimensions(2)
+         real(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                    :: dimensions(2)
+         integer(I4P), intent(in)                    :: omp_dev
+         integer(I8P), intent(in), optional          :: bounds(4)
+         real(R8P), pointer, contiguous              :: fptr(:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real64_2
 
-      module subroutine omp_target_alloc_f_real64_3(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real64_3(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
-         integer(I8P), intent(in)                      :: dimensions(3)
+         real(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                    :: dimensions(3)
+         integer(I4P), intent(in)                    :: omp_dev
+         integer(I8P), intent(in), optional          :: bounds(6)
+         real(R8P), pointer, contiguous              :: fptr(:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real64_3
 
-      module subroutine omp_target_alloc_f_real64_4(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real64_4(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
-         integer(I8P), intent(in)                      :: dimensions(4)
+         real(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                    :: dimensions(4)
+         integer(I4P), intent(in)                    :: omp_dev
+         integer(I8P), intent(in), optional          :: bounds(8)
+         real(R8P), pointer, contiguous              :: fptr(:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real64_4
 
-      module subroutine omp_target_alloc_f_real64_5(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real64_5(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
-         integer(I8P), intent(in)                      :: dimensions(5)
+         real(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                    :: dimensions(5)
+         integer(I4P), intent(in)                    :: omp_dev
+         integer(I8P), intent(in), optional          :: bounds(10)
+         real(R8P), pointer, contiguous              :: fptr(:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real64_5
 
-      module subroutine omp_target_alloc_f_real64_6(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real64_6(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
-         integer(I8P), intent(in)                      :: dimensions(6)
+         real(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                    :: dimensions(6)
+         integer(I4P), intent(in)                    :: omp_dev
+         integer(I8P), intent(in), optional          :: bounds(12)
+         real(R8P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real64_6
 
-      module subroutine omp_target_alloc_f_real64_7(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real64_7(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
-         integer(I8P), intent(in)                      :: dimensions(7)
+         real(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                    :: dimensions(7)
+         integer(I4P), intent(in)                    :: omp_dev
+         integer(I8P), intent(in), optional          :: bounds(14)
+         real(R8P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real64_7
 
 #if defined _real128
-      module subroutine omp_target_alloc_f_real128_1(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real128_1(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:)
-         integer(I8P), intent(in)                       :: dimensions
+         real(R16P), pointer, contiguous, intent(out) :: fptr_dev(:)
+         integer(I8P), intent(in)                     :: dimensions
+         integer(I4P), intent(in)                     :: omp_dev
+         integer(I8P), intent(in), optional           :: bounds(2)
+         real(R16P), pointer, contiguous              :: fptr(:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real128_1
 
-      module subroutine omp_target_alloc_f_real128_2(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real128_2(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
-         integer(I8P), intent(in)                       :: dimensions(2)
+         real(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                     :: dimensions(2)
+         integer(I4P), intent(in)                     :: omp_dev
+         integer(I8P), intent(in), optional           :: bounds(4)
+         real(R16P), pointer, contiguous              :: fptr(:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real128_2
 
-      module subroutine omp_target_alloc_f_real128_3(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real128_3(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
-         integer(I8P), intent(in)                       :: dimensions(3)
+         real(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                     :: dimensions(3)
+         integer(I4P), intent(in)                     :: omp_dev
+         integer(I8P), intent(in), optional           :: bounds(6)
+         real(R16P), pointer, contiguous              :: fptr(:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real128_3
 
-      module subroutine omp_target_alloc_f_real128_4(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real128_4(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
-         integer(I8P), intent(in)                       :: dimensions(4)
+         real(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                     :: dimensions(4)
+         integer(I4P), intent(in)                     :: omp_dev
+         integer(I8P), intent(in), optional           :: bounds(8)
+         real(R16P), pointer, contiguous              :: fptr(:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real128_4
 
-      module subroutine omp_target_alloc_f_real128_5(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real128_5(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
-         integer(I8P), intent(in)                       :: dimensions(5)
+         real(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                     :: dimensions(5)
+         integer(I4P), intent(in)                     :: omp_dev
+         integer(I8P), intent(in), optional           :: bounds(10)
+         real(R16P), pointer, contiguous              :: fptr(:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real128_5
 
-      module subroutine omp_target_alloc_f_real128_6(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real128_6(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
-         integer(I8P), intent(in)                       :: dimensions(6)
+         real(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                     :: dimensions(6)
+         integer(I4P), intent(in)                     :: omp_dev
+         integer(I8P), intent(in), optional           :: bounds(12)
+         real(R16P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real128_6
 
-      module subroutine omp_target_alloc_f_real128_7(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_real128_7(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
-         integer(I8P), intent(in)                       :: dimensions(7)
+         real(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                     :: dimensions(7)
+         integer(I4P), intent(in)                     :: omp_dev
+         integer(I8P), intent(in), optional           :: bounds(14)
+         real(R16P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real128_7
 #endif
+#endif
 
       ! OpenMP Target Alloc Complex Routines
-      module subroutine omp_target_alloc_f_cmplx32_1(fptr_dev, dimensions, omp_dev)
+#if defined _F2008
+      module subroutine omp_target_alloc_f_cmplx32(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:)
-         integer(I8P), intent(in)                         :: dimensions
+         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(..)
+         integer(I8P), intent(in)                         :: dimensions(:)
+         integer(I4P), intent(in)                         :: omp_dev
+         integer(I8P), intent(in), optional               :: bounds(:)
+         type(c_ptr)                                      :: cptr_dev
+         integer(kind=c_int)                              :: omp_device
+         integer(I1P), pointer                            :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
+                                                             fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
+                                                             fptr7(:,:,:,:,:,:,:)
+      endsubroutine omp_target_alloc_f_cmplx32
+
+      module subroutine omp_target_alloc_f_cmplx64(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(..)
+         integer(I8P), intent(in)                         :: dimensions(:)
+         integer(I4P), intent(in)                         :: omp_dev
+         integer(I8P), intent(in), optional               :: bounds(:)
+         type(c_ptr)                                      :: cptr_dev
+         integer(kind=c_int)                              :: omp_device
+         integer(I1P), pointer                            :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
+                                                             fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
+                                                             fptr7(:,:,:,:,:,:,:)
+      endsubroutine omp_target_alloc_f_cmplx64
+
+#if defined _real128
+      module subroutine omp_target_alloc_f_cmplx128(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(..)
+         integer(I8P), intent(in)                          :: dimensions(:)
+         integer(I4P), intent(in)                          :: omp_dev
+         integer(I8P), intent(in), optional                :: bounds(:)
+         type(c_ptr)                                       :: cptr_dev
+         integer(kind=c_int)                               :: omp_device
+         integer(I1P), pointer                             :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
+                                                              fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
+                                                              fptr7(:,:,:,:,:,:,:)
+      endsubroutine omp_target_alloc_f_cmplx128
+#endif
+#else
+      module subroutine omp_target_alloc_f_cmplx32_1(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         complex(R4P), pointer, contiguous, intent(out) :: fptr_dev(:)
+         integer(I8P), intent(in)                       :: dimensions
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(2)
+         complex(R4P), pointer, contiguous              :: fptr(:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx32_1
 
-      module subroutine omp_target_alloc_f_cmplx32_2(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx32_2(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
-         integer(I8P), intent(in)                         :: dimensions(2)
+         complex(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                       :: dimensions(2)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(4)
+         complex(R4P), pointer, contiguous              :: fptr(:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx32_2
 
-      module subroutine omp_target_alloc_f_cmplx32_3(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx32_3(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(3)
+         complex(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(3)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(6)
+         complex(R4P), pointer, contiguous              :: fptr(:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx32_3
 
-      module subroutine omp_target_alloc_f_cmplx32_4(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx32_4(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(4)
+         complex(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(4)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(8)
+         complex(R4P), pointer, contiguous              :: fptr(:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx32_4
 
-      module subroutine omp_target_alloc_f_cmplx32_5(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx32_5(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(5)
+         complex(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(5)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(10)
+         complex(R4P), pointer, contiguous              :: fptr(:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx32_5
 
-      module subroutine omp_target_alloc_f_cmplx32_6(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx32_6(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(6)
+         complex(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(6)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(12)
+         complex(R4P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx32_6
 
-      module subroutine omp_target_alloc_f_cmplx32_7(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx32_7(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(7)
+         complex(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(7)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(14)
+         complex(R4P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx32_7
 
-      module subroutine omp_target_alloc_f_cmplx64_1(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx64_1(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:)
-         integer(I8P), intent(in)                         :: dimensions
+         complex(R8P), pointer, contiguous, intent(out) :: fptr_dev(:)
+         integer(I8P), intent(in)                       :: dimensions
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(2)
+         complex(R8P), pointer, contiguous              :: fptr(:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx64_1
 
-      module subroutine omp_target_alloc_f_cmplx64_2(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx64_2(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
-         integer(I8P), intent(in)                         :: dimensions(2)
+         complex(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                       :: dimensions(2)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(4)
+         complex(R8P), pointer, contiguous              :: fptr(:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx64_2
 
-      module subroutine omp_target_alloc_f_cmplx64_3(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx64_3(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(3)
+         complex(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(3)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(6)
+         complex(R8P), pointer, contiguous              :: fptr(:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx64_3
 
-      module subroutine omp_target_alloc_f_cmplx64_4(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx64_4(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(4)
+         complex(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(4)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(8)
+         complex(R8P), pointer, contiguous              :: fptr(:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx64_4
 
-      module subroutine omp_target_alloc_f_cmplx64_5(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx64_5(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(5)
+         complex(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(5)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(10)
+         complex(R8P), pointer, contiguous              :: fptr(:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx64_5
 
-      module subroutine omp_target_alloc_f_cmplx64_6(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx64_6(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(6)
+         complex(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(6)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(12)
+         complex(R8P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx64_6
 
-      module subroutine omp_target_alloc_f_cmplx64_7(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx64_7(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
-         integer(I8P), intent(in)                         :: dimensions(7)
+         complex(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                       :: dimensions(7)
+         integer(I4P), intent(in)                       :: omp_dev
+         integer(I8P), intent(in), optional             :: bounds(14)
+         complex(R8P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx64_7
 
 #if defined _real128
-      module subroutine omp_target_alloc_f_cmplx128_1(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx128_1(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:)
-         integer(I8P), intent(in)                          :: dimensions
+         complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:)
+         integer(I8P), intent(in)                        :: dimensions
+         integer(I4P), intent(in)                        :: omp_dev
+         integer(I8P), intent(in), optional              :: bounds(2)
+         complex(R16P), pointer, contiguous              :: fptr(:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx128_1
 
-      module subroutine omp_target_alloc_f_cmplx128_2(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx128_2(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:)
-         integer(I8P), intent(in)                          :: dimensions(2)
+         complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
+         integer(I8P), intent(in)                        :: dimensions(2)
+         integer(I4P), intent(in)                        :: omp_dev
+         integer(I8P), intent(in), optional              :: bounds(4)
+         complex(R16P), pointer, contiguous              :: fptr(:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx128_2
 
-      module subroutine omp_target_alloc_f_cmplx128_3(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx128_3(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:)
-         integer(I8P), intent(in)                          :: dimensions(3)
+         complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
+         integer(I8P), intent(in)                        :: dimensions(3)
+         integer(I4P), intent(in)                        :: omp_dev
+         integer(I8P), intent(in), optional              :: bounds(6)
+         complex(R16P), pointer, contiguous              :: fptr(:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx128_3
 
-      module subroutine omp_target_alloc_f_cmplx128_4(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx128_4(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:)
-         integer(I8P), intent(in)                          :: dimensions(4)
+         complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
+         integer(I8P), intent(in)                        :: dimensions(4)
+         integer(I4P), intent(in)                        :: omp_dev
+         integer(I8P), intent(in), optional              :: bounds(8)
+         complex(R16P), pointer, contiguous              :: fptr(:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx128_4
 
-      module subroutine omp_target_alloc_f_cmplx128_5(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx128_5(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:)
-         integer(I8P), intent(in)                          :: dimensions(5)
+         complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
+         integer(I8P), intent(in)                        :: dimensions(5)
+         integer(I4P), intent(in)                        :: omp_dev
+         integer(I8P), intent(in), optional              :: bounds(10)
+         complex(R16P), pointer, contiguous              :: fptr(:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx128_5
 
-      module subroutine omp_target_alloc_f_cmplx128_6(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx128_6(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:)
-         integer(I8P), intent(in)                          :: dimensions(6)
+         complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
+         integer(I8P), intent(in)                        :: dimensions(6)
+         integer(I4P), intent(in)                        :: omp_dev
+         integer(I8P), intent(in), optional              :: bounds(12)
+         complex(R16P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx128_6
 
-      module subroutine omp_target_alloc_f_cmplx128_7(fptr_dev, dimensions, omp_dev)
+      module subroutine omp_target_alloc_f_cmplx128_7(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
-         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(:,:,:,:,:,:,:)
-         integer(I8P), intent(in)                          :: dimensions(7)
+         complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
+         integer(I8P), intent(in)                        :: dimensions(7)
+         integer(I4P), intent(in)                        :: omp_dev
+         integer(I8P), intent(in), optional              :: bounds(14)
+         complex(R16P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx128_7
 #endif
