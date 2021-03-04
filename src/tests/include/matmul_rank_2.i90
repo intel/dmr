@@ -15,15 +15,13 @@
          integer(I8P)                :: ii, jj
 
 #if defined _OpenMP_5_1
-         !$omp target device(omp_get_default_device()) has_device_addr(fptr_dev)
+         !$omp target teams distribute parallel do device(omp_get_default_device()) has_device_addr(fptr_dev)
 #else
-         !$omp target device(omp_get_default_device()) is_device_ptr(fptr_dev)
+         !$omp target teams distribute parallel do device(omp_get_default_device()) is_device_ptr(fptr_dev)
 #endif
-         !$omp teams distribute parallel do private (ii, jj)
          do jj=1, i
             do ii=1, i
                fptr_dev(ii, jj) = fptr_dev(ii, jj) * k
             enddo
          enddo
-         !$omp end teams distribute parallel do
-         !$omp end target
+         !$omp end target teams distribute parallel do

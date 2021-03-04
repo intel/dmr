@@ -6,15 +6,14 @@ DSRC = src
 
 ifdef gnu
    FC = gfortran
-   FORT = $(FC)
    CC  = gcc
    LDFLAGS = -fopenmp -foffload=nvptx-none -c
    ifdef debug
       LDFLAGS = -fopenmp -foffload=nvptx-none -g -Wall -ftracer -c
    endif
    FCFLAGS = $(LDFLAGS) -J$(DMOD)
-   FORTFLAGS = -g -c -Wall -J$(DMOD)
    EXEFLAGS = -fopenmp -foffload=nvptx-none -g -Wall -ftracer -J$(DMOD)
+   DFLAGS =
 endif
 
 ifdef intel
@@ -28,22 +27,20 @@ ifdef intel
    FCFLAGS  = $(LDFLAGS) -traceback -module $(DMOD) -what
    FORTFLAGS = -c -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
    EXEFLAGS = -fiopenmp -fopenmp-targets=spir64 -g -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
-   DFLAGS = -D_real128 -D_OpenMP_5_1
+   DFLAGS = -D_OpenMP_5_1 -D_F2008
 endif
 
 ifdef ibm
    FC = xlf2008_r
-   FORT = xlf2008_r
    CC = xlc
    LDFLAGS = -qsmp=omp -qoffload -c
    ifdef debug
       LDFLAGS = -g -qtbtable=full -qcheck -qsmp=omp -qoffload -c
    endif
    FCFLAGS = $(LDFLAGS) -qsigtrap -qmaxmem=-1 -qmoddir=$(DMOD) -I$(DMOD)
-   FORTFLAGS = -g -qtbtable=full -qcheck -qsigtrap -qsmp=omp -qoffload -qmaxmem=-1 -qtgtarch=sm_70 -qcuda -c -qmoddir=$(DMOD) -I$(DMOD)
    EXEFLAGS = -g -qtbtable=full -qcheck -qsigtrap -qsmp=omp -qoffload -qmaxmem=-1 -qtgtarch=sm_70 -qcuda -qmoddir=$(DMOD) -I$(DMOD)
-   DFLAGS =
    OBJECTS = exe/obj/dmr.o exe/obj/dmr_c_functions.o exe/obj/init_device_pointers.o exe/obj/matmul_device_pointers.o exe/obj/penf_b_size.o exe/obj/penf_global_parameters_variables.o exe/obj/penf.o exe/obj/penf_stringify.o exe/obj/test_dmr.o
+   DFLAGS =
 endif
 
 TEST = no
@@ -102,35 +99,35 @@ $(DOBJ)dmr.o: src/lib/dmr.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr_c_functions.o
 	@echo $(COTEXT)
-	@$(FORT) $(FCFLAGS) $(DFLAGS)  $< -o $@
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_target_is_present.o: src/lib/dmr_target_is_present.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr_c_functions.o \
 	$(DOBJ)dmr.o
 	@echo $(COTEXT)
-	@$(FORT) $(FCFLAGS) $(DFLAGS)  $< -o $@
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_target_free.o: src/lib/dmr_target_free.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr_c_functions.o \
 	$(DOBJ)dmr.o
 	@echo $(COTEXT)
-	@$(FORT) $(FCFLAGS) $(DFLAGS)  $< -o $@
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_target_alloc.o: src/lib/dmr_target_alloc.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr_c_functions.o \
 	$(DOBJ)dmr.o
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_target_memcpy.o: src/lib/dmr_target_memcpy.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr_c_functions.o \
 	$(DOBJ)dmr.o
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_target_memcpy_scalar.o: src/lib/dmr_target_memcpy_scalar.F90 \
 	$(DOBJ)dmr_environment.o \
@@ -144,14 +141,14 @@ $(DOBJ)dmr_target_memcpy_rect.o: src/lib/dmr_target_memcpy_rect.F90 \
 	$(DOBJ)dmr_c_functions.o \
 	$(DOBJ)dmr.o
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_get_mapped_ptr.o: src/lib/dmr_get_mapped_ptr.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr_c_functions.o \
 	$(DOBJ)dmr.o
 	@echo $(COTEXT)
-	@$(FORT) $(FCFLAGS) $(DFLAGS)  $< -o $@
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_correctly_mapped.o: src/lib/dmr_correctly_mapped.F90 \
 	$(DOBJ)dmr_environment.o \
@@ -174,7 +171,7 @@ $(DOBJ)dmr_device_memcpy.o: src/lib/dmr_device_memcpy.F90 \
 
 $(DOBJ)dmr_environment.o: src/lib/dmr_environment.F90
 	@echo $(COTEXT)
-	@$(FORT) $(FORTFLAGS) $(DFLAGS)  $< -o $@
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)init_device_pointers.o: src/tests/init_device_pointers.F90 \
 	$(DOBJ)dmr_environment.o

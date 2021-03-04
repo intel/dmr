@@ -49,18 +49,6 @@ module dmr
 
    interface omp_target_alloc_f
       module procedure &
-#if defined _F2008
-                       omp_target_alloc_f_int8,     omp_target_alloc_f_int16,  omp_target_alloc_f_int32, &
-                       omp_target_alloc_f_int64,    &
-#if defined _real128
-                       omp_target_alloc_f_real128,  &
-#endif
-                       omp_target_alloc_f_real32,   omp_target_alloc_f_real64, &
-#if defined _real128
-                       omp_target_alloc_f_cmplx128, &
-#endif
-                       omp_target_alloc_f_cmplx32,  omp_target_alloc_f_cmplx64
-#else
                        omp_target_alloc_f_int8_1,     omp_target_alloc_f_int8_2,     omp_target_alloc_f_int8_3,     &
                        omp_target_alloc_f_int8_4,     omp_target_alloc_f_int8_5,     omp_target_alloc_f_int8_6,     &
                        omp_target_alloc_f_int8_7,     &
@@ -95,7 +83,6 @@ module dmr
                        omp_target_alloc_f_cmplx64_1,  omp_target_alloc_f_cmplx64_2,  omp_target_alloc_f_cmplx64_3,  &
                        omp_target_alloc_f_cmplx64_4,  omp_target_alloc_f_cmplx64_5,  omp_target_alloc_f_cmplx64_6,  &
                        omp_target_alloc_f_cmplx64_7
-#endif
    endinterface omp_target_alloc_f
 
    interface omp_target_memcpy_f
@@ -434,59 +421,6 @@ module dmr
 ! OpenMP Target Alloc Routines
    interface
       ! OpenMP Target Alloc Integer Routines
-#if defined _F2008
-      module subroutine omp_target_alloc_f_int8(fptr_dev, dimensions, omp_dev, bounds)
-         implicit none
-         integer(I1P), pointer, contiguous, intent(inout) :: fptr_dev(..)
-         integer(I8P), intent(in)                         :: dimensions(:)
-         integer(I4P), intent(in)                         :: omp_dev
-         integer(I8P), intent(in), optional               :: bounds(:)
-         type(c_ptr)                                      :: cptr_dev
-         integer(kind=c_int)                              :: omp_device
-         integer(I1P), pointer                            :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
-                                                             fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
-                                                             fptr7(:,:,:,:,:,:,:)
-      endsubroutine omp_target_alloc_f_int8
-
-      module subroutine omp_target_alloc_f_int16(fptr_dev, dimensions, omp_dev, bounds)
-         implicit none
-         integer(I2P), pointer, contiguous, intent(inout) :: fptr_dev(..)
-         integer(I8P), intent(in)                         :: dimensions(:)
-         integer(I4P), intent(in)                         :: omp_dev
-         integer(I8P), intent(in), optional               :: bounds(:)
-         type(c_ptr)                                      :: cptr_dev
-         integer(kind=c_int)                              :: omp_device
-         integer(I2P), pointer                            :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
-                                                             fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
-                                                             fptr7(:,:,:,:,:,:,:)
-      endsubroutine omp_target_alloc_f_int16
-
-      module subroutine omp_target_alloc_f_int32(fptr_dev, dimensions, omp_dev, bounds)
-         implicit none
-         integer(I4P), pointer, contiguous, intent(inout) :: fptr_dev(..)
-         integer(I8P), intent(in)                         :: dimensions(:)
-         integer(I4P), intent(in)                         :: omp_dev
-         integer(I8P), intent(in), optional               :: bounds(:)
-         type(c_ptr)                                      :: cptr_dev
-         integer(kind=c_int)                              :: omp_device
-         integer(I4P), pointer                            :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
-                                                             fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
-                                                             fptr7(:,:,:,:,:,:,:)
-      endsubroutine omp_target_alloc_f_int32
-
-      module subroutine omp_target_alloc_f_int64(fptr_dev, dimensions, omp_dev, bounds)
-         implicit none
-         integer(I8P), pointer, contiguous, intent(inout) :: fptr_dev(..)
-         integer(I8P), intent(in)                         :: dimensions(:)
-         integer(I4P), intent(in)                         :: omp_dev
-         integer(I8P), intent(in), optional               :: bounds(:)
-         type(c_ptr)                                      :: cptr_dev
-         integer(kind=c_int)                              :: omp_device
-         integer(I8P), pointer                            :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
-                                                             fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
-                                                             fptr7(:,:,:,:,:,:,:)
-      endsubroutine omp_target_alloc_f_int64
-#else
       module subroutine omp_target_alloc_f_int8_1(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
          integer(I1P), pointer, contiguous, intent(out) :: fptr_dev(:)
@@ -766,51 +700,8 @@ module dmr
          integer(I8P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int64_7
-#endif
 
       ! OpenMP Target Alloc Real Routines
-#if defined _F2008
-      module subroutine omp_target_alloc_f_real32(fptr_dev, dimensions, omp_dev, bounds)
-         implicit none
-         real(R4P), pointer, contiguous, intent(inout) :: fptr_dev(..)
-         integer(I8P), intent(in)                      :: dimensions(:)
-         integer(I4P), intent(in)                      :: omp_dev
-         integer(I8P), intent(in), optional            :: bounds(:)
-         type(c_ptr)                                   :: cptr_dev
-         integer(kind=c_int)                           :: omp_device
-         integer(I1P), pointer                         :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
-                                                          fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
-                                                          fptr7(:,:,:,:,:,:,:)
-      endsubroutine omp_target_alloc_f_real32
-
-      module subroutine omp_target_alloc_f_real64(fptr_dev, dimensions, omp_dev, bounds)
-         implicit none
-         real(R8P), pointer, contiguous, intent(inout) :: fptr_dev(..)
-         integer(I8P), intent(in)                      :: dimensions(:)
-         integer(I4P), intent(in)                      :: omp_dev
-         integer(I8P), intent(in), optional            :: bounds(:)
-         type(c_ptr)                                   :: cptr_dev
-         integer(kind=c_int)                           :: omp_device
-         integer(I1P), pointer                         :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
-                                                          fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
-                                                          fptr7(:,:,:,:,:,:,:)
-      endsubroutine omp_target_alloc_f_real64
-
-#if defined _real128
-      module subroutine omp_target_alloc_f_real128(fptr_dev, dimensions, omp_dev, bounds)
-         implicit none
-         real(R16P), pointer, contiguous, intent(inout) :: fptr_dev(..)
-         integer(I8P), intent(in)                       :: dimensions(:)
-         integer(I4P), intent(in)                       :: omp_dev
-         integer(I8P), intent(in), optional             :: bounds(:)
-         type(c_ptr)                                    :: cptr_dev
-         integer(kind=c_int)                            :: omp_device
-         integer(I1P), pointer                          :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
-                                                           fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
-                                                           fptr7(:,:,:,:,:,:,:)
-      endsubroutine omp_target_alloc_f_real128
-#endif
-#else
       module subroutine omp_target_alloc_f_real32_1(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
          real(R4P), pointer, contiguous, intent(out) :: fptr_dev(:)
@@ -1022,51 +913,8 @@ module dmr
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real128_7
 #endif
-#endif
 
       ! OpenMP Target Alloc Complex Routines
-#if defined _F2008
-      module subroutine omp_target_alloc_f_cmplx32(fptr_dev, dimensions, omp_dev, bounds)
-         implicit none
-         complex(R4P), pointer, contiguous, intent(inout) :: fptr_dev(..)
-         integer(I8P), intent(in)                         :: dimensions(:)
-         integer(I4P), intent(in)                         :: omp_dev
-         integer(I8P), intent(in), optional               :: bounds(:)
-         type(c_ptr)                                      :: cptr_dev
-         integer(kind=c_int)                              :: omp_device
-         integer(I1P), pointer                            :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
-                                                             fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
-                                                             fptr7(:,:,:,:,:,:,:)
-      endsubroutine omp_target_alloc_f_cmplx32
-
-      module subroutine omp_target_alloc_f_cmplx64(fptr_dev, dimensions, omp_dev, bounds)
-         implicit none
-         complex(R8P), pointer, contiguous, intent(inout) :: fptr_dev(..)
-         integer(I8P), intent(in)                         :: dimensions(:)
-         integer(I4P), intent(in)                         :: omp_dev
-         integer(I8P), intent(in), optional               :: bounds(:)
-         type(c_ptr)                                      :: cptr_dev
-         integer(kind=c_int)                              :: omp_device
-         integer(I1P), pointer                            :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
-                                                             fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
-                                                             fptr7(:,:,:,:,:,:,:)
-      endsubroutine omp_target_alloc_f_cmplx64
-
-#if defined _real128
-      module subroutine omp_target_alloc_f_cmplx128(fptr_dev, dimensions, omp_dev, bounds)
-         implicit none
-         complex(R16P), pointer, contiguous, intent(inout) :: fptr_dev(..)
-         integer(I8P), intent(in)                          :: dimensions(:)
-         integer(I4P), intent(in)                          :: omp_dev
-         integer(I8P), intent(in), optional                :: bounds(:)
-         type(c_ptr)                                       :: cptr_dev
-         integer(kind=c_int)                               :: omp_device
-         integer(I1P), pointer                             :: fptr1(:),       fptr2(:,:),       fptr3(:,:,:),       &
-                                                              fptr4(:,:,:,:), fptr5(:,:,:,:,:), fptr6(:,:,:,:,:,:), &
-                                                              fptr7(:,:,:,:,:,:,:)
-      endsubroutine omp_target_alloc_f_cmplx128
-#endif
-#else
       module subroutine omp_target_alloc_f_cmplx32_1(fptr_dev, dimensions, omp_dev, bounds)
          implicit none
          complex(R4P), pointer, contiguous, intent(out) :: fptr_dev(:)
@@ -1277,7 +1125,6 @@ module dmr
          complex(R16P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
          include "src/lib/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx128_7
-#endif
 #endif
    endinterface
 
@@ -3096,45 +2943,52 @@ module dmr
    interface
       ! DMR Device Memcopy Integer Routines
 #if defined _F2008
-      module subroutine omp_device_memcpy_int8(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_int8(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          integer(I1P), intent(out)          :: array_dst(..)
          integer(I1P), intent(in)           :: array_src(..)
          integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int8
 
-      module subroutine omp_device_memcpy_int16(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_int16(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          integer(I2P), intent(out)          :: array_dst(..)
          integer(I2P), intent(in)           :: array_src(..)
+         integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int16
 
-      module subroutine omp_device_memcpy_int32(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_int32(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          integer(I4P), intent(out)          :: array_dst(..)
          integer(I4P), intent(in)           :: array_src(..)
+         integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int32
 
-      module subroutine omp_device_memcpy_int64(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_int64(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          integer(I8P), intent(out)          :: array_dst(..)
          integer(I8P), intent(in)           :: array_src(..)
+         integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int64
 #else
       module subroutine omp_device_memcpy_int8_1(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3145,7 +2999,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int8_1
 
       module subroutine omp_device_memcpy_int8_2(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3156,7 +3010,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int8_2
 
       module subroutine omp_device_memcpy_int8_3(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3167,7 +3021,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int8_3
 
       module subroutine omp_device_memcpy_int8_4(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3178,7 +3032,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int8_4
 
       module subroutine omp_device_memcpy_int8_5(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3189,7 +3043,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int8_5
 
       module subroutine omp_device_memcpy_int8_6(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3200,7 +3054,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int8_6
 
       module subroutine omp_device_memcpy_int8_7(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3211,7 +3065,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int8_7
 
       module subroutine omp_device_memcpy_int16_1(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3222,7 +3076,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int16_1
 
       module subroutine omp_device_memcpy_int16_2(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3233,7 +3087,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int16_2
 
       module subroutine omp_device_memcpy_int16_3(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3244,7 +3098,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int16_3
 
       module subroutine omp_device_memcpy_int16_4(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3255,7 +3109,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int16_4
 
       module subroutine omp_device_memcpy_int16_5(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3266,7 +3120,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int16_5
 
       module subroutine omp_device_memcpy_int16_6(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3277,7 +3131,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int16_6
 
       module subroutine omp_device_memcpy_int16_7(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3288,7 +3142,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int16_7
 
       module subroutine omp_device_memcpy_int32_1(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3299,7 +3153,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int32_1
 
       module subroutine omp_device_memcpy_int32_2(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3310,7 +3164,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int32_2
 
       module subroutine omp_device_memcpy_int32_3(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3321,7 +3175,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int32_3
 
       module subroutine omp_device_memcpy_int32_4(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3332,7 +3186,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int32_4
 
       module subroutine omp_device_memcpy_int32_5(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3343,7 +3197,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int32_5
 
       module subroutine omp_device_memcpy_int32_6(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3354,7 +3208,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int32_6
 
       module subroutine omp_device_memcpy_int32_7(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3365,7 +3219,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int32_7
 
       module subroutine omp_device_memcpy_int64_1(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3376,7 +3230,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int64_1
 
       module subroutine omp_device_memcpy_int64_2(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3387,7 +3241,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int64_2
 
       module subroutine omp_device_memcpy_int64_3(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3398,7 +3252,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int64_3
 
       module subroutine omp_device_memcpy_int64_4(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3409,7 +3263,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int64_4
 
       module subroutine omp_device_memcpy_int64_5(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3420,7 +3274,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int64_5
 
       module subroutine omp_device_memcpy_int64_6(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3431,7 +3285,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int64_6
 
       module subroutine omp_device_memcpy_int64_7(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3442,44 +3296,47 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_int64_7
 #endif
 
       ! DMR Device Memcopy Real Routines
 #if defined _F2008
-      module subroutine omp_device_memcpy_real32(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_real32(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          real(R4P),    intent(out)          :: array_dst(..)
          real(R4P),    intent(in)           :: array_src(..)
          integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real32
 
-      module subroutine omp_device_memcpy_real64(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_real64(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          real(R8P),    intent(out)          :: array_dst(..)
          real(R8P),    intent(in)           :: array_src(..)
          integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real64
 
 #if defined _real128
-      module subroutine omp_device_memcpy_real128(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_real128(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          real(R16P),   intent(out)          :: array_dst(..)
          real(R16P),   intent(in)           :: array_src(..)
          integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real128
 #endif
 #else
@@ -3491,7 +3348,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real32_1
 
       module subroutine omp_device_memcpy_real32_2(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3502,7 +3359,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real32_2
 
       module subroutine omp_device_memcpy_real32_3(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3513,7 +3370,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real32_3
 
       module subroutine omp_device_memcpy_real32_4(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3524,7 +3381,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real32_4
 
       module subroutine omp_device_memcpy_real32_5(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3535,7 +3392,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real32_5
 
       module subroutine omp_device_memcpy_real32_6(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3546,7 +3403,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real32_6
 
       module subroutine omp_device_memcpy_real32_7(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3557,7 +3414,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real32_7
 
       module subroutine omp_device_memcpy_real64_1(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3568,7 +3425,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real64_1
 
       module subroutine omp_device_memcpy_real64_2(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3579,7 +3436,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real64_2
 
       module subroutine omp_device_memcpy_real64_3(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3590,7 +3447,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real64_3
 
       module subroutine omp_device_memcpy_real64_4(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3601,7 +3458,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real64_4
 
       module subroutine omp_device_memcpy_real64_5(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3612,7 +3469,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real64_5
 
       module subroutine omp_device_memcpy_real64_6(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3623,7 +3480,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real64_6
 
       module subroutine omp_device_memcpy_real64_7(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3634,7 +3491,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real64_7
 
 #if defined _real128
@@ -3646,7 +3503,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real128_1
 
       module subroutine omp_device_memcpy_real128_2(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3657,7 +3514,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real128_2
 
       module subroutine omp_device_memcpy_real128_3(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3668,7 +3525,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real128_3
 
       module subroutine omp_device_memcpy_real128_4(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3679,7 +3536,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real128_4
 
       module subroutine omp_device_memcpy_real128_5(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3690,7 +3547,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real128_5
 
       module subroutine omp_device_memcpy_real128_6(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3701,7 +3558,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real128_6
 
       module subroutine omp_device_memcpy_real128_7(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3712,45 +3569,48 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_real128_7
 #endif
 #endif
 
       ! DMR Device Memcpy Complex Routines
 #if defined _F2008
-      module subroutine omp_device_memcpy_cmplx32(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_cmplx32(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          complex(R4P), intent(out)          :: array_dst(..)
          complex(R4P), intent(in)           :: array_src(..)
          integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx32
 
-      module subroutine omp_device_memcpy_cmplx64(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_cmplx64(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          complex(R8P), intent(out)          :: array_dst(..)
          complex(R8P), intent(in)           :: array_src(..)
          integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx64
 
 #if defined _real128
-      module subroutine omp_device_memcpy_cmplx128(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_cmplx128(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          complex(R16P), intent(out)          :: array_dst(..)
          complex(R16P), intent(in)           :: array_src(..)
          integer(I4P),  intent(in), optional :: omp_dev
+         integer(I8P),  intent(in), optional :: lbound_s, ubound_s
          integer(I8P),  intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P),  allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                        :: i, j, k, l, m, n, o
-         integer(I8P)                        :: omp_dev_
+         integer(I4P)                        :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx128
 #endif
 #else
@@ -3762,7 +3622,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx32_1
 
       module subroutine omp_device_memcpy_cmplx32_2(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3773,7 +3633,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx32_2
 
       module subroutine omp_device_memcpy_cmplx32_3(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3784,7 +3644,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx32_3
 
       module subroutine omp_device_memcpy_cmplx32_4(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3795,7 +3655,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx32_4
 
       module subroutine omp_device_memcpy_cmplx32_5(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3806,7 +3666,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx32_5
 
       module subroutine omp_device_memcpy_cmplx32_6(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3817,7 +3677,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx32_6
 
       module subroutine omp_device_memcpy_cmplx32_7(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3828,7 +3688,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx32_7
 
       module subroutine omp_device_memcpy_cmplx64_1(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3839,7 +3699,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx64_1
 
       module subroutine omp_device_memcpy_cmplx64_2(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3850,7 +3710,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx64_2
 
       module subroutine omp_device_memcpy_cmplx64_3(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3861,7 +3721,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx64_3
 
       module subroutine omp_device_memcpy_cmplx64_4(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3872,7 +3732,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx64_4
 
       module subroutine omp_device_memcpy_cmplx64_5(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3883,7 +3743,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx64_5
 
       module subroutine omp_device_memcpy_cmplx64_6(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3894,7 +3754,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx64_6
 
       module subroutine omp_device_memcpy_cmplx64_7(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3905,7 +3765,7 @@ module dmr
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx64_7
 
 #if defined _real128
@@ -3917,7 +3777,7 @@ module dmr
          integer(I8P),  intent(in), optional :: lbounds, ubounds
          integer(I8P)                        :: lbounds_, ubounds_
          integer(I8P)                        :: i
-         integer(I8P)                        :: omp_dev_
+         integer(I4P)                        :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx128_1
 
       module subroutine omp_device_memcpy_cmplx128_2(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3928,7 +3788,7 @@ module dmr
          integer(I8P),  intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                        :: lbounds_(2), ubounds_(2)
          integer(I8P)                        :: i, j
-         integer(I8P)                        :: omp_dev_
+         integer(I4P)                        :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx128_2
 
       module subroutine omp_device_memcpy_cmplx128_3(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3939,7 +3799,7 @@ module dmr
          integer(I8P),  intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                        :: lbounds_(3), ubounds_(3)
          integer(I8P)                        :: i, j, k
-         integer(I8P)                        :: omp_dev_
+         integer(I4P)                        :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx128_3
 
       module subroutine omp_device_memcpy_cmplx128_4(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3950,7 +3810,7 @@ module dmr
          integer(I8P),  intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                        :: lbounds_(4), ubounds_(4)
          integer(I8P)                        :: i, j, k, l
-         integer(I8P)                        :: omp_dev_
+         integer(I4P)                        :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx128_4
 
       module subroutine omp_device_memcpy_cmplx128_5(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3961,7 +3821,7 @@ module dmr
          integer(I8P),  intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                        :: lbounds_(5), ubounds_(5)
          integer(I8P)                        :: i, j, k, l, m
-         integer(I8P)                        :: omp_dev_
+         integer(I4P)                        :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx128_5
 
       module subroutine omp_device_memcpy_cmplx128_6(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3972,7 +3832,7 @@ module dmr
          integer(I8P),  intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                        :: lbounds_(6), ubounds_(6)
          integer(I8P)                        :: i, j, k, l, m, n
-         integer(I8P)                        :: omp_dev_
+         integer(I4P)                        :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx128_6
 
       module subroutine omp_device_memcpy_cmplx128_7(array_dst, array_src, omp_dev, lbounds, ubounds)
@@ -3983,7 +3843,7 @@ module dmr
          integer(I8P),  intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                        :: lbounds_(7), ubounds_(7)
          integer(I8P)                        :: i, j, k, l, m, n, o
-         integer(I8P)                        :: omp_dev_
+         integer(I4P)                        :: omp_dev_
       endsubroutine omp_device_memcpy_cmplx128_7
 #endif
 #endif

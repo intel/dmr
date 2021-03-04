@@ -21,27 +21,36 @@ submodule (dmr) dmr_device_memcpy
 
       ! DMR Device Memcopy Integer Routines
 #if defined _F2008
-      module subroutine omp_device_memcpy_int8(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_int8(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          integer(I1P), intent(out)          :: array_dst(..)
          integer(I1P), intent(in)           :: array_src(..)
          integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
          else
             omp_dev_ = omp_get_default_device()
          endif
-         if (present(lbounds)) then
+
+         if (present(lbound_s)) then
+            allocate(lbounds_(1))
+            lbounds_(1) = lbound_s
+         elseif (present(lbounds)) then
             lbounds_ = lbounds
          else
             lbounds_(1:rank(array_dst)) = 1_I8P
          endif
-         if (present(ubounds)) then
+
+         if (present(ubound_s)) then
+            allocate(ubounds_(1))
+            ubounds_(1) = ubound_s
+         elseif (present(ubounds)) then
             ubounds_ = ubounds
          else
             ubounds_ = ubound(array_dst)
@@ -54,7 +63,7 @@ submodule (dmr) dmr_device_memcpy
 #else
             !$omp target teams distribute parallel do device(omp_dev) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_, ubounds_
+            do i=lbounds_(1), ubounds_(1)
                array_dst(i) = array_src(i)
             enddo
             !$omp end target teams distribute parallel do
@@ -169,27 +178,36 @@ submodule (dmr) dmr_device_memcpy
          end select
       endsubroutine omp_device_memcpy_int8
 
-      module subroutine omp_device_memcpy_int16(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_int16(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          integer(I2P), intent(out)          :: array_dst(..)
          integer(I2P), intent(in)           :: array_src(..)
          integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
          else
             omp_dev_ = omp_get_default_device()
          endif
-         if (present(lbounds)) then
+
+         if (present(lbound_s)) then
+            allocate(lbounds_(1))
+            lbounds_(1) = lbound_s
+         elseif (present(lbounds)) then
             lbounds_ = lbounds
          else
             lbounds_(1:rank(array_dst)) = 1_I8P
          endif
-         if (present(ubounds)) then
+
+         if (present(ubound_s)) then
+            allocate(ubounds_(1))
+            ubounds_(1) = ubound_s
+         elseif (present(ubounds)) then
             ubounds_ = ubounds
          else
             ubounds_ = ubound(array_dst)
@@ -202,7 +220,7 @@ submodule (dmr) dmr_device_memcpy
 #else
             !$omp target teams distribute parallel do device(omp_dev) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_, ubounds_
+            do i=lbounds_(1), ubounds_(1)
                array_dst(i) = array_src(i)
             enddo
             !$omp end target teams distribute parallel do
@@ -317,27 +335,36 @@ submodule (dmr) dmr_device_memcpy
          end select
       endsubroutine omp_device_memcpy_int16
 
-      module subroutine omp_device_memcpy_int32(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_int32(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          integer(I4P), intent(out)          :: array_dst(..)
          integer(I4P), intent(in)           :: array_src(..)
          integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
          else
             omp_dev_ = omp_get_default_device()
          endif
-         if (present(lbounds)) then
+
+         if (present(lbound_s)) then
+            allocate(lbounds_(1))
+            lbounds_(1) = lbound_s
+         elseif (present(lbounds)) then
             lbounds_ = lbounds
          else
             lbounds_(1:rank(array_dst)) = 1_I8P
          endif
-         if (present(ubounds)) then
+
+         if (present(ubound_s)) then
+            allocate(ubounds_(1))
+            ubounds_(1) = ubound_s
+         elseif (present(ubounds)) then
             ubounds_ = ubounds
          else
             ubounds_ = ubound(array_dst)
@@ -350,7 +377,7 @@ submodule (dmr) dmr_device_memcpy
 #else
             !$omp target teams distribute parallel do device(omp_dev) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_, ubounds_
+            do i=lbounds_(1), ubounds_(1)
                array_dst(i) = array_src(i)
             enddo
             !$omp end target teams distribute parallel do
@@ -465,27 +492,36 @@ submodule (dmr) dmr_device_memcpy
          end select
       endsubroutine omp_device_memcpy_int32
 
-      module subroutine omp_device_memcpy_int64(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_int64(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          integer(I8P), intent(out)          :: array_dst(..)
          integer(I8P), intent(in)           :: array_src(..)
          integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
          else
             omp_dev_ = omp_get_default_device()
          endif
-         if (present(lbounds)) then
+
+         if (present(lbound_s)) then
+            allocate(lbounds_(1))
+            lbounds_(1) = lbound_s
+         elseif (present(lbounds)) then
             lbounds_ = lbounds
          else
             lbounds_(1:rank(array_dst)) = 1_I8P
          endif
-         if (present(ubounds)) then
+
+         if (present(ubound_s)) then
+            allocate(ubounds_(1))
+            ubounds_(1) = ubound_s
+         elseif (present(ubounds)) then
             ubounds_ = ubounds
          else
             ubounds_ = ubound(array_dst)
@@ -498,7 +534,7 @@ submodule (dmr) dmr_device_memcpy
 #else
             !$omp target teams distribute parallel do device(omp_dev) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_, ubounds_
+            do i=lbounds_(1), ubounds_(1)
                array_dst(i) = array_src(i)
             enddo
             !$omp end target teams distribute parallel do
@@ -621,7 +657,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -657,7 +693,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -695,7 +731,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -735,7 +771,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -777,7 +813,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -821,7 +857,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -867,7 +903,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -915,7 +951,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -951,7 +987,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -989,7 +1025,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1029,7 +1065,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1071,7 +1107,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1115,7 +1151,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1161,7 +1197,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1209,7 +1245,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1245,7 +1281,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1283,7 +1319,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1323,7 +1359,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1365,7 +1401,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1409,7 +1445,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1455,7 +1491,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1503,7 +1539,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1539,7 +1575,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1577,7 +1613,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1617,7 +1653,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1659,7 +1695,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1703,7 +1739,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1749,7 +1785,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -1792,27 +1828,36 @@ submodule (dmr) dmr_device_memcpy
 
       ! DMR Device Memcopy Real Routines
 #if defined _F2008
-      module subroutine omp_device_memcpy_real32(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_real32(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          real(R4P),    intent(out)          :: array_dst(..)
          real(R4P),    intent(in)           :: array_src(..)
          integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
          else
             omp_dev_ = omp_get_default_device()
          endif
-         if (present(lbounds)) then
+
+         if (present(lbound_s)) then
+            allocate(lbounds_(1))
+            lbounds_(1) = lbound_s
+         elseif (present(lbounds)) then
             lbounds_ = lbounds
          else
             lbounds_(1:rank(array_dst)) = 1_I8P
          endif
-         if (present(ubounds)) then
+
+         if (present(ubound_s)) then
+            allocate(ubounds_(1))
+            ubounds_(1) = ubound_s
+         elseif (present(ubounds)) then
             ubounds_ = ubounds
          else
             ubounds_ = ubound(array_dst)
@@ -1825,7 +1870,7 @@ submodule (dmr) dmr_device_memcpy
 #else
             !$omp target teams distribute parallel do device(omp_dev) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_, ubounds_
+            do i=lbounds_(1), ubounds_(1)
                array_dst(i) = array_src(i)
             enddo
             !$omp end target teams distribute parallel do
@@ -1940,27 +1985,36 @@ submodule (dmr) dmr_device_memcpy
          end select
       endsubroutine omp_device_memcpy_real32
 
-      module subroutine omp_device_memcpy_real64(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_real64(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          real(R8P),    intent(out)          :: array_dst(..)
          real(R8P),    intent(in)           :: array_src(..)
          integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
          else
             omp_dev_ = omp_get_default_device()
          endif
-         if (present(lbounds)) then
+
+         if (present(lbound_s)) then
+            allocate(lbounds_(1))
+            lbounds_(1) = lbound_s
+         elseif (present(lbounds)) then
             lbounds_ = lbounds
          else
             lbounds_(1:rank(array_dst)) = 1_I8P
          endif
-         if (present(ubounds)) then
+
+         if (present(ubound_s)) then
+            allocate(ubounds_(1))
+            ubounds_(1) = ubound_s
+         elseif (present(ubounds)) then
             ubounds_ = ubounds
          else
             ubounds_ = ubound(array_dst)
@@ -1973,7 +2027,7 @@ submodule (dmr) dmr_device_memcpy
 #else
             !$omp target teams distribute parallel do device(omp_dev) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_, ubounds_
+            do i=lbounds_(1), ubounds_(1)
                array_dst(i) = array_src(i)
             enddo
             !$omp end target teams distribute parallel do
@@ -2089,27 +2143,36 @@ submodule (dmr) dmr_device_memcpy
       endsubroutine omp_device_memcpy_real64
 
 #if defined _real128
-      module subroutine omp_device_memcpy_real128(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_real128(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          real(R16P),   intent(out)          :: array_dst(..)
          real(R16P),   intent(in)           :: array_src(..)
          integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
          else
             omp_dev_ = omp_get_default_device()
          endif
-         if (present(lbounds)) then
+
+         if (present(lbound_s)) then
+            allocate(lbounds_(1))
+            lbounds_(1) = lbound_s
+         elseif (present(lbounds)) then
             lbounds_ = lbounds
          else
             lbounds_(1:rank(array_dst)) = 1_I8P
          endif
-         if (present(ubounds)) then
+
+         if (present(ubound_s)) then
+            allocate(ubounds_(1))
+            ubounds_(1) = ubound_s
+         elseif (present(ubounds)) then
             ubounds_ = ubounds
          else
             ubounds_ = ubound(array_dst)
@@ -2122,7 +2185,7 @@ submodule (dmr) dmr_device_memcpy
 #else
             !$omp target teams distribute parallel do device(omp_dev) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_, ubounds_
+            do i=lbounds_(1), ubounds_(1)
                array_dst(i) = array_src(i)
             enddo
             !$omp end target teams distribute parallel do
@@ -2246,7 +2309,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2282,7 +2345,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2320,7 +2383,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2360,7 +2423,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2402,7 +2465,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2446,7 +2509,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2492,7 +2555,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2540,7 +2603,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2576,7 +2639,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2614,7 +2677,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2654,7 +2717,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2696,7 +2759,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2740,7 +2803,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2786,7 +2849,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2835,7 +2898,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2871,7 +2934,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2909,7 +2972,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2949,7 +3012,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -2991,7 +3054,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -3035,7 +3098,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -3081,7 +3144,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -3125,27 +3188,36 @@ submodule (dmr) dmr_device_memcpy
 
       ! DMR Device Memcpy Complex Routines
 #if defined _F2008
-      module subroutine omp_device_memcpy_cmplx32(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_cmplx32(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          complex(R4P), intent(out)          :: array_dst(..)
          complex(R4P), intent(in)           :: array_src(..)
          integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
          else
             omp_dev_ = omp_get_default_device()
          endif
-         if (present(lbounds)) then
+
+         if (present(lbound_s)) then
+            allocate(lbounds_(1))
+            lbounds_(1) = lbound_s
+         elseif (present(lbounds)) then
             lbounds_ = lbounds
          else
             lbounds_(1:rank(array_dst)) = 1_I8P
          endif
-         if (present(ubounds)) then
+
+         if (present(ubound_s)) then
+            allocate(ubounds_(1))
+            ubounds_(1) = ubound_s
+         elseif (present(ubounds)) then
             ubounds_ = ubounds
          else
             ubounds_ = ubound(array_dst)
@@ -3158,7 +3230,7 @@ submodule (dmr) dmr_device_memcpy
 #else
             !$omp target teams distribute parallel do device(omp_dev) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_, ubounds_
+            do i=lbounds_(1), ubounds_(1)
                array_dst(i) = array_src(i)
             enddo
             !$omp end target teams distribute parallel do
@@ -3273,27 +3345,36 @@ submodule (dmr) dmr_device_memcpy
          end select
       endsubroutine omp_device_memcpy_cmplx32
 
-      module subroutine omp_device_memcpy_cmplx64(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_cmplx64(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          complex(R8P), intent(out)          :: array_dst(..)
          complex(R8P), intent(in)           :: array_src(..)
          integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
          else
             omp_dev_ = omp_get_default_device()
          endif
-         if (present(lbounds)) then
+
+         if (present(lbound_s)) then
+            allocate(lbounds_(1))
+            lbounds_(1) = lbound_s
+         elseif (present(lbounds)) then
             lbounds_ = lbounds
          else
             lbounds_(1:rank(array_dst)) = 1_I8P
          endif
-         if (present(ubounds)) then
+
+         if (present(ubound_s)) then
+            allocate(ubounds_(1))
+            ubounds_(1) = ubound_s
+         elseif (present(ubounds)) then
             ubounds_ = ubounds
          else
             ubounds_ = ubound(array_dst)
@@ -3306,7 +3387,7 @@ submodule (dmr) dmr_device_memcpy
 #else
             !$omp target teams distribute parallel do device(omp_dev) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_, ubounds_
+            do i=lbounds_(1), ubounds_(1)
                array_dst(i) = array_src(i)
             enddo
             !$omp end target teams distribute parallel do
@@ -3422,27 +3503,36 @@ submodule (dmr) dmr_device_memcpy
       endsubroutine omp_device_memcpy_cmplx64
 
 #if defined _real128
-      module subroutine omp_device_memcpy_cmplx128(array_dst, array_src, omp_dev, lbounds, ubounds)
+      module subroutine omp_device_memcpy_cmplx128(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
          implicit none
          complex(R16P), intent(out)          :: array_dst(..)
          complex(R16P), intent(in)           :: array_src(..)
          integer(I4P),  intent(in), optional :: omp_dev
+         integer(I8P),  intent(in), optional :: lbound_s, ubound_s
          integer(I8P),  intent(in), optional :: lbounds(:), ubounds(:)
          integer(I8P),  allocatable          :: lbounds_(:), ubounds_(:)
          integer(I8P)                        :: i, j, k, l, m, n, o
-         integer(I8P)                        :: omp_dev_
+         integer(I4P)                        :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
          else
             omp_dev_ = omp_get_default_device()
          endif
-         if (present(lbounds)) then
+
+         if (present(lbound_s)) then
+            allocate(lbounds_(1))
+            lbounds_(1) = lbound_s
+         elseif (present(lbounds)) then
             lbounds_ = lbounds
          else
             lbounds_(1:rank(array_dst)) = 1_I8P
          endif
-         if (present(ubounds)) then
+
+         if (present(ubound_s)) then
+            allocate(ubounds_(1))
+            ubounds_(1) = ubound_s
+         elseif (present(ubounds)) then
             ubounds_ = ubounds
          else
             ubounds_ = ubound(array_dst)
@@ -3455,7 +3545,7 @@ submodule (dmr) dmr_device_memcpy
 #else
             !$omp target teams distribute parallel do device(omp_dev) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_, ubounds_
+            do i=lbounds_(1), ubounds_(1)
                array_dst(i) = array_src(i)
             enddo
             !$omp end target teams distribute parallel do
@@ -3579,7 +3669,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -3615,7 +3705,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -3653,7 +3743,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -3693,7 +3783,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -3735,7 +3825,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -3779,7 +3869,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -3825,7 +3915,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -3873,7 +3963,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds, ubounds
          integer(I8P)                       :: lbounds_, ubounds_
          integer(I8P)                       :: i
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -3909,7 +3999,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                       :: lbounds_(2), ubounds_(2)
          integer(I8P)                       :: i, j
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -3947,7 +4037,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                       :: lbounds_(3), ubounds_(3)
          integer(I8P)                       :: i, j, k
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -3987,7 +4077,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                       :: lbounds_(4), ubounds_(4)
          integer(I8P)                       :: i, j, k, l
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -4029,7 +4119,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(5), ubounds(5)
          integer(I8P)                       :: lbounds_(5), ubounds_(5)
          integer(I8P)                       :: i, j, k, l, m
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -4073,7 +4163,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                       :: lbounds_(6), ubounds_(6)
          integer(I8P)                       :: i, j, k, l, m, n
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -4119,7 +4209,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P), intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                       :: lbounds_(7), ubounds_(7)
          integer(I8P)                       :: i, j, k, l, m, n, o
-         integer(I8P)                       :: omp_dev_
+         integer(I4P)                       :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -4168,7 +4258,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P),  intent(in), optional :: lbounds, ubounds
          integer(I8P)                        :: lbounds_, ubounds_
          integer(I8P)                        :: i
-         integer(I8P)                        :: omp_dev_
+         integer(I4P)                        :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -4204,7 +4294,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P),  intent(in), optional :: lbounds(2), ubounds(2)
          integer(I8P)                        :: lbounds_(2), ubounds_(2)
          integer(I8P)                        :: i, j
-         integer(I8P)                        :: omp_dev_
+         integer(I4P)                        :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -4242,7 +4332,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P),  intent(in), optional :: lbounds(3), ubounds(3)
          integer(I8P)                        :: lbounds_(3), ubounds_(3)
          integer(I8P)                        :: i, j, k
-         integer(I8P)                        :: omp_dev_
+         integer(I4P)                        :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -4282,7 +4372,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P),  intent(in), optional :: lbounds(4), ubounds(4)
          integer(I8P)                        :: lbounds_(4), ubounds_(4)
          integer(I8P)                        :: i, j, k, l
-         integer(I8P)                        :: omp_dev_
+         integer(I4P)                        :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -4368,7 +4458,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P),  intent(in), optional :: lbounds(6), ubounds(6)
          integer(I8P)                        :: lbounds_(6), ubounds_(6)
          integer(I8P)                        :: i, j, k, l, m, n
-         integer(I8P)                        :: omp_dev_
+         integer(I4P)                        :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
@@ -4414,7 +4504,7 @@ submodule (dmr) dmr_device_memcpy
          integer(I8P),  intent(in), optional :: lbounds(7), ubounds(7)
          integer(I8P)                        :: lbounds_(7), ubounds_(7)
          integer(I8P)                        :: i, j, k, l, m, n, o
-         integer(I8P)                        :: omp_dev_
+         integer(I4P)                        :: omp_dev_
 
          if (present(omp_dev)) then
             omp_dev_ = omp_dev
