@@ -58,123 +58,158 @@ submodule (dmr) dmr_device_memcpy
 
          select rank(array_dst)
          rank(1)
+            select rank(array_src)
+            rank(1)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_(1), ubounds_(1)
-               array_dst(i) = array_src(i)
-            enddo
-            !$omp end target teams distribute parallel do
+               do i=lbounds_(1), ubounds_(1)
+                  array_dst(i) = array_src(i)
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            end select
 
          rank(2)
+            select rank(array_src)
+            rank(2)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do j=lbounds_(2), ubounds_(2)
-               do i=lbounds_(1), ubounds_(1)
-                  array_dst(i,j) = array_src(i,j)
-               enddo
-            enddo
-            !$omp end target teams distribute parallel do
-
-         rank(3)
-#if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#endif
-            do k=lbounds_(3), ubounds_(3)
                do j=lbounds_(2), ubounds_(2)
                   do i=lbounds_(1), ubounds_(1)
-                     array_dst(i,j,k) = array_src(i,j,k)
+                     array_dst(i,j) = array_src(i,j)
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(4)
+         rank(3)
+            select rank(array_src)
+            rank(3)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do l=lbounds_(4), ubounds_(4)
                do k=lbounds_(3), ubounds_(3)
                   do j=lbounds_(2), ubounds_(2)
                      do i=lbounds_(1), ubounds_(1)
-                        array_dst(i,j,k,l) = array_src(i,j,k,l)
+                        array_dst(i,j,k) = array_src(i,j,k)
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(5)
+         rank(4)
+            select rank(array_src)
+            rank(4)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do m=lbounds_(5), ubounds_(5)
                do l=lbounds_(4), ubounds_(4)
                   do k=lbounds_(3), ubounds_(3)
                      do j=lbounds_(2), ubounds_(2)
                         do i=lbounds_(1), ubounds_(1)
-                           array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
+                           array_dst(i,j,k,l) = array_src(i,j,k,l)
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(6)
+         rank(5)
+            select rank(array_src)
+            rank(5)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do n=lbounds_(6), ubounds_(6)
                do m=lbounds_(5), ubounds_(5)
                   do l=lbounds_(4), ubounds_(4)
                      do k=lbounds_(3), ubounds_(3)
                         do j=lbounds_(2), ubounds_(2)
                            do i=lbounds_(1), ubounds_(1)
-                              array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
+                              array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(7)
+         rank(6)
+            select rank(array_src)
+            rank(6)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do o=lbounds_(7), ubounds_(7)
                do n=lbounds_(6), ubounds_(6)
                   do m=lbounds_(5), ubounds_(5)
                      do l=lbounds_(4), ubounds_(4)
                         do k=lbounds_(3), ubounds_(3)
                            do j=lbounds_(2), ubounds_(2)
                               do i=lbounds_(1), ubounds_(1)
-                                 array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
                               enddo
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
+
+         rank(7)
+            select rank(array_src)
+            rank(7)
+#if defined _OpenMP_5_1
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#else
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#endif
+               do o=lbounds_(7), ubounds_(7)
+                  do n=lbounds_(6), ubounds_(6)
+                     do m=lbounds_(5), ubounds_(5)
+                        do l=lbounds_(4), ubounds_(4)
+                           do k=lbounds_(3), ubounds_(3)
+                              do j=lbounds_(2), ubounds_(2)
+                                 do i=lbounds_(1), ubounds_(1)
+                                    array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 enddo
+                              enddo
+                           enddo
+                        enddo
+                     enddo
+                  enddo
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
          end select
       endsubroutine omp_device_memcpy_int8
 
@@ -215,123 +250,158 @@ submodule (dmr) dmr_device_memcpy
 
          select rank(array_dst)
          rank(1)
+            select rank(array_src)
+            rank(1)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_(1), ubounds_(1)
-               array_dst(i) = array_src(i)
-            enddo
-            !$omp end target teams distribute parallel do
+               do i=lbounds_(1), ubounds_(1)
+                  array_dst(i) = array_src(i)
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            end select
 
          rank(2)
+            select rank(array_src)
+            rank(2)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do j=lbounds_(2), ubounds_(2)
-               do i=lbounds_(1), ubounds_(1)
-                  array_dst(i,j) = array_src(i,j)
-               enddo
-            enddo
-            !$omp end target teams distribute parallel do
-
-         rank(3)
-#if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#endif
-            do k=lbounds_(3), ubounds_(3)
                do j=lbounds_(2), ubounds_(2)
                   do i=lbounds_(1), ubounds_(1)
-                     array_dst(i,j,k) = array_src(i,j,k)
+                     array_dst(i,j) = array_src(i,j)
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(4)
+         rank(3)
+            select rank(array_src)
+            rank(3)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do l=lbounds_(4), ubounds_(4)
                do k=lbounds_(3), ubounds_(3)
                   do j=lbounds_(2), ubounds_(2)
                      do i=lbounds_(1), ubounds_(1)
-                        array_dst(i,j,k,l) = array_src(i,j,k,l)
+                        array_dst(i,j,k) = array_src(i,j,k)
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(5)
+         rank(4)
+            select rank(array_src)
+            rank(4)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do m=lbounds_(5), ubounds_(5)
                do l=lbounds_(4), ubounds_(4)
                   do k=lbounds_(3), ubounds_(3)
                      do j=lbounds_(2), ubounds_(2)
                         do i=lbounds_(1), ubounds_(1)
-                           array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
+                           array_dst(i,j,k,l) = array_src(i,j,k,l)
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(6)
+         rank(5)
+            select rank(array_src)
+            rank(5)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do n=lbounds_(6), ubounds_(6)
                do m=lbounds_(5), ubounds_(5)
                   do l=lbounds_(4), ubounds_(4)
                      do k=lbounds_(3), ubounds_(3)
                         do j=lbounds_(2), ubounds_(2)
                            do i=lbounds_(1), ubounds_(1)
-                              array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
+                              array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(7)
+         rank(6)
+            select rank(array_src)
+            rank(6)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do o=lbounds_(7), ubounds_(7)
                do n=lbounds_(6), ubounds_(6)
                   do m=lbounds_(5), ubounds_(5)
                      do l=lbounds_(4), ubounds_(4)
                         do k=lbounds_(3), ubounds_(3)
                            do j=lbounds_(2), ubounds_(2)
                               do i=lbounds_(1), ubounds_(1)
-                                 array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
                               enddo
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
+
+         rank(7)
+            select rank(array_src)
+            rank(7)
+#if defined _OpenMP_5_1
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#else
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#endif
+               do o=lbounds_(7), ubounds_(7)
+                  do n=lbounds_(6), ubounds_(6)
+                     do m=lbounds_(5), ubounds_(5)
+                        do l=lbounds_(4), ubounds_(4)
+                           do k=lbounds_(3), ubounds_(3)
+                              do j=lbounds_(2), ubounds_(2)
+                                 do i=lbounds_(1), ubounds_(1)
+                                    array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 enddo
+                              enddo
+                           enddo
+                        enddo
+                     enddo
+                  enddo
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
          end select
       endsubroutine omp_device_memcpy_int16
 
@@ -372,123 +442,158 @@ submodule (dmr) dmr_device_memcpy
 
          select rank(array_dst)
          rank(1)
+            select rank(array_src)
+            rank(1)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_(1), ubounds_(1)
-               array_dst(i) = array_src(i)
-            enddo
-            !$omp end target teams distribute parallel do
+               do i=lbounds_(1), ubounds_(1)
+                  array_dst(i) = array_src(i)
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            end select
 
          rank(2)
+            select rank(array_src)
+            rank(2)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do j=lbounds_(2), ubounds_(2)
-               do i=lbounds_(1), ubounds_(1)
-                  array_dst(i,j) = array_src(i,j)
-               enddo
-            enddo
-            !$omp end target teams distribute parallel do
-
-         rank(3)
-#if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#endif
-            do k=lbounds_(3), ubounds_(3)
                do j=lbounds_(2), ubounds_(2)
                   do i=lbounds_(1), ubounds_(1)
-                     array_dst(i,j,k) = array_src(i,j,k)
+                     array_dst(i,j) = array_src(i,j)
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(4)
+         rank(3)
+            select rank(array_src)
+            rank(3)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do l=lbounds_(4), ubounds_(4)
                do k=lbounds_(3), ubounds_(3)
                   do j=lbounds_(2), ubounds_(2)
                      do i=lbounds_(1), ubounds_(1)
-                        array_dst(i,j,k,l) = array_src(i,j,k,l)
+                        array_dst(i,j,k) = array_src(i,j,k)
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(5)
+         rank(4)
+            select rank(array_src)
+            rank(4)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do m=lbounds_(5), ubounds_(5)
                do l=lbounds_(4), ubounds_(4)
                   do k=lbounds_(3), ubounds_(3)
                      do j=lbounds_(2), ubounds_(2)
                         do i=lbounds_(1), ubounds_(1)
-                           array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
+                           array_dst(i,j,k,l) = array_src(i,j,k,l)
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(6)
+         rank(5)
+            select rank(array_src)
+            rank(5)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do n=lbounds_(6), ubounds_(6)
                do m=lbounds_(5), ubounds_(5)
                   do l=lbounds_(4), ubounds_(4)
                      do k=lbounds_(3), ubounds_(3)
                         do j=lbounds_(2), ubounds_(2)
                            do i=lbounds_(1), ubounds_(1)
-                              array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
+                              array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(7)
+         rank(6)
+            select rank(array_src)
+            rank(6)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do o=lbounds_(7), ubounds_(7)
                do n=lbounds_(6), ubounds_(6)
                   do m=lbounds_(5), ubounds_(5)
                      do l=lbounds_(4), ubounds_(4)
                         do k=lbounds_(3), ubounds_(3)
                            do j=lbounds_(2), ubounds_(2)
                               do i=lbounds_(1), ubounds_(1)
-                                 array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
                               enddo
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
+
+         rank(7)
+            select rank(array_src)
+            rank(7)
+#if defined _OpenMP_5_1
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#else
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#endif
+               do o=lbounds_(7), ubounds_(7)
+                  do n=lbounds_(6), ubounds_(6)
+                     do m=lbounds_(5), ubounds_(5)
+                        do l=lbounds_(4), ubounds_(4)
+                           do k=lbounds_(3), ubounds_(3)
+                              do j=lbounds_(2), ubounds_(2)
+                                 do i=lbounds_(1), ubounds_(1)
+                                    array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 enddo
+                              enddo
+                           enddo
+                        enddo
+                     enddo
+                  enddo
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
          end select
       endsubroutine omp_device_memcpy_int32
 
@@ -529,123 +634,158 @@ submodule (dmr) dmr_device_memcpy
 
          select rank(array_dst)
          rank(1)
+            select rank(array_src)
+            rank(1)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_(1), ubounds_(1)
-               array_dst(i) = array_src(i)
-            enddo
-            !$omp end target teams distribute parallel do
+               do i=lbounds_(1), ubounds_(1)
+                  array_dst(i) = array_src(i)
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            end select
 
          rank(2)
+            select rank(array_src)
+            rank(2)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do j=lbounds_(2), ubounds_(2)
-               do i=lbounds_(1), ubounds_(1)
-                  array_dst(i,j) = array_src(i,j)
-               enddo
-            enddo
-            !$omp end target teams distribute parallel do
-
-         rank(3)
-#if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#endif
-            do k=lbounds_(3), ubounds_(3)
                do j=lbounds_(2), ubounds_(2)
                   do i=lbounds_(1), ubounds_(1)
-                     array_dst(i,j,k) = array_src(i,j,k)
+                     array_dst(i,j) = array_src(i,j)
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(4)
+         rank(3)
+            select rank(array_src)
+            rank(3)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do l=lbounds_(4), ubounds_(4)
                do k=lbounds_(3), ubounds_(3)
                   do j=lbounds_(2), ubounds_(2)
                      do i=lbounds_(1), ubounds_(1)
-                        array_dst(i,j,k,l) = array_src(i,j,k,l)
+                        array_dst(i,j,k) = array_src(i,j,k)
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(5)
+         rank(4)
+            select rank(array_src)
+            rank(4)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do m=lbounds_(5), ubounds_(5)
                do l=lbounds_(4), ubounds_(4)
                   do k=lbounds_(3), ubounds_(3)
                      do j=lbounds_(2), ubounds_(2)
                         do i=lbounds_(1), ubounds_(1)
-                           array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
+                           array_dst(i,j,k,l) = array_src(i,j,k,l)
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(6)
+         rank(5)
+            select rank(array_src)
+            rank(5)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do n=lbounds_(6), ubounds_(6)
                do m=lbounds_(5), ubounds_(5)
                   do l=lbounds_(4), ubounds_(4)
                      do k=lbounds_(3), ubounds_(3)
                         do j=lbounds_(2), ubounds_(2)
                            do i=lbounds_(1), ubounds_(1)
-                              array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
+                              array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(7)
+         rank(6)
+            select rank(array_src)
+            rank(6)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do o=lbounds_(7), ubounds_(7)
                do n=lbounds_(6), ubounds_(6)
                   do m=lbounds_(5), ubounds_(5)
                      do l=lbounds_(4), ubounds_(4)
                         do k=lbounds_(3), ubounds_(3)
                            do j=lbounds_(2), ubounds_(2)
                               do i=lbounds_(1), ubounds_(1)
-                                 array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
                               enddo
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
+
+         rank(7)
+            select rank(array_src)
+            rank(7)
+#if defined _OpenMP_5_1
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#else
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#endif
+               do o=lbounds_(7), ubounds_(7)
+                  do n=lbounds_(6), ubounds_(6)
+                     do m=lbounds_(5), ubounds_(5)
+                        do l=lbounds_(4), ubounds_(4)
+                           do k=lbounds_(3), ubounds_(3)
+                              do j=lbounds_(2), ubounds_(2)
+                                 do i=lbounds_(1), ubounds_(1)
+                                    array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 enddo
+                              enddo
+                           enddo
+                        enddo
+                     enddo
+                  enddo
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
          end select
       endsubroutine omp_device_memcpy_int64
 #else
@@ -1865,123 +2005,158 @@ submodule (dmr) dmr_device_memcpy
 
          select rank(array_dst)
          rank(1)
+            select rank(array_src)
+            rank(1)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_(1), ubounds_(1)
-               array_dst(i) = array_src(i)
-            enddo
-            !$omp end target teams distribute parallel do
+               do i=lbounds_(1), ubounds_(1)
+                  array_dst(i) = array_src(i)
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            end select
 
          rank(2)
+            select rank(array_src)
+            rank(2)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do j=lbounds_(2), ubounds_(2)
-               do i=lbounds_(1), ubounds_(1)
-                  array_dst(i,j) = array_src(i,j)
-               enddo
-            enddo
-            !$omp end target teams distribute parallel do
-
-         rank(3)
-#if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#endif
-            do k=lbounds_(3), ubounds_(3)
                do j=lbounds_(2), ubounds_(2)
                   do i=lbounds_(1), ubounds_(1)
-                     array_dst(i,j,k) = array_src(i,j,k)
+                     array_dst(i,j) = array_src(i,j)
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(4)
+         rank(3)
+            select rank(array_src)
+            rank(3)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do l=lbounds_(4), ubounds_(4)
                do k=lbounds_(3), ubounds_(3)
                   do j=lbounds_(2), ubounds_(2)
                      do i=lbounds_(1), ubounds_(1)
-                        array_dst(i,j,k,l) = array_src(i,j,k,l)
+                        array_dst(i,j,k) = array_src(i,j,k)
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(5)
+         rank(4)
+            select rank(array_src)
+            rank(4)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do m=lbounds_(5), ubounds_(5)
                do l=lbounds_(4), ubounds_(4)
                   do k=lbounds_(3), ubounds_(3)
                      do j=lbounds_(2), ubounds_(2)
                         do i=lbounds_(1), ubounds_(1)
-                           array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
+                           array_dst(i,j,k,l) = array_src(i,j,k,l)
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(6)
+         rank(5)
+            select rank(array_src)
+            rank(5)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do n=lbounds_(6), ubounds_(6)
                do m=lbounds_(5), ubounds_(5)
                   do l=lbounds_(4), ubounds_(4)
                      do k=lbounds_(3), ubounds_(3)
                         do j=lbounds_(2), ubounds_(2)
                            do i=lbounds_(1), ubounds_(1)
-                              array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
+                              array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(7)
+         rank(6)
+            select rank(array_src)
+            rank(6)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do o=lbounds_(7), ubounds_(7)
                do n=lbounds_(6), ubounds_(6)
                   do m=lbounds_(5), ubounds_(5)
                      do l=lbounds_(4), ubounds_(4)
                         do k=lbounds_(3), ubounds_(3)
                            do j=lbounds_(2), ubounds_(2)
                               do i=lbounds_(1), ubounds_(1)
-                                 array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
                               enddo
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
+
+         rank(7)
+            select rank(array_src)
+            rank(7)
+#if defined _OpenMP_5_1
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#else
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#endif
+               do o=lbounds_(7), ubounds_(7)
+                  do n=lbounds_(6), ubounds_(6)
+                     do m=lbounds_(5), ubounds_(5)
+                        do l=lbounds_(4), ubounds_(4)
+                           do k=lbounds_(3), ubounds_(3)
+                              do j=lbounds_(2), ubounds_(2)
+                                 do i=lbounds_(1), ubounds_(1)
+                                    array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 enddo
+                              enddo
+                           enddo
+                        enddo
+                     enddo
+                  enddo
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
          end select
       endsubroutine omp_device_memcpy_real32
 
@@ -2022,123 +2197,158 @@ submodule (dmr) dmr_device_memcpy
 
          select rank(array_dst)
          rank(1)
+            select rank(array_src)
+            rank(1)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_(1), ubounds_(1)
-               array_dst(i) = array_src(i)
-            enddo
-            !$omp end target teams distribute parallel do
+               do i=lbounds_(1), ubounds_(1)
+                  array_dst(i) = array_src(i)
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            end select
 
          rank(2)
+            select rank(array_src)
+            rank(2)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do j=lbounds_(2), ubounds_(2)
-               do i=lbounds_(1), ubounds_(1)
-                  array_dst(i,j) = array_src(i,j)
-               enddo
-            enddo
-            !$omp end target teams distribute parallel do
-
-         rank(3)
-#if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#endif
-            do k=lbounds_(3), ubounds_(3)
                do j=lbounds_(2), ubounds_(2)
                   do i=lbounds_(1), ubounds_(1)
-                     array_dst(i,j,k) = array_src(i,j,k)
+                     array_dst(i,j) = array_src(i,j)
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(4)
+         rank(3)
+            select rank(array_src)
+            rank(3)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do l=lbounds_(4), ubounds_(4)
                do k=lbounds_(3), ubounds_(3)
                   do j=lbounds_(2), ubounds_(2)
                      do i=lbounds_(1), ubounds_(1)
-                        array_dst(i,j,k,l) = array_src(i,j,k,l)
+                        array_dst(i,j,k) = array_src(i,j,k)
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(5)
+         rank(4)
+            select rank(array_src)
+            rank(4)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do m=lbounds_(5), ubounds_(5)
                do l=lbounds_(4), ubounds_(4)
                   do k=lbounds_(3), ubounds_(3)
                      do j=lbounds_(2), ubounds_(2)
                         do i=lbounds_(1), ubounds_(1)
-                           array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
+                           array_dst(i,j,k,l) = array_src(i,j,k,l)
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(6)
+         rank(5)
+            select rank(array_src)
+            rank(5)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do n=lbounds_(6), ubounds_(6)
                do m=lbounds_(5), ubounds_(5)
                   do l=lbounds_(4), ubounds_(4)
                      do k=lbounds_(3), ubounds_(3)
                         do j=lbounds_(2), ubounds_(2)
                            do i=lbounds_(1), ubounds_(1)
-                              array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
+                              array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(7)
+         rank(6)
+            select rank(array_src)
+            rank(6)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do o=lbounds_(7), ubounds_(7)
                do n=lbounds_(6), ubounds_(6)
                   do m=lbounds_(5), ubounds_(5)
                      do l=lbounds_(4), ubounds_(4)
                         do k=lbounds_(3), ubounds_(3)
                            do j=lbounds_(2), ubounds_(2)
                               do i=lbounds_(1), ubounds_(1)
-                                 array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
                               enddo
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
+
+         rank(7)
+            select rank(array_src)
+            rank(7)
+#if defined _OpenMP_5_1
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#else
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#endif
+               do o=lbounds_(7), ubounds_(7)
+                  do n=lbounds_(6), ubounds_(6)
+                     do m=lbounds_(5), ubounds_(5)
+                        do l=lbounds_(4), ubounds_(4)
+                           do k=lbounds_(3), ubounds_(3)
+                              do j=lbounds_(2), ubounds_(2)
+                                 do i=lbounds_(1), ubounds_(1)
+                                    array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 enddo
+                              enddo
+                           enddo
+                        enddo
+                     enddo
+                  enddo
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
          end select
       endsubroutine omp_device_memcpy_real64
 
@@ -2180,123 +2390,158 @@ submodule (dmr) dmr_device_memcpy
 
          select rank(array_dst)
          rank(1)
+            select rank(array_src)
+            rank(1)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_(1), ubounds_(1)
-               array_dst(i) = array_src(i)
-            enddo
-            !$omp end target teams distribute parallel do
+               do i=lbounds_(1), ubounds_(1)
+                  array_dst(i) = array_src(i)
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            end select
 
          rank(2)
+            select rank(array_src)
+            rank(2)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do j=lbounds_(2), ubounds_(2)
-               do i=lbounds_(1), ubounds_(1)
-                  array_dst(i,j) = array_src(i,j)
-               enddo
-            enddo
-            !$omp end target teams distribute parallel do
-
-         rank(3)
-#if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#endif
-            do k=lbounds_(3), ubounds_(3)
                do j=lbounds_(2), ubounds_(2)
                   do i=lbounds_(1), ubounds_(1)
-                     array_dst(i,j,k) = array_src(i,j,k)
+                     array_dst(i,j) = array_src(i,j)
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(4)
+         rank(3)
+            select rank(array_src)
+            rank(3)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do l=lbounds_(4), ubounds_(4)
                do k=lbounds_(3), ubounds_(3)
                   do j=lbounds_(2), ubounds_(2)
                      do i=lbounds_(1), ubounds_(1)
-                        array_dst(i,j,k,l) = array_src(i,j,k,l)
+                        array_dst(i,j,k) = array_src(i,j,k)
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(5)
+         rank(4)
+            select rank(array_src)
+            rank(4)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do m=lbounds_(5), ubounds_(5)
                do l=lbounds_(4), ubounds_(4)
                   do k=lbounds_(3), ubounds_(3)
                      do j=lbounds_(2), ubounds_(2)
                         do i=lbounds_(1), ubounds_(1)
-                           array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
+                           array_dst(i,j,k,l) = array_src(i,j,k,l)
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(6)
+         rank(5)
+            select rank(array_src)
+            rank(5)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do n=lbounds_(6), ubounds_(6)
                do m=lbounds_(5), ubounds_(5)
                   do l=lbounds_(4), ubounds_(4)
                      do k=lbounds_(3), ubounds_(3)
                         do j=lbounds_(2), ubounds_(2)
                            do i=lbounds_(1), ubounds_(1)
-                              array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
+                              array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(7)
+         rank(6)
+            select rank(array_src)
+            rank(6)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do o=lbounds_(7), ubounds_(7)
                do n=lbounds_(6), ubounds_(6)
                   do m=lbounds_(5), ubounds_(5)
                      do l=lbounds_(4), ubounds_(4)
                         do k=lbounds_(3), ubounds_(3)
                            do j=lbounds_(2), ubounds_(2)
                               do i=lbounds_(1), ubounds_(1)
-                                 array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
                               enddo
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
+
+         rank(7)
+            select rank(array_src)
+            rank(7)
+#if defined _OpenMP_5_1
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#else
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#endif
+               do o=lbounds_(7), ubounds_(7)
+                  do n=lbounds_(6), ubounds_(6)
+                     do m=lbounds_(5), ubounds_(5)
+                        do l=lbounds_(4), ubounds_(4)
+                           do k=lbounds_(3), ubounds_(3)
+                              do j=lbounds_(2), ubounds_(2)
+                                 do i=lbounds_(1), ubounds_(1)
+                                    array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 enddo
+                              enddo
+                           enddo
+                        enddo
+                     enddo
+                  enddo
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
          end select
       endsubroutine omp_device_memcpy_real128
 #endif
@@ -3225,123 +3470,158 @@ submodule (dmr) dmr_device_memcpy
 
          select rank(array_dst)
          rank(1)
+            select rank(array_src)
+            rank(1)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_(1), ubounds_(1)
-               array_dst(i) = array_src(i)
-            enddo
-            !$omp end target teams distribute parallel do
+               do i=lbounds_(1), ubounds_(1)
+                  array_dst(i) = array_src(i)
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            end select
 
          rank(2)
+            select rank(array_src)
+            rank(2)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do j=lbounds_(2), ubounds_(2)
-               do i=lbounds_(1), ubounds_(1)
-                  array_dst(i,j) = array_src(i,j)
-               enddo
-            enddo
-            !$omp end target teams distribute parallel do
-
-         rank(3)
-#if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#endif
-            do k=lbounds_(3), ubounds_(3)
                do j=lbounds_(2), ubounds_(2)
                   do i=lbounds_(1), ubounds_(1)
-                     array_dst(i,j,k) = array_src(i,j,k)
+                     array_dst(i,j) = array_src(i,j)
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(4)
+         rank(3)
+            select rank(array_src)
+            rank(3)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do l=lbounds_(4), ubounds_(4)
                do k=lbounds_(3), ubounds_(3)
                   do j=lbounds_(2), ubounds_(2)
                      do i=lbounds_(1), ubounds_(1)
-                        array_dst(i,j,k,l) = array_src(i,j,k,l)
+                        array_dst(i,j,k) = array_src(i,j,k)
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(5)
+         rank(4)
+            select rank(array_src)
+            rank(4)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do m=lbounds_(5), ubounds_(5)
                do l=lbounds_(4), ubounds_(4)
                   do k=lbounds_(3), ubounds_(3)
                      do j=lbounds_(2), ubounds_(2)
                         do i=lbounds_(1), ubounds_(1)
-                           array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
+                           array_dst(i,j,k,l) = array_src(i,j,k,l)
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(6)
+         rank(5)
+            select rank(array_src)
+            rank(5)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do n=lbounds_(6), ubounds_(6)
                do m=lbounds_(5), ubounds_(5)
                   do l=lbounds_(4), ubounds_(4)
                      do k=lbounds_(3), ubounds_(3)
                         do j=lbounds_(2), ubounds_(2)
                            do i=lbounds_(1), ubounds_(1)
-                              array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
+                              array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(7)
+         rank(6)
+            select rank(array_src)
+            rank(6)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do o=lbounds_(7), ubounds_(7)
                do n=lbounds_(6), ubounds_(6)
                   do m=lbounds_(5), ubounds_(5)
                      do l=lbounds_(4), ubounds_(4)
                         do k=lbounds_(3), ubounds_(3)
                            do j=lbounds_(2), ubounds_(2)
                               do i=lbounds_(1), ubounds_(1)
-                                 array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
                               enddo
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
+
+         rank(7)
+            select rank(array_src)
+            rank(7)
+#if defined _OpenMP_5_1
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#else
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#endif
+               do o=lbounds_(7), ubounds_(7)
+                  do n=lbounds_(6), ubounds_(6)
+                     do m=lbounds_(5), ubounds_(5)
+                        do l=lbounds_(4), ubounds_(4)
+                           do k=lbounds_(3), ubounds_(3)
+                              do j=lbounds_(2), ubounds_(2)
+                                 do i=lbounds_(1), ubounds_(1)
+                                    array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 enddo
+                              enddo
+                           enddo
+                        enddo
+                     enddo
+                  enddo
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
          end select
       endsubroutine omp_device_memcpy_cmplx32
 
@@ -3382,123 +3662,158 @@ submodule (dmr) dmr_device_memcpy
 
          select rank(array_dst)
          rank(1)
+            select rank(array_src)
+            rank(1)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_(1), ubounds_(1)
-               array_dst(i) = array_src(i)
-            enddo
-            !$omp end target teams distribute parallel do
+               do i=lbounds_(1), ubounds_(1)
+                  array_dst(i) = array_src(i)
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            end select
 
          rank(2)
+            select rank(array_src)
+            rank(2)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do j=lbounds_(2), ubounds_(2)
-               do i=lbounds_(1), ubounds_(1)
-                  array_dst(i,j) = array_src(i,j)
-               enddo
-            enddo
-            !$omp end target teams distribute parallel do
-
-         rank(3)
-#if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#endif
-            do k=lbounds_(3), ubounds_(3)
                do j=lbounds_(2), ubounds_(2)
                   do i=lbounds_(1), ubounds_(1)
-                     array_dst(i,j,k) = array_src(i,j,k)
+                     array_dst(i,j) = array_src(i,j)
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(4)
+         rank(3)
+            select rank(array_src)
+            rank(3)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do l=lbounds_(4), ubounds_(4)
                do k=lbounds_(3), ubounds_(3)
                   do j=lbounds_(2), ubounds_(2)
                      do i=lbounds_(1), ubounds_(1)
-                        array_dst(i,j,k,l) = array_src(i,j,k,l)
+                        array_dst(i,j,k) = array_src(i,j,k)
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(5)
+         rank(4)
+            select rank(array_src)
+            rank(4)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do m=lbounds_(5), ubounds_(5)
                do l=lbounds_(4), ubounds_(4)
                   do k=lbounds_(3), ubounds_(3)
                      do j=lbounds_(2), ubounds_(2)
                         do i=lbounds_(1), ubounds_(1)
-                           array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
+                           array_dst(i,j,k,l) = array_src(i,j,k,l)
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(6)
+         rank(5)
+            select rank(array_src)
+            rank(5)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do n=lbounds_(6), ubounds_(6)
                do m=lbounds_(5), ubounds_(5)
                   do l=lbounds_(4), ubounds_(4)
                      do k=lbounds_(3), ubounds_(3)
                         do j=lbounds_(2), ubounds_(2)
                            do i=lbounds_(1), ubounds_(1)
-                              array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
+                              array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(7)
+         rank(6)
+            select rank(array_src)
+            rank(6)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do o=lbounds_(7), ubounds_(7)
                do n=lbounds_(6), ubounds_(6)
                   do m=lbounds_(5), ubounds_(5)
                      do l=lbounds_(4), ubounds_(4)
                         do k=lbounds_(3), ubounds_(3)
                            do j=lbounds_(2), ubounds_(2)
                               do i=lbounds_(1), ubounds_(1)
-                                 array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
                               enddo
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
+
+         rank(7)
+            select rank(array_src)
+            rank(7)
+#if defined _OpenMP_5_1
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#else
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#endif
+               do o=lbounds_(7), ubounds_(7)
+                  do n=lbounds_(6), ubounds_(6)
+                     do m=lbounds_(5), ubounds_(5)
+                        do l=lbounds_(4), ubounds_(4)
+                           do k=lbounds_(3), ubounds_(3)
+                              do j=lbounds_(2), ubounds_(2)
+                                 do i=lbounds_(1), ubounds_(1)
+                                    array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 enddo
+                              enddo
+                           enddo
+                        enddo
+                     enddo
+                  enddo
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
          end select
       endsubroutine omp_device_memcpy_cmplx64
 
@@ -3540,123 +3855,158 @@ submodule (dmr) dmr_device_memcpy
 
          select rank(array_dst)
          rank(1)
+            select rank(array_src)
+            rank(1)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do i=lbounds_(1), ubounds_(1)
-               array_dst(i) = array_src(i)
-            enddo
-            !$omp end target teams distribute parallel do
+               do i=lbounds_(1), ubounds_(1)
+                  array_dst(i) = array_src(i)
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            end select
 
          rank(2)
+            select rank(array_src)
+            rank(2)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do j=lbounds_(2), ubounds_(2)
-               do i=lbounds_(1), ubounds_(1)
-                  array_dst(i,j) = array_src(i,j)
-               enddo
-            enddo
-            !$omp end target teams distribute parallel do
-
-         rank(3)
-#if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#endif
-            do k=lbounds_(3), ubounds_(3)
                do j=lbounds_(2), ubounds_(2)
                   do i=lbounds_(1), ubounds_(1)
-                     array_dst(i,j,k) = array_src(i,j,k)
+                     array_dst(i,j) = array_src(i,j)
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(4)
+         rank(3)
+            select rank(array_src)
+            rank(3)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do l=lbounds_(4), ubounds_(4)
                do k=lbounds_(3), ubounds_(3)
                   do j=lbounds_(2), ubounds_(2)
                      do i=lbounds_(1), ubounds_(1)
-                        array_dst(i,j,k,l) = array_src(i,j,k,l)
+                        array_dst(i,j,k) = array_src(i,j,k)
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(5)
+         rank(4)
+            select rank(array_src)
+            rank(4)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do m=lbounds_(5), ubounds_(5)
                do l=lbounds_(4), ubounds_(4)
                   do k=lbounds_(3), ubounds_(3)
                      do j=lbounds_(2), ubounds_(2)
                         do i=lbounds_(1), ubounds_(1)
-                           array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
+                           array_dst(i,j,k,l) = array_src(i,j,k,l)
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(6)
+         rank(5)
+            select rank(array_src)
+            rank(5)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do n=lbounds_(6), ubounds_(6)
                do m=lbounds_(5), ubounds_(5)
                   do l=lbounds_(4), ubounds_(4)
                      do k=lbounds_(3), ubounds_(3)
                         do j=lbounds_(2), ubounds_(2)
                            do i=lbounds_(1), ubounds_(1)
-                              array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
+                              array_dst(i,j,k,l,m) = array_src(i,j,k,l,m)
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
 
-         rank(7)
+         rank(6)
+            select rank(array_src)
+            rank(6)
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
-            do o=lbounds_(7), ubounds_(7)
                do n=lbounds_(6), ubounds_(6)
                   do m=lbounds_(5), ubounds_(5)
                      do l=lbounds_(4), ubounds_(4)
                         do k=lbounds_(3), ubounds_(3)
                            do j=lbounds_(2), ubounds_(2)
                               do i=lbounds_(1), ubounds_(1)
-                                 array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 array_dst(i,j,k,l,m,n) = array_src(i,j,k,l,m,n)
                               enddo
                            enddo
                         enddo
                      enddo
                   enddo
                enddo
-            enddo
-            !$omp end target teams distribute parallel do
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
+
+         rank(7)
+            select rank(array_src)
+            rank(7)
+#if defined _OpenMP_5_1
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#else
+               !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+#endif
+               do o=lbounds_(7), ubounds_(7)
+                  do n=lbounds_(6), ubounds_(6)
+                     do m=lbounds_(5), ubounds_(5)
+                        do l=lbounds_(4), ubounds_(4)
+                           do k=lbounds_(3), ubounds_(3)
+                              do j=lbounds_(2), ubounds_(2)
+                                 do i=lbounds_(1), ubounds_(1)
+                                    array_dst(i,j,k,l,m,n,o) = array_src(i,j,k,l,m,n,o)
+                                 enddo
+                              enddo
+                           enddo
+                        enddo
+                     enddo
+                  enddo
+               enddo
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            endselect
          end select
       endsubroutine omp_device_memcpy_cmplx128
 #endif
