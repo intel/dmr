@@ -27,7 +27,7 @@ ifdef intel
    FCFLAGS  = $(LDFLAGS) -traceback -module $(DMOD) -what
    FORTFLAGS = -c -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
    EXEFLAGS = -fiopenmp -fopenmp-targets=spir64 -g -warn all -check all -traceback -check bounds -debug all -module $(DMOD)
-   DFLAGS = -D_OpenMP_5_1 -D_F2008
+   DFLAGS = -D_OpenMP_5_1
 endif
 
 ifdef ibm
@@ -86,90 +86,90 @@ $(DEXE)TEST_ALL: $(MKDIRS) $(DOBJ)test_dmr.o
 EXES := $(EXES) TEST_ALL
 
 #compiling rules
-$(DOBJ)dmr_c_functions_c.o: src/lib/dmr_c_functions_c.c
+$(DOBJ)dmr_c_functions_c.o: src/lib/c_functions/dmr_c_functions_c.c
 	@echo $(COTEXT)
 	@$(CC) $(LDFLAGS) $(DFLAGS)  $< -o $@
 
-$(DOBJ)dmr_c_functions.o: src/lib/dmr_c_functions.F90 \
+$(DOBJ)dmr_environment.o: src/lib/modules/dmr_environment.F90
+	@echo $(COTEXT)
+	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
+
+$(DOBJ)dmr_c_functions.o: src/lib/modules/dmr_c_functions.F90 \
 	$(DOBJ)dmr_c_functions_c.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
-$(DOBJ)dmr.o: src/lib/dmr.F90 \
+$(DOBJ)dmr.o: src/lib/modules/dmr.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr_c_functions.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
-$(DOBJ)dmr_target_is_present.o: src/lib/dmr_target_is_present.F90 \
+$(DOBJ)dmr_target_is_present.o: src/lib/submodules/dmr_target_is_present.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr_c_functions.o \
 	$(DOBJ)dmr.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
-$(DOBJ)dmr_target_free.o: src/lib/dmr_target_free.F90 \
+$(DOBJ)dmr_target_free.o: src/lib/submodules/dmr_target_free.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr_c_functions.o \
 	$(DOBJ)dmr.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
-$(DOBJ)dmr_target_alloc.o: src/lib/dmr_target_alloc.F90 \
+$(DOBJ)dmr_target_alloc.o: src/lib/submodules/dmr_target_alloc.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr_c_functions.o \
 	$(DOBJ)dmr.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
-$(DOBJ)dmr_target_memcpy.o: src/lib/dmr_target_memcpy.F90 \
+$(DOBJ)dmr_target_memcpy.o: src/lib/submodules/dmr_target_memcpy.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr_c_functions.o \
 	$(DOBJ)dmr.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
-$(DOBJ)dmr_target_memcpy_scalar.o: src/lib/dmr_target_memcpy_scalar.F90 \
+$(DOBJ)dmr_target_memcpy_scalar.o: src/lib/submodules/dmr_target_memcpy_scalar.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr_c_functions.o \
 	$(DOBJ)dmr.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
-$(DOBJ)dmr_target_memcpy_rect.o: src/lib/dmr_target_memcpy_rect.F90 \
+$(DOBJ)dmr_target_memcpy_rect.o: src/lib/submodules/dmr_target_memcpy_rect.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr_c_functions.o \
 	$(DOBJ)dmr.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
-$(DOBJ)dmr_get_mapped_ptr.o: src/lib/dmr_get_mapped_ptr.F90 \
+$(DOBJ)dmr_get_mapped_ptr.o: src/lib/submodules/dmr_get_mapped_ptr.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr_c_functions.o \
 	$(DOBJ)dmr.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
-$(DOBJ)dmr_correctly_mapped.o: src/lib/dmr_correctly_mapped.F90 \
+$(DOBJ)dmr_correctly_mapped.o: src/lib/submodules/dmr_correctly_mapped.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr_c_functions.o \
 	$(DOBJ)dmr.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
-$(DOBJ)dmr_target_init.o: src/lib/dmr_target_init.F90 \
+$(DOBJ)dmr_target_init.o: src/lib/submodules/dmr_target_init.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
-$(DOBJ)dmr_device_memcpy.o: src/lib/dmr_device_memcpy.F90 \
+$(DOBJ)dmr_device_memcpy.o: src/lib/submodules/dmr_device_memcpy.F90 \
 	$(DOBJ)dmr_environment.o \
 	$(DOBJ)dmr.o
-	@echo $(COTEXT)
-	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
-
-$(DOBJ)dmr_environment.o: src/lib/dmr_environment.F90
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 

@@ -29,7 +29,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(2)
          integer(I1P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -52,7 +52,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(4)
          integer(I1P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -75,7 +75,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(6)
          integer(I1P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -98,7 +98,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(8)
          integer(I1P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -121,7 +121,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(10)
          integer(I1P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -147,7 +147,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(12)
          integer(I1P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -173,7 +173,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(14)
          integer(I1P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -199,7 +199,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(2)
          integer(I2P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -222,7 +222,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(4)
          integer(I2P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -245,7 +245,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(6)
          integer(I2P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -268,7 +268,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(8)
          integer(I2P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -291,7 +291,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(10)
          integer(I2P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -317,7 +317,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(12)
          integer(I2P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -343,7 +343,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(14)
          integer(I2P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -369,7 +369,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(2)
          integer(I4P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -392,7 +392,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(4)
          integer(I4P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -415,7 +415,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(6)
          integer(I4P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -438,7 +438,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(8)
          integer(I4P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -461,7 +461,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(10)
          integer(I4P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -487,7 +487,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(12)
          integer(I4P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -513,7 +513,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(14)
          integer(I4P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -539,7 +539,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(2)
          integer(I8P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -562,7 +562,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(4)
          integer(I8P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -585,7 +585,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(6)
          integer(I8P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -608,7 +608,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(8)
          integer(I8P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -631,7 +631,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(10)
          integer(I8P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -657,7 +657,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(12)
          integer(I8P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -683,7 +683,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(14)
          integer(I8P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -710,7 +710,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(2)
          real(R4P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -733,7 +733,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(4)
          real(R4P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -756,7 +756,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(6)
          real(R4P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -779,7 +779,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(8)
          real(R4P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -802,7 +802,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(10)
          real(R4P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -828,7 +828,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(12)
          real(R4P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -854,7 +854,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(14)
          real(R4P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -880,7 +880,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(2)
          real(R8P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -903,7 +903,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(4)
          real(R8P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -926,7 +926,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(6)
          real(R8P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -949,7 +949,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(8)
          real(R8P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -972,7 +972,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(10)
          real(R8P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -998,7 +998,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(12)
          real(R8P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1024,7 +1024,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(14)
          real(R8P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1051,7 +1051,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                     :: omp_dev
          integer(I8P), intent(in), optional           :: bounds(2)
          real(R16P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1074,7 +1074,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                     :: omp_dev
          integer(I8P), intent(in), optional           :: bounds(4)
          real(R16P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1097,7 +1097,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                     :: omp_dev
          integer(I8P), intent(in), optional           :: bounds(6)
          real(R16P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1120,7 +1120,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                     :: omp_dev
          integer(I8P), intent(in), optional           :: bounds(8)
          real(R16P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1143,7 +1143,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                     :: omp_dev
          integer(I8P), intent(in), optional           :: bounds(10)
          real(R16P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1169,7 +1169,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                     :: omp_dev
          integer(I8P), intent(in), optional           :: bounds(12)
          real(R16P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1195,7 +1195,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                     :: omp_dev
          integer(I8P), intent(in), optional           :: bounds(14)
          real(R16P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1223,7 +1223,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(2)
          complex(R4P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1246,7 +1246,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(4)
          complex(R4P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1269,7 +1269,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(6)
          complex(R4P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1292,7 +1292,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(8)
          complex(R4P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1315,7 +1315,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(10)
          complex(R4P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1341,7 +1341,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(12)
          complex(R4P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1367,7 +1367,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(14)
          complex(R4P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1393,7 +1393,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(2)
          complex(R8P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1416,7 +1416,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(4)
          complex(R8P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1439,7 +1439,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(6)
          complex(R8P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1462,7 +1462,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(8)
          complex(R8P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1485,7 +1485,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(10)
          complex(R8P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1511,7 +1511,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(12)
          complex(R8P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1537,7 +1537,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(14)
          complex(R8P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1564,7 +1564,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                        :: omp_dev
          integer(I8P), intent(in), optional              :: bounds(2)
          complex(R16P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1587,7 +1587,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                        :: omp_dev
          integer(I8P), intent(in), optional              :: bounds(4)
          complex(R16P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1610,7 +1610,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                        :: omp_dev
          integer(I8P), intent(in), optional              :: bounds(6)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1633,7 +1633,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                        :: omp_dev
          integer(I8P), intent(in), optional              :: bounds(8)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1656,7 +1656,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                        :: omp_dev
          integer(I8P), intent(in), optional              :: bounds(10)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1682,7 +1682,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                        :: omp_dev
          integer(I8P), intent(in), optional              :: bounds(12)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 
@@ -1708,7 +1708,7 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in)                        :: omp_dev
          integer(I8P), intent(in), optional              :: bounds(14)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
 
          omp_device = int(omp_dev, c_int)
 

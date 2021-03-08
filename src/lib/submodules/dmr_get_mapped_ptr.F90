@@ -424,7 +424,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I1P), pointer, contiguous, intent(out) :: fptr_dev(:)
          integer(I1P), target,  contiguous, intent(in)  :: fptr_hos(:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1)])
@@ -437,7 +437,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I1P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
          integer(I1P), target,  contiguous, intent(in)  :: fptr_hos(:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2)])
@@ -450,7 +450,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I1P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
          integer(I1P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3)])
@@ -463,7 +463,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I1P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
          integer(I1P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -477,7 +477,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I1P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
          integer(I1P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -491,7 +491,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I1P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
          integer(I1P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -505,7 +505,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I1P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I1P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -520,7 +520,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I2P), pointer, contiguous, intent(out) :: fptr_dev(:)
          integer(I2P), target,  contiguous, intent(in)  :: fptr_hos(:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1)])
@@ -533,7 +533,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I2P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
          integer(I2P), target,  contiguous, intent(in)  :: fptr_hos(:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2)])
@@ -546,7 +546,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I2P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
          integer(I2P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3)])
@@ -559,7 +559,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I2P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
          integer(I2P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -573,7 +573,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I2P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
          integer(I2P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -587,7 +587,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I2P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
          integer(I2P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -601,7 +601,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I2P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I2P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -616,7 +616,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I4P), pointer, contiguous, intent(out) :: fptr_dev(:)
          integer(I4P), target,  contiguous, intent(in)  :: fptr_hos(:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1)])
@@ -629,7 +629,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I4P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
          integer(I4P), target,  contiguous, intent(in)  :: fptr_hos(:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2)])
@@ -642,7 +642,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
          integer(I4P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3)])
@@ -655,7 +655,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
          integer(I4P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -669,7 +669,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
          integer(I4P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -683,7 +683,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -697,7 +697,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -712,7 +712,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I8P), pointer, contiguous, intent(out) :: fptr_dev(:)
          integer(I8P), target,  contiguous, intent(in)  :: fptr_hos(:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1)])
@@ -725,7 +725,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I8P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
          integer(I8P), target,  contiguous, intent(in)  :: fptr_hos(:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2)])
@@ -738,7 +738,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
          integer(I8P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3)])
@@ -751,7 +751,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
          integer(I8P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -765,7 +765,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
          integer(I8P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -779,7 +779,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -793,7 +793,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          integer(I8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -809,7 +809,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R4P), pointer, contiguous, intent(out) :: fptr_dev(:)
          real(R4P), target,  contiguous, intent(in)  :: fptr_hos(:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1)])
@@ -822,7 +822,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
          real(R4P), target,  contiguous, intent(in)  :: fptr_hos(:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2)])
@@ -835,7 +835,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
          real(R4P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3)])
@@ -848,7 +848,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
          real(R4P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -862,7 +862,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
          real(R4P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -876,7 +876,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
          real(R4P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -890,7 +890,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
          real(R4P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -905,7 +905,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R8P), pointer, contiguous, intent(out) :: fptr_dev(:)
          real(R8P), target,  contiguous, intent(in)  :: fptr_hos(:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1)])
@@ -918,7 +918,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
          real(R8P), target,  contiguous, intent(in)  :: fptr_hos(:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2)])
@@ -931,7 +931,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
          real(R8P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3)])
@@ -944,7 +944,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
          real(R8P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -958,7 +958,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
          real(R8P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -972,7 +972,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
          real(R8P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -986,7 +986,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
          real(R8P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -1002,7 +1002,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R16P), pointer, contiguous, intent(out) :: fptr_dev(:)
          real(R16P), target,  contiguous, intent(in)  :: fptr_hos(:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1)])
@@ -1015,7 +1015,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
          real(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2)])
@@ -1028,7 +1028,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
          real(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3)])
@@ -1041,7 +1041,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
          real(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -1055,7 +1055,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
          real(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -1069,7 +1069,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
          real(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -1083,7 +1083,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          real(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
          real(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -1100,7 +1100,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R4P), pointer, contiguous, intent(out) :: fptr_dev(:)
          complex(R4P), target,  contiguous, intent(in)  :: fptr_hos(:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1)])
@@ -1113,7 +1113,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
          complex(R4P), target,  contiguous, intent(in)  :: fptr_hos(:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2)])
@@ -1126,7 +1126,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
          complex(R4P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3)])
@@ -1139,7 +1139,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
          complex(R4P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -1153,7 +1153,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
          complex(R4P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -1167,7 +1167,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
          complex(R4P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -1181,7 +1181,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R4P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
          complex(R4P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -1196,7 +1196,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R8P), pointer, contiguous, intent(out) :: fptr_dev(:)
          complex(R8P), target,  contiguous, intent(in)  :: fptr_hos(:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1)])
@@ -1209,7 +1209,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
          complex(R8P), target,  contiguous, intent(in)  :: fptr_hos(:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2)])
@@ -1222,7 +1222,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
          complex(R8P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3)])
@@ -1235,7 +1235,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
          complex(R8P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -1249,7 +1249,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
          complex(R8P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -1263,7 +1263,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
          complex(R8P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -1277,7 +1277,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R8P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
          complex(R8P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -1293,7 +1293,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:)
          complex(R16P), target,  contiguous, intent(in)  :: fptr_hos(:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1)])
@@ -1306,7 +1306,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
          complex(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2)])
@@ -1319,7 +1319,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
          complex(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3)])
@@ -1332,7 +1332,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
          complex(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -1346,7 +1346,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
          complex(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -1360,7 +1360,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
          complex(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &
@@ -1374,7 +1374,7 @@ submodule (dmr) dmr_get_mapped_ptr
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
          complex(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_get_mapped_ptr.i90"
+         include "src/lib/submodules/include/dmr_get_mapped_ptr.i90"
 
          if (c_associated(cptr_dev)) then
             call c_f_pointer(cptr_dev, fptr_dev, [size(fptr_hos,1), size(fptr_hos,2), size(fptr_hos,3), &

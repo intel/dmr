@@ -428,7 +428,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(2)
          integer(I1P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int8_1
 
       module subroutine omp_target_alloc_f_int8_2(fptr_dev, dimensions, omp_dev, bounds)
@@ -438,7 +438,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(4)
          integer(I1P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int8_2
 
       module subroutine omp_target_alloc_f_int8_3(fptr_dev, dimensions, omp_dev, bounds)
@@ -448,7 +448,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(6)
          integer(I1P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int8_3
 
       module subroutine omp_target_alloc_f_int8_4(fptr_dev, dimensions, omp_dev, bounds)
@@ -458,7 +458,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(8)
          integer(I1P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int8_4
 
       module subroutine omp_target_alloc_f_int8_5(fptr_dev, dimensions, omp_dev, bounds)
@@ -468,7 +468,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(10)
          integer(I1P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int8_5
 
       module subroutine omp_target_alloc_f_int8_6(fptr_dev, dimensions, omp_dev, bounds)
@@ -478,7 +478,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(12)
          integer(I1P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int8_6
 
       module subroutine omp_target_alloc_f_int8_7(fptr_dev, dimensions, omp_dev, bounds)
@@ -488,7 +488,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(14)
          integer(I1P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int8_7
 
       module subroutine omp_target_alloc_f_int16_1(fptr_dev, dimensions, omp_dev, bounds)
@@ -498,7 +498,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(2)
          integer(I2P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int16_1
 
       module subroutine omp_target_alloc_f_int16_2(fptr_dev, dimensions, omp_dev, bounds)
@@ -508,7 +508,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(4)
          integer(I2P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int16_2
 
       module subroutine omp_target_alloc_f_int16_3(fptr_dev, dimensions, omp_dev, bounds)
@@ -518,7 +518,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(6)
          integer(I2P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int16_3
 
       module subroutine omp_target_alloc_f_int16_4(fptr_dev, dimensions, omp_dev, bounds)
@@ -528,7 +528,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(8)
          integer(I2P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int16_4
 
       module subroutine omp_target_alloc_f_int16_5(fptr_dev, dimensions, omp_dev, bounds)
@@ -538,7 +538,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(10)
          integer(I2P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int16_5
 
       module subroutine omp_target_alloc_f_int16_6(fptr_dev, dimensions, omp_dev, bounds)
@@ -548,7 +548,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(12)
          integer(I2P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int16_6
 
       module subroutine omp_target_alloc_f_int16_7(fptr_dev, dimensions, omp_dev, bounds)
@@ -558,7 +558,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(14)
          integer(I2P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int16_7
 
       module subroutine omp_target_alloc_f_int32_1(fptr_dev, dimensions, omp_dev, bounds)
@@ -568,7 +568,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(2)
          integer(I4P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int32_1
 
       module subroutine omp_target_alloc_f_int32_2(fptr_dev, dimensions, omp_dev, bounds)
@@ -578,7 +578,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(4)
          integer(I4P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int32_2
 
       module subroutine omp_target_alloc_f_int32_3(fptr_dev, dimensions, omp_dev, bounds)
@@ -588,7 +588,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(6)
          integer(I4P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int32_3
 
       module subroutine omp_target_alloc_f_int32_4(fptr_dev, dimensions, omp_dev, bounds)
@@ -598,7 +598,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(8)
          integer(I4P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int32_4
 
       module subroutine omp_target_alloc_f_int32_5(fptr_dev, dimensions, omp_dev, bounds)
@@ -608,7 +608,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(10)
          integer(I4P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int32_5
 
       module subroutine omp_target_alloc_f_int32_6(fptr_dev, dimensions, omp_dev, bounds)
@@ -618,7 +618,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(12)
          integer(I4P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int32_6
 
       module subroutine omp_target_alloc_f_int32_7(fptr_dev, dimensions, omp_dev, bounds)
@@ -628,7 +628,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(14)
          integer(I4P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int32_7
 
       module subroutine omp_target_alloc_f_int64_1(fptr_dev, dimensions, omp_dev, bounds)
@@ -638,7 +638,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(2)
          integer(I8P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int64_1
 
       module subroutine omp_target_alloc_f_int64_2(fptr_dev, dimensions, omp_dev, bounds)
@@ -648,7 +648,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(4)
          integer(I8P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int64_2
 
       module subroutine omp_target_alloc_f_int64_3(fptr_dev, dimensions, omp_dev, bounds)
@@ -658,7 +658,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(6)
          integer(I8P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int64_3
 
       module subroutine omp_target_alloc_f_int64_4(fptr_dev, dimensions, omp_dev, bounds)
@@ -668,7 +668,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(8)
          integer(I8P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int64_4
 
       module subroutine omp_target_alloc_f_int64_5(fptr_dev, dimensions, omp_dev, bounds)
@@ -678,7 +678,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(10)
          integer(I8P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int64_5
 
       module subroutine omp_target_alloc_f_int64_6(fptr_dev, dimensions, omp_dev, bounds)
@@ -688,7 +688,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(12)
          integer(I8P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int64_6
 
       module subroutine omp_target_alloc_f_int64_7(fptr_dev, dimensions, omp_dev, bounds)
@@ -698,7 +698,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(14)
          integer(I8P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_int64_7
 
       ! OpenMP Target Alloc Real Routines
@@ -709,7 +709,7 @@ module dmr
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(2)
          real(R4P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real32_1
 
       module subroutine omp_target_alloc_f_real32_2(fptr_dev, dimensions, omp_dev, bounds)
@@ -719,7 +719,7 @@ module dmr
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(4)
          real(R4P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real32_2
 
       module subroutine omp_target_alloc_f_real32_3(fptr_dev, dimensions, omp_dev, bounds)
@@ -729,7 +729,7 @@ module dmr
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(6)
          real(R4P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real32_3
 
       module subroutine omp_target_alloc_f_real32_4(fptr_dev, dimensions, omp_dev, bounds)
@@ -739,7 +739,7 @@ module dmr
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(8)
          real(R4P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real32_4
 
       module subroutine omp_target_alloc_f_real32_5(fptr_dev, dimensions, omp_dev, bounds)
@@ -749,7 +749,7 @@ module dmr
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(10)
          real(R4P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real32_5
 
       module subroutine omp_target_alloc_f_real32_6(fptr_dev, dimensions, omp_dev, bounds)
@@ -759,7 +759,7 @@ module dmr
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(12)
          real(R4P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real32_6
 
       module subroutine omp_target_alloc_f_real32_7(fptr_dev, dimensions, omp_dev, bounds)
@@ -769,7 +769,7 @@ module dmr
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(14)
          real(R4P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real32_7
 
       module subroutine omp_target_alloc_f_real64_1(fptr_dev, dimensions, omp_dev, bounds)
@@ -779,7 +779,7 @@ module dmr
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(2)
          real(R8P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real64_1
 
       module subroutine omp_target_alloc_f_real64_2(fptr_dev, dimensions, omp_dev, bounds)
@@ -789,7 +789,7 @@ module dmr
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(4)
          real(R8P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real64_2
 
       module subroutine omp_target_alloc_f_real64_3(fptr_dev, dimensions, omp_dev, bounds)
@@ -799,7 +799,7 @@ module dmr
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(6)
          real(R8P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real64_3
 
       module subroutine omp_target_alloc_f_real64_4(fptr_dev, dimensions, omp_dev, bounds)
@@ -809,7 +809,7 @@ module dmr
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(8)
          real(R8P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real64_4
 
       module subroutine omp_target_alloc_f_real64_5(fptr_dev, dimensions, omp_dev, bounds)
@@ -819,7 +819,7 @@ module dmr
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(10)
          real(R8P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real64_5
 
       module subroutine omp_target_alloc_f_real64_6(fptr_dev, dimensions, omp_dev, bounds)
@@ -829,7 +829,7 @@ module dmr
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(12)
          real(R8P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real64_6
 
       module subroutine omp_target_alloc_f_real64_7(fptr_dev, dimensions, omp_dev, bounds)
@@ -839,7 +839,7 @@ module dmr
          integer(I4P), intent(in)                    :: omp_dev
          integer(I8P), intent(in), optional          :: bounds(14)
          real(R8P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real64_7
 
 #if defined _real128
@@ -850,7 +850,7 @@ module dmr
          integer(I4P), intent(in)                     :: omp_dev
          integer(I8P), intent(in), optional           :: bounds(2)
          real(R16P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real128_1
 
       module subroutine omp_target_alloc_f_real128_2(fptr_dev, dimensions, omp_dev, bounds)
@@ -860,7 +860,7 @@ module dmr
          integer(I4P), intent(in)                     :: omp_dev
          integer(I8P), intent(in), optional           :: bounds(4)
          real(R16P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real128_2
 
       module subroutine omp_target_alloc_f_real128_3(fptr_dev, dimensions, omp_dev, bounds)
@@ -870,7 +870,7 @@ module dmr
          integer(I4P), intent(in)                     :: omp_dev
          integer(I8P), intent(in), optional           :: bounds(6)
          real(R16P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real128_3
 
       module subroutine omp_target_alloc_f_real128_4(fptr_dev, dimensions, omp_dev, bounds)
@@ -880,7 +880,7 @@ module dmr
          integer(I4P), intent(in)                     :: omp_dev
          integer(I8P), intent(in), optional           :: bounds(8)
          real(R16P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real128_4
 
       module subroutine omp_target_alloc_f_real128_5(fptr_dev, dimensions, omp_dev, bounds)
@@ -890,7 +890,7 @@ module dmr
          integer(I4P), intent(in)                     :: omp_dev
          integer(I8P), intent(in), optional           :: bounds(10)
          real(R16P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real128_5
 
       module subroutine omp_target_alloc_f_real128_6(fptr_dev, dimensions, omp_dev, bounds)
@@ -900,7 +900,7 @@ module dmr
          integer(I4P), intent(in)                     :: omp_dev
          integer(I8P), intent(in), optional           :: bounds(12)
          real(R16P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real128_6
 
       module subroutine omp_target_alloc_f_real128_7(fptr_dev, dimensions, omp_dev, bounds)
@@ -910,7 +910,7 @@ module dmr
          integer(I4P), intent(in)                     :: omp_dev
          integer(I8P), intent(in), optional           :: bounds(14)
          real(R16P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_real128_7
 #endif
 
@@ -922,7 +922,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(2)
          complex(R4P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx32_1
 
       module subroutine omp_target_alloc_f_cmplx32_2(fptr_dev, dimensions, omp_dev, bounds)
@@ -932,7 +932,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(4)
          complex(R4P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx32_2
 
       module subroutine omp_target_alloc_f_cmplx32_3(fptr_dev, dimensions, omp_dev, bounds)
@@ -942,7 +942,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(6)
          complex(R4P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx32_3
 
       module subroutine omp_target_alloc_f_cmplx32_4(fptr_dev, dimensions, omp_dev, bounds)
@@ -952,7 +952,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(8)
          complex(R4P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx32_4
 
       module subroutine omp_target_alloc_f_cmplx32_5(fptr_dev, dimensions, omp_dev, bounds)
@@ -962,7 +962,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(10)
          complex(R4P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx32_5
 
       module subroutine omp_target_alloc_f_cmplx32_6(fptr_dev, dimensions, omp_dev, bounds)
@@ -972,7 +972,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(12)
          complex(R4P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx32_6
 
       module subroutine omp_target_alloc_f_cmplx32_7(fptr_dev, dimensions, omp_dev, bounds)
@@ -982,7 +982,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(14)
          complex(R4P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx32_7
 
       module subroutine omp_target_alloc_f_cmplx64_1(fptr_dev, dimensions, omp_dev, bounds)
@@ -992,7 +992,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(2)
          complex(R8P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx64_1
 
       module subroutine omp_target_alloc_f_cmplx64_2(fptr_dev, dimensions, omp_dev, bounds)
@@ -1002,7 +1002,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(4)
          complex(R8P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx64_2
 
       module subroutine omp_target_alloc_f_cmplx64_3(fptr_dev, dimensions, omp_dev, bounds)
@@ -1012,7 +1012,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(6)
          complex(R8P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx64_3
 
       module subroutine omp_target_alloc_f_cmplx64_4(fptr_dev, dimensions, omp_dev, bounds)
@@ -1022,7 +1022,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(8)
          complex(R8P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx64_4
 
       module subroutine omp_target_alloc_f_cmplx64_5(fptr_dev, dimensions, omp_dev, bounds)
@@ -1032,7 +1032,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(10)
          complex(R8P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx64_5
 
       module subroutine omp_target_alloc_f_cmplx64_6(fptr_dev, dimensions, omp_dev, bounds)
@@ -1042,7 +1042,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(12)
          complex(R8P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx64_6
 
       module subroutine omp_target_alloc_f_cmplx64_7(fptr_dev, dimensions, omp_dev, bounds)
@@ -1052,7 +1052,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dev
          integer(I8P), intent(in), optional             :: bounds(14)
          complex(R8P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx64_7
 
 #if defined _real128
@@ -1063,7 +1063,7 @@ module dmr
          integer(I4P), intent(in)                        :: omp_dev
          integer(I8P), intent(in), optional              :: bounds(2)
          complex(R16P), pointer, contiguous              :: fptr(:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx128_1
 
       module subroutine omp_target_alloc_f_cmplx128_2(fptr_dev, dimensions, omp_dev, bounds)
@@ -1073,7 +1073,7 @@ module dmr
          integer(I4P), intent(in)                        :: omp_dev
          integer(I8P), intent(in), optional              :: bounds(4)
          complex(R16P), pointer, contiguous              :: fptr(:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx128_2
 
       module subroutine omp_target_alloc_f_cmplx128_3(fptr_dev, dimensions, omp_dev, bounds)
@@ -1083,7 +1083,7 @@ module dmr
          integer(I4P), intent(in)                        :: omp_dev
          integer(I8P), intent(in), optional              :: bounds(6)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx128_3
 
       module subroutine omp_target_alloc_f_cmplx128_4(fptr_dev, dimensions, omp_dev, bounds)
@@ -1093,7 +1093,7 @@ module dmr
          integer(I4P), intent(in)                        :: omp_dev
          integer(I8P), intent(in), optional              :: bounds(8)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx128_4
 
       module subroutine omp_target_alloc_f_cmplx128_5(fptr_dev, dimensions, omp_dev, bounds)
@@ -1103,7 +1103,7 @@ module dmr
          integer(I4P), intent(in)                        :: omp_dev
          integer(I8P), intent(in), optional              :: bounds(10)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx128_5
 
       module subroutine omp_target_alloc_f_cmplx128_6(fptr_dev, dimensions, omp_dev, bounds)
@@ -1113,7 +1113,7 @@ module dmr
          integer(I4P), intent(in)                        :: omp_dev
          integer(I8P), intent(in), optional              :: bounds(12)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx128_6
 
       module subroutine omp_target_alloc_f_cmplx128_7(fptr_dev, dimensions, omp_dev, bounds)
@@ -1123,7 +1123,7 @@ module dmr
          integer(I4P), intent(in)                        :: omp_dev
          integer(I8P), intent(in), optional              :: bounds(14)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_target_alloc.i90"
+         include "src/lib/submodules/include/dmr_target_alloc.i90"
       endsubroutine omp_target_alloc_f_cmplx128_7
 #endif
    endinterface
@@ -1627,196 +1627,196 @@ module dmr
          implicit none
          logical                   :: omp_correctly_mapped_int8_1
          integer(I1P), intent(in)  :: array(:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
        endfunction omp_correctly_mapped_int8_1
 
       module function omp_correctly_mapped_int8_2(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int8_2
          integer(I1P), intent(in)  :: array(:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int8_2
 
       module function omp_correctly_mapped_int8_3(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int8_3
          integer(I1P), intent(in)  :: array(:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int8_3
 
       module function omp_correctly_mapped_int8_4(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int8_4
          integer(I1P), intent(in)  :: array(:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int8_4
 
       module function omp_correctly_mapped_int8_5(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int8_5
          integer(I1P), intent(in)  :: array(:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int8_5
 
       module function omp_correctly_mapped_int8_6(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int8_6
          integer(I1P), intent(in)  :: array(:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int8_6
 
       module function omp_correctly_mapped_int8_7(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int8_7
          integer(I1P), intent(in)  :: array(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int8_7
 
       module function omp_correctly_mapped_int16_1(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int16_1
          integer(I2P), intent(in)  :: array(:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int16_1
 
       module function omp_correctly_mapped_int16_2(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int16_2
          integer(I2P), intent(in)  :: array(:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int16_2
 
       module function omp_correctly_mapped_int16_3(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int16_3
          integer(I2P), intent(in)  :: array(:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int16_3
 
       module function omp_correctly_mapped_int16_4(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int16_4
          integer(I2P), intent(in)  :: array(:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int16_4
 
       module function omp_correctly_mapped_int16_5(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int16_5
          integer(I2P), intent(in)  :: array(:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int16_5
 
       module function omp_correctly_mapped_int16_6(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int16_6
          integer(I2P), intent(in)  :: array(:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int16_6
 
       module function omp_correctly_mapped_int16_7(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int16_7
          integer(I2P), intent(in)  :: array(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int16_7
 
       module function omp_correctly_mapped_int32_1(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int32_1
          integer(I4P), intent(in)  :: array(:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int32_1
 
       module function omp_correctly_mapped_int32_2(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int32_2
          integer(I4P), intent(in)  :: array(:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int32_2
 
       module function omp_correctly_mapped_int32_3(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int32_3
          integer(I4P), intent(in)  :: array(:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int32_3
 
       module function omp_correctly_mapped_int32_4(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int32_4
          integer(I4P), intent(in)  :: array(:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int32_4
 
       module function omp_correctly_mapped_int32_5(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int32_5
          integer(I4P), intent(in)  :: array(:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int32_5
 
       module function omp_correctly_mapped_int32_6(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int32_6
          integer(I4P), intent(in)  :: array(:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int32_6
 
       module function omp_correctly_mapped_int32_7(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int32_7
          integer(I4P), intent(in)  :: array(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int32_7
 
       module function omp_correctly_mapped_int64_1(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int64_1
          integer(I8P), intent(in)  :: array(:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int64_1
 
       module function omp_correctly_mapped_int64_2(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int64_2
          integer(I8P), intent(in)  :: array(:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int64_2
 
       module function omp_correctly_mapped_int64_3(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int64_3
          integer(I8P), intent(in)  :: array(:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int64_3
 
       module function omp_correctly_mapped_int64_4(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int64_4
          integer(I8P), intent(in)  :: array(:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int64_4
 
       module function omp_correctly_mapped_int64_5(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int64_5
          integer(I8P), intent(in)  :: array(:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int64_5
 
       module function omp_correctly_mapped_int64_6(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int64_6
          integer(I8P), intent(in)  :: array(:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int64_6
 
       module function omp_correctly_mapped_int64_7(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_int64_7
          integer(I8P), intent(in)  :: array(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int64_7
 
       ! DMR Correctly Mapped Real Routines
@@ -1824,98 +1824,98 @@ module dmr
          implicit none
          logical                :: omp_correctly_mapped_real32_1
          real(R4P), intent(in)  :: array(:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real32_1
 
       module function omp_correctly_mapped_real32_2(array, omp_dev)
          implicit none
          logical                :: omp_correctly_mapped_real32_2
          real(R4P), intent(in)  :: array(:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real32_2
 
       module function omp_correctly_mapped_real32_3(array, omp_dev)
          implicit none
          logical                :: omp_correctly_mapped_real32_3
          real(R4P), intent(in)  :: array(:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real32_3
 
       module function omp_correctly_mapped_real32_4(array, omp_dev)
          implicit none
          logical                :: omp_correctly_mapped_real32_4
          real(R4P), intent(in)  :: array(:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real32_4
 
       module function omp_correctly_mapped_real32_5(array, omp_dev)
          implicit none
          logical                :: omp_correctly_mapped_real32_5
          real(R4P), intent(in)  :: array(:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real32_5
 
       module function omp_correctly_mapped_real32_6(array, omp_dev)
          implicit none
          logical                :: omp_correctly_mapped_real32_6
          real(R4P), intent(in)  :: array(:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real32_6
 
       module function omp_correctly_mapped_real32_7(array, omp_dev)
          implicit none
          logical                :: omp_correctly_mapped_real32_7
          real(R4P), intent(in)  :: array(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real32_7
 
       module function omp_correctly_mapped_real64_1(array, omp_dev)
          implicit none
          logical                :: omp_correctly_mapped_real64_1
          real(R8P), intent(in)  :: array(:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real64_1
 
       module function omp_correctly_mapped_real64_2(array, omp_dev)
          implicit none
          logical                :: omp_correctly_mapped_real64_2
          real(R8P), intent(in)  :: array(:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real64_2
 
       module function omp_correctly_mapped_real64_3(array, omp_dev)
          implicit none
          logical                :: omp_correctly_mapped_real64_3
          real(R8P), intent(in)  :: array(:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real64_3
 
       module function omp_correctly_mapped_real64_4(array, omp_dev)
          implicit none
          logical                :: omp_correctly_mapped_real64_4
          real(R8P), intent(in)  :: array(:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real64_4
 
       module function omp_correctly_mapped_real64_5(array, omp_dev)
          implicit none
          logical                :: omp_correctly_mapped_real64_5
          real(R8P), intent(in)  :: array(:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real64_5
 
       module function omp_correctly_mapped_real64_6(array, omp_dev)
          implicit none
          logical                :: omp_correctly_mapped_real64_6
          real(R8P), intent(in)  :: array(:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real64_6
 
       module function omp_correctly_mapped_real64_7(array, omp_dev)
          implicit none
          logical                :: omp_correctly_mapped_real64_7
          real(R8P), intent(in)  :: array(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real64_7
 
 #if defined _real128
@@ -1923,49 +1923,49 @@ module dmr
          implicit none
          logical                 :: omp_correctly_mapped_real128_1
          real(R16P), intent(in)  :: array(:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real128_1
 
       module function omp_correctly_mapped_real128_2(array, omp_dev)
          implicit none
          logical                 :: omp_correctly_mapped_real128_2
          real(R16P), intent(in)  :: array(:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real128_2
 
       module function omp_correctly_mapped_real128_3(array, omp_dev)
          implicit none
          logical                 :: omp_correctly_mapped_real128_3
          real(R16P), intent(in)  :: array(:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real128_3
 
       module function omp_correctly_mapped_real128_4(array, omp_dev)
          implicit none
          logical                 :: omp_correctly_mapped_real128_4
          real(R16P), intent(in)  :: array(:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real128_4
 
       module function omp_correctly_mapped_real128_5(array, omp_dev)
          implicit none
          logical                 :: omp_correctly_mapped_real128_5
          real(R16P), intent(in)  :: array(:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real128_5
 
       module function omp_correctly_mapped_real128_6(array, omp_dev)
          implicit none
          logical                 :: omp_correctly_mapped_real128_6
          real(R16P), intent(in)  :: array(:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real128_6
 
       module function omp_correctly_mapped_real128_7(array, omp_dev)
          implicit none
          logical                 :: omp_correctly_mapped_real128_7
          real(R16P), intent(in)  :: array(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real128_7
 #endif
 
@@ -1974,98 +1974,98 @@ module dmr
          implicit none
          logical                   :: omp_correctly_mapped_cmplx32_1
          complex(R4P), intent(in)  :: array(:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx32_1
 
       module function omp_correctly_mapped_cmplx32_2(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_cmplx32_2
          complex(R4P), intent(in)  :: array(:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx32_2
 
       module function omp_correctly_mapped_cmplx32_3(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_cmplx32_3
          complex(R4P), intent(in)  :: array(:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx32_3
 
       module function omp_correctly_mapped_cmplx32_4(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_cmplx32_4
          complex(R4P), intent(in)  :: array(:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx32_4
 
       module function omp_correctly_mapped_cmplx32_5(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_cmplx32_5
          complex(R4P), intent(in)  :: array(:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx32_5
 
       module function omp_correctly_mapped_cmplx32_6(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_cmplx32_6
          complex(R4P), intent(in)  :: array(:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx32_6
 
       module function omp_correctly_mapped_cmplx32_7(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_cmplx32_7
          complex(R4P), intent(in)  :: array(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx32_7
 
       module function omp_correctly_mapped_cmplx64_1(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_cmplx64_1
          complex(R8P), intent(in)  :: array(:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx64_1
 
       module function omp_correctly_mapped_cmplx64_2(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_cmplx64_2
          complex(R8P), intent(in)  :: array(:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx64_2
 
       module function omp_correctly_mapped_cmplx64_3(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_cmplx64_3
          complex(R8P), intent(in)  :: array(:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx64_3
 
       module function omp_correctly_mapped_cmplx64_4(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_cmplx64_4
          complex(R8P), intent(in)  :: array(:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx64_4
 
       module function omp_correctly_mapped_cmplx64_5(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_cmplx64_5
          complex(R8P), intent(in)  :: array(:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx64_5
 
       module function omp_correctly_mapped_cmplx64_6(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_cmplx64_6
          complex(R8P), intent(in)  :: array(:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx64_6
 
       module function omp_correctly_mapped_cmplx64_7(array, omp_dev)
          implicit none
          logical                   :: omp_correctly_mapped_cmplx64_7
          complex(R8P), intent(in)  :: array(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx64_7
 
 #if defined _real128
@@ -2073,49 +2073,49 @@ module dmr
          implicit none
          logical                    :: omp_correctly_mapped_cmplx128_1
          complex(R16P), intent(in)  :: array(:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx128_1
 
       module function omp_correctly_mapped_cmplx128_2(array, omp_dev)
          implicit none
          logical                    :: omp_correctly_mapped_cmplx128_2
          complex(R16P), intent(in)  :: array(:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx128_2
 
       module function omp_correctly_mapped_cmplx128_3(array, omp_dev)
          implicit none
          logical                    :: omp_correctly_mapped_cmplx128_3
          complex(R16P), intent(in)  :: array(:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx128_3
 
       module function omp_correctly_mapped_cmplx128_4(array, omp_dev)
          implicit none
          logical                    :: omp_correctly_mapped_cmplx128_4
          complex(R16P), intent(in)  :: array(:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx128_4
 
       module function omp_correctly_mapped_cmplx128_5(array, omp_dev)
          implicit none
          logical                    :: omp_correctly_mapped_cmplx128_5
          complex(R16P), intent(in)  :: array(:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx128_5
 
       module function omp_correctly_mapped_cmplx128_6(array, omp_dev)
          implicit none
          logical                    :: omp_correctly_mapped_cmplx128_6
          complex(R16P), intent(in)  :: array(:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx128_6
 
       module function omp_correctly_mapped_cmplx128_7(array, omp_dev)
          implicit none
          logical                    :: omp_correctly_mapped_cmplx128_7
          complex(R16P), intent(in)  :: array(:,:,:,:,:,:,:)
-         include "src/lib/include/dmr_correctly_mapped.i90"
+         include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx128_7
 #endif
    endinterface
