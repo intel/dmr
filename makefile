@@ -1,3 +1,16 @@
+#* ========================================================================== *
+#*                                                                            *
+#* Copyright (C) 2020 Intel Corporation                                       *
+#* This file is part of the DMR library.                                      *
+#*                                                                            *
+#* For information on the license, see the LICENSE file.                      *
+#* Further information: https://github.com/giacrossi/dmr/                     *
+#* SPDX-License-Identifier: BSD-3-Clause                                      *
+#*                                                                            *
+#* ========================================================================== *
+#* Giacomo Rossi (Intel Corporation)                                          *
+#* ========================================================================== *
+
 #!/usr/bin/make
 MAKEFLAGS = -j 1
 
