@@ -71,7 +71,17 @@ firstrule: $(RULE)
 
 #building rules
 #the library
-DMR: $(MKDIRS) $(DOBJ)dmr.o
+DMR: $(MKDIRS) $(DOBJ)dmr.o\
+	$(DOBJ)dmr_target_is_present.o \
+	$(DOBJ)dmr_target_free.o \
+	$(DOBJ)dmr_target_alloc.o \
+	$(DOBJ)dmr_get_mapped_ptr.o \
+	$(DOBJ)dmr_correctly_mapped.o \
+	$(DOBJ)dmr_target_memcpy_rect.o \
+	$(DOBJ)dmr_target_memcpy.o \
+	$(DOBJ)dmr_target_memcpy_scalar.o \
+ 	$(DOBJ)dmr_target_init.o \
+	$(DOBJ)dmr_device_memcpy.o
 	@echo $(LITEXT)
 	@$(MAKELIB)
 
@@ -107,69 +117,59 @@ $(DOBJ)dmr.o: src/lib/modules/dmr.F90 \
 
 $(DOBJ)dmr_target_is_present.o: src/lib/submodules/dmr_target_is_present.F90 \
 	$(DOBJ)dmr_environment.o \
-	$(DOBJ)dmr_c_functions.o \
-	$(DOBJ)dmr.o
+	$(DOBJ)dmr_c_functions.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_target_free.o: src/lib/submodules/dmr_target_free.F90 \
 	$(DOBJ)dmr_environment.o \
-	$(DOBJ)dmr_c_functions.o \
-	$(DOBJ)dmr.o
+	$(DOBJ)dmr_c_functions.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_target_alloc.o: src/lib/submodules/dmr_target_alloc.F90 \
 	$(DOBJ)dmr_environment.o \
-	$(DOBJ)dmr_c_functions.o \
-	$(DOBJ)dmr.o
+	$(DOBJ)dmr_c_functions.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_target_memcpy.o: src/lib/submodules/dmr_target_memcpy.F90 \
 	$(DOBJ)dmr_environment.o \
-	$(DOBJ)dmr_c_functions.o \
-	$(DOBJ)dmr.o
+	$(DOBJ)dmr_c_functions.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_target_memcpy_scalar.o: src/lib/submodules/dmr_target_memcpy_scalar.F90 \
 	$(DOBJ)dmr_environment.o \
-	$(DOBJ)dmr_c_functions.o \
-	$(DOBJ)dmr.o
+	$(DOBJ)dmr_c_functions.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_target_memcpy_rect.o: src/lib/submodules/dmr_target_memcpy_rect.F90 \
 	$(DOBJ)dmr_environment.o \
-	$(DOBJ)dmr_c_functions.o \
-	$(DOBJ)dmr.o
+	$(DOBJ)dmr_c_functions.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_get_mapped_ptr.o: src/lib/submodules/dmr_get_mapped_ptr.F90 \
 	$(DOBJ)dmr_environment.o \
-	$(DOBJ)dmr_c_functions.o \
-	$(DOBJ)dmr.o
+	$(DOBJ)dmr_c_functions.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_correctly_mapped.o: src/lib/submodules/dmr_correctly_mapped.F90 \
 	$(DOBJ)dmr_environment.o \
-	$(DOBJ)dmr_c_functions.o \
-	$(DOBJ)dmr.o
+	$(DOBJ)dmr_c_functions.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_target_init.o: src/lib/submodules/dmr_target_init.F90 \
-	$(DOBJ)dmr_environment.o \
-	$(DOBJ)dmr.o
+	$(DOBJ)dmr_environment.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_device_memcpy.o: src/lib/submodules/dmr_device_memcpy.F90 \
-	$(DOBJ)dmr_environment.o \
-	$(DOBJ)dmr.o
+	$(DOBJ)dmr_environment.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
