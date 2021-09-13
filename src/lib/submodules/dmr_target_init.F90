@@ -653,7 +653,7 @@ submodule (dmr) dmr_target_init
 #if defined _OpenMP_5_1
          !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 #else
-         !$omp target target teams distribute parallel do device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
 #endif
          do i=lbounds_, ubounds_
             array(i) = val
