@@ -1668,7 +1668,7 @@ module dmr
          implicit none
          logical                   :: omp_correctly_mapped_int8_1
          integer(I1P), intent(in)  :: array(:)
-         integer(I4P), parameter   :: array_rank=1_I4P
+         integer(I4P)              :: size_host
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
        endfunction omp_correctly_mapped_int8_1
 
@@ -1677,6 +1677,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int8_2
          integer(I1P), intent(in)  :: array(:,:)
          integer(I4P), parameter   :: array_rank=2_I4P
+         integer(I4P)              :: size_host(2)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int8_2
 
@@ -1685,6 +1686,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int8_3
          integer(I1P), intent(in)  :: array(:,:,:)
          integer(I4P), parameter   :: array_rank=3_I4P
+         integer(I4P)              :: size_host(3)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int8_3
 
@@ -1693,6 +1695,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int8_4
          integer(I1P), intent(in)  :: array(:,:,:,:)
          integer(I4P), parameter   :: array_rank=4_I4P
+         integer(I4P)              :: size_host(4)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int8_4
 
@@ -1701,6 +1704,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int8_5
          integer(I1P), intent(in)  :: array(:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=5_I4P
+         integer(I4P)              :: size_host(5)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int8_5
 
@@ -1709,6 +1713,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int8_6
          integer(I1P), intent(in)  :: array(:,:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=6_I4P
+         integer(I4P)              :: size_host(6)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int8_6
 
@@ -1717,6 +1722,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int8_7
          integer(I1P), intent(in)  :: array(:,:,:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=7_I4P
+         integer(I4P)              :: size_host(7)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int8_7
 
@@ -1724,7 +1730,7 @@ module dmr
          implicit none
          logical                   :: omp_correctly_mapped_int16_1
          integer(I2P), intent(in)  :: array(:)
-         integer(I4P), parameter   :: array_rank=1_I4P
+         integer(I4P)              :: size_host
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int16_1
 
@@ -1733,6 +1739,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int16_2
          integer(I2P), intent(in)  :: array(:,:)
          integer(I4P), parameter   :: array_rank=2_I4P
+         integer(I4P)              :: size_host(2)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int16_2
 
@@ -1741,6 +1748,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int16_3
          integer(I2P), intent(in)  :: array(:,:,:)
          integer(I4P), parameter   :: array_rank=3_I4P
+         integer(I4P)              :: size_host(3)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int16_3
 
@@ -1749,6 +1757,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int16_4
          integer(I2P), intent(in)  :: array(:,:,:,:)
          integer(I4P), parameter   :: array_rank=4_I4P
+         integer(I4P)              :: size_host(4)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int16_4
 
@@ -1757,6 +1766,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int16_5
          integer(I2P), intent(in)  :: array(:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=5_I4P
+         integer(I4P)              :: size_host(5)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int16_5
 
@@ -1765,6 +1775,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int16_6
          integer(I2P), intent(in)  :: array(:,:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=6_I4P
+         integer(I4P)              :: size_host(6)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int16_6
 
@@ -1773,6 +1784,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int16_7
          integer(I2P), intent(in)  :: array(:,:,:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=7_I4P
+         integer(I4P)              :: size_host(7)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int16_7
 
@@ -1780,7 +1792,7 @@ module dmr
          implicit none
          logical                   :: omp_correctly_mapped_int32_1
          integer(I4P), intent(in)  :: array(:)
-         integer(I4P), parameter   :: array_rank=1_I4P
+         integer(I4P)              :: size_host
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int32_1
 
@@ -1789,6 +1801,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int32_2
          integer(I4P), intent(in)  :: array(:,:)
          integer(I4P), parameter   :: array_rank=2_I4P
+         integer(I4P)              :: size_host(2)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int32_2
 
@@ -1797,6 +1810,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int32_3
          integer(I4P), intent(in)  :: array(:,:,:)
          integer(I4P), parameter   :: array_rank=3_I4P
+         integer(I4P)              :: size_host(3)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int32_3
 
@@ -1805,6 +1819,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int32_4
          integer(I4P), intent(in)  :: array(:,:,:,:)
          integer(I4P), parameter   :: array_rank=4_I4P
+         integer(I4P)              :: size_host(4)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int32_4
 
@@ -1813,6 +1828,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int32_5
          integer(I4P), intent(in)  :: array(:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=5_I4P
+         integer(I4P)              :: size_host(5)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int32_5
 
@@ -1821,6 +1837,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int32_6
          integer(I4P), intent(in)  :: array(:,:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=6_I4P
+         integer(I4P)              :: size_host(6)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int32_6
 
@@ -1829,6 +1846,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int32_7
          integer(I4P), intent(in)  :: array(:,:,:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=7_I4P
+         integer(I4P)              :: size_host(7)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int32_7
 
@@ -1836,7 +1854,7 @@ module dmr
          implicit none
          logical                   :: omp_correctly_mapped_int64_1
          integer(I8P), intent(in)  :: array(:)
-         integer(I4P), parameter   :: array_rank=1_I4P
+         integer(I4P)              :: size_host
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int64_1
 
@@ -1845,6 +1863,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int64_2
          integer(I8P), intent(in)  :: array(:,:)
          integer(I4P), parameter   :: array_rank=2_I4P
+         integer(I4P)              :: size_host(2)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int64_2
 
@@ -1853,6 +1872,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int64_3
          integer(I8P), intent(in)  :: array(:,:,:)
          integer(I4P), parameter   :: array_rank=3_I4P
+         integer(I4P)              :: size_host(3)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int64_3
 
@@ -1861,6 +1881,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int64_4
          integer(I8P), intent(in)  :: array(:,:,:,:)
          integer(I4P), parameter   :: array_rank=4_I4P
+         integer(I4P)              :: size_host(4)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int64_4
 
@@ -1869,6 +1890,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int64_5
          integer(I8P), intent(in)  :: array(:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=5_I4P
+         integer(I4P)              :: size_host(5)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int64_5
 
@@ -1877,6 +1899,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int64_6
          integer(I8P), intent(in)  :: array(:,:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=6_I4P
+         integer(I4P)              :: size_host(6)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int64_6
 
@@ -1885,6 +1908,7 @@ module dmr
          logical                   :: omp_correctly_mapped_int64_7
          integer(I8P), intent(in)  :: array(:,:,:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=7_I4P
+         integer(I4P)              :: size_host(7)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_int64_7
 #endif
@@ -1918,7 +1942,7 @@ module dmr
          implicit none
          logical                 :: omp_correctly_mapped_real32_1
          real(R4P), intent(in)   :: array(:)
-         integer(I4P), parameter :: array_rank=1_I4P
+         integer(I4P)            :: size_host
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real32_1
 
@@ -1927,6 +1951,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real32_2
          real(R4P), intent(in)   :: array(:,:)
          integer(I4P), parameter :: array_rank=2_I4P
+         integer(I4P)            :: size_host(2)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real32_2
 
@@ -1935,6 +1960,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real32_3
          real(R4P), intent(in)   :: array(:,:,:)
          integer(I4P), parameter :: array_rank=3_I4P
+         integer(I4P)            :: size_host(3)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real32_3
 
@@ -1943,6 +1969,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real32_4
          real(R4P), intent(in)   :: array(:,:,:,:)
          integer(I4P), parameter :: array_rank=4_I4P
+         integer(I4P)            :: size_host(4)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real32_4
 
@@ -1951,6 +1978,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real32_5
          real(R4P), intent(in)   :: array(:,:,:,:,:)
          integer(I4P), parameter :: array_rank=5_I4P
+         integer(I4P)            :: size_host(5)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real32_5
 
@@ -1959,6 +1987,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real32_6
          real(R4P), intent(in)   :: array(:,:,:,:,:,:)
          integer(I4P), parameter :: array_rank=6_I4P
+         integer(I4P)            :: size_host(6)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real32_6
 
@@ -1967,6 +1996,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real32_7
          real(R4P), intent(in)   :: array(:,:,:,:,:,:,:)
          integer(I4P), parameter :: array_rank=7_I4P
+         integer(I4P)            :: size_host(7)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real32_7
 
@@ -1974,7 +2004,7 @@ module dmr
          implicit none
          logical                 :: omp_correctly_mapped_real64_1
          real(R8P), intent(in)   :: array(:)
-         integer(I4P), parameter :: array_rank=1_I4P
+         integer(I4P)            :: size_host
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real64_1
 
@@ -1983,6 +2013,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real64_2
          real(R8P), intent(in)   :: array(:,:)
          integer(I4P), parameter :: array_rank=2_I4P
+         integer(I4P)            :: size_host(2)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real64_2
 
@@ -1991,6 +2022,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real64_3
          real(R8P), intent(in)   :: array(:,:,:)
          integer(I4P), parameter :: array_rank=3_I4P
+         integer(I4P)            :: size_host(3)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real64_3
 
@@ -1999,6 +2031,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real64_4
          real(R8P), intent(in)   :: array(:,:,:,:)
          integer(I4P), parameter :: array_rank=4_I4P
+         integer(I4P)            :: size_host(4)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real64_4
 
@@ -2007,6 +2040,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real64_5
          real(R8P), intent(in)   :: array(:,:,:,:,:)
          integer(I4P), parameter :: array_rank=5_I4P
+         integer(I4P)            :: size_host(5)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real64_5
 
@@ -2015,6 +2049,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real64_6
          real(R8P), intent(in)   :: array(:,:,:,:,:,:)
          integer(I4P), parameter :: array_rank=6_I4P
+         integer(I4P)            :: size_host(6)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real64_6
 
@@ -2023,6 +2058,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real64_7
          real(R8P), intent(in)   :: array(:,:,:,:,:,:,:)
          integer(I4P), parameter :: array_rank=7_I4P
+         integer(I4P)            :: size_host(7)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real64_7
 
@@ -2031,7 +2067,7 @@ module dmr
          implicit none
          logical                 :: omp_correctly_mapped_real128_1
          real(R16P), intent(in)  :: array(:)
-         integer(I4P), parameter :: array_rank=1_I4P
+         integer(I4P)            :: size_host
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real128_1
 
@@ -2040,6 +2076,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real128_2
          real(R16P), intent(in)  :: array(:,:)
          integer(I4P), parameter :: array_rank=2_I4P
+         integer(I4P)            :: size_host(2)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real128_2
 
@@ -2048,6 +2085,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real128_3
          real(R16P), intent(in)  :: array(:,:,:)
          integer(I4P), parameter :: array_rank=3_I4P
+         integer(I4P)            :: size_host(3)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real128_3
 
@@ -2056,6 +2094,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real128_4
          real(R16P), intent(in)  :: array(:,:,:,:)
          integer(I4P), parameter :: array_rank=4_I4P
+         integer(I4P)            :: size_host(4)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real128_4
 
@@ -2064,6 +2103,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real128_5
          real(R16P), intent(in)  :: array(:,:,:,:,:)
          integer(I4P), parameter :: array_rank=5_I4P
+         integer(I4P)            :: size_host(5)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real128_5
 
@@ -2072,6 +2112,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real128_6
          real(R16P), intent(in)  :: array(:,:,:,:,:,:)
          integer(I4P), parameter :: array_rank=6_I4P
+         integer(I4P)            :: size_host(6)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real128_6
 
@@ -2080,6 +2121,7 @@ module dmr
          logical                 :: omp_correctly_mapped_real128_7
          real(R16P), intent(in)  :: array(:,:,:,:,:,:,:)
          integer(I4P), parameter :: array_rank=7_I4P
+         integer(I4P)            :: size_host(7)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_real128_7
 #endif
@@ -2114,7 +2156,7 @@ module dmr
          implicit none
          logical                   :: omp_correctly_mapped_cmplx32_1
          complex(R4P), intent(in)  :: array(:)
-         integer(I4P), parameter   :: array_rank=1_I4P
+         integer(I4P)              :: size_host
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx32_1
 
@@ -2123,6 +2165,7 @@ module dmr
          logical                   :: omp_correctly_mapped_cmplx32_2
          complex(R4P), intent(in)  :: array(:,:)
          integer(I4P), parameter   :: array_rank=2_I4P
+         integer(I4P)              :: size_host(2)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx32_2
 
@@ -2131,6 +2174,7 @@ module dmr
          logical                   :: omp_correctly_mapped_cmplx32_3
          complex(R4P), intent(in)  :: array(:,:,:)
          integer(I4P), parameter   :: array_rank=3_I4P
+         integer(I4P)              :: size_host(3)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx32_3
 
@@ -2139,6 +2183,7 @@ module dmr
          logical                   :: omp_correctly_mapped_cmplx32_4
          complex(R4P), intent(in)  :: array(:,:,:,:)
          integer(I4P), parameter   :: array_rank=4_I4P
+         integer(I4P)              :: size_host(4)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx32_4
 
@@ -2147,6 +2192,7 @@ module dmr
          logical                   :: omp_correctly_mapped_cmplx32_5
          complex(R4P), intent(in)  :: array(:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=5_I4P
+         integer(I4P)              :: size_host(5)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx32_5
 
@@ -2155,6 +2201,7 @@ module dmr
          logical                   :: omp_correctly_mapped_cmplx32_6
          complex(R4P), intent(in)  :: array(:,:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=6_I4P
+         integer(I4P)              :: size_host(6)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx32_6
 
@@ -2163,6 +2210,7 @@ module dmr
          logical                   :: omp_correctly_mapped_cmplx32_7
          complex(R4P), intent(in)  :: array(:,:,:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=7_I4P
+         integer(I4P)              :: size_host(7)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx32_7
 
@@ -2170,7 +2218,7 @@ module dmr
          implicit none
          logical                   :: omp_correctly_mapped_cmplx64_1
          complex(R8P), intent(in)  :: array(:)
-         integer(I4P), parameter   :: array_rank=1_I4P
+         integer(I4P)              :: size_host
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx64_1
 
@@ -2179,6 +2227,7 @@ module dmr
          logical                   :: omp_correctly_mapped_cmplx64_2
          complex(R8P), intent(in)  :: array(:,:)
          integer(I4P), parameter   :: array_rank=2_I4P
+         integer(I4P)              :: size_host(2)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx64_2
 
@@ -2187,6 +2236,7 @@ module dmr
          logical                   :: omp_correctly_mapped_cmplx64_3
          complex(R8P), intent(in)  :: array(:,:,:)
          integer(I4P), parameter   :: array_rank=3_I4P
+         integer(I4P)              :: size_host(3)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx64_3
 
@@ -2195,6 +2245,7 @@ module dmr
          logical                   :: omp_correctly_mapped_cmplx64_4
          complex(R8P), intent(in)  :: array(:,:,:,:)
          integer(I4P), parameter   :: array_rank=4_I4P
+         integer(I4P)              :: size_host(4)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx64_4
 
@@ -2203,6 +2254,7 @@ module dmr
          logical                   :: omp_correctly_mapped_cmplx64_5
          complex(R8P), intent(in)  :: array(:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=5_I4P
+         integer(I4P)              :: size_host(5)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx64_5
 
@@ -2211,6 +2263,7 @@ module dmr
          logical                   :: omp_correctly_mapped_cmplx64_6
          complex(R8P), intent(in)  :: array(:,:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=6_I4P
+         integer(I4P)              :: size_host(6)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx64_6
 
@@ -2219,6 +2272,7 @@ module dmr
          logical                   :: omp_correctly_mapped_cmplx64_7
          complex(R8P), intent(in)  :: array(:,:,:,:,:,:,:)
          integer(I4P), parameter   :: array_rank=7_I4P
+         integer(I4P)              :: size_host(7)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx64_7
 
@@ -2227,7 +2281,7 @@ module dmr
          implicit none
          logical                    :: omp_correctly_mapped_cmplx128_1
          complex(R16P), intent(in)  :: array(:)
-         integer(I4P), parameter    :: array_rank=1_I4P
+         integer(I4P)               :: size_host
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx128_1
 
@@ -2236,6 +2290,7 @@ module dmr
          logical                    :: omp_correctly_mapped_cmplx128_2
          complex(R16P), intent(in)  :: array(:,:)
          integer(I4P), parameter    :: array_rank=2_I4P
+         integer(I4P)               :: size_host(2)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx128_2
 
@@ -2244,6 +2299,7 @@ module dmr
          logical                    :: omp_correctly_mapped_cmplx128_3
          complex(R16P), intent(in)  :: array(:,:,:)
          integer(I4P), parameter    :: array_rank=3_I4P
+         integer(I4P)               :: size_host(3)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx128_3
 
@@ -2252,6 +2308,7 @@ module dmr
          logical                    :: omp_correctly_mapped_cmplx128_4
          complex(R16P), intent(in)  :: array(:,:,:,:)
          integer(I4P), parameter    :: array_rank=4_I4P
+         integer(I4P)               :: size_host(4)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx128_4
 
@@ -2260,6 +2317,7 @@ module dmr
          logical                    :: omp_correctly_mapped_cmplx128_5
          complex(R16P), intent(in)  :: array(:,:,:,:,:)
          integer(I4P), parameter    :: array_rank=5_I4P
+         integer(I4P)               :: size_host(5)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx128_5
 
@@ -2268,6 +2326,7 @@ module dmr
          logical                    :: omp_correctly_mapped_cmplx128_6
          complex(R16P), intent(in)  :: array(:,:,:,:,:,:)
          integer(I4P), parameter    :: array_rank=6_I4P
+         integer(I4P)               :: size_host(6)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx128_6
 
@@ -2276,6 +2335,7 @@ module dmr
          logical                    :: omp_correctly_mapped_cmplx128_7
          complex(R16P), intent(in)  :: array(:,:,:,:,:,:,:)
          integer(I4P), parameter    :: array_rank=7_I4P
+         integer(I4P)               :: size_host(7)
          include "src/lib/submodules/include/dmr_correctly_mapped.i90"
       endfunction omp_correctly_mapped_cmplx128_7
 #endif

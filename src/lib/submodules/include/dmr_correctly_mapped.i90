@@ -12,5 +12,4 @@
 !* ========================================================================== *
 
          integer(I4P), intent(in)  :: omp_dev
-         integer(I4P), allocatable :: size_host(:)
          integer(I4P)              :: i
