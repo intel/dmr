@@ -67,7 +67,7 @@ submodule (dmr) dmr_device_memcpy
             select rank(array_src)
             rank({{d}})
 #if defined _OpenMP_5_1
-               !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) map(present:array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) map(present, alloc:array_dst, array_src) map(to:lbounds_, ubounds_)
 #else
                !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
 #endif
@@ -155,7 +155,7 @@ submodule (dmr) dmr_device_memcpy
 {%- endfor %}
 {%- endif %}
          !$omp end target teams distribute parallel do
-      endsubroutine omp_device_memcpy_int8_1
+      endsubroutine omp_device_memcpy_{{keywords[t][1]}}{{p.name}}_{{d}}
 {% print("") %}
 {%- endfor %}
 {%- if p.name == '128' %}

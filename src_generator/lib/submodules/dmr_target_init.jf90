@@ -19,7 +19,6 @@ submodule (dmr) dmr_target_init
 
    contains
 
-      ! DMR Init Integer Routines
 #if defined _F2018
 {%- for t in types %}
       ! DMR Target Init {{keywords[t][0]}} F2018 Routines
@@ -66,7 +65,7 @@ submodule (dmr) dmr_target_init
 {%- for d in range(1,dimensions+1) %}
          rank({{d}})
 #if defined _OpenMP_5_1
-            !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) map(present:array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 #else
             !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
 #endif
@@ -132,12 +131,12 @@ submodule (dmr) dmr_target_init
 {%- endif %}
          endif
 #if defined _OpenMP_5_1
-         !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) map(present:array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 #else
          !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
 #endif
 {%- if d==1 %}
-         do i=lbounds_, ubounds_
+         do i1=lbounds_, ubounds_
             array(i1) = val
          enddo
 {%- else %}

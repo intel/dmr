@@ -21,9 +21,9 @@ submodule (dmr) dmr_correctly_mapped
 
    contains
 {% print("") %}
-#if defined _F2008
+#if defined _F2018
 {%- for t in types %}
-      ! DMR Correctly Mapped {{keywords[t][0]}} F2008 Routines
+      ! DMR Correctly Mapped {{keywords[t][0]}} F2018 Routines
 {%- for p in kinds[t] %}
 {%- if p.name == '128' %}
 #if defined _real128
