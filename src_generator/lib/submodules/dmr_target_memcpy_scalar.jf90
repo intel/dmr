@@ -1,0 +1,54 @@
+!* ========================================================================== *
+!*                                                                            *
+!* Copyright (C) 2020 Intel Corporation                                       *
+!* This file is part of the DMR library.                                      *
+!*                                                                            *
+!* For information on the license, see the LICENSE file.                      *
+!* Further information: https://github.com/giacrossi/dmr/                     *
+!* SPDX-License-Identifier: BSD-3-Clause                                      *
+!*                                                                            *
+!* ========================================================================== *
+!* Giacomo Rossi (Intel Corporation)                                          *
+!* ========================================================================== *
+
+submodule (dmr) dmr_target_memcpy_scalar
+   use, intrinsic :: iso_c_binding
+   use omp_lib
+   use dmr_environment
+   use dmr_c_functions
+
+   implicit none
+
+   contains
+#if defined _OpenMP_5_1
+{%- for t in types %}
+      ! DMR Target Memcpy Scalar {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+      module subroutine omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+         implicit none
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(out) :: sc_dst
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(in)  :: sc_src
+         integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+
+         if (omp_src_dev==omp_get_initial_device()) then
+            !$omp target map(to:sc_src) has_device_addr(sc_dst) device(omp_dst_dev)
+            sc_dst = sc_src
+            !$omp end target
+         else
+            !$omp target map(from:sc_dst) has_device_addr(sc_src) device(omp_src_dev)
+            sc_dst = sc_src
+            !$omp end target
+         endif
+      endsubroutine omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}_scalar
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{% print("") %}
+{%- endfor %}
+{%- endfor %}
+
+#endif
+endsubmodule dmr_target_memcpy_scalar
