@@ -24,6 +24,9 @@ submodule (dmr) dmr_target_is_present
 {%- for t in types %}
       ! OpenMP Target Is Present {{keywords[t][0]}} Routines
 {%- for p in kinds[t] %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
       module function omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}(fptr_dev, omp_dev)
          implicit none
          logical                           :: omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}
@@ -41,6 +44,9 @@ submodule (dmr) dmr_target_is_present
             omp_target_is_present_f_{{keywords[t][1]}}{{p.name}} = .false.
          endif
       endfunction omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
 !
 {%- endfor %}
 !
