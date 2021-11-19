@@ -131,9 +131,9 @@ submodule (dmr) dmr_device_memcpy
             ubounds_ = ubounds
          else
 {%- if d==1 %}
-            ubounds_ = ubound(array,{{d}})
+            ubounds_ = ubound(array_dst,{{d}})
 {%- else %}
-            ubounds_ = ubound(array)
+            ubounds_ = ubound(array_dst)
 {%- endif %}
          endif
 #if defined _OpenMP_5_1
