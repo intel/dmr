@@ -28,6 +28,7 @@ submodule (dmr) dmr_target_free
 #if defined _real128
 {%- endif %}
       module subroutine omp_target_free_f_{{keywords[t][1]}}{{p.name}}(fptr_dev, omp_dev)
+         implicit none
          {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous, intent(inout){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev(..)
          integer(I4P), intent(in)                          :: omp_dev
          type(c_ptr)                                       :: cptr_dev

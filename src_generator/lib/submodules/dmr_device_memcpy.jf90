@@ -96,7 +96,7 @@ submodule (dmr) dmr_device_memcpy
 #else
 
 {%- for t in types %}
-      ! DMR Target Init {{keywords[t][0]}} Routines
+      ! DMR Device Memcpy {{keywords[t][0]}} Routines
 {%- for p in kinds[t] %}
 {%- if p.name == '128' %}
 #if defined _real128
