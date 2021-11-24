@@ -1,0 +1,689 @@
+!* ========================================================================== *
+!*                                                                            *
+!* Copyright (C) 2020 Intel Corporation                                       *
+!* This file is part of the DMR library.                                      *
+!*                                                                            *
+!* For information on the license, see the LICENSE file.                      *
+!* Further information: https://github.com/giacrossi/dmr/                     *
+!* SPDX-License-Identifier: BSD-3-Clause                                      *
+!*                                                                            *
+!* ========================================================================== *
+!* Giacomo Rossi (Intel Corporation)                                          *
+!* ========================================================================== *
+
+module dmr
+   use, intrinsic :: iso_c_binding
+   use omp_lib
+   use dmr_environment
+   use dmr_c_functions
+
+   implicit none
+
+   interface omp_target_is_present_f
+      module procedure &
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+                       omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}{% if ((not loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+   endinterface omp_target_is_present_f
+
+   interface omp_target_free_f
+      module procedure &
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+                       omp_target_free_f_{{keywords[t][1]}}{{p.name}}{% if ((not loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+   endinterface omp_target_free_f
+
+   interface omp_target_alloc_f
+      module procedure &
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- set medium_loop = loop %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1,3) %}
+{%- if (d+1)<=dimensions %}
+{%- if (d+2)<=dimensions %}
+                       omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d+1}}, omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d+2}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- else %}
+                       omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d+1}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- else %}
+                       omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- endfor %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+   endinterface omp_target_alloc_f
+
+   interface omp_target_memcpy_f
+      module procedure &
+#if defined _OpenMP_5_1
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+                       omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}_scalar{% if ((not loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+#endif
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+                       omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}{% if ((not loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+   endinterface omp_target_memcpy_f
+
+   interface omp_target_memcpy_rect_f
+      module procedure &
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+                       omp_target_memcpy_rect_f_{{keywords[t][1]}}{{p.name}}{% if ((not loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+   endinterface omp_target_memcpy_rect_f
+
+   interface omp_correctly_mapped
+      module procedure &
+#if defined _F2008
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+                       omp_correctly_mapped_{{keywords[t][1]}}{{p.name}}{% if ((not loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+#else
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- set medium_loop = loop %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1,3) %}
+{%- if (d+1)<=dimensions %}
+{%- if (d+2)<=dimensions %}
+                       omp_correctly_mapped_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_correctly_mapped_{{keywords[t][1]}}{{p.name}}_{{d+1}}, omp_correctly_mapped_{{keywords[t][1]}}{{p.name}}_{{d+2}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- else %}
+                       omp_correctly_mapped_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_correctly_mapped_{{keywords[t][1]}}{{p.name}}_{{d+1}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- else %}
+                       omp_correctly_mapped_{{keywords[t][1]}}{{p.name}}_{{d}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- endfor %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+#endif
+   endinterface omp_correctly_mapped
+
+   interface omp_target_init
+      module procedure &
+#if defined _F2008
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+                       omp_target_init_{{keywords[t][1]}}{{p.name}}{% if ((not loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+#else
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- set medium_loop = loop %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1,3) %}
+{%- if (d+1)<=dimensions %}
+{%- if (d+2)<=dimensions %}
+                       omp_target_init_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_target_init_{{keywords[t][1]}}{{p.name}}_{{d+1}}, omp_target_init_{{keywords[t][1]}}{{p.name}}_{{d+2}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- else %}
+                       omp_target_init_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_target_init_{{keywords[t][1]}}{{p.name}}_{{d+1}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- else %}
+                       omp_target_init_{{keywords[t][1]}}{{p.name}}_{{d}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- endfor %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+#endif
+   endinterface omp_target_init
+
+   interface omp_device_memcpy
+      module procedure &
+#if defined _F2008
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+                       omp_device_memcpy_{{keywords[t][1]}}{{p.name}}{% if ((not loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+#else
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- set medium_loop = loop %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1,3) %}
+{%- if (d+1)<=dimensions %}
+{%- if (d+2)<=dimensions %}
+                       omp_device_memcpy_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_device_memcpy_{{keywords[t][1]}}{{p.name}}_{{d+1}}, omp_device_memcpy_{{keywords[t][1]}}{{p.name}}_{{d+2}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- else %}
+                       omp_device_memcpy_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_device_memcpy_{{keywords[t][1]}}{{p.name}}_{{d+1}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- else %}
+                       omp_device_memcpy_{{keywords[t][1]}}{{p.name}}_{{d}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- endfor %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+#endif
+   endinterface omp_device_memcpy
+
+#if defined _OpenMP_5_1
+   interface omp_get_mapped_ptr_f
+      module procedure &
+#if defined _F2008
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+                       omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}{% if ((not loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+#else
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- set medium_loop = loop %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1,3) %}
+{%- if (d+1)<=dimensions %}
+{%- if (d+2)<=dimensions %}
+                       omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d+1}}, omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d+2}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- else %}
+                       omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d+1}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- else %}
+                       omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- endfor %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+#endif
+   endinterface omp_get_mapped_ptr_f
+#endif
+
+! OpenMP Target Is Present Routines
+   interface
+{%- for t in types %}
+      ! OpenMP Target Is Present {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+      module function omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}(fptr_dev, omp_dev)
+         implicit none
+         logical                           :: omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}
+         {{t}}({{keywords[t][2]}}{{p.key}}), target, intent(in){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev(..)
+         integer(I4P), intent(in)          :: omp_dev
+         type(c_ptr)                       :: cptr_dev
+         integer(kind=c_int)               :: omp_device
+      endfunction omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+!
+{%- endfor %}
+!
+{%- endfor %}
+   endinterface
+
+! OpenMP Target Alloc Routines
+   interface
+{%- for t in types %}
+      ! OpenMP Target Alloc {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1) %}
+      module subroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}(fptr_dev, dimensions, omp_dev, bounds)
+         implicit none
+         {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous, intent(out){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+{%- if d == 1 %}
+         integer(I8P), intent(in)                        :: dimensions
+{%- else %}
+         integer(I8P), intent(in)                        :: dimensions({{d}})
+{%- endif %}
+         integer(I4P), intent(in)                        :: omp_dev
+         integer(I8P), intent(in), optional              :: bounds({{d*2}})
+         {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous{% if t=='real' and p.key=='16P' %}{% print('                 ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('              ')%}{%- elif t=='real' %}{% print('                  ')%}{%- else %}{% print('               ')%}{%- endif %}:: fptr({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         type(c_ptr)                                     :: cptr_dev
+         integer(kind=c_int)                             :: omp_device
+      endsubroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+{% print("") %}
+{%- endfor %}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{% print("") %}
+{%- endfor %}
+   endinterface
+
+! OpenMP Target Free Routines
+   interface
+{%- for t in types %}
+      ! OpenMP Target Free {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+      module subroutine omp_target_free_f_{{keywords[t][1]}}{{p.name}}(fptr_dev, omp_dev)
+         {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous, intent(inout){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev(..)
+         integer(I4P), intent(in)                          :: omp_dev
+         type(c_ptr)                                       :: cptr_dev
+         integer(kind=c_int)                               :: omp_device
+      endsubroutine omp_target_free_f_{{keywords[t][1]}}{{p.name}}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+!
+{%- endfor %}
+!
+{%- endfor %}
+   endinterface
+
+! OpenMP Target Memcpy Routines
+   interface
+      ! OpenMP Target Memcpy Integer Routines
+#if defined _OpenMP_5_1
+{%- for t in types %}
+      ! DMR Target Memcpy Scalar {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+      module subroutine omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+         implicit none
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(out) :: sc_dst
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(in)  :: sc_src
+         integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+      endsubroutine omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}_scalar
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{% print("") %}
+{%- endfor %}
+{%- endfor %}
+#else
+
+{%- for t in types %}
+      ! OpenMP Target Memcpy {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+      module subroutine omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(out) :: fptr_dst(..)
+         {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                      :: dst_off, src_off
+         integer(I8P)                                  :: n_elements
+         integer(c_size_t)                             :: total_dim, omp_dst_offset, omp_src_offset
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(c_int)                                :: omp_dst_device, omp_src_device
+      endsubroutine omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{% print("") %}
+{%- endfor %}
+{%- endfor %}
+#endif
+   end interface
+
+! OpenMP Target Memcpy Rect Routines
+   interface
+{%- for t in types %}
+      ! OpenMP Target Memcpy Rect {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+      module subroutine omp_target_memcpy_rect_f_{{keywords[t][1]}}{{p.name}}(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(out) :: fptr_dst(..)
+         {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                      :: cpy_dims(:)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(kind=c_size_t)                        :: elem_dim
+         integer(kind=c_size_t), allocatable           :: omp_dst_offsets(:), omp_src_offsets(:)
+         integer(kind=c_size_t), allocatable           :: volume_dims(:), cptr_dst_dims(:), cptr_src_dims(:)
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(kind=c_int)                           :: fptr_rank, omp_dst_device, omp_src_device
+         integer(I4P)                                  :: fptr_dims, i
+      endsubroutine omp_target_memcpy_rect_f_{{keywords[t][1]}}{{p.name}}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{% print("") %}
+{%- endfor %}
+{%- endfor %}
+   endinterface
+
+! DMR Correctly Mapped Routines
+   interface
+     ! DMR Correctly Mapped Integer Routines
+#if defined _F2008
+{%- for t in types %}
+      ! DMR Correctly Mapped {{keywords[t][0]}} F2018 Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+      module function omp_correctly_mapped_{{keywords[t][1]}}{{p.name}}(array, omp_dev)
+         implicit none
+         logical                   :: omp_correctly_mapped_{{keywords[t][1]}}{{p.name}}
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(in)  :: array(..)
+         integer(I4P), intent(in)  :: omp_dev
+         integer(I4P), allocatable :: size_host(:)
+         integer(I4P)              :: i, array_rank
+      endfunction omp_correctly_mapped_{{keywords[t][1]}}{{p.name}}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{% print("") %}
+{%- endfor %}
+{%- endfor %}
+#else
+{%- for t in types %}
+      ! OpenMP Target Alloc {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1) %}
+      module function omp_correctly_mapped_{{keywords[t][1]}}{{p.name}}_{{d}}(array, omp_dev)
+         implicit none
+         logical                   :: omp_correctly_mapped_{{keywords[t][1]}}{{p.name}}_{{d}}
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(in){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: array({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+{%- if d == 1 %}
+         integer(I4P)              :: size_host
+{%- else %}
+         integer(I4P), parameter   :: array_rank={{d}}_I4P
+         integer(I4P)              :: size_host({{d}})
+{%- endif %}
+         integer(I4P), intent(in)  :: omp_dev
+         integer(I4P)              :: i
+      endfunction omp_correctly_mapped_{{keywords[t][1]}}{{p.name}}_{{d}}
+{% print("") %}
+{%- endfor %}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{% print("") %}
+{%- endfor %}
+#endif
+   endinterface
+
+! DMR Init Routines
+   interface
+#if defined _F2008
+{%- for t in types %}
+      ! DMR Target Init {{keywords[t][0]}} F2018 Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+      module subroutine omp_target_init_{{keywords[t][1]}}{{p.name}}(array, val, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
+         implicit none
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(inout)        :: array(..)
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(in)           :: val
+         integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
+         integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
+         integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
+         integer(I8P)                       :: {% for d in range(1,dimensions+1) %}i{{d}}{% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}
+         integer(I4P)                       :: omp_dev_
+      endsubroutine omp_target_init_{{keywords[t][1]}}{{p.name}}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{% print("") %}
+{%- endfor %}
+{%- endfor %}
+#else
+{%- for t in types %}
+      ! DMR Target Init {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1) %}
+      module subroutine omp_target_init_{{keywords[t][1]}}{{p.name}}_{{d}}(array, val, omp_dev, lbounds, ubounds)
+         implicit none
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(inout)        :: array({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(in)           :: val
+         integer(I4P), intent(in), optional :: omp_dev
+{%- if d==1 %}
+         integer(I8P), intent(in), optional :: lbounds, ubounds
+         integer(I8P)                       :: lbounds_, ubounds_
+{%- else %}
+         integer(I8P), intent(in), optional :: lbounds({{d}}), ubounds({{d}})
+         integer(I8P)                       :: lbounds_({{d}}), ubounds_({{d}})
+{%- endif %}
+         integer(I8P)                       :: {% for dd in range(1,d+1) %}i{{dd}}{% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}
+         integer(I8P)                       :: omp_dev_
+      endsubroutine omp_target_init_{{keywords[t][1]}}{{p.name}}_{{d}}
+{% print("") %}
+{%- endfor %}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{% print("") %}
+{%- endfor %}
+#endif
+   endinterface
+
+! DMR Device Memcpy Routines
+   interface
+#if defined _F2008
+{%- for t in types %}
+      ! DMR Device Memcpy {{keywords[t][0]}} F2018 Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+      module subroutine omp_device_memcpy_{{keywords[t][1]}}{{p.name}}(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
+         implicit none
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(out)          :: array_dst(..)
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(in)           :: array_src(..)
+         integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
+         integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
+         integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
+         integer(I8P)                       :: {% for d in range(1,dimensions+1) %}i{{d}}{% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}
+         integer(I4P)                       :: omp_dev_
+      endsubroutine omp_device_memcpy_{{keywords[t][1]}}{{p.name}}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{% print("") %}
+{%- endfor %}
+{%- endfor %}
+#else
+{%- for t in types %}
+      ! DMR Device Memcpy {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1) %}
+      module subroutine omp_device_memcpy_{{keywords[t][1]}}{{p.name}}_{{d}}(array_dst, array_src, omp_dev, lbounds, ubounds)
+         implicit none
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(out)          :: array_dst({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(in)           :: array_src({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         integer(I4P), intent(in), optional :: omp_dev
+{%- if d==1 %}
+         integer(I8P), intent(in), optional :: lbounds, ubounds
+         integer(I8P)                       :: lbounds_, ubounds_
+{%- else %}
+         integer(I8P), intent(in), optional :: lbounds({{d}}), ubounds({{d}})
+         integer(I8P)                       :: lbounds_({{d}}), ubounds_({{d}})
+{%- endif %}
+         integer(I8P)                       :: {% for dd in range(1,d+1) %}i{{dd}}{% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}
+         integer(I4P)                       :: omp_dev_
+      endsubroutine omp_device_memcpy_{{keywords[t][1]}}{{p.name}}_{{d}}
+{% print("") %}
+{%- endfor %}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{% print("") %}
+{%- endfor %}
+#endif
+   endinterface
+
+#if defined _OpenMP_5_1
+   interface
+#if defined _F2018
+{%- for t in types %}
+      ! OpenMP Get Mapped Pointer {{keywords[t][0]}} F2018 Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+      module subroutine omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}(fptr_dev, fptr_hos, omp_dev)
+         implicit none
+         {{t}}({{keywords[t][2]}}{{p.key}}), pointer, intent(out) :: fptr_dev(..)
+         {{t}}({{keywords[t][2]}}{{p.key}}), target,  intent(in)  :: fptr_hos(..)
+         integer(I4P), intent(in)           :: omp_dev
+         type(c_ptr)                        :: cptr_dev
+         integer(kind=c_int)                :: omp_device
+      endsubroutine omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{% print("") %}
+{%- endfor %}
+{%- endfor %}
+#else
+{%- for t in types %}
+      ! OpenMP Get Mapped Pointer {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1) %}
+      module subroutine omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}(fptr_dev, fptr_hos, omp_dev)
+         implicit none
+         {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous, intent(out){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         {{t}}({{keywords[t][2]}}{{p.key}}), target,  contiguous, intent(in){% if t=='real' and p.key=='16P' %}{% print('     ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('  ')%}{%- elif t=='real' %}{% print('      ')%}{%- else %}{% print('   ')%}{%- endif %}:: fptr_hos({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         integer(I4P), intent(in)                        :: omp_dev
+         type(c_ptr)                                     :: cptr_dev
+         integer(kind=c_int)                             :: omp_device
+      endsubroutine omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+{% print("") %}
+{%- endfor %}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{% print("") %}
+{%- endfor %}
+#endif
+   endinterface
+#endif
+
+endmodule dmr
