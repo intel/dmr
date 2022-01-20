@@ -397,7 +397,7 @@ module dmr
 {% print("") %}
 {%- endfor %}
 {%- endfor %}
-#else
+#endif
 
 {%- for t in types %}
       ! OpenMP Target Memcpy {{keywords[t][0]}} Routines
@@ -424,7 +424,7 @@ module dmr
 {% print("") %}
 {%- endfor %}
 {%- endfor %}
-#endif
+
    end interface
 
 ! OpenMP Target Memcpy Rect Routines
