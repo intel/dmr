@@ -66,11 +66,11 @@ submodule (dmr) dmr_device_memcpy
          rank({{d}})
             select rank(array_src)
             rank({{d}})
-#if defined _OpenMP_5_1
-               !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) map(present, alloc:array_dst, array_src) map(to:lbounds_, ubounds_)
-#else
+!#if defined _OpenMP_5_1
+!               !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) map(present, alloc:array_dst, array_src) map(to:lbounds_, ubounds_)
+!#else
                !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#endif
+!#endif
 {%- for dd in range(d,0,-1) %}
                {% print(' '*3*(d-dd)) %}do i{{dd}} = lbounds_({{dd}}), ubounds_({{dd}})
 {%- endfor %}
@@ -136,11 +136,11 @@ submodule (dmr) dmr_device_memcpy
             ubounds_ = ubound(array_dst)
 {%- endif %}
          endif
-#if defined _OpenMP_5_1
-         !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) map(present, alloc:array_dst, array_src) map(to:lbounds_, ubounds_)
-#else
+!#if defined _OpenMP_5_1
+!         !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) map(present, alloc:array_dst, array_src) map(to:lbounds_, ubounds_)
+!#else
          !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
-#endif
+!#endif
 {%- if d==1 %}
          do i1=lbounds_, ubounds_
             array_dst(i1) = array_src(i1)
