@@ -87,7 +87,7 @@ module dmr
 {%- if p.key=='16P' %}
 #if defined _real128
 {%- endif %}
-                       omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}_scalar{% if ((not loop.last) or (not outer_loop.last))%}, &{%- endif %}
+                       omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}_scalar, &
 {%- if p.key=='16P' %}
 #endif
 {%- endif %}
