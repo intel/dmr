@@ -46,11 +46,18 @@ module dmr_environment
 
    interface byte_size
       module procedure &
-         byte_size_int8, byte_size_int16, byte_size_int32, byte_size_int64, &
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- if p.key=='16P' %}
 #if defined _real128
-         byte_size_real128, &
+{%- endif %}
+         byte_size_{{keywords[t][1]}}{{p.name}}{% if ((not loop.last) or (not outer_loop.last)) %}, &{%- endif %}
+{%- if p.key=='16P' %}
 #endif
-         byte_size_real32, byte_size_real64
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
    endinterface
 
    contains
