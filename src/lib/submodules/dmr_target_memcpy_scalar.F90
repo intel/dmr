@@ -13,15 +13,13 @@
 
 submodule (dmr) dmr_target_memcpy_scalar
    use, intrinsic :: iso_c_binding
-   use omp_lib
    use dmr_environment
-   use dmr_c_functions
 
    implicit none
 
    contains
-      ! OpenMP Target Memcpy Integer Routines
 #if defined _OpenMP_5_1
+      ! DMR Target Memcpy Scalar Integer Routines
       module subroutine omp_target_memcpy_f_int8_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
          implicit none
          integer(I1P), intent(out) :: sc_dst
@@ -90,11 +88,11 @@ submodule (dmr) dmr_target_memcpy_scalar
          endif
       endsubroutine omp_target_memcpy_f_int64_scalar
 
-      ! OpenMP Target Memcpy Real Routines
+      ! DMR Target Memcpy Scalar Real Routines
       module subroutine omp_target_memcpy_f_real32_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
          implicit none
-         real(R4P),    intent(out) :: sc_dst
-         real(R4P),    intent(in)  :: sc_src
+         real(R4P), intent(out) :: sc_dst
+         real(R4P), intent(in)  :: sc_src
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
 
          if (omp_src_dev==omp_get_initial_device()) then
@@ -110,8 +108,8 @@ submodule (dmr) dmr_target_memcpy_scalar
 
       module subroutine omp_target_memcpy_f_real64_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
          implicit none
-         real(R8P),    intent(out) :: sc_dst
-         real(R8P),    intent(in)  :: sc_src
+         real(R8P), intent(out) :: sc_dst
+         real(R8P), intent(in)  :: sc_src
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
 
          if (omp_src_dev==omp_get_initial_device()) then
@@ -128,8 +126,8 @@ submodule (dmr) dmr_target_memcpy_scalar
 #if defined _real128
       module subroutine omp_target_memcpy_f_real128_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
          implicit none
-         real(R16P),   intent(out) :: sc_dst
-         real(R16P),   intent(in)  :: sc_src
+         real(R16P), intent(out) :: sc_dst
+         real(R16P), intent(in)  :: sc_src
          integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
 
          if (omp_src_dev==omp_get_initial_device()) then
@@ -144,7 +142,7 @@ submodule (dmr) dmr_target_memcpy_scalar
       endsubroutine omp_target_memcpy_f_real128_scalar
 #endif
 
-      ! OpenMP Target Memcpy Complex Routines
+      ! DMR Target Memcpy Scalar Complex Routines
       module subroutine omp_target_memcpy_f_cmplx32_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
          implicit none
          complex(R4P), intent(out) :: sc_dst
@@ -184,7 +182,7 @@ submodule (dmr) dmr_target_memcpy_scalar
          implicit none
          complex(R16P), intent(out) :: sc_dst
          complex(R16P), intent(in)  :: sc_src
-         integer(I4P),  intent(in)  :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
 
          if (omp_src_dev==omp_get_initial_device()) then
             !$omp target map(to:sc_src) has_device_addr(sc_dst) device(omp_dst_dev)
@@ -197,6 +195,25 @@ submodule (dmr) dmr_target_memcpy_scalar
          endif
       endsubroutine omp_target_memcpy_f_cmplx128_scalar
 #endif
-#endif
 
+      ! DMR Target Memcpy Scalar Logical Routines
+      module subroutine omp_target_memcpy_f_lgcl32_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
+         implicit none
+         logical(I4P), intent(out) :: sc_dst
+         logical(I4P), intent(in)  :: sc_src
+         integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
+
+         if (omp_src_dev==omp_get_initial_device()) then
+            !$omp target map(to:sc_src) has_device_addr(sc_dst) device(omp_dst_dev)
+            sc_dst = sc_src
+            !$omp end target
+         else
+            !$omp target map(from:sc_dst) has_device_addr(sc_src) device(omp_src_dev)
+            sc_dst = sc_src
+            !$omp end target
+         endif
+      endsubroutine omp_target_memcpy_f_lgcl32_scalar
+
+
+#endif
 endsubmodule dmr_target_memcpy_scalar

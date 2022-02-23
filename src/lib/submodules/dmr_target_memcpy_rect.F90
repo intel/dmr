@@ -13,15 +13,12 @@
 
 submodule (dmr) dmr_target_memcpy_rect
    use, intrinsic :: iso_c_binding
-   use omp_lib
    use dmr_environment
-   use dmr_c_functions
 
    implicit none
 
    contains
-
-     ! OpenMP Target Memcpy Rect Integer Routines
+      ! OpenMP Target Memcpy Rect Integer Routines
       module subroutine omp_target_memcpy_rect_f_int8(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
@@ -64,8 +61,8 @@ submodule (dmr) dmr_target_memcpy_rect
 
          elem_dim = int(byte_size(1_I1P), c_size_t)
 
-         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
-            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+         ierr = int(omp_target_memcpy_rect(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,      &
             omp_src_device), I4P)
 
          deallocate(volume_dims, cptr_dst_dims, cptr_src_dims, omp_dst_offsets, omp_src_offsets)
@@ -113,8 +110,8 @@ submodule (dmr) dmr_target_memcpy_rect
 
          elem_dim = int(byte_size(1_I2P), c_size_t)
 
-         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
-            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+         ierr = int(omp_target_memcpy_rect(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,      &
             omp_src_device), I4P)
 
          deallocate(volume_dims, cptr_dst_dims, cptr_src_dims, omp_dst_offsets, omp_src_offsets)
@@ -162,8 +159,8 @@ submodule (dmr) dmr_target_memcpy_rect
 
          elem_dim = int(byte_size(1_I4P), c_size_t)
 
-         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
-            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+         ierr = int(omp_target_memcpy_rect(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,      &
             omp_src_device), I4P)
 
          deallocate(volume_dims, cptr_dst_dims, cptr_src_dims, omp_dst_offsets, omp_src_offsets)
@@ -211,19 +208,19 @@ submodule (dmr) dmr_target_memcpy_rect
 
          elem_dim = int(byte_size(1_I8P), c_size_t)
 
-         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
-            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+         ierr = int(omp_target_memcpy_rect(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,      &
             omp_src_device), I4P)
 
          deallocate(volume_dims, cptr_dst_dims, cptr_src_dims, omp_dst_offsets, omp_src_offsets)
       endsubroutine omp_target_memcpy_rect_f_int64
 
-     ! OpenMP Target Memcpy Rect Real Routines
+      ! OpenMP Target Memcpy Rect Real Routines
       module subroutine omp_target_memcpy_rect_f_real32(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         real(R4P),    contiguous, target, intent(out) :: fptr_dst(..)
-         real(R4P),    contiguous, target, intent(in)  :: fptr_src(..)
+         real(R4P), contiguous, target, intent(out) :: fptr_dst(..)
+         real(R4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                      :: cpy_dims(:)
          integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
@@ -261,8 +258,8 @@ submodule (dmr) dmr_target_memcpy_rect
 
          elem_dim = int(byte_size(1._R4P), c_size_t)
 
-         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
-            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+         ierr = int(omp_target_memcpy_rect(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,      &
             omp_src_device), I4P)
 
          deallocate(volume_dims, cptr_dst_dims, cptr_src_dims, omp_dst_offsets, omp_src_offsets)
@@ -271,8 +268,8 @@ submodule (dmr) dmr_target_memcpy_rect
       module subroutine omp_target_memcpy_rect_f_real64(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         real(R8P),    contiguous, target, intent(out) :: fptr_dst(..)
-         real(R8P),    contiguous, target, intent(in)  :: fptr_src(..)
+         real(R8P), contiguous, target, intent(out) :: fptr_dst(..)
+         real(R8P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                      :: cpy_dims(:)
          integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
@@ -310,8 +307,8 @@ submodule (dmr) dmr_target_memcpy_rect
 
          elem_dim = int(byte_size(1._R8P), c_size_t)
 
-         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
-            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+         ierr = int(omp_target_memcpy_rect(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,      &
             omp_src_device), I4P)
 
          deallocate(volume_dims, cptr_dst_dims, cptr_src_dims, omp_dst_offsets, omp_src_offsets)
@@ -321,8 +318,8 @@ submodule (dmr) dmr_target_memcpy_rect
       module subroutine omp_target_memcpy_rect_f_real128(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         real(R16P),   contiguous, target, intent(out) :: fptr_dst(..)
-         real(R16P),   contiguous, target, intent(in)  :: fptr_src(..)
+         real(R16P), contiguous, target, intent(out) :: fptr_dst(..)
+         real(R16P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                      :: cpy_dims(:)
          integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
@@ -360,15 +357,15 @@ submodule (dmr) dmr_target_memcpy_rect
 
          elem_dim = int(byte_size(1._R16P), c_size_t)
 
-         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
-            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+         ierr = int(omp_target_memcpy_rect(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,      &
             omp_src_device), I4P)
 
          deallocate(volume_dims, cptr_dst_dims, cptr_src_dims, omp_dst_offsets, omp_src_offsets)
       endsubroutine omp_target_memcpy_rect_f_real128
 #endif
 
-     ! OpenMP Target Memcpy Rect Complex Routines
+      ! OpenMP Target Memcpy Rect Complex Routines
       module subroutine omp_target_memcpy_rect_f_cmplx32(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
@@ -411,8 +408,8 @@ submodule (dmr) dmr_target_memcpy_rect
 
          elem_dim = int(2_I8P * byte_size(1._R4P), c_size_t)
 
-         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
-            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+         ierr = int(omp_target_memcpy_rect(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,      &
             omp_src_device), I4P)
 
          deallocate(volume_dims, cptr_dst_dims, cptr_src_dims, omp_dst_offsets, omp_src_offsets)
@@ -460,8 +457,8 @@ submodule (dmr) dmr_target_memcpy_rect
 
          elem_dim = int(2_I8P * byte_size(1._R8P), c_size_t)
 
-         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
-            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+         ierr = int(omp_target_memcpy_rect(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,      &
             omp_src_device), I4P)
 
          deallocate(volume_dims, cptr_dst_dims, cptr_src_dims, omp_dst_offsets, omp_src_offsets)
@@ -473,16 +470,16 @@ submodule (dmr) dmr_target_memcpy_rect
          implicit none
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(..)
          complex(R16P), contiguous, target, intent(in)  :: fptr_src(..)
-         integer(I8P), intent(in)                       :: cpy_dims(:)
-         integer(I4P), intent(out)                      :: ierr
-         integer(I4P), intent(in)                       :: dst_offs(:), src_offs(:)
-         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
-         integer(kind=c_size_t)                         :: elem_dim
-         integer(kind=c_size_t), allocatable            :: omp_dst_offsets(:), omp_src_offsets(:)
-         integer(kind=c_size_t), allocatable            :: volume_dims(:), cptr_dst_dims(:), cptr_src_dims(:)
-         type(c_ptr)                                    :: cptr_dst, cptr_src
-         integer(kind=c_int)                            :: fptr_rank, omp_dst_device, omp_src_device
-         integer(I4P)                                   :: fptr_dims, i
+         integer(I8P), intent(in)                      :: cpy_dims(:)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(kind=c_size_t)                        :: elem_dim
+         integer(kind=c_size_t), allocatable           :: omp_dst_offsets(:), omp_src_offsets(:)
+         integer(kind=c_size_t), allocatable           :: volume_dims(:), cptr_dst_dims(:), cptr_src_dims(:)
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(kind=c_int)                           :: fptr_rank, omp_dst_device, omp_src_device
+         integer(I4P)                                  :: fptr_dims, i
 
          fptr_dims = rank(fptr_dst)
          fptr_rank = int(fptr_dims, c_int)
@@ -510,11 +507,63 @@ submodule (dmr) dmr_target_memcpy_rect
 
          elem_dim = int(2_I8P * byte_size(1._R16P), c_size_t)
 
-         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
-            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+         ierr = int(omp_target_memcpy_rect(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,      &
             omp_src_device), I4P)
 
          deallocate(volume_dims, cptr_dst_dims, cptr_src_dims, omp_dst_offsets, omp_src_offsets)
       endsubroutine omp_target_memcpy_rect_f_cmplx128
 #endif
+
+      ! OpenMP Target Memcpy Rect Logical Routines
+      module subroutine omp_target_memcpy_rect_f_lgcl32(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev)
+         implicit none
+         logical(I4P), contiguous, target, intent(out) :: fptr_dst(..)
+         logical(I4P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                      :: cpy_dims(:)
+         integer(I4P), intent(out)                     :: ierr
+         integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
+         integer(kind=c_size_t)                        :: elem_dim
+         integer(kind=c_size_t), allocatable           :: omp_dst_offsets(:), omp_src_offsets(:)
+         integer(kind=c_size_t), allocatable           :: volume_dims(:), cptr_dst_dims(:), cptr_src_dims(:)
+         type(c_ptr)                                   :: cptr_dst, cptr_src
+         integer(kind=c_int)                           :: fptr_rank, omp_dst_device, omp_src_device
+         integer(I4P)                                  :: fptr_dims, i
+
+         fptr_dims = rank(fptr_dst)
+         fptr_rank = int(fptr_dims, c_int)
+
+         allocate(volume_dims    (1:fptr_dims))
+         allocate(cptr_dst_dims  (1:fptr_dims), cptr_src_dims  (1:fptr_dims))
+         allocate(omp_dst_offsets(1:fptr_dims), omp_src_offsets(1:fptr_dims))
+
+         do i=fptr_dims, 1, -1
+            volume_dims(i)   = int(cpy_dims(fptr_dims-i+1), c_size_t)
+            cptr_dst_dims(i) = int(size(fptr_dst,fptr_dims-i+1), c_size_t)
+            cptr_src_dims(i) = int(size(fptr_src,fptr_dims-i+1), c_size_t)
+         enddo
+
+         do i=1, fptr_dims
+            omp_dst_offsets(i) = int(dst_offs(i), c_size_t)
+            omp_src_offsets(i) = int(src_offs(i), c_size_t)
+         enddo
+
+         omp_dst_device = int(omp_dst_dev, c_int)
+         omp_src_device = int(omp_src_dev, c_int)
+
+         cptr_dst = c_loc(fptr_dst)
+         cptr_src = c_loc(fptr_src)
+
+         elem_dim = int(byte_size(1._I4P), c_size_t)
+
+         ierr = int(omp_target_memcpy_rect(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,      &
+            omp_src_device), I4P)
+
+         deallocate(volume_dims, cptr_dst_dims, cptr_src_dims, omp_dst_offsets, omp_src_offsets)
+      endsubroutine omp_target_memcpy_rect_f_lgcl32
+
+
 endsubmodule dmr_target_memcpy_rect

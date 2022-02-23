@@ -20,11 +20,15 @@ module dmr_environment
    save
 
    public :: byte_size, &
-             I1P, I2P, I4P, I8P, &
+         R4P, &
+         R8P, &
 #if defined _real128
-             R16P, &
+         R16P, &
 #endif
-             R4P, R8P
+         I1P, &
+         I2P, &
+         I4P, &
+         I8P
 
    integer, parameter :: I1P  = selected_int_kind(2)        !< Range \([-2^{7} ,+2^{7}  - 1]\), 3  digits plus sign; 8  bits.
    integer, parameter :: I2P  = selected_int_kind(4)        !< Range \([-2^{15},+2^{15} - 1]\), 5  digits plus sign; 16 bits.
@@ -39,11 +43,15 @@ module dmr_environment
 
    interface byte_size
       module procedure &
-         byte_size_int8, byte_size_int16, byte_size_int32, byte_size_int64, &
+         byte_size_real32, &
+         byte_size_real64, &
 #if defined _real128
          byte_size_real128, &
 #endif
-         byte_size_real32, byte_size_real64
+         byte_size_int8, &
+         byte_size_int16, &
+         byte_size_int32, &
+         byte_size_int64
    endinterface
 
    contains
@@ -53,49 +61,52 @@ module dmr_environment
 
          bytes = storage_size(x) / 8_I1P
       endfunction byte_size_int8
-
+!
       elemental function byte_size_int16(x) result(bytes)
          integer(I2P), intent(in) :: x
          integer(I1P)             :: bytes
 
          bytes = storage_size(x) / 8_I1P
       endfunction byte_size_int16
-
+!
       elemental function byte_size_int32(x) result(bytes)
          integer(I4P), intent(in) :: x
          integer(I1P)             :: bytes
 
          bytes = storage_size(x) / 8_I1P
       endfunction byte_size_int32
-
+!
       elemental function byte_size_int64(x) result(bytes)
          integer(I8P), intent(in) :: x
          integer(I1P)             :: bytes
 
          bytes = storage_size(x) / 8_I1P
       endfunction byte_size_int64
-
+!
+!
       elemental function byte_size_real32(x) result(bytes)
          real(R4P), intent(in) :: x
-         integer(I1P)          :: bytes
+         integer(I1P)             :: bytes
 
          bytes = storage_size(x) / 8_I1P
       endfunction byte_size_real32
-
+!
       elemental function byte_size_real64(x) result(bytes)
          real(R8P), intent(in) :: x
-         integer(I1P)          :: bytes
+         integer(I1P)             :: bytes
 
          bytes = storage_size(x) / 8_I1P
       endfunction byte_size_real64
-
+!
 #if defined _real128
       elemental function byte_size_real128(x) result(bytes)
          real(R16P), intent(in) :: x
-         integer(I1P)           :: bytes
+         integer(I1P)             :: bytes
 
          bytes = storage_size(x) / 8_I1P
       endfunction byte_size_real128
 #endif
+!
+!
 
 endmodule dmr_environment
