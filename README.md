@@ -86,11 +86,6 @@ In order to compile the library, use the following command:
 make compiler=1 debug=1
 ```
 
-To compile the testing suite together with the library, use the following command:
-```
-make compiler=1 debug=1 TEST=yes
-```
-
 Where *compiler* can be one of the following: **gnu**, **ibm**, **intel**.
 
 Go to [Top](#top)
