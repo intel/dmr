@@ -13,9 +13,8 @@
 
 submodule (dmr) dmr_target_memcpy
    use, intrinsic :: iso_c_binding
-   use omp_lib
    use dmr_environment
-   use dmr_c_functions
+   use omp_lib, only : omp_get_initial_device
 
    implicit none
 
@@ -39,7 +38,7 @@ submodule (dmr) dmr_target_memcpy
          type(c_ptr)                                   :: cptr_dst, cptr_src
          integer(c_int)                                :: omp_dst_device, omp_src_device
 
-         if (omp_src_dev == omp_get_initial_device_c()) then
+         if (omp_src_dev == omp_get_initial_device()) then
             n_elements = size(fptr_src)
          else
             n_elements = size(fptr_dst)
@@ -59,7 +58,7 @@ submodule (dmr) dmr_target_memcpy
          total_dim = int(n_elements * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), c_size_t)
 {%- endif %}
 
-         ierr = int(omp_target_memcpy_c(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+         ierr = int(omp_target_memcpy(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
       endsubroutine omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}
 {%- if p.name == '128' %}

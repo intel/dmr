@@ -13,9 +13,7 @@
 
 submodule (dmr) dmr_target_free
    use, intrinsic :: iso_c_binding
-   use omp_lib
    use dmr_environment
-   use dmr_c_functions
 
    implicit none
 
@@ -39,7 +37,7 @@ submodule (dmr) dmr_target_free
 
          cptr_dev = c_loc(fptr_dev)
 
-         call omp_target_free_c(cptr_dev, omp_device)
+         call omp_target_free(cptr_dev, omp_device)
          if (c_associated(cptr_dev)) then
             ierr =  1000
          else

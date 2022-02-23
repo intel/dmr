@@ -15,7 +15,6 @@ module dmr
    use, intrinsic :: iso_c_binding
    use omp_lib
    use dmr_environment
-   use dmr_c_functions
 
    implicit none
 

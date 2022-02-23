@@ -13,9 +13,7 @@
 
 submodule (dmr) dmr_target_is_present
    use, intrinsic :: iso_c_binding
-   use omp_lib
    use dmr_environment
-   use dmr_c_functions
 
    implicit none
 
@@ -38,7 +36,7 @@ submodule (dmr) dmr_target_is_present
          omp_device = int(omp_dev, c_int)
          cptr_dev   = c_loc(fptr_dev)
 
-         if (int(omp_target_is_present_c(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
+         if (int(omp_target_is_present(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
             omp_target_is_present_f_{{keywords[t][1]}}{{p.name}} = .true.
          else
             omp_target_is_present_f_{{keywords[t][1]}}{{p.name}} = .false.

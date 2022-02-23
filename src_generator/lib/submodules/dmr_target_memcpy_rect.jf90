@@ -13,9 +13,7 @@
 
 submodule (dmr) dmr_target_memcpy_rect
    use, intrinsic :: iso_c_binding
-   use omp_lib
    use dmr_environment
-   use dmr_c_functions
 
    implicit none
 
@@ -73,8 +71,8 @@ submodule (dmr) dmr_target_memcpy_rect
          elem_dim = int(byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), c_size_t)
 {%- endif %}
 
-         ierr = int(omp_target_memcpy_rect_c(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
-            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,        &
+         ierr = int(omp_target_memcpy_rect(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,      &
             omp_src_device), I4P)
 
          deallocate(volume_dims, cptr_dst_dims, cptr_src_dims, omp_dst_offsets, omp_src_offsets)

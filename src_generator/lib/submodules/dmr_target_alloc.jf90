@@ -13,9 +13,8 @@
 
 submodule (dmr) dmr_target_alloc
    use, intrinsic :: iso_c_binding
-   use omp_lib
    use dmr_environment
-   use dmr_c_functions
+   use omp_lib, only : omp_target_alloc
 
    implicit none
 
@@ -47,15 +46,15 @@ submodule (dmr) dmr_target_alloc
 {% print("") %}
 {%- if d == 1 %}
 {%- if t == 'complex' %}
-         cptr_dev = omp_target_alloc_c(int(2_I8P * dimensions, c_size_t) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * dimensions, c_size_t) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), omp_device)
 {%- else %}
-         cptr_dev = omp_target_alloc_c(int(dimensions, c_size_t) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), omp_device)
+         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), omp_device)
 {%- endif %}
 {%- else %}
 {%- if t == 'complex' %}
-         cptr_dev = omp_target_alloc_c(int(2_I8P * product(dimensions), c_size_t) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), omp_device)
 {%- else %}
-         cptr_dev = omp_target_alloc_c(int(product(dimensions), c_size_t) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), omp_device)
 {%- endif %}
 {%- endif %}
 
@@ -64,14 +63,26 @@ submodule (dmr) dmr_target_alloc
 {%- if d == 1 %}
                call c_f_pointer(cptr_dev, fptr, [dimensions])
 {%- else %}
+            {%- if d > 4 %}
+               call c_f_pointer(cptr_dev, fptr, [{% for dd in range(0,4) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{% else %}, &{%- endif %}{% endfor %}
+                                                 {% for dd in range(4,d) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
+               fptr_dev({% for dd in range(0,2*4,2) %}bounds({{dd+1}}):bounds({{dd+2}}){% if not loop.last %},{% print(' ') %}{% else %}, &{%- endif %}{% endfor %}
+                        {% for dd in range(8,2*d,2) %}bounds({{dd+1}}):bounds({{dd+2}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}) => fptr
+            {%- else %}
                call c_f_pointer(cptr_dev, fptr, [{% for dd in range(d) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
-{%- endif %}
                fptr_dev({% for dd in range(0,2*d,2) %}bounds({{dd+1}}):bounds({{dd+2}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}) => fptr
+            {%- endif %}
+{%- endif %}
             else
 {%- if d == 1 %}
                call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 {%- else %}
-               call c_f_pointer(cptr_dev, fptr_dev, [{% for dd in range(d) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
+            {%- if d > 4 %}
+               call c_f_pointer(cptr_dev, fptr, [{% for dd in range(0,4) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{% else %}, &{%- endif %}{% endfor %}
+                                                 {% for dd in range(4,d) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
+            {%- else %}
+               call c_f_pointer(cptr_dev, fptr, [{% for dd in range(d) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
+            {%- endif %}
 {%- endif %}
             endif
             ierr = 0

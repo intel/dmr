@@ -13,9 +13,8 @@
 
 submodule (dmr) dmr_get_mapped_ptr
    use, intrinsic :: iso_c_binding
-   use omp_lib
    use dmr_environment
-   use dmr_c_functions
+   use omp_lib, only : omp_get_mapped_ptr
 
    implicit none
 
@@ -39,13 +38,18 @@ submodule (dmr) dmr_get_mapped_ptr
 
          omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_get_mapped_ptr_c(c_loc(fptr_hos), omp_device)
+         cptr_dev = omp_get_mapped_ptr(c_loc(fptr_hos), omp_device)
 
          if (c_associated(cptr_dev)) then
             select rank (fptr_hos)
 {%- for d in range(1,dimensions+1) %}
             rank({{d}})
+            {%- if d > 4 %}
+               call c_f_pointer(cptr_dev, fptr_dev, [{% for dd in range(0,4) %}size(fptr_hos,{{dd+1}}){% if not loop.last %},{% print(' ') %}{% else %}, &{%- endif %}{% endfor %}
+                                                     {% for dd in range(4,d) %}size(fptr_hos,{{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
+            {%- else %}
                call c_f_pointer(cptr_dev, fptr_dev, [{% for dd in range(d) %}size(fptr_hos,{{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
+            {%- endif %}
 {%- endfor %}
             endselect
          else
@@ -78,10 +82,15 @@ submodule (dmr) dmr_get_mapped_ptr
 
          omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_get_mapped_ptr_c(c_loc(fptr_hos), omp_device)
+         cptr_dev = omp_get_mapped_ptr(c_loc(fptr_hos), omp_device)
 
          if (c_associated(cptr_dev)) then
-            call c_f_pointer(cptr_dev, fptr_dev, [{% for dd in range(d) %}size(fptr_hos,{{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
+            {%- if d > 4 %}
+               call c_f_pointer(cptr_dev, fptr_dev, [{% for dd in range(0,4) %}size(fptr_hos,{{dd+1}}){% if not loop.last %},{% print(' ') %}{% else %}, &{%- endif %}{% endfor %}
+                                                     {% for dd in range(4,d) %}size(fptr_hos,{{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
+            {%- else %}
+               call c_f_pointer(cptr_dev, fptr_dev, [{% for dd in range(d) %}size(fptr_hos,{{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
+            {%- endif %}
          else
             fptr_dev => null()
          endif
