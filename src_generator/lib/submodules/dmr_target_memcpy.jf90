@@ -28,8 +28,8 @@ submodule (dmr) dmr_target_memcpy
       module subroutine omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, pointer, intent(out) :: fptr_dst(..)
-         {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, pointer, intent(in)  :: fptr_src(..)
+         {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(out) :: fptr_dst(..)
+         {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
