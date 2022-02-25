@@ -301,13 +301,10 @@ module dmr
 {%- if p.key=='16P' %}
 #if defined _real128
 {%- endif %}
-      module function omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}(fptr_dev, omp_dev)
+      module function omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}(fptr_dev)
          implicit none
          logical                           :: omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}
-         {{t}}({{keywords[t][2]}}{{p.key}}), target, intent(in){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev(..)
-         integer(I4P), intent(in)          :: omp_dev
-         type(c_ptr)                       :: cptr_dev
-         integer(kind=c_int)               :: omp_device
+         {{t}}({{keywords[t][2]}}{{p.key}}), pointer, intent(in){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev(..)
       endfunction omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}
 {%- if p.key=='16P' %}
 #endif
@@ -338,9 +335,6 @@ module dmr
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: bounds({{d*2}})
-         {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous{% if t=='real' and p.key=='16P' %}{% print('                 ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('              ')%}{%- elif t=='real' %}{% print('                  ')%}{%- else %}{% print('               ')%}{%- endif %}:: fptr({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
-         type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
       endsubroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}
 {% print("") %}
 {%- endfor %}
@@ -360,12 +354,9 @@ module dmr
 {%- if p.key=='16P' %}
 #if defined _real128
 {%- endif %}
-      module subroutine omp_target_free_f_{{keywords[t][1]}}{{p.name}}(fptr_dev, omp_dev, ierr)
+      module subroutine omp_target_free_f_{{keywords[t][1]}}{{p.name}}(fptr_dev, omp_dev)
          {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous, intent(inout){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev(..)
          integer(I4P), intent(in)                          :: omp_dev
-         integer(I4P), intent(out)                         :: ierr
-         type(c_ptr)                                       :: cptr_dev
-         integer(kind=c_int)                               :: omp_device
       endsubroutine omp_target_free_f_{{keywords[t][1]}}{{p.name}}
 {%- if p.key=='16P' %}
 #endif
@@ -414,10 +405,6 @@ module dmr
          integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
-         integer(I8P)                                  :: n_elements
-         integer(c_size_t)                             :: total_dim, omp_dst_offset, omp_src_offset
-         type(c_ptr)                                   :: cptr_dst, cptr_src
-         integer(c_int)                                :: omp_dst_device, omp_src_device
       endsubroutine omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}
 {%- if p.name == '128' %}
 #endif
@@ -445,12 +432,6 @@ module dmr
          integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
-         integer(kind=c_size_t)                        :: elem_dim
-         integer(kind=c_size_t), allocatable           :: omp_dst_offsets(:), omp_src_offsets(:)
-         integer(kind=c_size_t), allocatable           :: volume_dims(:), cptr_dst_dims(:), cptr_src_dims(:)
-         type(c_ptr)                                   :: cptr_dst, cptr_src
-         integer(kind=c_int)                           :: fptr_rank, omp_dst_device, omp_src_device
-         integer(I4P)                                  :: fptr_dims, i
       endsubroutine omp_target_memcpy_rect_f_{{keywords[t][1]}}{{p.name}}
 {%- if p.name == '128' %}
 #endif
@@ -475,8 +456,6 @@ module dmr
          logical                   :: omp_correctly_mapped_{{keywords[t][1]}}{{p.name}}
          {{t}}({{keywords[t][2]}}{{p.key}}), intent(in)  :: array(..)
          integer(I4P), intent(in)  :: omp_dev
-         integer(I4P), allocatable :: size_host(:)
-         integer(I4P)              :: i, array_rank
       endfunction omp_correctly_mapped_{{keywords[t][1]}}{{p.name}}
 {%- if p.name == '128' %}
 #endif
@@ -496,14 +475,7 @@ module dmr
          implicit none
          logical                   :: omp_correctly_mapped_{{keywords[t][1]}}{{p.name}}_{{d}}
          {{t}}({{keywords[t][2]}}{{p.key}}), intent(in){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: array({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
-{%- if d == 1 %}
-         integer(I4P)              :: size_host
-{%- else %}
-         integer(I4P), parameter   :: array_rank={{d}}_I4P
-         integer(I4P)              :: size_host({{d}})
-{%- endif %}
          integer(I4P), intent(in)  :: omp_dev
-         integer(I4P)              :: i
       endfunction omp_correctly_mapped_{{keywords[t][1]}}{{p.name}}_{{d}}
 {% print("") %}
 {%- endfor %}
@@ -532,9 +504,6 @@ module dmr
          integer(I4P), intent(in), optional :: omp_dev
          integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
-         integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
-         integer(I8P)                       :: {% for d in range(1,dimensions+1) %}i{{d}}{% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}
-         integer(I4P)                       :: omp_dev_
       endsubroutine omp_target_init_{{keywords[t][1]}}{{p.name}}
 {%- if p.name == '128' %}
 #endif
@@ -557,13 +526,9 @@ module dmr
          integer(I4P), intent(in), optional :: omp_dev
 {%- if d==1 %}
          integer(I8P), intent(in), optional :: lbounds, ubounds
-         integer(I8P)                       :: lbounds_, ubounds_
 {%- else %}
          integer(I8P), intent(in), optional :: lbounds({{d}}), ubounds({{d}})
-         integer(I8P)                       :: lbounds_({{d}}), ubounds_({{d}})
 {%- endif %}
-         integer(I8P)                       :: {% for dd in range(1,d+1) %}i{{dd}}{% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}
-         integer(I8P)                       :: omp_dev_
       endsubroutine omp_target_init_{{keywords[t][1]}}{{p.name}}_{{d}}
 {% print("") %}
 {%- endfor %}
@@ -592,9 +557,6 @@ module dmr
          integer(I4P), intent(in), optional :: omp_dev
          integer(I8P), intent(in), optional :: lbound_s, ubound_s
          integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
-         integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
-         integer(I8P)                       :: {% for d in range(1,dimensions+1) %}i{{d}}{% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}
-         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_{{keywords[t][1]}}{{p.name}}
 {%- if p.name == '128' %}
 #endif
@@ -617,13 +579,10 @@ module dmr
          integer(I4P), intent(in), optional :: omp_dev
 {%- if d==1 %}
          integer(I8P), intent(in), optional :: lbounds, ubounds
-         integer(I8P)                       :: lbounds_, ubounds_
 {%- else %}
          integer(I8P), intent(in), optional :: lbounds({{d}}), ubounds({{d}})
-         integer(I8P)                       :: lbounds_({{d}}), ubounds_({{d}})
 {%- endif %}
          integer(I8P)                       :: {% for dd in range(1,d+1) %}i{{dd}}{% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}
-         integer(I4P)                       :: omp_dev_
       endsubroutine omp_device_memcpy_{{keywords[t][1]}}{{p.name}}_{{d}}
 {% print("") %}
 {%- endfor %}
@@ -650,8 +609,6 @@ module dmr
          {{t}}({{keywords[t][2]}}{{p.key}}), pointer, intent(out) :: fptr_dev(..)
          {{t}}({{keywords[t][2]}}{{p.key}}), target,  intent(in)  :: fptr_hos(..)
          integer(I4P), intent(in)           :: omp_dev
-         type(c_ptr)                        :: cptr_dev
-         integer(kind=c_int)                :: omp_device
       endsubroutine omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}
 {%- if p.name == '128' %}
 #endif
@@ -672,8 +629,6 @@ module dmr
          {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous, intent(out){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
          {{t}}({{keywords[t][2]}}{{p.key}}), target,  contiguous, intent(in){% if t=='real' and p.key=='16P' %}{% print('     ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('  ')%}{%- elif t=='real' %}{% print('      ')%}{%- else %}{% print('   ')%}{%- endif %}:: fptr_hos({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
          integer(I4P), intent(in)                        :: omp_dev
-         type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
       endsubroutine omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}
 {% print("") %}
 {%- endfor %}

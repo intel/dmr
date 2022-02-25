@@ -12,7 +12,6 @@
 !* ========================================================================== *
 
 submodule (dmr) dmr_target_is_present
-   use, intrinsic :: iso_c_binding
    use dmr_environment
 
    implicit none
@@ -25,18 +24,12 @@ submodule (dmr) dmr_target_is_present
 {%- if p.key=='16P' %}
 #if defined _real128
 {%- endif %}
-      module function omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}(fptr_dev, omp_dev)
+      module function omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}(fptr_dev)
          implicit none
          logical                           :: omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}
-         {{t}}({{keywords[t][2]}}{{p.key}}), target, intent(in){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev(..)
-         integer(I4P), intent(in)          :: omp_dev
-         type(c_ptr)                       :: cptr_dev
-         integer(kind=c_int)               :: omp_device
+         {{t}}({{keywords[t][2]}}{{p.key}}), pointer, intent(in){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev(..)
 
-         omp_device = int(omp_dev, c_int)
-         cptr_dev   = c_loc(fptr_dev)
-
-         if (int(omp_target_is_present(cptr_dev, omp_device), 1_I4P) /= 0_I4P) then
+         if (associated(fptr_dev)) then
             omp_target_is_present_f_{{keywords[t][1]}}{{p.name}} = .true.
          else
             omp_target_is_present_f_{{keywords[t][1]}}{{p.name}} = .false.

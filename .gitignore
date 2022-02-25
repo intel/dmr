@@ -9,3 +9,4 @@ exe/
 *.mod
 *.obj
 *.o
+*.log
