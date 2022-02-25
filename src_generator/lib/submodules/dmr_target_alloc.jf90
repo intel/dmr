@@ -78,10 +78,10 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr_dev, [dimensions])
 {%- else %}
             {%- if d > 4 %}
-               call c_f_pointer(cptr_dev, fptr, [{% for dd in range(0,4) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{% else %}, &{%- endif %}{% endfor %}
+               call c_f_pointer(cptr_dev, fptr_dev, [{% for dd in range(0,4) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{% else %}, &{%- endif %}{% endfor %}
                                                  {% for dd in range(4,d) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
             {%- else %}
-               call c_f_pointer(cptr_dev, fptr, [{% for dd in range(d) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
+               call c_f_pointer(cptr_dev, fptr_dev, [{% for dd in range(d) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
             {%- endif %}
 {%- endif %}
             endif

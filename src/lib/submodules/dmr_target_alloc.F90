@@ -68,7 +68,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
             endif
             ierr = 0
          else
@@ -96,7 +96,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
             endif
             ierr = 0
          else
@@ -124,7 +124,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
             endif
             ierr = 0
          else
@@ -154,7 +154,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5)])
             endif
             ierr = 0
@@ -185,7 +185,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6)])
             endif
             ierr = 0
@@ -216,7 +216,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12), bounds(13):bounds(14)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6), dimensions(7)])
             endif
             ierr = 0
@@ -272,7 +272,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
             endif
             ierr = 0
          else
@@ -300,7 +300,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
             endif
             ierr = 0
          else
@@ -328,7 +328,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
             endif
             ierr = 0
          else
@@ -358,7 +358,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5)])
             endif
             ierr = 0
@@ -389,7 +389,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6)])
             endif
             ierr = 0
@@ -420,7 +420,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12), bounds(13):bounds(14)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6), dimensions(7)])
             endif
             ierr = 0
@@ -476,7 +476,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
             endif
             ierr = 0
          else
@@ -504,7 +504,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
             endif
             ierr = 0
          else
@@ -532,7 +532,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
             endif
             ierr = 0
          else
@@ -562,7 +562,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5)])
             endif
             ierr = 0
@@ -593,7 +593,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6)])
             endif
             ierr = 0
@@ -624,7 +624,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12), bounds(13):bounds(14)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6), dimensions(7)])
             endif
             ierr = 0
@@ -680,7 +680,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
             endif
             ierr = 0
          else
@@ -708,7 +708,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
             endif
             ierr = 0
          else
@@ -736,7 +736,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
             endif
             ierr = 0
          else
@@ -766,7 +766,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5)])
             endif
             ierr = 0
@@ -797,7 +797,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6)])
             endif
             ierr = 0
@@ -828,7 +828,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12), bounds(13):bounds(14)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6), dimensions(7)])
             endif
             ierr = 0
@@ -886,7 +886,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
             endif
             ierr = 0
          else
@@ -914,7 +914,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
             endif
             ierr = 0
          else
@@ -942,7 +942,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
             endif
             ierr = 0
          else
@@ -972,7 +972,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5)])
             endif
             ierr = 0
@@ -1003,7 +1003,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6)])
             endif
             ierr = 0
@@ -1034,7 +1034,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12), bounds(13):bounds(14)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6), dimensions(7)])
             endif
             ierr = 0
@@ -1090,7 +1090,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
             endif
             ierr = 0
          else
@@ -1118,7 +1118,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
             endif
             ierr = 0
          else
@@ -1146,7 +1146,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
             endif
             ierr = 0
          else
@@ -1176,7 +1176,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5)])
             endif
             ierr = 0
@@ -1207,7 +1207,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6)])
             endif
             ierr = 0
@@ -1238,7 +1238,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12), bounds(13):bounds(14)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6), dimensions(7)])
             endif
             ierr = 0
@@ -1295,7 +1295,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
             endif
             ierr = 0
          else
@@ -1323,7 +1323,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
             endif
             ierr = 0
          else
@@ -1351,7 +1351,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
             endif
             ierr = 0
          else
@@ -1381,7 +1381,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5)])
             endif
             ierr = 0
@@ -1412,7 +1412,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6)])
             endif
             ierr = 0
@@ -1443,7 +1443,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12), bounds(13):bounds(14)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6), dimensions(7)])
             endif
             ierr = 0
@@ -1502,7 +1502,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
             endif
             ierr = 0
          else
@@ -1530,7 +1530,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
             endif
             ierr = 0
          else
@@ -1558,7 +1558,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
             endif
             ierr = 0
          else
@@ -1588,7 +1588,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5)])
             endif
             ierr = 0
@@ -1619,7 +1619,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6)])
             endif
             ierr = 0
@@ -1650,7 +1650,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12), bounds(13):bounds(14)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6), dimensions(7)])
             endif
             ierr = 0
@@ -1706,7 +1706,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
             endif
             ierr = 0
          else
@@ -1734,7 +1734,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
             endif
             ierr = 0
          else
@@ -1762,7 +1762,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
             endif
             ierr = 0
          else
@@ -1792,7 +1792,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5)])
             endif
             ierr = 0
@@ -1823,7 +1823,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6)])
             endif
             ierr = 0
@@ -1854,7 +1854,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12), bounds(13):bounds(14)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6), dimensions(7)])
             endif
             ierr = 0
@@ -1911,7 +1911,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
             endif
             ierr = 0
          else
@@ -1939,7 +1939,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
             endif
             ierr = 0
          else
@@ -1967,7 +1967,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
             endif
             ierr = 0
          else
@@ -1997,7 +1997,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5)])
             endif
             ierr = 0
@@ -2028,7 +2028,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6)])
             endif
             ierr = 0
@@ -2059,7 +2059,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12), bounds(13):bounds(14)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6), dimensions(7)])
             endif
             ierr = 0
@@ -2118,7 +2118,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2)])
             endif
             ierr = 0
          else
@@ -2146,7 +2146,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3)])
             endif
             ierr = 0
          else
@@ -2174,7 +2174,7 @@ submodule (dmr) dmr_target_alloc
                call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4)])
             endif
             ierr = 0
          else
@@ -2204,7 +2204,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5)])
             endif
             ierr = 0
@@ -2235,7 +2235,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6)])
             endif
             ierr = 0
@@ -2266,7 +2266,7 @@ submodule (dmr) dmr_target_alloc
                fptr_dev(bounds(1):bounds(2), bounds(3):bounds(4), bounds(5):bounds(6), bounds(7):bounds(8), &
                         bounds(9):bounds(10), bounds(11):bounds(12), bounds(13):bounds(14)) => fptr
             else
-               call c_f_pointer(cptr_dev, fptr, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
+               call c_f_pointer(cptr_dev, fptr_dev, [dimensions(1), dimensions(2), dimensions(3), dimensions(4), &
                                                  dimensions(5), dimensions(6), dimensions(7)])
             endif
             ierr = 0
