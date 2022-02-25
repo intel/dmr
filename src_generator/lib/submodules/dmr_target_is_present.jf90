@@ -27,7 +27,7 @@ submodule (dmr) dmr_target_is_present
       module function omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}(fptr_dev)
          implicit none
          logical                           :: omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}
-         {{t}}({{keywords[t][2]}}{{p.key}}), pointer, intent(in){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev(..)
+         {{t}}({{keywords[t][2]}}{{p.key}}), pointer, intent(in){% if t=='real' and p.key=='16P' %}{% print('   ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('')%}{%- elif t=='real' %}{% print('    ')%}{%- else %}{% print(' ')%}{%- endif %}:: fptr_dev(..)
 
          if (associated(fptr_dev)) then
             omp_target_is_present_f_{{keywords[t][1]}}{{p.name}} = .true.

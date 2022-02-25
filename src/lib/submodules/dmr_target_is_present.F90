@@ -21,7 +21,7 @@ submodule (dmr) dmr_target_is_present
       module function omp_target_is_present_f_int8(fptr_dev)
          implicit none
          logical                           :: omp_target_is_present_f_int8
-         integer(I1P), pointer, intent(in)  :: fptr_dev(..)
+         integer(I1P), pointer, intent(in) :: fptr_dev(..)
 
          if (associated(fptr_dev)) then
             omp_target_is_present_f_int8 = .true.
@@ -33,7 +33,7 @@ submodule (dmr) dmr_target_is_present
       module function omp_target_is_present_f_int16(fptr_dev)
          implicit none
          logical                           :: omp_target_is_present_f_int16
-         integer(I2P), pointer, intent(in)  :: fptr_dev(..)
+         integer(I2P), pointer, intent(in) :: fptr_dev(..)
 
          if (associated(fptr_dev)) then
             omp_target_is_present_f_int16 = .true.
@@ -45,7 +45,7 @@ submodule (dmr) dmr_target_is_present
       module function omp_target_is_present_f_int32(fptr_dev)
          implicit none
          logical                           :: omp_target_is_present_f_int32
-         integer(I4P), pointer, intent(in)  :: fptr_dev(..)
+         integer(I4P), pointer, intent(in) :: fptr_dev(..)
 
          if (associated(fptr_dev)) then
             omp_target_is_present_f_int32 = .true.
@@ -57,7 +57,7 @@ submodule (dmr) dmr_target_is_present
       module function omp_target_is_present_f_int64(fptr_dev)
          implicit none
          logical                           :: omp_target_is_present_f_int64
-         integer(I8P), pointer, intent(in)  :: fptr_dev(..)
+         integer(I8P), pointer, intent(in) :: fptr_dev(..)
 
          if (associated(fptr_dev)) then
             omp_target_is_present_f_int64 = .true.
@@ -71,7 +71,7 @@ submodule (dmr) dmr_target_is_present
       module function omp_target_is_present_f_real32(fptr_dev)
          implicit none
          logical                           :: omp_target_is_present_f_real32
-         real(R4P), pointer, intent(in)     :: fptr_dev(..)
+         real(R4P), pointer, intent(in)    :: fptr_dev(..)
 
          if (associated(fptr_dev)) then
             omp_target_is_present_f_real32 = .true.
@@ -83,7 +83,7 @@ submodule (dmr) dmr_target_is_present
       module function omp_target_is_present_f_real64(fptr_dev)
          implicit none
          logical                           :: omp_target_is_present_f_real64
-         real(R8P), pointer, intent(in)     :: fptr_dev(..)
+         real(R8P), pointer, intent(in)    :: fptr_dev(..)
 
          if (associated(fptr_dev)) then
             omp_target_is_present_f_real64 = .true.
@@ -96,7 +96,7 @@ submodule (dmr) dmr_target_is_present
       module function omp_target_is_present_f_real128(fptr_dev)
          implicit none
          logical                           :: omp_target_is_present_f_real128
-         real(R16P), pointer, intent(in)    :: fptr_dev(..)
+         real(R16P), pointer, intent(in)   :: fptr_dev(..)
 
          if (associated(fptr_dev)) then
             omp_target_is_present_f_real128 = .true.
@@ -111,7 +111,7 @@ submodule (dmr) dmr_target_is_present
       module function omp_target_is_present_f_cmplx32(fptr_dev)
          implicit none
          logical                           :: omp_target_is_present_f_cmplx32
-         complex(R4P), pointer, intent(in)  :: fptr_dev(..)
+         complex(R4P), pointer, intent(in) :: fptr_dev(..)
 
          if (associated(fptr_dev)) then
             omp_target_is_present_f_cmplx32 = .true.
@@ -123,7 +123,7 @@ submodule (dmr) dmr_target_is_present
       module function omp_target_is_present_f_cmplx64(fptr_dev)
          implicit none
          logical                           :: omp_target_is_present_f_cmplx64
-         complex(R8P), pointer, intent(in)  :: fptr_dev(..)
+         complex(R8P), pointer, intent(in) :: fptr_dev(..)
 
          if (associated(fptr_dev)) then
             omp_target_is_present_f_cmplx64 = .true.
@@ -136,7 +136,7 @@ submodule (dmr) dmr_target_is_present
       module function omp_target_is_present_f_cmplx128(fptr_dev)
          implicit none
          logical                           :: omp_target_is_present_f_cmplx128
-         complex(R16P), pointer, intent(in) :: fptr_dev(..)
+         complex(R16P), pointer, intent(in):: fptr_dev(..)
 
          if (associated(fptr_dev)) then
             omp_target_is_present_f_cmplx128 = .true.
@@ -151,7 +151,7 @@ submodule (dmr) dmr_target_is_present
       module function omp_target_is_present_f_lgcl32(fptr_dev)
          implicit none
          logical                           :: omp_target_is_present_f_lgcl32
-         logical(I4P), pointer, intent(in)  :: fptr_dev(..)
+         logical(I4P), pointer, intent(in) :: fptr_dev(..)
 
          if (associated(fptr_dev)) then
             omp_target_is_present_f_lgcl32 = .true.
