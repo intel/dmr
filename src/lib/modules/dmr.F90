@@ -1346,8 +1346,8 @@ module dmr
       module subroutine omp_target_memcpy_f_int8(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I1P), contiguous, target, intent(out) :: fptr_dst(..)
-         integer(I1P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I1P), contiguous, pointer, intent(out) :: fptr_dst(..)
+         integer(I1P), contiguous, pointer, intent(in)  :: fptr_src(..)
          integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
@@ -1356,8 +1356,8 @@ module dmr
       module subroutine omp_target_memcpy_f_int16(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I2P), contiguous, target, intent(out) :: fptr_dst(..)
-         integer(I2P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I2P), contiguous, pointer, intent(out) :: fptr_dst(..)
+         integer(I2P), contiguous, pointer, intent(in)  :: fptr_src(..)
          integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
@@ -1366,8 +1366,8 @@ module dmr
       module subroutine omp_target_memcpy_f_int32(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P), contiguous, target, intent(out) :: fptr_dst(..)
-         integer(I4P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), contiguous, pointer, intent(out) :: fptr_dst(..)
+         integer(I4P), contiguous, pointer, intent(in)  :: fptr_src(..)
          integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
@@ -1376,8 +1376,8 @@ module dmr
       module subroutine omp_target_memcpy_f_int64(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I8P), contiguous, target, intent(out) :: fptr_dst(..)
-         integer(I8P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), contiguous, pointer, intent(out) :: fptr_dst(..)
+         integer(I8P), contiguous, pointer, intent(in)  :: fptr_src(..)
          integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
@@ -1387,8 +1387,8 @@ module dmr
       module subroutine omp_target_memcpy_f_real32(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         real(R4P), contiguous, target, intent(out) :: fptr_dst(..)
-         real(R4P), contiguous, target, intent(in)  :: fptr_src(..)
+         real(R4P), contiguous, pointer, intent(out) :: fptr_dst(..)
+         real(R4P), contiguous, pointer, intent(in)  :: fptr_src(..)
          integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
@@ -1397,8 +1397,8 @@ module dmr
       module subroutine omp_target_memcpy_f_real64(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         real(R8P), contiguous, target, intent(out) :: fptr_dst(..)
-         real(R8P), contiguous, target, intent(in)  :: fptr_src(..)
+         real(R8P), contiguous, pointer, intent(out) :: fptr_dst(..)
+         real(R8P), contiguous, pointer, intent(in)  :: fptr_src(..)
          integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
@@ -1408,8 +1408,8 @@ module dmr
       module subroutine omp_target_memcpy_f_real128(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         real(R16P), contiguous, target, intent(out) :: fptr_dst(..)
-         real(R16P), contiguous, target, intent(in)  :: fptr_src(..)
+         real(R16P), contiguous, pointer, intent(out) :: fptr_dst(..)
+         real(R16P), contiguous, pointer, intent(in)  :: fptr_src(..)
          integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
@@ -1420,8 +1420,8 @@ module dmr
       module subroutine omp_target_memcpy_f_cmplx32(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         complex(R4P), contiguous, target, intent(out) :: fptr_dst(..)
-         complex(R4P), contiguous, target, intent(in)  :: fptr_src(..)
+         complex(R4P), contiguous, pointer, intent(out) :: fptr_dst(..)
+         complex(R4P), contiguous, pointer, intent(in)  :: fptr_src(..)
          integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
@@ -1430,8 +1430,8 @@ module dmr
       module subroutine omp_target_memcpy_f_cmplx64(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         complex(R8P), contiguous, target, intent(out) :: fptr_dst(..)
-         complex(R8P), contiguous, target, intent(in)  :: fptr_src(..)
+         complex(R8P), contiguous, pointer, intent(out) :: fptr_dst(..)
+         complex(R8P), contiguous, pointer, intent(in)  :: fptr_src(..)
          integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
@@ -1441,8 +1441,8 @@ module dmr
       module subroutine omp_target_memcpy_f_cmplx128(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         complex(R16P), contiguous, target, intent(out) :: fptr_dst(..)
-         complex(R16P), contiguous, target, intent(in)  :: fptr_src(..)
+         complex(R16P), contiguous, pointer, intent(out) :: fptr_dst(..)
+         complex(R16P), contiguous, pointer, intent(in)  :: fptr_src(..)
          integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
@@ -1453,8 +1453,8 @@ module dmr
       module subroutine omp_target_memcpy_f_lgcl32(fptr_dst, fptr_src, ierr, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         logical(I4P), contiguous, target, intent(out) :: fptr_dst(..)
-         logical(I4P), contiguous, target, intent(in)  :: fptr_src(..)
+         logical(I4P), contiguous, pointer, intent(out) :: fptr_dst(..)
+         logical(I4P), contiguous, pointer, intent(in)  :: fptr_src(..)
          integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
