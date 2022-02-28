@@ -1,0 +1,90 @@
+cmake_minimum_required(VERSION 3.7...3.22)
+
+if(${CMAKE_VERSION} VERSION_LESS 3.12)
+    cmake_policy(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
+endif()
+
+project(dmr VERSION 0.3
+            DESCRIPTION "Fortran Library for OpenMP Device Memory Routines"
+            LANGUAGES Fortran)
+
+add_library(dmr STATIC)
+
+
+###########################################################
+# Build Type
+# Ensure that a specific, default build type is set when
+# none has been explicitly set by the user
+###########################################################
+dmr_ensure_build_type("Release")
+
+
+###########################################################
+# Set submodules and modules paths
+###########################################################
+set( MODULES_PATH src/lib/modules )
+set( SUBMODULES_PATH src/lib/submodules )
+set( TESTS_PATH src/tests )
+
+
+###########################################################
+# Build options
+###########################################################
+include(CMakeDependentOption)
+option(DMR_STATIC
+    "build dmr as static library" ON)
+option(DMR_SHARED
+    "build dmr as shared library" OFF)
+option(DMR_ENABLE_REAL_128
+    "enable support for 128 bits Real and Complex" OFF)
+option(DMR_ENABLE_F2008
+    "enable support for Fortran 2008 syntax" OFF)
+option(DMR_ENABLE_OMP5.1
+    "enable OpenMP 5.1 specifications syntax" ON)
+option(DMR_ENABLE_TESTS
+    "enable unit tests" OFF)
+
+if(DMR_ENABLE_REAL_128)
+    dmr_add_global_compile_definitions(_real128)
+endif()
+
+if(DMR_ENABLE_F2008)
+    dmr_add_global_compile_definitions(_F2008)
+endif()
+
+if(DMR_ENABLE_OMP5.1)
+    dmr_add_global_compile_definitions(_OpenMP_5_1)
+endif()
+
+
+###########################################################
+# Components
+###########################################################
+add_subdirectory($SUBMODULES_PATH $MODULES_PATH)
+if(DMR_ENABLE_TESTS)
+    add_subdirectory($TESTS_PATH)
+endif()
+
+
+###########################################################
+# Check if src is present and if not, if sources can be generated
+###########################################################
+if(EXISTS src/lib/modules AND EXISTS src/lib/submodules)
+    message(NOTICE "dmr sources are available in src directory: nothing has been generated from src_generator")
+else()
+    message(NOTICE "dmr sources not found: trying to generate files from src_generator")
+    find_package (Python3 COMPONENTS Interpreter Development)
+    if(Python3_FOUND)
+        execute_process(file(MAKE_DIRECTORY [src/lib/modules src/lib/submodules])
+                        COMMAND ${Python3_EXECUTABLE} generate_sources.py
+                        file(RENAME src_generator/lib/submodules/*.F90 src/lib/submodules RESULT MV_SUBMODULES)
+                        file(RENAME src_generator/lib/modules/*.F90 src/lib/modules RESULT MV_MODULES)
+                        if((NOT RESULT_MV_SUBMODULES EQUAL "0") OR (NOT RESULT_MV_MODULES EQUAL "0"))
+                            message(FATAL_ERROR "dmr sources generation failed, library cannot be built")
+                        else()
+                            message(NOTICE "dmr sources generation completed")
+                        endif())
+    else()
+        message(FATAL_ERROR "Python3 executable cannot be found: dmr sources cannot be generated")
+    endif()
+endif()
