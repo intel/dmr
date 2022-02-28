@@ -56,8 +56,9 @@ lflags          = -shared -fPIC
 [rule-generatesrc]
 help   = Generate dmr sources using Python
 rule_1 = mkdir -p src/lib/modules ; mkdir -p src/lib/submodules
-rule_2 = cd src_generator/lib/submodules ; python generate_submodules.py ; mv *.F90 ../../../src/lib/submodules
-rule_3 = cd src_generator/lib/modules ; python generate_modules.py ; mv *.F90 ../../../src/lib/modules
+rule_2 = cd src_generator ; python generate_sources.py
+rule_3 = cd src_generator/lib/submodules ; mv *.F90 ../../../src/lib/submodules
+rule_3 = cd src_generator/lib/modules ; mv *.F90 ../../../src/lib/modules
 
 [rule-clean]
 help   = Clean the project tree
