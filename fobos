@@ -56,7 +56,7 @@ lflags          = -shared -fPIC
 [rule-generatesrc]
 help   = Generate dmr sources using Python
 rule_1 = mkdir -p src/lib
-rule_2 = cd src_generator ; python generate_sources.py
+rule_2 = cd src_generator ; python generate_library.py
 rule_3 = cd src_generator/lib; mv *.F90 ../../src/lib
 
 [rule-clean]
