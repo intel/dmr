@@ -31,62 +31,62 @@ keywords={'integer': ['Integer', 'int',   'I'],
 
 dimensions=7
 
-with open('lib/submodules/dmr_target_free.F90', 'w') as f:
-    f.write(render('lib/submodules/dmr_target_free.jf90',
+with open('lib/dmr_target_free.F90', 'w') as f:
+    f.write(render('lib/dmr_target_free.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords}
                   ))
 
-with open('lib/submodules/dmr_target_is_present.F90', 'w') as f:
-    f.write(render('lib/submodules/dmr_target_is_present.jf90',
+with open('lib/dmr_target_is_present.F90', 'w') as f:
+    f.write(render('lib/dmr_target_is_present.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords}
                   ))
 
-with open('lib/submodules/dmr_target_alloc.F90', 'w') as f:
-    f.write(render('lib/submodules/dmr_target_alloc.jf90',
+with open('lib/dmr_target_alloc.F90', 'w') as f:
+    f.write(render('lib/dmr_target_alloc.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/submodules/dmr_correctly_mapped.F90', 'w') as f:
-    f.write(render('lib/submodules/dmr_correctly_mapped.jf90',
+with open('lib/dmr_correctly_mapped.F90', 'w') as f:
+    f.write(render('lib/dmr_correctly_mapped.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/submodules/dmr_get_mapped_ptr.F90', 'w') as f:
-    f.write(render('lib/submodules/dmr_get_mapped_ptr.jf90',
+with open('lib/dmr_get_mapped_ptr.F90', 'w') as f:
+    f.write(render('lib/dmr_get_mapped_ptr.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/submodules/dmr_target_init.F90', 'w') as f:
-    f.write(render('lib/submodules/dmr_target_init.jf90',
+with open('lib/dmr_target_init.F90', 'w') as f:
+    f.write(render('lib/dmr_target_init.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/submodules/dmr_device_memcpy.F90', 'w') as f:
-    f.write(render('lib/submodules/dmr_device_memcpy.jf90',
+with open('lib/dmr_device_memcpy.F90', 'w') as f:
+    f.write(render('lib/dmr_device_memcpy.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/submodules/dmr_target_memcpy.F90', 'w') as f:
-    f.write(render('lib/submodules/dmr_target_memcpy.jf90',
+with open('lib/dmr_target_memcpy.F90', 'w') as f:
+    f.write(render('lib/dmr_target_memcpy.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/submodules/dmr_target_memcpy_rect.F90', 'w') as f:
-    f.write(render('lib/submodules/dmr_target_memcpy_rect.jf90',
+with open('lib/dmr_target_memcpy_rect.F90', 'w') as f:
+    f.write(render('lib/dmr_target_memcpy_rect.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/submodules/dmr_target_memcpy_scalar.F90', 'w') as f:
-    f.write(render('lib/submodules/dmr_target_memcpy_scalar.jf90',
+with open('lib/dmr_target_memcpy_scalar.F90', 'w') as f:
+    f.write(render('lib/dmr_target_memcpy_scalar.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/modules/dmr_environment.F90', 'w') as f:
-    f.write(render('lib/modules/dmr_environment.jf90',
+with open('lib/dmr_environment.F90', 'w') as f:
+    f.write(render('lib/dmr_environment.jf90',
       {'types' : types[0:2], 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/modules/dmr.F90', 'w') as f:
-    f.write(render('lib/modules/dmr.jf90',
+with open('lib/dmr.F90', 'w') as f:
+    f.write(render('lib/dmr.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
