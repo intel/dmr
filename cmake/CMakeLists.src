@@ -1,0 +1,61 @@
+set(SRC_dmr
+    # Submodules
+    dmr_correctly_mapped.F90
+    dmr_device_memcpy.F90
+    dmr_get_mapped_ptr.F90
+    dmr_target_alloc.F90
+    dmr_target_free.F90
+    dmr_target_init.F90
+    dmr_target_is_present.F90
+    dmr_target_memcpy.F90
+    dmr_target_memcpy_rect.F90
+    dmr_target_memcpy_scalar.F90
+    # Modules
+    dmr_environment.F90
+    dmr.F90)
+
+set_source_files_properties(${SRC_dmr}
+    PROPERTIES LANGUAGE Fortran)
+
+set_source_files_properties(${SRC_dmr}
+    PROPERTIES Fortran_PREPROCESS ON)
+
+set_source_files_properties(${SRC_dmr}
+    PROPERTIES CMAKE_Fortran_FORMAT FREE)
+
+add_library(dmr ${SRC_dmr})
+
+set(dmrTargets
+    dmr)
+
+target_link_libraries(dmr
+    PRIVATE
+        compilerCustomConfig)
+
+foreach(TARGET ${dmrTargets})
+    if(DMR_ENABLE_REAL_128 STREQUAL "ON")
+       target_compile_definitions(${TARGET}
+          PRIVATE
+             "_real128")
+    endif()
+    if(DMR_ENABLE_OMP5.1 STREQUAL "ON")
+       target_compile_definitions(${TARGET}
+          PRIVATE
+             "_OpenMP_5_1")
+    endif()
+    if(DMR_ENABLE_F2008 STREQUAL "ON")
+       target_compile_definitions(${TARGET}
+          PRIVATE
+             "_F2008")
+    endif()
+    # Linking for OpenMP host
+    target_link_libraries(${TARGET}
+       INTERFACE
+        	 OpenMP::OpenMP_Fortran)
+endforeach(TARGET)
+
+install(
+    TARGETS ${dmrTargets}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
