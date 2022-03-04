@@ -2,6 +2,8 @@
 build/
 ./src
 src/
+./release
+release/
 ./shared
 shared/
 ./static
