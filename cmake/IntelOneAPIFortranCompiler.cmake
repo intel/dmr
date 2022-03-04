@@ -9,7 +9,6 @@ set(IFX_LINK_OPTIONS)
 set(IFX_OPTIONS)
 
 list(APPEND IFX_COMPILE_OPTIONS "-fiopenmp" "-fopenmp-targets=spir64")
-list(APPEND IFX_LINK_OPTIONS "-c")
 
 list(APPEND IFX_OPTIONS ${IFX_COMPILE_OPTIONS})
 message("   ifx related compile options: ${IFX_OPTIONS}")

@@ -9,21 +9,9 @@ set(NVFORTRAN_COMPILE_OPTIONS)
 set(NVFORTRAN_LINK_OPTIONS)
 set(NVFORTRAN_OPTIONS)
 
-set(NVFORTRAN_COMPILE_OPTIONS "-Mcache_align" "-Mlarge_arrays" "-fast" "-cuda")
+set(NVFORTRAN_COMPILE_OPTIONS "-Mcache_align" "-Mlarge_arrays" "-fast" "-mp=gpu")
 
-if(DEFINED NVFORTRAN_CUDA_VERSION)
-	list(APPEND NVFORTRAN_COMPILE_OPTIONS "-gpu=cuda${NVFORTRAN_CUDA_VERSION}")
-endif()
-
-if(DEFINED NVFORTRAN_CUDA_CC)
-	list(APPEND NVFORTRAN_COMPILE_OPTIONS "-gpu=cc${NVFORTRAN_CUDA_CC}")
-endif()
-
-if(DEVICEXLIB_ENABLE_GPU_BLAS STREQUAL "CUBLAS")
-	list(APPEND NVFORTRAN_LINK_OPTIONS "-cudalib=cublas")
-endif()
-
-list(APPEND NVFORTRAN_OPTIONS ${NVFORTRAN_COMPILE_OPTIONS} ${NVFORTRAN_LINK_OPTIONS})
+list(APPEND NVFORTRAN_OPTIONS ${NVFORTRAN_COMPILE_OPTIONS})
 
 message("   nvfortran CUDA related compile and link options: ${NVFORTRAN_OPTIONS}")
 set(CMAKE_REQUIRED_LINK_OPTIONS ${NVFORTRAN_OPTIONS})
@@ -36,9 +24,6 @@ message(FATAL_ERROR "nvfortran CUDA related option check failed! "
 endif()
 
 add_library(compilerCustomConfig INTERFACE)
-target_compile_definitions(compilerCustomConfig
-	INTERFACE
-		"__PGI")
 target_compile_options(compilerCustomConfig
 	INTERFACE
 		${NVFORTRAN_COMPILE_OPTIONS})
