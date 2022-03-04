@@ -40,8 +40,8 @@ program test_dmr_target_alloc
 {%- endfor %}
 
    integer(I4P) ::{%- for d in range(1,dimensions+1) %} i{{d}}{% if not loop.last %}, {%- endif %}{% endfor %}
-   integer(I4P), parameter :: sz = 20
-   integer(I4P) :: ierr=1000, test_tot=0, nfail=0
+   integer(I4P), parameter :: sz = 10
+   integer(I4P) :: ierr=0, test_tot=0, nfail=0
 
 {%- for t in types %}
 {%- for p in kinds[t] %}

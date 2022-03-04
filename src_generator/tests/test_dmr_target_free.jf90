@@ -40,8 +40,8 @@ program test_dmr_target_free
 {%- endfor %}
 
    integer(I4P) ::{%- for d in range(1,dimensions+1) %} i{{d}}{% if not loop.last %}, {%- endif %}{% endfor %}
-   integer(I4P), parameter :: sz = 20
-   integer(I4P) :: ierr=1000, test_tot=0, test_not=0, nfail=0
+   integer(I4P), parameter :: sz = 10
+   integer(I4P) :: ierr=0, test_tot=0, test_not=0, nfail=0
 
 {%- for t in types %}
 {%- for p in kinds[t] %}
@@ -70,7 +70,7 @@ program test_dmr_target_free
 {% endif %}
    if (ierr/=0) then
       write(0,"(/,a,i5)") "Allocation failed on the GPU for dev_ptr_{{keywords[t][1]}}{{p.name}}_{{d}}, ierr:", ierr
-      write(0,"(/,a)") "Deallocation test will not be executed"
+      write(0,"(/,a)") "DMR Target Free test will not be executed"
       test_not = test_not + 1
    else
       call omp_target_free_f(fptr_dev=dev_ptr_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_dev=omp_get_default_device())
@@ -88,6 +88,6 @@ program test_dmr_target_free
   write(0,"(3x,a,i5)") "# tests: ", test_tot
   write(0,"(3x,a,i5)") "# passed: ", test_tot - nfail
   write(0,"(3x,a,i5)") "# failed: ", nfail
-  write(0,"(3x,a,i5)") "# not executed for allocation issues ", test_not
+  write(0,"(3x,a,i5)") "# not executed for GPU allocation issues ", test_not
   write(0,"()")
 endprogram test_dmr_target_free
