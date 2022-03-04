@@ -23,10 +23,21 @@ module dmr
 {%- for t in types|reverse %}
 {%- set outer_loop = loop %}
 {%- for p in kinds[t] %}
+{%- set medium_loop = loop %}
 {%- if p.key=='16P' %}
 #if defined _real128
 {%- endif %}
-                       omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}{% if ((not loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- for d in range(1,dimensions+1,3) %}
+{%- if (d+1)<=dimensions %}
+{%- if (d+2)<=dimensions %}
+                       omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d+1}}, omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d+2}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- else %}
+                       omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d+1}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- else %}
+                       omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- endfor %}
 {%- if p.key=='16P' %}
 #endif
 {%- endif %}
@@ -325,11 +336,14 @@ module dmr
 {%- if p.key=='16P' %}
 #if defined _real128
 {%- endif %}
-      module function omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}(fptr_dev)
+{%- for d in range(1,dimensions+1) %}
+      module function omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d}}(host_data, omp_dev)
          implicit none
-         logical                           :: omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}
-         {{t}}({{keywords[t][2]}}{{p.key}}), pointer, intent(in){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev(..)
-      endfunction omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}
+         logical                                       :: omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+         {{t}}({{keywords[t][2]}}{{p.key}}), allocatable, target, intent(in){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: host_data({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         integer(I4P), intent(in)          :: omp_dev
+      endfunction omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+{%- endfor %}
 {%- if p.key=='16P' %}
 #endif
 {%- endif %}
