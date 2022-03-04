@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import sys, os, jinja2
+import sys, os, jinja2, argparse
 from shutil import copyfile
 
 def render(tpl_path, context):
@@ -10,6 +10,11 @@ def render(tpl_path, context):
     ).get_template(filename).render(context)
 
 ####
+
+parser = argparse.ArgumentParser(description='Generate library source files')
+parser.add_argument('lib_path', metavar='/absolute_path', nargs=1, default='lib',
+                    help='The destination path of source generation process (default: lib)')
+args = parser.parse_args()
 
 types=['integer', 'real', 'complex', 'logical']
 
@@ -31,62 +36,62 @@ keywords={'integer': ['Integer', 'int',   'I'],
 
 dimensions=7
 
-with open('lib/dmr_target_free.F90', 'w') as f:
+with open('%s/dmr_target_free.F90' % args.lib_path[0], 'w') as f:
     f.write(render('lib/dmr_target_free.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords}
                   ))
 
-with open('lib/dmr_target_is_present.F90', 'w') as f:
+with open('%s/dmr_target_is_present.F90' % args.lib_path[0], 'w') as f:
     f.write(render('lib/dmr_target_is_present.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords}
                   ))
 
-with open('lib/dmr_target_alloc.F90', 'w') as f:
+with open('%s/dmr_target_alloc.F90' % args.lib_path[0], 'w') as f:
     f.write(render('lib/dmr_target_alloc.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/dmr_correctly_mapped.F90', 'w') as f:
+with open('%s/dmr_correctly_mapped.F90' % args.lib_path[0], 'w') as f:
     f.write(render('lib/dmr_correctly_mapped.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/dmr_get_mapped_ptr.F90', 'w') as f:
+with open('%s/dmr_get_mapped_ptr.F90' % args.lib_path[0], 'w') as f:
     f.write(render('lib/dmr_get_mapped_ptr.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/dmr_target_init.F90', 'w') as f:
+with open('%s/dmr_target_init.F90' % args.lib_path[0], 'w') as f:
     f.write(render('lib/dmr_target_init.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/dmr_device_memcpy.F90', 'w') as f:
+with open('%s/dmr_device_memcpy.F90' % args.lib_path[0], 'w') as f:
     f.write(render('lib/dmr_device_memcpy.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/dmr_target_memcpy.F90', 'w') as f:
+with open('%s/dmr_target_memcpy.F90' % args.lib_path[0], 'w') as f:
     f.write(render('lib/dmr_target_memcpy.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/dmr_target_memcpy_rect.F90', 'w') as f:
+with open('%s/dmr_target_memcpy_rect.F90' % args.lib_path[0], 'w') as f:
     f.write(render('lib/dmr_target_memcpy_rect.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/dmr_target_memcpy_scalar.F90', 'w') as f:
+with open('%s/dmr_target_memcpy_scalar.F90' % args.lib_path[0], 'w') as f:
     f.write(render('lib/dmr_target_memcpy_scalar.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/dmr_environment.F90', 'w') as f:
+with open('%s/dmr_environment.F90' % args.lib_path[0], 'w') as f:
     f.write(render('lib/dmr_environment.jf90',
       {'types' : types[0:2], 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('lib/dmr.F90', 'w') as f:
+with open('%s/dmr.F90' % args.lib_path[0], 'w') as f:
     f.write(render('lib/dmr.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
