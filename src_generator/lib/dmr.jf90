@@ -62,12 +62,36 @@ module dmr
 {%- for d in range(1,dimensions+1,3) %}
 {%- if (d+1)<=dimensions %}
 {%- if (d+2)<=dimensions %}
-                       omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d+1}}, omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d+2}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+                       omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_32bit, omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d+1}}_32bit, omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d+2}}_32bit{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
 {%- else %}
-                       omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d+1}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+                       omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_32bit, omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d+1}}_32bit{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
 {%- endif %}
 {%- else %}
-                       omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+                       omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_32bit{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- endfor %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+      module procedure &
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- set medium_loop = loop %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1,3) %}
+{%- if (d+1)<=dimensions %}
+{%- if (d+2)<=dimensions %}
+                       omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_64bit, omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d+1}}_64bit, omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d+2}}_64bit{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- else %}
+                       omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_64bit, omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d+1}}_64bit{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- else %}
+                       omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_64bit{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
 {%- endif %}
 {%- endfor %}
 {%- if p.key=='16P' %}
@@ -318,13 +342,41 @@ module dmr
 ! OpenMP Target Alloc Routines
    interface
 {%- for t in types %}
-      ! OpenMP Target Alloc {{keywords[t][0]}} Routines
+      ! OpenMP Target Alloc {{keywords[t][0]}} 32 Bits Dimenstions Routines
 {%- for p in kinds[t] %}
 {%- if p.name == '128' %}
 #if defined _real128
 {%- endif %}
 {%- for d in range(1,dimensions+1) %}
-      module subroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}(fptr_dev, dimensions, omp_dev, ierr, bounds)
+      module subroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_32bit(fptr_dev, dimensions, omp_dev, ierr, bounds)
+         implicit none
+         {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous, intent(out){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+{%- if d == 1 %}
+         integer(I4P), intent(in)                        :: dimensions
+{%- else %}
+         integer(I4P), intent(in)                        :: dimensions({{d}})
+{%- endif %}
+         integer(I4P), intent(in)                        :: omp_dev
+         integer(I4P), intent(out)                       :: ierr
+         integer(I4P), intent(in), optional              :: bounds({{d*2}})
+      endsubroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_32bit
+{% print("") %}
+{%- endfor %}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{% print("") %}
+{%- endfor %}
+
+{%- for t in types %}
+      ! OpenMP Target Alloc {{keywords[t][0]}} 64 Bits Dimenstions Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1) %}
+      module subroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_64bit(fptr_dev, dimensions, omp_dev, ierr, bounds)
          implicit none
          {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous, intent(out){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
 {%- if d == 1 %}
@@ -335,7 +387,7 @@ module dmr
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: bounds({{d*2}})
-      endsubroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+      endsubroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_64bit
 {% print("") %}
 {%- endfor %}
 {%- if p.name == '128' %}
