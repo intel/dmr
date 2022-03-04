@@ -41,10 +41,10 @@ with open('%s/test_dmr_target_free.F90' % args.lib_path[0], 'w') as f:
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-#with open('tests/dmr_target_is_present.F90', 'w') as f:
-#    f.write(render('tests/dmr_target_is_present.jf90',
-#      {'types' : types, 'kinds' : kinds, 'keywords' : keywords}
-#                  ))
+with open('%s/test_dmr_target_is_present.F90' % args.lib_path[0], 'w') as f:
+    f.write(render('tests/test_dmr_target_is_present.jf90',
+      {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
+                  ))
 
 with open('%s/test_dmr_target_alloc.F90' % args.lib_path[0], 'w') as f:
     f.write(render('tests/test_dmr_target_alloc.jf90',
