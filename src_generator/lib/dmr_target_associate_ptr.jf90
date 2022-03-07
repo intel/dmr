@@ -1,0 +1,71 @@
+!* ========================================================================== *
+!*                                                                            *
+!* Copyright (C) 2020 Intel Corporation                                       *
+!* This file is part of the DMR library.                                      *
+!*                                                                            *
+!* For information on the license, see the LICENSE file.                      *
+!* Further information: https://github.com/giacrossi/dmr/                     *
+!* SPDX-License-Identifier: BSD-3-Clause                                      *
+!*                                                                            *
+!* ========================================================================== *
+!* Giacomo Rossi (Intel Corporation)                                          *
+!* ========================================================================== *
+
+submodule (dmr) dmr_target_associate_ptr
+   use, intrinsic :: iso_c_binding
+   use dmr_environment
+   use omp_lib, only : omp_target_associate_ptr
+
+   implicit none
+
+   contains
+
+#if defined _OpenMP_5_1
+{%- for t in types %}
+      ! OpenMP Target Associate Pointer {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1) %}
+      module function omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}(fptr_hos, fptr_dev, dev_off, omp_dev)
+         implicit none
+         integer(I4P)                       :: omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+         {{t}}({{keywords[t][2]}}{{p.key}}), target,  intent(out){% if t=='real' and p.key=='16P' %}{% print('   ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('')%}{%- elif t=='real' %}{% print('    ')%}{%- else %}{% print(' ')%}{%- endif %}:: fptr_hos({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         {{t}}({{keywords[t][2]}}{{p.key}}), pointer, intent(in) {% if t=='real' and p.key=='16P' %}{% print('   ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('')%}{%- elif t=='real' %}{% print('    ')%}{%- else %}{% print(' ')%}{%- endif %}:: fptr_dev({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         integer(I4P), intent(in)           :: dev_off
+         integer(I4P), intent(in)           :: omp_dev
+         integer(c_size_t)                  :: total_dim, omp_dev_offset
+         type(c_ptr)                        :: cptr_dev, cptr_hos
+         integer(kind=c_int)                :: omp_device
+         integer(I8P)                       :: n_elements
+
+         omp_dev_offset = int(dev_off, c_size_t)
+         omp_device = int(omp_dev, c_int)
+
+         n_elements = size(fptr_hos)
+
+         cptr_hos = c_loc(fptr_hos)
+         cptr_dev = c_loc(fptr_dev)
+
+         if (c_associated(cptr_dev)) then
+{%- if t == 'complex' %}
+            total_dim = int(2_I8P * n_elements * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), c_size_t)
+{%- else %}
+            total_dim = int(n_elements * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), c_size_t)
+{%- endif %}
+            omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}} = int(omp_target_associate_ptr(cptr_hos, cptr_dev, &
+                                                                          total_dim, omp_dev_offset, omp_device), I4P)
+         else
+            omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}} = 1000
+         endif
+      endfunction omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+{%- endfor %}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{% print("") %}
+{%- endfor %}
+{%- endfor %}
+#endif
+endsubmodule dmr_target_associate_ptr

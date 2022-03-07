@@ -56,6 +56,16 @@ with open('%s/dmr_get_mapped_ptr.F90' % args.lib_path[0], 'w') as f:
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
+with open('%s/dmr_target_associate_ptr.F90' % args.lib_path[0], 'w') as f:
+    f.write(render('lib/dmr_target_associate_ptr.jf90',
+      {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
+                  ))
+
+with open('%s/dmr_target_disassociate_ptr.F90' % args.lib_path[0], 'w') as f:
+    f.write(render('lib/dmr_target_disassociate_ptr.jf90',
+      {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
+                  ))
+
 with open('%s/dmr_target_init.F90' % args.lib_path[0], 'w') as f:
     f.write(render('lib/dmr_target_init.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}

@@ -3,6 +3,8 @@ set(SRC_dmr
     dmr_device_memcpy.F90
     dmr_get_mapped_ptr.F90
     dmr_target_alloc.F90
+    dmr_target_associate_ptr.F90
+    dmr_target_disassociate_ptr.F90
     dmr_target_free.F90
     dmr_target_init.F90
     dmr_target_is_present.F90

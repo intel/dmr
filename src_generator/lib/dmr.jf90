@@ -229,6 +229,60 @@ module dmr
    endinterface omp_device_memcpy
 
 #if defined _OpenMP_5_1
+   interface omp_target_associate_ptr_f
+      module procedure &
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- set medium_loop = loop %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1,3) %}
+{%- if (d+1)<=dimensions %}
+{%- if (d+2)<=dimensions %}
+                       omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d+1}}, omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d+2}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- else %}
+                       omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d+1}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- else %}
+                       omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- endfor %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+   endinterface omp_target_associate_ptr_f
+
+   interface omp_target_disassociate_ptr_f
+      module procedure &
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- set medium_loop = loop %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1,3) %}
+{%- if (d+1)<=dimensions %}
+{%- if (d+2)<=dimensions %}
+                       omp_target_disassociate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_target_disassociate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d+1}}, omp_target_disassociate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d+2}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- else %}
+                       omp_target_disassociate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_target_disassociate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d+1}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- else %}
+                       omp_target_disassociate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}{% if ((not loop.last) or (not medium_loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- endif %}
+{%- endfor %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+   endinterface omp_target_disassociate_ptr_f
+
    interface omp_get_mapped_ptr_f
       module procedure &
 #if defined _F2008
@@ -537,6 +591,56 @@ module dmr
    endinterface
 
 #if defined _OpenMP_5_1
+   interface
+{%- for t in types %}
+      ! OpenMP Target Associate Pointer {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1) %}
+      module function omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}(fptr_hos, fptr_dev, dev_off, omp_dev)
+         implicit none
+         integer(I4P)                       :: omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+         {{t}}({{keywords[t][2]}}{{p.key}}), target,  intent(out){% if t=='real' and p.key=='16P' %}{% print('   ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('')%}{%- elif t=='real' %}{% print('    ')%}{%- else %}{% print(' ')%}{%- endif %}:: fptr_hos({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         {{t}}({{keywords[t][2]}}{{p.key}}), pointer, intent(in) {% if t=='real' and p.key=='16P' %}{% print('   ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('')%}{%- elif t=='real' %}{% print('    ')%}{%- else %}{% print(' ')%}{%- endif %}:: fptr_dev({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         integer(I4P), intent(in)           :: dev_off
+         integer(I4P), intent(in)           :: omp_dev
+      endfunction omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+{% print("") %}
+{%- endfor %}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{% print("") %}
+{%- endfor %}
+{%- endfor %}
+   endinterface
+
+   interface
+{%- for t in types %}
+      ! OpenMP Target Disassociate Pointer {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1) %}
+      module function omp_target_disassociate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}(fptr_hos, omp_dev)
+         implicit none
+         integer(I4P)                       :: omp_target_disassociate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+         {{t}}({{keywords[t][2]}}{{p.key}}), target,  intent(in){% if t=='real' and p.key=='16P' %}{% print('   ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('')%}{%- elif t=='real' %}{% print('    ')%}{%- else %}{% print(' ')%}{%- endif %}:: fptr_hos({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         integer(I4P), intent(in)           :: omp_dev
+      endfunction omp_target_disassociate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+{% print("") %}
+{%- endfor %}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{% print("") %}
+{%- endfor %}
+{%- endfor %}
+   endinterface
+
    interface
 #if defined _F2018
 {%- for t in types %}

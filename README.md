@@ -43,6 +43,8 @@ DMR is aimed to be a Fortran library for managing OpenMP allocation of memory an
   + [x] pointers allocation;
   + [x] pointers deallocation;
   + [x] pointers data transfer between host and device;
+  + [x] pointers association;
+  + [x] pointers deassociation;
 + [ ] well documented:
   + [ ] clear documentation of OpenMP API implemented;
   + [ ] complete API reference;
@@ -61,6 +63,8 @@ DMR provides the following Fortran routines:
 + [x] pointer already mapped on the device (omp_get_mapped_ptr --> omp_get_mapped_ptr_f)<sup>2</sup>
 + [x] data synchronization between host and device (omp_target_memcpy --> omp_target_memcpy_f)
 + [x] rectangular data transfer (omp_target_memcpy_rect --> omp_target_memcpy_rect_f)
++ [x] device pointer mapping with host pointer (omp_target_associate_ptr --> omp_target_associate_ptr_f)
++ [x] device pointer association removing from host pointer (omp_target_disassociate_ptr --> omp_targetdis_associate_ptr_f)
 
 Go to [Top](#top)
 
