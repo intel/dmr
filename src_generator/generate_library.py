@@ -51,11 +51,6 @@ with open('%s/dmr_target_alloc.F90' % args.lib_path[0], 'w') as f:
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('%s/dmr_correctly_mapped.F90' % args.lib_path[0], 'w') as f:
-    f.write(render('lib/dmr_correctly_mapped.jf90',
-      {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
-                  ))
-
 with open('%s/dmr_get_mapped_ptr.F90' % args.lib_path[0], 'w') as f:
     f.write(render('lib/dmr_get_mapped_ptr.jf90',
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}

@@ -28,12 +28,12 @@ submodule (dmr) dmr_target_is_present
 {%- for d in range(1,dimensions+1) %}
       module function omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d}}(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d}}
-         {{t}}({{keywords[t][2]}}{{p.key}}), allocatable, target, intent(in){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: host_data({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
-         integer(I4P), intent(in)                      :: omp_dev
+         logical                                        :: omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+         {{t}}({{keywords[t][2]}}{{p.key}}), target, intent(in){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: host_data({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         integer(I4P), intent(in)                       :: omp_dev
          {{t}}({{keywords[t][2]}}{{p.key}}), pointer{% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dummy({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
-         type(c_ptr)                                   :: cptr_dev
-         integer(kind=c_int)                           :: omp_device
+         type(c_ptr)                                    :: cptr_dev
+         integer(kind=c_int)                            :: omp_device
 
          omp_device = int(omp_dev, c_int)
 

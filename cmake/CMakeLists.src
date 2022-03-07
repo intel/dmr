@@ -1,6 +1,5 @@
 set(SRC_dmr
     # Submodules
-    dmr_correctly_mapped.F90
     dmr_device_memcpy.F90
     dmr_get_mapped_ptr.F90
     dmr_target_alloc.F90
