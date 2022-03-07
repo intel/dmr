@@ -1,0 +1,109 @@
+!* ========================================================================== *
+!*                                                                            *
+!* Copyright (C) 2020 Intel Corporation                                       *
+!* This file is part of the DMR library.                                      *
+!*                                                                            *
+!* For information on the license, see the LICENSE file.                      *
+!* Further information: https://github.com/giacrossi/dmr/                     *
+!* SPDX-License-Identifier: BSD-3-Clause                                      *
+!*                                                                            *
+!* ========================================================================== *
+!* Giacomo Rossi (Intel Corporation)                                          *
+!* ========================================================================== *
+
+submodule (dmr) dmr_get_mapped_ptr
+   use, intrinsic :: iso_c_binding
+   use dmr_environment
+   use omp_lib, only : omp_get_mapped_ptr
+
+   implicit none
+
+   contains
+
+#if defined _OpenMP_5_1
+#if defined _F2018
+{%- for t in types %}
+      ! OpenMP Get Mapped Pointer {{keywords[t][0]}} F2018 Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+      module subroutine omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}(fptr_dev, fptr_hos, omp_dev)
+         implicit none
+         {{t}}({{keywords[t][2]}}{{p.key}}), pointer, intent(out) :: fptr_dev(..)
+         {{t}}({{keywords[t][2]}}{{p.key}}), target,  intent(in)  :: fptr_hos(..)
+         integer(I4P), intent(in)           :: omp_dev
+         type(c_ptr)                        :: cptr_dev
+         integer(kind=c_int)                :: omp_device
+
+         omp_device = int(omp_dev, c_int)
+
+         cptr_dev = omp_get_mapped_ptr(c_loc(fptr_hos), omp_device)
+
+         if (c_associated(cptr_dev)) then
+            select rank (fptr_hos)
+{%- for d in range(1,dimensions+1) %}
+            rank({{d}})
+            {%- if d > 4 %}
+               call c_f_pointer(cptr_dev, fptr_dev, [{% for dd in range(0,4) %}size(fptr_hos,{{dd+1}}){% if not loop.last %},{% print(' ') %}{% else %}, &{%- endif %}{% endfor %}
+                                                     {% for dd in range(4,d) %}size(fptr_hos,{{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
+            {%- else %}
+               call c_f_pointer(cptr_dev, fptr_dev, [{% for dd in range(d) %}size(fptr_hos,{{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
+            {%- endif %}
+{%- endfor %}
+            endselect
+         else
+            fptr_dev => null()
+         endif
+      endsubroutine omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{% print("") %}
+{%- endfor %}
+{%- endfor %}
+
+#else
+
+{%- for t in types %}
+      ! OpenMP Get Mapped Pointer {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1) %}
+      module subroutine omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}(fptr_dev, fptr_hos, omp_dev)
+         implicit none
+         {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous, intent(out){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         {{t}}({{keywords[t][2]}}{{p.key}}), target,  contiguous, intent(in){% if t=='real' and p.key=='16P' %}{% print('     ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('  ')%}{%- elif t=='real' %}{% print('      ')%}{%- else %}{% print('   ')%}{%- endif %}:: fptr_hos({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         integer(I4P), intent(in)                        :: omp_dev
+         type(c_ptr)                                     :: cptr_dev
+         integer(kind=c_int)                             :: omp_device
+
+         omp_device = int(omp_dev, c_int)
+
+         cptr_dev = omp_get_mapped_ptr(c_loc(fptr_hos), omp_device)
+
+         if (c_associated(cptr_dev)) then
+            {%- if d > 4 %}
+               call c_f_pointer(cptr_dev, fptr_dev, [{% for dd in range(0,4) %}size(fptr_hos,{{dd+1}}){% if not loop.last %},{% print(' ') %}{% else %}, &{%- endif %}{% endfor %}
+                                                     {% for dd in range(4,d) %}size(fptr_hos,{{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
+            {%- else %}
+               call c_f_pointer(cptr_dev, fptr_dev, [{% for dd in range(d) %}size(fptr_hos,{{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
+            {%- endif %}
+         else
+            fptr_dev => null()
+         endif
+      endsubroutine omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+{% print("") %}
+{%- endfor %}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{% print("") %}
+{%- endfor %}
+
+#endif
+#endif
+endsubmodule dmr_get_mapped_ptr

@@ -1,0 +1,59 @@
+!* ========================================================================== *
+!*                                                                            *
+!* Copyright (C) 2020 Intel Corporation                                       *
+!* This file is part of the DMR library.                                      *
+!*                                                                            *
+!* For information on the license, see the LICENSE file.                      *
+!* Further information: https://github.com/giacrossi/dmr/                     *
+!* SPDX-License-Identifier: BSD-3-Clause                                      *
+!*                                                                            *
+!* ========================================================================== *
+!* Giacomo Rossi (Intel Corporation)                                          *
+!* ========================================================================== *
+
+submodule (dmr) dmr_target_is_present
+   use, intrinsic :: iso_c_binding
+   use dmr_environment
+
+   implicit none
+
+   contains
+
+{%- for t in types %}
+      ! OpenMP Target Is Present {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1) %}
+      module function omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d}}(host_data, omp_dev)
+         implicit none
+         logical                                        :: omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+         {{t}}({{keywords[t][2]}}{{p.key}}), target, intent(in){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: host_data({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         integer(I4P), intent(in)                       :: omp_dev
+         {{t}}({{keywords[t][2]}}{{p.key}}), pointer{% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dummy({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         type(c_ptr)                                    :: cptr_dev
+         integer(kind=c_int)                            :: omp_device
+
+         omp_device = int(omp_dev, c_int)
+
+         fptr_dummy => host_data
+
+         cptr_dev = c_loc(fptr_dummy)
+
+         if (omp_target_is_present(cptr_dev, omp_device)) then
+            omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d}} = .true.
+         else
+            omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d}} = .false.
+         endif
+      endfunction omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+{% print("") %}
+{%- endfor %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+!
+{%- endfor %}
+!
+{%- endfor %}
+endsubmodule dmr_target_is_present

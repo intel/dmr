@@ -43,6 +43,8 @@ DMR is aimed to be a Fortran library for managing OpenMP allocation of memory an
   + [x] pointers allocation;
   + [x] pointers deallocation;
   + [x] pointers data transfer between host and device;
+  + [x] pointers association;
+  + [x] pointers deassociation;
 + [ ] well documented:
   + [ ] clear documentation of OpenMP API implemented;
   + [ ] complete API reference;
@@ -61,34 +63,28 @@ DMR provides the following Fortran routines:
 + [x] pointer already mapped on the device (omp_get_mapped_ptr --> omp_get_mapped_ptr_f)<sup>2</sup>
 + [x] data synchronization between host and device (omp_target_memcpy --> omp_target_memcpy_f)
 + [x] rectangular data transfer (omp_target_memcpy_rect --> omp_target_memcpy_rect_f)
-
-DMR provides Fortran interfaces to the following OpenMP C device memory routines:
-
-+ [x] omp_target_alloc
-+ [x] omp_target_free
-+ [x] omp_target_is_present
-+ [x] omp_get_mapped_ptr<sup>2</sup>
-+ [x] omp_target_memcpy
-+ [x] omp_target_memcpy_rect
-+ [x] omp_target_associate_pointer
-+ [x] omp_target_disassociate_pointer
-
-[2] _OpenMP API version 5.1 Public Comment Draft_, OpenMP Architecture Review Board, 2020, https://www.openmp.org/wp-content/uploads/openmp-TR9.pdf
++ [x] device pointer mapping with host pointer (omp_target_associate_ptr --> omp_target_associate_ptr_f)
++ [x] device pointer association removing from host pointer (omp_target_disassociate_ptr --> omp_targetdis_associate_ptr_f)
 
 Go to [Top](#top)
 
 ## DMR for the Impatient
 
-DMR can be compiled using the provided makefile, compatible with GNU gfortran, IBM XLF and Intel ifort/ifx compilers.
+DMR can be compiled using cmake. Cmake still not supports OpenMP offload, so in order to compile the library with Intel compiler and default options, use the commands:
+```
+mkdir build
+cd build
+cmake -DCMAKE_Fortran_COMPILER=ifx ..
+make VERBOSE=1
+```
+
+DMR can also be compiled using [FoBiS](https://github.com/szaghi/FoBiS): fobos file is provided.
+
+Finally, DMR can be compiled using the provided makefile, compatible with GNU gfortran, IBM XLF and Intel ifx compilers.
 
 In order to compile the library, use the following command:
 ```
 make compiler=1 debug=1
-```
-
-To compile the testing suite together with the library, use the following command:
-```
-make compiler=1 debug=1 TEST=yes
 ```
 
 Where *compiler* can be one of the following: **gnu**, **ibm**, **intel**.

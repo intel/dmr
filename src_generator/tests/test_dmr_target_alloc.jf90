@@ -1,0 +1,90 @@
+!* ========================================================================== *
+!*                                                                            *
+!* Copyright (C) 2022 Intel Corporation                                       *
+!* This file is part of the DMR library.                                      *
+!*                                                                            *
+!* For information on the license, see the LICENSE file.                      *
+!* Further information: https://github.com/giacrossi/dmr/                     *
+!* SPDX-License-Identifier: BSD-3-Clause                                      *
+!*                                                                            *
+!* ========================================================================== *
+!* Giacomo Rossi (Intel Corporation)                                          *
+!* ========================================================================== *
+
+program test_dmr_target_alloc
+   use omp_lib,         only : omp_get_default_device
+   use dmr,             only : omp_target_alloc_f, omp_target_free_f
+   use dmr_environment
+
+   implicit none
+
+{%- for t in types %}
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+{%- if dimensions == 1 %}
+   {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous :: dev_ptr_{{keywords[t][1]}}{{p.name}}_1(:)
+{%- else %}
+   {%- if dimensions > 4 %}
+   {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous ::{% for dd in range(1,5) %} dev_ptr_{{keywords[t][1]}}{{p.name}}_{{dd}}({% for ddd in range(dd) %}:{% if not loop.last %}, {%- endif %}{% endfor %}){% if not loop.last %}, {% else %}, &{%- endif %}{% endfor %}
+                                       {% for dd in range(5,dimensions+1) %} dev_ptr_{{keywords[t][1]}}{{p.name}}_{{dd}}({% for ddd in range(dd) %}:{% if not loop.last %}, {%- endif %}{% endfor %}){% if not loop.last %}, {%- endif %}{% endfor %}
+   {%- else %}
+   {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous ::{% for dd in range(1,5) %} dev_ptr_{{keywords[t][1]}}{{p.name}}_{{dd}}({% for ddd in range(dd) %}:{% if not loop.last %}, {%- endif %}{% endfor %}){% if not loop.last %}, {%- endif %}{% endfor %}
+   {%- endif %}
+{%- endif %}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+
+   integer(I4P) ::{%- for d in range(1,dimensions+1) %} i{{d}}{% if not loop.last %}, {%- endif %}{% endfor %}
+   integer(I4P), parameter :: sz = 10
+   integer(I4P) :: ierr=0, test_tot=0, nfail=0
+
+{%- for t in types %}
+{%- for p in kinds[t] %}
+
+   !!! DMR Target Alloc {{p.name }} bits {{keywords[t][0]}} tests
+{%- for t in types %}
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+   nullify({% for dd in range(1,dimensions+1) %} dev_ptr_{{keywords[t][1]}}{{p.name}}_{{dd}}{% if not loop.last %}, {%- endif %}{% endfor %})
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1) %}
+{% if d==1 %}
+   call omp_target_alloc_f(fptr_dev=dev_ptr_{{keywords[t][1]}}{{p.name}}_{{d}}, dimensions=sz, omp_dev=omp_get_default_device(), ierr=ierr)
+{% else %}
+   call omp_target_alloc_f(fptr_dev=dev_ptr_{{keywords[t][1]}}{{p.name}}_{{d}}, dimensions=[{% for dd in range(d) %}sz{% if not loop.last %}, {%- endif %}{% endfor %}], omp_dev=omp_get_default_device(), ierr=ierr)
+{% endif %}
+   test_tot = test_tot + 1
+   if (.not.associated(dev_ptr_{{keywords[t][1]}}{{p.name}}_{{d}})) then
+      write(0,"(/,a,i5)") "Error testing allocation of dev_ptr_{{keywords[t][1]}}{{p.name}}_{{d}}, ierr:", ierr
+      nfail = nfail + 1
+   else
+      call omp_target_free_f(fptr_dev=dev_ptr_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_dev=omp_get_default_device())
+   endif
+{%- endfor %}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+
+  write(0,"(/,a)") "DMR Target Alloc Test SUMMARY:"
+  write(0,"(3x,a,i5)") "# tests: ", test_tot
+  write(0,"(3x,a,i5)") "# passed: ", test_tot - nfail
+  write(0,"(3x,a,i5)") "# failed: ", nfail
+  write(0,"()")
+endprogram test_dmr_target_alloc

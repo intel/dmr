@@ -1,0 +1,65 @@
+[modes]
+modes = static-intel shared-intel
+
+# main modes
+[static-intel]
+help      = Build dmr library with Intel nextgen compiler and OpenMP offloading support
+template  = template-static-intel
+target    = src/lib/modules/dmr.F90
+build_dir = ./static/
+output    = libdmr.a
+mklib     = static
+
+[shared-intel]
+help      = Build dmr library with Intel nextgen compiler and OpenMP offloading support
+template  = template-shared-intel
+target    = src/lib/modules/dmr.F90
+build_dir = ./shared/
+output    = libdmr.so
+mklib     = shared
+
+# templates
+[template-static-intel]
+compiler        = intel_nextgen
+mod_dir         = ./mod/
+obj_dir         = ./obj/
+src             = ./src/
+colors          = True
+quiet           = False
+log             = True
+jobs            = 4
+mpi             = True
+openmp          = True
+openmp_offload  = True
+preproc         = -D_OpenMP_5_1
+cflags_heritage = True
+cflags          = -c
+
+[template-shared-intel]
+compiler        = intel_nextgen
+mod_dir         = ./mod/
+obj_dir         = ./obj/
+src             = ./src/
+colors          = True
+quiet           = False
+log             = True
+jobs            = 4
+mpi             = True
+openmp          = True
+openmp_offload  = True
+preproc         = -D_OpenMP_5_1
+cflags_heritage = True
+cflags          = -c -fPIC
+lflags          = -shared -fPIC
+
+# aux rules
+[rule-generatesrc]
+help   = Generate dmr sources using Python
+rule_1 = mkdir -p src/lib
+rule_2 = cd src_generator ; python generate_library.py
+rule_3 = cd src_generator/lib; mv *.F90 ../../src/lib
+
+[rule-clean]
+help   = Clean the project tree
+rule_1 = rm -rf static; rm -rf shared; rm -rf src
+rule_2 = rm -rf *.smod; rm -rf *.modmic

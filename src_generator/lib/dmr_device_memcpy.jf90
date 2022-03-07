@@ -1,0 +1,169 @@
+!* ========================================================================== *
+!*                                                                            *
+!* Copyright (C) 2020 Intel Corporation                                       *
+!* This file is part of the DMR library.                                      *
+!*                                                                            *
+!* For information on the license, see the LICENSE file.                      *
+!* Further information: https://github.com/giacrossi/dmr/                     *
+!* SPDX-License-Identifier: BSD-3-Clause                                      *
+!*                                                                            *
+!* ========================================================================== *
+!* Giacomo Rossi (Intel Corporation)                                          *
+!* ========================================================================== *
+
+submodule (dmr) dmr_device_memcpy
+   use omp_lib, only : omp_get_default_device
+   use dmr_environment
+
+   implicit none
+
+   contains
+
+#if defined _F2018
+{%- for t in types %}
+      ! DMR Device Memcpy {{keywords[t][0]}} F2018 Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+      module subroutine omp_device_memcpy_{{keywords[t][1]}}{{p.name}}(array_dst, array_src, omp_dev, lbound_s, ubound_s, lbounds, ubounds)
+         implicit none
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(out)          :: array_dst(..)
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(in)           :: array_src(..)
+         integer(I4P), intent(in), optional :: omp_dev
+         integer(I8P), intent(in), optional :: lbound_s, ubound_s
+         integer(I8P), intent(in), optional :: lbounds(:), ubounds(:)
+         integer(I8P), allocatable          :: lbounds_(:), ubounds_(:)
+         integer(I8P)                       :: {% for d in range(1,dimensions+1) %}i{{d}}{% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}
+         integer(I4P)                       :: omp_dev_
+
+         if (present(omp_dev)) then
+            omp_dev_ = omp_dev
+         else
+            omp_dev_ = omp_get_default_device()
+         endif
+
+         if (present(lbound_s)) then
+            allocate(lbounds_(1))
+            lbounds_(1) = lbound_s
+         elseif (present(lbounds)) then
+            lbounds_ = lbounds
+         else
+            lbounds_(1:rank(array_dst)) = 1_I8P
+         endif
+
+         if (present(ubound_s)) then
+            allocate(ubounds_(1))
+            ubounds_(1) = ubound_s
+         elseif (present(ubounds)) then
+            ubounds_ = ubounds
+         else
+            ubounds_ = ubound(array_dst)
+         endif
+
+         select rank(array_dst)
+{%- for d in range(1,dimensions+1) %}
+         rank({{d}})
+            select rank(array_src)
+            rank({{d}})
+!#if defined _OpenMP_5_1
+!               !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) map(present, alloc:array_dst, array_src) map(to:lbounds_, ubounds_)
+!#else
+               !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+!#endif
+{%- for dd in range(d,0,-1) %}
+               {% print(' '*3*(d-dd)) %}do i{{dd}} = lbounds_({{dd}}), ubounds_({{dd}})
+{%- endfor %}
+               {% print(' '*3*d) %}array_dst({% for ddd in range(1,d+1) %}i{{ddd}}{% if not loop.last %},{%- endif %}{% endfor %}) = array_src({% for ddd in range(1,d+1) %}i{{ddd}}{% if not loop.last %},{%- endif %}{% endfor %})
+{%- for dd in range(d) %}
+               {% print(' '*3*((d-1)-dd)) %}enddo
+{%- endfor %}
+               !$omp end target teams distribute parallel do
+            rank default
+               error stop 'Rank mismatch between source and destination'
+            end select
+{% print("") %}
+{%- endfor %}
+         endselect
+      endsubroutine omp_device_memcpy_{{keywords[t][1]}}{{p.name}}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{% print("") %}
+{%- endfor %}
+{%- endfor %}
+
+#else
+
+{%- for t in types %}
+      ! DMR Device Memcpy {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+{%- for d in range(1,dimensions+1) %}
+      module subroutine omp_device_memcpy_{{keywords[t][1]}}{{p.name}}_{{d}}(array_dst, array_src, omp_dev, lbounds, ubounds)
+         implicit none
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(out)          :: array_dst({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         {{t}}({{keywords[t][2]}}{{p.key}}), intent(in)           :: array_src({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
+         integer(I4P), intent(in), optional :: omp_dev
+{%- if d==1 %}
+         integer(I8P), intent(in), optional :: lbounds, ubounds
+         integer(I8P)                       :: lbounds_, ubounds_
+{%- else %}
+         integer(I8P), intent(in), optional :: lbounds({{d}}), ubounds({{d}})
+         integer(I8P)                       :: lbounds_({{d}}), ubounds_({{d}})
+{%- endif %}
+         integer(I8P)                       :: {% for dd in range(1,d+1) %}i{{dd}}{% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}
+         integer(I4P)                       :: omp_dev_
+
+         if (present(omp_dev)) then
+            omp_dev_ = omp_dev
+         else
+            omp_dev_ = omp_get_default_device()
+         endif
+         if (present(lbounds)) then
+            lbounds_ = lbounds
+         else
+            lbounds_ = 1_I8P
+         endif
+         if (present(ubounds)) then
+            ubounds_ = ubounds
+         else
+{%- if d==1 %}
+            ubounds_ = ubound(array_dst,{{d}})
+{%- else %}
+            ubounds_ = ubound(array_dst)
+{%- endif %}
+         endif
+!#if defined _OpenMP_5_1
+!         !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) map(present, alloc:array_dst, array_src) map(to:lbounds_, ubounds_)
+!#else
+         !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+!#endif
+{%- if d==1 %}
+         do i1=lbounds_, ubounds_
+            array_dst(i1) = array_src(i1)
+         enddo
+{%- else %}
+{%- for dd in range(d,0,-1) %}
+         {% print(' '*3*(d-dd)) %}do i{{dd}} = lbounds_({{dd}}), ubounds_({{dd}})
+{%- endfor %}
+         {% print(' '*3*d) %}array_dst({% for ddd in range(1,d+1) %}i{{ddd}}{% if not loop.last %},{%- endif %}{% endfor %}) = array_src({% for ddd in range(1,d+1) %}i{{ddd}}{% if not loop.last %},{%- endif %}{% endfor %})
+{%- for dd in range(d) %}
+         {% print(' '*3*((d-1)-dd)) %}enddo
+{%- endfor %}
+{%- endif %}
+         !$omp end target teams distribute parallel do
+      endsubroutine omp_device_memcpy_{{keywords[t][1]}}{{p.name}}_{{d}}
+{% print("") %}
+{%- endfor %}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{% print("") %}
+{%- endfor %}
+
+#endif
+endsubmodule dmr_device_memcpy

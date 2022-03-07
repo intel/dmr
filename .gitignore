@@ -1,5 +1,16 @@
+./build
+build/
+./src
+src/
+./release
+release/
+./shared
+shared/
+./static
+static/
 ./exe
 exe/
 *.mod
 *.obj
 *.o
+*.log
