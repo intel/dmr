@@ -76,11 +76,6 @@ with open('%s/dmr_target_memcpy_rect.F90' % args.lib_path[0], 'w') as f:
       {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
-with open('%s/dmr_target_memcpy_scalar.F90' % args.lib_path[0], 'w') as f:
-    f.write(render('lib/dmr_target_memcpy_scalar.jf90',
-      {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
-                  ))
-
 with open('%s/dmr_environment.F90' % args.lib_path[0], 'w') as f:
     f.write(render('lib/dmr_environment.jf90',
       {'types' : types[0:2], 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}

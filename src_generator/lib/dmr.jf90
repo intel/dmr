@@ -114,20 +114,6 @@ module dmr
 
    interface omp_target_memcpy_f
       module procedure &
-#if defined _OpenMP_5_1
-{%- for t in types|reverse %}
-{%- set outer_loop = loop %}
-{%- for p in kinds[t] %}
-{%- if p.key=='16P' %}
-#if defined _real128
-{%- endif %}
-                       omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}_scalar, &
-{%- if p.key=='16P' %}
-#endif
-{%- endif %}
-{%- endfor %}
-{%- endfor %}
-#endif
 {%- for t in types|reverse %}
 {%- set outer_loop = loop %}
 {%- for p in kinds[t] %}
@@ -393,28 +379,6 @@ module dmr
 
 ! OpenMP Target Memcpy Routines
    interface
-      ! OpenMP Target Memcpy Integer Routines
-#if defined _OpenMP_5_1
-{%- for t in types %}
-      ! DMR Target Memcpy Scalar {{keywords[t][0]}} Routines
-{%- for p in kinds[t] %}
-{%- if p.name == '128' %}
-#if defined _real128
-{%- endif %}
-      module subroutine omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}_scalar(sc_dst, sc_src, omp_dst_dev, omp_src_dev)
-         implicit none
-         {{t}}({{keywords[t][2]}}{{p.key}}), intent(out) :: sc_dst
-         {{t}}({{keywords[t][2]}}{{p.key}}), intent(in)  :: sc_src
-         integer(I4P), intent(in)  :: omp_dst_dev, omp_src_dev
-      endsubroutine omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}_scalar
-{%- if p.name == '128' %}
-#endif
-{%- endif %}
-{% print("") %}
-{%- endfor %}
-{%- endfor %}
-#endif
-
 {%- for t in types %}
       ! OpenMP Target Memcpy {{keywords[t][0]}} Routines
 {%- for p in kinds[t] %}
