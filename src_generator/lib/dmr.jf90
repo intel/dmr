@@ -421,15 +421,15 @@ module dmr
 {%- if p.name == '128' %}
 #if defined _real128
 {%- endif %}
-      module subroutine omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}(fptr_dst, fptr_src, ierr, dst_off, src_off, &
+      module function omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
+         integer(I4P)                                  :: omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}
          {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(out) :: fptr_dst(..)
          {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(in)  :: fptr_src(..)
-         integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
-      endsubroutine omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}
+      endfunction omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}
 {%- if p.name == '128' %}
 #endif
 {%- endif %}
@@ -447,16 +447,16 @@ module dmr
 {%- if p.name == '128' %}
 #if defined _real128
 {%- endif %}
-      module subroutine omp_target_memcpy_rect_f_{{keywords[t][1]}}{{p.name}}(fptr_dst, fptr_src, cpy_dims, ierr, dst_offs, src_offs, &
+      module function omp_target_memcpy_rect_f_{{keywords[t][1]}}{{p.name}}(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
+         integer(I4P)                                  :: omp_target_memcpy_rect_f_{{keywords[t][1]}}{{p.name}}
          {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(out) :: fptr_dst(..)
          {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                      :: cpy_dims(:)
-         integer(I4P), intent(out)                     :: ierr
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
-      endsubroutine omp_target_memcpy_rect_f_{{keywords[t][1]}}{{p.name}}
+      endfunction omp_target_memcpy_rect_f_{{keywords[t][1]}}{{p.name}}
 {%- if p.name == '128' %}
 #endif
 {%- endif %}
