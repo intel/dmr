@@ -41,7 +41,7 @@ submodule (dmr) dmr_target_is_present
 
          cptr_dev = c_loc(fptr_dummy)
 
-         if (omp_target_is_present(cptr_dev, omp_device)) then
+         if (omp_target_is_present(cptr_dev, omp_device)/=0) then
             omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d}} = .true.
          else
             omp_target_is_present_f_{{keywords[t][1]}}{{p.name}}_{{d}} = .false.
