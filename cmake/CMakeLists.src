@@ -11,7 +11,7 @@ set(SRC_dmr
     dmr_environment.F90
     dmr.F90)
 
-if(DMR_ENABLE_OMP5.1 STREQUAL "YES")
+if(DMR_ENABLE_OMP5.1 STREQUAL "ON")
     set(SRC_dmr
         ${SRC_dmr}
         dmr_target_associate_ptr.F90
