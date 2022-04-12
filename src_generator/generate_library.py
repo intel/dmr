@@ -38,7 +38,7 @@ dimensions=7
 
 with open('%s/dmr_target_free.F90' % args.lib_path[0], 'w') as f:
     f.write(render('lib/dmr_target_free.jf90',
-      {'types' : types, 'kinds' : kinds, 'keywords' : keywords}
+      {'types' : types, 'kinds' : kinds, 'keywords' : keywords, 'dimensions' : dimensions}
                   ))
 
 with open('%s/dmr_target_is_present.F90' % args.lib_path[0], 'w') as f:
