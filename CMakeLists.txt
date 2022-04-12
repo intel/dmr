@@ -55,7 +55,9 @@ option(DMR_ENABLE_OMP5.1
 option(DMR_ENABLE_TESTS
     "enable unit tests" OFF)
 
-set(CMAKE_Fortran_MODULE_DIRECTORY "${CMAKE_INSTALL_PREFIX}/mod")
+if (NOT CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+    set(CMAKE_Fortran_MODULE_DIRECTORY "${CMAKE_INSTALL_PREFIX}/mod")
+endif()
 
 ###########################################################
 # Dependencies
