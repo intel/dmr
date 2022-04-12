@@ -24,6 +24,10 @@ endif()
 ###########################################################
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
+if (NOT CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+    set(CMAKE_Fortran_MODULE_DIRECTORY "${CMAKE_INSTALL_PREFIX}/mod")
+endif()
+
 ############################################################
 # Compiler vendor specific options and bug checks
 ############################################################
@@ -55,7 +59,56 @@ option(DMR_ENABLE_OMP5.1
 option(DMR_ENABLE_TESTS
     "enable unit tests" OFF)
 
-set(CMAKE_Fortran_MODULE_DIRECTORY "${CMAKE_INSTALL_PREFIX}/mod")
+############################################################
+# Compiler vendor specific options and bug checks
+############################################################
+if(CMAKE_Fortran_COMPILER_ID MATCHES "NVHPC")
+    include(NVFortranCompiler)
+elseif(CMAKE_Fortran_COMPILER_ID MATCHES "GNU")
+    include(GNUFortranCompiler)
+elseif(CMAKE_Fortran_COMPILER_ID MATCHES "IntelLLVM")
+    include(IntelOneAPIFortranCompiler)
+endif()
+
+###########################################################
+# OpenACC
+###########################################################
+if(DEVXLIB_ENABLE_ACC STREQUAL "OPENACC")
+    find_package(OpenACC REQUIRED)
+endif()
+
+###########################################################
+# OpenMP
+###########################################################
+find_package(OpenMP REQUIRED)
+
+###########################################################
+# BLAS offloading
+###########################################################
+if(DEVXLIB_ENABLE_GPU_BLAS STREQUAL "CUBLAS")
+    find_package(CUDAToolkit REQUIRED)
+elseif(DEVXLIB_ENABLE_GPU_BLAS STREQUAL "MKLGPU")
+    find_package(MKL CONFIG REQUIRED)
+elseif(DEVXLIB_ENABLE_GPU_BLAS STREQUAL "ROCBLAS")
+    find_package(rocblas REQUIRED)
+endif()
+
+###########################################################
+# LAPACK
+###########################################################
+find_package(LAPACK REQUIRED)
+
+###########################################################
+# DMR
+###########################################################
+if(DEVXLIB_ENABLE_ACC STREQUAL "OPENMPGPU")
+   find_package(DMR REQUIRED)
+endif()
+
+###########################################################
+# Add directories
+###########################################################
+add_subdirectory(src)
 
 ###########################################################
 # Dependencies
