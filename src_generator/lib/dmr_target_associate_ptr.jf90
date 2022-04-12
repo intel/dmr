@@ -20,7 +20,6 @@ submodule (dmr) dmr_target_associate_ptr
 
    contains
 
-#if defined _OpenMP_5_1
 {%- for t in types %}
       ! OpenMP Target Associate Pointer {{keywords[t][0]}} Routines
 {%- for p in kinds[t] %}
@@ -67,5 +66,4 @@ submodule (dmr) dmr_target_associate_ptr
 {% print("") %}
 {%- endfor %}
 {%- endfor %}
-#endif
 endsubmodule dmr_target_associate_ptr

@@ -54,6 +54,7 @@ option(DMR_ENABLE_OMP5.1
     "enable OpenMP 5.1 specifications syntax" ON)
 option(DMR_ENABLE_TESTS
     "enable unit tests" OFF)
+
 set(CMAKE_Fortran_MODULE_DIRECTORY "${CMAKE_INSTALL_PREFIX}/mod")
 
 ###########################################################

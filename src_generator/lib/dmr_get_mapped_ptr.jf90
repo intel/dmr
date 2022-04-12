@@ -20,7 +20,6 @@ submodule (dmr) dmr_get_mapped_ptr
 
    contains
 
-#if defined _OpenMP_5_1
 #if defined _F2018
 {%- for t in types %}
       ! OpenMP Get Mapped Pointer {{keywords[t][0]}} F2018 Routines
@@ -104,6 +103,5 @@ submodule (dmr) dmr_get_mapped_ptr
 {% print("") %}
 {%- endfor %}
 
-#endif
 #endif
 endsubmodule dmr_get_mapped_ptr

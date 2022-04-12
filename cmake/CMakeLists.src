@@ -1,10 +1,7 @@
 set(SRC_dmr
     # Submodules
     dmr_device_memcpy.F90
-    dmr_get_mapped_ptr.F90
     dmr_target_alloc.F90
-    dmr_target_associate_ptr.F90
-    dmr_target_disassociate_ptr.F90
     dmr_target_free.F90
     dmr_target_init.F90
     dmr_target_is_present.F90
@@ -13,6 +10,14 @@ set(SRC_dmr
     # Modules
     dmr_environment.F90
     dmr.F90)
+
+if(DMR_ENABLE_OMP5.1 STREQUAL "YES")
+    set(SRC_dmr
+        ${SRC_dmr}
+        dmr_target_associate_ptr.F90
+        dmr_target_disassociate_ptr.F90
+        dmr_get_mapped_ptr.F90)
+endif()
 
 set_source_files_properties(${SRC_dmr}
     PROPERTIES LANGUAGE Fortran)
