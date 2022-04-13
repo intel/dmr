@@ -35,6 +35,8 @@ elseif(CMAKE_Fortran_COMPILER_ID MATCHES "IntelLLVM")
     include(IntelOneAPIFortranCompiler)
 elseif(CMAKE_Fortran_COMPILER_ID MATCHES "XL")
     include(XLFortranCompiler)
+ elseif(CMAKE_Fortran_COMPILER_ID MATCHES "Cray")
+    include(CrayFortranCompiler)
 endif()
 
 ###########################################################
