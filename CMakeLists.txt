@@ -86,8 +86,14 @@ endif()
 ###########################################################
 # Check if src is present and if not, if sources can be generated
 ###########################################################
-if(EXISTS ${CMAKE_BINARY_DIR}/src/lib)
-   message(NOTICE "dmr sources are available in src directory: nothing has been generated from src_generator")
+if((EXISTS ${CMAKE_BINARY_DIR}/src/lib))
+   message(NOTICE "dmr sources are available in src directory of the build tree: nothing has been generated from src_generator")
+   # Add source directory
+   add_subdirectory(${CMAKE_BINARY_DIR}/src/lib)
+elseif(EXISTS ${PROJECT_SOURCE_DIR}/src/lib)
+   message(NOTICE "dmr sources are available in src directory of the project root dir: nothing has been generated from src_generator")
+   # Add source directory
+   add_subdirectory(${PROJECT_SOURCE_DIR}/src/lib)
 else()
    message(NOTICE "dmr sources not found: trying to generate files from src_generator")
    find_package (Python3 COMPONENTS Interpreter Development)
@@ -103,7 +109,13 @@ endif()
 
 if(DMR_ENABLE_TESTS STREQUAL "ON")
    if(EXISTS ${CMAKE_BINARY_DIR}/src/tests)
-      message(NOTICE "dmr tests are available in tests directory: nothing has been generated from src_generator")
+      message(NOTICE "dmr tests are available in tests directory of the build tree: nothing has been generated from src_generator")
+      # Add test directory
+      add_subdirectory(${CMAKE_BINARY_DIR}/src/tests)
+   elseif(EXISTS ${PROJECT_SOURCE_DIR}/src/tests)
+      message(NOTICE "dmr tests are available in tests directory of the project root dir: nothing has been generated from src_generator")
+      # Add test directory
+      add_subdirectory(${PROJECT_SOURCE_DIR}/src/tests)
    else()
       message(NOTICE "dmr tests not found: trying to generate files from src_generator")
       find_package (Python3 COMPONENTS Interpreter Development)
@@ -118,9 +130,6 @@ if(DMR_ENABLE_TESTS STREQUAL "ON")
    endif()
 endif()
 ###########################################################
-# Add directories
 ###########################################################
-add_subdirectory(${CMAKE_BINARY_DIR}/src/lib)
 if(DMR_ENABLE_TESTS)
-    add_subdirectory(${CMAKE_BINARY_DIR}/src/tests)
 endif()

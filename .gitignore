@@ -1,7 +1,5 @@
 ./build
 build/
-./src
-src/
 ./release
 release/
 ./shared
