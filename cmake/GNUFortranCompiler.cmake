@@ -20,10 +20,10 @@ message(FATAL_ERROR "gfortran related option check failed! "
 					"Please check CMakeError.log for the exact error.")
 endif()
 
-add_library(compilerCustomConfig INTERFACE)
-target_compile_options(compilerCustomConfig
+add_library(compilerCustomConfigc INTERFACE)
+target_compile_options(compilerCustomConfigc
 	INTERFACE
 		${GFORTRAN_COMPILE_OPTIONS})
-target_link_options(compilerCustomConfig
+target_link_options(compilerCustomConfigc
 	INTERFACE
 		${GFORTRAN_LINK_OPTIONS})

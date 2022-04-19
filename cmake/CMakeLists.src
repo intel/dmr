@@ -35,7 +35,7 @@ set(dmrTargets
 
 target_link_libraries(dmr
     PRIVATE
-        compilerCustomConfig)
+        compilerCustomConfigc)
 
 foreach(TARGET ${dmrTargets})
     if(DMR_ENABLE_REAL_128 STREQUAL "ON")

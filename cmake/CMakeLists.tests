@@ -40,7 +40,7 @@ foreach(TARGET ${testTargets})
     target_link_libraries(${TARGET}
         PRIVATE
             dmr
-            compilerCustomConfig)
+            compilerCustomConfigc)
     target_include_directories(${TARGET}
         PRIVATE
             "${CMAKE_CURRENT_BINARY_DIR}/../lib")
