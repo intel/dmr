@@ -43,7 +43,7 @@ foreach(TARGET ${testTargets})
             compilerCustomConfigc)
     target_include_directories(${TARGET}
         PRIVATE
-            "${CMAKE_CURRENT_BINARY_DIR}/../lib")
+            "${CMAKE_CURRENT_BINARY_DIR}/../../../src/lib")
 endforeach(TARGET)
 
 foreach(TARGET ${testTargets})
