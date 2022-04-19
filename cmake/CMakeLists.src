@@ -29,9 +29,11 @@ set_source_files_properties(${SRC_dmr}
     PROPERTIES CMAKE_Fortran_FORMAT FREE)
 
 add_library(dmr ${SRC_dmr})
+add_library(dmr_obj OBJECT ${SRC_dmr})
 
 set(dmrTargets
-    dmr)
+    dmr
+    dmr_obj)
 
 target_link_libraries(dmr
     PRIVATE
