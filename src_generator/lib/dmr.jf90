@@ -605,9 +605,10 @@ module dmr
    endinterface
 
 #if defined _OpenMP_5_1
+! DMR Target Associate Pointer Routines
    interface
 {%- for t in types %}
-      ! OpenMP Target Associate Pointer {{keywords[t][0]}} Routines
+      ! DMR Target Associate Pointer {{keywords[t][0]}} Routines
 {%- for p in kinds[t] %}
 {%- if p.name == '128' %}
 #if defined _real128
@@ -631,9 +632,10 @@ module dmr
 {%- endfor %}
    endinterface
 
+! DMR Target Disassociate Pointer Routines
    interface
 {%- for t in types %}
-      ! OpenMP Target Disassociate Pointer {{keywords[t][0]}} Routines
+      ! DMR Target Disassociate Pointer {{keywords[t][0]}} Routines
 {%- for p in kinds[t] %}
 {%- if p.name == '128' %}
 #if defined _real128
@@ -655,10 +657,11 @@ module dmr
 {%- endfor %}
    endinterface
 
+! DMR Get Mapped Pointer Routines
    interface
 #if defined _F2018
 {%- for t in types %}
-      ! OpenMP Get Mapped Pointer {{keywords[t][0]}} F2018 Routines
+      ! DMR Get Mapped Pointer {{keywords[t][0]}} F2018 Routines
 {%- for p in kinds[t] %}
 {%- if p.name == '128' %}
 #if defined _real128
@@ -677,7 +680,7 @@ module dmr
 {%- endfor %}
 #else
 {%- for t in types %}
-      ! OpenMP Get Mapped Pointer {{keywords[t][0]}} Routines
+      ! DMR Get Mapped Pointer {{keywords[t][0]}} Routines
 {%- for p in kinds[t] %}
 {%- if p.name == '128' %}
 #if defined _real128

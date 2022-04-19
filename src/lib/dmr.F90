@@ -4677,8 +4677,9 @@ module dmr
    endinterface
 
 #if defined _OpenMP_5_1
+! DMR Target Associate Pointer Routines
    interface
-      ! OpenMP Target Associate Pointer Integer Routines
+      ! DMR Target Associate Pointer Integer Routines
       module function omp_target_associate_ptr_f_int8_1(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
          integer(I4P)                       :: omp_target_associate_ptr_f_int8_1
@@ -4935,7 +4936,7 @@ module dmr
       endfunction omp_target_associate_ptr_f_int64_7
 
 
-      ! OpenMP Target Associate Pointer Real Routines
+      ! DMR Target Associate Pointer Real Routines
       module function omp_target_associate_ptr_f_real32_1(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
          integer(I4P)                       :: omp_target_associate_ptr_f_real32_1
@@ -5130,7 +5131,7 @@ module dmr
 
 #endif
 
-      ! OpenMP Target Associate Pointer Complex Routines
+      ! DMR Target Associate Pointer Complex Routines
       module function omp_target_associate_ptr_f_cmplx32_1(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
          integer(I4P)                       :: omp_target_associate_ptr_f_cmplx32_1
@@ -5325,7 +5326,7 @@ module dmr
 
 #endif
 
-      ! OpenMP Target Associate Pointer Logical Routines
+      ! DMR Target Associate Pointer Logical Routines
       module function omp_target_associate_ptr_f_lgcl32_1(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
          integer(I4P)                       :: omp_target_associate_ptr_f_lgcl32_1
@@ -5392,8 +5393,9 @@ module dmr
 
    endinterface
 
+! DMR Target Disassociate Pointer Routines
    interface
-      ! OpenMP Target Disassociate Pointer Integer Routines
+      ! DMR Target Disassociate Pointer Integer Routines
       module function omp_target_disassociate_ptr_f_int8_1(fptr_hos, omp_dev)
          implicit none
          integer(I4P)                       :: omp_target_disassociate_ptr_f_int8_1
@@ -5594,7 +5596,7 @@ module dmr
       endfunction omp_target_disassociate_ptr_f_int64_7
 
 
-      ! OpenMP Target Disassociate Pointer Real Routines
+      ! DMR Target Disassociate Pointer Real Routines
       module function omp_target_disassociate_ptr_f_real32_1(fptr_hos, omp_dev)
          implicit none
          integer(I4P)                       :: omp_target_disassociate_ptr_f_real32_1
@@ -5747,7 +5749,7 @@ module dmr
 
 #endif
 
-      ! OpenMP Target Disassociate Pointer Complex Routines
+      ! DMR Target Disassociate Pointer Complex Routines
       module function omp_target_disassociate_ptr_f_cmplx32_1(fptr_hos, omp_dev)
          implicit none
          integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx32_1
@@ -5900,7 +5902,7 @@ module dmr
 
 #endif
 
-      ! OpenMP Target Disassociate Pointer Logical Routines
+      ! DMR Target Disassociate Pointer Logical Routines
       module function omp_target_disassociate_ptr_f_lgcl32_1(fptr_hos, omp_dev)
          implicit none
          integer(I4P)                       :: omp_target_disassociate_ptr_f_lgcl32_1
@@ -5953,9 +5955,10 @@ module dmr
 
    endinterface
 
+! DMR Get Mapped Pointer Routines
    interface
 #if defined _F2018
-      ! OpenMP Get Mapped Pointer Integer F2018 Routines
+      ! DMR Get Mapped Pointer Integer F2018 Routines
       module subroutine omp_get_mapped_ptr_f_int8(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I1P), pointer, intent(out) :: fptr_dev(..)
@@ -5984,7 +5987,7 @@ module dmr
          integer(I4P), intent(in)           :: omp_dev
       endsubroutine omp_get_mapped_ptr_f_int64
 
-      ! OpenMP Get Mapped Pointer Real F2018 Routines
+      ! DMR Get Mapped Pointer Real F2018 Routines
       module subroutine omp_get_mapped_ptr_f_real32(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R4P), pointer, intent(out) :: fptr_dev(..)
@@ -6008,7 +6011,7 @@ module dmr
       endsubroutine omp_get_mapped_ptr_f_real128
 #endif
 
-      ! OpenMP Get Mapped Pointer Complex F2018 Routines
+      ! DMR Get Mapped Pointer Complex F2018 Routines
       module subroutine omp_get_mapped_ptr_f_cmplx32(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R4P), pointer, intent(out) :: fptr_dev(..)
@@ -6032,7 +6035,7 @@ module dmr
       endsubroutine omp_get_mapped_ptr_f_cmplx128
 #endif
 
-      ! OpenMP Get Mapped Pointer Logical F2018 Routines
+      ! DMR Get Mapped Pointer Logical F2018 Routines
       module subroutine omp_get_mapped_ptr_f_lgcl32(fptr_dev, fptr_hos, omp_dev)
          implicit none
          logical(I4P), pointer, intent(out) :: fptr_dev(..)
@@ -6041,7 +6044,7 @@ module dmr
       endsubroutine omp_get_mapped_ptr_f_lgcl32
 
 #else
-      ! OpenMP Get Mapped Pointer Integer Routines
+      ! DMR Get Mapped Pointer Integer Routines
       module subroutine omp_get_mapped_ptr_f_int8_1(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:)
@@ -6239,7 +6242,7 @@ module dmr
       endsubroutine omp_get_mapped_ptr_f_int64_7
 
 
-      ! OpenMP Get Mapped Pointer Real Routines
+      ! DMR Get Mapped Pointer Real Routines
       module subroutine omp_get_mapped_ptr_f_real32_1(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:)
@@ -6390,7 +6393,7 @@ module dmr
 
 #endif
 
-      ! OpenMP Get Mapped Pointer Complex Routines
+      ! DMR Get Mapped Pointer Complex Routines
       module subroutine omp_get_mapped_ptr_f_cmplx32_1(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:)
@@ -6541,7 +6544,7 @@ module dmr
 
 #endif
 
-      ! OpenMP Get Mapped Pointer Logical Routines
+      ! DMR Get Mapped Pointer Logical Routines
       module subroutine omp_get_mapped_ptr_f_lgcl32_1(fptr_dev, fptr_hos, omp_dev)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:)
