@@ -88,6 +88,7 @@ submodule (dmr) dmr_target_alloc
             endif
             ierr = 0
          else
+            fptr_dev => null()
             ierr = 1000
          endif
       endsubroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_32bit
@@ -169,6 +170,7 @@ submodule (dmr) dmr_target_alloc
             endif
             ierr = 0
          else
+            fptr_dev => null()
             ierr = 1000
          endif
       endsubroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_64bit
