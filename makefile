@@ -91,7 +91,6 @@ DMR: $(MKDIRS) $(DOBJ)dmr.o\
 	$(DOBJ)dmr_target_free.o \
 	$(DOBJ)dmr_target_alloc.o \
 	$(DOBJ)dmr_get_mapped_ptr.o \
-	$(DOBJ)dmr_correctly_mapped.o \
 	$(DOBJ)dmr_target_memcpy_rect.o \
 	$(DOBJ)dmr_target_memcpy.o \
 	$(DOBJ)dmr_target_memcpy_scalar.o \
@@ -150,11 +149,6 @@ $(DOBJ)dmr_target_memcpy_rect.o: src/lib/dmr_target_memcpy_rect.F90 \
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
 
 $(DOBJ)dmr_get_mapped_ptr.o: src/lib/dmr_get_mapped_ptr.F90 \
-	$(DOBJ)dmr_environment.o
-	@echo $(COTEXT)
-	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
-
-$(DOBJ)dmr_correctly_mapped.o: src/lib/dmr_correctly_mapped.F90 \
 	$(DOBJ)dmr_environment.o
 	@echo $(COTEXT)
 	@$(FC) $(FCFLAGS) $(DFLAGS)  $< -o $@
