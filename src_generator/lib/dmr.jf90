@@ -139,6 +139,22 @@ module dmr
 {%- endfor %}
    endinterface omp_target_memcpy_f
 
+   interface omp_target_memcpy_async_f
+      module procedure &
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+                       omp_target_memcpy_async_f_{{keywords[t][1]}}{{p.name}}{% if ((not loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+   endinterface omp_target_memcpy_async_f
+
    interface omp_target_memcpy_rect_f
       module procedure &
 {%- for t in types|reverse %}
@@ -154,6 +170,22 @@ module dmr
 {%- endfor %}
 {%- endfor %}
    endinterface omp_target_memcpy_rect_f
+
+   interface omp_target_memcpy_rect_async_f
+      module procedure &
+{%- for t in types|reverse %}
+{%- set outer_loop = loop %}
+{%- for p in kinds[t] %}
+{%- if p.key=='16P' %}
+#if defined _real128
+{%- endif %}
+                       omp_target_memcpy_rect_async_f_{{keywords[t][1]}}{{p.name}}{% if ((not loop.last) or (not outer_loop.last))%}, &{%- endif %}
+{%- if p.key=='16P' %}
+#endif
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+   endinterface omp_target_memcpy_rect_async_f
 
    interface omp_target_init
       module procedure &
@@ -471,6 +503,34 @@ module dmr
 
    end interface
 
+! OpenMP Target Memcpy Async Routines
+   interface
+{%- for t in types %}
+      ! OpenMP Target Memcpy Async {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+      module function omp_target_memcpy_async_f_{{keywords[t][1]}}{{p.name}}(fptr_dst, fptr_src, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_async_f_{{keywords[t][1]}}{{p.name}}
+         {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(out) :: fptr_dst(..)
+         {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: dst_off, src_off
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_async_f_{{keywords[t][1]}}{{p.name}}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{% print("") %}
+{%- endfor %}
+{%- endfor %}
+
+   end interface
+
 ! OpenMP Target Memcpy Rect Routines
    interface
 {%- for t in types %}
@@ -489,6 +549,34 @@ module dmr
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
       endfunction omp_target_memcpy_rect_f_{{keywords[t][1]}}{{p.name}}
+{%- if p.name == '128' %}
+#endif
+{%- endif %}
+{% print("") %}
+{%- endfor %}
+{%- endfor %}
+   endinterface
+
+! OpenMP Target Memcpy Rect Async Routines
+   interface
+{%- for t in types %}
+      ! OpenMP Target Memcpy Rect Async {{keywords[t][0]}} Routines
+{%- for p in kinds[t] %}
+{%- if p.name == '128' %}
+#if defined _real128
+{%- endif %}
+      module function omp_target_memcpy_rect_async_f_{{keywords[t][1]}}{{p.name}}(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_{{keywords[t][1]}}{{p.name}}
+         {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(out) :: fptr_dst(..)
+         {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                       :: cpy_dims(:)
+         integer(I4P), intent(in)                       :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_rect_async_f_{{keywords[t][1]}}{{p.name}}
 {%- if p.name == '128' %}
 #endif
 {%- endif %}

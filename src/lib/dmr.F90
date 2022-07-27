@@ -198,6 +198,25 @@ module dmr
                        omp_target_memcpy_f_int64
    endinterface omp_target_memcpy_f
 
+   interface omp_target_memcpy_async_f
+      module procedure &
+                       omp_target_memcpy_async_f_lgcl32, &
+                       omp_target_memcpy_async_f_cmplx32, &
+                       omp_target_memcpy_async_f_cmplx64, &
+#if defined _real128
+                       omp_target_memcpy_async_f_cmplx128, &
+#endif
+                       omp_target_memcpy_async_f_real32, &
+                       omp_target_memcpy_async_f_real64, &
+#if defined _real128
+                       omp_target_memcpy_async_f_real128, &
+#endif
+                       omp_target_memcpy_async_f_int8, &
+                       omp_target_memcpy_async_f_int16, &
+                       omp_target_memcpy_async_f_int32, &
+                       omp_target_memcpy_async_f_int64
+   endinterface omp_target_memcpy_async_f
+
    interface omp_target_memcpy_rect_f
       module procedure &
                        omp_target_memcpy_rect_f_lgcl32, &
@@ -216,6 +235,25 @@ module dmr
                        omp_target_memcpy_rect_f_int32, &
                        omp_target_memcpy_rect_f_int64
    endinterface omp_target_memcpy_rect_f
+
+   interface omp_target_memcpy_rect_async_f
+      module procedure &
+                       omp_target_memcpy_rect_async_f_lgcl32, &
+                       omp_target_memcpy_rect_async_f_cmplx32, &
+                       omp_target_memcpy_rect_async_f_cmplx64, &
+#if defined _real128
+                       omp_target_memcpy_rect_async_f_cmplx128, &
+#endif
+                       omp_target_memcpy_rect_async_f_real32, &
+                       omp_target_memcpy_rect_async_f_real64, &
+#if defined _real128
+                       omp_target_memcpy_rect_async_f_real128, &
+#endif
+                       omp_target_memcpy_rect_async_f_int8, &
+                       omp_target_memcpy_rect_async_f_int16, &
+                       omp_target_memcpy_rect_async_f_int32, &
+                       omp_target_memcpy_rect_async_f_int64
+   endinterface omp_target_memcpy_rect_async_f
 
    interface omp_target_init
       module procedure &
@@ -2982,6 +3020,151 @@ module dmr
 
    end interface
 
+! OpenMP Target Memcpy Async Routines
+   interface
+      ! OpenMP Target Memcpy Async Integer Routines
+      module function omp_target_memcpy_async_f_int8(fptr_dst, fptr_src, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_async_f_int8
+         integer(I1P), contiguous, target, intent(out) :: fptr_dst(..)
+         integer(I1P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: dst_off, src_off
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_async_f_int8
+
+      module function omp_target_memcpy_async_f_int16(fptr_dst, fptr_src, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_async_f_int16
+         integer(I2P), contiguous, target, intent(out) :: fptr_dst(..)
+         integer(I2P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: dst_off, src_off
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_async_f_int16
+
+      module function omp_target_memcpy_async_f_int32(fptr_dst, fptr_src, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_async_f_int32
+         integer(I4P), contiguous, target, intent(out) :: fptr_dst(..)
+         integer(I4P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: dst_off, src_off
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_async_f_int32
+
+      module function omp_target_memcpy_async_f_int64(fptr_dst, fptr_src, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_async_f_int64
+         integer(I8P), contiguous, target, intent(out) :: fptr_dst(..)
+         integer(I8P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: dst_off, src_off
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_async_f_int64
+
+      ! OpenMP Target Memcpy Async Real Routines
+      module function omp_target_memcpy_async_f_real32(fptr_dst, fptr_src, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_async_f_real32
+         real(R4P), contiguous, target, intent(out) :: fptr_dst(..)
+         real(R4P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: dst_off, src_off
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_async_f_real32
+
+      module function omp_target_memcpy_async_f_real64(fptr_dst, fptr_src, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_async_f_real64
+         real(R8P), contiguous, target, intent(out) :: fptr_dst(..)
+         real(R8P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: dst_off, src_off
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_async_f_real64
+
+#if defined _real128
+      module function omp_target_memcpy_async_f_real128(fptr_dst, fptr_src, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_async_f_real128
+         real(R16P), contiguous, target, intent(out) :: fptr_dst(..)
+         real(R16P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: dst_off, src_off
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_async_f_real128
+#endif
+
+      ! OpenMP Target Memcpy Async Complex Routines
+      module function omp_target_memcpy_async_f_cmplx32(fptr_dst, fptr_src, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_async_f_cmplx32
+         complex(R4P), contiguous, target, intent(out) :: fptr_dst(..)
+         complex(R4P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: dst_off, src_off
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_async_f_cmplx32
+
+      module function omp_target_memcpy_async_f_cmplx64(fptr_dst, fptr_src, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_async_f_cmplx64
+         complex(R8P), contiguous, target, intent(out) :: fptr_dst(..)
+         complex(R8P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: dst_off, src_off
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_async_f_cmplx64
+
+#if defined _real128
+      module function omp_target_memcpy_async_f_cmplx128(fptr_dst, fptr_src, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_async_f_cmplx128
+         complex(R16P), contiguous, target, intent(out) :: fptr_dst(..)
+         complex(R16P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: dst_off, src_off
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_async_f_cmplx128
+#endif
+
+      ! OpenMP Target Memcpy Async Logical Routines
+      module function omp_target_memcpy_async_f_lgcl32(fptr_dst, fptr_src, dst_off, src_off, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_async_f_lgcl32
+         logical(I4P), contiguous, target, intent(out) :: fptr_dst(..)
+         logical(I4P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: dst_off, src_off
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_async_f_lgcl32
+
+
+   end interface
+
 ! OpenMP Target Memcpy Rect Routines
    interface
       ! OpenMP Target Memcpy Rect Integer Routines
@@ -3112,6 +3295,161 @@ module dmr
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
       endfunction omp_target_memcpy_rect_f_lgcl32
+
+   endinterface
+
+! OpenMP Target Memcpy Rect Async Routines
+   interface
+      ! OpenMP Target Memcpy Rect Async Integer Routines
+      module function omp_target_memcpy_rect_async_f_int8(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_int8
+         integer(I1P), contiguous, target, intent(out) :: fptr_dst(..)
+         integer(I1P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                       :: cpy_dims(:)
+         integer(I4P), intent(in)                       :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_rect_async_f_int8
+
+      module function omp_target_memcpy_rect_async_f_int16(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_int16
+         integer(I2P), contiguous, target, intent(out) :: fptr_dst(..)
+         integer(I2P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                       :: cpy_dims(:)
+         integer(I4P), intent(in)                       :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_rect_async_f_int16
+
+      module function omp_target_memcpy_rect_async_f_int32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_int32
+         integer(I4P), contiguous, target, intent(out) :: fptr_dst(..)
+         integer(I4P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                       :: cpy_dims(:)
+         integer(I4P), intent(in)                       :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_rect_async_f_int32
+
+      module function omp_target_memcpy_rect_async_f_int64(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_int64
+         integer(I8P), contiguous, target, intent(out) :: fptr_dst(..)
+         integer(I8P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                       :: cpy_dims(:)
+         integer(I4P), intent(in)                       :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_rect_async_f_int64
+
+      ! OpenMP Target Memcpy Rect Async Real Routines
+      module function omp_target_memcpy_rect_async_f_real32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_real32
+         real(R4P), contiguous, target, intent(out) :: fptr_dst(..)
+         real(R4P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                       :: cpy_dims(:)
+         integer(I4P), intent(in)                       :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_rect_async_f_real32
+
+      module function omp_target_memcpy_rect_async_f_real64(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_real64
+         real(R8P), contiguous, target, intent(out) :: fptr_dst(..)
+         real(R8P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                       :: cpy_dims(:)
+         integer(I4P), intent(in)                       :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_rect_async_f_real64
+
+#if defined _real128
+      module function omp_target_memcpy_rect_async_f_real128(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_real128
+         real(R16P), contiguous, target, intent(out) :: fptr_dst(..)
+         real(R16P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                       :: cpy_dims(:)
+         integer(I4P), intent(in)                       :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_rect_async_f_real128
+#endif
+
+      ! OpenMP Target Memcpy Rect Async Complex Routines
+      module function omp_target_memcpy_rect_async_f_cmplx32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_cmplx32
+         complex(R4P), contiguous, target, intent(out) :: fptr_dst(..)
+         complex(R4P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                       :: cpy_dims(:)
+         integer(I4P), intent(in)                       :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_rect_async_f_cmplx32
+
+      module function omp_target_memcpy_rect_async_f_cmplx64(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_cmplx64
+         complex(R8P), contiguous, target, intent(out) :: fptr_dst(..)
+         complex(R8P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                       :: cpy_dims(:)
+         integer(I4P), intent(in)                       :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_rect_async_f_cmplx64
+
+#if defined _real128
+      module function omp_target_memcpy_rect_async_f_cmplx128(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_cmplx128
+         complex(R16P), contiguous, target, intent(out) :: fptr_dst(..)
+         complex(R16P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                       :: cpy_dims(:)
+         integer(I4P), intent(in)                       :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_rect_async_f_cmplx128
+#endif
+
+      ! OpenMP Target Memcpy Rect Async Logical Routines
+      module function omp_target_memcpy_rect_async_f_lgcl32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+            omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
+         implicit none
+         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_lgcl32
+         logical(I4P), contiguous, target, intent(out) :: fptr_dst(..)
+         logical(I4P), contiguous, target, intent(in)  :: fptr_src(..)
+         integer(I8P), intent(in)                       :: cpy_dims(:)
+         integer(I4P), intent(in)                       :: dst_offs(:), src_offs(:)
+         integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
+         integer(I4P), intent(in)                       :: f_depobj_count
+         integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
+      endfunction omp_target_memcpy_rect_async_f_lgcl32
 
    endinterface
 

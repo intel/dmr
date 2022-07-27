@@ -6,7 +6,9 @@ set(SRC_dmr
     dmr_target_init.F90
     dmr_target_is_present.F90
     dmr_target_memcpy.F90
+    dmr_target_memcpy_async.F90
     dmr_target_memcpy_rect.F90
+    dmr_target_memcpy_rect_async.F90
     # Modules
     dmr_environment.F90
     dmr.F90)
