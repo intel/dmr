@@ -12,8 +12,6 @@
 !* ========================================================================== *
 
 submodule (dmr) dmr_target_memcpy_rect_async
-   use, intrinsic :: iso_c_binding
-   use dmr_environment
 
    implicit none
 

@@ -12,9 +12,6 @@
 !* ========================================================================== *
 
 submodule (dmr) dmr_target_associate_ptr
-   use, intrinsic :: iso_c_binding
-   use dmr_environment
-   use omp_lib, only : omp_target_associate_ptr
 
    implicit none
 

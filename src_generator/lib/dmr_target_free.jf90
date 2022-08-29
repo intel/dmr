@@ -12,8 +12,6 @@
 !* ========================================================================== *
 
 submodule (dmr) dmr_target_free
-   use, intrinsic :: iso_c_binding
-   use dmr_environment
 
    implicit none
 

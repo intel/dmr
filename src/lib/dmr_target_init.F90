@@ -12,8 +12,6 @@
 !* ========================================================================== *
 
 submodule (dmr) dmr_target_init
-   use omp_lib, only : omp_get_default_device
-   use dmr_environment
 
    implicit none
 

@@ -12,9 +12,6 @@
 !* ========================================================================== *
 
 submodule (dmr) dmr_get_mapped_ptr
-   use, intrinsic :: iso_c_binding
-   use dmr_environment
-   use omp_lib, only : omp_get_mapped_ptr
 
    implicit none
 

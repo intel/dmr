@@ -12,9 +12,6 @@
 !* ========================================================================== *
 
 submodule (dmr) dmr_target_memcpy
-   use, intrinsic :: iso_c_binding
-   use dmr_environment
-   use omp_lib, only : omp_get_initial_device
 
    implicit none
 
