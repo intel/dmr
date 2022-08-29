@@ -24,7 +24,7 @@ submodule (dmr) dmr_get_mapped_ptr
 {%- if p.name == '128' %}
 #if defined _real128
 {%- endif %}
-      module subroutine omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}(fptr_dev, fptr_hos, omp_dev)
          implicit none
          {{t}}({{keywords[t][2]}}{{p.key}}), pointer, intent(out) :: fptr_dev(..)
          {{t}}({{keywords[t][2]}}{{p.key}}), target,  intent(in)  :: fptr_hos(..)
@@ -51,7 +51,7 @@ submodule (dmr) dmr_get_mapped_ptr
          else
             fptr_dev => null()
          endif
-      endsubroutine omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}
+      endsubroutine ompx_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}
 {%- if p.name == '128' %}
 #endif
 {%- endif %}
@@ -68,7 +68,7 @@ submodule (dmr) dmr_get_mapped_ptr
 #if defined _real128
 {%- endif %}
 {%- for d in range(1,dimensions+1) %}
-      module subroutine omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}(fptr_dev, fptr_hos, omp_dev)
          implicit none
          {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous, intent(out){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
          {{t}}({{keywords[t][2]}}{{p.key}}), target,  contiguous, intent(in){% if t=='real' and p.key=='16P' %}{% print('     ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('  ')%}{%- elif t=='real' %}{% print('      ')%}{%- else %}{% print('   ')%}{%- endif %}:: fptr_hos({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
@@ -90,7 +90,7 @@ submodule (dmr) dmr_get_mapped_ptr
          else
             fptr_dev => null()
          endif
-      endsubroutine omp_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+      endsubroutine ompx_get_mapped_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}
 {% print("") %}
 {%- endfor %}
 {%- if p.name == '128' %}

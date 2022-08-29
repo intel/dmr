@@ -23,10 +23,10 @@ submodule (dmr) dmr_target_memcpy_rect_async
 {%- if p.name == '128' %}
 #if defined _real128
 {%- endif %}
-      module function omp_target_memcpy_rect_async_f_{{keywords[t][1]}}{{p.name}}(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_async_f_{{keywords[t][1]}}{{p.name}}(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_{{keywords[t][1]}}{{p.name}}
+         integer(I4P)                                   :: ompx_target_memcpy_rect_async_f_{{keywords[t][1]}}{{p.name}}
          {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(out) :: fptr_dst(..)
          {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                       :: cpy_dims(:)
@@ -73,17 +73,17 @@ submodule (dmr) dmr_target_memcpy_rect_async
 {%- endif %}
 
          if (present(depobj_list)) then
-            omp_target_memcpy_rect_async_f_{{keywords[t][1]}}{{p.name}} = int(omp_target_memcpy_rect_async(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            ompx_target_memcpy_rect_async_f_{{keywords[t][1]}}{{p.name}} = int(omp_target_memcpy_rect_async(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
                omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,      &
                omp_src_device, depobj_count, depobj_list), I4P)
          else
-            omp_target_memcpy_rect_async_f_{{keywords[t][1]}}{{p.name}} = int(omp_target_memcpy_rect_async(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
+            ompx_target_memcpy_rect_async_f_{{keywords[t][1]}}{{p.name}} = int(omp_target_memcpy_rect_async(cptr_dst, cptr_src, elem_dim, fptr_rank, volume_dims, &
                omp_dst_offsets, omp_src_offsets, cptr_dst_dims, cptr_src_dims, omp_dst_device,      &
                omp_src_device, depobj_count), I4P)
          endif
 
          deallocate(volume_dims, cptr_dst_dims, cptr_src_dims, omp_dst_offsets, omp_src_offsets)
-      endfunction omp_target_memcpy_rect_async_f_{{keywords[t][1]}}{{p.name}}
+      endfunction ompx_target_memcpy_rect_async_f_{{keywords[t][1]}}{{p.name}}
 {%- if p.name == '128' %}
 #endif
 {%- endif %}

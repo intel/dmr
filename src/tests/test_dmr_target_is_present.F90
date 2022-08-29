@@ -13,7 +13,7 @@
 
 program test_dmr_target_is_present
    use omp_lib,         only : omp_get_default_device
-   use dmr,             only : omp_target_is_present_f
+   use dmr,             only : ompx_target_is_present_f
    use dmr_environment
 
    implicit none
@@ -55,9 +55,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int8_1)
-      pres = omp_target_is_present_f(host_data=host_data_int8_1, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int8_1, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int8_1, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int8_1, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int8_1"
@@ -70,9 +70,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int8_2)
-      pres = omp_target_is_present_f(host_data=host_data_int8_2, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int8_2, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int8_2, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int8_2, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int8_2"
@@ -85,9 +85,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int8_3)
-      pres = omp_target_is_present_f(host_data=host_data_int8_3, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int8_3, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int8_3, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int8_3, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int8_3"
@@ -100,9 +100,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int8_4)
-      pres = omp_target_is_present_f(host_data=host_data_int8_4, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int8_4, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int8_4, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int8_4, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int8_4"
@@ -115,9 +115,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int8_5)
-      pres = omp_target_is_present_f(host_data=host_data_int8_5, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int8_5, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int8_5, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int8_5, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int8_5"
@@ -130,9 +130,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int8_6)
-      pres = omp_target_is_present_f(host_data=host_data_int8_6, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int8_6, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int8_6, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int8_6, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int8_6"
@@ -145,9 +145,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int8_7)
-      pres = omp_target_is_present_f(host_data=host_data_int8_7, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int8_7, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int8_7, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int8_7, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int8_7"
@@ -162,9 +162,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int16_1)
-      pres = omp_target_is_present_f(host_data=host_data_int16_1, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int16_1, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int16_1, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int16_1, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int16_1"
@@ -177,9 +177,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int16_2)
-      pres = omp_target_is_present_f(host_data=host_data_int16_2, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int16_2, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int16_2, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int16_2, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int16_2"
@@ -192,9 +192,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int16_3)
-      pres = omp_target_is_present_f(host_data=host_data_int16_3, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int16_3, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int16_3, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int16_3, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int16_3"
@@ -207,9 +207,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int16_4)
-      pres = omp_target_is_present_f(host_data=host_data_int16_4, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int16_4, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int16_4, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int16_4, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int16_4"
@@ -222,9 +222,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int16_5)
-      pres = omp_target_is_present_f(host_data=host_data_int16_5, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int16_5, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int16_5, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int16_5, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int16_5"
@@ -237,9 +237,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int16_6)
-      pres = omp_target_is_present_f(host_data=host_data_int16_6, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int16_6, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int16_6, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int16_6, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int16_6"
@@ -252,9 +252,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int16_7)
-      pres = omp_target_is_present_f(host_data=host_data_int16_7, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int16_7, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int16_7, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int16_7, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int16_7"
@@ -269,9 +269,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int32_1)
-      pres = omp_target_is_present_f(host_data=host_data_int32_1, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int32_1, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int32_1, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int32_1, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int32_1"
@@ -284,9 +284,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int32_2)
-      pres = omp_target_is_present_f(host_data=host_data_int32_2, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int32_2, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int32_2, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int32_2, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int32_2"
@@ -299,9 +299,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int32_3)
-      pres = omp_target_is_present_f(host_data=host_data_int32_3, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int32_3, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int32_3, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int32_3, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int32_3"
@@ -314,9 +314,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int32_4)
-      pres = omp_target_is_present_f(host_data=host_data_int32_4, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int32_4, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int32_4, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int32_4, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int32_4"
@@ -329,9 +329,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int32_5)
-      pres = omp_target_is_present_f(host_data=host_data_int32_5, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int32_5, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int32_5, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int32_5, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int32_5"
@@ -344,9 +344,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int32_6)
-      pres = omp_target_is_present_f(host_data=host_data_int32_6, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int32_6, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int32_6, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int32_6, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int32_6"
@@ -359,9 +359,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int32_7)
-      pres = omp_target_is_present_f(host_data=host_data_int32_7, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int32_7, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int32_7, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int32_7, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int32_7"
@@ -376,9 +376,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int64_1)
-      pres = omp_target_is_present_f(host_data=host_data_int64_1, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int64_1, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int64_1, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int64_1, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int64_1"
@@ -391,9 +391,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int64_2)
-      pres = omp_target_is_present_f(host_data=host_data_int64_2, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int64_2, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int64_2, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int64_2, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int64_2"
@@ -406,9 +406,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int64_3)
-      pres = omp_target_is_present_f(host_data=host_data_int64_3, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int64_3, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int64_3, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int64_3, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int64_3"
@@ -421,9 +421,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int64_4)
-      pres = omp_target_is_present_f(host_data=host_data_int64_4, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int64_4, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int64_4, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int64_4, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int64_4"
@@ -436,9 +436,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int64_5)
-      pres = omp_target_is_present_f(host_data=host_data_int64_5, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int64_5, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int64_5, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int64_5, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int64_5"
@@ -451,9 +451,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int64_6)
-      pres = omp_target_is_present_f(host_data=host_data_int64_6, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int64_6, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int64_6, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int64_6, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int64_6"
@@ -466,9 +466,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_int64_7)
-      pres = omp_target_is_present_f(host_data=host_data_int64_7, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_int64_7, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_int64_7, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_int64_7, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_int64_7"
@@ -483,9 +483,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real32_1)
-      pres = omp_target_is_present_f(host_data=host_data_real32_1, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real32_1, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real32_1, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real32_1, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real32_1"
@@ -498,9 +498,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real32_2)
-      pres = omp_target_is_present_f(host_data=host_data_real32_2, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real32_2, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real32_2, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real32_2, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real32_2"
@@ -513,9 +513,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real32_3)
-      pres = omp_target_is_present_f(host_data=host_data_real32_3, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real32_3, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real32_3, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real32_3, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real32_3"
@@ -528,9 +528,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real32_4)
-      pres = omp_target_is_present_f(host_data=host_data_real32_4, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real32_4, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real32_4, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real32_4, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real32_4"
@@ -543,9 +543,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real32_5)
-      pres = omp_target_is_present_f(host_data=host_data_real32_5, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real32_5, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real32_5, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real32_5, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real32_5"
@@ -558,9 +558,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real32_6)
-      pres = omp_target_is_present_f(host_data=host_data_real32_6, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real32_6, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real32_6, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real32_6, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real32_6"
@@ -573,9 +573,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real32_7)
-      pres = omp_target_is_present_f(host_data=host_data_real32_7, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real32_7, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real32_7, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real32_7, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real32_7"
@@ -590,9 +590,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real64_1)
-      pres = omp_target_is_present_f(host_data=host_data_real64_1, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real64_1, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real64_1, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real64_1, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real64_1"
@@ -605,9 +605,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real64_2)
-      pres = omp_target_is_present_f(host_data=host_data_real64_2, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real64_2, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real64_2, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real64_2, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real64_2"
@@ -620,9 +620,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real64_3)
-      pres = omp_target_is_present_f(host_data=host_data_real64_3, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real64_3, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real64_3, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real64_3, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real64_3"
@@ -635,9 +635,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real64_4)
-      pres = omp_target_is_present_f(host_data=host_data_real64_4, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real64_4, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real64_4, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real64_4, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real64_4"
@@ -650,9 +650,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real64_5)
-      pres = omp_target_is_present_f(host_data=host_data_real64_5, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real64_5, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real64_5, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real64_5, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real64_5"
@@ -665,9 +665,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real64_6)
-      pres = omp_target_is_present_f(host_data=host_data_real64_6, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real64_6, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real64_6, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real64_6, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real64_6"
@@ -680,9 +680,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real64_7)
-      pres = omp_target_is_present_f(host_data=host_data_real64_7, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real64_7, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real64_7, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real64_7, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real64_7"
@@ -698,9 +698,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real128_1)
-      pres = omp_target_is_present_f(host_data=host_data_real128_1, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real128_1, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real128_1, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real128_1, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real128_1"
@@ -713,9 +713,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real128_2)
-      pres = omp_target_is_present_f(host_data=host_data_real128_2, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real128_2, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real128_2, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real128_2, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real128_2"
@@ -728,9 +728,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real128_3)
-      pres = omp_target_is_present_f(host_data=host_data_real128_3, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real128_3, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real128_3, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real128_3, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real128_3"
@@ -743,9 +743,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real128_4)
-      pres = omp_target_is_present_f(host_data=host_data_real128_4, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real128_4, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real128_4, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real128_4, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real128_4"
@@ -758,9 +758,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real128_5)
-      pres = omp_target_is_present_f(host_data=host_data_real128_5, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real128_5, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real128_5, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real128_5, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real128_5"
@@ -773,9 +773,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real128_6)
-      pres = omp_target_is_present_f(host_data=host_data_real128_6, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real128_6, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real128_6, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real128_6, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real128_6"
@@ -788,9 +788,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_real128_7)
-      pres = omp_target_is_present_f(host_data=host_data_real128_7, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_real128_7, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_real128_7, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_real128_7, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_real128_7"
@@ -806,9 +806,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx32_1)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx32_1, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx32_1, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx32_1, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx32_1, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx32_1"
@@ -821,9 +821,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx32_2)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx32_2, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx32_2, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx32_2, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx32_2, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx32_2"
@@ -836,9 +836,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx32_3)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx32_3, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx32_3, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx32_3, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx32_3, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx32_3"
@@ -851,9 +851,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx32_4)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx32_4, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx32_4, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx32_4, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx32_4, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx32_4"
@@ -866,9 +866,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx32_5)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx32_5, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx32_5, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx32_5, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx32_5, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx32_5"
@@ -881,9 +881,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx32_6)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx32_6, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx32_6, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx32_6, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx32_6, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx32_6"
@@ -896,9 +896,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx32_7)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx32_7, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx32_7, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx32_7, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx32_7, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx32_7"
@@ -913,9 +913,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx64_1)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx64_1, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx64_1, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx64_1, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx64_1, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx64_1"
@@ -928,9 +928,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx64_2)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx64_2, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx64_2, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx64_2, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx64_2, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx64_2"
@@ -943,9 +943,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx64_3)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx64_3, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx64_3, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx64_3, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx64_3, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx64_3"
@@ -958,9 +958,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx64_4)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx64_4, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx64_4, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx64_4, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx64_4, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx64_4"
@@ -973,9 +973,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx64_5)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx64_5, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx64_5, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx64_5, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx64_5, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx64_5"
@@ -988,9 +988,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx64_6)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx64_6, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx64_6, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx64_6, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx64_6, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx64_6"
@@ -1003,9 +1003,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx64_7)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx64_7, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx64_7, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx64_7, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx64_7, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx64_7"
@@ -1021,9 +1021,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx128_1)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx128_1, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx128_1, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx128_1, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx128_1, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx128_1"
@@ -1036,9 +1036,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx128_2)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx128_2, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx128_2, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx128_2, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx128_2, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx128_2"
@@ -1051,9 +1051,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx128_3)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx128_3, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx128_3, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx128_3, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx128_3, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx128_3"
@@ -1066,9 +1066,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx128_4)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx128_4, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx128_4, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx128_4, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx128_4, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx128_4"
@@ -1081,9 +1081,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx128_5)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx128_5, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx128_5, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx128_5, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx128_5, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx128_5"
@@ -1096,9 +1096,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx128_6)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx128_6, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx128_6, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx128_6, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx128_6, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx128_6"
@@ -1111,9 +1111,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_cmplx128_7)
-      pres = omp_target_is_present_f(host_data=host_data_cmplx128_7, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_cmplx128_7, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_cmplx128_7, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_cmplx128_7, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_cmplx128_7"
@@ -1129,9 +1129,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_lgcl32_1)
-      pres = omp_target_is_present_f(host_data=host_data_lgcl32_1, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_lgcl32_1, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_lgcl32_1, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_lgcl32_1, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_lgcl32_1"
@@ -1144,9 +1144,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_lgcl32_2)
-      pres = omp_target_is_present_f(host_data=host_data_lgcl32_2, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_lgcl32_2, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_lgcl32_2, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_lgcl32_2, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_lgcl32_2"
@@ -1159,9 +1159,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_lgcl32_3)
-      pres = omp_target_is_present_f(host_data=host_data_lgcl32_3, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_lgcl32_3, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_lgcl32_3, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_lgcl32_3, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_lgcl32_3"
@@ -1174,9 +1174,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_lgcl32_4)
-      pres = omp_target_is_present_f(host_data=host_data_lgcl32_4, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_lgcl32_4, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_lgcl32_4, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_lgcl32_4, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_lgcl32_4"
@@ -1189,9 +1189,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_lgcl32_5)
-      pres = omp_target_is_present_f(host_data=host_data_lgcl32_5, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_lgcl32_5, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_lgcl32_5, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_lgcl32_5, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_lgcl32_5"
@@ -1204,9 +1204,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_lgcl32_6)
-      pres = omp_target_is_present_f(host_data=host_data_lgcl32_6, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_lgcl32_6, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_lgcl32_6, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_lgcl32_6, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_lgcl32_6"
@@ -1219,9 +1219,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_lgcl32_7)
-      pres = omp_target_is_present_f(host_data=host_data_lgcl32_7, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_lgcl32_7, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_lgcl32_7, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_lgcl32_7, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_lgcl32_7"

@@ -24,7 +24,7 @@ submodule (dmr) dmr_target_alloc
 #if defined _real128
 {%- endif %}
 {%- for d in range(1,dimensions+1) %}
-      module subroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous, intent(out){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
 {%- if d == 1 %}
@@ -92,7 +92,7 @@ submodule (dmr) dmr_target_alloc
             fptr_dev => null()
             ierr = 1000
          endif
-      endsubroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_32bit
+      endsubroutine ompx_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_32bit
 {% print("") %}
 {%- endfor %}
 {%- if p.name == '128' %}
@@ -110,7 +110,7 @@ submodule (dmr) dmr_target_alloc
 #if defined _real128
 {%- endif %}
 {%- for d in range(1,dimensions+1) %}
-      module subroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous, intent(out){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
 {%- if d == 1 %}
@@ -178,7 +178,7 @@ submodule (dmr) dmr_target_alloc
             fptr_dev => null()
             ierr = 1000
          endif
-      endsubroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_64bit
+      endsubroutine ompx_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_64bit
 {% print("") %}
 {%- endfor %}
 {%- if p.name == '128' %}

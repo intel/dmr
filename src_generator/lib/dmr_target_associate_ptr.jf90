@@ -24,9 +24,9 @@ submodule (dmr) dmr_target_associate_ptr
 #if defined _real128
 {%- endif %}
 {%- for d in range(1,dimensions+1) %}
-      module function omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+         integer(I4P)                       :: ompx_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}
          {{t}}({{keywords[t][2]}}{{p.key}}), target,  intent(out){% if t=='real' and p.key=='16P' %}{% print('   ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('')%}{%- elif t=='real' %}{% print('    ')%}{%- else %}{% print(' ')%}{%- endif %}:: fptr_hos({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
          {{t}}({{keywords[t][2]}}{{p.key}}), pointer, intent(in) {% if t=='real' and p.key=='16P' %}{% print('   ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('')%}{%- elif t=='real' %}{% print('    ')%}{%- else %}{% print(' ')%}{%- endif %}:: fptr_dev({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
          integer(I4P), intent(in)           :: dev_off
@@ -50,12 +50,12 @@ submodule (dmr) dmr_target_associate_ptr
 {%- else %}
             total_dim = int(n_elements * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), c_size_t)
 {%- endif %}
-            omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}} = int(omp_target_associate_ptr(cptr_hos, cptr_dev, &
+            ompx_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}} = int(omp_target_associate_ptr(cptr_hos, cptr_dev, &
                                                                           total_dim, omp_dev_offset, omp_device), I4P)
          else
-            omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}} = 1000
+            ompx_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}} = 1000
          endif
-      endfunction omp_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}
+      endfunction ompx_target_associate_ptr_f_{{keywords[t][1]}}{{p.name}}_{{d}}
 {%- endfor %}
 {%- if p.name == '128' %}
 #endif

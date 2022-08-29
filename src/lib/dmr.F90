@@ -18,242 +18,242 @@ module dmr
 
    implicit none
 
-   interface omp_target_is_present_f
+   interface ompx_target_is_present_f
       module procedure &
-                       omp_target_is_present_f_lgcl32_1, omp_target_is_present_f_lgcl32_2, omp_target_is_present_f_lgcl32_3, &
-                       omp_target_is_present_f_lgcl32_4, omp_target_is_present_f_lgcl32_5, omp_target_is_present_f_lgcl32_6, &
-                       omp_target_is_present_f_lgcl32_7, &
-                       omp_target_is_present_f_cmplx32_1, omp_target_is_present_f_cmplx32_2, omp_target_is_present_f_cmplx32_3, &
-                       omp_target_is_present_f_cmplx32_4, omp_target_is_present_f_cmplx32_5, omp_target_is_present_f_cmplx32_6, &
-                       omp_target_is_present_f_cmplx32_7, &
-                       omp_target_is_present_f_cmplx64_1, omp_target_is_present_f_cmplx64_2, omp_target_is_present_f_cmplx64_3, &
-                       omp_target_is_present_f_cmplx64_4, omp_target_is_present_f_cmplx64_5, omp_target_is_present_f_cmplx64_6, &
-                       omp_target_is_present_f_cmplx64_7, &
+                       ompx_target_is_present_f_lgcl32_1, ompx_target_is_present_f_lgcl32_2, ompx_target_is_present_f_lgcl32_3, &
+                       ompx_target_is_present_f_lgcl32_4, ompx_target_is_present_f_lgcl32_5, ompx_target_is_present_f_lgcl32_6, &
+                       ompx_target_is_present_f_lgcl32_7, &
+                       ompx_target_is_present_f_cmplx32_1, ompx_target_is_present_f_cmplx32_2, ompx_target_is_present_f_cmplx32_3, &
+                       ompx_target_is_present_f_cmplx32_4, ompx_target_is_present_f_cmplx32_5, ompx_target_is_present_f_cmplx32_6, &
+                       ompx_target_is_present_f_cmplx32_7, &
+                       ompx_target_is_present_f_cmplx64_1, ompx_target_is_present_f_cmplx64_2, ompx_target_is_present_f_cmplx64_3, &
+                       ompx_target_is_present_f_cmplx64_4, ompx_target_is_present_f_cmplx64_5, ompx_target_is_present_f_cmplx64_6, &
+                       ompx_target_is_present_f_cmplx64_7, &
 #if defined _real128
-                       omp_target_is_present_f_cmplx128_1, omp_target_is_present_f_cmplx128_2, omp_target_is_present_f_cmplx128_3, &
-                       omp_target_is_present_f_cmplx128_4, omp_target_is_present_f_cmplx128_5, omp_target_is_present_f_cmplx128_6, &
-                       omp_target_is_present_f_cmplx128_7, &
+                       ompx_target_is_present_f_cmplx128_1, ompx_target_is_present_f_cmplx128_2, ompx_target_is_present_f_cmplx128_3, &
+                       ompx_target_is_present_f_cmplx128_4, ompx_target_is_present_f_cmplx128_5, ompx_target_is_present_f_cmplx128_6, &
+                       ompx_target_is_present_f_cmplx128_7, &
 #endif
-                       omp_target_is_present_f_real32_1, omp_target_is_present_f_real32_2, omp_target_is_present_f_real32_3, &
-                       omp_target_is_present_f_real32_4, omp_target_is_present_f_real32_5, omp_target_is_present_f_real32_6, &
-                       omp_target_is_present_f_real32_7, &
-                       omp_target_is_present_f_real64_1, omp_target_is_present_f_real64_2, omp_target_is_present_f_real64_3, &
-                       omp_target_is_present_f_real64_4, omp_target_is_present_f_real64_5, omp_target_is_present_f_real64_6, &
-                       omp_target_is_present_f_real64_7, &
+                       ompx_target_is_present_f_real32_1, ompx_target_is_present_f_real32_2, ompx_target_is_present_f_real32_3, &
+                       ompx_target_is_present_f_real32_4, ompx_target_is_present_f_real32_5, ompx_target_is_present_f_real32_6, &
+                       ompx_target_is_present_f_real32_7, &
+                       ompx_target_is_present_f_real64_1, ompx_target_is_present_f_real64_2, ompx_target_is_present_f_real64_3, &
+                       ompx_target_is_present_f_real64_4, ompx_target_is_present_f_real64_5, ompx_target_is_present_f_real64_6, &
+                       ompx_target_is_present_f_real64_7, &
 #if defined _real128
-                       omp_target_is_present_f_real128_1, omp_target_is_present_f_real128_2, omp_target_is_present_f_real128_3, &
-                       omp_target_is_present_f_real128_4, omp_target_is_present_f_real128_5, omp_target_is_present_f_real128_6, &
-                       omp_target_is_present_f_real128_7, &
+                       ompx_target_is_present_f_real128_1, ompx_target_is_present_f_real128_2, ompx_target_is_present_f_real128_3, &
+                       ompx_target_is_present_f_real128_4, ompx_target_is_present_f_real128_5, ompx_target_is_present_f_real128_6, &
+                       ompx_target_is_present_f_real128_7, &
 #endif
-                       omp_target_is_present_f_int8_1, omp_target_is_present_f_int8_2, omp_target_is_present_f_int8_3, &
-                       omp_target_is_present_f_int8_4, omp_target_is_present_f_int8_5, omp_target_is_present_f_int8_6, &
-                       omp_target_is_present_f_int8_7, &
-                       omp_target_is_present_f_int16_1, omp_target_is_present_f_int16_2, omp_target_is_present_f_int16_3, &
-                       omp_target_is_present_f_int16_4, omp_target_is_present_f_int16_5, omp_target_is_present_f_int16_6, &
-                       omp_target_is_present_f_int16_7, &
-                       omp_target_is_present_f_int32_1, omp_target_is_present_f_int32_2, omp_target_is_present_f_int32_3, &
-                       omp_target_is_present_f_int32_4, omp_target_is_present_f_int32_5, omp_target_is_present_f_int32_6, &
-                       omp_target_is_present_f_int32_7, &
-                       omp_target_is_present_f_int64_1, omp_target_is_present_f_int64_2, omp_target_is_present_f_int64_3, &
-                       omp_target_is_present_f_int64_4, omp_target_is_present_f_int64_5, omp_target_is_present_f_int64_6, &
-                       omp_target_is_present_f_int64_7
-   endinterface omp_target_is_present_f
+                       ompx_target_is_present_f_int8_1, ompx_target_is_present_f_int8_2, ompx_target_is_present_f_int8_3, &
+                       ompx_target_is_present_f_int8_4, ompx_target_is_present_f_int8_5, ompx_target_is_present_f_int8_6, &
+                       ompx_target_is_present_f_int8_7, &
+                       ompx_target_is_present_f_int16_1, ompx_target_is_present_f_int16_2, ompx_target_is_present_f_int16_3, &
+                       ompx_target_is_present_f_int16_4, ompx_target_is_present_f_int16_5, ompx_target_is_present_f_int16_6, &
+                       ompx_target_is_present_f_int16_7, &
+                       ompx_target_is_present_f_int32_1, ompx_target_is_present_f_int32_2, ompx_target_is_present_f_int32_3, &
+                       ompx_target_is_present_f_int32_4, ompx_target_is_present_f_int32_5, ompx_target_is_present_f_int32_6, &
+                       ompx_target_is_present_f_int32_7, &
+                       ompx_target_is_present_f_int64_1, ompx_target_is_present_f_int64_2, ompx_target_is_present_f_int64_3, &
+                       ompx_target_is_present_f_int64_4, ompx_target_is_present_f_int64_5, ompx_target_is_present_f_int64_6, &
+                       ompx_target_is_present_f_int64_7
+   endinterface ompx_target_is_present_f
 
-   interface omp_target_free_f
+   interface ompx_target_free_f
       module procedure &
-                       omp_target_free_f_lgcl32_1, omp_target_free_f_lgcl32_2, omp_target_free_f_lgcl32_3, &
-                       omp_target_free_f_lgcl32_4, omp_target_free_f_lgcl32_5, omp_target_free_f_lgcl32_6, &
-                       omp_target_free_f_lgcl32_7, &
-                       omp_target_free_f_cmplx32_1, omp_target_free_f_cmplx32_2, omp_target_free_f_cmplx32_3, &
-                       omp_target_free_f_cmplx32_4, omp_target_free_f_cmplx32_5, omp_target_free_f_cmplx32_6, &
-                       omp_target_free_f_cmplx32_7, &
-                       omp_target_free_f_cmplx64_1, omp_target_free_f_cmplx64_2, omp_target_free_f_cmplx64_3, &
-                       omp_target_free_f_cmplx64_4, omp_target_free_f_cmplx64_5, omp_target_free_f_cmplx64_6, &
-                       omp_target_free_f_cmplx64_7, &
+                       ompx_target_free_f_lgcl32_1, ompx_target_free_f_lgcl32_2, ompx_target_free_f_lgcl32_3, &
+                       ompx_target_free_f_lgcl32_4, ompx_target_free_f_lgcl32_5, ompx_target_free_f_lgcl32_6, &
+                       ompx_target_free_f_lgcl32_7, &
+                       ompx_target_free_f_cmplx32_1, ompx_target_free_f_cmplx32_2, ompx_target_free_f_cmplx32_3, &
+                       ompx_target_free_f_cmplx32_4, ompx_target_free_f_cmplx32_5, ompx_target_free_f_cmplx32_6, &
+                       ompx_target_free_f_cmplx32_7, &
+                       ompx_target_free_f_cmplx64_1, ompx_target_free_f_cmplx64_2, ompx_target_free_f_cmplx64_3, &
+                       ompx_target_free_f_cmplx64_4, ompx_target_free_f_cmplx64_5, ompx_target_free_f_cmplx64_6, &
+                       ompx_target_free_f_cmplx64_7, &
 #if defined _real128
-                       omp_target_free_f_cmplx128_1, omp_target_free_f_cmplx128_2, omp_target_free_f_cmplx128_3, &
-                       omp_target_free_f_cmplx128_4, omp_target_free_f_cmplx128_5, omp_target_free_f_cmplx128_6, &
-                       omp_target_free_f_cmplx128_7, &
+                       ompx_target_free_f_cmplx128_1, ompx_target_free_f_cmplx128_2, ompx_target_free_f_cmplx128_3, &
+                       ompx_target_free_f_cmplx128_4, ompx_target_free_f_cmplx128_5, ompx_target_free_f_cmplx128_6, &
+                       ompx_target_free_f_cmplx128_7, &
 #endif
-                       omp_target_free_f_real32_1, omp_target_free_f_real32_2, omp_target_free_f_real32_3, &
-                       omp_target_free_f_real32_4, omp_target_free_f_real32_5, omp_target_free_f_real32_6, &
-                       omp_target_free_f_real32_7, &
-                       omp_target_free_f_real64_1, omp_target_free_f_real64_2, omp_target_free_f_real64_3, &
-                       omp_target_free_f_real64_4, omp_target_free_f_real64_5, omp_target_free_f_real64_6, &
-                       omp_target_free_f_real64_7, &
+                       ompx_target_free_f_real32_1, ompx_target_free_f_real32_2, ompx_target_free_f_real32_3, &
+                       ompx_target_free_f_real32_4, ompx_target_free_f_real32_5, ompx_target_free_f_real32_6, &
+                       ompx_target_free_f_real32_7, &
+                       ompx_target_free_f_real64_1, ompx_target_free_f_real64_2, ompx_target_free_f_real64_3, &
+                       ompx_target_free_f_real64_4, ompx_target_free_f_real64_5, ompx_target_free_f_real64_6, &
+                       ompx_target_free_f_real64_7, &
 #if defined _real128
-                       omp_target_free_f_real128_1, omp_target_free_f_real128_2, omp_target_free_f_real128_3, &
-                       omp_target_free_f_real128_4, omp_target_free_f_real128_5, omp_target_free_f_real128_6, &
-                       omp_target_free_f_real128_7, &
+                       ompx_target_free_f_real128_1, ompx_target_free_f_real128_2, ompx_target_free_f_real128_3, &
+                       ompx_target_free_f_real128_4, ompx_target_free_f_real128_5, ompx_target_free_f_real128_6, &
+                       ompx_target_free_f_real128_7, &
 #endif
-                       omp_target_free_f_int8_1, omp_target_free_f_int8_2, omp_target_free_f_int8_3, &
-                       omp_target_free_f_int8_4, omp_target_free_f_int8_5, omp_target_free_f_int8_6, &
-                       omp_target_free_f_int8_7, &
-                       omp_target_free_f_int16_1, omp_target_free_f_int16_2, omp_target_free_f_int16_3, &
-                       omp_target_free_f_int16_4, omp_target_free_f_int16_5, omp_target_free_f_int16_6, &
-                       omp_target_free_f_int16_7, &
-                       omp_target_free_f_int32_1, omp_target_free_f_int32_2, omp_target_free_f_int32_3, &
-                       omp_target_free_f_int32_4, omp_target_free_f_int32_5, omp_target_free_f_int32_6, &
-                       omp_target_free_f_int32_7, &
-                       omp_target_free_f_int64_1, omp_target_free_f_int64_2, omp_target_free_f_int64_3, &
-                       omp_target_free_f_int64_4, omp_target_free_f_int64_5, omp_target_free_f_int64_6, &
-                       omp_target_free_f_int64_7
-   endinterface omp_target_free_f
+                       ompx_target_free_f_int8_1, ompx_target_free_f_int8_2, ompx_target_free_f_int8_3, &
+                       ompx_target_free_f_int8_4, ompx_target_free_f_int8_5, ompx_target_free_f_int8_6, &
+                       ompx_target_free_f_int8_7, &
+                       ompx_target_free_f_int16_1, ompx_target_free_f_int16_2, ompx_target_free_f_int16_3, &
+                       ompx_target_free_f_int16_4, ompx_target_free_f_int16_5, ompx_target_free_f_int16_6, &
+                       ompx_target_free_f_int16_7, &
+                       ompx_target_free_f_int32_1, ompx_target_free_f_int32_2, ompx_target_free_f_int32_3, &
+                       ompx_target_free_f_int32_4, ompx_target_free_f_int32_5, ompx_target_free_f_int32_6, &
+                       ompx_target_free_f_int32_7, &
+                       ompx_target_free_f_int64_1, ompx_target_free_f_int64_2, ompx_target_free_f_int64_3, &
+                       ompx_target_free_f_int64_4, ompx_target_free_f_int64_5, ompx_target_free_f_int64_6, &
+                       ompx_target_free_f_int64_7
+   endinterface ompx_target_free_f
 
-   interface omp_target_alloc_f
+   interface ompx_target_alloc_f
       module procedure &
-                       omp_target_alloc_f_lgcl32_1_32bit, omp_target_alloc_f_lgcl32_2_32bit, omp_target_alloc_f_lgcl32_3_32bit, &
-                       omp_target_alloc_f_lgcl32_4_32bit, omp_target_alloc_f_lgcl32_5_32bit, omp_target_alloc_f_lgcl32_6_32bit, &
-                       omp_target_alloc_f_lgcl32_7_32bit, &
-                       omp_target_alloc_f_cmplx32_1_32bit, omp_target_alloc_f_cmplx32_2_32bit, omp_target_alloc_f_cmplx32_3_32bit, &
-                       omp_target_alloc_f_cmplx32_4_32bit, omp_target_alloc_f_cmplx32_5_32bit, omp_target_alloc_f_cmplx32_6_32bit, &
-                       omp_target_alloc_f_cmplx32_7_32bit, &
-                       omp_target_alloc_f_cmplx64_1_32bit, omp_target_alloc_f_cmplx64_2_32bit, omp_target_alloc_f_cmplx64_3_32bit, &
-                       omp_target_alloc_f_cmplx64_4_32bit, omp_target_alloc_f_cmplx64_5_32bit, omp_target_alloc_f_cmplx64_6_32bit, &
-                       omp_target_alloc_f_cmplx64_7_32bit, &
+                       ompx_target_alloc_f_lgcl32_1_32bit, ompx_target_alloc_f_lgcl32_2_32bit, ompx_target_alloc_f_lgcl32_3_32bit, &
+                       ompx_target_alloc_f_lgcl32_4_32bit, ompx_target_alloc_f_lgcl32_5_32bit, ompx_target_alloc_f_lgcl32_6_32bit, &
+                       ompx_target_alloc_f_lgcl32_7_32bit, &
+                       ompx_target_alloc_f_cmplx32_1_32bit, ompx_target_alloc_f_cmplx32_2_32bit, ompx_target_alloc_f_cmplx32_3_32bit, &
+                       ompx_target_alloc_f_cmplx32_4_32bit, ompx_target_alloc_f_cmplx32_5_32bit, ompx_target_alloc_f_cmplx32_6_32bit, &
+                       ompx_target_alloc_f_cmplx32_7_32bit, &
+                       ompx_target_alloc_f_cmplx64_1_32bit, ompx_target_alloc_f_cmplx64_2_32bit, ompx_target_alloc_f_cmplx64_3_32bit, &
+                       ompx_target_alloc_f_cmplx64_4_32bit, ompx_target_alloc_f_cmplx64_5_32bit, ompx_target_alloc_f_cmplx64_6_32bit, &
+                       ompx_target_alloc_f_cmplx64_7_32bit, &
 #if defined _real128
-                       omp_target_alloc_f_cmplx128_1_32bit, omp_target_alloc_f_cmplx128_2_32bit, omp_target_alloc_f_cmplx128_3_32bit, &
-                       omp_target_alloc_f_cmplx128_4_32bit, omp_target_alloc_f_cmplx128_5_32bit, omp_target_alloc_f_cmplx128_6_32bit, &
-                       omp_target_alloc_f_cmplx128_7_32bit, &
+                       ompx_target_alloc_f_cmplx128_1_32bit, ompx_target_alloc_f_cmplx128_2_32bit, ompx_target_alloc_f_cmplx128_3_32bit, &
+                       ompx_target_alloc_f_cmplx128_4_32bit, ompx_target_alloc_f_cmplx128_5_32bit, ompx_target_alloc_f_cmplx128_6_32bit, &
+                       ompx_target_alloc_f_cmplx128_7_32bit, &
 #endif
-                       omp_target_alloc_f_real32_1_32bit, omp_target_alloc_f_real32_2_32bit, omp_target_alloc_f_real32_3_32bit, &
-                       omp_target_alloc_f_real32_4_32bit, omp_target_alloc_f_real32_5_32bit, omp_target_alloc_f_real32_6_32bit, &
-                       omp_target_alloc_f_real32_7_32bit, &
-                       omp_target_alloc_f_real64_1_32bit, omp_target_alloc_f_real64_2_32bit, omp_target_alloc_f_real64_3_32bit, &
-                       omp_target_alloc_f_real64_4_32bit, omp_target_alloc_f_real64_5_32bit, omp_target_alloc_f_real64_6_32bit, &
-                       omp_target_alloc_f_real64_7_32bit, &
+                       ompx_target_alloc_f_real32_1_32bit, ompx_target_alloc_f_real32_2_32bit, ompx_target_alloc_f_real32_3_32bit, &
+                       ompx_target_alloc_f_real32_4_32bit, ompx_target_alloc_f_real32_5_32bit, ompx_target_alloc_f_real32_6_32bit, &
+                       ompx_target_alloc_f_real32_7_32bit, &
+                       ompx_target_alloc_f_real64_1_32bit, ompx_target_alloc_f_real64_2_32bit, ompx_target_alloc_f_real64_3_32bit, &
+                       ompx_target_alloc_f_real64_4_32bit, ompx_target_alloc_f_real64_5_32bit, ompx_target_alloc_f_real64_6_32bit, &
+                       ompx_target_alloc_f_real64_7_32bit, &
 #if defined _real128
-                       omp_target_alloc_f_real128_1_32bit, omp_target_alloc_f_real128_2_32bit, omp_target_alloc_f_real128_3_32bit, &
-                       omp_target_alloc_f_real128_4_32bit, omp_target_alloc_f_real128_5_32bit, omp_target_alloc_f_real128_6_32bit, &
-                       omp_target_alloc_f_real128_7_32bit, &
+                       ompx_target_alloc_f_real128_1_32bit, ompx_target_alloc_f_real128_2_32bit, ompx_target_alloc_f_real128_3_32bit, &
+                       ompx_target_alloc_f_real128_4_32bit, ompx_target_alloc_f_real128_5_32bit, ompx_target_alloc_f_real128_6_32bit, &
+                       ompx_target_alloc_f_real128_7_32bit, &
 #endif
-                       omp_target_alloc_f_int8_1_32bit, omp_target_alloc_f_int8_2_32bit, omp_target_alloc_f_int8_3_32bit, &
-                       omp_target_alloc_f_int8_4_32bit, omp_target_alloc_f_int8_5_32bit, omp_target_alloc_f_int8_6_32bit, &
-                       omp_target_alloc_f_int8_7_32bit, &
-                       omp_target_alloc_f_int16_1_32bit, omp_target_alloc_f_int16_2_32bit, omp_target_alloc_f_int16_3_32bit, &
-                       omp_target_alloc_f_int16_4_32bit, omp_target_alloc_f_int16_5_32bit, omp_target_alloc_f_int16_6_32bit, &
-                       omp_target_alloc_f_int16_7_32bit, &
-                       omp_target_alloc_f_int32_1_32bit, omp_target_alloc_f_int32_2_32bit, omp_target_alloc_f_int32_3_32bit, &
-                       omp_target_alloc_f_int32_4_32bit, omp_target_alloc_f_int32_5_32bit, omp_target_alloc_f_int32_6_32bit, &
-                       omp_target_alloc_f_int32_7_32bit, &
-                       omp_target_alloc_f_int64_1_32bit, omp_target_alloc_f_int64_2_32bit, omp_target_alloc_f_int64_3_32bit, &
-                       omp_target_alloc_f_int64_4_32bit, omp_target_alloc_f_int64_5_32bit, omp_target_alloc_f_int64_6_32bit, &
-                       omp_target_alloc_f_int64_7_32bit
+                       ompx_target_alloc_f_int8_1_32bit, ompx_target_alloc_f_int8_2_32bit, ompx_target_alloc_f_int8_3_32bit, &
+                       ompx_target_alloc_f_int8_4_32bit, ompx_target_alloc_f_int8_5_32bit, ompx_target_alloc_f_int8_6_32bit, &
+                       ompx_target_alloc_f_int8_7_32bit, &
+                       ompx_target_alloc_f_int16_1_32bit, ompx_target_alloc_f_int16_2_32bit, ompx_target_alloc_f_int16_3_32bit, &
+                       ompx_target_alloc_f_int16_4_32bit, ompx_target_alloc_f_int16_5_32bit, ompx_target_alloc_f_int16_6_32bit, &
+                       ompx_target_alloc_f_int16_7_32bit, &
+                       ompx_target_alloc_f_int32_1_32bit, ompx_target_alloc_f_int32_2_32bit, ompx_target_alloc_f_int32_3_32bit, &
+                       ompx_target_alloc_f_int32_4_32bit, ompx_target_alloc_f_int32_5_32bit, ompx_target_alloc_f_int32_6_32bit, &
+                       ompx_target_alloc_f_int32_7_32bit, &
+                       ompx_target_alloc_f_int64_1_32bit, ompx_target_alloc_f_int64_2_32bit, ompx_target_alloc_f_int64_3_32bit, &
+                       ompx_target_alloc_f_int64_4_32bit, ompx_target_alloc_f_int64_5_32bit, ompx_target_alloc_f_int64_6_32bit, &
+                       ompx_target_alloc_f_int64_7_32bit
       module procedure &
-                       omp_target_alloc_f_lgcl32_1_64bit, omp_target_alloc_f_lgcl32_2_64bit, omp_target_alloc_f_lgcl32_3_64bit, &
-                       omp_target_alloc_f_lgcl32_4_64bit, omp_target_alloc_f_lgcl32_5_64bit, omp_target_alloc_f_lgcl32_6_64bit, &
-                       omp_target_alloc_f_lgcl32_7_64bit, &
-                       omp_target_alloc_f_cmplx32_1_64bit, omp_target_alloc_f_cmplx32_2_64bit, omp_target_alloc_f_cmplx32_3_64bit, &
-                       omp_target_alloc_f_cmplx32_4_64bit, omp_target_alloc_f_cmplx32_5_64bit, omp_target_alloc_f_cmplx32_6_64bit, &
-                       omp_target_alloc_f_cmplx32_7_64bit, &
-                       omp_target_alloc_f_cmplx64_1_64bit, omp_target_alloc_f_cmplx64_2_64bit, omp_target_alloc_f_cmplx64_3_64bit, &
-                       omp_target_alloc_f_cmplx64_4_64bit, omp_target_alloc_f_cmplx64_5_64bit, omp_target_alloc_f_cmplx64_6_64bit, &
-                       omp_target_alloc_f_cmplx64_7_64bit, &
+                       ompx_target_alloc_f_lgcl32_1_64bit, ompx_target_alloc_f_lgcl32_2_64bit, ompx_target_alloc_f_lgcl32_3_64bit, &
+                       ompx_target_alloc_f_lgcl32_4_64bit, ompx_target_alloc_f_lgcl32_5_64bit, ompx_target_alloc_f_lgcl32_6_64bit, &
+                       ompx_target_alloc_f_lgcl32_7_64bit, &
+                       ompx_target_alloc_f_cmplx32_1_64bit, ompx_target_alloc_f_cmplx32_2_64bit, ompx_target_alloc_f_cmplx32_3_64bit, &
+                       ompx_target_alloc_f_cmplx32_4_64bit, ompx_target_alloc_f_cmplx32_5_64bit, ompx_target_alloc_f_cmplx32_6_64bit, &
+                       ompx_target_alloc_f_cmplx32_7_64bit, &
+                       ompx_target_alloc_f_cmplx64_1_64bit, ompx_target_alloc_f_cmplx64_2_64bit, ompx_target_alloc_f_cmplx64_3_64bit, &
+                       ompx_target_alloc_f_cmplx64_4_64bit, ompx_target_alloc_f_cmplx64_5_64bit, ompx_target_alloc_f_cmplx64_6_64bit, &
+                       ompx_target_alloc_f_cmplx64_7_64bit, &
 #if defined _real128
-                       omp_target_alloc_f_cmplx128_1_64bit, omp_target_alloc_f_cmplx128_2_64bit, omp_target_alloc_f_cmplx128_3_64bit, &
-                       omp_target_alloc_f_cmplx128_4_64bit, omp_target_alloc_f_cmplx128_5_64bit, omp_target_alloc_f_cmplx128_6_64bit, &
-                       omp_target_alloc_f_cmplx128_7_64bit, &
+                       ompx_target_alloc_f_cmplx128_1_64bit, ompx_target_alloc_f_cmplx128_2_64bit, ompx_target_alloc_f_cmplx128_3_64bit, &
+                       ompx_target_alloc_f_cmplx128_4_64bit, ompx_target_alloc_f_cmplx128_5_64bit, ompx_target_alloc_f_cmplx128_6_64bit, &
+                       ompx_target_alloc_f_cmplx128_7_64bit, &
 #endif
-                       omp_target_alloc_f_real32_1_64bit, omp_target_alloc_f_real32_2_64bit, omp_target_alloc_f_real32_3_64bit, &
-                       omp_target_alloc_f_real32_4_64bit, omp_target_alloc_f_real32_5_64bit, omp_target_alloc_f_real32_6_64bit, &
-                       omp_target_alloc_f_real32_7_64bit, &
-                       omp_target_alloc_f_real64_1_64bit, omp_target_alloc_f_real64_2_64bit, omp_target_alloc_f_real64_3_64bit, &
-                       omp_target_alloc_f_real64_4_64bit, omp_target_alloc_f_real64_5_64bit, omp_target_alloc_f_real64_6_64bit, &
-                       omp_target_alloc_f_real64_7_64bit, &
+                       ompx_target_alloc_f_real32_1_64bit, ompx_target_alloc_f_real32_2_64bit, ompx_target_alloc_f_real32_3_64bit, &
+                       ompx_target_alloc_f_real32_4_64bit, ompx_target_alloc_f_real32_5_64bit, ompx_target_alloc_f_real32_6_64bit, &
+                       ompx_target_alloc_f_real32_7_64bit, &
+                       ompx_target_alloc_f_real64_1_64bit, ompx_target_alloc_f_real64_2_64bit, ompx_target_alloc_f_real64_3_64bit, &
+                       ompx_target_alloc_f_real64_4_64bit, ompx_target_alloc_f_real64_5_64bit, ompx_target_alloc_f_real64_6_64bit, &
+                       ompx_target_alloc_f_real64_7_64bit, &
 #if defined _real128
-                       omp_target_alloc_f_real128_1_64bit, omp_target_alloc_f_real128_2_64bit, omp_target_alloc_f_real128_3_64bit, &
-                       omp_target_alloc_f_real128_4_64bit, omp_target_alloc_f_real128_5_64bit, omp_target_alloc_f_real128_6_64bit, &
-                       omp_target_alloc_f_real128_7_64bit, &
+                       ompx_target_alloc_f_real128_1_64bit, ompx_target_alloc_f_real128_2_64bit, ompx_target_alloc_f_real128_3_64bit, &
+                       ompx_target_alloc_f_real128_4_64bit, ompx_target_alloc_f_real128_5_64bit, ompx_target_alloc_f_real128_6_64bit, &
+                       ompx_target_alloc_f_real128_7_64bit, &
 #endif
-                       omp_target_alloc_f_int8_1_64bit, omp_target_alloc_f_int8_2_64bit, omp_target_alloc_f_int8_3_64bit, &
-                       omp_target_alloc_f_int8_4_64bit, omp_target_alloc_f_int8_5_64bit, omp_target_alloc_f_int8_6_64bit, &
-                       omp_target_alloc_f_int8_7_64bit, &
-                       omp_target_alloc_f_int16_1_64bit, omp_target_alloc_f_int16_2_64bit, omp_target_alloc_f_int16_3_64bit, &
-                       omp_target_alloc_f_int16_4_64bit, omp_target_alloc_f_int16_5_64bit, omp_target_alloc_f_int16_6_64bit, &
-                       omp_target_alloc_f_int16_7_64bit, &
-                       omp_target_alloc_f_int32_1_64bit, omp_target_alloc_f_int32_2_64bit, omp_target_alloc_f_int32_3_64bit, &
-                       omp_target_alloc_f_int32_4_64bit, omp_target_alloc_f_int32_5_64bit, omp_target_alloc_f_int32_6_64bit, &
-                       omp_target_alloc_f_int32_7_64bit, &
-                       omp_target_alloc_f_int64_1_64bit, omp_target_alloc_f_int64_2_64bit, omp_target_alloc_f_int64_3_64bit, &
-                       omp_target_alloc_f_int64_4_64bit, omp_target_alloc_f_int64_5_64bit, omp_target_alloc_f_int64_6_64bit, &
-                       omp_target_alloc_f_int64_7_64bit
-   endinterface omp_target_alloc_f
+                       ompx_target_alloc_f_int8_1_64bit, ompx_target_alloc_f_int8_2_64bit, ompx_target_alloc_f_int8_3_64bit, &
+                       ompx_target_alloc_f_int8_4_64bit, ompx_target_alloc_f_int8_5_64bit, ompx_target_alloc_f_int8_6_64bit, &
+                       ompx_target_alloc_f_int8_7_64bit, &
+                       ompx_target_alloc_f_int16_1_64bit, ompx_target_alloc_f_int16_2_64bit, ompx_target_alloc_f_int16_3_64bit, &
+                       ompx_target_alloc_f_int16_4_64bit, ompx_target_alloc_f_int16_5_64bit, ompx_target_alloc_f_int16_6_64bit, &
+                       ompx_target_alloc_f_int16_7_64bit, &
+                       ompx_target_alloc_f_int32_1_64bit, ompx_target_alloc_f_int32_2_64bit, ompx_target_alloc_f_int32_3_64bit, &
+                       ompx_target_alloc_f_int32_4_64bit, ompx_target_alloc_f_int32_5_64bit, ompx_target_alloc_f_int32_6_64bit, &
+                       ompx_target_alloc_f_int32_7_64bit, &
+                       ompx_target_alloc_f_int64_1_64bit, ompx_target_alloc_f_int64_2_64bit, ompx_target_alloc_f_int64_3_64bit, &
+                       ompx_target_alloc_f_int64_4_64bit, ompx_target_alloc_f_int64_5_64bit, ompx_target_alloc_f_int64_6_64bit, &
+                       ompx_target_alloc_f_int64_7_64bit
+   endinterface ompx_target_alloc_f
 
-   interface omp_target_memcpy_f
+   interface ompx_target_memcpy_f
       module procedure &
-                       omp_target_memcpy_f_lgcl32, &
-                       omp_target_memcpy_f_cmplx32, &
-                       omp_target_memcpy_f_cmplx64, &
+                       ompx_target_memcpy_f_lgcl32, &
+                       ompx_target_memcpy_f_cmplx32, &
+                       ompx_target_memcpy_f_cmplx64, &
 #if defined _real128
-                       omp_target_memcpy_f_cmplx128, &
+                       ompx_target_memcpy_f_cmplx128, &
 #endif
-                       omp_target_memcpy_f_real32, &
-                       omp_target_memcpy_f_real64, &
+                       ompx_target_memcpy_f_real32, &
+                       ompx_target_memcpy_f_real64, &
 #if defined _real128
-                       omp_target_memcpy_f_real128, &
+                       ompx_target_memcpy_f_real128, &
 #endif
-                       omp_target_memcpy_f_int8, &
-                       omp_target_memcpy_f_int16, &
-                       omp_target_memcpy_f_int32, &
-                       omp_target_memcpy_f_int64
-   endinterface omp_target_memcpy_f
+                       ompx_target_memcpy_f_int8, &
+                       ompx_target_memcpy_f_int16, &
+                       ompx_target_memcpy_f_int32, &
+                       ompx_target_memcpy_f_int64
+   endinterface ompx_target_memcpy_f
 
-   interface omp_target_memcpy_async_f
+   interface ompx_target_memcpy_async_f
       module procedure &
-                       omp_target_memcpy_async_f_lgcl32, &
-                       omp_target_memcpy_async_f_cmplx32, &
-                       omp_target_memcpy_async_f_cmplx64, &
+                       ompx_target_memcpy_async_f_lgcl32, &
+                       ompx_target_memcpy_async_f_cmplx32, &
+                       ompx_target_memcpy_async_f_cmplx64, &
 #if defined _real128
-                       omp_target_memcpy_async_f_cmplx128, &
+                       ompx_target_memcpy_async_f_cmplx128, &
 #endif
-                       omp_target_memcpy_async_f_real32, &
-                       omp_target_memcpy_async_f_real64, &
+                       ompx_target_memcpy_async_f_real32, &
+                       ompx_target_memcpy_async_f_real64, &
 #if defined _real128
-                       omp_target_memcpy_async_f_real128, &
+                       ompx_target_memcpy_async_f_real128, &
 #endif
-                       omp_target_memcpy_async_f_int8, &
-                       omp_target_memcpy_async_f_int16, &
-                       omp_target_memcpy_async_f_int32, &
-                       omp_target_memcpy_async_f_int64
-   endinterface omp_target_memcpy_async_f
+                       ompx_target_memcpy_async_f_int8, &
+                       ompx_target_memcpy_async_f_int16, &
+                       ompx_target_memcpy_async_f_int32, &
+                       ompx_target_memcpy_async_f_int64
+   endinterface ompx_target_memcpy_async_f
 
-   interface omp_target_memcpy_rect_f
+   interface ompx_target_memcpy_rect_f
       module procedure &
-                       omp_target_memcpy_rect_f_lgcl32, &
-                       omp_target_memcpy_rect_f_cmplx32, &
-                       omp_target_memcpy_rect_f_cmplx64, &
+                       ompx_target_memcpy_rect_f_lgcl32, &
+                       ompx_target_memcpy_rect_f_cmplx32, &
+                       ompx_target_memcpy_rect_f_cmplx64, &
 #if defined _real128
-                       omp_target_memcpy_rect_f_cmplx128, &
+                       ompx_target_memcpy_rect_f_cmplx128, &
 #endif
-                       omp_target_memcpy_rect_f_real32, &
-                       omp_target_memcpy_rect_f_real64, &
+                       ompx_target_memcpy_rect_f_real32, &
+                       ompx_target_memcpy_rect_f_real64, &
 #if defined _real128
-                       omp_target_memcpy_rect_f_real128, &
+                       ompx_target_memcpy_rect_f_real128, &
 #endif
-                       omp_target_memcpy_rect_f_int8, &
-                       omp_target_memcpy_rect_f_int16, &
-                       omp_target_memcpy_rect_f_int32, &
-                       omp_target_memcpy_rect_f_int64
-   endinterface omp_target_memcpy_rect_f
+                       ompx_target_memcpy_rect_f_int8, &
+                       ompx_target_memcpy_rect_f_int16, &
+                       ompx_target_memcpy_rect_f_int32, &
+                       ompx_target_memcpy_rect_f_int64
+   endinterface ompx_target_memcpy_rect_f
 
-   interface omp_target_memcpy_rect_async_f
+   interface ompx_target_memcpy_rect_async_f
       module procedure &
-                       omp_target_memcpy_rect_async_f_lgcl32, &
-                       omp_target_memcpy_rect_async_f_cmplx32, &
-                       omp_target_memcpy_rect_async_f_cmplx64, &
+                       ompx_target_memcpy_rect_async_f_lgcl32, &
+                       ompx_target_memcpy_rect_async_f_cmplx32, &
+                       ompx_target_memcpy_rect_async_f_cmplx64, &
 #if defined _real128
-                       omp_target_memcpy_rect_async_f_cmplx128, &
+                       ompx_target_memcpy_rect_async_f_cmplx128, &
 #endif
-                       omp_target_memcpy_rect_async_f_real32, &
-                       omp_target_memcpy_rect_async_f_real64, &
+                       ompx_target_memcpy_rect_async_f_real32, &
+                       ompx_target_memcpy_rect_async_f_real64, &
 #if defined _real128
-                       omp_target_memcpy_rect_async_f_real128, &
+                       ompx_target_memcpy_rect_async_f_real128, &
 #endif
-                       omp_target_memcpy_rect_async_f_int8, &
-                       omp_target_memcpy_rect_async_f_int16, &
-                       omp_target_memcpy_rect_async_f_int32, &
-                       omp_target_memcpy_rect_async_f_int64
-   endinterface omp_target_memcpy_rect_async_f
+                       ompx_target_memcpy_rect_async_f_int8, &
+                       ompx_target_memcpy_rect_async_f_int16, &
+                       ompx_target_memcpy_rect_async_f_int32, &
+                       ompx_target_memcpy_rect_async_f_int64
+   endinterface ompx_target_memcpy_rect_async_f
 
    interface omp_target_init
       module procedure &
@@ -374,633 +374,633 @@ module dmr
    endinterface omp_device_memcpy
 
 #if defined _OpenMP_5_1
-   interface omp_target_associate_ptr_f
+   interface ompx_target_associate_ptr_f
       module procedure &
-                       omp_target_associate_ptr_f_lgcl32_1, omp_target_associate_ptr_f_lgcl32_2, omp_target_associate_ptr_f_lgcl32_3, &
-                       omp_target_associate_ptr_f_lgcl32_4, omp_target_associate_ptr_f_lgcl32_5, omp_target_associate_ptr_f_lgcl32_6, &
-                       omp_target_associate_ptr_f_lgcl32_7, &
-                       omp_target_associate_ptr_f_cmplx32_1, omp_target_associate_ptr_f_cmplx32_2, omp_target_associate_ptr_f_cmplx32_3, &
-                       omp_target_associate_ptr_f_cmplx32_4, omp_target_associate_ptr_f_cmplx32_5, omp_target_associate_ptr_f_cmplx32_6, &
-                       omp_target_associate_ptr_f_cmplx32_7, &
-                       omp_target_associate_ptr_f_cmplx64_1, omp_target_associate_ptr_f_cmplx64_2, omp_target_associate_ptr_f_cmplx64_3, &
-                       omp_target_associate_ptr_f_cmplx64_4, omp_target_associate_ptr_f_cmplx64_5, omp_target_associate_ptr_f_cmplx64_6, &
-                       omp_target_associate_ptr_f_cmplx64_7, &
+                       ompx_target_associate_ptr_f_lgcl32_1, ompx_target_associate_ptr_f_lgcl32_2, ompx_target_associate_ptr_f_lgcl32_3, &
+                       ompx_target_associate_ptr_f_lgcl32_4, ompx_target_associate_ptr_f_lgcl32_5, ompx_target_associate_ptr_f_lgcl32_6, &
+                       ompx_target_associate_ptr_f_lgcl32_7, &
+                       ompx_target_associate_ptr_f_cmplx32_1, ompx_target_associate_ptr_f_cmplx32_2, ompx_target_associate_ptr_f_cmplx32_3, &
+                       ompx_target_associate_ptr_f_cmplx32_4, ompx_target_associate_ptr_f_cmplx32_5, ompx_target_associate_ptr_f_cmplx32_6, &
+                       ompx_target_associate_ptr_f_cmplx32_7, &
+                       ompx_target_associate_ptr_f_cmplx64_1, ompx_target_associate_ptr_f_cmplx64_2, ompx_target_associate_ptr_f_cmplx64_3, &
+                       ompx_target_associate_ptr_f_cmplx64_4, ompx_target_associate_ptr_f_cmplx64_5, ompx_target_associate_ptr_f_cmplx64_6, &
+                       ompx_target_associate_ptr_f_cmplx64_7, &
 #if defined _real128
-                       omp_target_associate_ptr_f_cmplx128_1, omp_target_associate_ptr_f_cmplx128_2, omp_target_associate_ptr_f_cmplx128_3, &
-                       omp_target_associate_ptr_f_cmplx128_4, omp_target_associate_ptr_f_cmplx128_5, omp_target_associate_ptr_f_cmplx128_6, &
-                       omp_target_associate_ptr_f_cmplx128_7, &
+                       ompx_target_associate_ptr_f_cmplx128_1, ompx_target_associate_ptr_f_cmplx128_2, ompx_target_associate_ptr_f_cmplx128_3, &
+                       ompx_target_associate_ptr_f_cmplx128_4, ompx_target_associate_ptr_f_cmplx128_5, ompx_target_associate_ptr_f_cmplx128_6, &
+                       ompx_target_associate_ptr_f_cmplx128_7, &
 #endif
-                       omp_target_associate_ptr_f_real32_1, omp_target_associate_ptr_f_real32_2, omp_target_associate_ptr_f_real32_3, &
-                       omp_target_associate_ptr_f_real32_4, omp_target_associate_ptr_f_real32_5, omp_target_associate_ptr_f_real32_6, &
-                       omp_target_associate_ptr_f_real32_7, &
-                       omp_target_associate_ptr_f_real64_1, omp_target_associate_ptr_f_real64_2, omp_target_associate_ptr_f_real64_3, &
-                       omp_target_associate_ptr_f_real64_4, omp_target_associate_ptr_f_real64_5, omp_target_associate_ptr_f_real64_6, &
-                       omp_target_associate_ptr_f_real64_7, &
+                       ompx_target_associate_ptr_f_real32_1, ompx_target_associate_ptr_f_real32_2, ompx_target_associate_ptr_f_real32_3, &
+                       ompx_target_associate_ptr_f_real32_4, ompx_target_associate_ptr_f_real32_5, ompx_target_associate_ptr_f_real32_6, &
+                       ompx_target_associate_ptr_f_real32_7, &
+                       ompx_target_associate_ptr_f_real64_1, ompx_target_associate_ptr_f_real64_2, ompx_target_associate_ptr_f_real64_3, &
+                       ompx_target_associate_ptr_f_real64_4, ompx_target_associate_ptr_f_real64_5, ompx_target_associate_ptr_f_real64_6, &
+                       ompx_target_associate_ptr_f_real64_7, &
 #if defined _real128
-                       omp_target_associate_ptr_f_real128_1, omp_target_associate_ptr_f_real128_2, omp_target_associate_ptr_f_real128_3, &
-                       omp_target_associate_ptr_f_real128_4, omp_target_associate_ptr_f_real128_5, omp_target_associate_ptr_f_real128_6, &
-                       omp_target_associate_ptr_f_real128_7, &
+                       ompx_target_associate_ptr_f_real128_1, ompx_target_associate_ptr_f_real128_2, ompx_target_associate_ptr_f_real128_3, &
+                       ompx_target_associate_ptr_f_real128_4, ompx_target_associate_ptr_f_real128_5, ompx_target_associate_ptr_f_real128_6, &
+                       ompx_target_associate_ptr_f_real128_7, &
 #endif
-                       omp_target_associate_ptr_f_int8_1, omp_target_associate_ptr_f_int8_2, omp_target_associate_ptr_f_int8_3, &
-                       omp_target_associate_ptr_f_int8_4, omp_target_associate_ptr_f_int8_5, omp_target_associate_ptr_f_int8_6, &
-                       omp_target_associate_ptr_f_int8_7, &
-                       omp_target_associate_ptr_f_int16_1, omp_target_associate_ptr_f_int16_2, omp_target_associate_ptr_f_int16_3, &
-                       omp_target_associate_ptr_f_int16_4, omp_target_associate_ptr_f_int16_5, omp_target_associate_ptr_f_int16_6, &
-                       omp_target_associate_ptr_f_int16_7, &
-                       omp_target_associate_ptr_f_int32_1, omp_target_associate_ptr_f_int32_2, omp_target_associate_ptr_f_int32_3, &
-                       omp_target_associate_ptr_f_int32_4, omp_target_associate_ptr_f_int32_5, omp_target_associate_ptr_f_int32_6, &
-                       omp_target_associate_ptr_f_int32_7, &
-                       omp_target_associate_ptr_f_int64_1, omp_target_associate_ptr_f_int64_2, omp_target_associate_ptr_f_int64_3, &
-                       omp_target_associate_ptr_f_int64_4, omp_target_associate_ptr_f_int64_5, omp_target_associate_ptr_f_int64_6, &
-                       omp_target_associate_ptr_f_int64_7
-   endinterface omp_target_associate_ptr_f
+                       ompx_target_associate_ptr_f_int8_1, ompx_target_associate_ptr_f_int8_2, ompx_target_associate_ptr_f_int8_3, &
+                       ompx_target_associate_ptr_f_int8_4, ompx_target_associate_ptr_f_int8_5, ompx_target_associate_ptr_f_int8_6, &
+                       ompx_target_associate_ptr_f_int8_7, &
+                       ompx_target_associate_ptr_f_int16_1, ompx_target_associate_ptr_f_int16_2, ompx_target_associate_ptr_f_int16_3, &
+                       ompx_target_associate_ptr_f_int16_4, ompx_target_associate_ptr_f_int16_5, ompx_target_associate_ptr_f_int16_6, &
+                       ompx_target_associate_ptr_f_int16_7, &
+                       ompx_target_associate_ptr_f_int32_1, ompx_target_associate_ptr_f_int32_2, ompx_target_associate_ptr_f_int32_3, &
+                       ompx_target_associate_ptr_f_int32_4, ompx_target_associate_ptr_f_int32_5, ompx_target_associate_ptr_f_int32_6, &
+                       ompx_target_associate_ptr_f_int32_7, &
+                       ompx_target_associate_ptr_f_int64_1, ompx_target_associate_ptr_f_int64_2, ompx_target_associate_ptr_f_int64_3, &
+                       ompx_target_associate_ptr_f_int64_4, ompx_target_associate_ptr_f_int64_5, ompx_target_associate_ptr_f_int64_6, &
+                       ompx_target_associate_ptr_f_int64_7
+   endinterface ompx_target_associate_ptr_f
 
-   interface omp_target_disassociate_ptr_f
+   interface ompx_target_disassociate_ptr_f
       module procedure &
-                       omp_target_disassociate_ptr_f_lgcl32_1, omp_target_disassociate_ptr_f_lgcl32_2, omp_target_disassociate_ptr_f_lgcl32_3, &
-                       omp_target_disassociate_ptr_f_lgcl32_4, omp_target_disassociate_ptr_f_lgcl32_5, omp_target_disassociate_ptr_f_lgcl32_6, &
-                       omp_target_disassociate_ptr_f_lgcl32_7, &
-                       omp_target_disassociate_ptr_f_cmplx32_1, omp_target_disassociate_ptr_f_cmplx32_2, omp_target_disassociate_ptr_f_cmplx32_3, &
-                       omp_target_disassociate_ptr_f_cmplx32_4, omp_target_disassociate_ptr_f_cmplx32_5, omp_target_disassociate_ptr_f_cmplx32_6, &
-                       omp_target_disassociate_ptr_f_cmplx32_7, &
-                       omp_target_disassociate_ptr_f_cmplx64_1, omp_target_disassociate_ptr_f_cmplx64_2, omp_target_disassociate_ptr_f_cmplx64_3, &
-                       omp_target_disassociate_ptr_f_cmplx64_4, omp_target_disassociate_ptr_f_cmplx64_5, omp_target_disassociate_ptr_f_cmplx64_6, &
-                       omp_target_disassociate_ptr_f_cmplx64_7, &
+                       ompx_target_disassociate_ptr_f_lgcl32_1, ompx_target_disassociate_ptr_f_lgcl32_2, ompx_target_disassociate_ptr_f_lgcl32_3, &
+                       ompx_target_disassociate_ptr_f_lgcl32_4, ompx_target_disassociate_ptr_f_lgcl32_5, ompx_target_disassociate_ptr_f_lgcl32_6, &
+                       ompx_target_disassociate_ptr_f_lgcl32_7, &
+                       ompx_target_disassociate_ptr_f_cmplx32_1, ompx_target_disassociate_ptr_f_cmplx32_2, ompx_target_disassociate_ptr_f_cmplx32_3, &
+                       ompx_target_disassociate_ptr_f_cmplx32_4, ompx_target_disassociate_ptr_f_cmplx32_5, ompx_target_disassociate_ptr_f_cmplx32_6, &
+                       ompx_target_disassociate_ptr_f_cmplx32_7, &
+                       ompx_target_disassociate_ptr_f_cmplx64_1, ompx_target_disassociate_ptr_f_cmplx64_2, ompx_target_disassociate_ptr_f_cmplx64_3, &
+                       ompx_target_disassociate_ptr_f_cmplx64_4, ompx_target_disassociate_ptr_f_cmplx64_5, ompx_target_disassociate_ptr_f_cmplx64_6, &
+                       ompx_target_disassociate_ptr_f_cmplx64_7, &
 #if defined _real128
-                       omp_target_disassociate_ptr_f_cmplx128_1, omp_target_disassociate_ptr_f_cmplx128_2, omp_target_disassociate_ptr_f_cmplx128_3, &
-                       omp_target_disassociate_ptr_f_cmplx128_4, omp_target_disassociate_ptr_f_cmplx128_5, omp_target_disassociate_ptr_f_cmplx128_6, &
-                       omp_target_disassociate_ptr_f_cmplx128_7, &
+                       ompx_target_disassociate_ptr_f_cmplx128_1, ompx_target_disassociate_ptr_f_cmplx128_2, ompx_target_disassociate_ptr_f_cmplx128_3, &
+                       ompx_target_disassociate_ptr_f_cmplx128_4, ompx_target_disassociate_ptr_f_cmplx128_5, ompx_target_disassociate_ptr_f_cmplx128_6, &
+                       ompx_target_disassociate_ptr_f_cmplx128_7, &
 #endif
-                       omp_target_disassociate_ptr_f_real32_1, omp_target_disassociate_ptr_f_real32_2, omp_target_disassociate_ptr_f_real32_3, &
-                       omp_target_disassociate_ptr_f_real32_4, omp_target_disassociate_ptr_f_real32_5, omp_target_disassociate_ptr_f_real32_6, &
-                       omp_target_disassociate_ptr_f_real32_7, &
-                       omp_target_disassociate_ptr_f_real64_1, omp_target_disassociate_ptr_f_real64_2, omp_target_disassociate_ptr_f_real64_3, &
-                       omp_target_disassociate_ptr_f_real64_4, omp_target_disassociate_ptr_f_real64_5, omp_target_disassociate_ptr_f_real64_6, &
-                       omp_target_disassociate_ptr_f_real64_7, &
+                       ompx_target_disassociate_ptr_f_real32_1, ompx_target_disassociate_ptr_f_real32_2, ompx_target_disassociate_ptr_f_real32_3, &
+                       ompx_target_disassociate_ptr_f_real32_4, ompx_target_disassociate_ptr_f_real32_5, ompx_target_disassociate_ptr_f_real32_6, &
+                       ompx_target_disassociate_ptr_f_real32_7, &
+                       ompx_target_disassociate_ptr_f_real64_1, ompx_target_disassociate_ptr_f_real64_2, ompx_target_disassociate_ptr_f_real64_3, &
+                       ompx_target_disassociate_ptr_f_real64_4, ompx_target_disassociate_ptr_f_real64_5, ompx_target_disassociate_ptr_f_real64_6, &
+                       ompx_target_disassociate_ptr_f_real64_7, &
 #if defined _real128
-                       omp_target_disassociate_ptr_f_real128_1, omp_target_disassociate_ptr_f_real128_2, omp_target_disassociate_ptr_f_real128_3, &
-                       omp_target_disassociate_ptr_f_real128_4, omp_target_disassociate_ptr_f_real128_5, omp_target_disassociate_ptr_f_real128_6, &
-                       omp_target_disassociate_ptr_f_real128_7, &
+                       ompx_target_disassociate_ptr_f_real128_1, ompx_target_disassociate_ptr_f_real128_2, ompx_target_disassociate_ptr_f_real128_3, &
+                       ompx_target_disassociate_ptr_f_real128_4, ompx_target_disassociate_ptr_f_real128_5, ompx_target_disassociate_ptr_f_real128_6, &
+                       ompx_target_disassociate_ptr_f_real128_7, &
 #endif
-                       omp_target_disassociate_ptr_f_int8_1, omp_target_disassociate_ptr_f_int8_2, omp_target_disassociate_ptr_f_int8_3, &
-                       omp_target_disassociate_ptr_f_int8_4, omp_target_disassociate_ptr_f_int8_5, omp_target_disassociate_ptr_f_int8_6, &
-                       omp_target_disassociate_ptr_f_int8_7, &
-                       omp_target_disassociate_ptr_f_int16_1, omp_target_disassociate_ptr_f_int16_2, omp_target_disassociate_ptr_f_int16_3, &
-                       omp_target_disassociate_ptr_f_int16_4, omp_target_disassociate_ptr_f_int16_5, omp_target_disassociate_ptr_f_int16_6, &
-                       omp_target_disassociate_ptr_f_int16_7, &
-                       omp_target_disassociate_ptr_f_int32_1, omp_target_disassociate_ptr_f_int32_2, omp_target_disassociate_ptr_f_int32_3, &
-                       omp_target_disassociate_ptr_f_int32_4, omp_target_disassociate_ptr_f_int32_5, omp_target_disassociate_ptr_f_int32_6, &
-                       omp_target_disassociate_ptr_f_int32_7, &
-                       omp_target_disassociate_ptr_f_int64_1, omp_target_disassociate_ptr_f_int64_2, omp_target_disassociate_ptr_f_int64_3, &
-                       omp_target_disassociate_ptr_f_int64_4, omp_target_disassociate_ptr_f_int64_5, omp_target_disassociate_ptr_f_int64_6, &
-                       omp_target_disassociate_ptr_f_int64_7
-   endinterface omp_target_disassociate_ptr_f
+                       ompx_target_disassociate_ptr_f_int8_1, ompx_target_disassociate_ptr_f_int8_2, ompx_target_disassociate_ptr_f_int8_3, &
+                       ompx_target_disassociate_ptr_f_int8_4, ompx_target_disassociate_ptr_f_int8_5, ompx_target_disassociate_ptr_f_int8_6, &
+                       ompx_target_disassociate_ptr_f_int8_7, &
+                       ompx_target_disassociate_ptr_f_int16_1, ompx_target_disassociate_ptr_f_int16_2, ompx_target_disassociate_ptr_f_int16_3, &
+                       ompx_target_disassociate_ptr_f_int16_4, ompx_target_disassociate_ptr_f_int16_5, ompx_target_disassociate_ptr_f_int16_6, &
+                       ompx_target_disassociate_ptr_f_int16_7, &
+                       ompx_target_disassociate_ptr_f_int32_1, ompx_target_disassociate_ptr_f_int32_2, ompx_target_disassociate_ptr_f_int32_3, &
+                       ompx_target_disassociate_ptr_f_int32_4, ompx_target_disassociate_ptr_f_int32_5, ompx_target_disassociate_ptr_f_int32_6, &
+                       ompx_target_disassociate_ptr_f_int32_7, &
+                       ompx_target_disassociate_ptr_f_int64_1, ompx_target_disassociate_ptr_f_int64_2, ompx_target_disassociate_ptr_f_int64_3, &
+                       ompx_target_disassociate_ptr_f_int64_4, ompx_target_disassociate_ptr_f_int64_5, ompx_target_disassociate_ptr_f_int64_6, &
+                       ompx_target_disassociate_ptr_f_int64_7
+   endinterface ompx_target_disassociate_ptr_f
 
-   interface omp_get_mapped_ptr_f
+   interface ompx_get_mapped_ptr_f
       module procedure &
 #if defined _F2008
-                       omp_get_mapped_ptr_f_lgcl32, &
-                       omp_get_mapped_ptr_f_cmplx32, &
-                       omp_get_mapped_ptr_f_cmplx64, &
+                       ompx_get_mapped_ptr_f_lgcl32, &
+                       ompx_get_mapped_ptr_f_cmplx32, &
+                       ompx_get_mapped_ptr_f_cmplx64, &
 #if defined _real128
-                       omp_get_mapped_ptr_f_cmplx128, &
+                       ompx_get_mapped_ptr_f_cmplx128, &
 #endif
-                       omp_get_mapped_ptr_f_real32, &
-                       omp_get_mapped_ptr_f_real64, &
+                       ompx_get_mapped_ptr_f_real32, &
+                       ompx_get_mapped_ptr_f_real64, &
 #if defined _real128
-                       omp_get_mapped_ptr_f_real128, &
+                       ompx_get_mapped_ptr_f_real128, &
 #endif
-                       omp_get_mapped_ptr_f_int8, &
-                       omp_get_mapped_ptr_f_int16, &
-                       omp_get_mapped_ptr_f_int32, &
-                       omp_get_mapped_ptr_f_int64
+                       ompx_get_mapped_ptr_f_int8, &
+                       ompx_get_mapped_ptr_f_int16, &
+                       ompx_get_mapped_ptr_f_int32, &
+                       ompx_get_mapped_ptr_f_int64
 #else
-                       omp_get_mapped_ptr_f_lgcl32_1, omp_get_mapped_ptr_f_lgcl32_2, omp_get_mapped_ptr_f_lgcl32_3, &
-                       omp_get_mapped_ptr_f_lgcl32_4, omp_get_mapped_ptr_f_lgcl32_5, omp_get_mapped_ptr_f_lgcl32_6, &
-                       omp_get_mapped_ptr_f_lgcl32_7, &
-                       omp_get_mapped_ptr_f_cmplx32_1, omp_get_mapped_ptr_f_cmplx32_2, omp_get_mapped_ptr_f_cmplx32_3, &
-                       omp_get_mapped_ptr_f_cmplx32_4, omp_get_mapped_ptr_f_cmplx32_5, omp_get_mapped_ptr_f_cmplx32_6, &
-                       omp_get_mapped_ptr_f_cmplx32_7, &
-                       omp_get_mapped_ptr_f_cmplx64_1, omp_get_mapped_ptr_f_cmplx64_2, omp_get_mapped_ptr_f_cmplx64_3, &
-                       omp_get_mapped_ptr_f_cmplx64_4, omp_get_mapped_ptr_f_cmplx64_5, omp_get_mapped_ptr_f_cmplx64_6, &
-                       omp_get_mapped_ptr_f_cmplx64_7, &
+                       ompx_get_mapped_ptr_f_lgcl32_1, ompx_get_mapped_ptr_f_lgcl32_2, ompx_get_mapped_ptr_f_lgcl32_3, &
+                       ompx_get_mapped_ptr_f_lgcl32_4, ompx_get_mapped_ptr_f_lgcl32_5, ompx_get_mapped_ptr_f_lgcl32_6, &
+                       ompx_get_mapped_ptr_f_lgcl32_7, &
+                       ompx_get_mapped_ptr_f_cmplx32_1, ompx_get_mapped_ptr_f_cmplx32_2, ompx_get_mapped_ptr_f_cmplx32_3, &
+                       ompx_get_mapped_ptr_f_cmplx32_4, ompx_get_mapped_ptr_f_cmplx32_5, ompx_get_mapped_ptr_f_cmplx32_6, &
+                       ompx_get_mapped_ptr_f_cmplx32_7, &
+                       ompx_get_mapped_ptr_f_cmplx64_1, ompx_get_mapped_ptr_f_cmplx64_2, ompx_get_mapped_ptr_f_cmplx64_3, &
+                       ompx_get_mapped_ptr_f_cmplx64_4, ompx_get_mapped_ptr_f_cmplx64_5, ompx_get_mapped_ptr_f_cmplx64_6, &
+                       ompx_get_mapped_ptr_f_cmplx64_7, &
 #if defined _real128
-                       omp_get_mapped_ptr_f_cmplx128_1, omp_get_mapped_ptr_f_cmplx128_2, omp_get_mapped_ptr_f_cmplx128_3, &
-                       omp_get_mapped_ptr_f_cmplx128_4, omp_get_mapped_ptr_f_cmplx128_5, omp_get_mapped_ptr_f_cmplx128_6, &
-                       omp_get_mapped_ptr_f_cmplx128_7, &
+                       ompx_get_mapped_ptr_f_cmplx128_1, ompx_get_mapped_ptr_f_cmplx128_2, ompx_get_mapped_ptr_f_cmplx128_3, &
+                       ompx_get_mapped_ptr_f_cmplx128_4, ompx_get_mapped_ptr_f_cmplx128_5, ompx_get_mapped_ptr_f_cmplx128_6, &
+                       ompx_get_mapped_ptr_f_cmplx128_7, &
 #endif
-                       omp_get_mapped_ptr_f_real32_1, omp_get_mapped_ptr_f_real32_2, omp_get_mapped_ptr_f_real32_3, &
-                       omp_get_mapped_ptr_f_real32_4, omp_get_mapped_ptr_f_real32_5, omp_get_mapped_ptr_f_real32_6, &
-                       omp_get_mapped_ptr_f_real32_7, &
-                       omp_get_mapped_ptr_f_real64_1, omp_get_mapped_ptr_f_real64_2, omp_get_mapped_ptr_f_real64_3, &
-                       omp_get_mapped_ptr_f_real64_4, omp_get_mapped_ptr_f_real64_5, omp_get_mapped_ptr_f_real64_6, &
-                       omp_get_mapped_ptr_f_real64_7, &
+                       ompx_get_mapped_ptr_f_real32_1, ompx_get_mapped_ptr_f_real32_2, ompx_get_mapped_ptr_f_real32_3, &
+                       ompx_get_mapped_ptr_f_real32_4, ompx_get_mapped_ptr_f_real32_5, ompx_get_mapped_ptr_f_real32_6, &
+                       ompx_get_mapped_ptr_f_real32_7, &
+                       ompx_get_mapped_ptr_f_real64_1, ompx_get_mapped_ptr_f_real64_2, ompx_get_mapped_ptr_f_real64_3, &
+                       ompx_get_mapped_ptr_f_real64_4, ompx_get_mapped_ptr_f_real64_5, ompx_get_mapped_ptr_f_real64_6, &
+                       ompx_get_mapped_ptr_f_real64_7, &
 #if defined _real128
-                       omp_get_mapped_ptr_f_real128_1, omp_get_mapped_ptr_f_real128_2, omp_get_mapped_ptr_f_real128_3, &
-                       omp_get_mapped_ptr_f_real128_4, omp_get_mapped_ptr_f_real128_5, omp_get_mapped_ptr_f_real128_6, &
-                       omp_get_mapped_ptr_f_real128_7, &
+                       ompx_get_mapped_ptr_f_real128_1, ompx_get_mapped_ptr_f_real128_2, ompx_get_mapped_ptr_f_real128_3, &
+                       ompx_get_mapped_ptr_f_real128_4, ompx_get_mapped_ptr_f_real128_5, ompx_get_mapped_ptr_f_real128_6, &
+                       ompx_get_mapped_ptr_f_real128_7, &
 #endif
-                       omp_get_mapped_ptr_f_int8_1, omp_get_mapped_ptr_f_int8_2, omp_get_mapped_ptr_f_int8_3, &
-                       omp_get_mapped_ptr_f_int8_4, omp_get_mapped_ptr_f_int8_5, omp_get_mapped_ptr_f_int8_6, &
-                       omp_get_mapped_ptr_f_int8_7, &
-                       omp_get_mapped_ptr_f_int16_1, omp_get_mapped_ptr_f_int16_2, omp_get_mapped_ptr_f_int16_3, &
-                       omp_get_mapped_ptr_f_int16_4, omp_get_mapped_ptr_f_int16_5, omp_get_mapped_ptr_f_int16_6, &
-                       omp_get_mapped_ptr_f_int16_7, &
-                       omp_get_mapped_ptr_f_int32_1, omp_get_mapped_ptr_f_int32_2, omp_get_mapped_ptr_f_int32_3, &
-                       omp_get_mapped_ptr_f_int32_4, omp_get_mapped_ptr_f_int32_5, omp_get_mapped_ptr_f_int32_6, &
-                       omp_get_mapped_ptr_f_int32_7, &
-                       omp_get_mapped_ptr_f_int64_1, omp_get_mapped_ptr_f_int64_2, omp_get_mapped_ptr_f_int64_3, &
-                       omp_get_mapped_ptr_f_int64_4, omp_get_mapped_ptr_f_int64_5, omp_get_mapped_ptr_f_int64_6, &
-                       omp_get_mapped_ptr_f_int64_7
+                       ompx_get_mapped_ptr_f_int8_1, ompx_get_mapped_ptr_f_int8_2, ompx_get_mapped_ptr_f_int8_3, &
+                       ompx_get_mapped_ptr_f_int8_4, ompx_get_mapped_ptr_f_int8_5, ompx_get_mapped_ptr_f_int8_6, &
+                       ompx_get_mapped_ptr_f_int8_7, &
+                       ompx_get_mapped_ptr_f_int16_1, ompx_get_mapped_ptr_f_int16_2, ompx_get_mapped_ptr_f_int16_3, &
+                       ompx_get_mapped_ptr_f_int16_4, ompx_get_mapped_ptr_f_int16_5, ompx_get_mapped_ptr_f_int16_6, &
+                       ompx_get_mapped_ptr_f_int16_7, &
+                       ompx_get_mapped_ptr_f_int32_1, ompx_get_mapped_ptr_f_int32_2, ompx_get_mapped_ptr_f_int32_3, &
+                       ompx_get_mapped_ptr_f_int32_4, ompx_get_mapped_ptr_f_int32_5, ompx_get_mapped_ptr_f_int32_6, &
+                       ompx_get_mapped_ptr_f_int32_7, &
+                       ompx_get_mapped_ptr_f_int64_1, ompx_get_mapped_ptr_f_int64_2, ompx_get_mapped_ptr_f_int64_3, &
+                       ompx_get_mapped_ptr_f_int64_4, ompx_get_mapped_ptr_f_int64_5, ompx_get_mapped_ptr_f_int64_6, &
+                       ompx_get_mapped_ptr_f_int64_7
 #endif
-   endinterface omp_get_mapped_ptr_f
+   endinterface ompx_get_mapped_ptr_f
 #endif
 
 ! OpenMP Target Is Present Routines
    interface
       ! OpenMP Target Is Present Integer Routines
-      module function omp_target_is_present_f_int8_1(host_data, omp_dev)
+      module function ompx_target_is_present_f_int8_1(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int8_1
+         logical                                       :: ompx_target_is_present_f_int8_1
          integer(I1P), target, intent(in)  :: host_data(:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int8_1
-      module function omp_target_is_present_f_int8_2(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int8_1
+      module function ompx_target_is_present_f_int8_2(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int8_2
+         logical                                       :: ompx_target_is_present_f_int8_2
          integer(I1P), target, intent(in)  :: host_data(:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int8_2
-      module function omp_target_is_present_f_int8_3(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int8_2
+      module function ompx_target_is_present_f_int8_3(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int8_3
+         logical                                       :: ompx_target_is_present_f_int8_3
          integer(I1P), target, intent(in)  :: host_data(:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int8_3
-      module function omp_target_is_present_f_int8_4(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int8_3
+      module function ompx_target_is_present_f_int8_4(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int8_4
+         logical                                       :: ompx_target_is_present_f_int8_4
          integer(I1P), target, intent(in)  :: host_data(:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int8_4
-      module function omp_target_is_present_f_int8_5(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int8_4
+      module function ompx_target_is_present_f_int8_5(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int8_5
+         logical                                       :: ompx_target_is_present_f_int8_5
          integer(I1P), target, intent(in)  :: host_data(:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int8_5
-      module function omp_target_is_present_f_int8_6(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int8_5
+      module function ompx_target_is_present_f_int8_6(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int8_6
+         logical                                       :: ompx_target_is_present_f_int8_6
          integer(I1P), target, intent(in)  :: host_data(:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int8_6
-      module function omp_target_is_present_f_int8_7(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int8_6
+      module function ompx_target_is_present_f_int8_7(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int8_7
+         logical                                       :: ompx_target_is_present_f_int8_7
          integer(I1P), target, intent(in)  :: host_data(:,:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int8_7
+      endfunction ompx_target_is_present_f_int8_7
 !
-      module function omp_target_is_present_f_int16_1(host_data, omp_dev)
+      module function ompx_target_is_present_f_int16_1(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int16_1
+         logical                                       :: ompx_target_is_present_f_int16_1
          integer(I2P), target, intent(in)  :: host_data(:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int16_1
-      module function omp_target_is_present_f_int16_2(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int16_1
+      module function ompx_target_is_present_f_int16_2(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int16_2
+         logical                                       :: ompx_target_is_present_f_int16_2
          integer(I2P), target, intent(in)  :: host_data(:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int16_2
-      module function omp_target_is_present_f_int16_3(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int16_2
+      module function ompx_target_is_present_f_int16_3(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int16_3
+         logical                                       :: ompx_target_is_present_f_int16_3
          integer(I2P), target, intent(in)  :: host_data(:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int16_3
-      module function omp_target_is_present_f_int16_4(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int16_3
+      module function ompx_target_is_present_f_int16_4(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int16_4
+         logical                                       :: ompx_target_is_present_f_int16_4
          integer(I2P), target, intent(in)  :: host_data(:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int16_4
-      module function omp_target_is_present_f_int16_5(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int16_4
+      module function ompx_target_is_present_f_int16_5(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int16_5
+         logical                                       :: ompx_target_is_present_f_int16_5
          integer(I2P), target, intent(in)  :: host_data(:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int16_5
-      module function omp_target_is_present_f_int16_6(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int16_5
+      module function ompx_target_is_present_f_int16_6(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int16_6
+         logical                                       :: ompx_target_is_present_f_int16_6
          integer(I2P), target, intent(in)  :: host_data(:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int16_6
-      module function omp_target_is_present_f_int16_7(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int16_6
+      module function ompx_target_is_present_f_int16_7(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int16_7
+         logical                                       :: ompx_target_is_present_f_int16_7
          integer(I2P), target, intent(in)  :: host_data(:,:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int16_7
+      endfunction ompx_target_is_present_f_int16_7
 !
-      module function omp_target_is_present_f_int32_1(host_data, omp_dev)
+      module function ompx_target_is_present_f_int32_1(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int32_1
+         logical                                       :: ompx_target_is_present_f_int32_1
          integer(I4P), target, intent(in)  :: host_data(:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int32_1
-      module function omp_target_is_present_f_int32_2(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int32_1
+      module function ompx_target_is_present_f_int32_2(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int32_2
+         logical                                       :: ompx_target_is_present_f_int32_2
          integer(I4P), target, intent(in)  :: host_data(:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int32_2
-      module function omp_target_is_present_f_int32_3(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int32_2
+      module function ompx_target_is_present_f_int32_3(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int32_3
+         logical                                       :: ompx_target_is_present_f_int32_3
          integer(I4P), target, intent(in)  :: host_data(:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int32_3
-      module function omp_target_is_present_f_int32_4(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int32_3
+      module function ompx_target_is_present_f_int32_4(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int32_4
+         logical                                       :: ompx_target_is_present_f_int32_4
          integer(I4P), target, intent(in)  :: host_data(:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int32_4
-      module function omp_target_is_present_f_int32_5(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int32_4
+      module function ompx_target_is_present_f_int32_5(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int32_5
+         logical                                       :: ompx_target_is_present_f_int32_5
          integer(I4P), target, intent(in)  :: host_data(:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int32_5
-      module function omp_target_is_present_f_int32_6(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int32_5
+      module function ompx_target_is_present_f_int32_6(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int32_6
+         logical                                       :: ompx_target_is_present_f_int32_6
          integer(I4P), target, intent(in)  :: host_data(:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int32_6
-      module function omp_target_is_present_f_int32_7(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int32_6
+      module function ompx_target_is_present_f_int32_7(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int32_7
+         logical                                       :: ompx_target_is_present_f_int32_7
          integer(I4P), target, intent(in)  :: host_data(:,:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int32_7
+      endfunction ompx_target_is_present_f_int32_7
 !
-      module function omp_target_is_present_f_int64_1(host_data, omp_dev)
+      module function ompx_target_is_present_f_int64_1(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int64_1
+         logical                                       :: ompx_target_is_present_f_int64_1
          integer(I8P), target, intent(in)  :: host_data(:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int64_1
-      module function omp_target_is_present_f_int64_2(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int64_1
+      module function ompx_target_is_present_f_int64_2(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int64_2
+         logical                                       :: ompx_target_is_present_f_int64_2
          integer(I8P), target, intent(in)  :: host_data(:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int64_2
-      module function omp_target_is_present_f_int64_3(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int64_2
+      module function ompx_target_is_present_f_int64_3(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int64_3
+         logical                                       :: ompx_target_is_present_f_int64_3
          integer(I8P), target, intent(in)  :: host_data(:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int64_3
-      module function omp_target_is_present_f_int64_4(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int64_3
+      module function ompx_target_is_present_f_int64_4(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int64_4
+         logical                                       :: ompx_target_is_present_f_int64_4
          integer(I8P), target, intent(in)  :: host_data(:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int64_4
-      module function omp_target_is_present_f_int64_5(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int64_4
+      module function ompx_target_is_present_f_int64_5(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int64_5
+         logical                                       :: ompx_target_is_present_f_int64_5
          integer(I8P), target, intent(in)  :: host_data(:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int64_5
-      module function omp_target_is_present_f_int64_6(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int64_5
+      module function ompx_target_is_present_f_int64_6(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int64_6
+         logical                                       :: ompx_target_is_present_f_int64_6
          integer(I8P), target, intent(in)  :: host_data(:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int64_6
-      module function omp_target_is_present_f_int64_7(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_int64_6
+      module function ompx_target_is_present_f_int64_7(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_int64_7
+         logical                                       :: ompx_target_is_present_f_int64_7
          integer(I8P), target, intent(in)  :: host_data(:,:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_int64_7
+      endfunction ompx_target_is_present_f_int64_7
 !
 !
       ! OpenMP Target Is Present Real Routines
-      module function omp_target_is_present_f_real32_1(host_data, omp_dev)
+      module function ompx_target_is_present_f_real32_1(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real32_1
+         logical                                       :: ompx_target_is_present_f_real32_1
          real(R4P), target, intent(in)     :: host_data(:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real32_1
-      module function omp_target_is_present_f_real32_2(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real32_1
+      module function ompx_target_is_present_f_real32_2(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real32_2
+         logical                                       :: ompx_target_is_present_f_real32_2
          real(R4P), target, intent(in)     :: host_data(:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real32_2
-      module function omp_target_is_present_f_real32_3(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real32_2
+      module function ompx_target_is_present_f_real32_3(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real32_3
+         logical                                       :: ompx_target_is_present_f_real32_3
          real(R4P), target, intent(in)     :: host_data(:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real32_3
-      module function omp_target_is_present_f_real32_4(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real32_3
+      module function ompx_target_is_present_f_real32_4(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real32_4
+         logical                                       :: ompx_target_is_present_f_real32_4
          real(R4P), target, intent(in)     :: host_data(:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real32_4
-      module function omp_target_is_present_f_real32_5(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real32_4
+      module function ompx_target_is_present_f_real32_5(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real32_5
+         logical                                       :: ompx_target_is_present_f_real32_5
          real(R4P), target, intent(in)     :: host_data(:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real32_5
-      module function omp_target_is_present_f_real32_6(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real32_5
+      module function ompx_target_is_present_f_real32_6(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real32_6
+         logical                                       :: ompx_target_is_present_f_real32_6
          real(R4P), target, intent(in)     :: host_data(:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real32_6
-      module function omp_target_is_present_f_real32_7(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real32_6
+      module function ompx_target_is_present_f_real32_7(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real32_7
+         logical                                       :: ompx_target_is_present_f_real32_7
          real(R4P), target, intent(in)     :: host_data(:,:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real32_7
+      endfunction ompx_target_is_present_f_real32_7
 !
-      module function omp_target_is_present_f_real64_1(host_data, omp_dev)
+      module function ompx_target_is_present_f_real64_1(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real64_1
+         logical                                       :: ompx_target_is_present_f_real64_1
          real(R8P), target, intent(in)     :: host_data(:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real64_1
-      module function omp_target_is_present_f_real64_2(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real64_1
+      module function ompx_target_is_present_f_real64_2(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real64_2
+         logical                                       :: ompx_target_is_present_f_real64_2
          real(R8P), target, intent(in)     :: host_data(:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real64_2
-      module function omp_target_is_present_f_real64_3(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real64_2
+      module function ompx_target_is_present_f_real64_3(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real64_3
+         logical                                       :: ompx_target_is_present_f_real64_3
          real(R8P), target, intent(in)     :: host_data(:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real64_3
-      module function omp_target_is_present_f_real64_4(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real64_3
+      module function ompx_target_is_present_f_real64_4(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real64_4
+         logical                                       :: ompx_target_is_present_f_real64_4
          real(R8P), target, intent(in)     :: host_data(:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real64_4
-      module function omp_target_is_present_f_real64_5(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real64_4
+      module function ompx_target_is_present_f_real64_5(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real64_5
+         logical                                       :: ompx_target_is_present_f_real64_5
          real(R8P), target, intent(in)     :: host_data(:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real64_5
-      module function omp_target_is_present_f_real64_6(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real64_5
+      module function ompx_target_is_present_f_real64_6(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real64_6
+         logical                                       :: ompx_target_is_present_f_real64_6
          real(R8P), target, intent(in)     :: host_data(:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real64_6
-      module function omp_target_is_present_f_real64_7(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real64_6
+      module function ompx_target_is_present_f_real64_7(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real64_7
+         logical                                       :: ompx_target_is_present_f_real64_7
          real(R8P), target, intent(in)     :: host_data(:,:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real64_7
+      endfunction ompx_target_is_present_f_real64_7
 !
 #if defined _real128
-      module function omp_target_is_present_f_real128_1(host_data, omp_dev)
+      module function ompx_target_is_present_f_real128_1(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real128_1
+         logical                                       :: ompx_target_is_present_f_real128_1
          real(R16P), target, intent(in)    :: host_data(:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real128_1
-      module function omp_target_is_present_f_real128_2(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real128_1
+      module function ompx_target_is_present_f_real128_2(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real128_2
+         logical                                       :: ompx_target_is_present_f_real128_2
          real(R16P), target, intent(in)    :: host_data(:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real128_2
-      module function omp_target_is_present_f_real128_3(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real128_2
+      module function ompx_target_is_present_f_real128_3(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real128_3
+         logical                                       :: ompx_target_is_present_f_real128_3
          real(R16P), target, intent(in)    :: host_data(:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real128_3
-      module function omp_target_is_present_f_real128_4(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real128_3
+      module function ompx_target_is_present_f_real128_4(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real128_4
+         logical                                       :: ompx_target_is_present_f_real128_4
          real(R16P), target, intent(in)    :: host_data(:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real128_4
-      module function omp_target_is_present_f_real128_5(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real128_4
+      module function ompx_target_is_present_f_real128_5(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real128_5
+         logical                                       :: ompx_target_is_present_f_real128_5
          real(R16P), target, intent(in)    :: host_data(:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real128_5
-      module function omp_target_is_present_f_real128_6(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real128_5
+      module function ompx_target_is_present_f_real128_6(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real128_6
+         logical                                       :: ompx_target_is_present_f_real128_6
          real(R16P), target, intent(in)    :: host_data(:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real128_6
-      module function omp_target_is_present_f_real128_7(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_real128_6
+      module function ompx_target_is_present_f_real128_7(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_real128_7
+         logical                                       :: ompx_target_is_present_f_real128_7
          real(R16P), target, intent(in)    :: host_data(:,:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_real128_7
+      endfunction ompx_target_is_present_f_real128_7
 #endif
 !
 !
       ! OpenMP Target Is Present Complex Routines
-      module function omp_target_is_present_f_cmplx32_1(host_data, omp_dev)
+      module function ompx_target_is_present_f_cmplx32_1(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx32_1
+         logical                                       :: ompx_target_is_present_f_cmplx32_1
          complex(R4P), target, intent(in)  :: host_data(:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx32_1
-      module function omp_target_is_present_f_cmplx32_2(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx32_1
+      module function ompx_target_is_present_f_cmplx32_2(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx32_2
+         logical                                       :: ompx_target_is_present_f_cmplx32_2
          complex(R4P), target, intent(in)  :: host_data(:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx32_2
-      module function omp_target_is_present_f_cmplx32_3(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx32_2
+      module function ompx_target_is_present_f_cmplx32_3(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx32_3
+         logical                                       :: ompx_target_is_present_f_cmplx32_3
          complex(R4P), target, intent(in)  :: host_data(:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx32_3
-      module function omp_target_is_present_f_cmplx32_4(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx32_3
+      module function ompx_target_is_present_f_cmplx32_4(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx32_4
+         logical                                       :: ompx_target_is_present_f_cmplx32_4
          complex(R4P), target, intent(in)  :: host_data(:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx32_4
-      module function omp_target_is_present_f_cmplx32_5(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx32_4
+      module function ompx_target_is_present_f_cmplx32_5(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx32_5
+         logical                                       :: ompx_target_is_present_f_cmplx32_5
          complex(R4P), target, intent(in)  :: host_data(:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx32_5
-      module function omp_target_is_present_f_cmplx32_6(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx32_5
+      module function ompx_target_is_present_f_cmplx32_6(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx32_6
+         logical                                       :: ompx_target_is_present_f_cmplx32_6
          complex(R4P), target, intent(in)  :: host_data(:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx32_6
-      module function omp_target_is_present_f_cmplx32_7(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx32_6
+      module function ompx_target_is_present_f_cmplx32_7(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx32_7
+         logical                                       :: ompx_target_is_present_f_cmplx32_7
          complex(R4P), target, intent(in)  :: host_data(:,:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx32_7
+      endfunction ompx_target_is_present_f_cmplx32_7
 !
-      module function omp_target_is_present_f_cmplx64_1(host_data, omp_dev)
+      module function ompx_target_is_present_f_cmplx64_1(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx64_1
+         logical                                       :: ompx_target_is_present_f_cmplx64_1
          complex(R8P), target, intent(in)  :: host_data(:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx64_1
-      module function omp_target_is_present_f_cmplx64_2(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx64_1
+      module function ompx_target_is_present_f_cmplx64_2(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx64_2
+         logical                                       :: ompx_target_is_present_f_cmplx64_2
          complex(R8P), target, intent(in)  :: host_data(:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx64_2
-      module function omp_target_is_present_f_cmplx64_3(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx64_2
+      module function ompx_target_is_present_f_cmplx64_3(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx64_3
+         logical                                       :: ompx_target_is_present_f_cmplx64_3
          complex(R8P), target, intent(in)  :: host_data(:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx64_3
-      module function omp_target_is_present_f_cmplx64_4(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx64_3
+      module function ompx_target_is_present_f_cmplx64_4(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx64_4
+         logical                                       :: ompx_target_is_present_f_cmplx64_4
          complex(R8P), target, intent(in)  :: host_data(:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx64_4
-      module function omp_target_is_present_f_cmplx64_5(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx64_4
+      module function ompx_target_is_present_f_cmplx64_5(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx64_5
+         logical                                       :: ompx_target_is_present_f_cmplx64_5
          complex(R8P), target, intent(in)  :: host_data(:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx64_5
-      module function omp_target_is_present_f_cmplx64_6(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx64_5
+      module function ompx_target_is_present_f_cmplx64_6(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx64_6
+         logical                                       :: ompx_target_is_present_f_cmplx64_6
          complex(R8P), target, intent(in)  :: host_data(:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx64_6
-      module function omp_target_is_present_f_cmplx64_7(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx64_6
+      module function ompx_target_is_present_f_cmplx64_7(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx64_7
+         logical                                       :: ompx_target_is_present_f_cmplx64_7
          complex(R8P), target, intent(in)  :: host_data(:,:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx64_7
+      endfunction ompx_target_is_present_f_cmplx64_7
 !
 #if defined _real128
-      module function omp_target_is_present_f_cmplx128_1(host_data, omp_dev)
+      module function ompx_target_is_present_f_cmplx128_1(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx128_1
+         logical                                       :: ompx_target_is_present_f_cmplx128_1
          complex(R16P), target, intent(in) :: host_data(:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx128_1
-      module function omp_target_is_present_f_cmplx128_2(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx128_1
+      module function ompx_target_is_present_f_cmplx128_2(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx128_2
+         logical                                       :: ompx_target_is_present_f_cmplx128_2
          complex(R16P), target, intent(in) :: host_data(:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx128_2
-      module function omp_target_is_present_f_cmplx128_3(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx128_2
+      module function ompx_target_is_present_f_cmplx128_3(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx128_3
+         logical                                       :: ompx_target_is_present_f_cmplx128_3
          complex(R16P), target, intent(in) :: host_data(:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx128_3
-      module function omp_target_is_present_f_cmplx128_4(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx128_3
+      module function ompx_target_is_present_f_cmplx128_4(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx128_4
+         logical                                       :: ompx_target_is_present_f_cmplx128_4
          complex(R16P), target, intent(in) :: host_data(:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx128_4
-      module function omp_target_is_present_f_cmplx128_5(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx128_4
+      module function ompx_target_is_present_f_cmplx128_5(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx128_5
+         logical                                       :: ompx_target_is_present_f_cmplx128_5
          complex(R16P), target, intent(in) :: host_data(:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx128_5
-      module function omp_target_is_present_f_cmplx128_6(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx128_5
+      module function ompx_target_is_present_f_cmplx128_6(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx128_6
+         logical                                       :: ompx_target_is_present_f_cmplx128_6
          complex(R16P), target, intent(in) :: host_data(:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx128_6
-      module function omp_target_is_present_f_cmplx128_7(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_cmplx128_6
+      module function ompx_target_is_present_f_cmplx128_7(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_cmplx128_7
+         logical                                       :: ompx_target_is_present_f_cmplx128_7
          complex(R16P), target, intent(in) :: host_data(:,:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_cmplx128_7
+      endfunction ompx_target_is_present_f_cmplx128_7
 #endif
 !
 !
       ! OpenMP Target Is Present Logical Routines
-      module function omp_target_is_present_f_lgcl32_1(host_data, omp_dev)
+      module function ompx_target_is_present_f_lgcl32_1(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_lgcl32_1
+         logical                                       :: ompx_target_is_present_f_lgcl32_1
          logical(I4P), target, intent(in)  :: host_data(:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_lgcl32_1
-      module function omp_target_is_present_f_lgcl32_2(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_lgcl32_1
+      module function ompx_target_is_present_f_lgcl32_2(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_lgcl32_2
+         logical                                       :: ompx_target_is_present_f_lgcl32_2
          logical(I4P), target, intent(in)  :: host_data(:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_lgcl32_2
-      module function omp_target_is_present_f_lgcl32_3(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_lgcl32_2
+      module function ompx_target_is_present_f_lgcl32_3(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_lgcl32_3
+         logical                                       :: ompx_target_is_present_f_lgcl32_3
          logical(I4P), target, intent(in)  :: host_data(:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_lgcl32_3
-      module function omp_target_is_present_f_lgcl32_4(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_lgcl32_3
+      module function ompx_target_is_present_f_lgcl32_4(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_lgcl32_4
+         logical                                       :: ompx_target_is_present_f_lgcl32_4
          logical(I4P), target, intent(in)  :: host_data(:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_lgcl32_4
-      module function omp_target_is_present_f_lgcl32_5(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_lgcl32_4
+      module function ompx_target_is_present_f_lgcl32_5(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_lgcl32_5
+         logical                                       :: ompx_target_is_present_f_lgcl32_5
          logical(I4P), target, intent(in)  :: host_data(:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_lgcl32_5
-      module function omp_target_is_present_f_lgcl32_6(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_lgcl32_5
+      module function ompx_target_is_present_f_lgcl32_6(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_lgcl32_6
+         logical                                       :: ompx_target_is_present_f_lgcl32_6
          logical(I4P), target, intent(in)  :: host_data(:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_lgcl32_6
-      module function omp_target_is_present_f_lgcl32_7(host_data, omp_dev)
+      endfunction ompx_target_is_present_f_lgcl32_6
+      module function ompx_target_is_present_f_lgcl32_7(host_data, omp_dev)
          implicit none
-         logical                                       :: omp_target_is_present_f_lgcl32_7
+         logical                                       :: ompx_target_is_present_f_lgcl32_7
          logical(I4P), target, intent(in)  :: host_data(:,:,:,:,:,:,:)
          integer(I4P), intent(in)          :: omp_dev
-      endfunction omp_target_is_present_f_lgcl32_7
+      endfunction ompx_target_is_present_f_lgcl32_7
 !
 !
    endinterface
@@ -1008,1413 +1008,1413 @@ module dmr
 ! OpenMP Target Alloc Routines
    interface
       ! OpenMP Target Alloc Integer 32 Bits Dimenstions Routines
-      module subroutine omp_target_alloc_f_int8_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int8_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I4P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_int8_1_32bit
+      endsubroutine ompx_target_alloc_f_int8_1_32bit
 
-      module subroutine omp_target_alloc_f_int8_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int8_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_int8_2_32bit
+      endsubroutine ompx_target_alloc_f_int8_2_32bit
 
-      module subroutine omp_target_alloc_f_int8_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int8_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_int8_3_32bit
+      endsubroutine ompx_target_alloc_f_int8_3_32bit
 
-      module subroutine omp_target_alloc_f_int8_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int8_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_int8_4_32bit
+      endsubroutine ompx_target_alloc_f_int8_4_32bit
 
-      module subroutine omp_target_alloc_f_int8_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int8_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_int8_5_32bit
+      endsubroutine ompx_target_alloc_f_int8_5_32bit
 
-      module subroutine omp_target_alloc_f_int8_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int8_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_int8_6_32bit
+      endsubroutine ompx_target_alloc_f_int8_6_32bit
 
-      module subroutine omp_target_alloc_f_int8_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int8_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_int8_7_32bit
+      endsubroutine ompx_target_alloc_f_int8_7_32bit
 
-      module subroutine omp_target_alloc_f_int16_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int16_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I4P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_int16_1_32bit
+      endsubroutine ompx_target_alloc_f_int16_1_32bit
 
-      module subroutine omp_target_alloc_f_int16_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int16_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_int16_2_32bit
+      endsubroutine ompx_target_alloc_f_int16_2_32bit
 
-      module subroutine omp_target_alloc_f_int16_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int16_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_int16_3_32bit
+      endsubroutine ompx_target_alloc_f_int16_3_32bit
 
-      module subroutine omp_target_alloc_f_int16_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int16_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_int16_4_32bit
+      endsubroutine ompx_target_alloc_f_int16_4_32bit
 
-      module subroutine omp_target_alloc_f_int16_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int16_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_int16_5_32bit
+      endsubroutine ompx_target_alloc_f_int16_5_32bit
 
-      module subroutine omp_target_alloc_f_int16_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int16_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_int16_6_32bit
+      endsubroutine ompx_target_alloc_f_int16_6_32bit
 
-      module subroutine omp_target_alloc_f_int16_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int16_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_int16_7_32bit
+      endsubroutine ompx_target_alloc_f_int16_7_32bit
 
-      module subroutine omp_target_alloc_f_int32_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int32_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I4P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_int32_1_32bit
+      endsubroutine ompx_target_alloc_f_int32_1_32bit
 
-      module subroutine omp_target_alloc_f_int32_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int32_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_int32_2_32bit
+      endsubroutine ompx_target_alloc_f_int32_2_32bit
 
-      module subroutine omp_target_alloc_f_int32_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int32_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_int32_3_32bit
+      endsubroutine ompx_target_alloc_f_int32_3_32bit
 
-      module subroutine omp_target_alloc_f_int32_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int32_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_int32_4_32bit
+      endsubroutine ompx_target_alloc_f_int32_4_32bit
 
-      module subroutine omp_target_alloc_f_int32_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int32_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_int32_5_32bit
+      endsubroutine ompx_target_alloc_f_int32_5_32bit
 
-      module subroutine omp_target_alloc_f_int32_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int32_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_int32_6_32bit
+      endsubroutine ompx_target_alloc_f_int32_6_32bit
 
-      module subroutine omp_target_alloc_f_int32_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int32_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_int32_7_32bit
+      endsubroutine ompx_target_alloc_f_int32_7_32bit
 
-      module subroutine omp_target_alloc_f_int64_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int64_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I4P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_int64_1_32bit
+      endsubroutine ompx_target_alloc_f_int64_1_32bit
 
-      module subroutine omp_target_alloc_f_int64_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int64_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_int64_2_32bit
+      endsubroutine ompx_target_alloc_f_int64_2_32bit
 
-      module subroutine omp_target_alloc_f_int64_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int64_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_int64_3_32bit
+      endsubroutine ompx_target_alloc_f_int64_3_32bit
 
-      module subroutine omp_target_alloc_f_int64_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int64_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_int64_4_32bit
+      endsubroutine ompx_target_alloc_f_int64_4_32bit
 
-      module subroutine omp_target_alloc_f_int64_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int64_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_int64_5_32bit
+      endsubroutine ompx_target_alloc_f_int64_5_32bit
 
-      module subroutine omp_target_alloc_f_int64_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int64_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_int64_6_32bit
+      endsubroutine ompx_target_alloc_f_int64_6_32bit
 
-      module subroutine omp_target_alloc_f_int64_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int64_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_int64_7_32bit
+      endsubroutine ompx_target_alloc_f_int64_7_32bit
 
 
       ! OpenMP Target Alloc Real 32 Bits Dimenstions Routines
-      module subroutine omp_target_alloc_f_real32_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real32_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:)
          integer(I4P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_real32_1_32bit
+      endsubroutine ompx_target_alloc_f_real32_1_32bit
 
-      module subroutine omp_target_alloc_f_real32_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real32_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_real32_2_32bit
+      endsubroutine ompx_target_alloc_f_real32_2_32bit
 
-      module subroutine omp_target_alloc_f_real32_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real32_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_real32_3_32bit
+      endsubroutine ompx_target_alloc_f_real32_3_32bit
 
-      module subroutine omp_target_alloc_f_real32_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real32_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_real32_4_32bit
+      endsubroutine ompx_target_alloc_f_real32_4_32bit
 
-      module subroutine omp_target_alloc_f_real32_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real32_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_real32_5_32bit
+      endsubroutine ompx_target_alloc_f_real32_5_32bit
 
-      module subroutine omp_target_alloc_f_real32_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real32_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_real32_6_32bit
+      endsubroutine ompx_target_alloc_f_real32_6_32bit
 
-      module subroutine omp_target_alloc_f_real32_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real32_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_real32_7_32bit
+      endsubroutine ompx_target_alloc_f_real32_7_32bit
 
-      module subroutine omp_target_alloc_f_real64_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real64_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:)
          integer(I4P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_real64_1_32bit
+      endsubroutine ompx_target_alloc_f_real64_1_32bit
 
-      module subroutine omp_target_alloc_f_real64_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real64_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_real64_2_32bit
+      endsubroutine ompx_target_alloc_f_real64_2_32bit
 
-      module subroutine omp_target_alloc_f_real64_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real64_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_real64_3_32bit
+      endsubroutine ompx_target_alloc_f_real64_3_32bit
 
-      module subroutine omp_target_alloc_f_real64_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real64_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_real64_4_32bit
+      endsubroutine ompx_target_alloc_f_real64_4_32bit
 
-      module subroutine omp_target_alloc_f_real64_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real64_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_real64_5_32bit
+      endsubroutine ompx_target_alloc_f_real64_5_32bit
 
-      module subroutine omp_target_alloc_f_real64_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real64_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_real64_6_32bit
+      endsubroutine ompx_target_alloc_f_real64_6_32bit
 
-      module subroutine omp_target_alloc_f_real64_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real64_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_real64_7_32bit
+      endsubroutine ompx_target_alloc_f_real64_7_32bit
 
 #if defined _real128
-      module subroutine omp_target_alloc_f_real128_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real128_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:)
          integer(I4P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_real128_1_32bit
+      endsubroutine ompx_target_alloc_f_real128_1_32bit
 
-      module subroutine omp_target_alloc_f_real128_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real128_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_real128_2_32bit
+      endsubroutine ompx_target_alloc_f_real128_2_32bit
 
-      module subroutine omp_target_alloc_f_real128_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real128_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_real128_3_32bit
+      endsubroutine ompx_target_alloc_f_real128_3_32bit
 
-      module subroutine omp_target_alloc_f_real128_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real128_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_real128_4_32bit
+      endsubroutine ompx_target_alloc_f_real128_4_32bit
 
-      module subroutine omp_target_alloc_f_real128_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real128_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_real128_5_32bit
+      endsubroutine ompx_target_alloc_f_real128_5_32bit
 
-      module subroutine omp_target_alloc_f_real128_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real128_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_real128_6_32bit
+      endsubroutine ompx_target_alloc_f_real128_6_32bit
 
-      module subroutine omp_target_alloc_f_real128_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real128_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_real128_7_32bit
+      endsubroutine ompx_target_alloc_f_real128_7_32bit
 
 #endif
 
       ! OpenMP Target Alloc Complex 32 Bits Dimenstions Routines
-      module subroutine omp_target_alloc_f_cmplx32_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx32_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I4P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_cmplx32_1_32bit
+      endsubroutine ompx_target_alloc_f_cmplx32_1_32bit
 
-      module subroutine omp_target_alloc_f_cmplx32_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx32_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_cmplx32_2_32bit
+      endsubroutine ompx_target_alloc_f_cmplx32_2_32bit
 
-      module subroutine omp_target_alloc_f_cmplx32_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx32_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_cmplx32_3_32bit
+      endsubroutine ompx_target_alloc_f_cmplx32_3_32bit
 
-      module subroutine omp_target_alloc_f_cmplx32_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx32_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_cmplx32_4_32bit
+      endsubroutine ompx_target_alloc_f_cmplx32_4_32bit
 
-      module subroutine omp_target_alloc_f_cmplx32_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx32_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_cmplx32_5_32bit
+      endsubroutine ompx_target_alloc_f_cmplx32_5_32bit
 
-      module subroutine omp_target_alloc_f_cmplx32_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx32_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_cmplx32_6_32bit
+      endsubroutine ompx_target_alloc_f_cmplx32_6_32bit
 
-      module subroutine omp_target_alloc_f_cmplx32_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx32_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_cmplx32_7_32bit
+      endsubroutine ompx_target_alloc_f_cmplx32_7_32bit
 
-      module subroutine omp_target_alloc_f_cmplx64_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx64_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I4P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_cmplx64_1_32bit
+      endsubroutine ompx_target_alloc_f_cmplx64_1_32bit
 
-      module subroutine omp_target_alloc_f_cmplx64_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx64_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_cmplx64_2_32bit
+      endsubroutine ompx_target_alloc_f_cmplx64_2_32bit
 
-      module subroutine omp_target_alloc_f_cmplx64_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx64_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_cmplx64_3_32bit
+      endsubroutine ompx_target_alloc_f_cmplx64_3_32bit
 
-      module subroutine omp_target_alloc_f_cmplx64_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx64_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_cmplx64_4_32bit
+      endsubroutine ompx_target_alloc_f_cmplx64_4_32bit
 
-      module subroutine omp_target_alloc_f_cmplx64_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx64_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_cmplx64_5_32bit
+      endsubroutine ompx_target_alloc_f_cmplx64_5_32bit
 
-      module subroutine omp_target_alloc_f_cmplx64_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx64_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_cmplx64_6_32bit
+      endsubroutine ompx_target_alloc_f_cmplx64_6_32bit
 
-      module subroutine omp_target_alloc_f_cmplx64_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx64_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_cmplx64_7_32bit
+      endsubroutine ompx_target_alloc_f_cmplx64_7_32bit
 
 #if defined _real128
-      module subroutine omp_target_alloc_f_cmplx128_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx128_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:)
          integer(I4P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_cmplx128_1_32bit
+      endsubroutine ompx_target_alloc_f_cmplx128_1_32bit
 
-      module subroutine omp_target_alloc_f_cmplx128_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx128_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_cmplx128_2_32bit
+      endsubroutine ompx_target_alloc_f_cmplx128_2_32bit
 
-      module subroutine omp_target_alloc_f_cmplx128_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx128_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_cmplx128_3_32bit
+      endsubroutine ompx_target_alloc_f_cmplx128_3_32bit
 
-      module subroutine omp_target_alloc_f_cmplx128_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx128_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_cmplx128_4_32bit
+      endsubroutine ompx_target_alloc_f_cmplx128_4_32bit
 
-      module subroutine omp_target_alloc_f_cmplx128_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx128_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_cmplx128_5_32bit
+      endsubroutine ompx_target_alloc_f_cmplx128_5_32bit
 
-      module subroutine omp_target_alloc_f_cmplx128_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx128_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_cmplx128_6_32bit
+      endsubroutine ompx_target_alloc_f_cmplx128_6_32bit
 
-      module subroutine omp_target_alloc_f_cmplx128_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx128_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_cmplx128_7_32bit
+      endsubroutine ompx_target_alloc_f_cmplx128_7_32bit
 
 #endif
 
       ! OpenMP Target Alloc Logical 32 Bits Dimenstions Routines
-      module subroutine omp_target_alloc_f_lgcl32_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_lgcl32_1_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I4P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_lgcl32_1_32bit
+      endsubroutine ompx_target_alloc_f_lgcl32_1_32bit
 
-      module subroutine omp_target_alloc_f_lgcl32_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_lgcl32_2_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_lgcl32_2_32bit
+      endsubroutine ompx_target_alloc_f_lgcl32_2_32bit
 
-      module subroutine omp_target_alloc_f_lgcl32_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_lgcl32_3_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_lgcl32_3_32bit
+      endsubroutine ompx_target_alloc_f_lgcl32_3_32bit
 
-      module subroutine omp_target_alloc_f_lgcl32_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_lgcl32_4_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_lgcl32_4_32bit
+      endsubroutine ompx_target_alloc_f_lgcl32_4_32bit
 
-      module subroutine omp_target_alloc_f_lgcl32_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_lgcl32_5_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_lgcl32_5_32bit
+      endsubroutine ompx_target_alloc_f_lgcl32_5_32bit
 
-      module subroutine omp_target_alloc_f_lgcl32_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_lgcl32_6_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_lgcl32_6_32bit
+      endsubroutine ompx_target_alloc_f_lgcl32_6_32bit
 
-      module subroutine omp_target_alloc_f_lgcl32_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_lgcl32_7_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I4P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_lgcl32_7_32bit
+      endsubroutine ompx_target_alloc_f_lgcl32_7_32bit
 
 
       ! OpenMP Target Alloc Integer 64 Bits Dimenstions Routines
-      module subroutine omp_target_alloc_f_int8_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int8_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I8P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_int8_1_64bit
+      endsubroutine ompx_target_alloc_f_int8_1_64bit
 
-      module subroutine omp_target_alloc_f_int8_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int8_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I8P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_int8_2_64bit
+      endsubroutine ompx_target_alloc_f_int8_2_64bit
 
-      module subroutine omp_target_alloc_f_int8_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int8_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_int8_3_64bit
+      endsubroutine ompx_target_alloc_f_int8_3_64bit
 
-      module subroutine omp_target_alloc_f_int8_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int8_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_int8_4_64bit
+      endsubroutine ompx_target_alloc_f_int8_4_64bit
 
-      module subroutine omp_target_alloc_f_int8_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int8_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_int8_5_64bit
+      endsubroutine ompx_target_alloc_f_int8_5_64bit
 
-      module subroutine omp_target_alloc_f_int8_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int8_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_int8_6_64bit
+      endsubroutine ompx_target_alloc_f_int8_6_64bit
 
-      module subroutine omp_target_alloc_f_int8_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int8_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_int8_7_64bit
+      endsubroutine ompx_target_alloc_f_int8_7_64bit
 
-      module subroutine omp_target_alloc_f_int16_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int16_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I8P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_int16_1_64bit
+      endsubroutine ompx_target_alloc_f_int16_1_64bit
 
-      module subroutine omp_target_alloc_f_int16_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int16_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I8P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_int16_2_64bit
+      endsubroutine ompx_target_alloc_f_int16_2_64bit
 
-      module subroutine omp_target_alloc_f_int16_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int16_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_int16_3_64bit
+      endsubroutine ompx_target_alloc_f_int16_3_64bit
 
-      module subroutine omp_target_alloc_f_int16_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int16_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_int16_4_64bit
+      endsubroutine ompx_target_alloc_f_int16_4_64bit
 
-      module subroutine omp_target_alloc_f_int16_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int16_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_int16_5_64bit
+      endsubroutine ompx_target_alloc_f_int16_5_64bit
 
-      module subroutine omp_target_alloc_f_int16_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int16_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_int16_6_64bit
+      endsubroutine ompx_target_alloc_f_int16_6_64bit
 
-      module subroutine omp_target_alloc_f_int16_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int16_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_int16_7_64bit
+      endsubroutine ompx_target_alloc_f_int16_7_64bit
 
-      module subroutine omp_target_alloc_f_int32_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int32_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I8P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_int32_1_64bit
+      endsubroutine ompx_target_alloc_f_int32_1_64bit
 
-      module subroutine omp_target_alloc_f_int32_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int32_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I8P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_int32_2_64bit
+      endsubroutine ompx_target_alloc_f_int32_2_64bit
 
-      module subroutine omp_target_alloc_f_int32_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int32_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_int32_3_64bit
+      endsubroutine ompx_target_alloc_f_int32_3_64bit
 
-      module subroutine omp_target_alloc_f_int32_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int32_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_int32_4_64bit
+      endsubroutine ompx_target_alloc_f_int32_4_64bit
 
-      module subroutine omp_target_alloc_f_int32_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int32_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_int32_5_64bit
+      endsubroutine ompx_target_alloc_f_int32_5_64bit
 
-      module subroutine omp_target_alloc_f_int32_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int32_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_int32_6_64bit
+      endsubroutine ompx_target_alloc_f_int32_6_64bit
 
-      module subroutine omp_target_alloc_f_int32_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int32_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_int32_7_64bit
+      endsubroutine ompx_target_alloc_f_int32_7_64bit
 
-      module subroutine omp_target_alloc_f_int64_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int64_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I8P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_int64_1_64bit
+      endsubroutine ompx_target_alloc_f_int64_1_64bit
 
-      module subroutine omp_target_alloc_f_int64_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int64_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I8P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_int64_2_64bit
+      endsubroutine ompx_target_alloc_f_int64_2_64bit
 
-      module subroutine omp_target_alloc_f_int64_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int64_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_int64_3_64bit
+      endsubroutine ompx_target_alloc_f_int64_3_64bit
 
-      module subroutine omp_target_alloc_f_int64_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int64_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_int64_4_64bit
+      endsubroutine ompx_target_alloc_f_int64_4_64bit
 
-      module subroutine omp_target_alloc_f_int64_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int64_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_int64_5_64bit
+      endsubroutine ompx_target_alloc_f_int64_5_64bit
 
-      module subroutine omp_target_alloc_f_int64_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int64_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_int64_6_64bit
+      endsubroutine ompx_target_alloc_f_int64_6_64bit
 
-      module subroutine omp_target_alloc_f_int64_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_int64_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_int64_7_64bit
+      endsubroutine ompx_target_alloc_f_int64_7_64bit
 
 
       ! OpenMP Target Alloc Real 64 Bits Dimenstions Routines
-      module subroutine omp_target_alloc_f_real32_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real32_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:)
          integer(I8P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_real32_1_64bit
+      endsubroutine ompx_target_alloc_f_real32_1_64bit
 
-      module subroutine omp_target_alloc_f_real32_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real32_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:)
          integer(I8P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_real32_2_64bit
+      endsubroutine ompx_target_alloc_f_real32_2_64bit
 
-      module subroutine omp_target_alloc_f_real32_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real32_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_real32_3_64bit
+      endsubroutine ompx_target_alloc_f_real32_3_64bit
 
-      module subroutine omp_target_alloc_f_real32_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real32_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_real32_4_64bit
+      endsubroutine ompx_target_alloc_f_real32_4_64bit
 
-      module subroutine omp_target_alloc_f_real32_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real32_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_real32_5_64bit
+      endsubroutine ompx_target_alloc_f_real32_5_64bit
 
-      module subroutine omp_target_alloc_f_real32_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real32_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_real32_6_64bit
+      endsubroutine ompx_target_alloc_f_real32_6_64bit
 
-      module subroutine omp_target_alloc_f_real32_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real32_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_real32_7_64bit
+      endsubroutine ompx_target_alloc_f_real32_7_64bit
 
-      module subroutine omp_target_alloc_f_real64_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real64_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:)
          integer(I8P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_real64_1_64bit
+      endsubroutine ompx_target_alloc_f_real64_1_64bit
 
-      module subroutine omp_target_alloc_f_real64_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real64_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:)
          integer(I8P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_real64_2_64bit
+      endsubroutine ompx_target_alloc_f_real64_2_64bit
 
-      module subroutine omp_target_alloc_f_real64_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real64_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_real64_3_64bit
+      endsubroutine ompx_target_alloc_f_real64_3_64bit
 
-      module subroutine omp_target_alloc_f_real64_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real64_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_real64_4_64bit
+      endsubroutine ompx_target_alloc_f_real64_4_64bit
 
-      module subroutine omp_target_alloc_f_real64_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real64_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_real64_5_64bit
+      endsubroutine ompx_target_alloc_f_real64_5_64bit
 
-      module subroutine omp_target_alloc_f_real64_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real64_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_real64_6_64bit
+      endsubroutine ompx_target_alloc_f_real64_6_64bit
 
-      module subroutine omp_target_alloc_f_real64_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real64_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_real64_7_64bit
+      endsubroutine ompx_target_alloc_f_real64_7_64bit
 
 #if defined _real128
-      module subroutine omp_target_alloc_f_real128_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real128_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:)
          integer(I8P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_real128_1_64bit
+      endsubroutine ompx_target_alloc_f_real128_1_64bit
 
-      module subroutine omp_target_alloc_f_real128_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real128_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:)
          integer(I8P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_real128_2_64bit
+      endsubroutine ompx_target_alloc_f_real128_2_64bit
 
-      module subroutine omp_target_alloc_f_real128_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real128_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_real128_3_64bit
+      endsubroutine ompx_target_alloc_f_real128_3_64bit
 
-      module subroutine omp_target_alloc_f_real128_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real128_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_real128_4_64bit
+      endsubroutine ompx_target_alloc_f_real128_4_64bit
 
-      module subroutine omp_target_alloc_f_real128_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real128_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_real128_5_64bit
+      endsubroutine ompx_target_alloc_f_real128_5_64bit
 
-      module subroutine omp_target_alloc_f_real128_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real128_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_real128_6_64bit
+      endsubroutine ompx_target_alloc_f_real128_6_64bit
 
-      module subroutine omp_target_alloc_f_real128_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_real128_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_real128_7_64bit
+      endsubroutine ompx_target_alloc_f_real128_7_64bit
 
 #endif
 
       ! OpenMP Target Alloc Complex 64 Bits Dimenstions Routines
-      module subroutine omp_target_alloc_f_cmplx32_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx32_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I8P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_cmplx32_1_64bit
+      endsubroutine ompx_target_alloc_f_cmplx32_1_64bit
 
-      module subroutine omp_target_alloc_f_cmplx32_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx32_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I8P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_cmplx32_2_64bit
+      endsubroutine ompx_target_alloc_f_cmplx32_2_64bit
 
-      module subroutine omp_target_alloc_f_cmplx32_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx32_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_cmplx32_3_64bit
+      endsubroutine ompx_target_alloc_f_cmplx32_3_64bit
 
-      module subroutine omp_target_alloc_f_cmplx32_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx32_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_cmplx32_4_64bit
+      endsubroutine ompx_target_alloc_f_cmplx32_4_64bit
 
-      module subroutine omp_target_alloc_f_cmplx32_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx32_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_cmplx32_5_64bit
+      endsubroutine ompx_target_alloc_f_cmplx32_5_64bit
 
-      module subroutine omp_target_alloc_f_cmplx32_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx32_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_cmplx32_6_64bit
+      endsubroutine ompx_target_alloc_f_cmplx32_6_64bit
 
-      module subroutine omp_target_alloc_f_cmplx32_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx32_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_cmplx32_7_64bit
+      endsubroutine ompx_target_alloc_f_cmplx32_7_64bit
 
-      module subroutine omp_target_alloc_f_cmplx64_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx64_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I8P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_cmplx64_1_64bit
+      endsubroutine ompx_target_alloc_f_cmplx64_1_64bit
 
-      module subroutine omp_target_alloc_f_cmplx64_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx64_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I8P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_cmplx64_2_64bit
+      endsubroutine ompx_target_alloc_f_cmplx64_2_64bit
 
-      module subroutine omp_target_alloc_f_cmplx64_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx64_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_cmplx64_3_64bit
+      endsubroutine ompx_target_alloc_f_cmplx64_3_64bit
 
-      module subroutine omp_target_alloc_f_cmplx64_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx64_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_cmplx64_4_64bit
+      endsubroutine ompx_target_alloc_f_cmplx64_4_64bit
 
-      module subroutine omp_target_alloc_f_cmplx64_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx64_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_cmplx64_5_64bit
+      endsubroutine ompx_target_alloc_f_cmplx64_5_64bit
 
-      module subroutine omp_target_alloc_f_cmplx64_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx64_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_cmplx64_6_64bit
+      endsubroutine ompx_target_alloc_f_cmplx64_6_64bit
 
-      module subroutine omp_target_alloc_f_cmplx64_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx64_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_cmplx64_7_64bit
+      endsubroutine ompx_target_alloc_f_cmplx64_7_64bit
 
 #if defined _real128
-      module subroutine omp_target_alloc_f_cmplx128_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx128_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:)
          integer(I8P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_cmplx128_1_64bit
+      endsubroutine ompx_target_alloc_f_cmplx128_1_64bit
 
-      module subroutine omp_target_alloc_f_cmplx128_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx128_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
          integer(I8P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_cmplx128_2_64bit
+      endsubroutine ompx_target_alloc_f_cmplx128_2_64bit
 
-      module subroutine omp_target_alloc_f_cmplx128_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx128_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_cmplx128_3_64bit
+      endsubroutine ompx_target_alloc_f_cmplx128_3_64bit
 
-      module subroutine omp_target_alloc_f_cmplx128_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx128_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_cmplx128_4_64bit
+      endsubroutine ompx_target_alloc_f_cmplx128_4_64bit
 
-      module subroutine omp_target_alloc_f_cmplx128_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx128_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_cmplx128_5_64bit
+      endsubroutine ompx_target_alloc_f_cmplx128_5_64bit
 
-      module subroutine omp_target_alloc_f_cmplx128_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx128_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_cmplx128_6_64bit
+      endsubroutine ompx_target_alloc_f_cmplx128_6_64bit
 
-      module subroutine omp_target_alloc_f_cmplx128_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_cmplx128_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_cmplx128_7_64bit
+      endsubroutine ompx_target_alloc_f_cmplx128_7_64bit
 
 #endif
 
       ! OpenMP Target Alloc Logical 64 Bits Dimenstions Routines
-      module subroutine omp_target_alloc_f_lgcl32_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_lgcl32_1_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I8P), intent(in)                        :: dimensions
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds
-      endsubroutine omp_target_alloc_f_lgcl32_1_64bit
+      endsubroutine ompx_target_alloc_f_lgcl32_1_64bit
 
-      module subroutine omp_target_alloc_f_lgcl32_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_lgcl32_2_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I8P), intent(in)                        :: dimensions(2)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(2)
-      endsubroutine omp_target_alloc_f_lgcl32_2_64bit
+      endsubroutine ompx_target_alloc_f_lgcl32_2_64bit
 
-      module subroutine omp_target_alloc_f_lgcl32_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_lgcl32_3_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I8P), intent(in)                        :: dimensions(3)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(3)
-      endsubroutine omp_target_alloc_f_lgcl32_3_64bit
+      endsubroutine ompx_target_alloc_f_lgcl32_3_64bit
 
-      module subroutine omp_target_alloc_f_lgcl32_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_lgcl32_4_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(4)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(4)
-      endsubroutine omp_target_alloc_f_lgcl32_4_64bit
+      endsubroutine ompx_target_alloc_f_lgcl32_4_64bit
 
-      module subroutine omp_target_alloc_f_lgcl32_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_lgcl32_5_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(5)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(5)
-      endsubroutine omp_target_alloc_f_lgcl32_5_64bit
+      endsubroutine ompx_target_alloc_f_lgcl32_5_64bit
 
-      module subroutine omp_target_alloc_f_lgcl32_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_lgcl32_6_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(6)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(6)
-      endsubroutine omp_target_alloc_f_lgcl32_6_64bit
+      endsubroutine ompx_target_alloc_f_lgcl32_6_64bit
 
-      module subroutine omp_target_alloc_f_lgcl32_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
+      module subroutine ompx_target_alloc_f_lgcl32_7_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), intent(in)                        :: dimensions(7)
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
          integer(I8P), intent(in), optional              :: lbounds(7)
-      endsubroutine omp_target_alloc_f_lgcl32_7_64bit
+      endsubroutine ompx_target_alloc_f_lgcl32_7_64bit
 
 
    endinterface
@@ -2422,477 +2422,477 @@ module dmr
 ! OpenMP Target Free Routines
    interface
       ! OpenMP Target Free Integer Routines
-      module subroutine omp_target_free_f_int8_1(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int8_1(fptr_dev, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int8_1
+      endsubroutine ompx_target_free_f_int8_1
 
-      module subroutine omp_target_free_f_int8_2(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int8_2(fptr_dev, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int8_2
+      endsubroutine ompx_target_free_f_int8_2
 
-      module subroutine omp_target_free_f_int8_3(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int8_3(fptr_dev, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int8_3
+      endsubroutine ompx_target_free_f_int8_3
 
-      module subroutine omp_target_free_f_int8_4(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int8_4(fptr_dev, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int8_4
+      endsubroutine ompx_target_free_f_int8_4
 
-      module subroutine omp_target_free_f_int8_5(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int8_5(fptr_dev, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int8_5
+      endsubroutine ompx_target_free_f_int8_5
 
-      module subroutine omp_target_free_f_int8_6(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int8_6(fptr_dev, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int8_6
+      endsubroutine ompx_target_free_f_int8_6
 
-      module subroutine omp_target_free_f_int8_7(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int8_7(fptr_dev, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int8_7
+      endsubroutine ompx_target_free_f_int8_7
 
-      module subroutine omp_target_free_f_int16_1(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int16_1(fptr_dev, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int16_1
+      endsubroutine ompx_target_free_f_int16_1
 
-      module subroutine omp_target_free_f_int16_2(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int16_2(fptr_dev, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int16_2
+      endsubroutine ompx_target_free_f_int16_2
 
-      module subroutine omp_target_free_f_int16_3(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int16_3(fptr_dev, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int16_3
+      endsubroutine ompx_target_free_f_int16_3
 
-      module subroutine omp_target_free_f_int16_4(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int16_4(fptr_dev, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int16_4
+      endsubroutine ompx_target_free_f_int16_4
 
-      module subroutine omp_target_free_f_int16_5(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int16_5(fptr_dev, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int16_5
+      endsubroutine ompx_target_free_f_int16_5
 
-      module subroutine omp_target_free_f_int16_6(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int16_6(fptr_dev, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int16_6
+      endsubroutine ompx_target_free_f_int16_6
 
-      module subroutine omp_target_free_f_int16_7(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int16_7(fptr_dev, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int16_7
+      endsubroutine ompx_target_free_f_int16_7
 
-      module subroutine omp_target_free_f_int32_1(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int32_1(fptr_dev, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int32_1
+      endsubroutine ompx_target_free_f_int32_1
 
-      module subroutine omp_target_free_f_int32_2(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int32_2(fptr_dev, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int32_2
+      endsubroutine ompx_target_free_f_int32_2
 
-      module subroutine omp_target_free_f_int32_3(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int32_3(fptr_dev, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int32_3
+      endsubroutine ompx_target_free_f_int32_3
 
-      module subroutine omp_target_free_f_int32_4(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int32_4(fptr_dev, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int32_4
+      endsubroutine ompx_target_free_f_int32_4
 
-      module subroutine omp_target_free_f_int32_5(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int32_5(fptr_dev, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int32_5
+      endsubroutine ompx_target_free_f_int32_5
 
-      module subroutine omp_target_free_f_int32_6(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int32_6(fptr_dev, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int32_6
+      endsubroutine ompx_target_free_f_int32_6
 
-      module subroutine omp_target_free_f_int32_7(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int32_7(fptr_dev, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int32_7
+      endsubroutine ompx_target_free_f_int32_7
 
-      module subroutine omp_target_free_f_int64_1(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int64_1(fptr_dev, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int64_1
+      endsubroutine ompx_target_free_f_int64_1
 
-      module subroutine omp_target_free_f_int64_2(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int64_2(fptr_dev, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int64_2
+      endsubroutine ompx_target_free_f_int64_2
 
-      module subroutine omp_target_free_f_int64_3(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int64_3(fptr_dev, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int64_3
+      endsubroutine ompx_target_free_f_int64_3
 
-      module subroutine omp_target_free_f_int64_4(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int64_4(fptr_dev, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int64_4
+      endsubroutine ompx_target_free_f_int64_4
 
-      module subroutine omp_target_free_f_int64_5(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int64_5(fptr_dev, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int64_5
+      endsubroutine ompx_target_free_f_int64_5
 
-      module subroutine omp_target_free_f_int64_6(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int64_6(fptr_dev, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int64_6
+      endsubroutine ompx_target_free_f_int64_6
 
-      module subroutine omp_target_free_f_int64_7(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_int64_7(fptr_dev, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_int64_7
+      endsubroutine ompx_target_free_f_int64_7
 
 
       ! OpenMP Target Free Real Routines
-      module subroutine omp_target_free_f_real32_1(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real32_1(fptr_dev, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real32_1
+      endsubroutine ompx_target_free_f_real32_1
 
-      module subroutine omp_target_free_f_real32_2(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real32_2(fptr_dev, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real32_2
+      endsubroutine ompx_target_free_f_real32_2
 
-      module subroutine omp_target_free_f_real32_3(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real32_3(fptr_dev, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real32_3
+      endsubroutine ompx_target_free_f_real32_3
 
-      module subroutine omp_target_free_f_real32_4(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real32_4(fptr_dev, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real32_4
+      endsubroutine ompx_target_free_f_real32_4
 
-      module subroutine omp_target_free_f_real32_5(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real32_5(fptr_dev, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real32_5
+      endsubroutine ompx_target_free_f_real32_5
 
-      module subroutine omp_target_free_f_real32_6(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real32_6(fptr_dev, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real32_6
+      endsubroutine ompx_target_free_f_real32_6
 
-      module subroutine omp_target_free_f_real32_7(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real32_7(fptr_dev, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real32_7
+      endsubroutine ompx_target_free_f_real32_7
 
-      module subroutine omp_target_free_f_real64_1(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real64_1(fptr_dev, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real64_1
+      endsubroutine ompx_target_free_f_real64_1
 
-      module subroutine omp_target_free_f_real64_2(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real64_2(fptr_dev, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real64_2
+      endsubroutine ompx_target_free_f_real64_2
 
-      module subroutine omp_target_free_f_real64_3(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real64_3(fptr_dev, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real64_3
+      endsubroutine ompx_target_free_f_real64_3
 
-      module subroutine omp_target_free_f_real64_4(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real64_4(fptr_dev, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real64_4
+      endsubroutine ompx_target_free_f_real64_4
 
-      module subroutine omp_target_free_f_real64_5(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real64_5(fptr_dev, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real64_5
+      endsubroutine ompx_target_free_f_real64_5
 
-      module subroutine omp_target_free_f_real64_6(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real64_6(fptr_dev, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real64_6
+      endsubroutine ompx_target_free_f_real64_6
 
-      module subroutine omp_target_free_f_real64_7(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real64_7(fptr_dev, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real64_7
+      endsubroutine ompx_target_free_f_real64_7
 
 #if defined _real128
-      module subroutine omp_target_free_f_real128_1(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real128_1(fptr_dev, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real128_1
+      endsubroutine ompx_target_free_f_real128_1
 
-      module subroutine omp_target_free_f_real128_2(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real128_2(fptr_dev, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real128_2
+      endsubroutine ompx_target_free_f_real128_2
 
-      module subroutine omp_target_free_f_real128_3(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real128_3(fptr_dev, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real128_3
+      endsubroutine ompx_target_free_f_real128_3
 
-      module subroutine omp_target_free_f_real128_4(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real128_4(fptr_dev, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real128_4
+      endsubroutine ompx_target_free_f_real128_4
 
-      module subroutine omp_target_free_f_real128_5(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real128_5(fptr_dev, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real128_5
+      endsubroutine ompx_target_free_f_real128_5
 
-      module subroutine omp_target_free_f_real128_6(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real128_6(fptr_dev, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real128_6
+      endsubroutine ompx_target_free_f_real128_6
 
-      module subroutine omp_target_free_f_real128_7(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_real128_7(fptr_dev, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_real128_7
+      endsubroutine ompx_target_free_f_real128_7
 
 #endif
 
       ! OpenMP Target Free Complex Routines
-      module subroutine omp_target_free_f_cmplx32_1(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx32_1(fptr_dev, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx32_1
+      endsubroutine ompx_target_free_f_cmplx32_1
 
-      module subroutine omp_target_free_f_cmplx32_2(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx32_2(fptr_dev, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx32_2
+      endsubroutine ompx_target_free_f_cmplx32_2
 
-      module subroutine omp_target_free_f_cmplx32_3(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx32_3(fptr_dev, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx32_3
+      endsubroutine ompx_target_free_f_cmplx32_3
 
-      module subroutine omp_target_free_f_cmplx32_4(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx32_4(fptr_dev, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx32_4
+      endsubroutine ompx_target_free_f_cmplx32_4
 
-      module subroutine omp_target_free_f_cmplx32_5(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx32_5(fptr_dev, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx32_5
+      endsubroutine ompx_target_free_f_cmplx32_5
 
-      module subroutine omp_target_free_f_cmplx32_6(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx32_6(fptr_dev, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx32_6
+      endsubroutine ompx_target_free_f_cmplx32_6
 
-      module subroutine omp_target_free_f_cmplx32_7(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx32_7(fptr_dev, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx32_7
+      endsubroutine ompx_target_free_f_cmplx32_7
 
-      module subroutine omp_target_free_f_cmplx64_1(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx64_1(fptr_dev, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx64_1
+      endsubroutine ompx_target_free_f_cmplx64_1
 
-      module subroutine omp_target_free_f_cmplx64_2(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx64_2(fptr_dev, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx64_2
+      endsubroutine ompx_target_free_f_cmplx64_2
 
-      module subroutine omp_target_free_f_cmplx64_3(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx64_3(fptr_dev, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx64_3
+      endsubroutine ompx_target_free_f_cmplx64_3
 
-      module subroutine omp_target_free_f_cmplx64_4(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx64_4(fptr_dev, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx64_4
+      endsubroutine ompx_target_free_f_cmplx64_4
 
-      module subroutine omp_target_free_f_cmplx64_5(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx64_5(fptr_dev, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx64_5
+      endsubroutine ompx_target_free_f_cmplx64_5
 
-      module subroutine omp_target_free_f_cmplx64_6(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx64_6(fptr_dev, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx64_6
+      endsubroutine ompx_target_free_f_cmplx64_6
 
-      module subroutine omp_target_free_f_cmplx64_7(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx64_7(fptr_dev, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx64_7
+      endsubroutine ompx_target_free_f_cmplx64_7
 
 #if defined _real128
-      module subroutine omp_target_free_f_cmplx128_1(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx128_1(fptr_dev, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx128_1
+      endsubroutine ompx_target_free_f_cmplx128_1
 
-      module subroutine omp_target_free_f_cmplx128_2(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx128_2(fptr_dev, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx128_2
+      endsubroutine ompx_target_free_f_cmplx128_2
 
-      module subroutine omp_target_free_f_cmplx128_3(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx128_3(fptr_dev, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx128_3
+      endsubroutine ompx_target_free_f_cmplx128_3
 
-      module subroutine omp_target_free_f_cmplx128_4(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx128_4(fptr_dev, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx128_4
+      endsubroutine ompx_target_free_f_cmplx128_4
 
-      module subroutine omp_target_free_f_cmplx128_5(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx128_5(fptr_dev, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx128_5
+      endsubroutine ompx_target_free_f_cmplx128_5
 
-      module subroutine omp_target_free_f_cmplx128_6(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx128_6(fptr_dev, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx128_6
+      endsubroutine ompx_target_free_f_cmplx128_6
 
-      module subroutine omp_target_free_f_cmplx128_7(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_cmplx128_7(fptr_dev, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_cmplx128_7
+      endsubroutine ompx_target_free_f_cmplx128_7
 
 #endif
 
       ! OpenMP Target Free Logical Routines
-      module subroutine omp_target_free_f_lgcl32_1(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_lgcl32_1(fptr_dev, omp_dev)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_lgcl32_1
+      endsubroutine ompx_target_free_f_lgcl32_1
 
-      module subroutine omp_target_free_f_lgcl32_2(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_lgcl32_2(fptr_dev, omp_dev)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_lgcl32_2
+      endsubroutine ompx_target_free_f_lgcl32_2
 
-      module subroutine omp_target_free_f_lgcl32_3(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_lgcl32_3(fptr_dev, omp_dev)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_lgcl32_3
+      endsubroutine ompx_target_free_f_lgcl32_3
 
-      module subroutine omp_target_free_f_lgcl32_4(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_lgcl32_4(fptr_dev, omp_dev)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_lgcl32_4
+      endsubroutine ompx_target_free_f_lgcl32_4
 
-      module subroutine omp_target_free_f_lgcl32_5(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_lgcl32_5(fptr_dev, omp_dev)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_lgcl32_5
+      endsubroutine ompx_target_free_f_lgcl32_5
 
-      module subroutine omp_target_free_f_lgcl32_6(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_lgcl32_6(fptr_dev, omp_dev)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_lgcl32_6
+      endsubroutine ompx_target_free_f_lgcl32_6
 
-      module subroutine omp_target_free_f_lgcl32_7(fptr_dev, omp_dev)
+      module subroutine ompx_target_free_f_lgcl32_7(fptr_dev, omp_dev)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_target_free_f_lgcl32_7
+      endsubroutine ompx_target_free_f_lgcl32_7
 
 
    endinterface
@@ -2900,122 +2900,122 @@ module dmr
 ! OpenMP Target Memcpy Routines
    interface
       ! OpenMP Target Memcpy Integer Routines
-      module function omp_target_memcpy_f_int8(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_f_int8(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_f_int8
+         integer(I4P)                                  :: ompx_target_memcpy_f_int8
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I1P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
-      endfunction omp_target_memcpy_f_int8
+      endfunction ompx_target_memcpy_f_int8
 
-      module function omp_target_memcpy_f_int16(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_f_int16(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_f_int16
+         integer(I4P)                                  :: ompx_target_memcpy_f_int16
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I2P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
-      endfunction omp_target_memcpy_f_int16
+      endfunction ompx_target_memcpy_f_int16
 
-      module function omp_target_memcpy_f_int32(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_f_int32(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_f_int32
+         integer(I4P)                                  :: ompx_target_memcpy_f_int32
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
-      endfunction omp_target_memcpy_f_int32
+      endfunction ompx_target_memcpy_f_int32
 
-      module function omp_target_memcpy_f_int64(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_f_int64(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_f_int64
+         integer(I4P)                                  :: ompx_target_memcpy_f_int64
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I8P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
-      endfunction omp_target_memcpy_f_int64
+      endfunction ompx_target_memcpy_f_int64
 
       ! OpenMP Target Memcpy Real Routines
-      module function omp_target_memcpy_f_real32(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_f_real32(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_f_real32
+         integer(I4P)                                  :: ompx_target_memcpy_f_real32
          real(R4P), contiguous, target, intent(out) :: fptr_dst(..)
          real(R4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
-      endfunction omp_target_memcpy_f_real32
+      endfunction ompx_target_memcpy_f_real32
 
-      module function omp_target_memcpy_f_real64(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_f_real64(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_f_real64
+         integer(I4P)                                  :: ompx_target_memcpy_f_real64
          real(R8P), contiguous, target, intent(out) :: fptr_dst(..)
          real(R8P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
-      endfunction omp_target_memcpy_f_real64
+      endfunction ompx_target_memcpy_f_real64
 
 #if defined _real128
-      module function omp_target_memcpy_f_real128(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_f_real128(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_f_real128
+         integer(I4P)                                  :: ompx_target_memcpy_f_real128
          real(R16P), contiguous, target, intent(out) :: fptr_dst(..)
          real(R16P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
-      endfunction omp_target_memcpy_f_real128
+      endfunction ompx_target_memcpy_f_real128
 #endif
 
       ! OpenMP Target Memcpy Complex Routines
-      module function omp_target_memcpy_f_cmplx32(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_f_cmplx32(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_f_cmplx32
+         integer(I4P)                                  :: ompx_target_memcpy_f_cmplx32
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(..)
          complex(R4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
-      endfunction omp_target_memcpy_f_cmplx32
+      endfunction ompx_target_memcpy_f_cmplx32
 
-      module function omp_target_memcpy_f_cmplx64(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_f_cmplx64(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_f_cmplx64
+         integer(I4P)                                  :: ompx_target_memcpy_f_cmplx64
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(..)
          complex(R8P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
-      endfunction omp_target_memcpy_f_cmplx64
+      endfunction ompx_target_memcpy_f_cmplx64
 
 #if defined _real128
-      module function omp_target_memcpy_f_cmplx128(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_f_cmplx128(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_f_cmplx128
+         integer(I4P)                                  :: ompx_target_memcpy_f_cmplx128
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(..)
          complex(R16P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
-      endfunction omp_target_memcpy_f_cmplx128
+      endfunction ompx_target_memcpy_f_cmplx128
 #endif
 
       ! OpenMP Target Memcpy Logical Routines
-      module function omp_target_memcpy_f_lgcl32(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_f_lgcl32(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_f_lgcl32
+         integer(I4P)                                  :: ompx_target_memcpy_f_lgcl32
          logical(I4P), contiguous, target, intent(out) :: fptr_dst(..)
          logical(I4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                      :: dst_off, src_off
-      endfunction omp_target_memcpy_f_lgcl32
+      endfunction ompx_target_memcpy_f_lgcl32
 
 
    end interface
@@ -3023,144 +3023,144 @@ module dmr
 ! OpenMP Target Memcpy Async Routines
    interface
       ! OpenMP Target Memcpy Async Integer Routines
-      module function omp_target_memcpy_async_f_int8(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_int8(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_async_f_int8
+         integer(I4P)                                   :: ompx_target_memcpy_async_f_int8
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I1P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: dst_off, src_off
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_async_f_int8
+      endfunction ompx_target_memcpy_async_f_int8
 
-      module function omp_target_memcpy_async_f_int16(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_int16(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_async_f_int16
+         integer(I4P)                                   :: ompx_target_memcpy_async_f_int16
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I2P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: dst_off, src_off
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_async_f_int16
+      endfunction ompx_target_memcpy_async_f_int16
 
-      module function omp_target_memcpy_async_f_int32(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_int32(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_async_f_int32
+         integer(I4P)                                   :: ompx_target_memcpy_async_f_int32
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: dst_off, src_off
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_async_f_int32
+      endfunction ompx_target_memcpy_async_f_int32
 
-      module function omp_target_memcpy_async_f_int64(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_int64(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_async_f_int64
+         integer(I4P)                                   :: ompx_target_memcpy_async_f_int64
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I8P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: dst_off, src_off
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_async_f_int64
+      endfunction ompx_target_memcpy_async_f_int64
 
       ! OpenMP Target Memcpy Async Real Routines
-      module function omp_target_memcpy_async_f_real32(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_real32(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_async_f_real32
+         integer(I4P)                                   :: ompx_target_memcpy_async_f_real32
          real(R4P), contiguous, target, intent(out) :: fptr_dst(..)
          real(R4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: dst_off, src_off
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_async_f_real32
+      endfunction ompx_target_memcpy_async_f_real32
 
-      module function omp_target_memcpy_async_f_real64(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_real64(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_async_f_real64
+         integer(I4P)                                   :: ompx_target_memcpy_async_f_real64
          real(R8P), contiguous, target, intent(out) :: fptr_dst(..)
          real(R8P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: dst_off, src_off
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_async_f_real64
+      endfunction ompx_target_memcpy_async_f_real64
 
 #if defined _real128
-      module function omp_target_memcpy_async_f_real128(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_real128(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_async_f_real128
+         integer(I4P)                                   :: ompx_target_memcpy_async_f_real128
          real(R16P), contiguous, target, intent(out) :: fptr_dst(..)
          real(R16P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: dst_off, src_off
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_async_f_real128
+      endfunction ompx_target_memcpy_async_f_real128
 #endif
 
       ! OpenMP Target Memcpy Async Complex Routines
-      module function omp_target_memcpy_async_f_cmplx32(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_cmplx32(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_async_f_cmplx32
+         integer(I4P)                                   :: ompx_target_memcpy_async_f_cmplx32
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(..)
          complex(R4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: dst_off, src_off
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_async_f_cmplx32
+      endfunction ompx_target_memcpy_async_f_cmplx32
 
-      module function omp_target_memcpy_async_f_cmplx64(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_cmplx64(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_async_f_cmplx64
+         integer(I4P)                                   :: ompx_target_memcpy_async_f_cmplx64
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(..)
          complex(R8P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: dst_off, src_off
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_async_f_cmplx64
+      endfunction ompx_target_memcpy_async_f_cmplx64
 
 #if defined _real128
-      module function omp_target_memcpy_async_f_cmplx128(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_cmplx128(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_async_f_cmplx128
+         integer(I4P)                                   :: ompx_target_memcpy_async_f_cmplx128
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(..)
          complex(R16P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: dst_off, src_off
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_async_f_cmplx128
+      endfunction ompx_target_memcpy_async_f_cmplx128
 #endif
 
       ! OpenMP Target Memcpy Async Logical Routines
-      module function omp_target_memcpy_async_f_lgcl32(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_lgcl32(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_async_f_lgcl32
+         integer(I4P)                                   :: ompx_target_memcpy_async_f_lgcl32
          logical(I4P), contiguous, target, intent(out) :: fptr_dst(..)
          logical(I4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: dst_off, src_off
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_async_f_lgcl32
+      endfunction ompx_target_memcpy_async_f_lgcl32
 
 
    end interface
@@ -3168,143 +3168,143 @@ module dmr
 ! OpenMP Target Memcpy Rect Routines
    interface
       ! OpenMP Target Memcpy Rect Integer Routines
-      module function omp_target_memcpy_rect_f_int8(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_f_int8(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_rect_f_int8
+         integer(I4P)                                  :: ompx_target_memcpy_rect_f_int8
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I1P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                      :: cpy_dims(:)
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
-      endfunction omp_target_memcpy_rect_f_int8
+      endfunction ompx_target_memcpy_rect_f_int8
 
-      module function omp_target_memcpy_rect_f_int16(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_f_int16(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_rect_f_int16
+         integer(I4P)                                  :: ompx_target_memcpy_rect_f_int16
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I2P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                      :: cpy_dims(:)
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
-      endfunction omp_target_memcpy_rect_f_int16
+      endfunction ompx_target_memcpy_rect_f_int16
 
-      module function omp_target_memcpy_rect_f_int32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_f_int32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_rect_f_int32
+         integer(I4P)                                  :: ompx_target_memcpy_rect_f_int32
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                      :: cpy_dims(:)
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
-      endfunction omp_target_memcpy_rect_f_int32
+      endfunction ompx_target_memcpy_rect_f_int32
 
-      module function omp_target_memcpy_rect_f_int64(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_f_int64(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_rect_f_int64
+         integer(I4P)                                  :: ompx_target_memcpy_rect_f_int64
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I8P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                      :: cpy_dims(:)
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
-      endfunction omp_target_memcpy_rect_f_int64
+      endfunction ompx_target_memcpy_rect_f_int64
 
       ! OpenMP Target Memcpy Rect Real Routines
-      module function omp_target_memcpy_rect_f_real32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_f_real32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_rect_f_real32
+         integer(I4P)                                  :: ompx_target_memcpy_rect_f_real32
          real(R4P), contiguous, target, intent(out) :: fptr_dst(..)
          real(R4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                      :: cpy_dims(:)
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
-      endfunction omp_target_memcpy_rect_f_real32
+      endfunction ompx_target_memcpy_rect_f_real32
 
-      module function omp_target_memcpy_rect_f_real64(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_f_real64(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_rect_f_real64
+         integer(I4P)                                  :: ompx_target_memcpy_rect_f_real64
          real(R8P), contiguous, target, intent(out) :: fptr_dst(..)
          real(R8P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                      :: cpy_dims(:)
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
-      endfunction omp_target_memcpy_rect_f_real64
+      endfunction ompx_target_memcpy_rect_f_real64
 
 #if defined _real128
-      module function omp_target_memcpy_rect_f_real128(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_f_real128(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_rect_f_real128
+         integer(I4P)                                  :: ompx_target_memcpy_rect_f_real128
          real(R16P), contiguous, target, intent(out) :: fptr_dst(..)
          real(R16P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                      :: cpy_dims(:)
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
-      endfunction omp_target_memcpy_rect_f_real128
+      endfunction ompx_target_memcpy_rect_f_real128
 #endif
 
       ! OpenMP Target Memcpy Rect Complex Routines
-      module function omp_target_memcpy_rect_f_cmplx32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_f_cmplx32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_rect_f_cmplx32
+         integer(I4P)                                  :: ompx_target_memcpy_rect_f_cmplx32
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(..)
          complex(R4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                      :: cpy_dims(:)
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
-      endfunction omp_target_memcpy_rect_f_cmplx32
+      endfunction ompx_target_memcpy_rect_f_cmplx32
 
-      module function omp_target_memcpy_rect_f_cmplx64(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_f_cmplx64(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_rect_f_cmplx64
+         integer(I4P)                                  :: ompx_target_memcpy_rect_f_cmplx64
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(..)
          complex(R8P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                      :: cpy_dims(:)
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
-      endfunction omp_target_memcpy_rect_f_cmplx64
+      endfunction ompx_target_memcpy_rect_f_cmplx64
 
 #if defined _real128
-      module function omp_target_memcpy_rect_f_cmplx128(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_f_cmplx128(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_rect_f_cmplx128
+         integer(I4P)                                  :: ompx_target_memcpy_rect_f_cmplx128
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(..)
          complex(R16P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                      :: cpy_dims(:)
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
-      endfunction omp_target_memcpy_rect_f_cmplx128
+      endfunction ompx_target_memcpy_rect_f_cmplx128
 #endif
 
       ! OpenMP Target Memcpy Rect Logical Routines
-      module function omp_target_memcpy_rect_f_lgcl32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_f_lgcl32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_rect_f_lgcl32
+         integer(I4P)                                  :: ompx_target_memcpy_rect_f_lgcl32
          logical(I4P), contiguous, target, intent(out) :: fptr_dst(..)
          logical(I4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                      :: cpy_dims(:)
          integer(I4P), intent(in)                      :: dst_offs(:), src_offs(:)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
-      endfunction omp_target_memcpy_rect_f_lgcl32
+      endfunction ompx_target_memcpy_rect_f_lgcl32
 
    endinterface
 
 ! OpenMP Target Memcpy Rect Async Routines
    interface
       ! OpenMP Target Memcpy Rect Async Integer Routines
-      module function omp_target_memcpy_rect_async_f_int8(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_async_f_int8(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_int8
+         integer(I4P)                                   :: ompx_target_memcpy_rect_async_f_int8
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I1P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                       :: cpy_dims(:)
@@ -3312,12 +3312,12 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_rect_async_f_int8
+      endfunction ompx_target_memcpy_rect_async_f_int8
 
-      module function omp_target_memcpy_rect_async_f_int16(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_async_f_int16(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_int16
+         integer(I4P)                                   :: ompx_target_memcpy_rect_async_f_int16
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I2P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                       :: cpy_dims(:)
@@ -3325,12 +3325,12 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_rect_async_f_int16
+      endfunction ompx_target_memcpy_rect_async_f_int16
 
-      module function omp_target_memcpy_rect_async_f_int32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_async_f_int32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_int32
+         integer(I4P)                                   :: ompx_target_memcpy_rect_async_f_int32
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                       :: cpy_dims(:)
@@ -3338,12 +3338,12 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_rect_async_f_int32
+      endfunction ompx_target_memcpy_rect_async_f_int32
 
-      module function omp_target_memcpy_rect_async_f_int64(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_async_f_int64(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_int64
+         integer(I4P)                                   :: ompx_target_memcpy_rect_async_f_int64
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I8P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                       :: cpy_dims(:)
@@ -3351,13 +3351,13 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_rect_async_f_int64
+      endfunction ompx_target_memcpy_rect_async_f_int64
 
       ! OpenMP Target Memcpy Rect Async Real Routines
-      module function omp_target_memcpy_rect_async_f_real32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_async_f_real32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_real32
+         integer(I4P)                                   :: ompx_target_memcpy_rect_async_f_real32
          real(R4P), contiguous, target, intent(out) :: fptr_dst(..)
          real(R4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                       :: cpy_dims(:)
@@ -3365,12 +3365,12 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_rect_async_f_real32
+      endfunction ompx_target_memcpy_rect_async_f_real32
 
-      module function omp_target_memcpy_rect_async_f_real64(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_async_f_real64(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_real64
+         integer(I4P)                                   :: ompx_target_memcpy_rect_async_f_real64
          real(R8P), contiguous, target, intent(out) :: fptr_dst(..)
          real(R8P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                       :: cpy_dims(:)
@@ -3378,13 +3378,13 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_rect_async_f_real64
+      endfunction ompx_target_memcpy_rect_async_f_real64
 
 #if defined _real128
-      module function omp_target_memcpy_rect_async_f_real128(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_async_f_real128(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_real128
+         integer(I4P)                                   :: ompx_target_memcpy_rect_async_f_real128
          real(R16P), contiguous, target, intent(out) :: fptr_dst(..)
          real(R16P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                       :: cpy_dims(:)
@@ -3392,14 +3392,14 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_rect_async_f_real128
+      endfunction ompx_target_memcpy_rect_async_f_real128
 #endif
 
       ! OpenMP Target Memcpy Rect Async Complex Routines
-      module function omp_target_memcpy_rect_async_f_cmplx32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_async_f_cmplx32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_cmplx32
+         integer(I4P)                                   :: ompx_target_memcpy_rect_async_f_cmplx32
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(..)
          complex(R4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                       :: cpy_dims(:)
@@ -3407,12 +3407,12 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_rect_async_f_cmplx32
+      endfunction ompx_target_memcpy_rect_async_f_cmplx32
 
-      module function omp_target_memcpy_rect_async_f_cmplx64(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_async_f_cmplx64(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_cmplx64
+         integer(I4P)                                   :: ompx_target_memcpy_rect_async_f_cmplx64
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(..)
          complex(R8P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                       :: cpy_dims(:)
@@ -3420,13 +3420,13 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_rect_async_f_cmplx64
+      endfunction ompx_target_memcpy_rect_async_f_cmplx64
 
 #if defined _real128
-      module function omp_target_memcpy_rect_async_f_cmplx128(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_async_f_cmplx128(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_cmplx128
+         integer(I4P)                                   :: ompx_target_memcpy_rect_async_f_cmplx128
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(..)
          complex(R16P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                       :: cpy_dims(:)
@@ -3434,14 +3434,14 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_rect_async_f_cmplx128
+      endfunction ompx_target_memcpy_rect_async_f_cmplx128
 #endif
 
       ! OpenMP Target Memcpy Rect Async Logical Routines
-      module function omp_target_memcpy_rect_async_f_lgcl32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
+      module function ompx_target_memcpy_rect_async_f_lgcl32(fptr_dst, fptr_src, cpy_dims, dst_offs, src_offs, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                   :: omp_target_memcpy_rect_async_f_lgcl32
+         integer(I4P)                                   :: ompx_target_memcpy_rect_async_f_lgcl32
          logical(I4P), contiguous, target, intent(out) :: fptr_dst(..)
          logical(I4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I8P), intent(in)                       :: cpy_dims(:)
@@ -3449,7 +3449,7 @@ module dmr
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
          integer(I4P), intent(in)                       :: f_depobj_count
          integer(omp_depend_kind), intent(in), optional :: depobj_list(*)
-      endfunction omp_target_memcpy_rect_async_f_lgcl32
+      endfunction ompx_target_memcpy_rect_async_f_lgcl32
 
    endinterface
 
@@ -5018,715 +5018,715 @@ module dmr
 ! DMR Target Associate Pointer Routines
    interface
       ! DMR Target Associate Pointer Integer Routines
-      module function omp_target_associate_ptr_f_int8_1(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int8_1(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int8_1
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int8_1
          integer(I1P), target,  intent(out) :: fptr_hos(:)
          integer(I1P), pointer, intent(in)  :: fptr_dev(:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int8_1
+      endfunction ompx_target_associate_ptr_f_int8_1
 
-      module function omp_target_associate_ptr_f_int8_2(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int8_2(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int8_2
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int8_2
          integer(I1P), target,  intent(out) :: fptr_hos(:,:)
          integer(I1P), pointer, intent(in)  :: fptr_dev(:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int8_2
+      endfunction ompx_target_associate_ptr_f_int8_2
 
-      module function omp_target_associate_ptr_f_int8_3(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int8_3(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int8_3
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int8_3
          integer(I1P), target,  intent(out) :: fptr_hos(:,:,:)
          integer(I1P), pointer, intent(in)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int8_3
+      endfunction ompx_target_associate_ptr_f_int8_3
 
-      module function omp_target_associate_ptr_f_int8_4(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int8_4(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int8_4
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int8_4
          integer(I1P), target,  intent(out) :: fptr_hos(:,:,:,:)
          integer(I1P), pointer, intent(in)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int8_4
+      endfunction ompx_target_associate_ptr_f_int8_4
 
-      module function omp_target_associate_ptr_f_int8_5(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int8_5(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int8_5
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int8_5
          integer(I1P), target,  intent(out) :: fptr_hos(:,:,:,:,:)
          integer(I1P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int8_5
+      endfunction ompx_target_associate_ptr_f_int8_5
 
-      module function omp_target_associate_ptr_f_int8_6(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int8_6(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int8_6
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int8_6
          integer(I1P), target,  intent(out) :: fptr_hos(:,:,:,:,:,:)
          integer(I1P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int8_6
+      endfunction ompx_target_associate_ptr_f_int8_6
 
-      module function omp_target_associate_ptr_f_int8_7(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int8_7(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int8_7
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int8_7
          integer(I1P), target,  intent(out) :: fptr_hos(:,:,:,:,:,:,:)
          integer(I1P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int8_7
+      endfunction ompx_target_associate_ptr_f_int8_7
 
 
-      module function omp_target_associate_ptr_f_int16_1(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int16_1(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int16_1
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int16_1
          integer(I2P), target,  intent(out) :: fptr_hos(:)
          integer(I2P), pointer, intent(in)  :: fptr_dev(:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int16_1
+      endfunction ompx_target_associate_ptr_f_int16_1
 
-      module function omp_target_associate_ptr_f_int16_2(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int16_2(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int16_2
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int16_2
          integer(I2P), target,  intent(out) :: fptr_hos(:,:)
          integer(I2P), pointer, intent(in)  :: fptr_dev(:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int16_2
+      endfunction ompx_target_associate_ptr_f_int16_2
 
-      module function omp_target_associate_ptr_f_int16_3(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int16_3(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int16_3
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int16_3
          integer(I2P), target,  intent(out) :: fptr_hos(:,:,:)
          integer(I2P), pointer, intent(in)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int16_3
+      endfunction ompx_target_associate_ptr_f_int16_3
 
-      module function omp_target_associate_ptr_f_int16_4(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int16_4(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int16_4
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int16_4
          integer(I2P), target,  intent(out) :: fptr_hos(:,:,:,:)
          integer(I2P), pointer, intent(in)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int16_4
+      endfunction ompx_target_associate_ptr_f_int16_4
 
-      module function omp_target_associate_ptr_f_int16_5(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int16_5(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int16_5
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int16_5
          integer(I2P), target,  intent(out) :: fptr_hos(:,:,:,:,:)
          integer(I2P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int16_5
+      endfunction ompx_target_associate_ptr_f_int16_5
 
-      module function omp_target_associate_ptr_f_int16_6(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int16_6(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int16_6
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int16_6
          integer(I2P), target,  intent(out) :: fptr_hos(:,:,:,:,:,:)
          integer(I2P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int16_6
+      endfunction ompx_target_associate_ptr_f_int16_6
 
-      module function omp_target_associate_ptr_f_int16_7(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int16_7(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int16_7
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int16_7
          integer(I2P), target,  intent(out) :: fptr_hos(:,:,:,:,:,:,:)
          integer(I2P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int16_7
+      endfunction ompx_target_associate_ptr_f_int16_7
 
 
-      module function omp_target_associate_ptr_f_int32_1(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int32_1(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int32_1
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int32_1
          integer(I4P), target,  intent(out) :: fptr_hos(:)
          integer(I4P), pointer, intent(in)  :: fptr_dev(:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int32_1
+      endfunction ompx_target_associate_ptr_f_int32_1
 
-      module function omp_target_associate_ptr_f_int32_2(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int32_2(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int32_2
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int32_2
          integer(I4P), target,  intent(out) :: fptr_hos(:,:)
          integer(I4P), pointer, intent(in)  :: fptr_dev(:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int32_2
+      endfunction ompx_target_associate_ptr_f_int32_2
 
-      module function omp_target_associate_ptr_f_int32_3(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int32_3(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int32_3
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int32_3
          integer(I4P), target,  intent(out) :: fptr_hos(:,:,:)
          integer(I4P), pointer, intent(in)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int32_3
+      endfunction ompx_target_associate_ptr_f_int32_3
 
-      module function omp_target_associate_ptr_f_int32_4(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int32_4(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int32_4
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int32_4
          integer(I4P), target,  intent(out) :: fptr_hos(:,:,:,:)
          integer(I4P), pointer, intent(in)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int32_4
+      endfunction ompx_target_associate_ptr_f_int32_4
 
-      module function omp_target_associate_ptr_f_int32_5(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int32_5(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int32_5
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int32_5
          integer(I4P), target,  intent(out) :: fptr_hos(:,:,:,:,:)
          integer(I4P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int32_5
+      endfunction ompx_target_associate_ptr_f_int32_5
 
-      module function omp_target_associate_ptr_f_int32_6(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int32_6(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int32_6
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int32_6
          integer(I4P), target,  intent(out) :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int32_6
+      endfunction ompx_target_associate_ptr_f_int32_6
 
-      module function omp_target_associate_ptr_f_int32_7(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int32_7(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int32_7
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int32_7
          integer(I4P), target,  intent(out) :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int32_7
+      endfunction ompx_target_associate_ptr_f_int32_7
 
 
-      module function omp_target_associate_ptr_f_int64_1(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int64_1(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int64_1
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int64_1
          integer(I8P), target,  intent(out) :: fptr_hos(:)
          integer(I8P), pointer, intent(in)  :: fptr_dev(:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int64_1
+      endfunction ompx_target_associate_ptr_f_int64_1
 
-      module function omp_target_associate_ptr_f_int64_2(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int64_2(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int64_2
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int64_2
          integer(I8P), target,  intent(out) :: fptr_hos(:,:)
          integer(I8P), pointer, intent(in)  :: fptr_dev(:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int64_2
+      endfunction ompx_target_associate_ptr_f_int64_2
 
-      module function omp_target_associate_ptr_f_int64_3(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int64_3(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int64_3
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int64_3
          integer(I8P), target,  intent(out) :: fptr_hos(:,:,:)
          integer(I8P), pointer, intent(in)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int64_3
+      endfunction ompx_target_associate_ptr_f_int64_3
 
-      module function omp_target_associate_ptr_f_int64_4(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int64_4(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int64_4
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int64_4
          integer(I8P), target,  intent(out) :: fptr_hos(:,:,:,:)
          integer(I8P), pointer, intent(in)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int64_4
+      endfunction ompx_target_associate_ptr_f_int64_4
 
-      module function omp_target_associate_ptr_f_int64_5(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int64_5(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int64_5
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int64_5
          integer(I8P), target,  intent(out) :: fptr_hos(:,:,:,:,:)
          integer(I8P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int64_5
+      endfunction ompx_target_associate_ptr_f_int64_5
 
-      module function omp_target_associate_ptr_f_int64_6(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int64_6(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int64_6
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int64_6
          integer(I8P), target,  intent(out) :: fptr_hos(:,:,:,:,:,:)
          integer(I8P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int64_6
+      endfunction ompx_target_associate_ptr_f_int64_6
 
-      module function omp_target_associate_ptr_f_int64_7(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_int64_7(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_int64_7
+         integer(I4P)                       :: ompx_target_associate_ptr_f_int64_7
          integer(I8P), target,  intent(out) :: fptr_hos(:,:,:,:,:,:,:)
          integer(I8P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_int64_7
+      endfunction ompx_target_associate_ptr_f_int64_7
 
 
       ! DMR Target Associate Pointer Real Routines
-      module function omp_target_associate_ptr_f_real32_1(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real32_1(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real32_1
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real32_1
          real(R4P), target,  intent(out)    :: fptr_hos(:)
          real(R4P), pointer, intent(in)     :: fptr_dev(:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real32_1
+      endfunction ompx_target_associate_ptr_f_real32_1
 
-      module function omp_target_associate_ptr_f_real32_2(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real32_2(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real32_2
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real32_2
          real(R4P), target,  intent(out)    :: fptr_hos(:,:)
          real(R4P), pointer, intent(in)     :: fptr_dev(:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real32_2
+      endfunction ompx_target_associate_ptr_f_real32_2
 
-      module function omp_target_associate_ptr_f_real32_3(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real32_3(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real32_3
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real32_3
          real(R4P), target,  intent(out)    :: fptr_hos(:,:,:)
          real(R4P), pointer, intent(in)     :: fptr_dev(:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real32_3
+      endfunction ompx_target_associate_ptr_f_real32_3
 
-      module function omp_target_associate_ptr_f_real32_4(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real32_4(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real32_4
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real32_4
          real(R4P), target,  intent(out)    :: fptr_hos(:,:,:,:)
          real(R4P), pointer, intent(in)     :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real32_4
+      endfunction ompx_target_associate_ptr_f_real32_4
 
-      module function omp_target_associate_ptr_f_real32_5(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real32_5(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real32_5
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real32_5
          real(R4P), target,  intent(out)    :: fptr_hos(:,:,:,:,:)
          real(R4P), pointer, intent(in)     :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real32_5
+      endfunction ompx_target_associate_ptr_f_real32_5
 
-      module function omp_target_associate_ptr_f_real32_6(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real32_6(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real32_6
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real32_6
          real(R4P), target,  intent(out)    :: fptr_hos(:,:,:,:,:,:)
          real(R4P), pointer, intent(in)     :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real32_6
+      endfunction ompx_target_associate_ptr_f_real32_6
 
-      module function omp_target_associate_ptr_f_real32_7(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real32_7(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real32_7
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real32_7
          real(R4P), target,  intent(out)    :: fptr_hos(:,:,:,:,:,:,:)
          real(R4P), pointer, intent(in)     :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real32_7
+      endfunction ompx_target_associate_ptr_f_real32_7
 
 
-      module function omp_target_associate_ptr_f_real64_1(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real64_1(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real64_1
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real64_1
          real(R8P), target,  intent(out)    :: fptr_hos(:)
          real(R8P), pointer, intent(in)     :: fptr_dev(:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real64_1
+      endfunction ompx_target_associate_ptr_f_real64_1
 
-      module function omp_target_associate_ptr_f_real64_2(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real64_2(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real64_2
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real64_2
          real(R8P), target,  intent(out)    :: fptr_hos(:,:)
          real(R8P), pointer, intent(in)     :: fptr_dev(:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real64_2
+      endfunction ompx_target_associate_ptr_f_real64_2
 
-      module function omp_target_associate_ptr_f_real64_3(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real64_3(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real64_3
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real64_3
          real(R8P), target,  intent(out)    :: fptr_hos(:,:,:)
          real(R8P), pointer, intent(in)     :: fptr_dev(:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real64_3
+      endfunction ompx_target_associate_ptr_f_real64_3
 
-      module function omp_target_associate_ptr_f_real64_4(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real64_4(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real64_4
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real64_4
          real(R8P), target,  intent(out)    :: fptr_hos(:,:,:,:)
          real(R8P), pointer, intent(in)     :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real64_4
+      endfunction ompx_target_associate_ptr_f_real64_4
 
-      module function omp_target_associate_ptr_f_real64_5(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real64_5(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real64_5
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real64_5
          real(R8P), target,  intent(out)    :: fptr_hos(:,:,:,:,:)
          real(R8P), pointer, intent(in)     :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real64_5
+      endfunction ompx_target_associate_ptr_f_real64_5
 
-      module function omp_target_associate_ptr_f_real64_6(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real64_6(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real64_6
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real64_6
          real(R8P), target,  intent(out)    :: fptr_hos(:,:,:,:,:,:)
          real(R8P), pointer, intent(in)     :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real64_6
+      endfunction ompx_target_associate_ptr_f_real64_6
 
-      module function omp_target_associate_ptr_f_real64_7(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real64_7(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real64_7
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real64_7
          real(R8P), target,  intent(out)    :: fptr_hos(:,:,:,:,:,:,:)
          real(R8P), pointer, intent(in)     :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real64_7
+      endfunction ompx_target_associate_ptr_f_real64_7
 
 
 #if defined _real128
-      module function omp_target_associate_ptr_f_real128_1(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real128_1(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real128_1
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real128_1
          real(R16P), target,  intent(out)   :: fptr_hos(:)
          real(R16P), pointer, intent(in)    :: fptr_dev(:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real128_1
+      endfunction ompx_target_associate_ptr_f_real128_1
 
-      module function omp_target_associate_ptr_f_real128_2(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real128_2(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real128_2
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real128_2
          real(R16P), target,  intent(out)   :: fptr_hos(:,:)
          real(R16P), pointer, intent(in)    :: fptr_dev(:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real128_2
+      endfunction ompx_target_associate_ptr_f_real128_2
 
-      module function omp_target_associate_ptr_f_real128_3(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real128_3(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real128_3
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real128_3
          real(R16P), target,  intent(out)   :: fptr_hos(:,:,:)
          real(R16P), pointer, intent(in)    :: fptr_dev(:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real128_3
+      endfunction ompx_target_associate_ptr_f_real128_3
 
-      module function omp_target_associate_ptr_f_real128_4(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real128_4(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real128_4
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real128_4
          real(R16P), target,  intent(out)   :: fptr_hos(:,:,:,:)
          real(R16P), pointer, intent(in)    :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real128_4
+      endfunction ompx_target_associate_ptr_f_real128_4
 
-      module function omp_target_associate_ptr_f_real128_5(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real128_5(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real128_5
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real128_5
          real(R16P), target,  intent(out)   :: fptr_hos(:,:,:,:,:)
          real(R16P), pointer, intent(in)    :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real128_5
+      endfunction ompx_target_associate_ptr_f_real128_5
 
-      module function omp_target_associate_ptr_f_real128_6(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real128_6(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real128_6
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real128_6
          real(R16P), target,  intent(out)   :: fptr_hos(:,:,:,:,:,:)
          real(R16P), pointer, intent(in)    :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real128_6
+      endfunction ompx_target_associate_ptr_f_real128_6
 
-      module function omp_target_associate_ptr_f_real128_7(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_real128_7(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_real128_7
+         integer(I4P)                       :: ompx_target_associate_ptr_f_real128_7
          real(R16P), target,  intent(out)   :: fptr_hos(:,:,:,:,:,:,:)
          real(R16P), pointer, intent(in)    :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_real128_7
+      endfunction ompx_target_associate_ptr_f_real128_7
 
 #endif
 
       ! DMR Target Associate Pointer Complex Routines
-      module function omp_target_associate_ptr_f_cmplx32_1(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx32_1(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx32_1
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx32_1
          complex(R4P), target,  intent(out) :: fptr_hos(:)
          complex(R4P), pointer, intent(in)  :: fptr_dev(:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx32_1
+      endfunction ompx_target_associate_ptr_f_cmplx32_1
 
-      module function omp_target_associate_ptr_f_cmplx32_2(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx32_2(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx32_2
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx32_2
          complex(R4P), target,  intent(out) :: fptr_hos(:,:)
          complex(R4P), pointer, intent(in)  :: fptr_dev(:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx32_2
+      endfunction ompx_target_associate_ptr_f_cmplx32_2
 
-      module function omp_target_associate_ptr_f_cmplx32_3(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx32_3(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx32_3
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx32_3
          complex(R4P), target,  intent(out) :: fptr_hos(:,:,:)
          complex(R4P), pointer, intent(in)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx32_3
+      endfunction ompx_target_associate_ptr_f_cmplx32_3
 
-      module function omp_target_associate_ptr_f_cmplx32_4(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx32_4(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx32_4
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx32_4
          complex(R4P), target,  intent(out) :: fptr_hos(:,:,:,:)
          complex(R4P), pointer, intent(in)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx32_4
+      endfunction ompx_target_associate_ptr_f_cmplx32_4
 
-      module function omp_target_associate_ptr_f_cmplx32_5(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx32_5(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx32_5
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx32_5
          complex(R4P), target,  intent(out) :: fptr_hos(:,:,:,:,:)
          complex(R4P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx32_5
+      endfunction ompx_target_associate_ptr_f_cmplx32_5
 
-      module function omp_target_associate_ptr_f_cmplx32_6(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx32_6(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx32_6
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx32_6
          complex(R4P), target,  intent(out) :: fptr_hos(:,:,:,:,:,:)
          complex(R4P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx32_6
+      endfunction ompx_target_associate_ptr_f_cmplx32_6
 
-      module function omp_target_associate_ptr_f_cmplx32_7(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx32_7(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx32_7
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx32_7
          complex(R4P), target,  intent(out) :: fptr_hos(:,:,:,:,:,:,:)
          complex(R4P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx32_7
+      endfunction ompx_target_associate_ptr_f_cmplx32_7
 
 
-      module function omp_target_associate_ptr_f_cmplx64_1(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx64_1(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx64_1
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx64_1
          complex(R8P), target,  intent(out) :: fptr_hos(:)
          complex(R8P), pointer, intent(in)  :: fptr_dev(:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx64_1
+      endfunction ompx_target_associate_ptr_f_cmplx64_1
 
-      module function omp_target_associate_ptr_f_cmplx64_2(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx64_2(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx64_2
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx64_2
          complex(R8P), target,  intent(out) :: fptr_hos(:,:)
          complex(R8P), pointer, intent(in)  :: fptr_dev(:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx64_2
+      endfunction ompx_target_associate_ptr_f_cmplx64_2
 
-      module function omp_target_associate_ptr_f_cmplx64_3(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx64_3(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx64_3
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx64_3
          complex(R8P), target,  intent(out) :: fptr_hos(:,:,:)
          complex(R8P), pointer, intent(in)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx64_3
+      endfunction ompx_target_associate_ptr_f_cmplx64_3
 
-      module function omp_target_associate_ptr_f_cmplx64_4(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx64_4(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx64_4
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx64_4
          complex(R8P), target,  intent(out) :: fptr_hos(:,:,:,:)
          complex(R8P), pointer, intent(in)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx64_4
+      endfunction ompx_target_associate_ptr_f_cmplx64_4
 
-      module function omp_target_associate_ptr_f_cmplx64_5(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx64_5(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx64_5
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx64_5
          complex(R8P), target,  intent(out) :: fptr_hos(:,:,:,:,:)
          complex(R8P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx64_5
+      endfunction ompx_target_associate_ptr_f_cmplx64_5
 
-      module function omp_target_associate_ptr_f_cmplx64_6(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx64_6(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx64_6
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx64_6
          complex(R8P), target,  intent(out) :: fptr_hos(:,:,:,:,:,:)
          complex(R8P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx64_6
+      endfunction ompx_target_associate_ptr_f_cmplx64_6
 
-      module function omp_target_associate_ptr_f_cmplx64_7(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx64_7(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx64_7
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx64_7
          complex(R8P), target,  intent(out) :: fptr_hos(:,:,:,:,:,:,:)
          complex(R8P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx64_7
+      endfunction ompx_target_associate_ptr_f_cmplx64_7
 
 
 #if defined _real128
-      module function omp_target_associate_ptr_f_cmplx128_1(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx128_1(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx128_1
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx128_1
          complex(R16P), target,  intent(out):: fptr_hos(:)
          complex(R16P), pointer, intent(in) :: fptr_dev(:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx128_1
+      endfunction ompx_target_associate_ptr_f_cmplx128_1
 
-      module function omp_target_associate_ptr_f_cmplx128_2(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx128_2(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx128_2
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx128_2
          complex(R16P), target,  intent(out):: fptr_hos(:,:)
          complex(R16P), pointer, intent(in) :: fptr_dev(:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx128_2
+      endfunction ompx_target_associate_ptr_f_cmplx128_2
 
-      module function omp_target_associate_ptr_f_cmplx128_3(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx128_3(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx128_3
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx128_3
          complex(R16P), target,  intent(out):: fptr_hos(:,:,:)
          complex(R16P), pointer, intent(in) :: fptr_dev(:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx128_3
+      endfunction ompx_target_associate_ptr_f_cmplx128_3
 
-      module function omp_target_associate_ptr_f_cmplx128_4(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx128_4(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx128_4
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx128_4
          complex(R16P), target,  intent(out):: fptr_hos(:,:,:,:)
          complex(R16P), pointer, intent(in) :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx128_4
+      endfunction ompx_target_associate_ptr_f_cmplx128_4
 
-      module function omp_target_associate_ptr_f_cmplx128_5(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx128_5(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx128_5
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx128_5
          complex(R16P), target,  intent(out):: fptr_hos(:,:,:,:,:)
          complex(R16P), pointer, intent(in) :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx128_5
+      endfunction ompx_target_associate_ptr_f_cmplx128_5
 
-      module function omp_target_associate_ptr_f_cmplx128_6(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx128_6(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx128_6
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx128_6
          complex(R16P), target,  intent(out):: fptr_hos(:,:,:,:,:,:)
          complex(R16P), pointer, intent(in) :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx128_6
+      endfunction ompx_target_associate_ptr_f_cmplx128_6
 
-      module function omp_target_associate_ptr_f_cmplx128_7(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_cmplx128_7(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_cmplx128_7
+         integer(I4P)                       :: ompx_target_associate_ptr_f_cmplx128_7
          complex(R16P), target,  intent(out):: fptr_hos(:,:,:,:,:,:,:)
          complex(R16P), pointer, intent(in) :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_cmplx128_7
+      endfunction ompx_target_associate_ptr_f_cmplx128_7
 
 #endif
 
       ! DMR Target Associate Pointer Logical Routines
-      module function omp_target_associate_ptr_f_lgcl32_1(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_lgcl32_1(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_lgcl32_1
+         integer(I4P)                       :: ompx_target_associate_ptr_f_lgcl32_1
          logical(I4P), target,  intent(out) :: fptr_hos(:)
          logical(I4P), pointer, intent(in)  :: fptr_dev(:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_lgcl32_1
+      endfunction ompx_target_associate_ptr_f_lgcl32_1
 
-      module function omp_target_associate_ptr_f_lgcl32_2(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_lgcl32_2(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_lgcl32_2
+         integer(I4P)                       :: ompx_target_associate_ptr_f_lgcl32_2
          logical(I4P), target,  intent(out) :: fptr_hos(:,:)
          logical(I4P), pointer, intent(in)  :: fptr_dev(:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_lgcl32_2
+      endfunction ompx_target_associate_ptr_f_lgcl32_2
 
-      module function omp_target_associate_ptr_f_lgcl32_3(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_lgcl32_3(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_lgcl32_3
+         integer(I4P)                       :: ompx_target_associate_ptr_f_lgcl32_3
          logical(I4P), target,  intent(out) :: fptr_hos(:,:,:)
          logical(I4P), pointer, intent(in)  :: fptr_dev(:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_lgcl32_3
+      endfunction ompx_target_associate_ptr_f_lgcl32_3
 
-      module function omp_target_associate_ptr_f_lgcl32_4(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_lgcl32_4(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_lgcl32_4
+         integer(I4P)                       :: ompx_target_associate_ptr_f_lgcl32_4
          logical(I4P), target,  intent(out) :: fptr_hos(:,:,:,:)
          logical(I4P), pointer, intent(in)  :: fptr_dev(:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_lgcl32_4
+      endfunction ompx_target_associate_ptr_f_lgcl32_4
 
-      module function omp_target_associate_ptr_f_lgcl32_5(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_lgcl32_5(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_lgcl32_5
+         integer(I4P)                       :: ompx_target_associate_ptr_f_lgcl32_5
          logical(I4P), target,  intent(out) :: fptr_hos(:,:,:,:,:)
          logical(I4P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_lgcl32_5
+      endfunction ompx_target_associate_ptr_f_lgcl32_5
 
-      module function omp_target_associate_ptr_f_lgcl32_6(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_lgcl32_6(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_lgcl32_6
+         integer(I4P)                       :: ompx_target_associate_ptr_f_lgcl32_6
          logical(I4P), target,  intent(out) :: fptr_hos(:,:,:,:,:,:)
          logical(I4P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_lgcl32_6
+      endfunction ompx_target_associate_ptr_f_lgcl32_6
 
-      module function omp_target_associate_ptr_f_lgcl32_7(fptr_hos, fptr_dev, dev_off, omp_dev)
+      module function ompx_target_associate_ptr_f_lgcl32_7(fptr_hos, fptr_dev, dev_off, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_associate_ptr_f_lgcl32_7
+         integer(I4P)                       :: ompx_target_associate_ptr_f_lgcl32_7
          logical(I4P), target,  intent(out) :: fptr_hos(:,:,:,:,:,:,:)
          logical(I4P), pointer, intent(in)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: dev_off
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_associate_ptr_f_lgcl32_7
+      endfunction ompx_target_associate_ptr_f_lgcl32_7
 
 
    endinterface
@@ -5734,561 +5734,561 @@ module dmr
 ! DMR Target Disassociate Pointer Routines
    interface
       ! DMR Target Disassociate Pointer Integer Routines
-      module function omp_target_disassociate_ptr_f_int8_1(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int8_1(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int8_1
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int8_1
          integer(I1P), target,  intent(in) :: fptr_hos(:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int8_1
+      endfunction ompx_target_disassociate_ptr_f_int8_1
 
-      module function omp_target_disassociate_ptr_f_int8_2(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int8_2(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int8_2
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int8_2
          integer(I1P), target,  intent(in) :: fptr_hos(:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int8_2
+      endfunction ompx_target_disassociate_ptr_f_int8_2
 
-      module function omp_target_disassociate_ptr_f_int8_3(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int8_3(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int8_3
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int8_3
          integer(I1P), target,  intent(in) :: fptr_hos(:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int8_3
+      endfunction ompx_target_disassociate_ptr_f_int8_3
 
-      module function omp_target_disassociate_ptr_f_int8_4(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int8_4(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int8_4
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int8_4
          integer(I1P), target,  intent(in) :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int8_4
+      endfunction ompx_target_disassociate_ptr_f_int8_4
 
-      module function omp_target_disassociate_ptr_f_int8_5(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int8_5(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int8_5
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int8_5
          integer(I1P), target,  intent(in) :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int8_5
+      endfunction ompx_target_disassociate_ptr_f_int8_5
 
-      module function omp_target_disassociate_ptr_f_int8_6(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int8_6(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int8_6
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int8_6
          integer(I1P), target,  intent(in) :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int8_6
+      endfunction ompx_target_disassociate_ptr_f_int8_6
 
-      module function omp_target_disassociate_ptr_f_int8_7(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int8_7(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int8_7
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int8_7
          integer(I1P), target,  intent(in) :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int8_7
+      endfunction ompx_target_disassociate_ptr_f_int8_7
 
 
-      module function omp_target_disassociate_ptr_f_int16_1(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int16_1(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int16_1
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int16_1
          integer(I2P), target,  intent(in) :: fptr_hos(:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int16_1
+      endfunction ompx_target_disassociate_ptr_f_int16_1
 
-      module function omp_target_disassociate_ptr_f_int16_2(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int16_2(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int16_2
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int16_2
          integer(I2P), target,  intent(in) :: fptr_hos(:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int16_2
+      endfunction ompx_target_disassociate_ptr_f_int16_2
 
-      module function omp_target_disassociate_ptr_f_int16_3(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int16_3(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int16_3
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int16_3
          integer(I2P), target,  intent(in) :: fptr_hos(:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int16_3
+      endfunction ompx_target_disassociate_ptr_f_int16_3
 
-      module function omp_target_disassociate_ptr_f_int16_4(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int16_4(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int16_4
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int16_4
          integer(I2P), target,  intent(in) :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int16_4
+      endfunction ompx_target_disassociate_ptr_f_int16_4
 
-      module function omp_target_disassociate_ptr_f_int16_5(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int16_5(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int16_5
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int16_5
          integer(I2P), target,  intent(in) :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int16_5
+      endfunction ompx_target_disassociate_ptr_f_int16_5
 
-      module function omp_target_disassociate_ptr_f_int16_6(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int16_6(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int16_6
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int16_6
          integer(I2P), target,  intent(in) :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int16_6
+      endfunction ompx_target_disassociate_ptr_f_int16_6
 
-      module function omp_target_disassociate_ptr_f_int16_7(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int16_7(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int16_7
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int16_7
          integer(I2P), target,  intent(in) :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int16_7
+      endfunction ompx_target_disassociate_ptr_f_int16_7
 
 
-      module function omp_target_disassociate_ptr_f_int32_1(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int32_1(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int32_1
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int32_1
          integer(I4P), target,  intent(in) :: fptr_hos(:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int32_1
+      endfunction ompx_target_disassociate_ptr_f_int32_1
 
-      module function omp_target_disassociate_ptr_f_int32_2(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int32_2(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int32_2
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int32_2
          integer(I4P), target,  intent(in) :: fptr_hos(:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int32_2
+      endfunction ompx_target_disassociate_ptr_f_int32_2
 
-      module function omp_target_disassociate_ptr_f_int32_3(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int32_3(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int32_3
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int32_3
          integer(I4P), target,  intent(in) :: fptr_hos(:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int32_3
+      endfunction ompx_target_disassociate_ptr_f_int32_3
 
-      module function omp_target_disassociate_ptr_f_int32_4(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int32_4(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int32_4
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int32_4
          integer(I4P), target,  intent(in) :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int32_4
+      endfunction ompx_target_disassociate_ptr_f_int32_4
 
-      module function omp_target_disassociate_ptr_f_int32_5(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int32_5(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int32_5
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int32_5
          integer(I4P), target,  intent(in) :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int32_5
+      endfunction ompx_target_disassociate_ptr_f_int32_5
 
-      module function omp_target_disassociate_ptr_f_int32_6(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int32_6(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int32_6
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int32_6
          integer(I4P), target,  intent(in) :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int32_6
+      endfunction ompx_target_disassociate_ptr_f_int32_6
 
-      module function omp_target_disassociate_ptr_f_int32_7(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int32_7(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int32_7
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int32_7
          integer(I4P), target,  intent(in) :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int32_7
+      endfunction ompx_target_disassociate_ptr_f_int32_7
 
 
-      module function omp_target_disassociate_ptr_f_int64_1(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int64_1(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int64_1
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int64_1
          integer(I8P), target,  intent(in) :: fptr_hos(:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int64_1
+      endfunction ompx_target_disassociate_ptr_f_int64_1
 
-      module function omp_target_disassociate_ptr_f_int64_2(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int64_2(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int64_2
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int64_2
          integer(I8P), target,  intent(in) :: fptr_hos(:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int64_2
+      endfunction ompx_target_disassociate_ptr_f_int64_2
 
-      module function omp_target_disassociate_ptr_f_int64_3(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int64_3(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int64_3
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int64_3
          integer(I8P), target,  intent(in) :: fptr_hos(:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int64_3
+      endfunction ompx_target_disassociate_ptr_f_int64_3
 
-      module function omp_target_disassociate_ptr_f_int64_4(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int64_4(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int64_4
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int64_4
          integer(I8P), target,  intent(in) :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int64_4
+      endfunction ompx_target_disassociate_ptr_f_int64_4
 
-      module function omp_target_disassociate_ptr_f_int64_5(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int64_5(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int64_5
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int64_5
          integer(I8P), target,  intent(in) :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int64_5
+      endfunction ompx_target_disassociate_ptr_f_int64_5
 
-      module function omp_target_disassociate_ptr_f_int64_6(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int64_6(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int64_6
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int64_6
          integer(I8P), target,  intent(in) :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int64_6
+      endfunction ompx_target_disassociate_ptr_f_int64_6
 
-      module function omp_target_disassociate_ptr_f_int64_7(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_int64_7(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_int64_7
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_int64_7
          integer(I8P), target,  intent(in) :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_int64_7
+      endfunction ompx_target_disassociate_ptr_f_int64_7
 
 
       ! DMR Target Disassociate Pointer Real Routines
-      module function omp_target_disassociate_ptr_f_real32_1(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real32_1(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real32_1
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real32_1
          real(R4P), target,  intent(in)    :: fptr_hos(:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real32_1
+      endfunction ompx_target_disassociate_ptr_f_real32_1
 
-      module function omp_target_disassociate_ptr_f_real32_2(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real32_2(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real32_2
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real32_2
          real(R4P), target,  intent(in)    :: fptr_hos(:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real32_2
+      endfunction ompx_target_disassociate_ptr_f_real32_2
 
-      module function omp_target_disassociate_ptr_f_real32_3(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real32_3(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real32_3
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real32_3
          real(R4P), target,  intent(in)    :: fptr_hos(:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real32_3
+      endfunction ompx_target_disassociate_ptr_f_real32_3
 
-      module function omp_target_disassociate_ptr_f_real32_4(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real32_4(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real32_4
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real32_4
          real(R4P), target,  intent(in)    :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real32_4
+      endfunction ompx_target_disassociate_ptr_f_real32_4
 
-      module function omp_target_disassociate_ptr_f_real32_5(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real32_5(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real32_5
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real32_5
          real(R4P), target,  intent(in)    :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real32_5
+      endfunction ompx_target_disassociate_ptr_f_real32_5
 
-      module function omp_target_disassociate_ptr_f_real32_6(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real32_6(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real32_6
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real32_6
          real(R4P), target,  intent(in)    :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real32_6
+      endfunction ompx_target_disassociate_ptr_f_real32_6
 
-      module function omp_target_disassociate_ptr_f_real32_7(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real32_7(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real32_7
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real32_7
          real(R4P), target,  intent(in)    :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real32_7
+      endfunction ompx_target_disassociate_ptr_f_real32_7
 
 
-      module function omp_target_disassociate_ptr_f_real64_1(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real64_1(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real64_1
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real64_1
          real(R8P), target,  intent(in)    :: fptr_hos(:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real64_1
+      endfunction ompx_target_disassociate_ptr_f_real64_1
 
-      module function omp_target_disassociate_ptr_f_real64_2(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real64_2(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real64_2
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real64_2
          real(R8P), target,  intent(in)    :: fptr_hos(:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real64_2
+      endfunction ompx_target_disassociate_ptr_f_real64_2
 
-      module function omp_target_disassociate_ptr_f_real64_3(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real64_3(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real64_3
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real64_3
          real(R8P), target,  intent(in)    :: fptr_hos(:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real64_3
+      endfunction ompx_target_disassociate_ptr_f_real64_3
 
-      module function omp_target_disassociate_ptr_f_real64_4(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real64_4(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real64_4
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real64_4
          real(R8P), target,  intent(in)    :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real64_4
+      endfunction ompx_target_disassociate_ptr_f_real64_4
 
-      module function omp_target_disassociate_ptr_f_real64_5(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real64_5(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real64_5
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real64_5
          real(R8P), target,  intent(in)    :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real64_5
+      endfunction ompx_target_disassociate_ptr_f_real64_5
 
-      module function omp_target_disassociate_ptr_f_real64_6(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real64_6(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real64_6
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real64_6
          real(R8P), target,  intent(in)    :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real64_6
+      endfunction ompx_target_disassociate_ptr_f_real64_6
 
-      module function omp_target_disassociate_ptr_f_real64_7(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real64_7(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real64_7
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real64_7
          real(R8P), target,  intent(in)    :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real64_7
+      endfunction ompx_target_disassociate_ptr_f_real64_7
 
 
 #if defined _real128
-      module function omp_target_disassociate_ptr_f_real128_1(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real128_1(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real128_1
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real128_1
          real(R16P), target,  intent(in)   :: fptr_hos(:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real128_1
+      endfunction ompx_target_disassociate_ptr_f_real128_1
 
-      module function omp_target_disassociate_ptr_f_real128_2(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real128_2(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real128_2
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real128_2
          real(R16P), target,  intent(in)   :: fptr_hos(:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real128_2
+      endfunction ompx_target_disassociate_ptr_f_real128_2
 
-      module function omp_target_disassociate_ptr_f_real128_3(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real128_3(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real128_3
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real128_3
          real(R16P), target,  intent(in)   :: fptr_hos(:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real128_3
+      endfunction ompx_target_disassociate_ptr_f_real128_3
 
-      module function omp_target_disassociate_ptr_f_real128_4(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real128_4(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real128_4
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real128_4
          real(R16P), target,  intent(in)   :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real128_4
+      endfunction ompx_target_disassociate_ptr_f_real128_4
 
-      module function omp_target_disassociate_ptr_f_real128_5(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real128_5(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real128_5
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real128_5
          real(R16P), target,  intent(in)   :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real128_5
+      endfunction ompx_target_disassociate_ptr_f_real128_5
 
-      module function omp_target_disassociate_ptr_f_real128_6(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real128_6(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real128_6
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real128_6
          real(R16P), target,  intent(in)   :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real128_6
+      endfunction ompx_target_disassociate_ptr_f_real128_6
 
-      module function omp_target_disassociate_ptr_f_real128_7(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_real128_7(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_real128_7
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_real128_7
          real(R16P), target,  intent(in)   :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_real128_7
+      endfunction ompx_target_disassociate_ptr_f_real128_7
 
 #endif
 
       ! DMR Target Disassociate Pointer Complex Routines
-      module function omp_target_disassociate_ptr_f_cmplx32_1(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx32_1(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx32_1
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx32_1
          complex(R4P), target,  intent(in) :: fptr_hos(:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx32_1
+      endfunction ompx_target_disassociate_ptr_f_cmplx32_1
 
-      module function omp_target_disassociate_ptr_f_cmplx32_2(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx32_2(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx32_2
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx32_2
          complex(R4P), target,  intent(in) :: fptr_hos(:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx32_2
+      endfunction ompx_target_disassociate_ptr_f_cmplx32_2
 
-      module function omp_target_disassociate_ptr_f_cmplx32_3(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx32_3(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx32_3
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx32_3
          complex(R4P), target,  intent(in) :: fptr_hos(:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx32_3
+      endfunction ompx_target_disassociate_ptr_f_cmplx32_3
 
-      module function omp_target_disassociate_ptr_f_cmplx32_4(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx32_4(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx32_4
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx32_4
          complex(R4P), target,  intent(in) :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx32_4
+      endfunction ompx_target_disassociate_ptr_f_cmplx32_4
 
-      module function omp_target_disassociate_ptr_f_cmplx32_5(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx32_5(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx32_5
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx32_5
          complex(R4P), target,  intent(in) :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx32_5
+      endfunction ompx_target_disassociate_ptr_f_cmplx32_5
 
-      module function omp_target_disassociate_ptr_f_cmplx32_6(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx32_6(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx32_6
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx32_6
          complex(R4P), target,  intent(in) :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx32_6
+      endfunction ompx_target_disassociate_ptr_f_cmplx32_6
 
-      module function omp_target_disassociate_ptr_f_cmplx32_7(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx32_7(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx32_7
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx32_7
          complex(R4P), target,  intent(in) :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx32_7
+      endfunction ompx_target_disassociate_ptr_f_cmplx32_7
 
 
-      module function omp_target_disassociate_ptr_f_cmplx64_1(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx64_1(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx64_1
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx64_1
          complex(R8P), target,  intent(in) :: fptr_hos(:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx64_1
+      endfunction ompx_target_disassociate_ptr_f_cmplx64_1
 
-      module function omp_target_disassociate_ptr_f_cmplx64_2(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx64_2(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx64_2
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx64_2
          complex(R8P), target,  intent(in) :: fptr_hos(:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx64_2
+      endfunction ompx_target_disassociate_ptr_f_cmplx64_2
 
-      module function omp_target_disassociate_ptr_f_cmplx64_3(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx64_3(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx64_3
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx64_3
          complex(R8P), target,  intent(in) :: fptr_hos(:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx64_3
+      endfunction ompx_target_disassociate_ptr_f_cmplx64_3
 
-      module function omp_target_disassociate_ptr_f_cmplx64_4(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx64_4(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx64_4
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx64_4
          complex(R8P), target,  intent(in) :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx64_4
+      endfunction ompx_target_disassociate_ptr_f_cmplx64_4
 
-      module function omp_target_disassociate_ptr_f_cmplx64_5(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx64_5(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx64_5
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx64_5
          complex(R8P), target,  intent(in) :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx64_5
+      endfunction ompx_target_disassociate_ptr_f_cmplx64_5
 
-      module function omp_target_disassociate_ptr_f_cmplx64_6(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx64_6(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx64_6
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx64_6
          complex(R8P), target,  intent(in) :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx64_6
+      endfunction ompx_target_disassociate_ptr_f_cmplx64_6
 
-      module function omp_target_disassociate_ptr_f_cmplx64_7(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx64_7(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx64_7
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx64_7
          complex(R8P), target,  intent(in) :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx64_7
+      endfunction ompx_target_disassociate_ptr_f_cmplx64_7
 
 
 #if defined _real128
-      module function omp_target_disassociate_ptr_f_cmplx128_1(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx128_1(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx128_1
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx128_1
          complex(R16P), target,  intent(in):: fptr_hos(:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx128_1
+      endfunction ompx_target_disassociate_ptr_f_cmplx128_1
 
-      module function omp_target_disassociate_ptr_f_cmplx128_2(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx128_2(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx128_2
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx128_2
          complex(R16P), target,  intent(in):: fptr_hos(:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx128_2
+      endfunction ompx_target_disassociate_ptr_f_cmplx128_2
 
-      module function omp_target_disassociate_ptr_f_cmplx128_3(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx128_3(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx128_3
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx128_3
          complex(R16P), target,  intent(in):: fptr_hos(:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx128_3
+      endfunction ompx_target_disassociate_ptr_f_cmplx128_3
 
-      module function omp_target_disassociate_ptr_f_cmplx128_4(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx128_4(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx128_4
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx128_4
          complex(R16P), target,  intent(in):: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx128_4
+      endfunction ompx_target_disassociate_ptr_f_cmplx128_4
 
-      module function omp_target_disassociate_ptr_f_cmplx128_5(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx128_5(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx128_5
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx128_5
          complex(R16P), target,  intent(in):: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx128_5
+      endfunction ompx_target_disassociate_ptr_f_cmplx128_5
 
-      module function omp_target_disassociate_ptr_f_cmplx128_6(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx128_6(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx128_6
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx128_6
          complex(R16P), target,  intent(in):: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx128_6
+      endfunction ompx_target_disassociate_ptr_f_cmplx128_6
 
-      module function omp_target_disassociate_ptr_f_cmplx128_7(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_cmplx128_7(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_cmplx128_7
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_cmplx128_7
          complex(R16P), target,  intent(in):: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_cmplx128_7
+      endfunction ompx_target_disassociate_ptr_f_cmplx128_7
 
 #endif
 
       ! DMR Target Disassociate Pointer Logical Routines
-      module function omp_target_disassociate_ptr_f_lgcl32_1(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_lgcl32_1(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_lgcl32_1
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_lgcl32_1
          logical(I4P), target,  intent(in) :: fptr_hos(:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_lgcl32_1
+      endfunction ompx_target_disassociate_ptr_f_lgcl32_1
 
-      module function omp_target_disassociate_ptr_f_lgcl32_2(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_lgcl32_2(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_lgcl32_2
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_lgcl32_2
          logical(I4P), target,  intent(in) :: fptr_hos(:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_lgcl32_2
+      endfunction ompx_target_disassociate_ptr_f_lgcl32_2
 
-      module function omp_target_disassociate_ptr_f_lgcl32_3(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_lgcl32_3(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_lgcl32_3
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_lgcl32_3
          logical(I4P), target,  intent(in) :: fptr_hos(:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_lgcl32_3
+      endfunction ompx_target_disassociate_ptr_f_lgcl32_3
 
-      module function omp_target_disassociate_ptr_f_lgcl32_4(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_lgcl32_4(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_lgcl32_4
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_lgcl32_4
          logical(I4P), target,  intent(in) :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_lgcl32_4
+      endfunction ompx_target_disassociate_ptr_f_lgcl32_4
 
-      module function omp_target_disassociate_ptr_f_lgcl32_5(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_lgcl32_5(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_lgcl32_5
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_lgcl32_5
          logical(I4P), target,  intent(in) :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_lgcl32_5
+      endfunction ompx_target_disassociate_ptr_f_lgcl32_5
 
-      module function omp_target_disassociate_ptr_f_lgcl32_6(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_lgcl32_6(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_lgcl32_6
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_lgcl32_6
          logical(I4P), target,  intent(in) :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_lgcl32_6
+      endfunction ompx_target_disassociate_ptr_f_lgcl32_6
 
-      module function omp_target_disassociate_ptr_f_lgcl32_7(fptr_hos, omp_dev)
+      module function ompx_target_disassociate_ptr_f_lgcl32_7(fptr_hos, omp_dev)
          implicit none
-         integer(I4P)                       :: omp_target_disassociate_ptr_f_lgcl32_7
+         integer(I4P)                       :: ompx_target_disassociate_ptr_f_lgcl32_7
          logical(I4P), target,  intent(in) :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)           :: omp_dev
-      endfunction omp_target_disassociate_ptr_f_lgcl32_7
+      endfunction ompx_target_disassociate_ptr_f_lgcl32_7
 
 
    endinterface
@@ -6297,640 +6297,640 @@ module dmr
    interface
 #if defined _F2018
       ! DMR Get Mapped Pointer Integer F2018 Routines
-      module subroutine omp_get_mapped_ptr_f_int8(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int8(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I1P), pointer, intent(out) :: fptr_dev(..)
          integer(I1P), target,  intent(in)  :: fptr_hos(..)
          integer(I4P), intent(in)           :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int8
+      endsubroutine ompx_get_mapped_ptr_f_int8
 
-      module subroutine omp_get_mapped_ptr_f_int16(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int16(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I2P), pointer, intent(out) :: fptr_dev(..)
          integer(I2P), target,  intent(in)  :: fptr_hos(..)
          integer(I4P), intent(in)           :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int16
+      endsubroutine ompx_get_mapped_ptr_f_int16
 
-      module subroutine omp_get_mapped_ptr_f_int32(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int32(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I4P), pointer, intent(out) :: fptr_dev(..)
          integer(I4P), target,  intent(in)  :: fptr_hos(..)
          integer(I4P), intent(in)           :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int32
+      endsubroutine ompx_get_mapped_ptr_f_int32
 
-      module subroutine omp_get_mapped_ptr_f_int64(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int64(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I8P), pointer, intent(out) :: fptr_dev(..)
          integer(I8P), target,  intent(in)  :: fptr_hos(..)
          integer(I4P), intent(in)           :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int64
+      endsubroutine ompx_get_mapped_ptr_f_int64
 
       ! DMR Get Mapped Pointer Real F2018 Routines
-      module subroutine omp_get_mapped_ptr_f_real32(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real32(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R4P), pointer, intent(out) :: fptr_dev(..)
          real(R4P), target,  intent(in)  :: fptr_hos(..)
          integer(I4P), intent(in)           :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real32
+      endsubroutine ompx_get_mapped_ptr_f_real32
 
-      module subroutine omp_get_mapped_ptr_f_real64(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real64(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R8P), pointer, intent(out) :: fptr_dev(..)
          real(R8P), target,  intent(in)  :: fptr_hos(..)
          integer(I4P), intent(in)           :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real64
+      endsubroutine ompx_get_mapped_ptr_f_real64
 
 #if defined _real128
-      module subroutine omp_get_mapped_ptr_f_real128(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real128(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R16P), pointer, intent(out) :: fptr_dev(..)
          real(R16P), target,  intent(in)  :: fptr_hos(..)
          integer(I4P), intent(in)           :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real128
+      endsubroutine ompx_get_mapped_ptr_f_real128
 #endif
 
       ! DMR Get Mapped Pointer Complex F2018 Routines
-      module subroutine omp_get_mapped_ptr_f_cmplx32(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx32(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R4P), pointer, intent(out) :: fptr_dev(..)
          complex(R4P), target,  intent(in)  :: fptr_hos(..)
          integer(I4P), intent(in)           :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx32
+      endsubroutine ompx_get_mapped_ptr_f_cmplx32
 
-      module subroutine omp_get_mapped_ptr_f_cmplx64(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx64(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R8P), pointer, intent(out) :: fptr_dev(..)
          complex(R8P), target,  intent(in)  :: fptr_hos(..)
          integer(I4P), intent(in)           :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx64
+      endsubroutine ompx_get_mapped_ptr_f_cmplx64
 
 #if defined _real128
-      module subroutine omp_get_mapped_ptr_f_cmplx128(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx128(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R16P), pointer, intent(out) :: fptr_dev(..)
          complex(R16P), target,  intent(in)  :: fptr_hos(..)
          integer(I4P), intent(in)           :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx128
+      endsubroutine ompx_get_mapped_ptr_f_cmplx128
 #endif
 
       ! DMR Get Mapped Pointer Logical F2018 Routines
-      module subroutine omp_get_mapped_ptr_f_lgcl32(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_lgcl32(fptr_dev, fptr_hos, omp_dev)
          implicit none
          logical(I4P), pointer, intent(out) :: fptr_dev(..)
          logical(I4P), target,  intent(in)  :: fptr_hos(..)
          integer(I4P), intent(in)           :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_lgcl32
+      endsubroutine ompx_get_mapped_ptr_f_lgcl32
 
 #else
       ! DMR Get Mapped Pointer Integer Routines
-      module subroutine omp_get_mapped_ptr_f_int8_1(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int8_1(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I1P), target,  contiguous, intent(in)   :: fptr_hos(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int8_1
+      endsubroutine ompx_get_mapped_ptr_f_int8_1
 
-      module subroutine omp_get_mapped_ptr_f_int8_2(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int8_2(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I1P), target,  contiguous, intent(in)   :: fptr_hos(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int8_2
+      endsubroutine ompx_get_mapped_ptr_f_int8_2
 
-      module subroutine omp_get_mapped_ptr_f_int8_3(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int8_3(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I1P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int8_3
+      endsubroutine ompx_get_mapped_ptr_f_int8_3
 
-      module subroutine omp_get_mapped_ptr_f_int8_4(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int8_4(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I1P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int8_4
+      endsubroutine ompx_get_mapped_ptr_f_int8_4
 
-      module subroutine omp_get_mapped_ptr_f_int8_5(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int8_5(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I1P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int8_5
+      endsubroutine ompx_get_mapped_ptr_f_int8_5
 
-      module subroutine omp_get_mapped_ptr_f_int8_6(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int8_6(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I1P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int8_6
+      endsubroutine ompx_get_mapped_ptr_f_int8_6
 
-      module subroutine omp_get_mapped_ptr_f_int8_7(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int8_7(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I1P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I1P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int8_7
+      endsubroutine ompx_get_mapped_ptr_f_int8_7
 
-      module subroutine omp_get_mapped_ptr_f_int16_1(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int16_1(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I2P), target,  contiguous, intent(in)   :: fptr_hos(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int16_1
+      endsubroutine ompx_get_mapped_ptr_f_int16_1
 
-      module subroutine omp_get_mapped_ptr_f_int16_2(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int16_2(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I2P), target,  contiguous, intent(in)   :: fptr_hos(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int16_2
+      endsubroutine ompx_get_mapped_ptr_f_int16_2
 
-      module subroutine omp_get_mapped_ptr_f_int16_3(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int16_3(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I2P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int16_3
+      endsubroutine ompx_get_mapped_ptr_f_int16_3
 
-      module subroutine omp_get_mapped_ptr_f_int16_4(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int16_4(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I2P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int16_4
+      endsubroutine ompx_get_mapped_ptr_f_int16_4
 
-      module subroutine omp_get_mapped_ptr_f_int16_5(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int16_5(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I2P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int16_5
+      endsubroutine ompx_get_mapped_ptr_f_int16_5
 
-      module subroutine omp_get_mapped_ptr_f_int16_6(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int16_6(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I2P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int16_6
+      endsubroutine ompx_get_mapped_ptr_f_int16_6
 
-      module subroutine omp_get_mapped_ptr_f_int16_7(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int16_7(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I2P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I2P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int16_7
+      endsubroutine ompx_get_mapped_ptr_f_int16_7
 
-      module subroutine omp_get_mapped_ptr_f_int32_1(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int32_1(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I4P), target,  contiguous, intent(in)   :: fptr_hos(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int32_1
+      endsubroutine ompx_get_mapped_ptr_f_int32_1
 
-      module subroutine omp_get_mapped_ptr_f_int32_2(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int32_2(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I4P), target,  contiguous, intent(in)   :: fptr_hos(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int32_2
+      endsubroutine ompx_get_mapped_ptr_f_int32_2
 
-      module subroutine omp_get_mapped_ptr_f_int32_3(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int32_3(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I4P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int32_3
+      endsubroutine ompx_get_mapped_ptr_f_int32_3
 
-      module subroutine omp_get_mapped_ptr_f_int32_4(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int32_4(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I4P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int32_4
+      endsubroutine ompx_get_mapped_ptr_f_int32_4
 
-      module subroutine omp_get_mapped_ptr_f_int32_5(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int32_5(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I4P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int32_5
+      endsubroutine ompx_get_mapped_ptr_f_int32_5
 
-      module subroutine omp_get_mapped_ptr_f_int32_6(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int32_6(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I4P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int32_6
+      endsubroutine ompx_get_mapped_ptr_f_int32_6
 
-      module subroutine omp_get_mapped_ptr_f_int32_7(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int32_7(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I4P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int32_7
+      endsubroutine ompx_get_mapped_ptr_f_int32_7
 
-      module subroutine omp_get_mapped_ptr_f_int64_1(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int64_1(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          integer(I8P), target,  contiguous, intent(in)   :: fptr_hos(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int64_1
+      endsubroutine ompx_get_mapped_ptr_f_int64_1
 
-      module subroutine omp_get_mapped_ptr_f_int64_2(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int64_2(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          integer(I8P), target,  contiguous, intent(in)   :: fptr_hos(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int64_2
+      endsubroutine ompx_get_mapped_ptr_f_int64_2
 
-      module subroutine omp_get_mapped_ptr_f_int64_3(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int64_3(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          integer(I8P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int64_3
+      endsubroutine ompx_get_mapped_ptr_f_int64_3
 
-      module subroutine omp_get_mapped_ptr_f_int64_4(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int64_4(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          integer(I8P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int64_4
+      endsubroutine ompx_get_mapped_ptr_f_int64_4
 
-      module subroutine omp_get_mapped_ptr_f_int64_5(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int64_5(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          integer(I8P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int64_5
+      endsubroutine ompx_get_mapped_ptr_f_int64_5
 
-      module subroutine omp_get_mapped_ptr_f_int64_6(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int64_6(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          integer(I8P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int64_6
+      endsubroutine ompx_get_mapped_ptr_f_int64_6
 
-      module subroutine omp_get_mapped_ptr_f_int64_7(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_int64_7(fptr_dev, fptr_hos, omp_dev)
          implicit none
          integer(I8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          integer(I8P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_int64_7
+      endsubroutine ompx_get_mapped_ptr_f_int64_7
 
 
       ! DMR Get Mapped Pointer Real Routines
-      module subroutine omp_get_mapped_ptr_f_real32_1(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real32_1(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:)
          real(R4P), target,  contiguous, intent(in)      :: fptr_hos(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real32_1
+      endsubroutine ompx_get_mapped_ptr_f_real32_1
 
-      module subroutine omp_get_mapped_ptr_f_real32_2(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real32_2(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:)
          real(R4P), target,  contiguous, intent(in)      :: fptr_hos(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real32_2
+      endsubroutine ompx_get_mapped_ptr_f_real32_2
 
-      module subroutine omp_get_mapped_ptr_f_real32_3(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real32_3(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:)
          real(R4P), target,  contiguous, intent(in)      :: fptr_hos(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real32_3
+      endsubroutine ompx_get_mapped_ptr_f_real32_3
 
-      module subroutine omp_get_mapped_ptr_f_real32_4(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real32_4(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:)
          real(R4P), target,  contiguous, intent(in)      :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real32_4
+      endsubroutine ompx_get_mapped_ptr_f_real32_4
 
-      module subroutine omp_get_mapped_ptr_f_real32_5(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real32_5(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:)
          real(R4P), target,  contiguous, intent(in)      :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real32_5
+      endsubroutine ompx_get_mapped_ptr_f_real32_5
 
-      module subroutine omp_get_mapped_ptr_f_real32_6(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real32_6(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:,:)
          real(R4P), target,  contiguous, intent(in)      :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real32_6
+      endsubroutine ompx_get_mapped_ptr_f_real32_6
 
-      module subroutine omp_get_mapped_ptr_f_real32_7(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real32_7(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R4P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:,:,:)
          real(R4P), target,  contiguous, intent(in)      :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real32_7
+      endsubroutine ompx_get_mapped_ptr_f_real32_7
 
-      module subroutine omp_get_mapped_ptr_f_real64_1(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real64_1(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:)
          real(R8P), target,  contiguous, intent(in)      :: fptr_hos(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real64_1
+      endsubroutine ompx_get_mapped_ptr_f_real64_1
 
-      module subroutine omp_get_mapped_ptr_f_real64_2(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real64_2(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:)
          real(R8P), target,  contiguous, intent(in)      :: fptr_hos(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real64_2
+      endsubroutine ompx_get_mapped_ptr_f_real64_2
 
-      module subroutine omp_get_mapped_ptr_f_real64_3(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real64_3(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:)
          real(R8P), target,  contiguous, intent(in)      :: fptr_hos(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real64_3
+      endsubroutine ompx_get_mapped_ptr_f_real64_3
 
-      module subroutine omp_get_mapped_ptr_f_real64_4(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real64_4(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:)
          real(R8P), target,  contiguous, intent(in)      :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real64_4
+      endsubroutine ompx_get_mapped_ptr_f_real64_4
 
-      module subroutine omp_get_mapped_ptr_f_real64_5(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real64_5(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:)
          real(R8P), target,  contiguous, intent(in)      :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real64_5
+      endsubroutine ompx_get_mapped_ptr_f_real64_5
 
-      module subroutine omp_get_mapped_ptr_f_real64_6(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real64_6(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:,:)
          real(R8P), target,  contiguous, intent(in)      :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real64_6
+      endsubroutine ompx_get_mapped_ptr_f_real64_6
 
-      module subroutine omp_get_mapped_ptr_f_real64_7(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real64_7(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R8P), pointer, contiguous, intent(out)     :: fptr_dev(:,:,:,:,:,:,:)
          real(R8P), target,  contiguous, intent(in)      :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real64_7
+      endsubroutine ompx_get_mapped_ptr_f_real64_7
 
 #if defined _real128
-      module subroutine omp_get_mapped_ptr_f_real128_1(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real128_1(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:)
          real(R16P), target,  contiguous, intent(in)     :: fptr_hos(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real128_1
+      endsubroutine ompx_get_mapped_ptr_f_real128_1
 
-      module subroutine omp_get_mapped_ptr_f_real128_2(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real128_2(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:)
          real(R16P), target,  contiguous, intent(in)     :: fptr_hos(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real128_2
+      endsubroutine ompx_get_mapped_ptr_f_real128_2
 
-      module subroutine omp_get_mapped_ptr_f_real128_3(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real128_3(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:)
          real(R16P), target,  contiguous, intent(in)     :: fptr_hos(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real128_3
+      endsubroutine ompx_get_mapped_ptr_f_real128_3
 
-      module subroutine omp_get_mapped_ptr_f_real128_4(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real128_4(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:,:)
          real(R16P), target,  contiguous, intent(in)     :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real128_4
+      endsubroutine ompx_get_mapped_ptr_f_real128_4
 
-      module subroutine omp_get_mapped_ptr_f_real128_5(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real128_5(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:,:,:)
          real(R16P), target,  contiguous, intent(in)     :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real128_5
+      endsubroutine ompx_get_mapped_ptr_f_real128_5
 
-      module subroutine omp_get_mapped_ptr_f_real128_6(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real128_6(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:,:,:,:)
          real(R16P), target,  contiguous, intent(in)     :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real128_6
+      endsubroutine ompx_get_mapped_ptr_f_real128_6
 
-      module subroutine omp_get_mapped_ptr_f_real128_7(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_real128_7(fptr_dev, fptr_hos, omp_dev)
          implicit none
          real(R16P), pointer, contiguous, intent(out)    :: fptr_dev(:,:,:,:,:,:,:)
          real(R16P), target,  contiguous, intent(in)     :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_real128_7
+      endsubroutine ompx_get_mapped_ptr_f_real128_7
 
 #endif
 
       ! DMR Get Mapped Pointer Complex Routines
-      module subroutine omp_get_mapped_ptr_f_cmplx32_1(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx32_1(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          complex(R4P), target,  contiguous, intent(in)   :: fptr_hos(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx32_1
+      endsubroutine ompx_get_mapped_ptr_f_cmplx32_1
 
-      module subroutine omp_get_mapped_ptr_f_cmplx32_2(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx32_2(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          complex(R4P), target,  contiguous, intent(in)   :: fptr_hos(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx32_2
+      endsubroutine ompx_get_mapped_ptr_f_cmplx32_2
 
-      module subroutine omp_get_mapped_ptr_f_cmplx32_3(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx32_3(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          complex(R4P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx32_3
+      endsubroutine ompx_get_mapped_ptr_f_cmplx32_3
 
-      module subroutine omp_get_mapped_ptr_f_cmplx32_4(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx32_4(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          complex(R4P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx32_4
+      endsubroutine ompx_get_mapped_ptr_f_cmplx32_4
 
-      module subroutine omp_get_mapped_ptr_f_cmplx32_5(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx32_5(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          complex(R4P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx32_5
+      endsubroutine ompx_get_mapped_ptr_f_cmplx32_5
 
-      module subroutine omp_get_mapped_ptr_f_cmplx32_6(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx32_6(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          complex(R4P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx32_6
+      endsubroutine ompx_get_mapped_ptr_f_cmplx32_6
 
-      module subroutine omp_get_mapped_ptr_f_cmplx32_7(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx32_7(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          complex(R4P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx32_7
+      endsubroutine ompx_get_mapped_ptr_f_cmplx32_7
 
-      module subroutine omp_get_mapped_ptr_f_cmplx64_1(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx64_1(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          complex(R8P), target,  contiguous, intent(in)   :: fptr_hos(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx64_1
+      endsubroutine ompx_get_mapped_ptr_f_cmplx64_1
 
-      module subroutine omp_get_mapped_ptr_f_cmplx64_2(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx64_2(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          complex(R8P), target,  contiguous, intent(in)   :: fptr_hos(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx64_2
+      endsubroutine ompx_get_mapped_ptr_f_cmplx64_2
 
-      module subroutine omp_get_mapped_ptr_f_cmplx64_3(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx64_3(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          complex(R8P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx64_3
+      endsubroutine ompx_get_mapped_ptr_f_cmplx64_3
 
-      module subroutine omp_get_mapped_ptr_f_cmplx64_4(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx64_4(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          complex(R8P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx64_4
+      endsubroutine ompx_get_mapped_ptr_f_cmplx64_4
 
-      module subroutine omp_get_mapped_ptr_f_cmplx64_5(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx64_5(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          complex(R8P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx64_5
+      endsubroutine ompx_get_mapped_ptr_f_cmplx64_5
 
-      module subroutine omp_get_mapped_ptr_f_cmplx64_6(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx64_6(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          complex(R8P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx64_6
+      endsubroutine ompx_get_mapped_ptr_f_cmplx64_6
 
-      module subroutine omp_get_mapped_ptr_f_cmplx64_7(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx64_7(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R8P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          complex(R8P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx64_7
+      endsubroutine ompx_get_mapped_ptr_f_cmplx64_7
 
 #if defined _real128
-      module subroutine omp_get_mapped_ptr_f_cmplx128_1(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx128_1(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:)
          complex(R16P), target,  contiguous, intent(in)  :: fptr_hos(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx128_1
+      endsubroutine ompx_get_mapped_ptr_f_cmplx128_1
 
-      module subroutine omp_get_mapped_ptr_f_cmplx128_2(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx128_2(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:)
          complex(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx128_2
+      endsubroutine ompx_get_mapped_ptr_f_cmplx128_2
 
-      module subroutine omp_get_mapped_ptr_f_cmplx128_3(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx128_3(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:)
          complex(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx128_3
+      endsubroutine ompx_get_mapped_ptr_f_cmplx128_3
 
-      module subroutine omp_get_mapped_ptr_f_cmplx128_4(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx128_4(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:)
          complex(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx128_4
+      endsubroutine ompx_get_mapped_ptr_f_cmplx128_4
 
-      module subroutine omp_get_mapped_ptr_f_cmplx128_5(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx128_5(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:)
          complex(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx128_5
+      endsubroutine ompx_get_mapped_ptr_f_cmplx128_5
 
-      module subroutine omp_get_mapped_ptr_f_cmplx128_6(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx128_6(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:)
          complex(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx128_6
+      endsubroutine ompx_get_mapped_ptr_f_cmplx128_6
 
-      module subroutine omp_get_mapped_ptr_f_cmplx128_7(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_cmplx128_7(fptr_dev, fptr_hos, omp_dev)
          implicit none
          complex(R16P), pointer, contiguous, intent(out) :: fptr_dev(:,:,:,:,:,:,:)
          complex(R16P), target,  contiguous, intent(in)  :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_cmplx128_7
+      endsubroutine ompx_get_mapped_ptr_f_cmplx128_7
 
 #endif
 
       ! DMR Get Mapped Pointer Logical Routines
-      module subroutine omp_get_mapped_ptr_f_lgcl32_1(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_lgcl32_1(fptr_dev, fptr_hos, omp_dev)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:)
          logical(I4P), target,  contiguous, intent(in)   :: fptr_hos(:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_lgcl32_1
+      endsubroutine ompx_get_mapped_ptr_f_lgcl32_1
 
-      module subroutine omp_get_mapped_ptr_f_lgcl32_2(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_lgcl32_2(fptr_dev, fptr_hos, omp_dev)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:)
          logical(I4P), target,  contiguous, intent(in)   :: fptr_hos(:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_lgcl32_2
+      endsubroutine ompx_get_mapped_ptr_f_lgcl32_2
 
-      module subroutine omp_get_mapped_ptr_f_lgcl32_3(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_lgcl32_3(fptr_dev, fptr_hos, omp_dev)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:)
          logical(I4P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_lgcl32_3
+      endsubroutine ompx_get_mapped_ptr_f_lgcl32_3
 
-      module subroutine omp_get_mapped_ptr_f_lgcl32_4(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_lgcl32_4(fptr_dev, fptr_hos, omp_dev)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:)
          logical(I4P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_lgcl32_4
+      endsubroutine ompx_get_mapped_ptr_f_lgcl32_4
 
-      module subroutine omp_get_mapped_ptr_f_lgcl32_5(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_lgcl32_5(fptr_dev, fptr_hos, omp_dev)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:)
          logical(I4P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_lgcl32_5
+      endsubroutine ompx_get_mapped_ptr_f_lgcl32_5
 
-      module subroutine omp_get_mapped_ptr_f_lgcl32_6(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_lgcl32_6(fptr_dev, fptr_hos, omp_dev)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:)
          logical(I4P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_lgcl32_6
+      endsubroutine ompx_get_mapped_ptr_f_lgcl32_6
 
-      module subroutine omp_get_mapped_ptr_f_lgcl32_7(fptr_dev, fptr_hos, omp_dev)
+      module subroutine ompx_get_mapped_ptr_f_lgcl32_7(fptr_dev, fptr_hos, omp_dev)
          implicit none
          logical(I4P), pointer, contiguous, intent(out)  :: fptr_dev(:,:,:,:,:,:,:)
          logical(I4P), target,  contiguous, intent(in)   :: fptr_hos(:,:,:,:,:,:,:)
          integer(I4P), intent(in)                        :: omp_dev
-      endsubroutine omp_get_mapped_ptr_f_lgcl32_7
+      endsubroutine ompx_get_mapped_ptr_f_lgcl32_7
 
 
 #endif

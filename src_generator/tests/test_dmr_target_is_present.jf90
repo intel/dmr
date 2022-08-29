@@ -13,7 +13,7 @@
 
 program test_dmr_target_is_present
    use omp_lib,         only : omp_get_default_device
-   use dmr,             only : omp_target_is_present_f
+   use dmr,             only : ompx_target_is_present_f
    use dmr_environment
 
    implicit none
@@ -58,9 +58,9 @@ program test_dmr_target_is_present
       write(0,"(/,a)") "DMR Target Is Present test will not be executed"
    else
       !$omp target data map(alloc:host_data_{{keywords[t][1]}}{{p.name}}_{{d}})
-      pres = omp_target_is_present_f(host_data=host_data_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_dev=omp_get_default_device())
+      pres = ompx_target_is_present_f(host_data=host_data_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_dev=omp_get_default_device())
       !$omp end target data
-      if (pres .and. (.not. omp_target_is_present_f(host_data=host_data_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_dev=omp_get_default_device()))) then
+      if (pres .and. (.not. ompx_target_is_present_f(host_data=host_data_{{keywords[t][1]}}{{p.name}}_{{d}}, omp_dev=omp_get_default_device()))) then
          test_tot = test_tot + 1
       else
          write(0,"(/,a,i5)") "Test failed for dev_ptr_{{keywords[t][1]}}{{p.name}}_{{d}}"

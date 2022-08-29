@@ -17,10 +17,10 @@ submodule (dmr) dmr_target_memcpy_async
 
    contains
       ! OpenMP Target Memcpy Async Integer Routines
-      module function omp_target_memcpy_async_f_int8(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_int8(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_async_f_int8
+         integer(I4P)                                  :: ompx_target_memcpy_async_f_int8
          integer(I1P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I1P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
@@ -50,18 +50,18 @@ submodule (dmr) dmr_target_memcpy_async
          total_dim = int(n_elements * byte_size(1_I1P), c_size_t)
 
          if (present(depobj_list)) then
-            omp_target_memcpy_async_f_int8 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_int8 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count, depobj_list), I4P)
          else
-            omp_target_memcpy_async_f_int8 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_int8 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count), I4P)
          endif
-      endfunction omp_target_memcpy_async_f_int8
+      endfunction ompx_target_memcpy_async_f_int8
 
-      module function omp_target_memcpy_async_f_int16(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_int16(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_async_f_int16
+         integer(I4P)                                  :: ompx_target_memcpy_async_f_int16
          integer(I2P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I2P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
@@ -91,18 +91,18 @@ submodule (dmr) dmr_target_memcpy_async
          total_dim = int(n_elements * byte_size(1_I2P), c_size_t)
 
          if (present(depobj_list)) then
-            omp_target_memcpy_async_f_int16 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_int16 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count, depobj_list), I4P)
          else
-            omp_target_memcpy_async_f_int16 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_int16 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count), I4P)
          endif
-      endfunction omp_target_memcpy_async_f_int16
+      endfunction ompx_target_memcpy_async_f_int16
 
-      module function omp_target_memcpy_async_f_int32(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_int32(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_async_f_int32
+         integer(I4P)                                  :: ompx_target_memcpy_async_f_int32
          integer(I4P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
@@ -132,18 +132,18 @@ submodule (dmr) dmr_target_memcpy_async
          total_dim = int(n_elements * byte_size(1_I4P), c_size_t)
 
          if (present(depobj_list)) then
-            omp_target_memcpy_async_f_int32 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_int32 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count, depobj_list), I4P)
          else
-            omp_target_memcpy_async_f_int32 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_int32 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count), I4P)
          endif
-      endfunction omp_target_memcpy_async_f_int32
+      endfunction ompx_target_memcpy_async_f_int32
 
-      module function omp_target_memcpy_async_f_int64(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_int64(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_async_f_int64
+         integer(I4P)                                  :: ompx_target_memcpy_async_f_int64
          integer(I8P), contiguous, target, intent(out) :: fptr_dst(..)
          integer(I8P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
@@ -173,19 +173,19 @@ submodule (dmr) dmr_target_memcpy_async
          total_dim = int(n_elements * byte_size(1_I8P), c_size_t)
 
          if (present(depobj_list)) then
-            omp_target_memcpy_async_f_int64 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_int64 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count, depobj_list), I4P)
          else
-            omp_target_memcpy_async_f_int64 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_int64 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count), I4P)
          endif
-      endfunction omp_target_memcpy_async_f_int64
+      endfunction ompx_target_memcpy_async_f_int64
 
       ! OpenMP Target Memcpy Async Real Routines
-      module function omp_target_memcpy_async_f_real32(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_real32(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_async_f_real32
+         integer(I4P)                                  :: ompx_target_memcpy_async_f_real32
          real(R4P), contiguous, target, intent(out) :: fptr_dst(..)
          real(R4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
@@ -215,18 +215,18 @@ submodule (dmr) dmr_target_memcpy_async
          total_dim = int(n_elements * byte_size(1._R4P), c_size_t)
 
          if (present(depobj_list)) then
-            omp_target_memcpy_async_f_real32 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_real32 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count, depobj_list), I4P)
          else
-            omp_target_memcpy_async_f_real32 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_real32 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count), I4P)
          endif
-      endfunction omp_target_memcpy_async_f_real32
+      endfunction ompx_target_memcpy_async_f_real32
 
-      module function omp_target_memcpy_async_f_real64(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_real64(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_async_f_real64
+         integer(I4P)                                  :: ompx_target_memcpy_async_f_real64
          real(R8P), contiguous, target, intent(out) :: fptr_dst(..)
          real(R8P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
@@ -256,19 +256,19 @@ submodule (dmr) dmr_target_memcpy_async
          total_dim = int(n_elements * byte_size(1._R8P), c_size_t)
 
          if (present(depobj_list)) then
-            omp_target_memcpy_async_f_real64 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_real64 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count, depobj_list), I4P)
          else
-            omp_target_memcpy_async_f_real64 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_real64 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count), I4P)
          endif
-      endfunction omp_target_memcpy_async_f_real64
+      endfunction ompx_target_memcpy_async_f_real64
 
 #if defined _real128
-      module function omp_target_memcpy_async_f_real128(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_real128(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_async_f_real128
+         integer(I4P)                                  :: ompx_target_memcpy_async_f_real128
          real(R16P), contiguous, target, intent(out) :: fptr_dst(..)
          real(R16P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
@@ -298,20 +298,20 @@ submodule (dmr) dmr_target_memcpy_async
          total_dim = int(n_elements * byte_size(1._R16P), c_size_t)
 
          if (present(depobj_list)) then
-            omp_target_memcpy_async_f_real128 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_real128 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count, depobj_list), I4P)
          else
-            omp_target_memcpy_async_f_real128 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_real128 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count), I4P)
          endif
-      endfunction omp_target_memcpy_async_f_real128
+      endfunction ompx_target_memcpy_async_f_real128
 #endif
 
       ! OpenMP Target Memcpy Async Complex Routines
-      module function omp_target_memcpy_async_f_cmplx32(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_cmplx32(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_async_f_cmplx32
+         integer(I4P)                                  :: ompx_target_memcpy_async_f_cmplx32
          complex(R4P), contiguous, target, intent(out) :: fptr_dst(..)
          complex(R4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
@@ -341,18 +341,18 @@ submodule (dmr) dmr_target_memcpy_async
          total_dim = int(2_I8P * n_elements * byte_size(1._R4P), c_size_t)
 
          if (present(depobj_list)) then
-            omp_target_memcpy_async_f_cmplx32 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_cmplx32 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count, depobj_list), I4P)
          else
-            omp_target_memcpy_async_f_cmplx32 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_cmplx32 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count), I4P)
          endif
-      endfunction omp_target_memcpy_async_f_cmplx32
+      endfunction ompx_target_memcpy_async_f_cmplx32
 
-      module function omp_target_memcpy_async_f_cmplx64(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_cmplx64(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_async_f_cmplx64
+         integer(I4P)                                  :: ompx_target_memcpy_async_f_cmplx64
          complex(R8P), contiguous, target, intent(out) :: fptr_dst(..)
          complex(R8P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
@@ -382,19 +382,19 @@ submodule (dmr) dmr_target_memcpy_async
          total_dim = int(2_I8P * n_elements * byte_size(1._R8P), c_size_t)
 
          if (present(depobj_list)) then
-            omp_target_memcpy_async_f_cmplx64 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_cmplx64 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count, depobj_list), I4P)
          else
-            omp_target_memcpy_async_f_cmplx64 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_cmplx64 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count), I4P)
          endif
-      endfunction omp_target_memcpy_async_f_cmplx64
+      endfunction ompx_target_memcpy_async_f_cmplx64
 
 #if defined _real128
-      module function omp_target_memcpy_async_f_cmplx128(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_cmplx128(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_async_f_cmplx128
+         integer(I4P)                                  :: ompx_target_memcpy_async_f_cmplx128
          complex(R16P), contiguous, target, intent(out) :: fptr_dst(..)
          complex(R16P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
@@ -424,20 +424,20 @@ submodule (dmr) dmr_target_memcpy_async
          total_dim = int(2_I8P * n_elements * byte_size(1._R16P), c_size_t)
 
          if (present(depobj_list)) then
-            omp_target_memcpy_async_f_cmplx128 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_cmplx128 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count, depobj_list), I4P)
          else
-            omp_target_memcpy_async_f_cmplx128 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_cmplx128 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count), I4P)
          endif
-      endfunction omp_target_memcpy_async_f_cmplx128
+      endfunction ompx_target_memcpy_async_f_cmplx128
 #endif
 
       ! OpenMP Target Memcpy Async Logical Routines
-      module function omp_target_memcpy_async_f_lgcl32(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_async_f_lgcl32(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev, f_depobj_count, depobj_list)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_async_f_lgcl32
+         integer(I4P)                                  :: ompx_target_memcpy_async_f_lgcl32
          logical(I4P), contiguous, target, intent(out) :: fptr_dst(..)
          logical(I4P), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                       :: omp_dst_dev, omp_src_dev
@@ -467,13 +467,13 @@ submodule (dmr) dmr_target_memcpy_async
          total_dim = int(n_elements * byte_size(1._I4P), c_size_t)
 
          if (present(depobj_list)) then
-            omp_target_memcpy_async_f_lgcl32 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_lgcl32 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count, depobj_list), I4P)
          else
-            omp_target_memcpy_async_f_lgcl32 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+            ompx_target_memcpy_async_f_lgcl32 = int(omp_target_memcpy_async(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
                omp_dst_device, omp_src_device, depobj_count), I4P)
          endif
-      endfunction omp_target_memcpy_async_f_lgcl32
+      endfunction ompx_target_memcpy_async_f_lgcl32
 
 
 endsubmodule dmr_target_memcpy_async

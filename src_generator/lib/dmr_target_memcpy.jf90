@@ -22,10 +22,10 @@ submodule (dmr) dmr_target_memcpy
 {%- if p.name == '128' %}
 #if defined _real128
 {%- endif %}
-      module function omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}(fptr_dst, fptr_src, dst_off, src_off, &
+      module function ompx_target_memcpy_f_{{keywords[t][1]}}{{p.name}}(fptr_dst, fptr_src, dst_off, src_off, &
             omp_dst_dev, omp_src_dev)
          implicit none
-         integer(I4P)                                  :: omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}
+         integer(I4P)                                  :: ompx_target_memcpy_f_{{keywords[t][1]}}{{p.name}}
          {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(out) :: fptr_dst(..)
          {{t}}({{keywords[t][2]}}{{p.key}}), contiguous, target, intent(in)  :: fptr_src(..)
          integer(I4P), intent(in)                      :: omp_dst_dev, omp_src_dev
@@ -55,9 +55,9 @@ submodule (dmr) dmr_target_memcpy
          total_dim = int(n_elements * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), c_size_t)
 {%- endif %}
 
-         omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}} = int(omp_target_memcpy(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
+         ompx_target_memcpy_f_{{keywords[t][1]}}{{p.name}} = int(omp_target_memcpy(cptr_dst, cptr_src, total_dim, omp_dst_offset, omp_src_offset, &
             omp_dst_device, omp_src_device), I4P)
-      endfunction omp_target_memcpy_f_{{keywords[t][1]}}{{p.name}}
+      endfunction ompx_target_memcpy_f_{{keywords[t][1]}}{{p.name}}
 {%- if p.name == '128' %}
 #endif
 {%- endif %}
