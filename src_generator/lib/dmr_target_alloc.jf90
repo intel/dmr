@@ -24,7 +24,7 @@ submodule (dmr) dmr_target_alloc
 #if defined _real128
 {%- endif %}
 {%- for d in range(1,dimensions+1) %}
-      module subroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_32bit(fptr_dev, dimensions, omp_dev, ierr, bounds)
+      module subroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_32bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous, intent(out){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
 {%- if d == 1 %}
@@ -34,7 +34,11 @@ submodule (dmr) dmr_target_alloc
 {%- endif %}
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
-         integer(I4P), intent(in), optional              :: bounds({{d*2}})
+{%- if d == 1 %}
+         integer(I4P), intent(in), optional              :: lbounds
+{%- else %}
+         integer(I4P), intent(in), optional              :: lbounds({{d}})
+{%- endif %}
          {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous{% if t=='real' and p.key=='16P' %}{% print('                 ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('              ')%}{%- elif t=='real' %}{% print('                  ')%}{%- else %}{% print('               ')%}{%- endif %}:: fptr({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
          type(c_ptr)                                     :: cptr_dev
          integer(kind=c_int)                             :: omp_device
@@ -56,19 +60,19 @@ submodule (dmr) dmr_target_alloc
 {%- endif %}
 
          if (c_associated(cptr_dev)) then
-            if (present(bounds)) then
+            if (present(lbounds)) then
 {%- if d == 1 %}
                call c_f_pointer(cptr_dev, fptr, [dimensions])
-               fptr_dev({% for dd in range(0,2*d,2) %}bounds({{dd+1}}):bounds({{dd+2}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}) => fptr
+               fptr_dev(lbounds:lbounds+dimensions-1_I4P) => fptr
 {%- else %}
             {%- if d > 4 %}
                call c_f_pointer(cptr_dev, fptr, [{% for dd in range(0,4) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{% else %}, &{%- endif %}{% endfor %}
                                                  {% for dd in range(4,d) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
-               fptr_dev({% for dd in range(0,2*4,2) %}bounds({{dd+1}}):bounds({{dd+2}}){% if not loop.last %},{% print(' ') %}{% else %}, &{%- endif %}{% endfor %}
-                        {% for dd in range(8,2*d,2) %}bounds({{dd+1}}):bounds({{dd+2}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}) => fptr
+               fptr_dev({% for dd in range(0,4) %}lbounds({{dd+1}}):lbounds({{dd+1}})+dimensions({{dd+1}})-1_I4P{% if not loop.last %},{% print(' ') %}{% else %}, &{%- endif %}{% endfor %}
+                        {% for dd in range(4,d) %}lbounds({{dd+1}}):lbounds({{dd+1}})+dimensions({{dd+1}})-1_I4P{% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}) => fptr
             {%- else %}
                call c_f_pointer(cptr_dev, fptr, [{% for dd in range(d) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
-               fptr_dev({% for dd in range(0,2*d,2) %}bounds({{dd+1}}):bounds({{dd+2}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}) => fptr
+               fptr_dev({% for dd in range(0,d) %}lbounds({{dd+1}}):lbounds({{dd+1}})+dimensions({{dd+1}})-1_I4P{% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}) => fptr
             {%- endif %}
 {%- endif %}
             else
@@ -106,7 +110,7 @@ submodule (dmr) dmr_target_alloc
 #if defined _real128
 {%- endif %}
 {%- for d in range(1,dimensions+1) %}
-      module subroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_64bit(fptr_dev, dimensions, omp_dev, ierr, bounds)
+      module subroutine omp_target_alloc_f_{{keywords[t][1]}}{{p.name}}_{{d}}_64bit(fptr_dev, dimensions, omp_dev, ierr, lbounds)
          implicit none
          {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous, intent(out){% if t=='real' and p.key=='16P' %}{% print('    ')%}{%- elif t=='complex' and p.key=='16P' %}{% print(' ')%}{%- elif t=='real' %}{% print('     ')%}{%- else %}{% print('  ')%}{%- endif %}:: fptr_dev({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
 {%- if d == 1 %}
@@ -116,7 +120,11 @@ submodule (dmr) dmr_target_alloc
 {%- endif %}
          integer(I4P), intent(in)                        :: omp_dev
          integer(I4P), intent(out)                       :: ierr
-         integer(I8P), intent(in), optional              :: bounds({{d*2}})
+{%- if d == 1 %}
+         integer(I8P), intent(in), optional              :: lbounds
+{%- else %}
+         integer(I8P), intent(in), optional              :: lbounds({{d}})
+{%- endif %}
          {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous{% if t=='real' and p.key=='16P' %}{% print('                 ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('              ')%}{%- elif t=='real' %}{% print('                  ')%}{%- else %}{% print('               ')%}{%- endif %}:: fptr({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
          type(c_ptr)                                     :: cptr_dev
          integer(kind=c_int)                             :: omp_device
@@ -138,19 +146,19 @@ submodule (dmr) dmr_target_alloc
 {%- endif %}
 
          if (c_associated(cptr_dev)) then
-            if (present(bounds)) then
+            if (present(lbounds)) then
 {%- if d == 1 %}
                call c_f_pointer(cptr_dev, fptr, [dimensions])
-               fptr_dev({% for dd in range(0,2*d,2) %}bounds({{dd+1}}):bounds({{dd+2}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}) => fptr
+               fptr_dev(lbounds:lbounds+dimensions-1_I8P) => fptr
 {%- else %}
             {%- if d > 4 %}
                call c_f_pointer(cptr_dev, fptr, [{% for dd in range(0,4) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{% else %}, &{%- endif %}{% endfor %}
                                                  {% for dd in range(4,d) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
-               fptr_dev({% for dd in range(0,2*4,2) %}bounds({{dd+1}}):bounds({{dd+2}}){% if not loop.last %},{% print(' ') %}{% else %}, &{%- endif %}{% endfor %}
-                        {% for dd in range(8,2*d,2) %}bounds({{dd+1}}):bounds({{dd+2}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}) => fptr
+               fptr_dev({% for dd in range(0,4) %}lbounds({{dd+1}}):lbounds({{dd+1}})+dimensions({{dd+1}})-1_I8P{% if not loop.last %},{% print(' ') %}{% else %}, &{%- endif %}{% endfor %}
+                        {% for dd in range(4,d) %}lbounds({{dd+1}}):lbounds({{dd+1}})+dimensions({{dd+1}})-1_I8P{% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}) => fptr
             {%- else %}
                call c_f_pointer(cptr_dev, fptr, [{% for dd in range(d) %}dimensions({{dd+1}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}])
-               fptr_dev({% for dd in range(0,2*d,2) %}bounds({{dd+1}}):bounds({{dd+2}}){% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}) => fptr
+               fptr_dev({% for dd in range(0,d) %}lbounds({{dd+1}}):lbounds({{dd+1}})+dimensions({{dd+1}})-1_I8P{% if not loop.last %},{% print(' ') %}{%- endif %}{% endfor %}) => fptr
             {%- endif %}
 {%- endif %}
             else
