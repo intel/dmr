@@ -27,11 +27,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds
          integer(I1P), pointer, contiguous               :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(dimensions,I8P) * byte_size(1_I1P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -56,11 +54,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(2)
          integer(I1P), pointer, contiguous               :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I1P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -85,11 +81,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(3)
          integer(I1P), pointer, contiguous               :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I1P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -114,11 +108,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(4)
          integer(I1P), pointer, contiguous               :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I1P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -143,11 +135,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(5)
          integer(I1P), pointer, contiguous               :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I1P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -175,11 +165,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(6)
          integer(I1P), pointer, contiguous               :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I1P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -207,11 +195,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(7)
          integer(I1P), pointer, contiguous               :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I1P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -239,11 +225,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds
          integer(I2P), pointer, contiguous               :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(dimensions,I8P) * byte_size(1_I2P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -268,11 +252,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(2)
          integer(I2P), pointer, contiguous               :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I2P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -297,11 +279,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(3)
          integer(I2P), pointer, contiguous               :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I2P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -326,11 +306,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(4)
          integer(I2P), pointer, contiguous               :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I2P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -355,11 +333,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(5)
          integer(I2P), pointer, contiguous               :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I2P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -387,11 +363,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(6)
          integer(I2P), pointer, contiguous               :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I2P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -419,11 +393,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(7)
          integer(I2P), pointer, contiguous               :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I2P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -451,11 +423,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds
          integer(I4P), pointer, contiguous               :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(dimensions,I8P) * byte_size(1_I4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -480,11 +450,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(2)
          integer(I4P), pointer, contiguous               :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -509,11 +477,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(3)
          integer(I4P), pointer, contiguous               :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -538,11 +504,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(4)
          integer(I4P), pointer, contiguous               :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -567,11 +531,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(5)
          integer(I4P), pointer, contiguous               :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -599,11 +561,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(6)
          integer(I4P), pointer, contiguous               :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -631,11 +591,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(7)
          integer(I4P), pointer, contiguous               :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -663,11 +621,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds
          integer(I8P), pointer, contiguous               :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(dimensions,I8P) * byte_size(1_I8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -692,11 +648,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(2)
          integer(I8P), pointer, contiguous               :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -721,11 +675,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(3)
          integer(I8P), pointer, contiguous               :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -750,11 +702,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(4)
          integer(I8P), pointer, contiguous               :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -779,11 +729,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(5)
          integer(I8P), pointer, contiguous               :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -811,11 +759,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(6)
          integer(I8P), pointer, contiguous               :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -843,11 +789,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(7)
          integer(I8P), pointer, contiguous               :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1_I8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -877,11 +821,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds
          real(R4P), pointer, contiguous                  :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(dimensions,I8P) * byte_size(1._R4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -906,11 +848,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(2)
          real(R4P), pointer, contiguous                  :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -935,11 +875,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(3)
          real(R4P), pointer, contiguous                  :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -964,11 +902,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(4)
          real(R4P), pointer, contiguous                  :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -993,11 +929,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(5)
          real(R4P), pointer, contiguous                  :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1025,11 +959,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(6)
          real(R4P), pointer, contiguous                  :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1057,11 +989,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(7)
          real(R4P), pointer, contiguous                  :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1089,11 +1019,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds
          real(R8P), pointer, contiguous                  :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(dimensions,I8P) * byte_size(1._R8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1118,11 +1046,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(2)
          real(R8P), pointer, contiguous                  :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1147,11 +1073,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(3)
          real(R8P), pointer, contiguous                  :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1176,11 +1100,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(4)
          real(R8P), pointer, contiguous                  :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1205,11 +1127,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(5)
          real(R8P), pointer, contiguous                  :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1237,11 +1157,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(6)
          real(R8P), pointer, contiguous                  :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1269,11 +1187,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(7)
          real(R8P), pointer, contiguous                  :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1302,11 +1218,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds
          real(R16P), pointer, contiguous                 :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(dimensions,I8P) * byte_size(1._R16P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1331,11 +1245,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(2)
          real(R16P), pointer, contiguous                 :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R16P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1360,11 +1272,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(3)
          real(R16P), pointer, contiguous                 :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R16P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1389,11 +1299,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(4)
          real(R16P), pointer, contiguous                 :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R16P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1418,11 +1326,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(5)
          real(R16P), pointer, contiguous                 :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R16P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1450,11 +1356,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(6)
          real(R16P), pointer, contiguous                 :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R16P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1482,11 +1386,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(7)
          real(R16P), pointer, contiguous                 :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._R16P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1517,11 +1419,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds
          complex(R4P), pointer, contiguous               :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * dimensions, c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * dimensions,I8P) * byte_size(1._R4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1546,11 +1446,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(2)
          complex(R4P), pointer, contiguous               :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1575,11 +1473,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(3)
          complex(R4P), pointer, contiguous               :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1604,11 +1500,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(4)
          complex(R4P), pointer, contiguous               :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1633,11 +1527,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(5)
          complex(R4P), pointer, contiguous               :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1665,11 +1557,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(6)
          complex(R4P), pointer, contiguous               :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1697,11 +1587,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(7)
          complex(R4P), pointer, contiguous               :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1729,11 +1617,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds
          complex(R8P), pointer, contiguous               :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * dimensions, c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * dimensions,I8P) * byte_size(1._R8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1758,11 +1644,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(2)
          complex(R8P), pointer, contiguous               :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1787,11 +1671,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(3)
          complex(R8P), pointer, contiguous               :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1816,11 +1698,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(4)
          complex(R8P), pointer, contiguous               :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1845,11 +1725,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(5)
          complex(R8P), pointer, contiguous               :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1877,11 +1755,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(6)
          complex(R8P), pointer, contiguous               :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1909,11 +1785,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(7)
          complex(R8P), pointer, contiguous               :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R8P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1942,11 +1816,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds
          complex(R16P), pointer, contiguous              :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * dimensions, c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * dimensions,I8P) * byte_size(1._R16P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -1971,11 +1843,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(2)
          complex(R16P), pointer, contiguous              :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R16P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2000,11 +1870,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(3)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R16P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2029,11 +1897,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(4)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R16P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2058,11 +1924,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(5)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R16P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2090,11 +1954,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(6)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R16P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2122,11 +1984,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(7)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1._R16P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2157,11 +2017,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds
          logical(I4P), pointer, contiguous               :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1._I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(dimensions,I8P) * byte_size(1._I4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2186,11 +2044,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(2)
          logical(I4P), pointer, contiguous               :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._I4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2215,11 +2071,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(3)
          logical(I4P), pointer, contiguous               :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._I4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2244,11 +2098,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(4)
          logical(I4P), pointer, contiguous               :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._I4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2273,11 +2125,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(5)
          logical(I4P), pointer, contiguous               :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._I4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2305,11 +2155,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(6)
          logical(I4P), pointer, contiguous               :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._I4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2337,11 +2185,9 @@ submodule (dmr) dmr_target_alloc
          integer(I4P), intent(in), optional              :: lbounds(7)
          logical(I4P), pointer, contiguous               :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1._I4P),c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2373,11 +2219,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds
          integer(I1P), pointer, contiguous               :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc(int(dimensions * byte_size(1_I1P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2402,11 +2246,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(2)
          integer(I1P), pointer, contiguous               :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I1P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2431,11 +2273,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(3)
          integer(I1P), pointer, contiguous               :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I1P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2460,11 +2300,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(4)
          integer(I1P), pointer, contiguous               :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I1P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2489,11 +2327,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(5)
          integer(I1P), pointer, contiguous               :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I1P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2521,11 +2357,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(6)
          integer(I1P), pointer, contiguous               :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I1P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2553,11 +2387,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(7)
          integer(I1P), pointer, contiguous               :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I1P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I1P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2585,11 +2417,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds
          integer(I2P), pointer, contiguous               :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc(int(dimensions * byte_size(1_I2P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2614,11 +2444,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(2)
          integer(I2P), pointer, contiguous               :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I2P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2643,11 +2471,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(3)
          integer(I2P), pointer, contiguous               :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I2P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2672,11 +2498,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(4)
          integer(I2P), pointer, contiguous               :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I2P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2701,11 +2525,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(5)
          integer(I2P), pointer, contiguous               :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I2P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2733,11 +2555,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(6)
          integer(I2P), pointer, contiguous               :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I2P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2765,11 +2585,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(7)
          integer(I2P), pointer, contiguous               :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I2P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I2P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2797,11 +2615,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds
          integer(I4P), pointer, contiguous               :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(dimensions * byte_size(1_I4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2826,11 +2642,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(2)
          integer(I4P), pointer, contiguous               :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2855,11 +2669,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(3)
          integer(I4P), pointer, contiguous               :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2884,11 +2696,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(4)
          integer(I4P), pointer, contiguous               :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2913,11 +2723,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(5)
          integer(I4P), pointer, contiguous               :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2945,11 +2753,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(6)
          integer(I4P), pointer, contiguous               :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -2977,11 +2783,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(7)
          integer(I4P), pointer, contiguous               :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3009,11 +2813,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds
          integer(I8P), pointer, contiguous               :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc(int(dimensions * byte_size(1_I8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3038,11 +2840,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(2)
          integer(I8P), pointer, contiguous               :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3067,11 +2867,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(3)
          integer(I8P), pointer, contiguous               :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3096,11 +2894,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(4)
          integer(I8P), pointer, contiguous               :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3125,11 +2921,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(5)
          integer(I8P), pointer, contiguous               :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3157,11 +2951,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(6)
          integer(I8P), pointer, contiguous               :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3189,11 +2981,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(7)
          integer(I8P), pointer, contiguous               :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1_I8P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1_I8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3223,11 +3013,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds
          real(R4P), pointer, contiguous                  :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(dimensions * byte_size(1._R4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3252,11 +3040,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(2)
          real(R4P), pointer, contiguous                  :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3281,11 +3067,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(3)
          real(R4P), pointer, contiguous                  :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3310,11 +3094,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(4)
          real(R4P), pointer, contiguous                  :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3339,11 +3121,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(5)
          real(R4P), pointer, contiguous                  :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3371,11 +3151,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(6)
          real(R4P), pointer, contiguous                  :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3403,11 +3181,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(7)
          real(R4P), pointer, contiguous                  :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3435,11 +3211,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds
          real(R8P), pointer, contiguous                  :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(dimensions * byte_size(1._R8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3464,11 +3238,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(2)
          real(R8P), pointer, contiguous                  :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3493,11 +3265,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(3)
          real(R8P), pointer, contiguous                  :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3522,11 +3292,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(4)
          real(R8P), pointer, contiguous                  :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3551,11 +3319,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(5)
          real(R8P), pointer, contiguous                  :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3583,11 +3349,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(6)
          real(R8P), pointer, contiguous                  :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3615,11 +3379,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(7)
          real(R8P), pointer, contiguous                  :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3648,11 +3410,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds
          real(R16P), pointer, contiguous                 :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(dimensions * byte_size(1._R16P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3677,11 +3437,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(2)
          real(R16P), pointer, contiguous                 :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R16P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3706,11 +3464,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(3)
          real(R16P), pointer, contiguous                 :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R16P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3735,11 +3491,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(4)
          real(R16P), pointer, contiguous                 :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R16P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3764,11 +3518,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(5)
          real(R16P), pointer, contiguous                 :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R16P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3796,11 +3548,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(6)
          real(R16P), pointer, contiguous                 :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R16P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3828,11 +3578,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(7)
          real(R16P), pointer, contiguous                 :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._R16P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3863,11 +3611,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds
          complex(R4P), pointer, contiguous               :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * dimensions, c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * dimensions * byte_size(1._R4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3892,11 +3638,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(2)
          complex(R4P), pointer, contiguous               :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3921,11 +3665,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(3)
          complex(R4P), pointer, contiguous               :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3950,11 +3692,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(4)
          complex(R4P), pointer, contiguous               :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -3979,11 +3719,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(5)
          complex(R4P), pointer, contiguous               :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4011,11 +3749,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(6)
          complex(R4P), pointer, contiguous               :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4043,11 +3779,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(7)
          complex(R4P), pointer, contiguous               :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R4P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4075,11 +3809,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds
          complex(R8P), pointer, contiguous               :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * dimensions, c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * dimensions * byte_size(1._R8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4104,11 +3836,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(2)
          complex(R8P), pointer, contiguous               :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4133,11 +3863,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(3)
          complex(R8P), pointer, contiguous               :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4162,11 +3890,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(4)
          complex(R8P), pointer, contiguous               :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4191,11 +3917,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(5)
          complex(R8P), pointer, contiguous               :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4223,11 +3947,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(6)
          complex(R8P), pointer, contiguous               :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4255,11 +3977,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(7)
          complex(R8P), pointer, contiguous               :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R8P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R8P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4288,11 +4008,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds
          complex(R16P), pointer, contiguous              :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * dimensions, c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * dimensions * byte_size(1._R16P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4317,11 +4035,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(2)
          complex(R16P), pointer, contiguous              :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R16P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4346,11 +4062,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(3)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R16P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4375,11 +4089,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(4)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R16P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4404,11 +4116,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(5)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R16P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4436,11 +4146,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(6)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R16P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4468,11 +4176,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(7)
          complex(R16P), pointer, contiguous              :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1._R16P), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1._R16P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4503,11 +4209,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds
          logical(I4P), pointer, contiguous               :: fptr(:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1._I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(dimensions * byte_size(1._I4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4532,11 +4236,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(2)
          logical(I4P), pointer, contiguous               :: fptr(:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._I4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4561,11 +4263,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(3)
          logical(I4P), pointer, contiguous               :: fptr(:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._I4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4590,11 +4290,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(4)
          logical(I4P), pointer, contiguous               :: fptr(:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._I4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4619,11 +4317,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(5)
          logical(I4P), pointer, contiguous               :: fptr(:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._I4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4651,11 +4347,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(6)
          logical(I4P), pointer, contiguous               :: fptr(:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._I4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then
@@ -4683,11 +4377,9 @@ submodule (dmr) dmr_target_alloc
          integer(I8P), intent(in), optional              :: lbounds(7)
          logical(I4P), pointer, contiguous               :: fptr(:,:,:,:,:,:,:)
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1._I4P), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1._I4P), c_size_t), int(omp_dev,c_int))
 
          if (c_associated(cptr_dev)) then
             if (present(lbounds)) then

@@ -68,9 +68,9 @@ module dmr_environment
 {%- endif %}
       elemental function byte_size_{{keywords[t][1]}}{{p.name}}(x) result(bytes)
          {{t}}({{keywords[t][2]}}{{p.key}}), intent(in) :: x
-         integer(I1P)             :: bytes
+         integer(I8P)             :: bytes
 
-         bytes = storage_size(x) / 8_I1P
+         bytes = storage_size(x,I8P) / 8_I8P
       endfunction byte_size_{{keywords[t][1]}}{{p.name}}
 {%- if p.key=='16P' %}
 #endif

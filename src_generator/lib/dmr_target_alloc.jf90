@@ -41,21 +41,19 @@ submodule (dmr) dmr_target_alloc
 {%- endif %}
          {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous{% if t=='real' and p.key=='16P' %}{% print('                 ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('              ')%}{%- elif t=='real' %}{% print('                  ')%}{%- else %}{% print('               ')%}{%- endif %}:: fptr({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 {% print("") %}
 {%- if d == 1 %}
 {%- if t == 'complex' %}
-         cptr_dev = omp_target_alloc(int(2_I8P * dimensions, c_size_t) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * dimensions,I8P) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}),c_size_t), int(omp_dev,c_int))
 {%- else %}
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), omp_device)
+         cptr_dev = omp_target_alloc(int(int(dimensions,I8P) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}),c_size_t), int(omp_dev,c_int))
 {%- endif %}
 {%- else %}
 {%- if t == 'complex' %}
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), omp_device)
+         cptr_dev = omp_target_alloc(int(int(2_I8P * product(dimensions),I8P) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}),c_size_t), int(omp_dev,c_int))
 {%- else %}
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), omp_device)
+         cptr_dev = omp_target_alloc(int(int(product(dimensions),I8P) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}),c_size_t), int(omp_dev,c_int))
 {%- endif %}
 {%- endif %}
 
@@ -127,21 +125,19 @@ submodule (dmr) dmr_target_alloc
 {%- endif %}
          {{t}}({{keywords[t][2]}}{{p.key}}), pointer, contiguous{% if t=='real' and p.key=='16P' %}{% print('                 ')%}{%- elif t=='complex' and p.key=='16P' %}{% print('              ')%}{%- elif t=='real' %}{% print('                  ')%}{%- else %}{% print('               ')%}{%- endif %}:: fptr({% for dd in range(d) %}:{% if not loop.last %}, {%- endif %}{% endfor %})
          type(c_ptr)                                     :: cptr_dev
-         integer(kind=c_int)                             :: omp_device
 
-         omp_device = int(omp_dev, c_int)
 {% print("") %}
 {%- if d == 1 %}
 {%- if t == 'complex' %}
-         cptr_dev = omp_target_alloc(int(2_I8P * dimensions, c_size_t) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * dimensions * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), c_size_t), int(omp_dev,c_int))
 {%- else %}
-         cptr_dev = omp_target_alloc(int(dimensions, c_size_t) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), omp_device)
+         cptr_dev = omp_target_alloc(int(dimensions * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), c_size_t), int(omp_dev,c_int))
 {%- endif %}
 {%- else %}
 {%- if t == 'complex' %}
-         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions), c_size_t) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), omp_device)
+         cptr_dev = omp_target_alloc(int(2_I8P * product(dimensions) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), c_size_t), int(omp_dev,c_int))
 {%- else %}
-         cptr_dev = omp_target_alloc(int(product(dimensions), c_size_t) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), omp_device)
+         cptr_dev = omp_target_alloc(int(product(dimensions) * byte_size(1{% if not t=='integer' %}.{%- endif %}_{{keywords[t][2]}}{{p.key}}), c_size_t), int(omp_dev,c_int))
 {%- endif %}
 {%- endif %}
 
