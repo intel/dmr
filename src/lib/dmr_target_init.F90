@@ -59,7 +59,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i1 = lbounds_(1), ubounds_(1)
                array(i1) = val
@@ -68,7 +68,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i2 = lbounds_(2), ubounds_(2)
                do i1 = lbounds_(1), ubounds_(1)
@@ -79,7 +79,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i3 = lbounds_(3), ubounds_(3)
                do i2 = lbounds_(2), ubounds_(2)
@@ -92,7 +92,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i4 = lbounds_(4), ubounds_(4)
                do i3 = lbounds_(3), ubounds_(3)
@@ -107,7 +107,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i5 = lbounds_(5), ubounds_(5)
                do i4 = lbounds_(4), ubounds_(4)
@@ -124,7 +124,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i6 = lbounds_(6), ubounds_(6)
                do i5 = lbounds_(5), ubounds_(5)
@@ -143,7 +143,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i7 = lbounds_(7), ubounds_(7)
                do i6 = lbounds_(6), ubounds_(6)
@@ -204,7 +204,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i1 = lbounds_(1), ubounds_(1)
                array(i1) = val
@@ -213,7 +213,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i2 = lbounds_(2), ubounds_(2)
                do i1 = lbounds_(1), ubounds_(1)
@@ -224,7 +224,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i3 = lbounds_(3), ubounds_(3)
                do i2 = lbounds_(2), ubounds_(2)
@@ -237,7 +237,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i4 = lbounds_(4), ubounds_(4)
                do i3 = lbounds_(3), ubounds_(3)
@@ -252,7 +252,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i5 = lbounds_(5), ubounds_(5)
                do i4 = lbounds_(4), ubounds_(4)
@@ -269,7 +269,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i6 = lbounds_(6), ubounds_(6)
                do i5 = lbounds_(5), ubounds_(5)
@@ -288,7 +288,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i7 = lbounds_(7), ubounds_(7)
                do i6 = lbounds_(6), ubounds_(6)
@@ -349,7 +349,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i1 = lbounds_(1), ubounds_(1)
                array(i1) = val
@@ -358,7 +358,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i2 = lbounds_(2), ubounds_(2)
                do i1 = lbounds_(1), ubounds_(1)
@@ -369,7 +369,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i3 = lbounds_(3), ubounds_(3)
                do i2 = lbounds_(2), ubounds_(2)
@@ -382,7 +382,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i4 = lbounds_(4), ubounds_(4)
                do i3 = lbounds_(3), ubounds_(3)
@@ -397,7 +397,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i5 = lbounds_(5), ubounds_(5)
                do i4 = lbounds_(4), ubounds_(4)
@@ -414,7 +414,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i6 = lbounds_(6), ubounds_(6)
                do i5 = lbounds_(5), ubounds_(5)
@@ -433,7 +433,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i7 = lbounds_(7), ubounds_(7)
                do i6 = lbounds_(6), ubounds_(6)
@@ -494,7 +494,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i1 = lbounds_(1), ubounds_(1)
                array(i1) = val
@@ -503,7 +503,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i2 = lbounds_(2), ubounds_(2)
                do i1 = lbounds_(1), ubounds_(1)
@@ -514,7 +514,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i3 = lbounds_(3), ubounds_(3)
                do i2 = lbounds_(2), ubounds_(2)
@@ -527,7 +527,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i4 = lbounds_(4), ubounds_(4)
                do i3 = lbounds_(3), ubounds_(3)
@@ -542,7 +542,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i5 = lbounds_(5), ubounds_(5)
                do i4 = lbounds_(4), ubounds_(4)
@@ -559,7 +559,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i6 = lbounds_(6), ubounds_(6)
                do i5 = lbounds_(5), ubounds_(5)
@@ -578,7 +578,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i7 = lbounds_(7), ubounds_(7)
                do i6 = lbounds_(6), ubounds_(6)
@@ -640,7 +640,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i1 = lbounds_(1), ubounds_(1)
                array(i1) = val
@@ -649,7 +649,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i2 = lbounds_(2), ubounds_(2)
                do i1 = lbounds_(1), ubounds_(1)
@@ -660,7 +660,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i3 = lbounds_(3), ubounds_(3)
                do i2 = lbounds_(2), ubounds_(2)
@@ -673,7 +673,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i4 = lbounds_(4), ubounds_(4)
                do i3 = lbounds_(3), ubounds_(3)
@@ -688,7 +688,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i5 = lbounds_(5), ubounds_(5)
                do i4 = lbounds_(4), ubounds_(4)
@@ -705,7 +705,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i6 = lbounds_(6), ubounds_(6)
                do i5 = lbounds_(5), ubounds_(5)
@@ -724,7 +724,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i7 = lbounds_(7), ubounds_(7)
                do i6 = lbounds_(6), ubounds_(6)
@@ -785,7 +785,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i1 = lbounds_(1), ubounds_(1)
                array(i1) = val
@@ -794,7 +794,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i2 = lbounds_(2), ubounds_(2)
                do i1 = lbounds_(1), ubounds_(1)
@@ -805,7 +805,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i3 = lbounds_(3), ubounds_(3)
                do i2 = lbounds_(2), ubounds_(2)
@@ -818,7 +818,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i4 = lbounds_(4), ubounds_(4)
                do i3 = lbounds_(3), ubounds_(3)
@@ -833,7 +833,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i5 = lbounds_(5), ubounds_(5)
                do i4 = lbounds_(4), ubounds_(4)
@@ -850,7 +850,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i6 = lbounds_(6), ubounds_(6)
                do i5 = lbounds_(5), ubounds_(5)
@@ -869,7 +869,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i7 = lbounds_(7), ubounds_(7)
                do i6 = lbounds_(6), ubounds_(6)
@@ -931,7 +931,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i1 = lbounds_(1), ubounds_(1)
                array(i1) = val
@@ -940,7 +940,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i2 = lbounds_(2), ubounds_(2)
                do i1 = lbounds_(1), ubounds_(1)
@@ -951,7 +951,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i3 = lbounds_(3), ubounds_(3)
                do i2 = lbounds_(2), ubounds_(2)
@@ -964,7 +964,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i4 = lbounds_(4), ubounds_(4)
                do i3 = lbounds_(3), ubounds_(3)
@@ -979,7 +979,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i5 = lbounds_(5), ubounds_(5)
                do i4 = lbounds_(4), ubounds_(4)
@@ -996,7 +996,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i6 = lbounds_(6), ubounds_(6)
                do i5 = lbounds_(5), ubounds_(5)
@@ -1015,7 +1015,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i7 = lbounds_(7), ubounds_(7)
                do i6 = lbounds_(6), ubounds_(6)
@@ -1078,7 +1078,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i1 = lbounds_(1), ubounds_(1)
                array(i1) = val
@@ -1087,7 +1087,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i2 = lbounds_(2), ubounds_(2)
                do i1 = lbounds_(1), ubounds_(1)
@@ -1098,7 +1098,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i3 = lbounds_(3), ubounds_(3)
                do i2 = lbounds_(2), ubounds_(2)
@@ -1111,7 +1111,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i4 = lbounds_(4), ubounds_(4)
                do i3 = lbounds_(3), ubounds_(3)
@@ -1126,7 +1126,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i5 = lbounds_(5), ubounds_(5)
                do i4 = lbounds_(4), ubounds_(4)
@@ -1143,7 +1143,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i6 = lbounds_(6), ubounds_(6)
                do i5 = lbounds_(5), ubounds_(5)
@@ -1162,7 +1162,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i7 = lbounds_(7), ubounds_(7)
                do i6 = lbounds_(6), ubounds_(6)
@@ -1223,7 +1223,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i1 = lbounds_(1), ubounds_(1)
                array(i1) = val
@@ -1232,7 +1232,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i2 = lbounds_(2), ubounds_(2)
                do i1 = lbounds_(1), ubounds_(1)
@@ -1243,7 +1243,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i3 = lbounds_(3), ubounds_(3)
                do i2 = lbounds_(2), ubounds_(2)
@@ -1256,7 +1256,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i4 = lbounds_(4), ubounds_(4)
                do i3 = lbounds_(3), ubounds_(3)
@@ -1271,7 +1271,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i5 = lbounds_(5), ubounds_(5)
                do i4 = lbounds_(4), ubounds_(4)
@@ -1288,7 +1288,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i6 = lbounds_(6), ubounds_(6)
                do i5 = lbounds_(5), ubounds_(5)
@@ -1307,7 +1307,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i7 = lbounds_(7), ubounds_(7)
                do i6 = lbounds_(6), ubounds_(6)
@@ -1369,7 +1369,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i1 = lbounds_(1), ubounds_(1)
                array(i1) = val
@@ -1378,7 +1378,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i2 = lbounds_(2), ubounds_(2)
                do i1 = lbounds_(1), ubounds_(1)
@@ -1389,7 +1389,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i3 = lbounds_(3), ubounds_(3)
                do i2 = lbounds_(2), ubounds_(2)
@@ -1402,7 +1402,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i4 = lbounds_(4), ubounds_(4)
                do i3 = lbounds_(3), ubounds_(3)
@@ -1417,7 +1417,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i5 = lbounds_(5), ubounds_(5)
                do i4 = lbounds_(4), ubounds_(4)
@@ -1434,7 +1434,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i6 = lbounds_(6), ubounds_(6)
                do i5 = lbounds_(5), ubounds_(5)
@@ -1453,7 +1453,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i7 = lbounds_(7), ubounds_(7)
                do i6 = lbounds_(6), ubounds_(6)
@@ -1516,7 +1516,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i1 = lbounds_(1), ubounds_(1)
                array(i1) = val
@@ -1525,7 +1525,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i2 = lbounds_(2), ubounds_(2)
                do i1 = lbounds_(1), ubounds_(1)
@@ -1536,7 +1536,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i3 = lbounds_(3), ubounds_(3)
                do i2 = lbounds_(2), ubounds_(2)
@@ -1549,7 +1549,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i4 = lbounds_(4), ubounds_(4)
                do i3 = lbounds_(3), ubounds_(3)
@@ -1564,7 +1564,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i5 = lbounds_(5), ubounds_(5)
                do i4 = lbounds_(4), ubounds_(4)
@@ -1581,7 +1581,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i6 = lbounds_(6), ubounds_(6)
                do i5 = lbounds_(5), ubounds_(5)
@@ -1600,7 +1600,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc:array) map(to:lbounds_, ubounds_)
 !#else
-            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+            !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
             do i7 = lbounds_(7), ubounds_(7)
                do i6 = lbounds_(6), ubounds_(6)
@@ -1652,7 +1652,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i1=lbounds_, ubounds_
             array(i1) = val
@@ -1688,7 +1688,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i2 = lbounds_(2), ubounds_(2)
             do i1 = lbounds_(1), ubounds_(1)
@@ -1726,7 +1726,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i3 = lbounds_(3), ubounds_(3)
             do i2 = lbounds_(2), ubounds_(2)
@@ -1766,7 +1766,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i4 = lbounds_(4), ubounds_(4)
             do i3 = lbounds_(3), ubounds_(3)
@@ -1808,7 +1808,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i5 = lbounds_(5), ubounds_(5)
             do i4 = lbounds_(4), ubounds_(4)
@@ -1852,7 +1852,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i6 = lbounds_(6), ubounds_(6)
             do i5 = lbounds_(5), ubounds_(5)
@@ -1898,7 +1898,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i7 = lbounds_(7), ubounds_(7)
             do i6 = lbounds_(6), ubounds_(6)
@@ -1946,7 +1946,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i1=lbounds_, ubounds_
             array(i1) = val
@@ -1982,7 +1982,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i2 = lbounds_(2), ubounds_(2)
             do i1 = lbounds_(1), ubounds_(1)
@@ -2020,7 +2020,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i3 = lbounds_(3), ubounds_(3)
             do i2 = lbounds_(2), ubounds_(2)
@@ -2060,7 +2060,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i4 = lbounds_(4), ubounds_(4)
             do i3 = lbounds_(3), ubounds_(3)
@@ -2102,7 +2102,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i5 = lbounds_(5), ubounds_(5)
             do i4 = lbounds_(4), ubounds_(4)
@@ -2146,7 +2146,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i6 = lbounds_(6), ubounds_(6)
             do i5 = lbounds_(5), ubounds_(5)
@@ -2192,7 +2192,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i7 = lbounds_(7), ubounds_(7)
             do i6 = lbounds_(6), ubounds_(6)
@@ -2240,7 +2240,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i1=lbounds_, ubounds_
             array(i1) = val
@@ -2276,7 +2276,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i2 = lbounds_(2), ubounds_(2)
             do i1 = lbounds_(1), ubounds_(1)
@@ -2314,7 +2314,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i3 = lbounds_(3), ubounds_(3)
             do i2 = lbounds_(2), ubounds_(2)
@@ -2354,7 +2354,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i4 = lbounds_(4), ubounds_(4)
             do i3 = lbounds_(3), ubounds_(3)
@@ -2396,7 +2396,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i5 = lbounds_(5), ubounds_(5)
             do i4 = lbounds_(4), ubounds_(4)
@@ -2440,7 +2440,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i6 = lbounds_(6), ubounds_(6)
             do i5 = lbounds_(5), ubounds_(5)
@@ -2486,7 +2486,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i7 = lbounds_(7), ubounds_(7)
             do i6 = lbounds_(6), ubounds_(6)
@@ -2534,7 +2534,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i1=lbounds_, ubounds_
             array(i1) = val
@@ -2570,7 +2570,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i2 = lbounds_(2), ubounds_(2)
             do i1 = lbounds_(1), ubounds_(1)
@@ -2608,7 +2608,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i3 = lbounds_(3), ubounds_(3)
             do i2 = lbounds_(2), ubounds_(2)
@@ -2648,7 +2648,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i4 = lbounds_(4), ubounds_(4)
             do i3 = lbounds_(3), ubounds_(3)
@@ -2690,7 +2690,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i5 = lbounds_(5), ubounds_(5)
             do i4 = lbounds_(4), ubounds_(4)
@@ -2734,7 +2734,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i6 = lbounds_(6), ubounds_(6)
             do i5 = lbounds_(5), ubounds_(5)
@@ -2780,7 +2780,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i7 = lbounds_(7), ubounds_(7)
             do i6 = lbounds_(6), ubounds_(6)
@@ -2830,7 +2830,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i1=lbounds_, ubounds_
             array(i1) = val
@@ -2866,7 +2866,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i2 = lbounds_(2), ubounds_(2)
             do i1 = lbounds_(1), ubounds_(1)
@@ -2904,7 +2904,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i3 = lbounds_(3), ubounds_(3)
             do i2 = lbounds_(2), ubounds_(2)
@@ -2944,7 +2944,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i4 = lbounds_(4), ubounds_(4)
             do i3 = lbounds_(3), ubounds_(3)
@@ -2986,7 +2986,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i5 = lbounds_(5), ubounds_(5)
             do i4 = lbounds_(4), ubounds_(4)
@@ -3030,7 +3030,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i6 = lbounds_(6), ubounds_(6)
             do i5 = lbounds_(5), ubounds_(5)
@@ -3076,7 +3076,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i7 = lbounds_(7), ubounds_(7)
             do i6 = lbounds_(6), ubounds_(6)
@@ -3124,7 +3124,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i1=lbounds_, ubounds_
             array(i1) = val
@@ -3160,7 +3160,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i2 = lbounds_(2), ubounds_(2)
             do i1 = lbounds_(1), ubounds_(1)
@@ -3198,7 +3198,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i3 = lbounds_(3), ubounds_(3)
             do i2 = lbounds_(2), ubounds_(2)
@@ -3238,7 +3238,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i4 = lbounds_(4), ubounds_(4)
             do i3 = lbounds_(3), ubounds_(3)
@@ -3280,7 +3280,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i5 = lbounds_(5), ubounds_(5)
             do i4 = lbounds_(4), ubounds_(4)
@@ -3324,7 +3324,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i6 = lbounds_(6), ubounds_(6)
             do i5 = lbounds_(5), ubounds_(5)
@@ -3370,7 +3370,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i7 = lbounds_(7), ubounds_(7)
             do i6 = lbounds_(6), ubounds_(6)
@@ -3419,7 +3419,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i1=lbounds_, ubounds_
             array(i1) = val
@@ -3455,7 +3455,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i2 = lbounds_(2), ubounds_(2)
             do i1 = lbounds_(1), ubounds_(1)
@@ -3493,7 +3493,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i3 = lbounds_(3), ubounds_(3)
             do i2 = lbounds_(2), ubounds_(2)
@@ -3533,7 +3533,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i4 = lbounds_(4), ubounds_(4)
             do i3 = lbounds_(3), ubounds_(3)
@@ -3575,7 +3575,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i5 = lbounds_(5), ubounds_(5)
             do i4 = lbounds_(4), ubounds_(4)
@@ -3619,7 +3619,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i6 = lbounds_(6), ubounds_(6)
             do i5 = lbounds_(5), ubounds_(5)
@@ -3665,7 +3665,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i7 = lbounds_(7), ubounds_(7)
             do i6 = lbounds_(6), ubounds_(6)
@@ -3716,7 +3716,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i1=lbounds_, ubounds_
             array(i1) = val
@@ -3752,7 +3752,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i2 = lbounds_(2), ubounds_(2)
             do i1 = lbounds_(1), ubounds_(1)
@@ -3790,7 +3790,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i3 = lbounds_(3), ubounds_(3)
             do i2 = lbounds_(2), ubounds_(2)
@@ -3830,7 +3830,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i4 = lbounds_(4), ubounds_(4)
             do i3 = lbounds_(3), ubounds_(3)
@@ -3872,7 +3872,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i5 = lbounds_(5), ubounds_(5)
             do i4 = lbounds_(4), ubounds_(4)
@@ -3916,7 +3916,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i6 = lbounds_(6), ubounds_(6)
             do i5 = lbounds_(5), ubounds_(5)
@@ -3962,7 +3962,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i7 = lbounds_(7), ubounds_(7)
             do i6 = lbounds_(6), ubounds_(6)
@@ -4010,7 +4010,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i1=lbounds_, ubounds_
             array(i1) = val
@@ -4046,7 +4046,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i2 = lbounds_(2), ubounds_(2)
             do i1 = lbounds_(1), ubounds_(1)
@@ -4084,7 +4084,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i3 = lbounds_(3), ubounds_(3)
             do i2 = lbounds_(2), ubounds_(2)
@@ -4124,7 +4124,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i4 = lbounds_(4), ubounds_(4)
             do i3 = lbounds_(3), ubounds_(3)
@@ -4166,7 +4166,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i5 = lbounds_(5), ubounds_(5)
             do i4 = lbounds_(4), ubounds_(4)
@@ -4210,7 +4210,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i6 = lbounds_(6), ubounds_(6)
             do i5 = lbounds_(5), ubounds_(5)
@@ -4256,7 +4256,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i7 = lbounds_(7), ubounds_(7)
             do i6 = lbounds_(6), ubounds_(6)
@@ -4305,7 +4305,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i1=lbounds_, ubounds_
             array(i1) = val
@@ -4341,7 +4341,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i2 = lbounds_(2), ubounds_(2)
             do i1 = lbounds_(1), ubounds_(1)
@@ -4379,7 +4379,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i3 = lbounds_(3), ubounds_(3)
             do i2 = lbounds_(2), ubounds_(2)
@@ -4419,7 +4419,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i4 = lbounds_(4), ubounds_(4)
             do i3 = lbounds_(3), ubounds_(3)
@@ -4461,7 +4461,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i5 = lbounds_(5), ubounds_(5)
             do i4 = lbounds_(4), ubounds_(4)
@@ -4505,7 +4505,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i6 = lbounds_(6), ubounds_(6)
             do i5 = lbounds_(5), ubounds_(5)
@@ -4551,7 +4551,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i7 = lbounds_(7), ubounds_(7)
             do i6 = lbounds_(6), ubounds_(6)
@@ -4602,7 +4602,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(1) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i1=lbounds_, ubounds_
             array(i1) = val
@@ -4638,7 +4638,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(2) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i2 = lbounds_(2), ubounds_(2)
             do i1 = lbounds_(1), ubounds_(1)
@@ -4676,7 +4676,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(3) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i3 = lbounds_(3), ubounds_(3)
             do i2 = lbounds_(2), ubounds_(2)
@@ -4716,7 +4716,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(4) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i4 = lbounds_(4), ubounds_(4)
             do i3 = lbounds_(3), ubounds_(3)
@@ -4758,7 +4758,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(5) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i5 = lbounds_(5), ubounds_(5)
             do i4 = lbounds_(4), ubounds_(4)
@@ -4802,7 +4802,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(6) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i6 = lbounds_(6), ubounds_(6)
             do i5 = lbounds_(5), ubounds_(5)
@@ -4848,7 +4848,7 @@ submodule (dmr) dmr_target_init
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) map(present, alloc::array) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) is_device_ptr(array) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do collapse(7) device(omp_dev_) has_device_addr(array) map(to:lbounds_, ubounds_)
 !#endif
          do i7 = lbounds_(7), ubounds_(7)
             do i6 = lbounds_(6), ubounds_(6)

@@ -67,7 +67,7 @@ submodule (dmr) dmr_device_memcpy
 !#if defined _OpenMP_5_1
 !               !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) map(present, alloc:array_dst, array_src) map(to:lbounds_, ubounds_)
 !#else
-               !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+               !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 !#endif
 {%- for dd in range(d,0,-1) %}
                {% print(' '*3*(d-dd)) %}do i{{dd}} = lbounds_({{dd}}), ubounds_({{dd}})
@@ -137,7 +137,7 @@ submodule (dmr) dmr_device_memcpy
 !#if defined _OpenMP_5_1
 !         !$omp target teams distribute parallel do collapse({{d}}) device(omp_dev_) map(present, alloc:array_dst, array_src) map(to:lbounds_, ubounds_)
 !#else
-         !$omp target teams distribute parallel do device(omp_dev_) is_device_ptr(array_dst, array_src) map(to:lbounds_, ubounds_)
+         !$omp target teams distribute parallel do device(omp_dev_) has_device_addr(array_dst, array_src) map(to:lbounds_, ubounds_)
 !#endif
 {%- if d==1 %}
          do i1=lbounds_, ubounds_
